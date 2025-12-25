@@ -1,0 +1,1206 @@
+===== PROJECT TREE =====
+./
+└── Assets
+    ├── Scripts
+    │   ├── App
+    │   │   ├── AppContext.cs
+    │   │   ├── GameBootstrap.cs
+    │   │   ├── MainMenuStart.cs
+    │   │   ├── SceneService.cs
+    │   │   └── SessionService.cs
+    │   ├── Content
+    │   │   ├── AppConfigSO.cs
+    │   │   ├── BeatSO.cs
+    │   │   ├── ChoiceSO.cs
+    │   │   ├── EpisodeSO.cs
+    │   │   ├── InteractionSO.cs
+    │   │   ├── SceneSO.cs
+    │   │   ├── TraceTaxonomySO.cs
+    │   │   └── TraceTypeSO.cs
+    │   ├── Feedback
+    │   │   ├── FeedbackReport.cs
+    │   │   └── FeedbackService.cs
+    │   ├── Phone
+    │   │   ├── ChatPanel.cs
+    │   │   └── PhoneUIRoot.cs
+    │   ├── Runtime
+    │   │   ├── BeatRunner.cs
+    │   │   ├── EpisodeController.cs
+    │   │   └── InteractionRouter.cs
+    │   ├── Trace
+    │   │   ├── InMemoryTraceStore.cs
+    │   │   ├── ITraceStore.cs
+    │   │   ├── TraceEvent.cs
+    │   │   └── TraceService.cs
+    │   └── UI
+    │       ├── ChoiceButton.cs
+    │       └── SummaryUI.cs
+    └── TutorialInfo
+        └── Scripts
+            ├── Readme.cs
+            └── Editor
+                └── ReadmeEditor.cs
+
+===== FILE MANIFEST =====
+- Assets/Scripts/App/AppContext.cs — 852 bytes — ok
+- Assets/Scripts/App/GameBootstrap.cs — 1780 bytes — ok
+- Assets/Scripts/App/MainMenuStart.cs — 332 bytes — ok
+- Assets/Scripts/App/SceneService.cs — 280 bytes — ok
+- Assets/Scripts/App/SessionService.cs — 274 bytes — ok
+- Assets/Scripts/Content/AppConfigSO.cs — 591 bytes — ok
+- Assets/Scripts/Content/BeatSO.cs — 720 bytes — ok
+- Assets/Scripts/Content/ChoiceSO.cs — 560 bytes — ok
+- Assets/Scripts/Content/EpisodeSO.cs — 1211 bytes — ok
+- Assets/Scripts/Content/InteractionSO.cs — 632 bytes — ok
+- Assets/Scripts/Content/SceneSO.cs — 317 bytes — ok
+- Assets/Scripts/Content/TraceTaxonomySO.cs — 1007 bytes — ok
+- Assets/Scripts/Content/TraceTypeSO.cs — 298 bytes — ok
+- Assets/Scripts/Feedback/FeedbackReport.cs — 387 bytes — ok
+- Assets/Scripts/Feedback/FeedbackService.cs — 2263 bytes — ok
+- Assets/Scripts/Phone/ChatPanel.cs — 1463 bytes — ok
+- Assets/Scripts/Phone/PhoneUIRoot.cs — 668 bytes — ok
+- Assets/Scripts/Runtime/BeatRunner.cs — 892 bytes — ok
+- Assets/Scripts/Runtime/EpisodeController.cs — 3568 bytes — ok
+- Assets/Scripts/Runtime/InteractionRouter.cs — 991 bytes — ok
+- Assets/Scripts/Trace/InMemoryTraceStore.cs — 686 bytes — ok
+- Assets/Scripts/Trace/ITraceStore.cs — 257 bytes — ok
+- Assets/Scripts/Trace/TraceEvent.cs — 352 bytes — ok
+- Assets/Scripts/Trace/TraceService.cs — 1343 bytes — ok
+- Assets/Scripts/UI/ChoiceButton.cs — 315 bytes — ok
+- Assets/Scripts/UI/SummaryUI.cs — 485 bytes — ok
+- Assets/TutorialInfo/Scripts/Readme.cs — 302 bytes — ok
+- Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs — 6677 bytes — ok
+
+
+
+Folder Assets/Scripts/App
+File AppContext.cs
+using UnityEngine;
+using SeriousGame.Content;
+using SeriousGame.Trace;
+using SeriousGame.Feedback;
+
+namespace SeriousGame.App
+{
+    public class AppContext : MonoBehaviour
+    {
+        public AppConfigSO Config { get; private set; }
+        public SceneService Scenes { get; private set; }
+        public SessionService Session { get; private set; }
+        public TraceService Trace { get; private set; }
+        public FeedbackService Feedback { get; private set; }
+
+        public void Init(AppConfigSO config)
+        {
+            Config = config;
+
+            Scenes = new SceneService();
+            Session = new SessionService();
+
+            var store = new InMemoryTraceStore();
+            Trace = new TraceService(store);
+
+            Feedback = new FeedbackService(Trace, config != null ? config.traceTaxonomy : null);
+        }
+    }
+}
+
+File GameBootstrap.cs
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using SeriousGame.Content;
+
+namespace SeriousGame.App
+{
+    public class GameBootstrap : MonoBehaviour
+    {
+        public static AppContext Context { get; private set; }
+
+        [SerializeField] private AppConfigSO config;
+
+        private static GameBootstrap _instance;
+
+        private void Awake()
+        {
+            if (_instance != null && _instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            if (config == null)
+            {
+                Debug.LogError("[GameBootstrap] Missing AppConfigSO reference.");
+                return;
+            }
+
+            var ctx = GetComponent<AppContext>();
+            if (ctx == null) ctx = gameObject.AddComponent<AppContext>();
+            ctx.Init(config);
+
+            Context = ctx;
+        }
+
+        private void Start()
+        {
+            if (config == null) return;
+
+            // Boot scene -> next
+            string targetScene;
+            if (config.skipMainMenuAndAutoStartEpisode)
+            {
+                // Prefer Episode entry scene if available
+                var ep = config.defaultEpisode;
+                var epScene = ep != null ? ep.GetEntrySceneName() : "";
+                targetScene = string.IsNullOrWhiteSpace(epScene) ? config.demoEpisodeSceneName : epScene;
+            }
+            else
+            {
+                targetScene = config.mainMenuSceneName;
+            }
+
+            var active = SceneManager.GetActiveScene().name;
+            if (!string.IsNullOrWhiteSpace(targetScene) && active != targetScene)
+                SceneManager.LoadScene(targetScene);
+        }
+    }
+}
+
+File MainMenuStart.cs
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+namespace SeriousGame.App
+{
+    public class MainMenuStart : MonoBehaviour
+    {
+        public string episodeSceneName = "Episode_Chapter1_Demo";
+
+        public void StartDemo()
+        {
+            SceneManager.LoadScene(episodeSceneName);
+        }
+    }
+}
+
+File SceneService.cs
+using UnityEngine.SceneManagement;
+
+namespace SeriousGame.App
+{
+    public class SceneService
+    {
+        public void Load(string sceneName)
+        {
+            if (string.IsNullOrWhiteSpace(sceneName)) return;
+            SceneManager.LoadScene(sceneName);
+        }
+    }
+}
+
+File SessionService.cs
+using System;
+
+namespace SeriousGame.App
+{
+    public class SessionService
+    {
+        public string CurrentSessionId { get; private set; }
+
+        public void Begin()
+        {
+            CurrentSessionId = Guid.NewGuid().ToString("N");
+        }
+    }
+}
+
+
+Folder Assets/Scripts/Content
+File AppConfigSO.cs
+using UnityEngine;
+
+namespace SeriousGame.Content
+{
+    [CreateAssetMenu(menuName = "SeriousGame/AppConfig", fileName = "AppConfig")]
+    public class AppConfigSO : ScriptableObject
+    {
+        [Header("Scene Names")]
+        public string bootSceneName = "Boot";
+        public string mainMenuSceneName = "MainMenu";
+        public string demoEpisodeSceneName = "Episode_Demo";
+
+        [Header("Flow")]
+        public bool skipMainMenuAndAutoStartEpisode = true;
+
+        [Header("Content")]
+        public EpisodeSO defaultEpisode;
+        public TraceTaxonomySO traceTaxonomy;
+    }
+}
+
+File BeatSO.cs
+﻿using UnityEngine;
+
+namespace SeriousGame.Content
+{
+    [CreateAssetMenu(menuName = "SeriousGame/Content/Beat", fileName = "Beat")]
+    public class BeatSO : ScriptableObject
+    {
+        public string beatId = "B01";
+        [TextArea] public string objectiveText;
+
+        [Header("Core")]
+        public InteractionSO interaction; // MVP quick
+        public InteractionSO[] interactions; // future extension
+
+        [Header("Flow")]
+        public bool endChapter;
+
+        public InteractionSO GetPrimaryInteraction()
+        {
+            if (interactions != null && interactions.Length > 0 && interactions[0] != null)
+                return interactions[0];
+            return interaction;
+        }
+    }
+}
+
+File ChoiceSO.cs
+﻿using UnityEngine;
+
+namespace SeriousGame.Content
+{
+    [CreateAssetMenu(menuName = "SeriousGame/Content/Choice", fileName = "Choice")]
+    public class ChoiceSO : ScriptableObject
+    {
+        public string choiceId = "C01";
+        public string text;
+
+        [Header("Trace (empty => not meaningful => no log)")]
+        public string traceTypeId;
+
+        [Header("Outcome (immediate, optional)")]
+        [TextArea] public string outcomeText;
+
+        [Header("Flow")]
+        public string nextBeatId; // optional; if empty => go next index
+    }
+}
+
+File EpisodeSO.cs
+﻿using UnityEngine;
+
+namespace SeriousGame.Content
+{
+    [CreateAssetMenu(menuName = "SeriousGame/Content/Episode", fileName = "Episode")]
+    public class EpisodeSO : ScriptableObject
+    {
+        public string episodeId = "E01";
+        public string title = "Chương 1 - Demo";
+        [TextArea] public string learningOutcome;
+
+        [Header("Option A: Scenes (recommended)")]
+        public SceneSO[] scenes;
+
+        [Header("Option B: Direct Beats (quick MVP)")]
+        public BeatSO[] beats;
+
+        public BeatSO[] GetAllBeats()
+        {
+            if (beats != null && beats.Length > 0) return beats;
+
+            if (scenes == null) return new BeatSO[0];
+            // flatten
+            var list = new System.Collections.Generic.List<BeatSO>();
+            foreach (var sc in scenes)
+            {
+                if (sc == null || sc.beats == null) continue;
+                list.AddRange(sc.beats);
+            }
+            return list.ToArray();
+        }
+
+        public string GetEntrySceneName()
+        {
+            if (scenes != null && scenes.Length > 0 && scenes[0] != null)
+                return scenes[0].unitySceneName;
+            return string.Empty;
+        }
+    }
+}
+
+File InteractionSO.cs
+using UnityEngine;
+
+namespace SeriousGame.Content
+{
+    public enum InteractionType
+    {
+        Chat,
+        Browser,
+        BankTransfer,
+        PhoneCall
+    }
+
+    [CreateAssetMenu(menuName = "SeriousGame/Content/Interaction", fileName = "Interaction")]
+    public class InteractionSO : ScriptableObject
+    {
+        public string interactionId = "I01";
+        public InteractionType type = InteractionType.Chat;
+
+        [TextArea] public string prompt;
+        public ChoiceSO[] choices;
+
+        // optional metadata
+        public string url;
+        public string phoneNumber;
+        public int moneyAmount;
+    }
+}
+
+File SceneSO.cs
+using UnityEngine;
+
+namespace SeriousGame.Content
+{
+    [CreateAssetMenu(menuName = "SeriousGame/Content/Scene", fileName = "Scene")]
+    public class SceneSO : ScriptableObject
+    {
+        public string sceneId = "S01";
+        public string unitySceneName = "Episode_Demo";
+        public BeatSO[] beats;
+    }
+}
+
+File TraceTaxonomySO.cs
+﻿using UnityEngine;
+
+namespace SeriousGame.Content
+{
+    [CreateAssetMenu(menuName = "SeriousGame/Trace/TraceType", fileName = "TraceType")]
+    public class TraceTypeSO : ScriptableObject
+    {
+        public string traceTypeId = "T_VERIFY_OFFICIAL";
+        public string displayName = "Xác minh kênh chính thống";
+        [TextArea] public string description;
+
+        // riskWeight > 0: risky behavior
+        // riskWeight < 0: good behavior
+        public int riskWeight = -2;
+    }
+
+    [CreateAssetMenu(menuName = "SeriousGame/Trace/TraceTaxonomy", fileName = "TraceTaxonomy")]
+    public class TraceTaxonomySO : ScriptableObject
+    {
+        public TraceTypeSO[] traceTypes;
+
+        public TraceTypeSO Find(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id) || traceTypes == null) return null;
+            foreach (var t in traceTypes)
+                if (t != null && t.traceTypeId == id) return t;
+            return null;
+        }
+    }
+}
+
+File TraceTypeSO.cs
+using UnityEngine;
+
+public class TraceTypeSO : MonoBehaviour
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
+
+
+Folder Assets/Scripts/Feedback
+File FeedbackReport.cs
+using System.Collections.Generic;
+
+namespace SeriousGame.Feedback
+{
+    public class FeedbackItem
+    {
+        public string title;
+        public string detail;
+        public int scoreDelta;
+    }
+
+    public class FeedbackReport
+    {
+        public int totalRiskScore;
+        public List<FeedbackItem> items = new();
+        public string rawSummaryText;
+    }
+}
+
+File FeedbackService.cs
+﻿using System.Collections.Generic;
+using SeriousGame.Content;
+using SeriousGame.Trace;
+
+namespace SeriousGame.Feedback
+{
+    public class FeedbackService
+    {
+        private readonly TraceService _trace;
+        private readonly TraceTaxonomySO _taxonomy;
+
+        public FeedbackService(TraceService trace, TraceTaxonomySO taxonomy)
+        {
+            _trace = trace;
+            _taxonomy = taxonomy;
+        }
+
+        public FeedbackReport GenerateEndChapterReport(string sessionId, EpisodeSO episode)
+        {
+            var report = new FeedbackReport();
+            var events = _trace.GetSession(sessionId);
+
+            // Count by traceTypeId
+            var count = new Dictionary<string, int>();
+            foreach (var e in events)
+            {
+                if (string.IsNullOrWhiteSpace(e.traceTypeId)) continue;
+                if (!count.ContainsKey(e.traceTypeId)) count[e.traceTypeId] = 0;
+                count[e.traceTypeId]++;
+            }
+
+            int score = 0;
+            foreach (var kv in count)
+            {
+                var def = _taxonomy != null ? _taxonomy.Find(kv.Key) : null;
+                int w = def != null ? def.riskWeight : 0;
+                score += w * kv.Value;
+
+                var title = def != null ? def.displayName : kv.Key;
+                var detail = def != null ? def.description : "Không có mô tả traceType (bạn cần bổ sung TraceTypeSO).";
+
+                report.items.Add(new FeedbackItem
+                {
+                    title = $"{title} (x{kv.Value})",
+                    detail = detail,
+                    scoreDelta = w * kv.Value
+                });
+            }
+
+            report.totalRiskScore = score;
+
+            // Compose text quick MVP
+            var epTitle = episode != null ? episode.title : "Episode";
+            var text = $"TỔNG KẾT: {epTitle}\n";
+            text += $"RiskScore: {score} (âm là tốt, dương là rủi ro)\n\n";
+            foreach (var it in report.items)
+            {
+                text += $"- {it.title}: {it.scoreDelta}\n  {it.detail}\n";
+            }
+
+            report.rawSummaryText = text;
+            return report;
+        }
+    }
+}
+
+
+Folder Assets/Scripts/Phone
+File ChatPanel.cs
+using System;
+using UnityEngine;
+using TMPro;
+using SeriousGame.Content;
+using SeriousGame.UI;
+
+namespace SeriousGame.Phone
+{
+    public class ChatPanel : MonoBehaviour
+    {
+        public TMP_Text promptText;
+        public Transform choicesRoot;
+        public ChoiceButton choiceButtonPrefab;
+
+        public void Bind(BeatSO beat, InteractionSO interaction, Action<BeatSO, ChoiceSO> onChoiceResolved)
+        {
+            if (promptText != null)
+                promptText.text = interaction != null ? interaction.prompt : "";
+
+            // Clear old
+            if (choicesRoot != null)
+            {
+                for (int i = choicesRoot.childCount - 1; i >= 0; i--)
+                    Destroy(choicesRoot.GetChild(i).gameObject);
+            }
+
+            if (interaction == null || interaction.choices == null || choiceButtonPrefab == null)
+            {
+                onChoiceResolved?.Invoke(beat, null);
+                return;
+            }
+
+            foreach (var c in interaction.choices)
+            {
+                if (c == null) continue;
+                var btn = Instantiate(choiceButtonPrefab, choicesRoot);
+                btn.SetText(c.text);
+
+                btn.button.onClick.RemoveAllListeners();
+                btn.button.onClick.AddListener(() =>
+                {
+                    onChoiceResolved?.Invoke(beat, c);
+                });
+            }
+        }
+    }
+}
+
+File PhoneUIRoot.cs
+using System;
+using UnityEngine;
+using SeriousGame.Content;
+
+namespace SeriousGame.Phone
+{
+    public class PhoneUIRoot : MonoBehaviour
+    {
+        public ChatPanel chatPanel;
+
+        public void ShowChat(BeatSO beat, InteractionSO interaction, Action<BeatSO, ChoiceSO> onChoiceResolved)
+        {
+            if (chatPanel == null)
+            {
+                Debug.LogError("[PhoneUIRoot] chatPanel missing.");
+                onChoiceResolved?.Invoke(beat, null);
+                return;
+            }
+
+            chatPanel.gameObject.SetActive(true);
+            chatPanel.Bind(beat, interaction, onChoiceResolved);
+        }
+    }
+}
+
+
+Folder Assets/Scripts/Runtime
+File BeatRunner.cs
+using System;
+using UnityEngine;
+using SeriousGame.Content;
+
+namespace SeriousGame.Runtime
+{
+    public class BeatRunner : MonoBehaviour
+    {
+        public InteractionRouter router;
+
+        public void RunBeat(BeatSO beat, Action<BeatSO, ChoiceSO> onChoiceResolved)
+        {
+            if (beat == null)
+            {
+                Debug.LogError("[BeatRunner] beat is null.");
+                return;
+            }
+
+            var interaction = beat.GetPrimaryInteraction();
+            if (interaction == null)
+            {
+                Debug.LogError($"[BeatRunner] Beat {beat.beatId} has no interaction.");
+                return;
+            }
+
+            if (router == null)
+            {
+                Debug.LogError("[BeatRunner] router is null.");
+                return;
+            }
+
+            router.Route(beat, interaction, onChoiceResolved);
+        }
+    }
+}
+
+File EpisodeController.cs
+﻿using UnityEngine;
+using SeriousGame.App;
+using SeriousGame.Content;
+using SeriousGame.UI;
+
+namespace SeriousGame.Runtime
+{
+    public class EpisodeController : MonoBehaviour
+    {
+        [Header("Content")]
+        public EpisodeSO episode;
+
+        [Header("Runtime")]
+        public BeatRunner beatRunner;
+
+        [Header("UI")]
+        public SummaryUI summaryUI;
+
+        private int _beatIndex;
+
+        private void Start()
+        {
+            // Resolve episode from config if not assigned
+            if (episode == null && GameBootstrap.Context != null && GameBootstrap.Context.Config != null)
+                episode = GameBootstrap.Context.Config.defaultEpisode;
+
+            if (episode == null)
+            {
+                Debug.LogError("[EpisodeController] No episode assigned.");
+                return;
+            }
+
+            if (GameBootstrap.Context != null)
+                GameBootstrap.Context.Session.Begin();
+
+            _beatIndex = 0;
+            RunCurrentBeat();
+        }
+
+        private void RunCurrentBeat()
+        {
+            var beats = episode.GetAllBeats();
+            if (beats == null || beats.Length == 0)
+            {
+                Debug.LogError("[EpisodeController] Episode has no beats.");
+                return;
+            }
+
+            if (_beatIndex < 0 || _beatIndex >= beats.Length)
+            {
+                EndChapter();
+                return;
+            }
+
+            var beat = beats[_beatIndex];
+            beatRunner.RunBeat(beat, OnChoiceResolved);
+        }
+
+        private void OnChoiceResolved(BeatSO beat, ChoiceSO choice)
+        {
+            var ctx = GameBootstrap.Context;
+            var interaction = beat != null ? beat.GetPrimaryInteraction() : null;
+
+            // Immediate outcome (optional)
+            if (choice != null && !string.IsNullOrWhiteSpace(choice.outcomeText))
+                Debug.Log($"[Outcome] {choice.outcomeText}");
+
+            // Trace logging
+            if (ctx != null && ctx.Trace != null)
+                ctx.Trace.RecordChoice(ctx.Session.CurrentSessionId, episode, beat, interaction, choice);
+
+            // Next beat rule
+            if (beat != null && beat.endChapter)
+            {
+                EndChapter();
+                return;
+            }
+
+            // If choice specifies nextBeatId, jump
+            if (choice != null && !string.IsNullOrWhiteSpace(choice.nextBeatId))
+            {
+                var beats = episode.GetAllBeats();
+                for (int i = 0; i < beats.Length; i++)
+                {
+                    if (beats[i] != null && beats[i].beatId == choice.nextBeatId)
+                    {
+                        _beatIndex = i;
+                        RunCurrentBeat();
+                        return;
+                    }
+                }
+                Debug.LogWarning($"[EpisodeController] nextBeatId not found: {choice.nextBeatId}");
+            }
+
+            _beatIndex++;
+            RunCurrentBeat();
+        }
+
+        private void EndChapter()
+        {
+            var ctx = GameBootstrap.Context;
+            if (ctx == null || ctx.Feedback == null)
+            {
+                Debug.Log("[EpisodeController] EndChapter reached (no feedback service).");
+                return;
+            }
+
+            var report = ctx.Feedback.GenerateEndChapterReport(ctx.Session.CurrentSessionId, episode);
+
+            if (summaryUI != null)
+                summaryUI.Show(report.rawSummaryText);
+            else
+                Debug.Log(report.rawSummaryText);
+        }
+    }
+}
+
+File InteractionRouter.cs
+﻿using System;
+using UnityEngine;
+using SeriousGame.Content;
+using SeriousGame.Phone;
+
+namespace SeriousGame.Runtime
+{
+    public class InteractionRouter : MonoBehaviour
+    {
+        public PhoneUIRoot phoneUI;
+
+        public void Route(BeatSO beat, InteractionSO interaction, Action<BeatSO, ChoiceSO> onChoiceResolved)
+        {
+            if (interaction == null)
+            {
+                onChoiceResolved?.Invoke(beat, null);
+                return;
+            }
+
+            switch (interaction.type)
+            {
+                case InteractionType.Chat:
+                default:
+                    if (phoneUI == null)
+                    {
+                        Debug.LogError("[InteractionRouter] phoneUI missing.");
+                        onChoiceResolved?.Invoke(beat, null);
+                        return;
+                    }
+                    phoneUI.ShowChat(beat, interaction, onChoiceResolved);
+                    break;
+            }
+        }
+    }
+}
+
+
+Folder Assets/Scripts/Trace
+File InMemoryTraceStore.cs
+using System.Collections.Generic;
+
+namespace SeriousGame.Trace
+{
+    public class InMemoryTraceStore : ITraceStore
+    {
+        private readonly List<TraceEvent> _events = new();
+
+        public void Add(TraceEvent e) => _events.Add(e);
+
+        public List<TraceEvent> GetBySession(string sessionId)
+        {
+            var res = new List<TraceEvent>();
+            for (int i = 0; i < _events.Count; i++)
+                if (_events[i].sessionId == sessionId) res.Add(_events[i]);
+            return res;
+        }
+
+        public void ClearSession(string sessionId)
+        {
+            _events.RemoveAll(x => x.sessionId == sessionId);
+        }
+    }
+}
+
+File ITraceStore.cs
+using System.Collections.Generic;
+
+namespace SeriousGame.Trace
+{
+    public interface ITraceStore
+    {
+        void Add(TraceEvent e);
+        List<TraceEvent> GetBySession(string sessionId);
+        void ClearSession(string sessionId);
+    }
+}
+
+File TraceEvent.cs
+using System;
+
+namespace SeriousGame.Trace
+{
+    [Serializable]
+    public class TraceEvent
+    {
+        public string sessionId;
+        public string episodeId;
+        public string beatId;
+        public string interactionId;
+        public string choiceId;
+        public string traceTypeId;
+
+        public long unixMs;
+    }
+}
+
+File TraceService.cs
+using System;
+using SeriousGame.Content;
+
+namespace SeriousGame.Trace
+{
+    public class TraceService
+    {
+        private readonly ITraceStore _store;
+
+        public TraceService(ITraceStore store)
+        {
+            _store = store;
+        }
+
+        public void RecordChoice(
+            string sessionId,
+            EpisodeSO episode,
+            BeatSO beat,
+            InteractionSO interaction,
+            ChoiceSO choice)
+        {
+            if (choice == null) return;
+
+            // Only meaningful actions should be logged
+            if (string.IsNullOrWhiteSpace(choice.traceTypeId))
+                return;
+
+            var e = new TraceEvent
+            {
+                sessionId = sessionId,
+                episodeId = episode != null ? episode.episodeId : "",
+                beatId = beat != null ? beat.beatId : "",
+                interactionId = interaction != null ? interaction.interactionId : "",
+                choiceId = choice.choiceId,
+                traceTypeId = choice.traceTypeId,
+                unixMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()
+            };
+
+            _store.Add(e);
+        }
+
+        public System.Collections.Generic.List<TraceEvent> GetSession(string sessionId)
+            => _store.GetBySession(sessionId);
+    }
+}
+
+
+Folder Assets/Scripts/UI
+File ChoiceButton.cs
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+namespace SeriousGame.UI
+{
+    public class ChoiceButton : MonoBehaviour
+    {
+        public Button button;
+        public TMP_Text label;
+
+        public void SetText(string text)
+        {
+            if (label != null) label.text = text;
+        }
+    }
+}
+
+File SummaryUI.cs
+﻿using UnityEngine;
+using TMPro;
+
+namespace SeriousGame.UI
+{
+    public class SummaryUI : MonoBehaviour
+    {
+        public GameObject root;
+        public TMP_Text summaryText;
+
+        public void Show(string text)
+        {
+            if (root != null) root.SetActive(true);
+            if (summaryText != null) summaryText.text = text;
+        }
+
+        public void Hide()
+        {
+            if (root != null) root.SetActive(false);
+        }
+    }
+}
+
+
+Folder Assets/TutorialInfo/Scripts
+File Readme.cs
+﻿using System;
+using UnityEngine;
+
+public class Readme : ScriptableObject
+{
+    public Texture2D icon;
+    public string title;
+    public Section[] sections;
+    public bool loadedLayout;
+
+    [Serializable]
+    public class Section
+    {
+        public string heading, text, linkText, url;
+    }
+}
+
+
+Folder Assets/TutorialInfo/Scripts/Editor
+File ReadmeEditor.cs
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEditor;
+using System;
+using System.IO;
+using System.Reflection;
+
+[CustomEditor(typeof(Readme))]
+[InitializeOnLoad]
+public class ReadmeEditor : Editor
+{
+    static string s_ShowedReadmeSessionStateName = "ReadmeEditor.showedReadme";
+    
+    static string s_ReadmeSourceDirectory = "Assets/TutorialInfo";
+
+    const float k_Space = 16f;
+
+    static ReadmeEditor()
+    {
+        EditorApplication.delayCall += SelectReadmeAutomatically;
+    }
+
+    static void RemoveTutorial()
+    {
+        if (EditorUtility.DisplayDialog("Remove Readme Assets",
+            
+            $"All contents under {s_ReadmeSourceDirectory} will be removed, are you sure you want to proceed?",
+            "Proceed",
+            "Cancel"))
+        {
+            if (Directory.Exists(s_ReadmeSourceDirectory))
+            {
+                FileUtil.DeleteFileOrDirectory(s_ReadmeSourceDirectory);
+                FileUtil.DeleteFileOrDirectory(s_ReadmeSourceDirectory + ".meta");
+            }
+            else
+            {
+                Debug.Log($"Could not find the Readme folder at {s_ReadmeSourceDirectory}");
+            }
+
+            var readmeAsset = SelectReadme();
+            if (readmeAsset != null)
+            {
+                var path = AssetDatabase.GetAssetPath(readmeAsset);
+                FileUtil.DeleteFileOrDirectory(path + ".meta");
+                FileUtil.DeleteFileOrDirectory(path);
+            }
+
+            AssetDatabase.Refresh();
+        }
+    }
+
+    static void SelectReadmeAutomatically()
+    {
+        if (!SessionState.GetBool(s_ShowedReadmeSessionStateName, false))
+        {
+            var readme = SelectReadme();
+            SessionState.SetBool(s_ShowedReadmeSessionStateName, true);
+
+            if (readme && !readme.loadedLayout)
+            {
+                LoadLayout();
+                readme.loadedLayout = true;
+            }
+        }
+    }
+
+    static void LoadLayout()
+    {
+        var assembly = typeof(EditorApplication).Assembly;
+        var windowLayoutType = assembly.GetType("UnityEditor.WindowLayout", true);
+        var method = windowLayoutType.GetMethod("LoadWindowLayout", BindingFlags.Public | BindingFlags.Static);
+        method.Invoke(null, new object[] { Path.Combine(Application.dataPath, "TutorialInfo/Layout.wlt"), false });
+    }
+
+    static Readme SelectReadme()
+    {
+        var ids = AssetDatabase.FindAssets("Readme t:Readme");
+        if (ids.Length == 1)
+        {
+            var readmeObject = AssetDatabase.LoadMainAssetAtPath(AssetDatabase.GUIDToAssetPath(ids[0]));
+
+            Selection.objects = new UnityEngine.Object[] { readmeObject };
+
+            return (Readme)readmeObject;
+        }
+        else
+        {
+            Debug.Log("Couldn't find a readme");
+            return null;
+        }
+    }
+
+    protected override void OnHeaderGUI()
+    {
+        var readme = (Readme)target;
+        Init();
+
+        var iconWidth = Mathf.Min(EditorGUIUtility.currentViewWidth / 3f - 20f, 128f);
+
+        GUILayout.BeginHorizontal("In BigTitle");
+        {
+            if (readme.icon != null)
+            {
+                GUILayout.Space(k_Space);
+                GUILayout.Label(readme.icon, GUILayout.Width(iconWidth), GUILayout.Height(iconWidth));
+            }
+            GUILayout.Space(k_Space);
+            GUILayout.BeginVertical();
+            {
+
+                GUILayout.FlexibleSpace();
+                GUILayout.Label(readme.title, TitleStyle);
+                GUILayout.FlexibleSpace();
+            }
+            GUILayout.EndVertical();
+            GUILayout.FlexibleSpace();
+        }
+        GUILayout.EndHorizontal();
+    }
+
+    public override void OnInspectorGUI()
+    {
+        var readme = (Readme)target;
+        Init();
+
+        foreach (var section in readme.sections)
+        {
+            if (!string.IsNullOrEmpty(section.heading))
+            {
+                GUILayout.Label(section.heading, HeadingStyle);
+            }
+
+            if (!string.IsNullOrEmpty(section.text))
+            {
+                GUILayout.Label(section.text, BodyStyle);
+            }
+
+            if (!string.IsNullOrEmpty(section.linkText))
+            {
+                if (LinkLabel(new GUIContent(section.linkText)))
+                {
+                    Application.OpenURL(section.url);
+                }
+            }
+
+            GUILayout.Space(k_Space);
+        }
+
+        if (GUILayout.Button("Remove Readme Assets", ButtonStyle))
+        {
+            RemoveTutorial();
+        }
+    }
+
+    bool m_Initialized;
+
+    GUIStyle LinkStyle
+    {
+        get { return m_LinkStyle; }
+    }
+
+    [SerializeField]
+    GUIStyle m_LinkStyle;
+
+    GUIStyle TitleStyle
+    {
+        get { return m_TitleStyle; }
+    }
+
+    [SerializeField]
+    GUIStyle m_TitleStyle;
+
+    GUIStyle HeadingStyle
+    {
+        get { return m_HeadingStyle; }
+    }
+
+    [SerializeField]
+    GUIStyle m_HeadingStyle;
+
+    GUIStyle BodyStyle
+    {
+        get { return m_BodyStyle; }
+    }
+
+    [SerializeField]
+    GUIStyle m_BodyStyle;
+
+    GUIStyle ButtonStyle
+    {
+        get { return m_ButtonStyle; }
+    }
+
+    [SerializeField]
+    GUIStyle m_ButtonStyle;
+
+    void Init()
+    {
+        if (m_Initialized)
+            return;
+        m_BodyStyle = new GUIStyle(EditorStyles.label);
+        m_BodyStyle.wordWrap = true;
+        m_BodyStyle.fontSize = 14;
+        m_BodyStyle.richText = true;
+
+        m_TitleStyle = new GUIStyle(m_BodyStyle);
+        m_TitleStyle.fontSize = 26;
+
+        m_HeadingStyle = new GUIStyle(m_BodyStyle);
+        m_HeadingStyle.fontStyle = FontStyle.Bold;
+        m_HeadingStyle.fontSize = 18;
+
+        m_LinkStyle = new GUIStyle(m_BodyStyle);
+        m_LinkStyle.wordWrap = false;
+
+        // Match selection color which works nicely for both light and dark skins
+        m_LinkStyle.normal.textColor = new Color(0x00 / 255f, 0x78 / 255f, 0xDA / 255f, 1f);
+        m_LinkStyle.stretchWidth = false;
+
+        m_ButtonStyle = new GUIStyle(EditorStyles.miniButton);
+        m_ButtonStyle.fontStyle = FontStyle.Bold;
+
+        m_Initialized = true;
+    }
+
+    bool LinkLabel(GUIContent label, params GUILayoutOption[] options)
+    {
+        var position = GUILayoutUtility.GetRect(label, LinkStyle, options);
+
+        Handles.BeginGUI();
+        Handles.color = LinkStyle.normal.textColor;
+        Handles.DrawLine(new Vector3(position.xMin, position.yMax), new Vector3(position.xMax, position.yMax));
+        Handles.color = Color.white;
+        Handles.EndGUI();
+
+        EditorGUIUtility.AddCursorRect(position, MouseCursor.Link);
+
+        return GUI.Button(position, label, LinkStyle);
+    }
+}
+
+

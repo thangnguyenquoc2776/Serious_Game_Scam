@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cceab300df2e2fa4d8871bb641948b4a, type: 3}
+  m_Name: SO_I_B2
+  m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.InteractionSO
+  interactionId: I_B2
+  type: 0
+  prompt: "Ng\u01B0\u1EDDi kia y\xEAu c\u1EA7u b\u1EA1n chuy\u1EC3n kho\u1EA3n \u0111\u1EB7t
+    c\u1ECDc \u0111\u1EC3 ti\u1EBFp t\u1EE5c x\u1EED l\xFD. B\u1EA1n ph\u1EA3n \u1EE9ng
+    th\u1EBF n\xE0o?\r\n"
+  choices:
+  - {fileID: 11400000, guid: f26a608d138ccaa42a2e5f582029fcb2, type: 2}
+  - {fileID: 11400000, guid: a525117bbdbf43c459fb50b68d056e8a, type: 2}
+  url: 
+  phoneNumber: 
+  moneyAmount: 0

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 246c6a7a8788f61488fe7486f16b9e7d, type: 3}
+  m_Name: T_SEND_DEPOSIT
+  m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.TraceTypeSO
+  traceTypeId: T_SEND_DEPOSIT
+  displayName: "Chuy\u1EC3n kho\u1EA3n \u0111\u1EB7t c\u1ECDc"
+  description: "Chuy\u1EC3n ti\u1EC1n tr\u01B0\u1EDBc khi x\xE1c minh ng\u01B0\u1EDDi/\u0111\u01A1n
+    v\u1ECB l\xE0 r\u1EE7i ro cao; d\u1EC5 b\u1ECB l\u1EEBa theo k\u1ECBch b\u1EA3n
+    \u201Cgi\u1EEF su\u1EA5t/\u0111\u1EB7t c\u1ECDc\u201D."
+  riskWeight: 4

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf335a8482cc194a933c9fa5193db5a, type: 3}
+  m_Name: AppConfigSO
+  m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.AppConfigSO
+  bootSceneName: Boot
+  mainMenuSceneName: MainMenu
+  demoEpisodeSceneName: Episode_Chapter1_Demo
+  skipMainMenuAndAutoStartEpisode: 1
+  defaultEpisode: {fileID: 11400000, guid: 38ea19120fddf2346a91a887a0015584, type: 2}
+  traceTaxonomy: {fileID: 11400000, guid: a909c0caf58cd22448b4736ebcafef0b, type: 2}

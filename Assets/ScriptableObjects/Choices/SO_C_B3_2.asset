@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d199a9596b29ba24e9741ed472f12aec, type: 3}
+  m_Name: SO_C_B3_2
+  m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.ChoiceSO
+  choiceId: C_B3_2
+  text: "L\xE0m theo h\u01B0\u1EDBng d\u1EABn c\u1EE7a h\u1ECD (kh\xF4ng x\xE1c minh)"
+  traceTypeId: T_CLICK_SUSPICIOUS_LINK
+  outcomeText: "B\u1EA1n b\u1ECF qua b\u01B0\u1EDBc x\xE1c minh. Trong th\u1EF1c
+    t\u1EBF, \u0111\xE2y l\xE0 l\xFAc scam \u201Ckho\xE1 k\u1ECBch b\u1EA3n\u201D
+    \u0111\u1EC3 k\xE9o b\u1EA1n \u0111i ti\u1EBFp."
+  nextBeatId: 
