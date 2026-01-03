@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 namespace SeriousGame.App
 {
     public class MainMenuStart : MonoBehaviour
-    {   
+    {
         public void StartDemo()
         {
             var ctx = GameBootstrap.Context;

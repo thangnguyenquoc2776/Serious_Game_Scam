@@ -7,10 +7,10 @@ namespace SeriousGame.App
     public class GameBootstrap : MonoBehaviour
     {
         public static AppContext Context { get; private set; }
-        private static GameBootstrap _instance;
 
         [SerializeField] private AppConfigSO config;
 
+        private static GameBootstrap _instance;
 
         private void Awake()
         {
@@ -36,7 +36,7 @@ namespace SeriousGame.App
             Context = ctx;
         }
 
-        public void StartDemo()
+        private void Start()
         {
             if (config == null) return;
 
@@ -57,11 +57,6 @@ namespace SeriousGame.App
             var active = SceneManager.GetActiveScene().name;
             if (!string.IsNullOrWhiteSpace(targetScene) && active != targetScene)
                 SceneManager.LoadScene(targetScene);
-        }
-
-        public GameBootstrap getInstance()
-        {
-            return _instance;
         }
     }
 }

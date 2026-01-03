@@ -20,12 +20,7 @@ namespace SeriousGame.Runtime
         public OutcomeToastUI outcomeToast; // kéo vào Inspector
 
         private int _beatIndex;
-        public static EpisodeController Instance { get; private set; }
 
-        private void Awake()
-        {
-            Instance = this;
-        }
 
 
         private void Start()
@@ -66,17 +61,7 @@ namespace SeriousGame.Runtime
             beatRunner.RunBeat(beat, OnChoiceResolved);
         }
 
-        private bool _isRunningWorldBeat = false; // Thêm biến để đánh dấu
-
-        public void RunBeatFromWorld(BeatSO beat)
-        {
-            if (beat == null) return;
-
-            _isRunningWorldBeat = true; // Đang chạy beat "ngoài luồng"
-            beatRunner.RunBeat(beat, OnChoiceResolved);
-        }
-
-        public void OnChoiceResolved(BeatSO beat, ChoiceSO choice)
+        private void OnChoiceResolved(BeatSO beat, ChoiceSO choice)
         {
             var ctx = GameBootstrap.Context;
             var interaction = beat != null ? beat.GetPrimaryInteraction() : null;
@@ -90,47 +75,32 @@ namespace SeriousGame.Runtime
                 ctx.Trace.RecordChoice(ctx.Session.CurrentSessionId, episode, beat, interaction, choice);
 
             // Next beat rule
-            // Nếu đây là beat kết thúc chương
-    if (beat != null && beat.endChapter)
-    {
-        EndChapter();
-        return;
-    }
+            if (beat != null && beat.endChapter)
+            {
+                EndChapter();
+                return;
+            }
 
-    // Xử lý logic nhảy Beat nếu có nextBeatId
-    if (choice != null && !string.IsNullOrWhiteSpace(choice.nextBeatId))
-    {
-        JumpToBeat(choice.nextBeatId);
-        return;
-    }
+            // If choice specifies nextBeatId, jump
+            if (choice != null && !string.IsNullOrWhiteSpace(choice.nextBeatId))
+            {
+                var beats = episode.GetAllBeats();
+                for (int i = 0; i < beats.Length; i++)
+                {
+                    if (beats[i] != null && beats[i].beatId == choice.nextBeatId)
+                    {
+                        _beatIndex = i;
+                        RunCurrentBeat();
+                        return;
+                    }
+                }
+                Debug.LogWarning($"[EpisodeController] nextBeatId not found: {choice.nextBeatId}");
+            }
 
-    // QUAN TRỌNG: Nếu vừa tương tác từ World xong, không tự động chạy beat tiếp theo trong list
-    if (_isRunningWorldBeat)
-    {
-        _isRunningWorldBeat = false; 
-        Debug.Log("[EpisodeController] World interaction finished. Standing by.");
-        return; 
-    }
-
-    // Nếu đang chạy truyện bình thường thì mới tăng Index
-    _beatIndex++;
-    RunCurrentBeat();
-        }
-
-private void JumpToBeat(string id)
-{
-    var beats = episode.GetAllBeats();
-    for (int i = 0; i < beats.Length; i++)
-    {
-        if (beats[i] != null && beats[i].beatId == id)
-        {
-            _beatIndex = i;
-            _isRunningWorldBeat = false; // Quay lại luồng chính
+            _beatIndex++;
             RunCurrentBeat();
-            return;
         }
-    }
-}
+
         private void EndChapter()
         {
             var ctx = GameBootstrap.Context;
