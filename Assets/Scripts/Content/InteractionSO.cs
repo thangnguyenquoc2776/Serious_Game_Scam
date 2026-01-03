@@ -20,8 +20,8 @@ namespace SeriousGame.Content
         public ChoiceSO[] choices;
 
         // optional metadata
-        public string url;
-        public string phoneNumber;
-        public int moneyAmount;
+        // public string url;
+        // public string phoneNumber;
+        // public int moneyAmount;
     }
 }

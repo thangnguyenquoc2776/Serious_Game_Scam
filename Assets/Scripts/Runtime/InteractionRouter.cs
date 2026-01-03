@@ -9,6 +9,7 @@ namespace SeriousGame.Runtime
     public class InteractionRouter : MonoBehaviour
     {
         public PhoneUIRoot phoneUI;
+        public DialogueUI dialogueUI;
 
         public void Route(BeatSO beat, InteractionSO interaction, Action<BeatSO, ChoiceSO> onChoiceResolved)
         {
@@ -28,7 +29,7 @@ namespace SeriousGame.Runtime
             switch (interaction.type)
             {
                 case InteractionType.Chat:
-                    phoneUI.ShowChat(beat, interaction, onChoiceResolved);
+                    dialogueUI.Show(interaction, choice => onChoiceResolved?.Invoke(beat, choice));
                     break;
 
                 // Các type khác: MVP vẫn render bằng ChatPanel, nhưng cảnh báo để khỏi “quên”
