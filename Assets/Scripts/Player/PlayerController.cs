@@ -108,5 +108,21 @@ namespace SeriousGame.Runtime
             }
         }
 
+        // Teleport player tới một vị trí/rotation định trước (ví dụ: phòng office)
+        public void TeleportTo(Transform target)
+        {
+            if (target == null || rb == null) return;
+
+            // Đặt lại vị trí ngay lập tức
+            rb.position = target.position;
+
+            // Xoay player theo hướng của target (chỉ yaw)
+            Vector3 euler = target.rotation.eulerAngles;
+            transform.rotation = Quaternion.Euler(0f, euler.y, 0f);
+
+            // Dừng chuyển động
+            rb.linearVelocity = Vector3.zero;
+        }
+
     }
 }

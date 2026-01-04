@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.SceneSO
   sceneId: S00
   unitySceneName: Episode0
-  beats: []
+  beats:
+  - {fileID: 11400000, guid: 05b4af1f96965324795db45e5dd9485b, type: 2}
+  - {fileID: 11400000, guid: 88416f561a569e449830bd1d19f0276a, type: 2}

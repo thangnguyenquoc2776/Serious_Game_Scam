@@ -18,6 +18,7 @@ namespace SeriousGame.Runtime
 
         private bool waitingForInteract = false;
         private bool isInteractionRunning = false;
+        public bool chapterEnded = false;
 
         void Awake()
         {
@@ -43,6 +44,18 @@ namespace SeriousGame.Runtime
         void TryRunCurrentBeat() // chạy beat hiện tại
         {
             var beat = GetCurrentBeat();
+            if (beat == null)
+            {
+                Debug.Log("[Episode] No more beats. Episode finished.");
+                chapterEnded = true;
+                // Gọi UI tổng kết nếu có
+                if (EpisodeSummaryUI.Instance != null)
+                {
+                    EpisodeSummaryUI.Instance.ShowSummary();
+                }
+                return;
+            }
+
             Debug.Log($"[Episode] TryRun Beat {beat.beatId}");
 
             waitingForInteract = false;
@@ -116,6 +129,19 @@ namespace SeriousGame.Runtime
         void ResolveChoice(ChoiceSO choice)
         {
             isInteractionRunning = false;
+
+            // Nếu Choice có stateToTrigger, cập nhật GameState
+            if (choice != null && !string.IsNullOrEmpty(choice.stateToTrigger))
+            {
+                if (GameStateManager.Instance != null)
+                {
+                    GameStateManager.Instance.SetFlag(choice.stateToTrigger, true);
+                }
+                else
+                {
+                    Debug.LogWarning("[Episode] GameStateManager.Instance is null while trying to set state from choice.");
+                }
+            }
 
             if (choice != null && choice.nextBeat != null)
             {

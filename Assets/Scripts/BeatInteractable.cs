@@ -18,6 +18,16 @@ namespace SeriousGame.Runtime
         [Header("ID dùng để khớp với Beat")]
         public string interactId; // ví dụ: "guard"
 
+        [Header("UI Prompt")]
+        public GameObject interactPrompt; // Text/Canvas worldspace: "Press E to interact"
+
+        private bool interacted = false;
+
+        void Start()
+        {
+            UpdatePromptVisibility();
+        }
+
     //     public void Interact()
     // {
     //     var currentBeat = EpisodeController.Instance.GetCurrentBeat(); // Bạn hãy viết thêm hàm lấy beat hiện tại
@@ -31,10 +41,23 @@ namespace SeriousGame.Runtime
     //         Debug.Log("Chú bảo vệ: 'Cháu cứ đi làm việc của cháu đi' (Chưa tới lượt)");
     //     }
     // }
-    public void Interact()
-{   
-        Debug.Log($"[BeatInteractable] Interact: {interactId}");
-        EpisodeController.Instance.OnWorldInteract(interactId);
-    }
+        public void Interact()
+        {
+            Debug.Log($"[BeatInteractable] Interact: {interactId}");
+
+            // Đánh dấu đã interact và ẩn UI hướng dẫn
+            interacted = true;
+            UpdatePromptVisibility();
+
+            EpisodeController.Instance.OnWorldInteract(interactId);
+        }
+
+        void UpdatePromptVisibility()
+        {
+            if (interactPrompt != null)
+            {
+                interactPrompt.SetActive(!interacted);
+            }
+        }
     }
 }

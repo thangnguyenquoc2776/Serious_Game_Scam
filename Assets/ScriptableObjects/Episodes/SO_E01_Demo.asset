@@ -18,5 +18,4 @@ MonoBehaviour:
   scenes:
   - {fileID: 11400000, guid: 4cc84dca6a0fda643b25225549450a32, type: 2}
   - {fileID: 11400000, guid: acb3fa6c6abaa7c43ae69205e62e583b, type: 2}
-  - {fileID: 11400000, guid: d515c0df6873a7b489e7c71e05f83795, type: 2}
   beats: []
