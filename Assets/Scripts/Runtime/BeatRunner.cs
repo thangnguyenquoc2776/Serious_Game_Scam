@@ -8,6 +8,18 @@ namespace SeriousGame.Runtime
     {
         public InteractionRouter router;
 
+        public void RunInteraction(InteractionSO interaction, Action onComplete)
+        {
+            if (interaction == null || router == null)
+            {
+                onComplete?.Invoke();
+                return;
+            }
+
+            // Chúng ta gọi router nhưng truyền beat = null để router biết đây là thoại phụ (Outcome)
+            // Khi người chơi đọc xong hết thoại, onComplete sẽ được gọi để EpisodeController chạy tiếp.
+            router.Route(null, interaction, (b, c) => onComplete?.Invoke());
+        }
         public void RunBeat(BeatSO beat, Action<BeatSO, ChoiceSO> onChoiceResolved)
         {
             if (beat == null)

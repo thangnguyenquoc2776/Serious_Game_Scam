@@ -13,7 +13,16 @@ namespace SeriousGame.Content
         public InteractionSO[] interactions; // future extension
 
         [Header("Flow")]
+        // Nếu true: Xong beat trước là chạy beat này ngay (ví dụ Minh tự nói).
+        // Nếu false: Phải bấm E vào NPC hoặc đi vào Trigger mới chạy.
+        public bool autoStart = false;
+
+        [Header("Trigger Condition")]
+        public bool requireInteract;
+        public string interactTargetId; // ví dụ: "guard", "atm", "phone"
+
         public bool endChapter;
+
 
         public InteractionSO GetPrimaryInteraction()
         {

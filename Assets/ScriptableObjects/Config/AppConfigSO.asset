@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.AppConfigSO
   bootSceneName: Boot
   mainMenuSceneName: MainMenu
-  demoEpisodeSceneName: Episode_Chapter1_Demo
+  demoEpisodeSceneName: Episode0
   skipMainMenuAndAutoStartEpisode: 1
   defaultEpisode: {fileID: 11400000, guid: 38ea19120fddf2346a91a887a0015584, type: 2}
   traceTaxonomy: {fileID: 11400000, guid: a909c0caf58cd22448b4736ebcafef0b, type: 2}

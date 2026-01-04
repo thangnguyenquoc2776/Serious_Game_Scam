@@ -1,121 +1,151 @@
 ﻿using UnityEngine;
-using SeriousGame.App;
 using SeriousGame.Content;
-using SeriousGame.UI;
 
 namespace SeriousGame.Runtime
 {
     public class EpisodeController : MonoBehaviour
     {
+        public static EpisodeController Instance;
+
         [Header("Content")]
         public EpisodeSO episode;
 
         [Header("Runtime")]
         public BeatRunner beatRunner;
 
-        [Header("UI")]
-        public SummaryUI summaryUI;
+        private BeatSO[] _beats;
+        private int _beatIndex = 0;
 
+        private bool waitingForInteract = false;
+        private bool isInteractionRunning = false;
 
-        public OutcomeToastUI outcomeToast; // kéo vào Inspector
-
-        private int _beatIndex;
-
-
-
-        private void Start()
+        void Awake()
         {
-            // Resolve episode from config if not assigned
-            if (episode == null && GameBootstrap.Context != null && GameBootstrap.Context.Config != null)
-                episode = GameBootstrap.Context.Config.defaultEpisode;
-
-            if (episode == null)
-            {
-                Debug.LogError("[EpisodeController] No episode assigned.");
-                return;
-            }
-
-            if (GameBootstrap.Context != null)
-                GameBootstrap.Context.Session.Begin();
-
-            _beatIndex = 0;
-            RunCurrentBeat();
+            Instance = this;
         }
 
-        private void RunCurrentBeat()
+        void Start()
         {
-            var beats = episode.GetAllBeats();
-            if (beats == null || beats.Length == 0)
+            _beats = episode.GetAllBeats();
+            _beatIndex = 0;
+
+            Debug.Log("[Episode] Start");
+            TryRunCurrentBeat();
+        }
+
+        BeatSO GetCurrentBeat()
+        {
+            if (_beatIndex < 0 || _beatIndex >= _beats.Length)
+                return null;
+            return _beats[_beatIndex];
+        }
+
+        void TryRunCurrentBeat()
+        {
+            var beat = GetCurrentBeat();
+            Debug.Log($"[Episode] TryRun Beat {beat.beatId}");
+
+            waitingForInteract = false;
+            isInteractionRunning = false;
+
+            if (beat.autoStart)
             {
-                Debug.LogError("[EpisodeController] Episode has no beats.");
+                Debug.Log("[Episode] autoStart");
+                RunMainInteraction(beat);
+            }
+            else if (beat.requireInteract)
+            {
+                waitingForInteract = true;
+                Debug.Log("[Episode] waitingForInteract = TRUE");
+            }
+        }
+
+
+        public void OnWorldInteract(string interactId)
+        {
+            if (!waitingForInteract)
+            {
+                Debug.Log("[Episode] Ignore interact – not waiting");
                 return;
             }
 
-            if (_beatIndex < 0 || _beatIndex >= beats.Length)
+            var beat = GetCurrentBeat();
+            if (beat == null) return;
+
+            if (beat.interactTargetId != interactId)
             {
-                EndChapter();
+                Debug.Log("[Episode] Wrong interact target");
                 return;
             }
 
-            var beat = beats[_beatIndex];
+            waitingForInteract = false;
+            RunMainInteraction(beat);
+        }
+
+        void RunMainInteraction(BeatSO beat)
+        {
+            if (isInteractionRunning)
+            {
+                Debug.Log("[Episode] Interaction already running");
+                return;
+            }
+
+            isInteractionRunning = true;
+            Debug.Log("[Episode] Run main interaction");
+
             beatRunner.RunBeat(beat, OnChoiceResolved);
         }
 
-        private void OnChoiceResolved(BeatSO beat, ChoiceSO choice)
+        void OnChoiceResolved(BeatSO beat, ChoiceSO choice)
         {
-            var ctx = GameBootstrap.Context;
-            var interaction = beat != null ? beat.GetPrimaryInteraction() : null;
-
-            // Immediate outcome (optional)
-            if (choice != null && !string.IsNullOrWhiteSpace(choice.outcomeText))
-                Debug.Log($"[Outcome] {choice.outcomeText}");
-
-            // Trace logging
-            if (ctx != null && ctx.Trace != null)
-                ctx.Trace.RecordChoice(ctx.Session.CurrentSessionId, episode, beat, interaction, choice);
-
-            // Next beat rule
-            if (beat != null && beat.endChapter)
+            if (choice != null && choice.outcomeInteraction != null)
             {
-                EndChapter();
-                return;
-            }
+                Debug.Log("[Episode] Run outcome interaction");
 
-            // If choice specifies nextBeatId, jump
-            if (choice != null && !string.IsNullOrWhiteSpace(choice.nextBeatId))
-            {
-                var beats = episode.GetAllBeats();
-                for (int i = 0; i < beats.Length; i++)
+                beatRunner.RunInteraction(choice.outcomeInteraction, () =>
                 {
-                    if (beats[i] != null && beats[i].beatId == choice.nextBeatId)
-                    {
-                        _beatIndex = i;
-                        RunCurrentBeat();
-                        return;
-                    }
-                }
-                Debug.LogWarning($"[EpisodeController] nextBeatId not found: {choice.nextBeatId}");
+                    ResolveChoice(choice);
+                });
             }
-
-            _beatIndex++;
-            RunCurrentBeat();
+            else
+            {
+                ResolveChoice(choice);
+            }
         }
 
-        private void EndChapter()
+        void ResolveChoice(ChoiceSO choice)
         {
-            var ctx = GameBootstrap.Context;
-            if (ctx == null || ctx.Feedback == null)
+            isInteractionRunning = false;
+
+            if (choice != null && choice.nextBeat != null)
             {
-                Debug.Log("[EpisodeController] EndChapter reached (no feedback service).");
-                return;
+                JumpToBeat(choice.nextBeat);
+            }
+            else
+            {
+                AdvanceBeat();
+            }
+        }
+
+        void AdvanceBeat()
+        {
+            _beatIndex++;
+            TryRunCurrentBeat();
+        }
+
+        void JumpToBeat(BeatSO beat)
+        {
+            for (int i = 0; i < _beats.Length; i++)
+            {
+                if (_beats[i] == beat)
+                {
+                    _beatIndex = i;
+                    TryRunCurrentBeat();
+                    return;
+                }
             }
 
-            var report = ctx.Feedback.GenerateEndChapterReport(ctx.Session.CurrentSessionId, episode);
-
-            if (summaryUI != null)
-                summaryUI.Show(report.rawSummaryText);
-            else
-                Debug.Log(report.rawSummaryText);
+            Debug.LogError("[Episode] Jump beat not found");
         }
     }
 }

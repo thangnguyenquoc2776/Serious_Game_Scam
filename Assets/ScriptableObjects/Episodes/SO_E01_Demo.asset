@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdebcd7226e72ac4cbdd791475cc1fd4, type: 3}
   m_Name: SO_E01_Demo
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.EpisodeSO
-  episodeId: E01
+  episodeId: E00
   title: Demo
   learningOutcome: 
   scenes:
   - {fileID: 11400000, guid: 4cc84dca6a0fda643b25225549450a32, type: 2}
+  - {fileID: 11400000, guid: acb3fa6c6abaa7c43ae69205e62e583b, type: 2}
+  - {fileID: 11400000, guid: d515c0df6873a7b489e7c71e05f83795, type: 2}
   beats: []

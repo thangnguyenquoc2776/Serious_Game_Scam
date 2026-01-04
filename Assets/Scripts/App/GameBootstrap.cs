@@ -36,7 +36,7 @@ namespace SeriousGame.App
             Context = ctx;
         }
 
-        private void Start()
+        public void StartDemo()
         {
             if (config == null) return;
 

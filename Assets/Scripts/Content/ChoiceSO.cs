@@ -7,6 +7,7 @@ namespace SeriousGame.Content
     {
         public string choiceId = "C01";
         public string text;
+        public string stateToTrigger;
 
         [Header("Trace (empty => not meaningful => no log)")]
         public string traceTypeId;
@@ -15,6 +16,8 @@ namespace SeriousGame.Content
         [TextArea] public string outcomeText;
 
         [Header("Flow")]
-        public string nextBeatId; // optional; if empty => go next index
+        // public string nextBeatId; // optional; if empty => go next index
+        public BeatSO nextBeat;
+        public InteractionSO outcomeInteraction;
     }
 }

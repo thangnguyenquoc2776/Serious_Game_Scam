@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cceab300df2e2fa4d8871bb641948b4a, type: 3}
+  m_Name: Interaction_Guard_1
+  m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.InteractionSO
+  interactionId: I01
+  type: 0
+  dialogueLines:
+  - "B\u1EA3o v\u1EC7: \u201CKhoan ch\xE1u.\u201D"
+  - "B\u1EA3o v\u1EC7: \u201CCh\xE1u m\u1EDBi v\xF4 \u1EDF h\u1EA3?\u201D"
+  - "Minh: \u201CD\u1EA1 \u0111\xFAng r\u1ED3i ch\xFA.\u201D"
+  - "B\u1EA3o v\u1EC7: \u201C\u1EEA, m\u1EDBi v\xF4 th\xEC c\u1EE9 v\xF4 l\xE0m th\u1EE7
+    t\u1EE5c nh\u1EADn ph\xF2ng \u0111i. Nh\u01B0ng ch\xFA n\xF3i tr...\u1EB9t \u0111\xF3
+    ch\xE1u. Kh\xF4ng c\xF3 th\u1EBB l\xE0 \u0111\u1EE9ng \u0111\xE2y ch\u1EDD l\xE0m
+    l\u1EA1i m\u1EA5t th\u1EDDi gian.\u201D"
+  - "Minh: \u201CD\u1EA1, ch\xE1u hi\u1EC3u \u1EA1.\u201D"
+  choices:
+  - {fileID: 11400000, guid: fb0c3c2a12327184a969f01d1a32adf8, type: 2}
+  - {fileID: 11400000, guid: caab1edb44cc7914ba18112f098a30cb, type: 2}

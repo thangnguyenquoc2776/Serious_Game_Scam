@@ -8,7 +8,8 @@ namespace SeriousGame.Runtime
 {
     public class InteractionRouter : MonoBehaviour
     {
-        public PhoneUIRoot phoneUI;
+        // public PhoneUIRoot phoneUI;
+        public DialogueUI dialogueUI; 
 
         public void Route(BeatSO beat, InteractionSO interaction, Action<BeatSO, ChoiceSO> onChoiceResolved)
         {
@@ -18,23 +19,27 @@ namespace SeriousGame.Runtime
                 return;
             }
 
-            if (phoneUI == null)
-            {
-                Debug.LogError("[InteractionRouter] phoneUI missing.");
-                onChoiceResolved?.Invoke(beat, null);
-                return;
-            }
+            // if (phoneUI == null)
+            // {
+            //     Debug.LogError("[InteractionRouter] phoneUI missing.");
+            //     onChoiceResolved?.Invoke(beat, null);
+            //     return;
+            // }
 
             switch (interaction.type)
             {
-                case InteractionType.Chat:
-                    phoneUI.ShowChat(beat, interaction, onChoiceResolved);
+                // case InteractionType.Chat:
+                //     phoneUI.ShowChat(beat, interaction, onChoiceResolved);
+                //     break;
+                case InteractionType.Dialogue:
+                    Debug.Log("[InteractionRouter] Routing to DialogueUI.");
+                    dialogueUI.Show(beat, interaction, onChoiceResolved);
                     break;
 
                 // Các type khác: MVP vẫn render bằng ChatPanel, nhưng cảnh báo để khỏi “quên”
                 default:
                     Debug.LogWarning($"[InteractionRouter] Type {interaction.type} chưa có panel riêng. Fallback -> ChatPanel.");
-                    phoneUI.ShowChat(beat, interaction, onChoiceResolved);
+                    // phoneUI.ShowChat(beat, interaction, onChoiceResolved);
                     break;
             }
         }

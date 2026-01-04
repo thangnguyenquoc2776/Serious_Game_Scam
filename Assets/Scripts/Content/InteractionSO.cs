@@ -7,7 +7,8 @@ namespace SeriousGame.Content
         Chat,
         Browser,
         BankTransfer,
-        PhoneCall
+        PhoneCall,
+        Dialogue
     }
 
     [CreateAssetMenu(menuName = "SeriousGame/Content/Interaction", fileName = "Interaction")]
@@ -16,12 +17,11 @@ namespace SeriousGame.Content
         public string interactionId = "I01";
         public InteractionType type = InteractionType.Chat;
 
-        [TextArea] public string prompt;
+        // [TextArea] public string prompt;
+        [Header("Nội dung thoại (Nhập theo thứ tự)")]
+        [TextArea(3, 10)]
+        public string[] dialogueLines;
         public ChoiceSO[] choices;
 
-        // optional metadata
-        public string url;
-        public string phoneNumber;
-        public int moneyAmount;
     }
 }
