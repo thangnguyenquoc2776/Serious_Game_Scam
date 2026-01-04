@@ -27,7 +27,7 @@ namespace SeriousGame.Content
                 if (sc == null || sc.beats == null) continue;
                 list.AddRange(sc.beats);
             }
-            return list.ToArray();
+            return list.ToArray(); // add beats to array
         }
 
         public string GetEntrySceneName()

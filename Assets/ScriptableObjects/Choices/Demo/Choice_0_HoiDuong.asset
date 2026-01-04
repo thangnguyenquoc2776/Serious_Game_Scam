@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d199a9596b29ba24e9741ed472f12aec, type: 3}
-  m_Name: Choice_0_ChupAnh
+  m_Name: Choice_0_HoiDuong
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.ChoiceSO
   choiceId: C01
-  text: "Minh: \u201CD\u1EA1 ch\xFA \u01A1i\u2026 cho ch\xE1u h\u1ECFi t\xF2a A n\u1EB1m
-    h\u01B0\u1EDBng n\xE0o v\u1EADy ch\xFA? Ch\xE1u nh\xECn v\xF4 th\u1EA5y t\xF2a
-    n\xE0o c\u0169ng gi\u1ED1ng nhau.\u201D"
+  text: "H\u1ECFi \u0111\u01B0\u1EDDng ch\xFA b\u1EA3o v\u1EC7"
   stateToTrigger: has_direction_info
   traceTypeId: T_HIGH_CAUTION
   outcomeText: 

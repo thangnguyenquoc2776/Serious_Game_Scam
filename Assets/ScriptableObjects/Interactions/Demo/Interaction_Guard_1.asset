@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Interaction_Guard_1
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.InteractionSO
   interactionId: I01
-  type: 0
+  type: 4
   dialogueLines:
   - "B\u1EA3o v\u1EC7: \u201CKhoan ch\xE1u.\u201D"
   - "B\u1EA3o v\u1EC7: \u201CCh\xE1u m\u1EDBi v\xF4 \u1EDF h\u1EA3?\u201D"

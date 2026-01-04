@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Interaction_Guard_0
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.InteractionSO
   interactionId: I01
-  type: 0
+  type: 4
   dialogueLines:
   - "Minh: t\u1EDBi thi\u1EC7t r\u1ED3i"
   choices: []

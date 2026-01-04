@@ -9,7 +9,7 @@ namespace SeriousGame.Runtime
         public InteractionRouter router;
 
         public void RunInteraction(InteractionSO interaction, Action onComplete)
-        {
+        { // chạy các thoại phụ (Outcome)
             if (interaction == null || router == null)
             {
                 onComplete?.Invoke();

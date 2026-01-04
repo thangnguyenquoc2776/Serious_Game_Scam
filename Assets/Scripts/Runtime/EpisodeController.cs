@@ -33,14 +33,14 @@ namespace SeriousGame.Runtime
             TryRunCurrentBeat();
         }
 
-        BeatSO GetCurrentBeat()
+        BeatSO GetCurrentBeat() // lấy beat hiện tại
         {
             if (_beatIndex < 0 || _beatIndex >= _beats.Length)
                 return null;
             return _beats[_beatIndex];
         }
 
-        void TryRunCurrentBeat()
+        void TryRunCurrentBeat() // chạy beat hiện tại
         {
             var beat = GetCurrentBeat();
             Debug.Log($"[Episode] TryRun Beat {beat.beatId}");
@@ -48,12 +48,12 @@ namespace SeriousGame.Runtime
             waitingForInteract = false;
             isInteractionRunning = false;
 
-            if (beat.autoStart)
+            if (beat.autoStart) // nếu autoStart = true thì chạy luôn
             {
                 Debug.Log("[Episode] autoStart");
                 RunMainInteraction(beat);
             }
-            else if (beat.requireInteract)
+            else if (beat.requireInteract) // nếu requireInteract = true thì chờ tương tác
             {
                 waitingForInteract = true;
                 Debug.Log("[Episode] waitingForInteract = TRUE");
@@ -82,7 +82,7 @@ namespace SeriousGame.Runtime
             RunMainInteraction(beat);
         }
 
-        void RunMainInteraction(BeatSO beat)
+        void RunMainInteraction(BeatSO beat) 
         {
             if (isInteractionRunning)
             {

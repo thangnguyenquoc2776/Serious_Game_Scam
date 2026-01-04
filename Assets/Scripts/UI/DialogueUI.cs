@@ -12,6 +12,10 @@ namespace SeriousGame.Runtime
         public TextMeshProUGUI promptText;
         public Transform choiceContainer;
         public Button choiceButtonPrefab;
+        
+        // Các script điều khiển player sẽ bị tắt khi thoại đang mở (movement, nhìn chuột, interact, v.v.)
+        public PlayerController scriptsToDisableDuringDialogue;
+
         private BeatSO _currentBeat; // Add this to store the beat
         private Action<BeatSO, ChoiceSO> _onChoose; // Update signature
 
@@ -22,27 +26,20 @@ namespace SeriousGame.Runtime
         void Update()
         {
             // Bấm chuột trái hoặc Space để sang câu tiếp theo
-            if (gameObject.activeSelf && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)))
+            if (!gameObject.activeSelf)
+                return;
+
+            // Nếu đang hiển thị lựa chọn thì KHÔNG tự advance nữa,
+            // để chuột chỉ dùng cho button UI
+            if (choiceContainer != null && choiceContainer.gameObject.activeSelf)
+                return;
+
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             {
                 AdvanceDialogue();
             }
         }
 
-        // public void Show(InteractionSO interaction, Action<ChoiceSO> onChooseCallback)
-        // {
-        //     gameObject.SetActive(true);
-        //     _currentInteraction = interaction;
-        //     _onChoose = onChooseCallback;
-        //     _currentLineIndex = 0;
-
-        //     // Ẩn container chứa nút lựa chọn lúc bắt đầu
-        //     choiceContainer.gameObject.SetActive(false);
-            
-        //     Cursor.lockState = CursorLockMode.None;
-        //     Cursor.visible = true;
-
-        //     DisplayCurrentLine();
-        // }
 
         public void Show(BeatSO beat, InteractionSO interaction, Action<BeatSO, ChoiceSO> onChooseCallback)
         {
@@ -56,6 +53,9 @@ namespace SeriousGame.Runtime
             
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+
+            // Tắt các script điều khiển player trong lúc đang thoại
+            SetPlayerControlEnabled(false);
 
             DisplayCurrentLine();
         }
@@ -77,8 +77,18 @@ namespace SeriousGame.Runtime
             }
             else
             {
-                // Nếu đã hết câu thoại, hiện các nút lựa chọn ra
-                ShowChoices();
+                // Nếu đã hết câu thoại
+
+                // Trường hợp interaction KHÔNG có lựa chọn: tự kết thúc và callback
+                if (_currentInteraction.choices == null || _currentInteraction.choices.Length == 0)
+                {
+                    EndInteractionWithoutChoice();
+                }
+                else
+                {
+                    // Nếu có lựa chọn thì hiện các nút lựa chọn ra
+                    ShowChoices();
+                }
             }
         }
 
@@ -86,8 +96,16 @@ namespace SeriousGame.Runtime
         {
             if (choiceContainer.gameObject.activeSelf) return; // Tránh tạo trùng
 
+            Debug.Log("[DialogueUI] ShowChoices called");
             choiceContainer.gameObject.SetActive(true);
             foreach (Transform c in choiceContainer) Destroy(c.gameObject);
+
+            if (_currentInteraction.choices == null || _currentInteraction.choices.Length == 0)
+            {
+                // Phòng hờ: nếu bị gọi nhưng không có choice thì kết thúc luôn
+                EndInteractionWithoutChoice();
+                return;
+            }
 
             foreach (var choice in _currentInteraction.choices)
             {
@@ -102,10 +120,29 @@ namespace SeriousGame.Runtime
 
         void Choose(ChoiceSO choice)
         {
+            Debug.Log($"[DialogueUI] Choice clicked: {choice?.text}");
             gameObject.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            SetPlayerControlEnabled(true);
             _onChoose?.Invoke(_currentBeat, choice);
+        }
+
+        void EndInteractionWithoutChoice()
+        {
+            // Đóng UI và callback với choice = null
+            gameObject.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            SetPlayerControlEnabled(true);
+            _onChoose?.Invoke(_currentBeat, null);
+        }
+
+        void SetPlayerControlEnabled(bool enabled)
+        {
+            if (scriptsToDisableDuringDialogue == null) return;
+
+            scriptsToDisableDuringDialogue.enabled = enabled;
         }
     }
 }
