@@ -36,6 +36,7 @@ namespace SeriousGame.Runtime
 
             if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             {
+                Debug.Log("[DialogueUI] Advancing dialogue...");
                 AdvanceDialogue();
             }
         }
