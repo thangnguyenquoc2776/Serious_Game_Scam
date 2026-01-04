@@ -17,5 +17,5 @@ MonoBehaviour:
   stateToTrigger: has_direction_info
   traceTypeId: T_HIGH_CAUTION
   outcomeText: 
-  nextBeat: {fileID: 11400000, guid: 9ca68a6ad4bf27c4da961dee32d0cb0e, type: 2}
+  nextBeat: {fileID: 0}
   outcomeInteraction: {fileID: 11400000, guid: aac092f442920a944b7ed8b6dfadcb87, type: 2}
