@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.ChoiceSO
   choiceId: C01
   text: "\u0110i th\u1EB3ng v\xE0o trong"
-  stateToTrigger: 
+  stateToTrigger: has_direction_info
   traceTypeId: T_LOW_CAUTION
   outcomeText: 
   nextBeat: {fileID: 0}
