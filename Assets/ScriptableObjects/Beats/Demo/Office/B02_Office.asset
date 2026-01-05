@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8299678a248136489771feccee2788f, type: 3}
   m_Name: B02_Office
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.BeatSO
-  beatId: B01
+  beatId: B02
   objectiveText: 
   interaction: {fileID: 0}
   interactions:

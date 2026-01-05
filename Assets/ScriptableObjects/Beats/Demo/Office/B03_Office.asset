@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8299678a248136489771feccee2788f, type: 3}
   m_Name: B03_Office
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.BeatSO
-  beatId: B01
+  beatId: B03
   objectiveText: 
-  interaction: {fileID: 0}
+  interaction: {fileID: 11400000, guid: ddaa4ea88d7dbad4f9ac55bfa4a9026a, type: 2}
   interactions: []
   autoStart: 0
   requireInteract: 1
-  interactTargetId: co_van_phong
+  interactTargetId: end
   endChapter: 0
