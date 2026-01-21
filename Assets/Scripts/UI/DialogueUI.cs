@@ -4,6 +4,7 @@ using SeriousGame.Content;
 using System;
 using TMPro;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SeriousGame.Runtime
 {
@@ -64,7 +65,7 @@ namespace SeriousGame.Runtime
         void DisplayCurrentLine()
         {
             // Lấy câu thoại hiện tại từ mảng dialogueLines chúng ta vừa sửa ở SO
-            promptText.text = _currentInteraction.dialogueLines[_currentLineIndex];
+            if (_currentInteraction.dialogueLines != null) promptText.text = _currentInteraction.dialogueLines[_currentLineIndex];
             Debug.Log($"[DialogueUI] Displaying line {_currentLineIndex}: {_currentInteraction.dialogueLines[_currentLineIndex]}");
         }
 

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8299678a248136489771feccee2788f, type: 3}
-  m_Name: B03_OPEN_DOSSIER
+  m_Name: B06_TELL_LEAD_READ
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.BeatSO
-  beatId: B03
+  beatId: B06
   objectiveText: 
-  interaction: {fileID: 0}
+  interaction: {fileID: 11400000, guid: 826dec7f628211e4aa5322c984f7d922, type: 2}
   interactions: []
   autoStart: 0
   requireInteract: 1
-  interactTargetId: dossier
+  interactTargetId: talk_lead_1
   endChapter: 0

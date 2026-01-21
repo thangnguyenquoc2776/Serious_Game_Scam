@@ -8,14 +8,17 @@ namespace SeriousGame.Content
         Browser,
         BankTransfer,
         PhoneCall,
-        Dialogue
+        Dialogue,
+        Task,
+        PC,
+
     }
 
     [CreateAssetMenu(menuName = "SeriousGame/Content/Interaction", fileName = "Interaction")]
     public class InteractionSO : ScriptableObject
     {
         public string interactionId = "I01";
-        public InteractionType type = InteractionType.Chat;
+        public InteractionType type;
 
         // [TextArea] public string prompt;
         [Header("Nội dung thoại (Nhập theo thứ tự)")]

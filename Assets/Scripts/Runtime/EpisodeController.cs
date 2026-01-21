@@ -20,6 +20,8 @@ namespace SeriousGame.Runtime
         private bool isInteractionRunning = false;
         public bool chapterEnded = false;
 
+
+        public Transform SitAnchor;
         void Awake()
         {
             Instance = this;
@@ -34,7 +36,7 @@ namespace SeriousGame.Runtime
             TryRunCurrentBeat();
         }
 
-        BeatSO GetCurrentBeat() // lấy beat hiện tại
+        public BeatSO GetCurrentBeat() // lấy beat hiện tại
         {
             if (_beatIndex < 0 || _beatIndex >= _beats.Length)
                 return null;
@@ -85,7 +87,7 @@ namespace SeriousGame.Runtime
             var beat = GetCurrentBeat();
             if (beat == null) return;
 
-            if (beat.interactTargetId != interactId)
+            if (beat.beatId != interactId)
             {
                 Debug.Log("[Episode] Wrong interact target");
                 return;
@@ -95,7 +97,7 @@ namespace SeriousGame.Runtime
             RunMainInteraction(beat);
         }
 
-        void RunMainInteraction(BeatSO beat) 
+        void RunMainInteraction(BeatSO beat)
         {
             if (isInteractionRunning)
             {
@@ -106,72 +108,94 @@ namespace SeriousGame.Runtime
             isInteractionRunning = true;
             Debug.Log("[Episode] Run main interaction");
 
+            if (beat.beatId == "B01" || beat.beatId == "B07")
+            {
+                var player = FindAnyObjectByType<PlayerController>();
+
+                if (player != null && SitAnchor != null)
+                {
+                    player.SitAt(SitAnchor);
+                }
+            }
+            else if (beat.beatId == "B02")
+            {
+                var lead = FindAnyObjectByType<LeadController>();
+                if (lead != null)
+                {
+                    lead.GoTalkThenReturn(beat.interaction, () =>
+                    {
+                        isInteractionRunning = false;
+                        AdvanceBeat();
+                    });
+                    return;
+                }   
+            }
             beatRunner.RunBeat(beat, OnChoiceResolved);
         }
 
-        void OnChoiceResolved(BeatSO beat, ChoiceSO choice)
-        {
-            if (choice != null && choice.outcomeInteraction != null)
+            void OnChoiceResolved(BeatSO beat, ChoiceSO choice)
             {
-                Debug.Log("[Episode] Run outcome interaction");
-
-                beatRunner.RunInteraction(choice.outcomeInteraction, () =>
+                if (choice != null && choice.outcomeInteraction != null)
                 {
-                    ResolveChoice(choice);
-                });
-            }
-            else
-            {
-                ResolveChoice(choice);
-            }
-        }
+                    Debug.Log("[Episode] Run outcome interaction");
 
-        void ResolveChoice(ChoiceSO choice)
-        {
-            isInteractionRunning = false;
-
-            // Nếu Choice có stateToTrigger, cập nhật GameState
-            if (choice != null && !string.IsNullOrEmpty(choice.stateToTrigger))
-            {
-                if (GameStateManager.Instance != null)
-                {
-                    GameStateManager.Instance.SetFlag(choice.stateToTrigger, true);
+                    beatRunner.RunInteraction(choice.outcomeInteraction, () =>
+                    {
+                        ResolveChoice(choice);
+                    });
                 }
                 else
                 {
-                    Debug.LogWarning("[Episode] GameStateManager.Instance is null while trying to set state from choice.");
+                    ResolveChoice(choice);
                 }
             }
 
-            if (choice != null && choice.nextBeat != null)
+            void ResolveChoice(ChoiceSO choice)
             {
-                JumpToBeat(choice.nextBeat);
-            }
-            else
-            {
-                AdvanceBeat();
-            }
-        }
+                isInteractionRunning = false;
 
-        void AdvanceBeat()
-        {
-            _beatIndex++;
-            TryRunCurrentBeat();
-        }
-
-        void JumpToBeat(BeatSO beat)
-        {
-            for (int i = 0; i < _beats.Length; i++)
-            {
-                if (_beats[i] == beat)
+                // Nếu Choice có stateToTrigger, cập nhật GameState
+                if (choice != null && !string.IsNullOrEmpty(choice.stateToTrigger))
                 {
-                    _beatIndex = i;
-                    TryRunCurrentBeat();
-                    return;
+                    if (GameStateManager.Instance != null)
+                    {
+                        GameStateManager.Instance.SetFlag(choice.stateToTrigger, true);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("[Episode] GameStateManager.Instance is null while trying to set state from choice.");
+                    }
+                }
+
+                if (choice != null && choice.nextBeat != null)
+                {
+                    JumpToBeat(choice.nextBeat);
+                }
+                else
+                {
+                    AdvanceBeat();
                 }
             }
 
-            Debug.LogError("[Episode] Jump beat not found");
+            void AdvanceBeat()
+            {
+                _beatIndex++;
+                TryRunCurrentBeat();
+            }
+
+            void JumpToBeat(BeatSO beat)
+            {
+                for (int i = 0; i < _beats.Length; i++)
+                {
+                    if (_beats[i] == beat)
+                    {
+                        _beatIndex = i;
+                        TryRunCurrentBeat();
+                        return;
+                    }
+                }
+
+                Debug.LogError("[Episode] Jump beat not found");
+            }
         }
     }
-}

@@ -7,7 +7,7 @@ namespace SeriousGame.Runtime
     
         public float interactDistance = 2f;
         public LayerMask interactableLayer;
-        bool isSitting = false;
+        public bool isSitting = false;
 
         [Header("Movement")]
         public float moveSpeed = 4f;
@@ -36,6 +36,7 @@ namespace SeriousGame.Runtime
             if (isLocked) return;
             HandleMouseLook();
             HandleInteraction();
+            HandleSitting();
         }
 
         // Thêm hàm để điều khiển chuột
@@ -59,29 +60,31 @@ namespace SeriousGame.Runtime
         }
 
         void HandleMovement()
-        {
-            float h = Input.GetAxisRaw("Horizontal");
-            float v = Input.GetAxisRaw("Vertical");
-
-            Vector3 moveDir =
-                transform.right * h +
-                transform.forward * v;
-
-            // Cập nhật trạng thái đi bộ cho Animator dựa trên input
-            if (animator != null)
+        {   if (!isSitting)  // if is sitting then don't move
             {
-                bool isMoving = moveDir.sqrMagnitude > 0.01f;
-                animator.SetBool("isWalking", isMoving);
+                float h = Input.GetAxisRaw("Horizontal");
+                float v = Input.GetAxisRaw("Vertical");
+
+                Vector3 moveDir =
+                    transform.right * h +
+                    transform.forward * v;
+
+                // Cập nhật trạng thái đi bộ cho Animator dựa trên input
+                if (animator != null)
+                {
+                    bool isMoving = moveDir.sqrMagnitude > 0.01f;
+                    animator.SetBool("isWalking", isMoving);
+                }
+
+                // Không có input thì không cần di chuyển
+                if (moveDir.sqrMagnitude <= 0.01f)
+                    return;
+
+                Vector3 velocity = moveDir.normalized * moveSpeed;
+                Vector3 targetPos = rb.position + velocity * Time.fixedDeltaTime;
+
+                rb.MovePosition(targetPos);
             }
-
-            // Không có input thì không cần di chuyển
-            if (moveDir.sqrMagnitude <= 0.01f)
-                return;
-
-            Vector3 velocity = moveDir.normalized * moveSpeed;
-            Vector3 targetPos = rb.position + velocity * Time.fixedDeltaTime;
-
-            rb.MovePosition(targetPos);
         }
 
         void HandleMouseLook()
@@ -130,18 +133,73 @@ namespace SeriousGame.Runtime
             rb.linearVelocity = Vector3.zero;
         }
 
-        public void handleSitting(bool sit)
+        
+
+        // trong class PlayerController:
+        [HideInInspector] public bool isSittingByBeat = false;
+        private Vector3 originalCameraLocalPos;
+
+        // gọi khi muốn "ngồi" do beat điều khiển
+        public void SitAt(Transform sitAnchor)
         {
-            isSitting = sit;
-            if (isSitting) {
-                blockMovement();
-                if (animator != null) animator.SetBool("isSitting", isSitting);
-            } 
-            else 
+            if (sitAnchor == null) return;
+
+            // teleport player tới vị trí ghế
+            TeleportTo(sitAnchor);
+
+            // lưu vị trí camera ban đầu nếu chưa lưu
+            if (originalCameraLocalPos == Vector3.zero)
+                originalCameraLocalPos = cameraHolder.localPosition;
+
+            // chỉnh camera một chút để cảm giác ngồi (tweak giá trị theo scene)
+            cameraHolder.localPosition = originalCameraLocalPos + new Vector3(0f, -0.2f, 1.5f);
+
+            isSitting = true;
+            isSittingByBeat = true;
+
+            // khoá/đóng băng control nếu cần (nhưng vẫn cho phép look nếu bạn muốn)
+            SetLockState(false); // giữ mouse look; nếu muốn khoá cả mouse, SetLockState(true);
+        }
+
+        // gọi để đứng dậy (do F hoặc do beat muốn đứng)
+        public void StandUp()
+        {
+            isSitting = false;
+            isSittingByBeat = false;
+
+            // khôi phục camera
+            if (originalCameraLocalPos != Vector3.zero)
+                cameraHolder.localPosition = originalCameraLocalPos;
+
+            SetLockState(false);
+        }
+
+        public void HandleSitting()
+        {
+            if (Input.GetKeyDown(KeyCode.F))
             {
-                if (animator != null) animator.SetBool("isSitting", isSitting);
+                // nếu đang ngồi do beat -> gọi StandUp cho consistent
+                if (isSitting && isSittingByBeat)
+                {
+                    StandUp();
+                    return;
+                }
+
+                isSitting = !isSitting;
+                if (isSitting)
+                {
+                    // local fallback: ngồi tại chỗ (không teleport)
+                    if (originalCameraLocalPos == Vector3.zero)
+                        originalCameraLocalPos = cameraHolder.localPosition;
+                    cameraHolder.localPosition += new Vector3(0, 0, 2f);
+                }
+                else
+                {
+                    cameraHolder.localPosition = originalCameraLocalPos;
+                }
             }
         }
+
 
 
     }

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8299678a248136489771feccee2788f, type: 3}
-  m_Name: B01_SIT_PLAY
+  m_Name: B03_LEAD_ASSIGN
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.BeatSO
-  beatId: B01
+  beatId: B03
   objectiveText: 
-  interaction: {fileID: 11400000, guid: eb31fb784b6515e4aac27491ab3b0882, type: 2}
+  interaction: {fileID: 11400000, guid: 86c02eb0287775b409380f0830367879, type: 2}
   interactions: []
-  autoStart: 0
-  requireInteract: 1
-  interactTargetId: seat1
+  autoStart: 1
+  requireInteract: 0
+  interactTargetId: 
   endChapter: 0

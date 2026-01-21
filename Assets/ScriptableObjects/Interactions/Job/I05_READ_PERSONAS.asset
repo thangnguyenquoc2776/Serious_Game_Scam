@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cceab300df2e2fa4d8871bb641948b4a, type: 3}
-  m_Name: I02_LEAD_ASSIGN
+  m_Name: I05_READ_PERSONAS
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.InteractionSO
-  interactionId: I01
-  type: 0
-  dialogueLines: []
+  interactionId: I05
+  type: 6
+  dialogueLines:
+  - LAN
+  - NAM
+  - TRUNG
   choices: []

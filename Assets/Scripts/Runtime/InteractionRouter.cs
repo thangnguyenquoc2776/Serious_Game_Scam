@@ -9,7 +9,8 @@ namespace SeriousGame.Runtime
     public class InteractionRouter : MonoBehaviour
     {
         // public PhoneUIRoot phoneUI;
-        public DialogueUI dialogueUI; 
+        public DialogueUI dialogueUI;
+        public PCUI pcUI;
 
         public void Route(BeatSO beat, InteractionSO interaction, Action<BeatSO, ChoiceSO> onChoiceResolved)
         {
@@ -35,6 +36,15 @@ namespace SeriousGame.Runtime
                     Debug.Log("[InteractionRouter] Routing to DialogueUI.");
                     dialogueUI.Show(beat, interaction, onChoiceResolved);
                     break;
+
+
+                case InteractionType.PC:
+                    pcUI.Show(beat, interaction, () =>
+                    {
+                        onChoiceResolved?.Invoke(beat, null);
+                    });
+                    break;
+
 
                 // Các type khác: MVP vẫn render bằng ChatPanel, nhưng cảnh báo để khỏi “quên”
                 default:

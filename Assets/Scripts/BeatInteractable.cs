@@ -1,5 +1,6 @@
 using UnityEngine;
 using SeriousGame.Content;
+using System.Linq;
 
 namespace SeriousGame.Runtime
 {
@@ -9,55 +10,47 @@ namespace SeriousGame.Runtime
     }
     public class BeatInteractable : MonoBehaviour, IInteractable
     {
-        // [Header("Gameplay")]
-
-        // private bool _used = false;
-
-        // [Header("NPC này giữ nhiệm vụ của Beat ID này:")]
-        // public BeatSO beat;
-        [Header("ID dùng để khớp với Beat")]
-        public string interactId; // ví dụ: "guard"
+        [Header("Các Beat ID object này có thể kích")]
+        public string[] supportedBeatIds;// array
 
         [Header("UI Prompt")]
-        public GameObject interactPrompt; // Text/Canvas worldspace: "Press E to interact"
+        public GameObject interactPrompt;
 
-        private bool interacted = false;
-
-        void Start()
-        {
-            UpdatePromptVisibility();
-        }
-
-    //     public void Interact()
-    // {
-    //     var currentBeat = EpisodeController.Instance.GetCurrentBeat(); // Bạn hãy viết thêm hàm lấy beat hiện tại
-        
-    //     if (currentBeat != null && currentBeat.beatId == beat.beatId)
-    //     {
-    //         EpisodeController.Instance.RunCurrentBeat();
-    //     }
-    //     else
-    //     {
-    //         Debug.Log("Chú bảo vệ: 'Cháu cứ đi làm việc của cháu đi' (Chưa tới lượt)");
-    //     }
-    // }
         public void Interact()
         {
-            Debug.Log($"[BeatInteractable] Interact: {interactId}");
+            var currentBeat = EpisodeController.Instance.GetCurrentBeat();
+            if (currentBeat == null) return;
 
-            // Đánh dấu đã interact và ẩn UI hướng dẫn
-            interacted = true;
-            UpdatePromptVisibility();
-
-            EpisodeController.Instance.OnWorldInteract(interactId);
-        }
-
-        void UpdatePromptVisibility()
-        {
-            if (interactPrompt != null)
+            // Object này có hỗ trợ beat hiện tại không?
+            if (supportedBeatIds.Contains(currentBeat.beatId))
             {
-                interactPrompt.SetActive(!interacted);
+                EpisodeController.Instance.OnWorldInteract(currentBeat.beatId);
+            }
+            else
+            {
+                Debug.Log($"[BeatInteractable] Beat {currentBeat.beatId} không hợp với object {name}");
             }
         }
+
+        void Update()
+        {
+            UpdatePrompt();
+        }
+
+        void UpdatePrompt()
+        {
+            if (interactPrompt == null) return;
+
+            var currentBeat = EpisodeController.Instance.GetCurrentBeat();
+            if (currentBeat == null)
+            {
+                interactPrompt.SetActive(false);
+                return;
+            }
+
+            bool canInteract = supportedBeatIds.Contains(currentBeat.beatId);
+            interactPrompt.SetActive(canInteract);
+        }
     }
+
 }

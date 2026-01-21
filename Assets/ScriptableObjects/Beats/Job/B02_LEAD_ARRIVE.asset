@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8299678a248136489771feccee2788f, type: 3}
-  m_Name: B08_FINAL_REPORT_TO_LEAD
+  m_Name: B02_LEAD_ARRIVE
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.BeatSO
-  beatId: B08
+  beatId: B02
   objectiveText: 
-  interaction: {fileID: 0}
+  interaction: {fileID: 11400000, guid: 84acb49a221ed1a4b8b0b5c9900d5865, type: 2}
   interactions: []
-  autoStart: 0
-  requireInteract: 1
-  interactTargetId: tell_boss_done
-  endChapter: 1
+  autoStart: 1
+  requireInteract: 0
+  interactTargetId: 
+  endChapter: 0

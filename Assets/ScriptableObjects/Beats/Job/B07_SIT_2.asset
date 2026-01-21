@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8299678a248136489771feccee2788f, type: 3}
-  m_Name: B01_SIT_PLAY
+  m_Name: B07_SIT_2
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.BeatSO
-  beatId: B01
+  beatId: B07
   objectiveText: 
   interaction: {fileID: 11400000, guid: eb31fb784b6515e4aac27491ab3b0882, type: 2}
   interactions: []

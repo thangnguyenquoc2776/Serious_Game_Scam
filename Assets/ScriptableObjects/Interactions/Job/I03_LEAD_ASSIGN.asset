@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cceab300df2e2fa4d8871bb641948b4a, type: 3}
-  m_Name: I01_SIT_PROMPT
+  m_Name: I03_LEAD_ASSIGN
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.InteractionSO
-  interactionId: I01
+  interactionId: I03
   type: 4
   dialogueLines:
-  - Ok sang chua ai di lam
+  - BRo doc ho so khach hang di
   choices: []
