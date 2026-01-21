@@ -23,8 +23,11 @@
         │   ├── FeedbackReport.cs
         │   └── FeedbackService.cs
         ├── Interactables
+        │   ├── ChairController.cs
         │   ├── StateFlagInteractable.cs
         │   └── TeleportInteractable.cs
+        ├── NPC
+        │   └── LeadController.cs
         ├── Phone
         │   ├── ChatPanel.cs
         │   └── PhoneUIRoot.cs
@@ -43,13 +46,15 @@
             ├── BillboardToCamera.cs
             ├── ChoiceButton.cs
             ├── DialogueUI.cs
+            ├── DossierUI.cs
             ├── EpisodeSummaryUI.cs
             ├── OutcomeToastUI.cs
+            ├── PCUI.cs
             ├── ScreenFader.cs
             └── SummaryUI.cs
 
 ===== FILE MANIFEST =====
-- Assets/Scripts/BeatInteractable.cs — 1836 bytes — ok
+- Assets/Scripts/BeatInteractable.cs — 1568 bytes — ok
 - Assets/Scripts/App/AppContext.cs — 852 bytes — ok
 - Assets/Scripts/App/GameBootstrap.cs — 1845 bytes — ok
 - Assets/Scripts/App/GameStateManager.cs — 1413 bytes — ok
@@ -60,29 +65,33 @@
 - Assets/Scripts/Content/BeatSO.cs — 1129 bytes — ok
 - Assets/Scripts/Content/ChoiceSO.cs — 705 bytes — ok
 - Assets/Scripts/Content/EpisodeSO.cs — 1273 bytes — ok
-- Assets/Scripts/Content/InteractionSO.cs — 686 bytes — ok
+- Assets/Scripts/Content/InteractionSO.cs — 694 bytes — ok
 - Assets/Scripts/Content/SceneSO.cs — 317 bytes — ok
 - Assets/Scripts/Content/TraceTaxonomySO.cs — 603 bytes — ok
 - Assets/Scripts/Content/TraceTypeSO.cs — 645 bytes — ok
 - Assets/Scripts/Feedback/FeedbackReport.cs — 387 bytes — ok
 - Assets/Scripts/Feedback/FeedbackService.cs — 2263 bytes — ok
+- Assets/Scripts/Interactables/ChairController.cs — 584 bytes — ok
 - Assets/Scripts/Interactables/StateFlagInteractable.cs — 1505 bytes — ok
 - Assets/Scripts/Interactables/TeleportInteractable.cs — 3142 bytes — ok
+- Assets/Scripts/NPC/LeadController.cs — 2222 bytes — ok
 - Assets/Scripts/Phone/ChatPanel.cs — 2442 bytes — ok
 - Assets/Scripts/Phone/PhoneUIRoot.cs — 668 bytes — ok
-- Assets/Scripts/Player/PlayerController.cs — 4141 bytes — ok
+- Assets/Scripts/Player/PlayerController.cs — 6895 bytes — ok
 - Assets/Scripts/Runtime/BeatRunner.cs — 1553 bytes — ok
-- Assets/Scripts/Runtime/EpisodeController.cs — 5055 bytes — ok
-- Assets/Scripts/Runtime/InteractionRouter.cs — 1686 bytes — ok
+- Assets/Scripts/Runtime/EpisodeController.cs — 6090 bytes — ok
+- Assets/Scripts/Runtime/InteractionRouter.cs — 1955 bytes — ok
 - Assets/Scripts/Trace/InMemoryTraceStore.cs — 686 bytes — ok
 - Assets/Scripts/Trace/ITraceStore.cs — 257 bytes — ok
 - Assets/Scripts/Trace/TraceEvent.cs — 352 bytes — ok
 - Assets/Scripts/Trace/TraceService.cs — 1343 bytes — ok
 - Assets/Scripts/UI/BillboardToCamera.cs — 857 bytes — ok
 - Assets/Scripts/UI/ChoiceButton.cs — 315 bytes — ok
-- Assets/Scripts/UI/DialogueUI.cs — 5498 bytes — ok
+- Assets/Scripts/UI/DialogueUI.cs — 5565 bytes — ok
+- Assets/Scripts/UI/DossierUI.cs — 1580 bytes — ok
 - Assets/Scripts/UI/EpisodeSummaryUI.cs — 1900 bytes — ok
 - Assets/Scripts/UI/OutcomeToastUI.cs — 1014 bytes — ok
+- Assets/Scripts/UI/PCUI.cs — 2404 bytes — ok
 - Assets/Scripts/UI/ScreenFader.cs — 1786 bytes — ok
 - Assets/Scripts/UI/SummaryUI.cs — 485 bytes — ok
 
@@ -92,6 +101,7 @@ Folder Assets/Scripts
 File BeatInteractable.cs
 using UnityEngine;
 using SeriousGame.Content;
+using System.Linq;
 
 namespace SeriousGame.Runtime
 {
@@ -101,57 +111,49 @@ namespace SeriousGame.Runtime
     }
     public class BeatInteractable : MonoBehaviour, IInteractable
     {
-        // [Header("Gameplay")]
-
-        // private bool _used = false;
-
-        // [Header("NPC này giữ nhiệm vụ của Beat ID này:")]
-        // public BeatSO beat;
-        [Header("ID dùng để khớp với Beat")]
-        public string interactId; // ví dụ: "guard"
+        [Header("Các Beat ID object này có thể kích")]
+        public string[] supportedBeatIds;// array
 
         [Header("UI Prompt")]
-        public GameObject interactPrompt; // Text/Canvas worldspace: "Press E to interact"
+        public GameObject interactPrompt;
 
-        private bool interacted = false;
-
-        void Start()
-        {
-            UpdatePromptVisibility();
-        }
-
-    //     public void Interact()
-    // {
-    //     var currentBeat = EpisodeController.Instance.GetCurrentBeat(); // Bạn hãy viết thêm hàm lấy beat hiện tại
-        
-    //     if (currentBeat != null && currentBeat.beatId == beat.beatId)
-    //     {
-    //         EpisodeController.Instance.RunCurrentBeat();
-    //     }
-    //     else
-    //     {
-    //         Debug.Log("Chú bảo vệ: 'Cháu cứ đi làm việc của cháu đi' (Chưa tới lượt)");
-    //     }
-    // }
         public void Interact()
         {
-            Debug.Log($"[BeatInteractable] Interact: {interactId}");
+            var currentBeat = EpisodeController.Instance.GetCurrentBeat();
+            if (currentBeat == null) return;
 
-            // Đánh dấu đã interact và ẩn UI hướng dẫn
-            interacted = true;
-            UpdatePromptVisibility();
-
-            EpisodeController.Instance.OnWorldInteract(interactId);
-        }
-
-        void UpdatePromptVisibility()
-        {
-            if (interactPrompt != null)
+            // Object này có hỗ trợ beat hiện tại không?
+            if (supportedBeatIds.Contains(currentBeat.beatId))
             {
-                interactPrompt.SetActive(!interacted);
+                EpisodeController.Instance.OnWorldInteract(currentBeat.beatId);
+            }
+            else
+            {
+                Debug.Log($"[BeatInteractable] Beat {currentBeat.beatId} không hợp với object {name}");
             }
         }
+
+        void Update()
+        {
+            UpdatePrompt();
+        }
+
+        void UpdatePrompt()
+        {
+            if (interactPrompt == null) return;
+
+            var currentBeat = EpisodeController.Instance.GetCurrentBeat();
+            if (currentBeat == null)
+            {
+                interactPrompt.SetActive(false);
+                return;
+            }
+
+            bool canInteract = supportedBeatIds.Contains(currentBeat.beatId);
+            interactPrompt.SetActive(canInteract);
+        }
     }
+
 }
 
 
@@ -500,14 +502,17 @@ namespace SeriousGame.Content
         Browser,
         BankTransfer,
         PhoneCall,
-        Dialogue
+        Dialogue,
+        Task,
+        PC,
+
     }
 
     [CreateAssetMenu(menuName = "SeriousGame/Content/Interaction", fileName = "Interaction")]
     public class InteractionSO : ScriptableObject
     {
         public string interactionId = "I01";
-        public InteractionType type = InteractionType.Chat;
+        public InteractionType type;
 
         // [TextArea] public string prompt;
         [Header("Nội dung thoại (Nhập theo thứ tự)")]
@@ -669,6 +674,33 @@ namespace SeriousGame.Feedback
 
 
 Folder Assets/Scripts/Interactables
+File ChairController.cs
+using SeriousGame.Runtime;
+using UnityEngine;
+
+public class ChairController : MonoBehaviour
+{
+    public Transform sitPoint;
+
+    public void Sit(PlayerController player)
+    {
+        player.SetLockState(true);
+        player.isSitting = true;
+
+        player.TeleportTo(sitPoint);
+
+        player.cameraHolder.localPosition += new Vector3(0, 0, 2f);
+    }
+
+    public void Stand(PlayerController player)
+    {
+        player.isSitting = false;
+        player.cameraHolder.localPosition -= new Vector3(0, 0, 2f);
+        player.SetLockState(false);
+    }
+}
+
+
 File StateFlagInteractable.cs
 using UnityEngine;
 using SeriousGame.Runtime;
@@ -824,6 +856,80 @@ public class TeleportInteractable : MonoBehaviour, IInteractable
 }
 
 
+Folder Assets/Scripts/NPC
+File LeadController.cs
+﻿using System;
+using System.Collections;
+using UnityEngine;
+using SeriousGame.Content;
+
+namespace SeriousGame.Runtime
+{
+    public class LeadController : MonoBehaviour
+    {
+        public Transform homeAnchor;   // vị trí bàn sếp
+        public Transform talkAnchor;   // vị trí đứng nói chuyện
+        public float moveSpeed = 1.5f;
+        Animator animator;
+
+
+        private void Start()
+        {
+            animator = GetComponent<Animator>();
+        }
+        public void GoTalkThenReturn(InteractionSO dialogue, Action onDone)
+        {
+            StartCoroutine(Flow(dialogue, onDone));
+        }
+
+        IEnumerator Flow(InteractionSO dialogue, Action onDone)
+        {
+            // 1️⃣ Đi tới bàn player
+            yield return MoveTo(talkAnchor.position);
+
+            // 2️⃣ MỞ DIALOGUE
+            EpisodeController.Instance.beatRunner
+                .RunInteraction(dialogue, () =>
+                {
+                    // 3️⃣ NÓI XONG → QUAY VỀ
+                    StartCoroutine(ReturnHome(onDone));
+                });
+        }
+
+        IEnumerator ReturnHome(Action onDone)
+        {
+            yield return MoveTo(homeAnchor.position);
+            onDone?.Invoke();
+        }
+
+        IEnumerator MoveTo(Vector3 target)
+        {
+            animator.SetBool("isWalking", true);
+            while (Vector3.Distance(transform.position, target) > 0.05f)
+            {
+                transform.position = Vector3.MoveTowards(
+                    transform.position,
+                    target,
+                    moveSpeed * Time.deltaTime
+                );
+
+                // xoay mặt theo hướng đi (cho tự nhiên)
+                Vector3 dir = (target - transform.position).normalized;
+                if (dir != Vector3.zero)
+                    transform.rotation = Quaternion.Slerp(
+                        transform.rotation,
+                        Quaternion.LookRotation(dir),
+                        10f * Time.deltaTime
+                    );
+
+                yield return null;
+            }
+            animator.SetBool("isWalking", false);
+        }
+    }
+}
+
+
 Folder Assets/Scripts/Phone
 File ChatPanel.cs
 using System;
@@ -929,6 +1035,7 @@ namespace SeriousGame.Runtime
     
         public float interactDistance = 2f;
         public LayerMask interactableLayer;
+        public bool isSitting = false;
 
         [Header("Movement")]
         public float moveSpeed = 4f;
@@ -957,6 +1064,7 @@ namespace SeriousGame.Runtime
             if (isLocked) return;
             HandleMouseLook();
             HandleInteraction();
+            HandleSitting();
         }
 
         // Thêm hàm để điều khiển chuột
@@ -980,29 +1088,31 @@ namespace SeriousGame.Runtime
         }
 
         void HandleMovement()
-        {
-            float h = Input.GetAxisRaw("Horizontal");
-            float v = Input.GetAxisRaw("Vertical");
-
-            Vector3 moveDir =
-                transform.right * h +
-                transform.forward * v;
-
-            // Cập nhật trạng thái đi bộ cho Animator dựa trên input
-            if (animator != null)
+        {   if (!isSitting)  // if is sitting then don't move
             {
-                bool isMoving = moveDir.sqrMagnitude > 0.01f;
-                animator.SetBool("isWalking", isMoving);
+                float h = Input.GetAxisRaw("Horizontal");
+                float v = Input.GetAxisRaw("Vertical");
+
+                Vector3 moveDir =
+                    transform.right * h +
+                    transform.forward * v;
+
+                // Cập nhật trạng thái đi bộ cho Animator dựa trên input
+                if (animator != null)
+                {
+                    bool isMoving = moveDir.sqrMagnitude > 0.01f;
+                    animator.SetBool("isWalking", isMoving);
+                }
+
+                // Không có input thì không cần di chuyển
+                if (moveDir.sqrMagnitude <= 0.01f)
+                    return;
+
+                Vector3 velocity = moveDir.normalized * moveSpeed;
+                Vector3 targetPos = rb.position + velocity * Time.fixedDeltaTime;
+
+                rb.MovePosition(targetPos);
             }
-
-            // Không có input thì không cần di chuyển
-            if (moveDir.sqrMagnitude <= 0.01f)
-                return;
-
-            Vector3 velocity = moveDir.normalized * moveSpeed;
-            Vector3 targetPos = rb.position + velocity * Time.fixedDeltaTime;
-
-            rb.MovePosition(targetPos);
         }
 
         void HandleMouseLook()
@@ -1045,6 +1155,80 @@ namespace SeriousGame.Runtime
             // Dừng chuyển động
             rb.linearVelocity = Vector3.zero;
         }
+
+        private void blockMovement()
+        {
+            rb.linearVelocity = Vector3.zero;
+        }
+
+        
+
+        // trong class PlayerController:
+        [HideInInspector] public bool isSittingByBeat = false;
+        private Vector3 originalCameraLocalPos;
+
+        // gọi khi muốn "ngồi" do beat điều khiển
+        public void SitAt(Transform sitAnchor)
+        {
+            if (sitAnchor == null) return;
+
+            // teleport player tới vị trí ghế
+            TeleportTo(sitAnchor);
+
+            // lưu vị trí camera ban đầu nếu chưa lưu
+            if (originalCameraLocalPos == Vector3.zero)
+                originalCameraLocalPos = cameraHolder.localPosition;
+
+            // chỉnh camera một chút để cảm giác ngồi (tweak giá trị theo scene)
+            cameraHolder.localPosition = originalCameraLocalPos + new Vector3(0f, -0.2f, 1.5f);
+
+            isSitting = true;
+            isSittingByBeat = true;
+
+            // khoá/đóng băng control nếu cần (nhưng vẫn cho phép look nếu bạn muốn)
+            SetLockState(false); // giữ mouse look; nếu muốn khoá cả mouse, SetLockState(true);
+        }
+
+        // gọi để đứng dậy (do F hoặc do beat muốn đứng)
+        public void StandUp()
+        {
+            isSitting = false;
+            isSittingByBeat = false;
+
+            // khôi phục camera
+            if (originalCameraLocalPos != Vector3.zero)
+                cameraHolder.localPosition = originalCameraLocalPos;
+
+            SetLockState(false);
+        }
+
+        public void HandleSitting()
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                // nếu đang ngồi do beat -> gọi StandUp cho consistent
+                if (isSitting && isSittingByBeat)
+                {
+                    StandUp();
+                    return;
+                }
+
+                isSitting = !isSitting;
+                if (isSitting)
+                {
+                    // local fallback: ngồi tại chỗ (không teleport)
+                    if (originalCameraLocalPos == Vector3.zero)
+                        originalCameraLocalPos = cameraHolder.localPosition;
+                    cameraHolder.localPosition += new Vector3(0, 0, 2f);
+                }
+                else
+                {
+                    cameraHolder.localPosition = originalCameraLocalPos;
+                }
+            }
+        }
+
+
 
     }
 }
@@ -1123,6 +1307,8 @@ namespace SeriousGame.Runtime
         private bool isInteractionRunning = false;
         public bool chapterEnded = false;
 
+
+        public Transform SitAnchor;
         void Awake()
         {
             Instance = this;
@@ -1137,7 +1323,7 @@ namespace SeriousGame.Runtime
             TryRunCurrentBeat();
         }
 
-        BeatSO GetCurrentBeat() // lấy beat hiện tại
+        public BeatSO GetCurrentBeat() // lấy beat hiện tại
         {
             if (_beatIndex < 0 || _beatIndex >= _beats.Length)
                 return null;
@@ -1188,7 +1374,7 @@ namespace SeriousGame.Runtime
             var beat = GetCurrentBeat();
             if (beat == null) return;
 
-            if (beat.interactTargetId != interactId)
+            if (beat.beatId != interactId)
             {
                 Debug.Log("[Episode] Wrong interact target");
                 return;
@@ -1198,7 +1384,7 @@ namespace SeriousGame.Runtime
             RunMainInteraction(beat);
         }
 
-        void RunMainInteraction(BeatSO beat) 
+        void RunMainInteraction(BeatSO beat)
         {
             if (isInteractionRunning)
             {
@@ -1209,75 +1395,97 @@ namespace SeriousGame.Runtime
             isInteractionRunning = true;
             Debug.Log("[Episode] Run main interaction");
 
+            if (beat.beatId == "B01" || beat.beatId == "B07")
+            {
+                var player = FindAnyObjectByType<PlayerController>();
+
+                if (player != null && SitAnchor != null)
+                {
+                    player.SitAt(SitAnchor);
+                }
+            }
+            else if (beat.beatId == "B02")
+            {
+                var lead = FindAnyObjectByType<LeadController>();
+                if (lead != null)
+                {
+                    lead.GoTalkThenReturn(beat.interaction, () =>
+                    {
+                        isInteractionRunning = false;
+                        AdvanceBeat();
+                    });
+                    return;
+                }   
+            }
             beatRunner.RunBeat(beat, OnChoiceResolved);
         }
 
-        void OnChoiceResolved(BeatSO beat, ChoiceSO choice)
-        {
-            if (choice != null && choice.outcomeInteraction != null)
+            void OnChoiceResolved(BeatSO beat, ChoiceSO choice)
             {
-                Debug.Log("[Episode] Run outcome interaction");
-
-                beatRunner.RunInteraction(choice.outcomeInteraction, () =>
+                if (choice != null && choice.outcomeInteraction != null)
                 {
-                    ResolveChoice(choice);
-                });
-            }
-            else
-            {
-                ResolveChoice(choice);
-            }
-        }
+                    Debug.Log("[Episode] Run outcome interaction");
 
-        void ResolveChoice(ChoiceSO choice)
-        {
-            isInteractionRunning = false;
-
-            // Nếu Choice có stateToTrigger, cập nhật GameState
-            if (choice != null && !string.IsNullOrEmpty(choice.stateToTrigger))
-            {
-                if (GameStateManager.Instance != null)
-                {
-                    GameStateManager.Instance.SetFlag(choice.stateToTrigger, true);
+                    beatRunner.RunInteraction(choice.outcomeInteraction, () =>
+                    {
+                        ResolveChoice(choice);
+                    });
                 }
                 else
                 {
-                    Debug.LogWarning("[Episode] GameStateManager.Instance is null while trying to set state from choice.");
+                    ResolveChoice(choice);
                 }
             }
 
-            if (choice != null && choice.nextBeat != null)
+            void ResolveChoice(ChoiceSO choice)
             {
-                JumpToBeat(choice.nextBeat);
-            }
-            else
-            {
-                AdvanceBeat();
-            }
-        }
+                isInteractionRunning = false;
 
-        void AdvanceBeat()
-        {
-            _beatIndex++;
-            TryRunCurrentBeat();
-        }
-
-        void JumpToBeat(BeatSO beat)
-        {
-            for (int i = 0; i < _beats.Length; i++)
-            {
-                if (_beats[i] == beat)
+                // Nếu Choice có stateToTrigger, cập nhật GameState
+                if (choice != null && !string.IsNullOrEmpty(choice.stateToTrigger))
                 {
-                    _beatIndex = i;
-                    TryRunCurrentBeat();
-                    return;
+                    if (GameStateManager.Instance != null)
+                    {
+                        GameStateManager.Instance.SetFlag(choice.stateToTrigger, true);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("[Episode] GameStateManager.Instance is null while trying to set state from choice.");
+                    }
+                }
+
+                if (choice != null && choice.nextBeat != null)
+                {
+                    JumpToBeat(choice.nextBeat);
+                }
+                else
+                {
+                    AdvanceBeat();
                 }
             }
 
-            Debug.LogError("[Episode] Jump beat not found");
+            void AdvanceBeat()
+            {
+                _beatIndex++;
+                TryRunCurrentBeat();
+            }
+
+            void JumpToBeat(BeatSO beat)
+            {
+                for (int i = 0; i < _beats.Length; i++)
+                {
+                    if (_beats[i] == beat)
+                    {
+                        _beatIndex = i;
+                        TryRunCurrentBeat();
+                        return;
+                    }
+                }
+
+                Debug.LogError("[Episode] Jump beat not found");
+            }
         }
     }
-}
 
 File InteractionRouter.cs
 ﻿// Assets/Scripts/Runtime/InteractionRouter.cs
@@ -1291,7 +1499,8 @@ namespace SeriousGame.Runtime
     public class InteractionRouter : MonoBehaviour
     {
         // public PhoneUIRoot phoneUI;
-        public DialogueUI dialogueUI; 
+        public DialogueUI dialogueUI;
+        public PCUI pcUI;
 
         public void Route(BeatSO beat, InteractionSO interaction, Action<BeatSO, ChoiceSO> onChoiceResolved)
         {
@@ -1317,6 +1526,15 @@ namespace SeriousGame.Runtime
                     Debug.Log("[InteractionRouter] Routing to DialogueUI.");
                     dialogueUI.Show(beat, interaction, onChoiceResolved);
                     break;
+
+
+                case InteractionType.PC:
+                    pcUI.Show(beat, interaction, () =>
+                    {
+                        onChoiceResolved?.Invoke(beat, null);
+                    });
+                    break;
+
 
                 // Các type khác: MVP vẫn render bằng ChatPanel, nhưng cảnh báo để khỏi “quên”
                 default:
@@ -1494,6 +1712,7 @@ using SeriousGame.Content;
 using System;
 using TMPro;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SeriousGame.Runtime
 {
@@ -1554,7 +1773,7 @@ namespace SeriousGame.Runtime
         void DisplayCurrentLine()
         {
             // Lấy câu thoại hiện tại từ mảng dialogueLines chúng ta vừa sửa ở SO
-            promptText.text = _currentInteraction.dialogueLines[_currentLineIndex];
+            if (_currentInteraction.dialogueLines != null) promptText.text = _currentInteraction.dialogueLines[_currentLineIndex];
             Debug.Log($"[DialogueUI] Displaying line {_currentLineIndex}: {_currentInteraction.dialogueLines[_currentLineIndex]}");
         }
 
@@ -1637,6 +1856,72 @@ namespace SeriousGame.Runtime
         }
     }
 }
+
+File DossierUI.cs
+﻿//using UnityEngine;
+//using TMPro;
+//using UnityEngine.UI;
+//using System;
+
+//public class DossierUI : MonoBehaviour
+//{
+//    public TextMeshProUGUI titleText;
+//    public TextMeshProUGUI contentText;
+//    public Button prevButton;
+//    public Button nextButton;
+//    public Button doneButton;
+
+//    [TextArea(5, 10)]
+//    public string[] dossiers;
+
+//    private int index = 0;
+//    private Action onDone;
+
+//    public void Open(Action doneCallback)
+//    {
+//        onDone = doneCallback;
+//        index = 0;
+//        Refresh();
+
+//        gameObject.SetActive(true);
+
+//        var player = FindObjectOfType<SeriousGame.Runtime.PlayerController>();
+//        player?.SetLockState(true);
+//    }
+
+//    void Refresh()
+//    {
+//        titleText.text = $"Hồ sơ {index + 1}";
+//        contentText.text = dossiers[index];
+
+//        prevButton.interactable = index > 0;
+//        nextButton.interactable = index < dossiers.Length - 1;
+//    }
+
+//    void Start()
+//    {
+//        prevButton.onClick.AddListener(() =>
+//        {
+//            index--;
+//            Refresh();
+//        });
+
+//        nextButton.onClick.AddListener(() =>
+//        {
+//            index++;
+//            Refresh();
+//        });
+
+//        doneButton.onClick.AddListener(() =>
+//        {
+//            var player = FindObjectOfType<SeriousGame.Runtime.PlayerController>();
+//            player?.SetLockState(false);
+
+//            onDone?.Invoke();
+//            Destroy(gameObject);
+//        });
+//    }
+//}
 
 File EpisodeSummaryUI.cs
 using System.Text;
@@ -1756,6 +2041,106 @@ namespace SeriousGame.UI
             yield return new WaitForSeconds(showSeconds);
             Hide();
         }
+    }
+}
+
+File PCUI.cs
+﻿using SeriousGame.Content;
+using SeriousGame.Runtime;
+using System;
+using UnityEngine;
+
+public class PCUI : MonoBehaviour
+{
+    public GameObject root;            // Canvas world-space (đã gắn sẵn trong scene)
+    public PlayerController player;
+
+    [Header("Camera focus")]
+    public Transform cameraFocusPoint; // Empty đặt trước màn hình
+    public float focusSpeed = 4f;
+
+    private Action onFinish;
+    private Transform cam;
+    private Vector3 camOriginalPos;
+    private Quaternion camOriginalRot;
+
+    [Header("Dossier Panels")]
+    public GameObject dossier1;
+    public GameObject dossier2;
+    public GameObject dossier3;
+
+    [Header("Camera zoom config")]
+    public float focusDistance = 0.6f; // chỉnh ở Inspector
+
+
+
+    void Awake()
+    {
+        cam = Camera.main.transform;
+        root.SetActive(false);
+    }
+
+    public void ShowDossier(int index)
+    {
+        dossier1.SetActive(index == 0);
+        dossier2.SetActive(index == 1);
+        dossier3.SetActive(index == 2);
+    }
+
+    public void Show(BeatSO beat, InteractionSO interaction, Action onDone)
+    {
+        onFinish = onDone;
+
+        // Lưu camera ban đầu
+        camOriginalPos = cam.position;
+        camOriginalRot = cam.rotation;
+
+        root.SetActive(true);
+
+        // khóa movement
+        player.SetLockState(true);
+
+        // bật cursor (PC mode)
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    void Update()
+    {
+        if (!root.activeSelf) return;
+
+        Vector3 targetPos =
+            cameraFocusPoint.position
+            - cameraFocusPoint.forward * focusDistance;
+
+        cam.position = Vector3.Lerp(
+            cam.position,
+            targetPos,
+            Time.deltaTime * focusSpeed
+        );
+
+        cam.rotation = Quaternion.Slerp(
+            cam.rotation,
+            cameraFocusPoint.rotation,
+            Time.deltaTime * focusSpeed
+        );
+    }
+
+
+    public void OnFinishClicked()
+    {
+        root.SetActive(false);
+
+        // trả camera về
+        cam.position = camOriginalPos;
+        cam.rotation = camOriginalRot;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        player.SetLockState(false);
+
+        onFinish?.Invoke(); // báo beat xong
     }
 }
 
