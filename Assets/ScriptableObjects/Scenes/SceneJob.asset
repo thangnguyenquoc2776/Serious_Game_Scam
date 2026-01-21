@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662691f45b4c5914ea373f68e1132f2b, type: 3}
+  m_Name: SceneJob
+  m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.SceneSO
+  sceneId: S00
+  unitySceneName: Episode0
+  beats:
+  - {fileID: 11400000, guid: 0ffe8f59215592f47a33ee325dbf8868, type: 2}
+  - {fileID: 11400000, guid: f2861bb7bf67dcd48bf3f86de1ffd314, type: 2}
+  - {fileID: 11400000, guid: 33ff2f4728df2cd4e813300873430472, type: 2}
+  - {fileID: 11400000, guid: e636db91faeb89f479bd43b1cc8adc09, type: 2}
+  - {fileID: 11400000, guid: ec02e04009cd932498af0a35bcaf7a5e, type: 2}
+  - {fileID: 11400000, guid: 75d909aa09dddfd468a2037429d69ecc, type: 2}
+  - {fileID: 11400000, guid: 28707498457af5d47b9032764fa8cb5d, type: 2}
+  - {fileID: 11400000, guid: 49d6804beab662b409b35497fed1603c, type: 2}

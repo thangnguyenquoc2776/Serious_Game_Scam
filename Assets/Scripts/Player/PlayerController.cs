@@ -7,6 +7,7 @@ namespace SeriousGame.Runtime
     
         public float interactDistance = 2f;
         public LayerMask interactableLayer;
+        bool isSitting = false;
 
         [Header("Movement")]
         public float moveSpeed = 4f;
@@ -123,6 +124,25 @@ namespace SeriousGame.Runtime
             // Dừng chuyển động
             rb.linearVelocity = Vector3.zero;
         }
+
+        private void blockMovement()
+        {
+            rb.linearVelocity = Vector3.zero;
+        }
+
+        public void handleSitting(bool sit)
+        {
+            isSitting = sit;
+            if (isSitting) {
+                blockMovement();
+                if (animator != null) animator.SetBool("isSitting", isSitting);
+            } 
+            else 
+            {
+                if (animator != null) animator.SetBool("isSitting", isSitting);
+            }
+        }
+
 
     }
 }
