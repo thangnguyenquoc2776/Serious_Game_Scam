@@ -15,6 +15,16 @@ MonoBehaviour:
   interactionId: I02
   type: 4
   dialogueLines:
-  - "Hello ni\t"
-  - Em doc ho so khach hang di
+  - "Ch\xE0o em nh\xE9\t"
+  - "D\u1EA1, em ch\xE0o anh... "
+  - "Nay em t\u1EDBi s\u1EDBm qu\xE1 nh\u1EC9?"
+  - "V\xE2ng \u1EA1, c\u0169ng kh\xF4ng m\u1EA5y khi..."
+  - "V\u1EADy th\xF4i anh em m\xECnh b\u1EAFt tay v\xE0o vi\u1EC7c lu\xF4n em nh\u1EC9?"
+  - "V\xE2ng"
+  - "Anh c\xF3 m\u1ED9t t\u1EADp h\u1ED3 s\u01A1 \u0111ang c\u1EA7n x\u1EED l\xED
+    g\u1EA5p. Em xem qua t\u1EADp h\u1ED3 s\u01A1 kh\xE1ch h\xE0ng cho anh nh\xE9!"
+  - "D\u1EA1, \u0111\u1EC3 em l\xE0m ngay \u1EA1!"
+  - "Okay. Xong qua n\xF3i anh m\u1ED9t ti\u1EBFng nh\xE9!"
+  - "[\u1EA4n E \u0111\u1EC3 b\u1EADt v\xE0 v\xE0o m\xE0n h\xECnh m\xE1y t\xEDnh
+    c\u1EE7a b\u1EA1n]"
   choices: []

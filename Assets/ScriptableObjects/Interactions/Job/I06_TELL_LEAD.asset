@@ -15,6 +15,11 @@ MonoBehaviour:
   interactionId: I06
   type: 4
   dialogueLines:
-  - Em doc xong  r nha anh
-  - Ok em ve lam report di
+  - "D\u1EA1 anh \u01A1i, em v\u1EEBa \u0111\u1ECDc xong h\u1ED3 s\u01A1 r\u1ED3i
+    \u1EA5y \u1EA1"
+  - "Em \u0111\u1ECDc c\u0169ng nhanh nh\u1EC9? T\u1ED1t \u0111\xF3!"
+  - "D\u1EA1, c\u0169ng kh\xF4ng c\xF3 g\xEC anh \u1EA1"
+  - "Gi\u1EDD em v\u1EC1 chu\u1EA9n b\u1ECB ph\u1EA7n b\xE1o c\xE1o t\u1ED5ng h\u1EE3p
+    l\u1EA1i c\xE1c y\u1EBFu t\u1ED1 quan tr\u1ECDng r\u1ED3i g\u1EEDi cho anh nh\xE9!"
+  - "V\xE2ng anh. Ch\u1EDD ch\xFAt \u0111\u1EC3 em v\u1EC1 l\xE0m ngay \u1EA1"
   choices: []

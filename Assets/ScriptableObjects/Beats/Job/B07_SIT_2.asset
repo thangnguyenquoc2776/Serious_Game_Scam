@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.BeatSO
   beatId: B07
   objectiveText: 
-  interaction: {fileID: 11400000, guid: eb31fb784b6515e4aac27491ab3b0882, type: 2}
+  interaction: {fileID: 11400000, guid: 391ddd01f8a004d449bd87b16f3247e5, type: 2}
   interactions: []
   autoStart: 0
   requireInteract: 1
-  interactTargetId: seat1
+  interactTargetId: seat2
   endChapter: 0

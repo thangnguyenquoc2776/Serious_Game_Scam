@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cceab300df2e2fa4d8871bb641948b4a, type: 3}
-  m_Name: I05_READ_PERSONAS
+  m_Name: 0
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.InteractionSO
-  interactionId: I05
-  type: 6
+  interactionId: I03
+  type: 4
   dialogueLines:
-  - LAN
-  - NAM
-  - TRUNG
+  - BRo doc ho so khach hang di
   choices: []

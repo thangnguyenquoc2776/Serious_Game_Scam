@@ -15,5 +15,7 @@ MonoBehaviour:
   interactionId: I01
   type: 4
   dialogueLines:
-  - Ok sang chua ai di lam
+  - "\u1EE6a sao nay ch\u01B0a ai t\u1EDBi v\u1EADy nh\u1EC9?"
+  - "M\xECnh t\u1EDBi s\u1EDBm qu\xE1 \xE0?"
+  - "Th\xF4i ng\u1ED3i v\xE0o b\xE0n ch\u1EDD m\u1ECDi ng\u01B0\u1EDDi \u0111\xE3"
   choices: []

@@ -15,5 +15,14 @@ MonoBehaviour:
   interactionId: I04
   type: 6
   dialogueLines:
-  - De coi dong ho so nay coi ai
+  - "\u0110\u1EC3 xem n\xE0o..."
+  - "Ch\xE0. C\xF3 hai b\u1ED9 h\u1ED3 s\u01A1 \xE0 "
+  - "Ch\u1ECBu kh\xF3 \u0111\u1ECDc xong th\xEC qua t\xECm \xF4ng \u1EA5y v\u1EADy..."
+  - "[B\u1EA1n c\xF3 th\u1EC3 t\u01B0\u01A1ng t\xE1c b\u1EB1ng c\xE1ch \u1EA5n v\xE0o
+    c\xE1c bi\u1EC3u t\u01B0\u1EE3ng b\xEAn d\u01B0\u1EDBi \u0111\u1EC3 chuy\u1EC3n
+    qua l\u1EA1i c\xE1c h\u1ED3 s\u01A1]"
+  - "[Sau khi \u0111\u1ECDc xong b\u1EA1n c\xF3 th\u1EC3 \u1EA5n v\xE0o n\xFAt DONE
+    \u0111\u1EC3 tho\xE1t kh\u1ECFi m\xE0n h\xECnh]"
+  - "[Khi \u0111\xF3 b\u1EA1n c\u1EA7n \u1EA5n F \u0111\u1EC3 r\u1EDDi kh\u1ECFi
+    gh\u1EBF]"
   choices: []

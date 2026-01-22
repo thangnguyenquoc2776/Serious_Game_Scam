@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cceab300df2e2fa4d8871bb641948b4a, type: 3}
-  m_Name: I07_OPEN_REPORT
+  m_Name: SIT2
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.InteractionSO
   interactionId: I07
-  type: 6
+  type: 4
   dialogueLines:
   - "\u0110\u01B0\u1EE3c r\u1ED3i, ti\u1EBFp t\u1EE5c vi\u1EC7c th\xF4i"
   - "C\xF3 v\u1EBB m\xECnh s\u1EBD ph\u1EA3i d\xF9ng nh\u1EEFng g\xEC \u0111\xE3

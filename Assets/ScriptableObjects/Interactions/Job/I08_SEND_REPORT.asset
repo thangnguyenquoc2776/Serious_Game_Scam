@@ -15,5 +15,8 @@ MonoBehaviour:
   interactionId: I08
   type: 6
   dialogueLines:
-  - OK SEND REPORT
+  - "Xong r\u1ED3i!"
+  - "Qua \u0111\u1EC3 b\xE1o anh \u1EA5y xem th\u1EED th\xF4i..."
+  - "[\u1EA4n E \u0111\u1EC3 tho\xE1t kh\u1ECFi m\xE0n h\xECnh v\xE0 \u1EA5n F \u0111\u1EC3
+    r\u1EDDi kh\u1ECFi gh\u1EBF]"
   choices: []
