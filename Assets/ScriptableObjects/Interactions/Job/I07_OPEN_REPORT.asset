@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: I07_OPEN_REPORT
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.InteractionSO
   interactionId: I07
-  type: 4
+  type: 6
   dialogueLines:
   - LAM REPORT
   choices: []

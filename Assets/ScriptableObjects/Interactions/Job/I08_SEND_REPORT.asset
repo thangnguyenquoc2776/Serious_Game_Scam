@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: I08_SEND_REPORT
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.InteractionSO
   interactionId: I08
-  type: 4
+  type: 6
   dialogueLines:
   - OK SEND REPORT
   choices: []

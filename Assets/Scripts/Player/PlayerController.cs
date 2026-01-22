@@ -33,7 +33,13 @@ namespace SeriousGame.Runtime
 
         void Update()
         {   
-            if (isLocked) return;
+            // Khi bị khoá (đang trong UI / cutscene), vẫn cho phép vẽ ray debug
+            if (isLocked)
+            {
+                DrawLockedMouseDebugRay();
+                return;
+            }
+
             HandleMouseLook();
             HandleInteraction();
             HandleSitting();
@@ -43,7 +49,7 @@ namespace SeriousGame.Runtime
         public void SetLockState(bool locked)
         {
             isLocked = locked;
-            Cursor.lockState = locked ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.lockState = locked ? CursorLockMode.None : CursorLockMode.Locked; 
             Cursor.visible = locked;
             rb.linearVelocity = Vector3.zero; // Dừng lập tức
 
@@ -101,15 +107,37 @@ namespace SeriousGame.Runtime
 
         void HandleInteraction()
         {
+            // Ray ở giữa màn hình (dùng cho tương tác FPS)
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+            drawDebugRay(ray);
+
+            // Ray theo vị trí chuột (dùng để debug world space UI)
+            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Debug.DrawRay(mouseRay.origin, mouseRay.direction * interactDistance, Color.green, 0f);
+
+            // Chỉ khi nhấn E mới raycast và tương tác
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
                 if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactableLayer))
                 {
                     var interactable = hit.collider.GetComponent<IInteractable>();
                     interactable?.Interact();
                 }
             }
+        }
+
+        // Vẽ ray theo chuột khi player bị khoá control (ví dụ đang mở PCUI)
+        void DrawLockedMouseDebugRay()
+        {
+            if (!Cursor.visible || Camera.main == null) return;
+
+            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Debug.DrawRay(mouseRay.origin, mouseRay.direction * interactDistance, Color.green, 0f);
+        }
+
+        void drawDebugRay(Ray ray)
+        {
+            Debug.DrawRay(ray.origin, ray.direction * interactDistance, Color.red, 0f);
         }
 
         // Teleport player tới một vị trí/rotation định trước (ví dụ: phòng office)

@@ -20,10 +20,12 @@ public class PCUI : MonoBehaviour
     [Header("Dossier Panels")]
     public GameObject dossier1;
     public GameObject dossier2;
-    public GameObject dossier3;
 
     [Header("Camera zoom config")]
     public float focusDistance = 0.6f; // chỉnh ở Inspector
+
+    public GameObject dossierPanel;
+    public GameObject reportPanel;
 
 
 
@@ -31,17 +33,37 @@ public class PCUI : MonoBehaviour
     {
         cam = Camera.main.transform;
         root.SetActive(false);
+        dossierPanel.SetActive(false);
+        reportPanel.SetActive(false);
+
     }
 
     public void ShowDossier(int index)
     {
-        dossier1.SetActive(index == 0);
-        dossier2.SetActive(index == 1);
-        dossier3.SetActive(index == 2);
+        if (index == 1)
+        {
+            dossier1.SetActive(true);
+            dossier2.SetActive(false);
+        }
+        else if (index == 2)
+        {
+            dossier1.SetActive(false);
+            dossier2.SetActive(true);
+        }
     }
 
     public void Show(BeatSO beat, InteractionSO interaction, Action onDone)
-    {
+    {   
+        if (beat.beatId == "B04"|| beat.beatId =="B05")
+        {
+            dossierPanel.SetActive(true);
+            reportPanel.SetActive(false);
+        }
+        else if (beat.beatId == "B08")
+        {
+            dossierPanel.SetActive(false);
+            reportPanel.SetActive(true);
+        }
         onFinish = onDone;
 
         // Lưu camera ban đầu
@@ -81,7 +103,8 @@ public class PCUI : MonoBehaviour
 
 
     public void OnFinishClicked()
-    {
+    {   
+        Debug.Log("[PCUI] OnFinishClicked");
         root.SetActive(false);
 
         // trả camera về
@@ -94,5 +117,18 @@ public class PCUI : MonoBehaviour
         player.SetLockState(false);
 
         onFinish?.Invoke(); // báo beat xong
+    }
+
+    // Nút "Send" cho các màn PC đặc biệt (ví dụ gửi báo cáo)
+    // Gắn OnClick của button Send vào hàm này thay vì OnFinishClicked.
+    // Nếu chưa cần xử lý gì đặc biệt, có thể gọi lại OnFinishClicked().
+    public void OnSendClicked()
+    {
+        Debug.Log("[PCUI] OnSendClicked");
+
+        // TODO: xử lý nội dung report / drag-drop ở đây (nếu có)
+
+        // Sau khi xử lý xong, kết thúc interaction giống nút Done:
+        OnFinishClicked();
     }
 }
