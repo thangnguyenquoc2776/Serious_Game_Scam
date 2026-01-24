@@ -12211,7 +12211,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: cef1fd5883e7305498d6cb41b2c1373d, type: 2}
     - target: {fileID: 6584577517740712342, guid: 61e920da3544df94a8ba667196f85a56, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.72294
+      value: -22.73
       objectReference: {fileID: 0}
     - target: {fileID: 6584577517740712342, guid: 61e920da3544df94a8ba667196f85a56, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16644,7 +16644,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091810866}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
@@ -26999,6 +26999,9 @@ GameObject:
   - component: {fileID: 1911191518}
   - component: {fileID: 1911191521}
   - component: {fileID: 1911191524}
+  - component: {fileID: 1911191525}
+  - component: {fileID: 1911191526}
+  - component: {fileID: 1911191527}
   m_Layer: 0
   m_Name: XR Origin (VR)
   m_TagString: Untagged
@@ -27097,6 +27100,77 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &1911191525
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911191517}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 50c8fe73844fb0a42bdb72b9873224e6, type: 3}
+  m_Controller: {fileID: 9100000, guid: 62283de8ca021c34aa5e61353fb9a6f4, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1911191526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911191517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4d680b7526e1942bcff3bc6bf4b914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Runtime.PlayerController
+  interactDistance: 2
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isSitting: 0
+  moveSpeed: 4
+  mouseSensitivity: 2
+  cameraHolder: {fileID: 1531739609}
+  isLocked: 0
+  isSittingByBeat: 0
+--- !u!54 &1911191527
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911191517}
+  serializedVersion: 5
+  m_Mass: 2
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!1001 &1913597904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32579,7 +32653,7 @@ PrefabInstance:
     - target: {fileID: 2078563904981525423, guid: 341982b43e8e8e74893f019ec59fd628, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1911191526}
     - target: {fileID: 2078563904981525423, guid: 341982b43e8e8e74893f019ec59fd628, type: 3}
       propertyPath: behavioursToDisableDuringPCUI.Array.size
       value: 2

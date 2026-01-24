@@ -3,75 +3,124 @@ using UnityEngine.UI;
 using SeriousGame.Content;
 using System;
 using TMPro;
-using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.InputSystem;
 
 namespace SeriousGame.Runtime
 {
     public class DialogueUI : MonoBehaviour
     {
+        [Header("UI")]
         public TextMeshProUGUI promptText;
         public Transform choiceContainer;
         public Button choiceButtonPrefab;
-        
-        // Các script điều khiển player sẽ bị tắt khi thoại đang mở (movement, nhìn chuột, interact, v.v.)
-        public PlayerController scriptsToDisableDuringDialogue;
 
-        private BeatSO _currentBeat; // Add this to store the beat
-        private Action<BeatSO, ChoiceSO> _onChoose; // Update signature
+        [Header("Lock while dialogue is open (VR/PC)")]
+        // Kéo vào đây: Dynamic Move Provider, Snap Turn Provider, Teleport Provider, VRBeatInteractor (world interact), v.v.
+        public Behaviour[] behavioursToDisableDuringDialogue;
 
+        [Header("Advance input (VR)")]
+        // Kéo action của tay phải vào đây (vd A button, hoặc XRI Right Interaction/Activate)
+        public InputActionReference advanceAction;
+        public bool allowAdvanceWhileChoicesVisible = false;
+
+        [Header("World Space placement (optional)")]
+        public Transform worldAnchor;        // nếu set, UI sẽ xuất hiện tại đây
+        public float spawnDistance = 1.2f;   // nếu không có anchor, spawn trước mặt camera
+        public Vector3 spawnOffset = new Vector3(0f, -0.15f, 0f);
+        public bool faceCamera = true;
+
+        private BeatSO _currentBeat;
+        private Action<BeatSO, ChoiceSO> _onChoose;
         private InteractionSO _currentInteraction;
         private int _currentLineIndex;
-        // private Action<ChoiceSO> _onChoose;
+
+        private void OnEnable()
+        {
+            if (advanceAction != null && advanceAction.action != null)
+                advanceAction.action.Enable();
+        }
+
+        private void OnDisable()
+        {
+            if (advanceAction != null && advanceAction.action != null)
+                advanceAction.action.Disable();
+        }
 
         void Update()
         {
-            // Bấm chuột trái hoặc Space để sang câu tiếp theo
-            if (!gameObject.activeSelf)
+            if (!gameObject.activeSelf) return;
+
+            // Nếu đang hiện choices thì không auto-advance (giống bản PC)
+            if (!allowAdvanceWhileChoicesVisible &&
+                choiceContainer != null && choiceContainer.gameObject.activeSelf)
                 return;
 
-            // Nếu đang hiển thị lựa chọn thì KHÔNG tự advance nữa,
-            // để chuột chỉ dùng cho button UI
-            if (choiceContainer != null && choiceContainer.gameObject.activeSelf)
-                return;
-
-            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+            // VR: bấm nút tay phải để next
+            if (advanceAction != null && advanceAction.action != null &&
+                advanceAction.action.WasPressedThisFrame())
             {
-                Debug.Log("[DialogueUI] Advancing dialogue...");
                 AdvanceDialogue();
             }
         }
 
-
         public void Show(BeatSO beat, InteractionSO interaction, Action<BeatSO, ChoiceSO> onChooseCallback)
         {
             gameObject.SetActive(true);
-            _currentBeat = beat; // Store the beat
+
+            _currentBeat = beat;
             _currentInteraction = interaction;
             _onChoose = onChooseCallback;
             _currentLineIndex = 0;
 
-            choiceContainer.gameObject.SetActive(false);
-            
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            if (choiceContainer != null)
+                choiceContainer.gameObject.SetActive(false);
 
-            // Tắt các script điều khiển player trong lúc đang thoại
-            SetPlayerControlEnabled(false);
+            // VR: đặt UI ra world space (nếu cần)
+            PlaceDialogueInWorld();
+
+            // Khoá movement + xoay + world interact...
+            SetControlsEnabled(false);
 
             DisplayCurrentLine();
         }
 
+        private void PlaceDialogueInWorld()
+        {
+            // Nếu ông không muốn tự move UI thì có thể bỏ trống phần này,
+            // và đặt canvas sẵn trong scene.
+            var cam = Camera.main != null ? Camera.main.transform : null;
+            if (cam == null) return;
+
+            Transform t = transform; // hoặc transform.root nếu UI nằm sâu
+            if (worldAnchor != null)
+            {
+                t.position = worldAnchor.position;
+                t.rotation = worldAnchor.rotation;
+                return;
+            }
+
+            t.position = cam.position + cam.forward * spawnDistance + cam.TransformVector(spawnOffset);
+
+            if (faceCamera)
+            {
+                Vector3 toCam = (cam.position - t.position);
+                toCam.y = 0f; // xoay theo ngang cho đỡ chóng mặt
+                if (toCam.sqrMagnitude > 0.0001f)
+                    t.rotation = Quaternion.LookRotation(-toCam.normalized, Vector3.up);
+            }
+        }
+
         void DisplayCurrentLine()
         {
-            // Lấy câu thoại hiện tại từ mảng dialogueLines chúng ta vừa sửa ở SO
-            if (_currentInteraction.dialogueLines != null) promptText.text = _currentInteraction.dialogueLines[_currentLineIndex];
-            Debug.Log($"[DialogueUI] Displaying line {_currentLineIndex}: {_currentInteraction.dialogueLines[_currentLineIndex]}");
+            if (_currentInteraction.dialogueLines != null && _currentInteraction.dialogueLines.Length > 0)
+                promptText.text = _currentInteraction.dialogueLines[_currentLineIndex];
         }
 
         void AdvanceDialogue()
         {
-            // Nếu vẫn còn câu thoại trong mảng
+            if (_currentInteraction == null || _currentInteraction.dialogueLines == null) return;
+
             if (_currentLineIndex < _currentInteraction.dialogueLines.Length - 1)
             {
                 _currentLineIndex++;
@@ -79,32 +128,22 @@ namespace SeriousGame.Runtime
             }
             else
             {
-                // Nếu đã hết câu thoại
-
-                // Trường hợp interaction KHÔNG có lựa chọn: tự kết thúc và callback
                 if (_currentInteraction.choices == null || _currentInteraction.choices.Length == 0)
-                {
                     EndInteractionWithoutChoice();
-                }
                 else
-                {
-                    // Nếu có lựa chọn thì hiện các nút lựa chọn ra
                     ShowChoices();
-                }
             }
         }
 
         void ShowChoices()
         {
-            if (choiceContainer.gameObject.activeSelf) return; // Tránh tạo trùng
+            if (choiceContainer.gameObject.activeSelf) return;
 
-            Debug.Log("[DialogueUI] ShowChoices called");
             choiceContainer.gameObject.SetActive(true);
             foreach (Transform c in choiceContainer) Destroy(c.gameObject);
 
             if (_currentInteraction.choices == null || _currentInteraction.choices.Length == 0)
             {
-                // Phòng hờ: nếu bị gọi nhưng không có choice thì kết thúc luôn
                 EndInteractionWithoutChoice();
                 return;
             }
@@ -112,7 +151,6 @@ namespace SeriousGame.Runtime
             foreach (var choice in _currentInteraction.choices)
             {
                 var btn = Instantiate(choiceButtonPrefab, choiceContainer);
-                // Dùng TMP_Text nếu prefab của bạn là TextMeshPro, nếu không dùng Text
                 var btnText = btn.GetComponentInChildren<TextMeshProUGUI>();
                 if (btnText != null) btnText.text = choice.text;
 
@@ -122,29 +160,28 @@ namespace SeriousGame.Runtime
 
         void Choose(ChoiceSO choice)
         {
-            Debug.Log($"[DialogueUI] Choice clicked: {choice?.text}");
             gameObject.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            SetPlayerControlEnabled(true);
+            SetControlsEnabled(true);
             _onChoose?.Invoke(_currentBeat, choice);
         }
 
         void EndInteractionWithoutChoice()
         {
-            // Đóng UI và callback với choice = null
             gameObject.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            SetPlayerControlEnabled(true);
+            SetControlsEnabled(true);
             _onChoose?.Invoke(_currentBeat, null);
         }
 
-        void SetPlayerControlEnabled(bool enabled)
+        void SetControlsEnabled(bool enabled)
         {
-            if (scriptsToDisableDuringDialogue == null) return;
+            if (behavioursToDisableDuringDialogue == null) return;
 
-            scriptsToDisableDuringDialogue.enabled = enabled;
+            // enabled = true nghĩa là đóng dialogue -> bật lại controls
+            // enabled = false nghĩa là mở dialogue -> tắt controls
+            foreach (var b in behavioursToDisableDuringDialogue)
+            {
+                if (b != null) b.enabled = enabled;
+            }
         }
     }
 }

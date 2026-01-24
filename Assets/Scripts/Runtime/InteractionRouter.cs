@@ -19,19 +19,9 @@ namespace SeriousGame.Runtime
                 onChoiceResolved?.Invoke(beat, null);
                 return;
             }
-
-            // if (phoneUI == null)
-            // {
-            //     Debug.LogError("[InteractionRouter] phoneUI missing.");
-            //     onChoiceResolved?.Invoke(beat, null);
-            //     return;
-            // }
-
+ 
             switch (interaction.type)
             {
-                // case InteractionType.Chat:
-                //     phoneUI.ShowChat(beat, interaction, onChoiceResolved);
-                //     break;
                 case InteractionType.Dialogue:
                     Debug.Log("[InteractionRouter] Routing to DialogueUI.");
                     dialogueUI.Show(beat, interaction, onChoiceResolved);

@@ -29,6 +29,7 @@ public class PCUI : MonoBehaviour
 
 
 
+
     void Awake()
     {
         cam = Camera.main.transform;
@@ -72,17 +73,20 @@ public class PCUI : MonoBehaviour
 
         root.SetActive(true);
 
-        // khóa movement
-        player.SetLockState(true);
+        
+            SetVRControls(false); // disable move/turn/world-interact
+  
+            //player.SetLockState(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        
 
-        // bật cursor (PC mode)
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
     }
 
     void Update()
     {
         if (!root.activeSelf) return;
+        
 
         Vector3 targetPos =
             cameraFocusPoint.position
@@ -106,15 +110,14 @@ public class PCUI : MonoBehaviour
     {   
         Debug.Log("[PCUI] OnFinishClicked");
         root.SetActive(false);
-
-        // trả camera về
-        cam.position = camOriginalPos;
-        cam.rotation = camOriginalRot;
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
-        player.SetLockState(false);
+      
+            SetVRControls(true);  // enable lại
+        
+        
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            player.SetLockState(false);
+        
 
         onFinish?.Invoke(); // báo beat xong
     }
@@ -130,5 +133,16 @@ public class PCUI : MonoBehaviour
 
         // Sau khi xử lý xong, kết thúc interaction giống nút Done:
         OnFinishClicked();
+    }
+
+    [Header("VR lock")]
+    public Behaviour[] behavioursToDisableDuringPCUI; // Move Provider, Turn Provider, world interact script...
+    public bool isVR = true; // hoặc tự detect
+
+    void SetVRControls(bool enabled)
+    {
+        if (behavioursToDisableDuringPCUI == null) return;
+        foreach (var b in behavioursToDisableDuringPCUI)
+            if (b != null) b.enabled = enabled;
     }
 }

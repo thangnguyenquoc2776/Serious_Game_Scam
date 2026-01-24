@@ -3,6 +3,7 @@
 └── Assets
     └── Scripts
         ├── BeatInteractable.cs
+        ├── VRBeatInteractor.cs
         ├── App
         │   ├── AppContext.cs
         │   ├── GameBootstrap.cs
@@ -32,7 +33,9 @@
         │   ├── ChatPanel.cs
         │   └── PhoneUIRoot.cs
         ├── Player
-        │   └── PlayerController.cs
+        │   ├── PlayerController.cs
+        │   ├── VRInteractorRaycast.cs
+        │   └── VRSimpleLocomotion.cs
         ├── Runtime
         │   ├── BeatRunner.cs
         │   ├── EpisodeController.cs
@@ -47,14 +50,18 @@
             ├── ChoiceButton.cs
             ├── DialogueUI.cs
             ├── DossierUI.cs
+            ├── Dragable.cs
+            ├── DropSlot.cs
             ├── EpisodeSummaryUI.cs
             ├── OutcomeToastUI.cs
             ├── PCUI.cs
             ├── ScreenFader.cs
-            └── SummaryUI.cs
+            ├── SummaryUI.cs
+            └── WorldSpaceUIFollow.cs
 
 ===== FILE MANIFEST =====
 - Assets/Scripts/BeatInteractable.cs — 1568 bytes — ok
+- Assets/Scripts/VRBeatInteractor.cs — 1990 bytes — ok
 - Assets/Scripts/App/AppContext.cs — 852 bytes — ok
 - Assets/Scripts/App/GameBootstrap.cs — 1845 bytes — ok
 - Assets/Scripts/App/GameStateManager.cs — 1413 bytes — ok
@@ -77,23 +84,28 @@
 - Assets/Scripts/NPC/LeadController.cs — 2222 bytes — ok
 - Assets/Scripts/Phone/ChatPanel.cs — 2442 bytes — ok
 - Assets/Scripts/Phone/PhoneUIRoot.cs — 668 bytes — ok
-- Assets/Scripts/Player/PlayerController.cs — 6895 bytes — ok
+- Assets/Scripts/Player/PlayerController.cs — 8058 bytes — ok
+- Assets/Scripts/Player/VRInteractorRaycast.cs — 3284 bytes — ok
+- Assets/Scripts/Player/VRSimpleLocomotion.cs — 2133 bytes — ok
 - Assets/Scripts/Runtime/BeatRunner.cs — 1553 bytes — ok
 - Assets/Scripts/Runtime/EpisodeController.cs — 6090 bytes — ok
-- Assets/Scripts/Runtime/InteractionRouter.cs — 1955 bytes — ok
+- Assets/Scripts/Runtime/InteractionRouter.cs — 1562 bytes — ok
 - Assets/Scripts/Trace/InMemoryTraceStore.cs — 686 bytes — ok
 - Assets/Scripts/Trace/ITraceStore.cs — 257 bytes — ok
 - Assets/Scripts/Trace/TraceEvent.cs — 352 bytes — ok
 - Assets/Scripts/Trace/TraceService.cs — 1343 bytes — ok
 - Assets/Scripts/UI/BillboardToCamera.cs — 857 bytes — ok
 - Assets/Scripts/UI/ChoiceButton.cs — 315 bytes — ok
-- Assets/Scripts/UI/DialogueUI.cs — 5565 bytes — ok
+- Assets/Scripts/UI/DialogueUI.cs — 6699 bytes — ok
 - Assets/Scripts/UI/DossierUI.cs — 1580 bytes — ok
+- Assets/Scripts/UI/Dragable.cs — 2431 bytes — ok
+- Assets/Scripts/UI/DropSlot.cs — 459 bytes — ok
 - Assets/Scripts/UI/EpisodeSummaryUI.cs — 1900 bytes — ok
 - Assets/Scripts/UI/OutcomeToastUI.cs — 1014 bytes — ok
-- Assets/Scripts/UI/PCUI.cs — 2404 bytes — ok
+- Assets/Scripts/UI/PCUI.cs — 4152 bytes — ok
 - Assets/Scripts/UI/ScreenFader.cs — 1786 bytes — ok
 - Assets/Scripts/UI/SummaryUI.cs — 485 bytes — ok
+- Assets/Scripts/UI/WorldSpaceUIFollow.cs — 3143 bytes — ok
 
 
 
@@ -154,6 +166,69 @@ namespace SeriousGame.Runtime
         }
     }
 
+}
+
+File VRBeatInteractor.cs
+using SeriousGame.Runtime;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
+
+public class VRBeatInteractor : MonoBehaviour
+{
+    [Header("Ray source")]
+    [SerializeField] private XRRayInteractor rayInteractor;
+
+    [Header("Input (usually Trigger)")]
+    [SerializeField] private InputActionReference interactAction;
+
+    [Header("Optional filtering")]
+    [SerializeField] private LayerMask interactMask = ~0;
+    [SerializeField] private float fallbackMaxDistance = 10f;
+
+    private void OnEnable()
+    {
+        if (interactAction.action != null)
+        {
+            interactAction.action.Enable();
+            interactAction.action.performed += OnInteractPerformed;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (interactAction.action != null)
+            interactAction.action.performed -= OnInteractPerformed;
+    }
+
+    private void OnInteractPerformed(InputAction.CallbackContext ctx)
+    {
+        // 1) Prefer XRRayInteractor hit (matches the visible ray)
+        if (rayInteractor != null && rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
+        {
+            TryCallInteract(hit);
+            return;
+        }
+
+        // 2) Fallback: manual physics raycast from this transform forward
+        Ray ray = new Ray(transform.position, transform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit2, fallbackMaxDistance, interactMask, QueryTriggerInteraction.Ignore))
+        {
+            TryCallInteract(hit2);
+        }
+    }
+
+    private void TryCallInteract(RaycastHit hit)
+    {
+        // Use GetComponentInParent because collider may be on a child
+        var interactable = hit.collider.GetComponentInParent<IInteractable>();
+        if (interactable != null)
+        {
+            interactable.Interact();
+        }
+        // else: nothing to interact with
+    }
 }
 
 
@@ -1061,7 +1136,13 @@ namespace SeriousGame.Runtime
 
         void Update()
         {   
-            if (isLocked) return;
+            // Khi bị khoá (đang trong UI / cutscene), vẫn cho phép vẽ ray debug
+            if (isLocked)
+            {
+                DrawLockedMouseDebugRay();
+                return;
+            }
+
             HandleMouseLook();
             HandleInteraction();
             HandleSitting();
@@ -1071,7 +1152,7 @@ namespace SeriousGame.Runtime
         public void SetLockState(bool locked)
         {
             isLocked = locked;
-            Cursor.lockState = locked ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.lockState = locked ? CursorLockMode.None : CursorLockMode.Locked; 
             Cursor.visible = locked;
             rb.linearVelocity = Vector3.zero; // Dừng lập tức
 
@@ -1129,15 +1210,37 @@ namespace SeriousGame.Runtime
 
         void HandleInteraction()
         {
+            // Ray ở giữa màn hình (dùng cho tương tác FPS)
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+            drawDebugRay(ray);
+
+            // Ray theo vị trí chuột (dùng để debug world space UI)
+            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Debug.DrawRay(mouseRay.origin, mouseRay.direction * interactDistance, Color.green, 0f);
+
+            // Chỉ khi nhấn E mới raycast và tương tác
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
                 if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactableLayer))
                 {
                     var interactable = hit.collider.GetComponent<IInteractable>();
                     interactable?.Interact();
                 }
             }
+        }
+
+        // Vẽ ray theo chuột khi player bị khoá control (ví dụ đang mở PCUI)
+        void DrawLockedMouseDebugRay()
+        {
+            if (!Cursor.visible || Camera.main == null) return;
+
+            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Debug.DrawRay(mouseRay.origin, mouseRay.direction * interactDistance, Color.green, 0f);
+        }
+
+        void drawDebugRay(Ray ray)
+        {
+            Debug.DrawRay(ray.origin, ray.direction * interactDistance, Color.red, 0f);
         }
 
         // Teleport player tới một vị trí/rotation định trước (ví dụ: phòng office)
@@ -1230,6 +1333,179 @@ namespace SeriousGame.Runtime
 
 
 
+    }
+}
+
+File VRInteractorRaycast.cs
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+namespace SeriousGame.Runtime
+{
+    /// <summary>
+    /// Raycast từ controller (hoặc một Transform bất kỳ) ra thế giới,
+    /// nếu trúng IInteractable thì gọi Interact().
+    /// Mục tiêu: giữ y nguyên toàn bộ Episode/Beat logic hiện tại.
+    /// </summary>
+    public class VRInteractorRaycast : MonoBehaviour
+    {
+        [Header("Raycast Settings")]
+        public float interactDistance = 3f;
+        public LayerMask interactableLayer;
+
+        [Header("Ray Origin (optional)")]
+        [Tooltip("Nếu để trống sẽ dùng chính transform của GameObject này.")]
+        public Transform rayOrigin;
+
+        [Header("Debug")]
+        [Tooltip("Chỉ để debug trong Editor, không bắt buộc.")]
+        public bool drawDebugRay = true;
+
+        [Header("Input System (tuỳ chọn)")]
+        [Tooltip("Gán action (ví dụ XRI RightHand Activate) để bóp trigger là Interact.")]
+        public InputActionReference interactAction;
+
+        void Awake()
+        {
+            if (rayOrigin == null)
+            {
+                rayOrigin = transform;
+            }
+        }
+
+        void OnEnable()
+        {
+            if (interactAction != null)
+            {
+                interactAction.action.performed += OnInteractAction;
+                interactAction.action.Enable();
+            }
+        }
+
+        void OnDisable()
+        {
+            if (interactAction != null)
+            {
+                interactAction.action.performed -= OnInteractAction;
+                interactAction.action.Disable();
+            }
+        }
+
+        void Update()
+        {
+            // Fallback cho lúc test trên PC chưa gắn input của XRI:
+            // Nhấn E để bắn ray từ controller.
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                TryInteract();
+            }
+        }
+
+        void OnInteractAction(InputAction.CallbackContext ctx)
+        {
+            // Được gọi khi action (trigger) được bóp
+            TryInteract();
+        }
+
+        /// <summary>
+        /// Hàm này bạn có thể gọi từ sự kiện input của XRI (trigger, grip...).
+        /// Ví dụ: map vào action "Activate" hoặc "Select".
+        /// </summary>
+        public void TryInteract()
+        {
+            if (rayOrigin == null)
+                return;
+
+            Ray ray = new Ray(rayOrigin.position, rayOrigin.forward);
+
+            if (drawDebugRay)
+            {
+                Debug.DrawRay(ray.origin, ray.direction * interactDistance, Color.cyan, 0f);
+            }
+
+            if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactableLayer))
+            {
+                var interactable = hit.collider.GetComponent<IInteractable>();
+                interactable?.Interact();
+            }
+        }
+
+        void OnDrawGizmosSelected()
+        {
+            if (rayOrigin == null)
+                rayOrigin = transform;
+
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawLine(rayOrigin.position, rayOrigin.position + rayOrigin.forward * interactDistance);
+        }
+    }
+}
+
+File VRSimpleLocomotion.cs
+using UnityEngine;
+
+namespace SeriousGame.Runtime
+{
+    /// <summary>
+    /// Di chuyển đơn giản cho XR Origin bằng WASD + quay Q/E.
+    /// Dùng hướng nhìn của camera làm "forward" để cảm giác giống đi bộ.
+    /// Không phụ thuộc XRI actions, phù hợp để test nhanh.
+    /// </summary>
+    public class VRSimpleLocomotion : MonoBehaviour
+    {
+        [Header("Movement")]
+        public float moveSpeed = 2f;
+
+        [Header("Turn (optional)")]
+        public float turnSpeed = 90f; // độ/giây cho quay Q/E
+
+        [Header("Head / Camera")]
+        [Tooltip("Thường gán Main Camera (HMD)")]
+        public Transform head;
+
+        void Update()
+        {
+            HandleMove();
+            HandleTurn();
+        }
+
+        void HandleMove()
+        {
+            float h = Input.GetAxisRaw("Horizontal");   // A/D hoặc mũi tên trái/phải
+            float v = Input.GetAxisRaw("Vertical");     // W/S hoặc mũi tên lên/xuống
+
+            if (Mathf.Approximately(h, 0f) && Mathf.Approximately(v, 0f))
+                return;
+
+            // Hướng forward lấy theo đầu (camera) nếu có, ngược lại lấy theo thân (transform)
+            Vector3 forward = head != null ? head.forward : transform.forward;
+            forward.y = 0f;
+            forward.Normalize();
+
+            Vector3 right = new Vector3(forward.z, 0f, -forward.x);
+
+            Vector3 moveDir = forward * v + right * h;
+            if (moveDir.sqrMagnitude > 1f)
+                moveDir.Normalize();
+
+            transform.position += moveDir * moveSpeed * Time.deltaTime;
+        }
+
+        void HandleTurn()
+        {
+            float turnInput = 0f;
+
+            if (Input.GetKey(KeyCode.Q))
+                turnInput -= 1f;
+            if (Input.GetKey(KeyCode.E))
+                turnInput += 1f;
+
+            if (Mathf.Approximately(turnInput, 0f))
+                return;
+
+            float yaw = turnInput * turnSpeed * Time.deltaTime;
+            transform.Rotate(0f, yaw, 0f, Space.World);
+        }
     }
 }
 
@@ -1509,19 +1785,9 @@ namespace SeriousGame.Runtime
                 onChoiceResolved?.Invoke(beat, null);
                 return;
             }
-
-            // if (phoneUI == null)
-            // {
-            //     Debug.LogError("[InteractionRouter] phoneUI missing.");
-            //     onChoiceResolved?.Invoke(beat, null);
-            //     return;
-            // }
-
+ 
             switch (interaction.type)
             {
-                // case InteractionType.Chat:
-                //     phoneUI.ShowChat(beat, interaction, onChoiceResolved);
-                //     break;
                 case InteractionType.Dialogue:
                     Debug.Log("[InteractionRouter] Routing to DialogueUI.");
                     dialogueUI.Show(beat, interaction, onChoiceResolved);
@@ -1711,75 +1977,124 @@ using UnityEngine.UI;
 using SeriousGame.Content;
 using System;
 using TMPro;
-using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.InputSystem;
 
 namespace SeriousGame.Runtime
 {
     public class DialogueUI : MonoBehaviour
     {
+        [Header("UI")]
         public TextMeshProUGUI promptText;
         public Transform choiceContainer;
         public Button choiceButtonPrefab;
-        
-        // Các script điều khiển player sẽ bị tắt khi thoại đang mở (movement, nhìn chuột, interact, v.v.)
-        public PlayerController scriptsToDisableDuringDialogue;
 
-        private BeatSO _currentBeat; // Add this to store the beat
-        private Action<BeatSO, ChoiceSO> _onChoose; // Update signature
+        [Header("Lock while dialogue is open (VR/PC)")]
+        // Kéo vào đây: Dynamic Move Provider, Snap Turn Provider, Teleport Provider, VRBeatInteractor (world interact), v.v.
+        public Behaviour[] behavioursToDisableDuringDialogue;
 
+        [Header("Advance input (VR)")]
+        // Kéo action của tay phải vào đây (vd A button, hoặc XRI Right Interaction/Activate)
+        public InputActionReference advanceAction;
+        public bool allowAdvanceWhileChoicesVisible = false;
+
+        [Header("World Space placement (optional)")]
+        public Transform worldAnchor;        // nếu set, UI sẽ xuất hiện tại đây
+        public float spawnDistance = 1.2f;   // nếu không có anchor, spawn trước mặt camera
+        public Vector3 spawnOffset = new Vector3(0f, -0.15f, 0f);
+        public bool faceCamera = true;
+
+        private BeatSO _currentBeat;
+        private Action<BeatSO, ChoiceSO> _onChoose;
         private InteractionSO _currentInteraction;
         private int _currentLineIndex;
-        // private Action<ChoiceSO> _onChoose;
+
+        private void OnEnable()
+        {
+            if (advanceAction != null && advanceAction.action != null)
+                advanceAction.action.Enable();
+        }
+
+        private void OnDisable()
+        {
+            if (advanceAction != null && advanceAction.action != null)
+                advanceAction.action.Disable();
+        }
 
         void Update()
         {
-            // Bấm chuột trái hoặc Space để sang câu tiếp theo
-            if (!gameObject.activeSelf)
+            if (!gameObject.activeSelf) return;
+
+            // Nếu đang hiện choices thì không auto-advance (giống bản PC)
+            if (!allowAdvanceWhileChoicesVisible &&
+                choiceContainer != null && choiceContainer.gameObject.activeSelf)
                 return;
 
-            // Nếu đang hiển thị lựa chọn thì KHÔNG tự advance nữa,
-            // để chuột chỉ dùng cho button UI
-            if (choiceContainer != null && choiceContainer.gameObject.activeSelf)
-                return;
-
-            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+            // VR: bấm nút tay phải để next
+            if (advanceAction != null && advanceAction.action != null &&
+                advanceAction.action.WasPressedThisFrame())
             {
-                Debug.Log("[DialogueUI] Advancing dialogue...");
                 AdvanceDialogue();
             }
         }
 
-
         public void Show(BeatSO beat, InteractionSO interaction, Action<BeatSO, ChoiceSO> onChooseCallback)
         {
             gameObject.SetActive(true);
-            _currentBeat = beat; // Store the beat
+
+            _currentBeat = beat;
             _currentInteraction = interaction;
             _onChoose = onChooseCallback;
             _currentLineIndex = 0;
 
-            choiceContainer.gameObject.SetActive(false);
-            
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            if (choiceContainer != null)
+                choiceContainer.gameObject.SetActive(false);
 
-            // Tắt các script điều khiển player trong lúc đang thoại
-            SetPlayerControlEnabled(false);
+            // VR: đặt UI ra world space (nếu cần)
+            PlaceDialogueInWorld();
+
+            // Khoá movement + xoay + world interact...
+            SetControlsEnabled(false);
 
             DisplayCurrentLine();
         }
 
+        private void PlaceDialogueInWorld()
+        {
+            // Nếu ông không muốn tự move UI thì có thể bỏ trống phần này,
+            // và đặt canvas sẵn trong scene.
+            var cam = Camera.main != null ? Camera.main.transform : null;
+            if (cam == null) return;
+
+            Transform t = transform; // hoặc transform.root nếu UI nằm sâu
+            if (worldAnchor != null)
+            {
+                t.position = worldAnchor.position;
+                t.rotation = worldAnchor.rotation;
+                return;
+            }
+
+            t.position = cam.position + cam.forward * spawnDistance + cam.TransformVector(spawnOffset);
+
+            if (faceCamera)
+            {
+                Vector3 toCam = (cam.position - t.position);
+                toCam.y = 0f; // xoay theo ngang cho đỡ chóng mặt
+                if (toCam.sqrMagnitude > 0.0001f)
+                    t.rotation = Quaternion.LookRotation(-toCam.normalized, Vector3.up);
+            }
+        }
+
         void DisplayCurrentLine()
         {
-            // Lấy câu thoại hiện tại từ mảng dialogueLines chúng ta vừa sửa ở SO
-            if (_currentInteraction.dialogueLines != null) promptText.text = _currentInteraction.dialogueLines[_currentLineIndex];
-            Debug.Log($"[DialogueUI] Displaying line {_currentLineIndex}: {_currentInteraction.dialogueLines[_currentLineIndex]}");
+            if (_currentInteraction.dialogueLines != null && _currentInteraction.dialogueLines.Length > 0)
+                promptText.text = _currentInteraction.dialogueLines[_currentLineIndex];
         }
 
         void AdvanceDialogue()
         {
-            // Nếu vẫn còn câu thoại trong mảng
+            if (_currentInteraction == null || _currentInteraction.dialogueLines == null) return;
+
             if (_currentLineIndex < _currentInteraction.dialogueLines.Length - 1)
             {
                 _currentLineIndex++;
@@ -1787,32 +2102,22 @@ namespace SeriousGame.Runtime
             }
             else
             {
-                // Nếu đã hết câu thoại
-
-                // Trường hợp interaction KHÔNG có lựa chọn: tự kết thúc và callback
                 if (_currentInteraction.choices == null || _currentInteraction.choices.Length == 0)
-                {
                     EndInteractionWithoutChoice();
-                }
                 else
-                {
-                    // Nếu có lựa chọn thì hiện các nút lựa chọn ra
                     ShowChoices();
-                }
             }
         }
 
         void ShowChoices()
         {
-            if (choiceContainer.gameObject.activeSelf) return; // Tránh tạo trùng
+            if (choiceContainer.gameObject.activeSelf) return;
 
-            Debug.Log("[DialogueUI] ShowChoices called");
             choiceContainer.gameObject.SetActive(true);
             foreach (Transform c in choiceContainer) Destroy(c.gameObject);
 
             if (_currentInteraction.choices == null || _currentInteraction.choices.Length == 0)
             {
-                // Phòng hờ: nếu bị gọi nhưng không có choice thì kết thúc luôn
                 EndInteractionWithoutChoice();
                 return;
             }
@@ -1820,7 +2125,6 @@ namespace SeriousGame.Runtime
             foreach (var choice in _currentInteraction.choices)
             {
                 var btn = Instantiate(choiceButtonPrefab, choiceContainer);
-                // Dùng TMP_Text nếu prefab của bạn là TextMeshPro, nếu không dùng Text
                 var btnText = btn.GetComponentInChildren<TextMeshProUGUI>();
                 if (btnText != null) btnText.text = choice.text;
 
@@ -1830,29 +2134,28 @@ namespace SeriousGame.Runtime
 
         void Choose(ChoiceSO choice)
         {
-            Debug.Log($"[DialogueUI] Choice clicked: {choice?.text}");
             gameObject.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            SetPlayerControlEnabled(true);
+            SetControlsEnabled(true);
             _onChoose?.Invoke(_currentBeat, choice);
         }
 
         void EndInteractionWithoutChoice()
         {
-            // Đóng UI và callback với choice = null
             gameObject.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            SetPlayerControlEnabled(true);
+            SetControlsEnabled(true);
             _onChoose?.Invoke(_currentBeat, null);
         }
 
-        void SetPlayerControlEnabled(bool enabled)
+        void SetControlsEnabled(bool enabled)
         {
-            if (scriptsToDisableDuringDialogue == null) return;
+            if (behavioursToDisableDuringDialogue == null) return;
 
-            scriptsToDisableDuringDialogue.enabled = enabled;
+            // enabled = true nghĩa là đóng dialogue -> bật lại controls
+            // enabled = false nghĩa là mở dialogue -> tắt controls
+            foreach (var b in behavioursToDisableDuringDialogue)
+            {
+                if (b != null) b.enabled = enabled;
+            }
         }
     }
 }
@@ -1922,6 +2225,107 @@ File DossierUI.cs
 //        });
 //    }
 //}
+
+File Dragable.cs
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+public class Dragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+{
+    public Canvas canvas;  // gán Canvas world-space (monitor canvas)
+
+    private RectTransform rect;
+    private CanvasGroup canvasGroup;
+    private Transform originalParent;
+    private bool droppedOnSlot;
+
+    void Awake()
+    {
+        rect = GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>();
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        originalParent = transform.parent;
+        droppedOnSlot = false;
+
+        // kéo card lên top để không bị layout của parent đè
+        transform.SetParent(canvas.transform, worldPositionStays: true);
+        transform.SetAsLastSibling();
+
+        if (canvasGroup != null)
+            canvasGroup.blocksRaycasts = false;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (canvas == null) return;
+
+        RectTransform canvasRect = canvas.transform as RectTransform;
+
+        // ✅ Ưu tiên worldPosition (chuẩn cho XR ray)
+        Vector3 worldPos = eventData.pointerCurrentRaycast.worldPosition;
+
+        if (worldPos != Vector3.zero)
+        {
+            Vector3 local = canvasRect.InverseTransformPoint(worldPos);
+            rect.localPosition = new Vector3(local.x, local.y, rect.localPosition.z);
+            return;
+        }
+
+        // Fallback cho PC/mouse (nếu cần)
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            canvasRect,
+            eventData.position,
+            eventData.pressEventCamera,
+            out Vector2 localPoint))
+        {
+            rect.localPosition = new Vector3(localPoint.x, localPoint.y, rect.localPosition.z);
+        }
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        if (!droppedOnSlot)
+        {
+            transform.SetParent(originalParent, worldPositionStays: true);
+        }
+
+        if (canvasGroup != null)
+            canvasGroup.blocksRaycasts = true;
+    }
+
+    public void SetParentToSlot(Transform slot)
+    {
+        transform.SetParent(slot, worldPositionStays: false);
+        rect.anchoredPosition = Vector2.zero;
+        droppedOnSlot = true;
+
+        if (canvasGroup != null)
+            canvasGroup.blocksRaycasts = true;
+    }
+}
+
+File DropSlot.cs
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+public enum SlotType { Cause, Solution }
+
+public class DropSlot : MonoBehaviour, IDropHandler
+{
+    public SlotType slotType;
+    public int index; // dòng thứ mấy (0,1,2,...)
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        var card = eventData.pointerDrag?.GetComponent<Dragable>();
+        if (card == null) return;
+
+        card.SetParentToSlot(transform);
+    }
+}
 
 File EpisodeSummaryUI.cs
 using System.Text;
@@ -2067,10 +2471,13 @@ public class PCUI : MonoBehaviour
     [Header("Dossier Panels")]
     public GameObject dossier1;
     public GameObject dossier2;
-    public GameObject dossier3;
 
     [Header("Camera zoom config")]
     public float focusDistance = 0.6f; // chỉnh ở Inspector
+
+    public GameObject dossierPanel;
+    public GameObject reportPanel;
+
 
 
 
@@ -2078,17 +2485,37 @@ public class PCUI : MonoBehaviour
     {
         cam = Camera.main.transform;
         root.SetActive(false);
+        dossierPanel.SetActive(false);
+        reportPanel.SetActive(false);
+
     }
 
     public void ShowDossier(int index)
     {
-        dossier1.SetActive(index == 0);
-        dossier2.SetActive(index == 1);
-        dossier3.SetActive(index == 2);
+        if (index == 1)
+        {
+            dossier1.SetActive(true);
+            dossier2.SetActive(false);
+        }
+        else if (index == 2)
+        {
+            dossier1.SetActive(false);
+            dossier2.SetActive(true);
+        }
     }
 
     public void Show(BeatSO beat, InteractionSO interaction, Action onDone)
-    {
+    {   
+        if (beat.beatId == "B04"|| beat.beatId =="B05")
+        {
+            dossierPanel.SetActive(true);
+            reportPanel.SetActive(false);
+        }
+        else if (beat.beatId == "B08")
+        {
+            dossierPanel.SetActive(false);
+            reportPanel.SetActive(true);
+        }
         onFinish = onDone;
 
         // Lưu camera ban đầu
@@ -2097,17 +2524,23 @@ public class PCUI : MonoBehaviour
 
         root.SetActive(true);
 
-        // khóa movement
-        player.SetLockState(true);
+        if (isVR)
+        {
+            SetVRControls(false); // disable move/turn/world-interact
+        }
+        //else
+        //{
+        //    //player.SetLockState(true);
+        //    Cursor.lockState = CursorLockMode.None;
+        //    Cursor.visible = true;
+        //}
 
-        // bật cursor (PC mode)
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
     }
 
     void Update()
     {
         if (!root.activeSelf) return;
+        if (isVR) return;
 
         Vector3 targetPos =
             cameraFocusPoint.position
@@ -2128,19 +2561,45 @@ public class PCUI : MonoBehaviour
 
 
     public void OnFinishClicked()
-    {
+    {   
+        Debug.Log("[PCUI] OnFinishClicked");
         root.SetActive(false);
-
-        // trả camera về
-        cam.position = camOriginalPos;
-        cam.rotation = camOriginalRot;
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
-        player.SetLockState(false);
+        if (isVR)
+        {
+            SetVRControls(true);  // enable lại
+        }
+        //else
+        //{
+        //    Cursor.lockState = CursorLockMode.Locked;
+        //    Cursor.visible = false;
+        //    player.SetLockState(false);
+        //}
 
         onFinish?.Invoke(); // báo beat xong
+    }
+
+    // Nút "Send" cho các màn PC đặc biệt (ví dụ gửi báo cáo)
+    // Gắn OnClick của button Send vào hàm này thay vì OnFinishClicked.
+    // Nếu chưa cần xử lý gì đặc biệt, có thể gọi lại OnFinishClicked().
+    public void OnSendClicked()
+    {
+        Debug.Log("[PCUI] OnSendClicked");
+
+        // TODO: xử lý nội dung report / drag-drop ở đây (nếu có)
+
+        // Sau khi xử lý xong, kết thúc interaction giống nút Done:
+        OnFinishClicked();
+    }
+
+    [Header("VR lock")]
+    public Behaviour[] behavioursToDisableDuringPCUI; // Move Provider, Turn Provider, world interact script...
+    public bool isVR = true; // hoặc tự detect
+
+    void SetVRControls(bool enabled)
+    {
+        if (behavioursToDisableDuringPCUI == null) return;
+        foreach (var b in behavioursToDisableDuringPCUI)
+            if (b != null) b.enabled = enabled;
     }
 }
 
@@ -2234,6 +2693,99 @@ namespace SeriousGame.UI
         public void Hide()
         {
             if (root != null) root.SetActive(false);
+        }
+    }
+}
+
+File WorldSpaceUIFollow.cs
+﻿using UnityEngine;
+
+public class WorldSpaceUIFollow : MonoBehaviour
+{
+    [Header("Target")]
+    [Tooltip("Nếu để trống, script sẽ dùng Camera.main.")]
+    public Transform targetCamera;
+
+    [Header("Follow Settings")]
+    [Tooltip("Khoảng cách UI trước mặt camera (m).")]
+    public float distance = 1.2f;
+
+    [Tooltip("Offset theo local space của camera (m). Ví dụ hạ UI xuống một chút.")]
+    public Vector3 cameraLocalOffset = new Vector3(0f, -0.15f, 0f);
+
+    [Tooltip("Nếu bật, UI sẽ follow mượt thay vì teleport theo camera.")]
+    public bool smoothFollow = true;
+
+    [Tooltip("Tốc độ follow mượt (càng lớn càng bám chặt).")]
+    public float positionLerpSpeed = 12f;
+
+    [Header("Rotation Settings")]
+    [Tooltip("Nếu true: UI chỉ xoay theo yaw (trục Y). Khuyên dùng cho VR.")]
+    public bool yawOnly = true;
+
+    [Tooltip("Tốc độ xoay mượt.")]
+    public float rotationLerpSpeed = 12f;
+
+    [Header("Update Timing")]
+    [Tooltip("LateUpdate thường ổn hơn vì camera đã update xong trong frame.")]
+    public bool useLateUpdate = true;
+
+    private void OnEnable()
+    {
+        if (targetCamera == null && Camera.main != null)
+            targetCamera = Camera.main.transform;
+    }
+
+    private void LateUpdate()
+    {
+        if (!useLateUpdate) return;
+        Tick();
+    }
+
+    private void Update()
+    {
+        if (useLateUpdate) return;
+        Tick();
+    }
+
+    private void Tick()
+    {
+        if (targetCamera == null)
+        {
+            if (Camera.main == null) return;
+            targetCamera = Camera.main.transform;
+        }
+
+        // 1) Tính vị trí mong muốn: trước mặt camera + offset
+        Vector3 desiredPos = targetCamera.position
+                             + targetCamera.forward * distance
+                             + targetCamera.TransformVector(cameraLocalOffset);
+
+        // 2) Follow vị trí
+        if (smoothFollow)
+            transform.position = Vector3.Lerp(transform.position, desiredPos, 1f - Mathf.Exp(-positionLerpSpeed * Time.deltaTime));
+        else
+            transform.position = desiredPos;
+
+        // 3) Quay mặt về camera
+        Vector3 lookDir = transform.position - targetCamera.position;
+
+        if (yawOnly)
+        {
+            // chỉ xoay theo Y (bỏ pitch/roll)
+            lookDir.y = 0f;
+            if (lookDir.sqrMagnitude < 0.0001f) return;
+
+            Quaternion desiredRot = Quaternion.LookRotation(lookDir.normalized, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, desiredRot, 1f - Mathf.Exp(-rotationLerpSpeed * Time.deltaTime));
+        }
+        else
+        {
+            // xoay full theo hướng camera
+            if (lookDir.sqrMagnitude < 0.0001f) return;
+
+            Quaternion desiredRot = Quaternion.LookRotation(lookDir.normalized, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, desiredRot, 1f - Mathf.Exp(-rotationLerpSpeed * Time.deltaTime));
         }
     }
 }

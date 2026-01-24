@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class Dragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public Canvas canvas;  // gán Canvas world-space
+    public Canvas canvas;  // gán Canvas world-space (monitor canvas)
 
     private RectTransform rect;
     private CanvasGroup canvasGroup;
@@ -22,39 +22,58 @@ public class Dragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         droppedOnSlot = false;
 
         // kéo card lên top để không bị layout của parent đè
-        transform.SetParent(canvas.transform);
-        canvasGroup.blocksRaycasts = false;
+        transform.SetParent(canvas.transform, worldPositionStays: true);
+        transform.SetAsLastSibling();
+
+        if (canvasGroup != null)
+            canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
-{
-    // Chuyển đổi vị trí chuột (screen point) sang tọa độ Local của Canvas
-    if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
-        canvas.transform as RectTransform, 
-        eventData.position, 
-        eventData.pressEventCamera, 
-        out Vector2 localPoint))
     {
-        // Gán trực tiếp vị trí local của card bằng vị trí local của chuột trên Canvas
-        rect.localPosition = localPoint;
+        if (canvas == null) return;
+
+        RectTransform canvasRect = canvas.transform as RectTransform;
+
+        // ✅ Ưu tiên worldPosition (chuẩn cho XR ray)
+        Vector3 worldPos = eventData.pointerCurrentRaycast.worldPosition;
+
+        if (worldPos != Vector3.zero)
+        {
+            Vector3 local = canvasRect.InverseTransformPoint(worldPos);
+            rect.localPosition = new Vector3(local.x, local.y, rect.localPosition.z);
+            return;
+        }
+
+        // Fallback cho PC/mouse (nếu cần)
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            canvasRect,
+            eventData.position,
+            eventData.pressEventCamera,
+            out Vector2 localPoint))
+        {
+            rect.localPosition = new Vector3(localPoint.x, localPoint.y, rect.localPosition.z);
+        }
     }
-}
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        // nếu không drop vào slot nào thì tự về parent cũ
         if (!droppedOnSlot)
         {
-            transform.SetParent(originalParent);
+            transform.SetParent(originalParent, worldPositionStays: true);
         }
-        canvasGroup.blocksRaycasts = true;
+
+        if (canvasGroup != null)
+            canvasGroup.blocksRaycasts = true;
     }
 
     public void SetParentToSlot(Transform slot)
     {
-        transform.SetParent(slot);
+        transform.SetParent(slot, worldPositionStays: false);
         rect.anchoredPosition = Vector2.zero;
         droppedOnSlot = true;
-        canvasGroup.blocksRaycasts = true;
+
+        if (canvasGroup != null)
+            canvasGroup.blocksRaycasts = true;
     }
 }
