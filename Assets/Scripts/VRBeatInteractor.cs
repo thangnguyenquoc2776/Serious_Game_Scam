@@ -12,9 +12,9 @@ public class VRBeatInteractor : MonoBehaviour
     [Header("Input (usually Trigger)")]
     [SerializeField] private InputActionReference interactAction;
 
-    [Header("Optional filtering")]
-    [SerializeField] private LayerMask interactMask = ~0;
-    [SerializeField] private float fallbackMaxDistance = 10f;
+    // [Header("Optional filtering")]
+    // [SerializeField] private LayerMask interactMask = ~0;
+    // [SerializeField] private float fallbackMaxDistance = 10f;
 
     private void OnEnable()
     {
@@ -41,11 +41,11 @@ public class VRBeatInteractor : MonoBehaviour
         }
 
         // 2) Fallback: manual physics raycast from this transform forward
-        Ray ray = new Ray(transform.position, transform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit2, fallbackMaxDistance, interactMask, QueryTriggerInteraction.Ignore))
-        {
-            TryCallInteract(hit2);
-        }
+        // Ray ray = new Ray(transform.position, transform.forward);
+        // if (Physics.Raycast(ray, out RaycastHit hit2, fallbackMaxDistance, interactMask, QueryTriggerInteraction.Ignore))
+        // {
+        //     TryCallInteract(hit2);
+        // }
     }
 
     private void TryCallInteract(RaycastHit hit)

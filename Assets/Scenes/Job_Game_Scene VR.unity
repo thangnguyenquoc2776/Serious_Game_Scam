@@ -462,7 +462,7 @@ PrefabInstance:
       objectReference: {fileID: 507440853}
     - target: {fileID: 4538792687737384972, guid: 7693fe4a758f51142bca37070f5f5ace, type: 3}
       propertyPath: behavioursToDisableDuringDialogue.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4538792687737384972, guid: 7693fe4a758f51142bca37070f5f5ace, type: 3}
       propertyPath: 'behavioursToDisableDuringDialogue.Array.data[0]'
@@ -22573,7 +22573,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1580817244
 Transform:
   m_ObjectHideFlags: 0
@@ -22596,7 +22596,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580817243}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9f365cf844c03449bc8973eead2c3c1, type: 3}
   m_Name: 
@@ -24651,11 +24651,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Mediator: {fileID: 1121001664}
   m_TransformationPriority: 0
-  m_MoveSpeed: 4
+  m_MoveSpeed: 5
   m_InAirControlModifier: 0.5
   m_EnableStrafe: 1
   m_EnableFly: 0
-  m_ForwardSource: {fileID: 0}
+  m_ForwardSource: {fileID: 1531739609}
   m_LeftHandMoveInput:
     m_InputSourceMode: 2
     m_InputAction:
@@ -24685,9 +24685,9 @@ MonoBehaviour:
     m_ObjectReferenceObject: {fileID: 0}
     m_ManualValue: {x: 0, y: 0}
   m_UseGravity: 0
-  m_HeadTransform: {fileID: 0}
-  m_LeftControllerTransform: {fileID: 0}
-  m_RightControllerTransform: {fileID: 0}
+  m_HeadTransform: {fileID: 1531739609}
+  m_LeftControllerTransform: {fileID: 1420814088}
+  m_RightControllerTransform: {fileID: 1993946833}
   m_LeftHandMovementDirection: 0
   m_RightHandMovementDirection: 0
 --- !u!1001 &1744922133
@@ -28695,7 +28695,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 661892487}
   m_InteractionLayers:
     m_Bits: 1610612736
-  m_Handedness: 0
+  m_Handedness: 2
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -28845,7 +28845,7 @@ MonoBehaviour:
   m_EnableUIInteraction: 1
   m_BlockInteractionsWithScreenSpaceUI: 0
   m_BlockUIOnInteractableSelection: 1
-  m_ManipulateAttachTransform: 1
+  m_ManipulateAttachTransform: 0
   m_UseForceGrab: 0
   m_RotateSpeed: 180
   m_TranslateSpeed: 1
@@ -29019,10 +29019,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRBeatInteractor
   rayInteractor: {fileID: 1993946838}
   interactAction: {fileID: 1500202223}
-  interactMask:
-    serializedVersion: 2
-    m_Bits: 64
-  fallbackMaxDistance: 10
 --- !u!1 &1999692399
 GameObject:
   m_ObjectHideFlags: 0
@@ -32643,7 +32639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2078563904981525423, guid: 341982b43e8e8e74893f019ec59fd628, type: 3}
       propertyPath: behavioursToDisableDuringPCUI.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2078563904981525423, guid: 341982b43e8e8e74893f019ec59fd628, type: 3}
       propertyPath: 'behavioursToDisableDuringPCUI.Array.data[0]'
@@ -32862,7 +32858,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7168375604757053527, guid: 341982b43e8e8e74893f019ec59fd628, type: 3}
-      insertIndex: -1
+      insertIndex: 4
       addedObject: {fileID: 402337710}
   m_SourcePrefab: {fileID: 100100000, guid: 341982b43e8e8e74893f019ec59fd628, type: 3}
 --- !u!1 &1120517093106790317
