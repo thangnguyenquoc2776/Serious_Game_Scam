@@ -6,7 +6,7 @@ using UnityEngine;
 public class PCUI : MonoBehaviour
 {
     public GameObject root;            // Canvas world-space (đã gắn sẵn trong scene)
-    public PlayerController player;
+    // public PlayerController player;
 
     [Header("Camera focus")]
     public Transform cameraFocusPoint; // Empty đặt trước màn hình
@@ -77,8 +77,8 @@ public class PCUI : MonoBehaviour
             SetVRControls(false); // disable move/turn/world-interact
   
             //player.SetLockState(true);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            // Cursor.lockState = CursorLockMode.None;
+            // Cursor.visible = true;
         
 
     }
@@ -114,9 +114,9 @@ public class PCUI : MonoBehaviour
             SetVRControls(true);  // enable lại
         
         
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            player.SetLockState(false);
+            // Cursor.lockState = CursorLockMode.Locked;
+            // Cursor.visible = false;
+            // player.SetLockState(false);
         
 
         onFinish?.Invoke(); // báo beat xong
@@ -129,7 +129,6 @@ public class PCUI : MonoBehaviour
     {
         Debug.Log("[PCUI] OnSendClicked");
 
-        // TODO: xử lý nội dung report / drag-drop ở đây (nếu có)
 
         // Sau khi xử lý xong, kết thúc interaction giống nút Done:
         OnFinishClicked();
