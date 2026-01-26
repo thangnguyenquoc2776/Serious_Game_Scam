@@ -108,7 +108,7 @@ namespace SeriousGame.Runtime
             isInteractionRunning = true;
             Debug.Log("[Episode] Run main interaction");
 
-            if (beat.beatId == "B01" || beat.beatId == "B07")
+            if (beat.beatId == "B01" || beat.beatId == "B07") // player sit
             {
                 var player = FindAnyObjectByType<PlayerController>();
 
