@@ -14,11 +14,7 @@ namespace SeriousGame.App
             string target = null;
 
             if (cfg != null)
-            {
-                var ep = cfg.defaultEpisode;
-                var epScene = ep != null ? ep.GetEntrySceneName() : "";
-                target = string.IsNullOrWhiteSpace(epScene) ? cfg.demoEpisodeSceneName : epScene;
-            }
+                target = cfg.demoEpisodeSceneName;
 
             if (string.IsNullOrWhiteSpace(target))
             {

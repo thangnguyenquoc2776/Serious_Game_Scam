@@ -1,32 +1,35 @@
 ﻿using System.Collections.Generic;
-using SeriousGame.Content;
 using SeriousGame.Trace;
+using SeriousGame.State;
+using SeriousGame.Content;
 
 namespace SeriousGame.Feedback
 {
     public class FeedbackService
     {
         private readonly TraceService _trace;
-        private readonly TraceTaxonomySO _taxonomy;
+        private readonly SeriousGame.Content.TraceTaxonomySO _taxonomy;
+        private readonly PlayerStateService _state;
 
-        public FeedbackService(TraceService trace, TraceTaxonomySO taxonomy)
+        public FeedbackService(TraceService trace, SeriousGame.Content.TraceTaxonomySO taxonomy, PlayerStateService state = null)
         {
             _trace = trace;
             _taxonomy = taxonomy;
+            _state = state;
         }
 
-        public FeedbackReport GenerateEndChapterReport(string sessionId, EpisodeSO episode)
+        public FeedbackReport GenerateEndChapterReport(string sessionId)
         {
             var report = new FeedbackReport();
             var events = _trace.GetSession(sessionId);
 
-            // Count by traceTypeId
+            // Count by verb
             var count = new Dictionary<string, int>();
             foreach (var e in events)
             {
-                if (string.IsNullOrWhiteSpace(e.traceTypeId)) continue;
-                if (!count.ContainsKey(e.traceTypeId)) count[e.traceTypeId] = 0;
-                count[e.traceTypeId]++;
+                if (string.IsNullOrWhiteSpace(e.verb)) continue;
+                if (!count.ContainsKey(e.verb)) count[e.verb] = 0;
+                count[e.verb]++;
             }
 
             int score = 0;
@@ -50,12 +53,26 @@ namespace SeriousGame.Feedback
             report.totalRiskScore = score;
 
             // Compose text quick MVP
-            var epTitle = episode != null ? episode.title : "Episode";
-            var text = $"TỔNG KẾT: {epTitle}\n";
+            var text = "TỔNG KẾT\n";
             text += $"RiskScore: {score} (âm là tốt, dương là rủi ro)\n\n";
             foreach (var it in report.items)
             {
                 text += $"- {it.title}: {it.scoreDelta}\n  {it.detail}\n";
+            }
+
+            if (_state != null)
+            {
+                var snapshot = _state.GetSnapshot();
+                if (snapshot != null && snapshot.entries != null && snapshot.entries.Count > 0)
+                {
+                    text += "\nState snapshot:\n";
+                    for (int i = 0; i < snapshot.entries.Count; i++)
+                    {
+                        var entry = snapshot.entries[i];
+                        if (entry == null) continue;
+                        text += $"- {entry.key}: {entry.value}\n";
+                    }
+                }
             }
 
             report.rawSummaryText = text;

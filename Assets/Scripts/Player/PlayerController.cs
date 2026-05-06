@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using SeriousGame.Runtime;
 namespace SeriousGame.Runtime
 {
     public class PlayerController : MonoBehaviour
@@ -39,7 +39,7 @@ namespace SeriousGame.Runtime
 
         // Thêm hàm để điều khiển chuột
         public void SetLockState(bool locked)
-        {
+        {   Debug.Log($"[PlayerController] SetLockState: {locked}");
             isLocked = locked;
             Cursor.lockState = locked ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = locked;
@@ -102,7 +102,7 @@ namespace SeriousGame.Runtime
                 Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
                 if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactableLayer))
                 {
-                    var interactable = hit.collider.GetComponent<IInteractable>();
+                    var interactable = hit.collider.GetComponent<SeriousGame.Runtime.NodeInteractable>();
                     interactable?.Interact();
                 }
             }

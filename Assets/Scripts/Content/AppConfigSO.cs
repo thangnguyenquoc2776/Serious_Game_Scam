@@ -14,7 +14,6 @@ namespace SeriousGame.Content
         public bool skipMainMenuAndAutoStartEpisode = true;
 
         [Header("Content")]
-        public EpisodeSO defaultEpisode;
         public TraceTaxonomySO traceTaxonomy;
     }
 }

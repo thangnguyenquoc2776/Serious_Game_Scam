@@ -1,0 +1,188 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using Yarn.Unity;
+using SeriousGame.App;
+using SeriousGame.Trace;
+using SeriousGame.State;
+using SeriousGame.Runtime;
+
+namespace SeriousGame.Narrative
+{
+    public class YarnCommandBridge : MonoBehaviour
+    {
+        [Header("Context (optional override)")]
+        [SerializeField] private AppContext contextOverride;
+
+        [Header("Yarn")]
+        [SerializeField] private DialogueRunner runner;
+
+        [Header("Optional Player")]
+        [SerializeField] private PlayerController player;
+
+        private AppContext Context => contextOverride != null ? contextOverride : GameBootstrap.Context;
+
+        private void Awake()
+        {
+            var ctx = Context;
+            if (ctx != null && ctx.Narrative != null)
+            {
+                if (runner != null)
+                    ctx.Narrative.BindRunner(runner);
+                if (player != null)
+                    ctx.Narrative.BindPlayer(player);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            var ctx = Context;
+            if (ctx != null && ctx.Narrative != null)
+                ctx.Narrative.UnbindRunner();
+        }
+
+        [YarnCommand("trace")]
+        public void TraceCommand(string traceTypeId)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.Trace == null) return;
+
+            var sessionId = ctx.Session != null ? ctx.Session.CurrentSessionId : "";
+            var actor = ctx.Session != null && !string.IsNullOrWhiteSpace(ctx.Session.ParticipantId)
+                ? ctx.Session.ParticipantId
+                : sessionId;
+            var yarnNode = ctx.Narrative != null ? ctx.Narrative.CurrentNode : "";
+            var context = ctx.Trace.BuildContext(
+                SceneManager.GetActiveScene().name,
+                yarnNode,
+                SceneManager.GetActiveScene().name,
+                ctx.PlayerState != null ? ctx.PlayerState.GetSnapshot() : null);
+
+            ctx.Trace.LogEvent(
+                sessionId,
+                actor,
+                traceTypeId,
+                string.IsNullOrWhiteSpace(yarnNode) ? "Node_Unknown" : yarnNode,
+                null,
+                context);
+        }
+
+        [YarnCommand("set_node")]
+        public void SetNode(string nodeName)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.Narrative == null) return;
+            ctx.Narrative.SetCurrentNode(nodeName);
+        }
+
+        [YarnCommand("trace_choice")]
+        public void TraceChoice(string choiceId, string traceTypeId)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.Trace == null) return;
+            if (string.IsNullOrWhiteSpace(traceTypeId) || string.IsNullOrWhiteSpace(choiceId)) return;
+
+            var sessionId = ctx.Session != null ? ctx.Session.CurrentSessionId : "";
+            var actor = ctx.Session != null && !string.IsNullOrWhiteSpace(ctx.Session.ParticipantId)
+                ? ctx.Session.ParticipantId
+                : sessionId;
+            var yarnNode = ctx.Narrative != null ? ctx.Narrative.CurrentNode : "";
+            var context = ctx.Trace.BuildContext(
+                SceneManager.GetActiveScene().name,
+                yarnNode,
+                SceneManager.GetActiveScene().name,
+                ctx.PlayerState != null ? ctx.PlayerState.GetSnapshot() : null);
+
+            ctx.Trace.LogEvent(
+                sessionId,
+                actor,
+                traceTypeId,
+                choiceId,
+                null,
+                context);
+        }
+
+        [YarnCommand("add_state")]
+        public void AddState(string key, int delta)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.PlayerState == null) return;
+            ctx.PlayerState.Add(key, delta);
+        }
+
+        [YarnCommand("set_state")]
+        public void SetState(string key, int value)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.PlayerState == null) return;
+            ctx.PlayerState.Set(key, value);
+        }
+
+        [YarnCommand("load_scene")]
+        public void LoadScene(string sceneName)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.Scenes == null) return;
+            ctx.Scenes.Load(sceneName);
+        }
+
+        [YarnCommand("show_summary")]
+        public void ShowSummary()
+        {
+            SeriousGame.App.GameEventBus.RaiseSummaryRequested();
+        }
+
+        [YarnCommand("save_game")]
+        public void SaveGame()
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.Save == null) return;
+
+            var episodeId = SceneManager.GetActiveScene().name;
+
+            var currentNode = ctx.Narrative != null ? ctx.Narrative.CurrentNode : "";
+            ctx.Save.SaveCurrent(episodeId, currentNode);
+        }
+
+        [YarnCommand("show_phone_chat")]
+        public void ShowPhoneChat(string interactionId)
+        {
+            if (string.IsNullOrWhiteSpace(interactionId)) return;
+            SeriousGame.App.GameEventBus.RaisePhoneChatRequested(interactionId);
+        }
+
+        [YarnCommand("show_chat")]
+        public void ShowChat(string characterName, string message)
+        {
+            if (string.IsNullOrWhiteSpace(message)) return;
+            SeriousGame.App.GameEventBus.RaisePhoneMessageReceived(characterName, message);
+        }
+
+        [YarnCommand("show_hint")]
+        public void ShowHint(string message)
+        {
+            if (string.IsNullOrWhiteSpace(message)) return;
+            SeriousGame.App.GameEventBus.RaiseHintRequested(message);
+        }
+
+        [YarnCommand("set_flag")]
+        public void SetFlag(string key, bool value = true)
+        {
+            if (string.IsNullOrWhiteSpace(key)) return;
+            if (GameStateManager.Instance != null)
+                GameStateManager.Instance.SetFlag(key, value);
+        }
+
+        [YarnCommand("clear_flag")]
+        public void ClearFlag(string key)
+        {
+            SetFlag(key, false);
+        }
+
+        [YarnCommand("show_toast")]
+        public void ShowToast(string message)
+        {
+            if (string.IsNullOrWhiteSpace(message)) return;
+            SeriousGame.App.GameEventBus.RaiseToastRequested(message);
+        }
+    }
+}

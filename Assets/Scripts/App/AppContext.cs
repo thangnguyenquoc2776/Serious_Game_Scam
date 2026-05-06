@@ -2,6 +2,9 @@ using UnityEngine;
 using SeriousGame.Content;
 using SeriousGame.Trace;
 using SeriousGame.Feedback;
+using SeriousGame.State;
+using SeriousGame.Save;
+using SeriousGame.Narrative;
 
 namespace SeriousGame.App
 {
@@ -10,8 +13,11 @@ namespace SeriousGame.App
         public AppConfigSO Config { get; private set; }
         public SceneService Scenes { get; private set; }
         public SessionService Session { get; private set; }
+        public PlayerStateService PlayerState { get; private set; }
         public TraceService Trace { get; private set; }
         public FeedbackService Feedback { get; private set; }
+        public SaveService Save { get; private set; }
+        public NarrativeService Narrative { get; private set; }
 
         public void Init(AppConfigSO config)
         {
@@ -19,11 +25,21 @@ namespace SeriousGame.App
 
             Scenes = new SceneService();
             Session = new SessionService();
+            PlayerState = new PlayerStateService();
 
             var store = new InMemoryTraceStore();
-            Trace = new TraceService(store);
+            var fileStore = new FileTraceStore();
+            Trace = new TraceService(store, fileStore);
 
-            Feedback = new FeedbackService(Trace, config != null ? config.traceTaxonomy : null);
+            Feedback = new FeedbackService(Trace, config != null ? config.traceTaxonomy : null, PlayerState);
+            Save = new SaveService(Session, PlayerState);
+            Narrative = new NarrativeService(this);
+        }
+
+        private void OnDestroy()
+        {
+            if (Narrative != null)
+                Narrative.Dispose();
         }
     }
 }

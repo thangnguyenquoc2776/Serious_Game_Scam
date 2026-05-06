@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using SeriousGame.Content;
 
 namespace SeriousGame.App
@@ -34,29 +33,10 @@ namespace SeriousGame.App
             ctx.Init(config);
 
             Context = ctx;
+
+            if (ctx.Session != null && string.IsNullOrWhiteSpace(ctx.Session.CurrentSessionId))
+                ctx.Session.Begin();
         }
 
-        public void StartDemo()
-        {
-            if (config == null) return;
-
-            // Boot scene -> next
-            string targetScene;
-            if (config.skipMainMenuAndAutoStartEpisode)
-            {
-                // Prefer Episode entry scene if available
-                var ep = config.defaultEpisode;
-                var epScene = ep != null ? ep.GetEntrySceneName() : "";
-                targetScene = string.IsNullOrWhiteSpace(epScene) ? config.demoEpisodeSceneName : epScene;
-            }
-            else
-            {
-                targetScene = config.mainMenuSceneName;
-            }
-
-            var active = SceneManager.GetActiveScene().name;
-            if (!string.IsNullOrWhiteSpace(targetScene) && active != targetScene)
-                SceneManager.LoadScene(targetScene);
-        }
     }
 }

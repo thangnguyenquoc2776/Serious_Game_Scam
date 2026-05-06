@@ -16,5 +16,5 @@ MonoBehaviour:
   mainMenuSceneName: MainMenu
   demoEpisodeSceneName: Episode0
   skipMainMenuAndAutoStartEpisode: 1
-  defaultEpisode: {fileID: 11400000, guid: 38ea19120fddf2346a91a887a0015584, type: 2}
+  defaultEpisode: {fileID: 11400000, guid: 4013437e55aa70d469894046307a829c, type: 2}
   traceTaxonomy: {fileID: 11400000, guid: a909c0caf58cd22448b4736ebcafef0b, type: 2}

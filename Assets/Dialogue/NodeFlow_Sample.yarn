@@ -1,0 +1,19 @@
+title: Node_AutoIntro
+---
+<<declare $shipper_stage = 0>>
+Narrator: Welcome to the dorm.
+Narrator: Talk to the shipper NPC when you are ready.
+===
+
+title: Node_NPC_Shipper_Interact
+---
+<<if $shipper_stage == 0>>
+Shipper: Hey, I have a package for you. Can you confirm your student ID?
+<<set $shipper_stage = 1>>
+<<elseif $shipper_stage == 1>>
+Shipper: Still waiting for that confirmation. Please verify through the official portal.
+<<set $shipper_stage = 2>>
+<<else>>
+Shipper: Good choice. Always verify before sharing personal info.
+<<endif>>
+===

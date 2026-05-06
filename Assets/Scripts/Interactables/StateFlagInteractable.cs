@@ -2,7 +2,7 @@ using UnityEngine;
 using SeriousGame.Runtime;
 
 // Interactable chỉ dùng để set GameState, không trigger Beat/Episode
-public class StateFlagInteractable : MonoBehaviour, IInteractable
+public class StateFlagInteractable : MonoBehaviour
 {
     [Header("Game State Key to set")]
     public string flagKey;

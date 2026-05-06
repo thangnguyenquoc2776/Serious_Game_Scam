@@ -3,7 +3,7 @@ using SeriousGame.Runtime;
 
 // Interactable dùng để teleport player tới một vị trí (vd: qua cổng -> vào office)
 // Có thể kích hoạt bằng nhấn E (IInteractable) hoặc tự động khi player bước vào trigger.
-public class TeleportInteractable : MonoBehaviour, IInteractable
+public class TeleportInteractable : MonoBehaviour
 {
     [Header("Player & Destination")]
     public PlayerController player;      // kéo PlayerController vào đây

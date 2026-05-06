@@ -1,17 +1,35 @@
 using System;
+using SeriousGame.State;
 
 namespace SeriousGame.Trace
 {
     [Serializable]
     public class TraceEvent
     {
-        public string sessionId;
-        public string episodeId;
-        public string beatId;
-        public string interactionId;
-        public string choiceId;
-        public string traceTypeId;
+        [Serializable]
+        public class ResultData
+        {
+            public float scoreDelta;
+            public bool isCorrect;
+        }
 
+        [Serializable]
+        public class ContextData
+        {
+            public string episodeId;
+            public string yarnNode;
+            public string unityScene;
+            public PlayerStateSnapshot stateBefore;
+        }
+
+        // Local session linkage for fast filtering.
+        public string sessionId;
+
+        public string actor;
+        public string verb;
+        public string objectId;
+        public ResultData result;
+        public ContextData context;
         public long unixMs;
     }
 }

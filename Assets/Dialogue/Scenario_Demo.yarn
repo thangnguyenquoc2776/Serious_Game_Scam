@@ -1,0 +1,119 @@
+title: E00_Intro_Auto
+position: 0,0
+---
+<<set_node "E00_Intro_Auto">>
+Minh: tới thiệt rồi
+<<set_flag "intro_done" true>>
+===
+
+title: E00_Guard_Talk
+position: 172,-239
+---
+<<set_node "E00_Guard_Talk">>
+Bảo vệ: "Khoan cháu."
+Bảo vệ: "Cháu mới vô ở hả?"
+Minh: "Dạ đúng rồi chú."
+Bảo vệ: "Ừ, mới vô thì cứ vô làm thủ tục nhận phòng đi. Nhưng chú nói tr...ẹt đó cháu. Không có thẻ là đứng đây chờ làm lại mất thời gian."
+Minh: "Dạ, cháu hiểu ạ."
+-> Đi thẳng vào trong
+    <<trace_choice "C01" "T_LOW_CAUTION">>
+    <<set_flag "has_direction_info" true>>
+    <<set_flag "guard_done" true>>
+    <<set_flag "choice_guard_direct" true>>
+-> Hỏi đường chú bảo vệ
+    <<trace_choice "C01" "T_HIGH_CAUTION">>
+    <<set_flag "has_direction_info" true>>
+    <<set_flag "choice_guard_ask" true>>
+    <<jump E00_Guard_FollowUp>>
+===
+
+title: E00_Guard_FollowUp
+position: 510,-86
+---
+<<set_node "E00_Guard_FollowUp">>
+Bảo vệ: "Đúng rồi, mới vô ai cũng lạc hết. Cháu nhìn thẳng vô, đi theo l... đó rồi hỏi quầy trực thêm lần nữa cho chắc. Đừng đi vòng vòng."
+<<set_flag "guard_done" true>>
+===
+
+title: E00_Office_Talk
+position: 180,205
+---
+<<set_node "E00_Office_Talk">>
+Minh: "Con chào cô ạ, con là tân sinh viên tòa A."
+Cô văn phòng: "Rồi, con cho cô xem thông tin đăng ký. Có mã hồ sơ thì đưa, không thì mở email xác nhận."
+Lục lọi các thứ ... tìm được email
+Minh: "Dạ, email của con đây ạ"
+Cô văn phòng: "Ừm, đúng rồi." ... "Con tên Minh, phòng 210 đúng không?"
+Minh: "Dạ."
+Cô văn phòng: "Đây là thẻ ra vào. Con giữ kỹ. Ra vô khu này có chỗ quẹt thẻ. Mất thẻ là phiền lắm."
+Cô văn phòng: "Còn nhóm ZALO thông báo của tòa... con quét QR ở bảng phía bên kia là vô được nhé"
+-> Cảm ơn và rời đi
+    <<trace_choice "C01" "T_LOW_CAUTION">>
+    <<set_flag "office_done" true>>
+    <<set_flag "choice_office_thanks" true>>
+-> Lưu số điện thoại quầy trực vào danh bạ
+    <<trace_choice "C01" "T_HIGH_CAUTION">>
+    <<set_flag "contrace_saved" true>>
+    <<set_flag "choice_office_save" true>>
+    <<jump E00_Office_SaveNumber>>
+===
+
+title: E00_Office_SaveNumber
+position: -194,400
+---
+<<set_node "E00_Office_SaveNumber">>
+Cô văn phòng: "Số quầy trực là 0123456789 nhé con"
+<<set_flag "office_done" true>>
+===
+
+title: E00_End
+position: 508,191
+---
+<<set_node "E00_End">>
+<<show_summary>>
+===
+
+title: SCAM_B1_Link
+position: 338,490
+---
+<<set_node "SCAM_B1_Link">>
+Bạn nhận được một tin nhắn kèm đường link với nội dung khẩn cấp. Bạn sẽ làm gì?
+-> Bấm link xem thử
+    <<trace_choice "C_B1_1" "T_CLICK_SUSPICIOUS_LINK">>
+    Bạn vừa mở một đường link không rõ nguồn. Nguy cơ bị giả mạo hoặc đánh cắp tài khoản tăng mạnh.
+    <<jump SCAM_B2_Deposit>>
+-> Kiểm tra nguồn trước khi bấm
+    <<trace_choice "C_B1_2" "T_VERIFY_OFFICIAL">>
+    Bạn chọn xác minh bằng kênh chính thống trước. Đây là hành vi an toàn.
+    <<jump SCAM_B2_Deposit>>
+===
+
+title: SCAM_B2_Deposit
+position: 35,576
+---
+<<set_node "SCAM_B2_Deposit">>
+Người kia yêu cầu bạn chuyển khoản đặt cọc để tiếp tục xử lý. Bạn phản ứng thế nào?
+-> Chuyển khoản đặt cọc theo yêu cầu
+    <<trace_choice "C_B2_1" "T_SEND_DEPOSIT">>
+    Bạn chuyển tiền khi chưa xác minh. Đây là tình huống rủi ro cao và rất dễ bị dẫn dắt tiếp.
+    <<jump SCAM_B3_Verify>>
+-> Hỏi bạn bè/nhóm chính thức để xác nhận
+    <<trace_choice "C_B2_2" "T_ASK_FRIEND_CONFIRM">>
+    Bạn hỏi xác nhận chéo. Thường chỉ cần bước này là đã lộ ra nhiều dấu hiệu lừa đảo.
+    <<jump SCAM_B3_Verify>>
+===
+
+title: SCAM_B3_Verify
+position: -18,880
+---
+<<set_node "SCAM_B3_Verify">>
+Trước khi quyết định cuối cùng, bạn muốn làm gì để xác minh thông tin?
+-> Gọi hotline/tra cứu website chính thức để kiểm tra
+    <<trace_choice "C_B3_1" "T_VERIFY_OFFICIAL">>
+    Bạn xác minh được thông tin qua nguồn chính thống, tránh bị thao túng.
+    <<show_summary>>
+-> Làm theo hướng dẫn của họ (không xác minh)
+    <<trace_choice "C_B3_2" "T_CLICK_SUSPICIOUS_LINK">>
+    Bạn bỏ qua bước xác minh. Trong thực tế, đây là lúc scam "khóa kịch bản" để kéo bạn đi tiếp.
+    <<show_summary>>
+===

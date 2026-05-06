@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using SeriousGame.State;
 
 public class GameStateManager : MonoBehaviour {
     public static GameStateManager Instance;
@@ -8,11 +9,18 @@ public class GameStateManager : MonoBehaviour {
     void Awake() { Instance = this; DontDestroyOnLoad(gameObject); }
 
     public void SetFlag(string key, bool value) {
+        if (!IsKeyAllowed(key))
+        {
+            Debug.LogWarning($"[GameStateManager] Invalid key: {key}");
+            return;
+        }
+
         flags[key] = value;
         Debug.Log($"State updated: {key} = {value}");
     }
 
     public bool CheckFlag(string key) {
+        if (!IsKeyAllowed(key)) return false;
         return flags.ContainsKey(key) && flags[key];
     }
 
@@ -31,7 +39,7 @@ public class GameStateManager : MonoBehaviour {
         if (string.IsNullOrEmpty(prefix)) return 0;
         int count = 0;
         foreach (var kv in flags) {
-            if (kv.Key.StartsWith(prefix) && kv.Value)
+            if (kv.Key.StartsWith(prefix) && kv.Value && IsKeyAllowed(kv.Key))
                 count++;
         }
         return count;
@@ -40,5 +48,10 @@ public class GameStateManager : MonoBehaviour {
     // Lấy snapshot readonly để script khác có thể tự tính toán thêm nếu cần
     public IReadOnlyDictionary<string, bool> GetSnapshot() {
         return flags;
+    }
+
+    private bool IsKeyAllowed(string key)
+    {
+        return GameStateKeys.IsValid(key);
     }
 }
