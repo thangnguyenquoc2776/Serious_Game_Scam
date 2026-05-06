@@ -16,7 +16,7 @@ Hệ thống: Chào mừng Khoa đến với node kiểm tra. Bạn muốn test 
     <<jump Test_Trace>>
 -> Test Hệ thống Save & Load
     <<jump Test_Save>>
--> Không làm gì cả
+-> Test luồng cốt truyện    
 ===
 
 title: Test_Flags

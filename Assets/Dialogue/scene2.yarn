@@ -1,9 +1,20 @@
+title: Bao_ve_S2
+---
+    Player: Dạ con trả chìa khóa cho chú nè
+    Bao ve: OK NÍ
+===
+
 title: Thang_Ban_S2
 ---
-Thằng bạn: "Ủa, ra ngoài rồi hả? Lên xe đi tui chở đi lượn vòng nè!"
+<<if visited("Bao_ve_S2") == true>>
+    Thang ban: Lên xe!
+<<else>>
+    Thang ban: Trả chìa khóa cho chú bảo vệ đi bro
+<<endif>>
 ===
+
 
 title: Cai_Cua_S2
 ---
-Player: "Cửa này giờ không cần đi qua nữa, mình đi bằng xe."
+Ko cần mở cửa nữa
 ===
