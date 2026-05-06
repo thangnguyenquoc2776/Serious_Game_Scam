@@ -1,0 +1,159 @@
+title: Start
+tags:
+---
+// Test 1: Kiểm tra UI thông báo (Toast) và Gợi ý (Hint)
+<<show_toast "Bắt đầu bài kiểm tra hệ thống">>
+<<show_hint "Mẹo: Hãy kiểm tra kỹ các đường link lạ.">>
+
+Hệ thống: Chào mừng Khoa đến với node kiểm tra. Bạn muốn test phần nào?
+-> Test Flag & Biến hội thoại (GameStateManager)
+    <<jump Test_Flags>>
+-> Test Chỉ số người chơi (PlayerStateService)
+    <<jump Test_Stats>>
+-> Test Điện thoại & Tin nhắn (PhoneUI)
+    <<jump Test_Phone>>
+-> Test Trace & Phân tích dữ liệu (TraceService)
+    <<jump Test_Trace>>
+-> Test Hệ thống Save & Load
+    <<jump Test_Save>>
+-> Không làm gì cả
+===
+
+title: Test_Flags
+---
+// Test việc đọc/ghi flag vào GameStateManager qua VariableStorage
+// Lưu ý: Các key phải nằm trong GameStateKeys.cs mới hợp lệ
+
+<<set_flag STATE_TRUST true>>
+Hệ thống: Đã đặt flag STATE_TRUST thành true.[cite: 1]
+
+<<if get_flag("STATE_TRUST") == true>>[cite: 1]
+    Hệ thống: Xác nhận GameStateManager đã lưu flag TRUST thành công!
+<<else>>
+    Hệ thống: Lỗi! Không tìm thấy flag hoặc GameStateManager chưa cập nhật.
+<<endif>>
+
+<<clear_flag STATE_TRUST>>[cite: 1]
+Hệ thống: Đã xóa flag. Bây giờ bạn muốn làm gì tiếp?
+<<jump Start>>
+===
+
+title: Test_Stats
+---
+// Test việc tăng/giảm chỉ số (0-3) trong PlayerStateService[cite: 1]
+Hệ thống: Số tiền hiện tại của bạn là: {get_state("STATE_MONEY")}.[cite: 1]
+
+-> Tăng 1 tiền
+    <<add_state STATE_MONEY 1>>[cite: 1]
+-> Giảm 1 tiền
+    <<add_state STATE_MONEY -1>>[cite: 1]
+-> Đặt thẳng tiền về mức 3 (Tối đa)
+    <<set_state STATE_MONEY 3>>[cite: 1]
+
+Hệ thống: Sau khi cập nhật, tiền của bạn là: {get_state("STATE_MONEY")}.[cite: 1]
+<<jump Start>>
+===
+
+title: Test_Phone
+---
+// Test GameEventBus gửi lệnh tới PhoneUIListener[cite: 1]
+<<show_chat "Hacker" "Chào bạn, mình có món quà bất ngờ cho bạn đây">>[cite: 1]
+<<show_chat "Hacker" "Nhấn vào link này nhé: http://scam.link">>[cite: 1]
+
+Hệ thống: Bạn có thấy tin nhắn hiện lên trong UI Phone không?
+-> Có, đã hiện.
+-> Chưa thấy gì.
+<<jump Start>>
+===
+
+title: Test_Trace
+---
+// Test ghi log hành vi vào file trace.jsonl[cite: 1]
+Hệ thống: Đang giả lập hành vi kiểm tra thông tin chính thống...
+<<trace T_VERIFY_OFFICIAL>>[cite: 1]
+
+Hệ thống: Bây giờ hãy chọn một lựa chọn để test trace_choice.
+-> Chọn phương án rủi ro
+    <<trace_choice "CHOICE_RISKY" "T_CLICK_LINK">>[cite: 1]
+    Hệ thống: Đã ghi log hành vi nhấn link rủi ro.
+-> Chọn phương án an toàn
+    <<trace_choice "CHOICE_SAFE" "T_EXIT_APP">>[cite: 1]
+    Hệ thống: Đã ghi log hành vi thoát app an toàn.
+
+Hệ thống: Hãy kiểm tra file trace.jsonl trong persistentDataPath để xem kết quả.[cite: 1]
+<<jump Start>>
+===
+
+title: Test_Save
+---
+// Test hệ thống SaveService[cite: 1]
+Hệ thống: Chuẩn bị lưu trạng thái hiện tại (bao gồm tiền, flags, và node này)...
+<<save_game>>[cite: 1]
+
+<<show_toast "Game đã được lưu!">>[cite: 1]
+Hệ thống: Bạn có thể tắt game, mở lại và dùng SaveService.Load() để kiểm tra.[cite: 1]
+
+-> Xem báo cáo tổng kết (Summary)
+    <<show_summary>>[cite: 1]
+-> Quay lại Menu chính
+    <<load_scene "MainMenu">>[cite: 1]
+-> Tiếp tục test
+    <<jump Start>>
+===
+
+// title: Thang_Ban  // Đây là node duy nhất bạn điền vào Unity
+// ---
+// // Bước 1: Kiểm tra đang ở Cảnh nào
+// <<if visited("Thang_Ban_S1") == 0>>
+//     <<jump Thang_Ban_S1>>
+// <<elseif visited("Thang_Ban_S2") == 0>>
+//     <<jump Thang_Ban_S2>>
+// <<else>>
+//     <<jump Thang_Ban_S3>>
+// <<endif>>
+
+// ===
+
+// title: Thang_Ban_S1
+// ---
+// <<if visited("Thang_Ban_S1") == 0>>
+//     Thằng bạn: Ê, đi mở cửa đi!
+// <<else>>
+//     Thằng bạn: Sao, mở được chưa?
+// <<endif>>
+// ===
+
+
+
+// title: Cai_Cua_S1
+// ---
+// <<if visited("Thang_Ban_S1") == 0>>
+//     (Cửa khóa) Player: Mình nên hỏi thằng bạn xem sao.
+// <<else>>
+//     (Cửa mở) Player: Đi thôi
+//     <<set_flag Cua_Mo true>>
+// <<endif>>
+// ===
+
+// title: Thang_Ban_S2
+// ---
+// <<if visited("Cai_Cua_S1") == 0>>
+//     Tôi: Mình chưa mở cửa
+// <<else>>
+//     Thằng bạn: Hello welcome back chú lan 2
+// <<endif>>
+// ===
+
+// title: Bao_ve
+// ---
+//     Bảo vệ: Về đi ku?!
+//     -> OK
+//     -> KO về
+// ===
+
+// title: Thang_Ban_S3
+// ---
+// Thang ban: chao mung may da tro lai lan 3
+// ===
+
+

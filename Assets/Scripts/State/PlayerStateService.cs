@@ -1,15 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace SeriousGame.State
 {
+    [System.Serializable]
     public class PlayerStateService
     {
+        [SerializeField]
         private readonly Dictionary<string, int> _states = new Dictionary<string, int>();
+        [SerializeField]
         private readonly Dictionary<string, bool> _flags = new Dictionary<string, bool>();
 
         public PlayerStateService()
-        {
+        {   // Initialize default keys with default values to ensure they exist in the state.
             for (int i = 0; i < GameStateKeys.DefaultKeys.Length; i++)
             {
                 var key = GameStateKeys.DefaultKeys[i];
@@ -28,6 +32,7 @@ namespace SeriousGame.State
         {
             if (string.IsNullOrWhiteSpace(key)) return;
             _states[key] = Clamp(value);
+            Debug.Log($"[PlayerStateService] Set state '{key}' to {value}");
         }
 
         public void Add(string key, int delta)
@@ -47,6 +52,7 @@ namespace SeriousGame.State
         {
             if (!IsKeyAllowed(key)) return;
             _flags[key] = value;
+            Debug.Log($"[PlayerStateService] Set flag '{key}' to {value}");
         }
 
         public int CountTrue(params string[] keys)

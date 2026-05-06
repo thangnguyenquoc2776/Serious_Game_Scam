@@ -1,0 +1,17 @@
+title: Thang_Ban_S1
+---
+Thằng bạn: "Dậy rồi đó hả ông cháu? Đi ra mở cửa giùm tui cái đi."
+<<set $roommate_talked_s1 = true>>
+===
+
+title: Cai_Cua_S1
+---
+<<if $roommate_talked_s1 == false>>
+    Player: "Cửa đang khóa. Mình nên hỏi thằng bạn xem sao đã."
+<<else>>
+    Player: "Cửa mở rồi! Đi ra ngoài thôi."
+    
+    <<set $scene = 2>>
+    
+<<endif>>
+===

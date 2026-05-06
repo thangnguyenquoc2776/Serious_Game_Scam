@@ -102,7 +102,7 @@ namespace SeriousGame.Runtime
                 Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
                 if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactableLayer))
                 {
-                    var interactable = hit.collider.GetComponent<SeriousGame.Runtime.NodeInteractable>();
+                    var interactable = hit.collider.GetComponent<IInteractable>();
                     interactable?.Interact();
                 }
             }

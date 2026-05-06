@@ -26,6 +26,7 @@ namespace SeriousGame.Trace
             {
                 File.AppendAllText(_filePath, json + Environment.NewLine);
             }
+            Debug.Log($"[FileTraceStore] Added event to file: {json}");
         }
 
         public List<TraceEvent> GetBySession(string sessionId)

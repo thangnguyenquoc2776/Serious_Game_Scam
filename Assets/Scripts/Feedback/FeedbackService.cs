@@ -18,6 +18,7 @@ namespace SeriousGame.Feedback
             _state = state;
         }
 
+        // Quick and simple feedback report generation based on trace events and player state.ss
         public FeedbackReport GenerateEndChapterReport(string sessionId)
         {
             var report = new FeedbackReport();
