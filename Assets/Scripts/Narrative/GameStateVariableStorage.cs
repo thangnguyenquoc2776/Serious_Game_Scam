@@ -41,7 +41,7 @@ namespace SeriousGame.Narrative
 
             if (typeof(T) == typeof(float))
             {
-                object value = state.CheckFlag(key) ? 1f : 0f;
+                object value = (float)state.Get(key);
                 result = (T)value;
                 return true;
             }

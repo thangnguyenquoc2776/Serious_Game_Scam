@@ -11,7 +11,7 @@ namespace SeriousGame.Narrative
     public class YarnCommandBridge : MonoBehaviour
     {
         [Header("Context (optional override)")]
-        [SerializeField] private AppContext contextOverride;
+        // [SerializeField] private AppContext contextOverride;
 
         [Header("Yarn")]
         [SerializeField] private DialogueRunner runner;
@@ -19,7 +19,8 @@ namespace SeriousGame.Narrative
         [Header("Optional Player")]
         [SerializeField] private PlayerController player;
 
-        private AppContext Context => contextOverride != null ? contextOverride : GameBootstrap.Context;
+        // private AppContext Context => contextOverride != null ? contextOverride : GameBootstrap.Context;
+        private static AppContext Context => GameBootstrap.Context;
 
         private void Awake()
         {
@@ -41,7 +42,7 @@ namespace SeriousGame.Narrative
         }
 
         [YarnCommand("trace")]
-        public void TraceCommand(string traceTypeId)
+        public static void TraceCommand(string traceTypeId)
         {
             var ctx = Context;
             if (ctx == null || ctx.Trace == null) return;
@@ -67,7 +68,7 @@ namespace SeriousGame.Narrative
         }
 
         [YarnCommand("set_node")]
-        public void SetNode(string nodeName)
+        public static void SetNode(string nodeName)
         {
             var ctx = Context;
             if (ctx == null || ctx.Narrative == null) return;
@@ -75,7 +76,7 @@ namespace SeriousGame.Narrative
         }
 
         [YarnCommand("trace_choice")]
-        public void TraceChoice(string choiceId, string traceTypeId)
+        public static void TraceChoice(string choiceId, string traceTypeId)
         {
             var ctx = Context;
             if (ctx == null || ctx.Trace == null) return;
@@ -102,7 +103,7 @@ namespace SeriousGame.Narrative
         }
 
         [YarnCommand("add_state")]
-        public void AddState(string key, int delta)
+        public static void AddState(string key, int delta)
         {
             var ctx = Context;
             if (ctx == null || ctx.PlayerState == null) return;
@@ -110,7 +111,7 @@ namespace SeriousGame.Narrative
         }
 
         [YarnCommand("load_scene")]
-        public void LoadScene(string sceneName)
+        public static void LoadScene(string sceneName)
         {
             var ctx = Context;
             if (ctx == null || ctx.Scenes == null) return;
@@ -118,13 +119,13 @@ namespace SeriousGame.Narrative
         }
 
         [YarnCommand("show_summary")]
-        public void ShowSummary()
+        public static void ShowSummary()
         {
             SeriousGame.App.GameEventBus.RaiseSummaryRequested();
         }
 
         [YarnCommand("save_game")]
-        public void SaveGame()
+        public static void SaveGame()
         {
             var ctx = Context;
             if (ctx == null || ctx.Save == null) return;
@@ -136,28 +137,28 @@ namespace SeriousGame.Narrative
         }
 
         [YarnCommand("show_phone_chat")]
-        public void ShowPhoneChat(string interactionId)
+        public static void ShowPhoneChat(string interactionId)
         {
             if (string.IsNullOrWhiteSpace(interactionId)) return;
             SeriousGame.App.GameEventBus.RaisePhoneChatRequested(interactionId);
         }
 
         [YarnCommand("show_chat")]
-        public void ShowChat(string characterName, string message)
+        public static void ShowChat(string characterName, string message)
         {
             if (string.IsNullOrWhiteSpace(message)) return;
             SeriousGame.App.GameEventBus.RaisePhoneMessageReceived(characterName, message);
         }
 
         [YarnCommand("show_hint")]
-        public void ShowHint(string message)
+        public static void ShowHint(string message)
         {
             if (string.IsNullOrWhiteSpace(message)) return;
             SeriousGame.App.GameEventBus.RaiseHintRequested(message);
         }
 
         [YarnCommand("set_state")]
-        public void SetState(string key, int value)
+        public static void SetState(string key, int value)
         {
             var ctx = Context;
             if (ctx == null || ctx.PlayerState == null) return;
@@ -165,7 +166,7 @@ namespace SeriousGame.Narrative
         }
 
         [YarnCommand("set_flag")]
-        public void SetFlag(string key, bool value = true)
+        public static void SetFlag(string key, bool value = true)
         {
             if (string.IsNullOrWhiteSpace(key)) return;
             var ctx = Context;
@@ -175,7 +176,7 @@ namespace SeriousGame.Narrative
      
 
         [YarnCommand("clear_flag")]
-        public void ClearFlag(string key)
+        public static void ClearFlag(string key)
         {
             SetFlag(key, false);
         }
@@ -198,10 +199,17 @@ namespace SeriousGame.Narrative
         }
 
         [YarnCommand("show_toast")]
-        public void ShowToast(string message)
+        public static void ShowToast(string message)
         {
             if (string.IsNullOrWhiteSpace(message)) return;
             SeriousGame.App.GameEventBus.RaiseToastRequested(message);
+        }
+
+        [YarnCommand("test_func")]
+        public static void test_func(string message)
+        {
+            if (string.IsNullOrWhiteSpace(message)) return;
+            Debug.Log($"[YarnCommandBridge] test_func called with message: {message}");
         }
     }
 }
