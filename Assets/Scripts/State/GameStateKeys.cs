@@ -1,5 +1,6 @@
 namespace SeriousGame.State
-{
+{   
+    //!use for definition
     public static class GameStateKeys
     {
         public const string Money = "STATE_MONEY";

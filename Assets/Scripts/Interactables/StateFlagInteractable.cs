@@ -1,4 +1,5 @@
 using UnityEngine;
+using SeriousGame.App;
 using SeriousGame.Runtime;
 
 // Interactable chỉ dùng để set GameState, không trigger Beat/Episode
@@ -37,14 +38,14 @@ public class StateFlagInteractable : MonoBehaviour
             return;
         }
 
-        if (GameStateManager.Instance != null)
+        var ctx = GameBootstrap.Context;
+        if (ctx == null || ctx.PlayerState == null)
         {
-            GameStateManager.Instance.SetFlag(flagKey, valueToSet);
+            Debug.LogWarning("[StateFlagInteractable] PlayerState is not available.");
+            return;
         }
-        else
-        {
-            Debug.LogWarning("[StateFlagInteractable] GameStateManager.Instance is null.");
-        }
+
+        ctx.PlayerState.SetFlag(flagKey, valueToSet);
     }
 
     void UpdatePromptVisibility()

@@ -6,6 +6,7 @@ namespace SeriousGame.State
     public class PlayerStateService
     {
         private readonly Dictionary<string, int> _states = new Dictionary<string, int>();
+        private readonly Dictionary<string, bool> _flags = new Dictionary<string, bool>();
 
         public PlayerStateService()
         {
@@ -36,6 +37,46 @@ namespace SeriousGame.State
             Set(key, current + delta);
         }
 
+        public bool CheckFlag(string key)
+        {
+            if (!IsKeyAllowed(key)) return false;
+            return _flags.TryGetValue(key, out var value) && value;
+        }
+
+        public void SetFlag(string key, bool value)
+        {
+            if (!IsKeyAllowed(key)) return;
+            _flags[key] = value;
+        }
+
+        public int CountTrue(params string[] keys)
+        {
+            int count = 0;
+            if (keys == null) return 0;
+            for (int i = 0; i < keys.Length; i++)
+            {
+                if (CheckFlag(keys[i])) count++;
+            }
+            return count;
+        }
+
+        public int CountTrueByPrefix(string prefix)
+        {
+            if (string.IsNullOrEmpty(prefix)) return 0;
+            int count = 0;
+            foreach (var kv in _flags)
+            {
+                if (kv.Key.StartsWith(prefix) && kv.Value && IsKeyAllowed(kv.Key))
+                    count++;
+            }
+            return count;
+        }
+
+        public IReadOnlyDictionary<string, bool> GetFlagsSnapshot()
+        {
+            return _flags;
+        }
+
         public PlayerStateSnapshot GetSnapshot()
         {
             var snapshot = new PlayerStateSnapshot();
@@ -47,12 +88,23 @@ namespace SeriousGame.State
                     value = kv.Value
                 });
             }
+
+            foreach (var kv in _flags)
+            {
+                snapshot.flags.Add(new PlayerFlagEntry
+                {
+                    key = kv.Key,
+                    value = kv.Value
+                });
+            }
+
             return snapshot;
         }
 
         public void LoadSnapshot(PlayerStateSnapshot snapshot)
         {
             _states.Clear();
+            _flags.Clear();
             if (snapshot != null && snapshot.entries != null)
             {
                 for (int i = 0; i < snapshot.entries.Count; i++)
@@ -60,6 +112,17 @@ namespace SeriousGame.State
                     var entry = snapshot.entries[i];
                     if (entry == null || string.IsNullOrWhiteSpace(entry.key)) continue;
                     _states[entry.key] = Clamp(entry.value);
+                }
+            }
+
+            if (snapshot != null && snapshot.flags != null)
+            {
+                for (int i = 0; i < snapshot.flags.Count; i++)
+                {
+                    var entry = snapshot.flags[i];
+                    if (entry == null || string.IsNullOrWhiteSpace(entry.key)) continue;
+                    if (!IsKeyAllowed(entry.key)) continue;
+                    _flags[entry.key] = entry.value;
                 }
             }
 
@@ -74,6 +137,11 @@ namespace SeriousGame.State
         private static int Clamp(int value)
         {
             return Mathf.Clamp(value, 0, 3);
+        }
+
+        private static bool IsKeyAllowed(string key)
+        {
+            return GameStateKeys.IsValid(key);
         }
     }
 }

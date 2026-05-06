@@ -257,7 +257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8309902628685535410, guid: 52571f68872914e24837210513edea1d, type: 3}
       propertyPath: startNode
-      value: TravelTogether
+      value: Node_AutoIntro
       objectReference: {fileID: 0}
     - target: {fileID: 8309902628685535410, guid: 52571f68872914e24837210513edea1d, type: 3}
       propertyPath: yarnProject
@@ -586,17 +586,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfaf3730482a80a4686cbd80800500e0, type: 3}
---- !u!114 &319507704 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4538792687737384972, guid: 7693fe4a758f51142bca37070f5f5ace, type: 3}
-  m_PrefabInstance: {fileID: 1026109190}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f594b500105574a40b540ac28273d4af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Runtime.DialogueUI
 --- !u!224 &335445509 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5212603695184467751, guid: a713c99b7ffed01459598ec4c641f599, type: 3}
@@ -746,7 +735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &416056152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1471,9 +1460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81f443d42098ed740a2077302390b1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Runtime.NodeInteractable
-  nodeName: Alone
-  interactPrompt: {fileID: 7764907226992840387}
-  oneShot: 1
+  nodeName: Node_NPC_Shipper_Interact
 --- !u!1 &945456237
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,9 +2952,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2127791412}
-  - component: {fileID: 2127791411}
-  - component: {fileID: 2127791410}
-  - component: {fileID: 2127791409}
   m_Layer: 0
   m_Name: RuntimeManager
   m_TagString: Untagged
@@ -2975,48 +2959,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &2127791409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2127791408}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b6320ab2b3b64e4cb4f276fc82268c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Runtime.EpisodeController
-  episode: {fileID: 11400000, guid: 4013437e55aa70d469894046307a829c, type: 2}
-  beatRunner: {fileID: 2127791411}
-  chapterEnded: 0
---- !u!114 &2127791410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2127791408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13309c851f9ff1c45af80a9c9881f248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Runtime.InteractionRouter
-  phoneUI: {fileID: 0}
-  dialogueUI: {fileID: 319507704}
---- !u!114 &2127791411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2127791408}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4baf6ef0c8849c74e8a09edd9ed057fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Runtime.BeatRunner
-  router: {fileID: 2127791410}
 --- !u!4 &2127791412
 Transform:
   m_ObjectHideFlags: 0
@@ -3075,12 +3017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Narrative.YarnCommandBridge
   contextOverride: {fileID: 0}
   runner: {fileID: 2129185476}
-  phoneUI: {fileID: 0}
-  summaryUI: {fileID: 0}
-  episodeSummaryUI: {fileID: 0}
-  outcomeToast: {fileID: 0}
   player: {fileID: 1098518042}
-  chatInteractions: []
 --- !u!1001 &2918914182396535109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3324,13 +3261,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Runtime.NodeInteractable
   nodeName: E00_Office_Talk
-  interactPrompt: {fileID: 2918914182396535112}
-  oneShot: 1
---- !u!1 &2918914182396535112 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3979362805869017600, guid: 669a03296d858ae418300ce70d3febc5, type: 3}
-  m_PrefabInstance: {fileID: 2918914182396535109}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7764907226992840386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3440,11 +3370,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a713c99b7ffed01459598ec4c641f599, type: 3}
---- !u!1 &7764907226992840387 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8912111909436878143, guid: a713c99b7ffed01459598ec4c641f599, type: 3}
-  m_PrefabInstance: {fileID: 7764907226992840386}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -109,14 +109,6 @@ namespace SeriousGame.Narrative
             ctx.PlayerState.Add(key, delta);
         }
 
-        [YarnCommand("set_state")]
-        public void SetState(string key, int value)
-        {
-            var ctx = Context;
-            if (ctx == null || ctx.PlayerState == null) return;
-            ctx.PlayerState.Set(key, value);
-        }
-
         [YarnCommand("load_scene")]
         public void LoadScene(string sceneName)
         {
@@ -164,18 +156,45 @@ namespace SeriousGame.Narrative
             SeriousGame.App.GameEventBus.RaiseHintRequested(message);
         }
 
+        [YarnCommand("set_state")]
+        public void SetState(string key, int value)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.PlayerState == null) return;
+            ctx.PlayerState.Set(key, value);
+        }
+
         [YarnCommand("set_flag")]
         public void SetFlag(string key, bool value = true)
         {
             if (string.IsNullOrWhiteSpace(key)) return;
-            if (GameStateManager.Instance != null)
-                GameStateManager.Instance.SetFlag(key, value);
+            var ctx = Context;
+            if (ctx == null || ctx.PlayerState == null) return;
+            ctx.PlayerState.SetFlag(key, value);
         }
+     
 
         [YarnCommand("clear_flag")]
         public void ClearFlag(string key)
         {
             SetFlag(key, false);
+        }
+
+        [YarnFunction("get_state")]
+        public static int GetState(string key)
+        {
+            var ctx = GameBootstrap.Context;
+            if (ctx == null || ctx.PlayerState == null) return 0;
+            return ctx.PlayerState.Get(key);
+        }
+
+        [YarnFunction("get_flag")]
+        public static bool GetFlag(string key)
+        {
+            if (string.IsNullOrWhiteSpace(key)) return false;
+            var ctx = GameBootstrap.Context;
+            if (ctx == null || ctx.PlayerState == null) return false;
+            return ctx.PlayerState.CheckFlag(key);
         }
 
         [YarnCommand("show_toast")]

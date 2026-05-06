@@ -1,4 +1,5 @@
 using UnityEngine;
+using SeriousGame.App;
 using SeriousGame.Runtime;
 
 // Interactable dùng để teleport player tới một vị trí (vd: qua cổng -> vào office)
@@ -40,13 +41,14 @@ public class TeleportInteractable : MonoBehaviour
         // Nếu có điều kiện state thì kiểm tra trước
         if (!string.IsNullOrEmpty(requiredFlagKey))
         {
-            if (GameStateManager.Instance == null)
+            var ctx = GameBootstrap.Context;
+            if (ctx == null || ctx.PlayerState == null)
             {
-                Debug.LogWarning("[TeleportInteractable] GameStateManager.Instance is null.");
+                Debug.LogWarning("[TeleportInteractable] PlayerState is not available.");
                 return;
             }
 
-            bool current = GameStateManager.Instance.CheckFlag(requiredFlagKey);
+            bool current = ctx.PlayerState.CheckFlag(requiredFlagKey);
             if (current != requiredValue)
             {
                 Debug.Log("[TeleportInteractable] Condition not met: " + requiredFlagKey);

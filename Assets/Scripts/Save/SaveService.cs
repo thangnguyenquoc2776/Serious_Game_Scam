@@ -68,25 +68,18 @@ namespace SeriousGame.Save
             if (_state != null && data.playerState != null)
                 _state.LoadSnapshot(data.playerState);
 
-            var gsm = GameStateManager.Instance;
-            if (gsm != null && data.flags != null)
+            if (_state != null)
             {
-                for (int i = 0; i < data.flags.Count; i++)
-                {
-                    var flag = data.flags[i];
-                    if (flag == null || string.IsNullOrWhiteSpace(flag.key)) continue;
-                    gsm.SetFlag(flag.key, flag.value);
-                }
+                ApplyLegacyFlags(data.flags);
             }
         }
 
         private List<SaveFlagEntry> BuildFlagsSnapshot()
         {
             var list = new List<SaveFlagEntry>();
-            var gsm = GameStateManager.Instance;
-            if (gsm == null) return list;
+            if (_state == null) return list;
 
-            var snapshot = gsm.GetSnapshot();
+            var snapshot = _state.GetFlagsSnapshot();
             if (snapshot == null) return list;
 
             foreach (var kv in snapshot)
@@ -99,6 +92,18 @@ namespace SeriousGame.Save
             }
 
             return list;
+        }
+
+        private void ApplyLegacyFlags(List<SaveFlagEntry> flags)
+        {
+            if (_state == null || flags == null) return;
+
+            for (int i = 0; i < flags.Count; i++)
+            {
+                var flag = flags[i];
+                if (flag == null || string.IsNullOrWhiteSpace(flag.key)) continue;
+                _state.SetFlag(flag.key, flag.value);
+            }
         }
     }
 }
