@@ -27,7 +27,7 @@ namespace SeriousGame.Narrative
             result = default;
 
             var key = Normalize(variableName);
-            if (!GameStateKeys.IsValid(key)) return false;
+            if (!GameStateKeys.IsValid(key)) Debug.LogWarning($"[GameStateVariableStorage] Invalid variable name '{variableName}' (normalized to '{key}'). Variable names must be non-empty and can only contain letters, numbers, and underscores.");
 
             var state = State;
             if (state == null) return false;
@@ -56,10 +56,16 @@ namespace SeriousGame.Narrative
             return false;
         }
 
+        public override void SetValue(string variableName, string value)
+        {
+            // For string values, we only support "true"/"false" for convenience, and store them as boolean flags in the PlayerStateService.
+        }
+        //set States via Yarn should only accept numeric values
         public override void SetValue(string variableName, float value)
         {
             var key = Normalize(variableName);
-            if (!GameStateKeys.IsValid(key)) return;
+            if (!GameStateKeys.IsValid(key)) Debug.LogWarning("Creating new game state keys via Yarn");
+            // allow creating new keys via Yarn, but only boolean flags are supported for GameState keys.
 
             var state = State;
             if (state == null) return;
@@ -67,15 +73,12 @@ namespace SeriousGame.Narrative
             state.SetFlag(key, value >= 1f);
         }
 
-        public override void SetValue(string variableName, string value)
-        {
-            // Only boolean/float flags are supported for GameState keys.
-        }
 
+        //set Flags via Yarn should only accept boolean values, but we can also interpret "true"/"false" strings for convenience.
         public override void SetValue(string variableName, bool value)
         {
             var key = Normalize(variableName);
-            if (!GameStateKeys.IsValid(key)) return;
+             if (!GameStateKeys.IsValid(key)) Debug.LogWarning("Creating new flag keys via Yarn");
 
             var state = State;
             if (state == null) return;
@@ -86,7 +89,7 @@ namespace SeriousGame.Narrative
         public override bool Contains(string variableName)
         {
             var key = Normalize(variableName);
-            if (!GameStateKeys.IsValid(key)) return false;
+            // if (!GameStateKeys.IsValid(key)) return false;
             return State != null;
         }
 
@@ -105,7 +108,7 @@ namespace SeriousGame.Narrative
 
             foreach (var kv in snapshot)
             {
-                if (!GameStateKeys.IsValid(kv.Key)) continue;
+                // if (!GameStateKeys.IsValid(kv.Key)) continue;
                 bools[kv.Key] = kv.Value;
             }
 
@@ -131,7 +134,7 @@ namespace SeriousGame.Narrative
                 foreach (var kv in boolVariables)
                 {
                     var key = Normalize(kv.Key);
-                    if (!GameStateKeys.IsValid(key)) continue;
+                    // if (!GameStateKeys.IsValid(key)) continue;
                     state.SetFlag(key, kv.Value);
                 }
             }
@@ -141,13 +144,15 @@ namespace SeriousGame.Narrative
                 foreach (var kv in floatVariables)
                 {
                     var key = Normalize(kv.Key);
-                    if (!GameStateKeys.IsValid(key)) continue;
+                    // if (!GameStateKeys.IsValid(key)) continue;
                     state.SetFlag(key, kv.Value >= 1f);
                 }
             }
         }
 
-        private static string Normalize(string variableName)
+        // Normalizes a variable name by removing a leading '$' if present. This allows Yarn scripts to reference variables with or without the '$' prefix for convenience.
+        private static string 
+        Normalize(string variableName)
         {
             if (string.IsNullOrWhiteSpace(variableName)) return string.Empty;
             return variableName[0] == '$' ? variableName.Substring(1) : variableName;

@@ -83,6 +83,7 @@ namespace SeriousGame.State
             return _flags;
         }
 
+        // Returns a snapshot of the current player state, including both states and flags, which can be used for saving or other purposes.
         public PlayerStateSnapshot GetSnapshot()
         {
             var snapshot = new PlayerStateSnapshot();

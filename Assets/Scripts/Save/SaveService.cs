@@ -13,6 +13,8 @@ namespace SeriousGame.Save
         private readonly PlayerStateService _state;
         private readonly string _savePath;
 
+
+        //constructor with dependency injection for session and state services, and optional file name for save data.
         public SaveService(SessionService session, PlayerStateService state, string fileName = "save.json")
         {
             _session = session;
@@ -22,6 +24,9 @@ namespace SeriousGame.Save
 
         public string SavePath => _savePath;
 
+        //!SAVE
+
+        // Builds a SaveData object representing the current game state, including session info, player state, and optional narrative context.
         public SaveData BuildCurrent(string currentEpisodeId = "", string currentYarnNode = "")
         {
             var data = new SaveData
@@ -37,20 +42,25 @@ namespace SeriousGame.Save
             data.flags = BuildFlagsSnapshot();
             return data;
         }
-
+        // Saves the current game state to a file by building a SaveData object and serializing it to JSON. Returns true if the save was successful.
         public bool SaveCurrent(string currentEpisodeId = "", string currentYarnNode = "")
         {
             return Save(BuildCurrent(currentEpisodeId, currentYarnNode));
         }
-
+        // Saves the provided SaveData to a file. Returns true if the save was successful.
         public bool Save(SaveData data)
         {
             if (data == null) return false;
             var json = JsonUtility.ToJson(data, true);
             File.WriteAllText(_savePath, json);
+            Debug.Log($"[SaveService] Saved game state to {_savePath}");
             return true;
         }
 
+        // Loads the game state from a file and returns it as a SaveData object. Returns null if the file does not exist or if loading fails.
+
+
+        //! LOAD
         public SaveData Load()
         {
             if (!File.Exists(_savePath)) return null;
@@ -74,6 +84,7 @@ namespace SeriousGame.Save
             }
         }
 
+        // Builds a list of SaveFlagEntry objects representing the current state of all flags in the PlayerStateService. This is used for saving legacy flag data.
         private List<SaveFlagEntry> BuildFlagsSnapshot()
         {
             var list = new List<SaveFlagEntry>();
@@ -94,6 +105,7 @@ namespace SeriousGame.Save
             return list;
         }
 
+        // Applies legacy flag data to the PlayerStateService.
         private void ApplyLegacyFlags(List<SaveFlagEntry> flags)
         {
             if (_state == null || flags == null) return;
