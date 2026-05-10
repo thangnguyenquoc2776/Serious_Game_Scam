@@ -5,6 +5,7 @@ using SeriousGame.Feedback;
 using SeriousGame.State;
 using SeriousGame.Save;
 using SeriousGame.Narrative;
+using SeriousGame.Auth;
 
 namespace SeriousGame.App
 {
@@ -15,6 +16,7 @@ namespace SeriousGame.App
         public SessionService Session { get; private set; }
         public PlayerStateService PlayerState { get; private set; }
         public TraceService Trace { get; private set; }
+        public AuthService Auth { get; private set; }
         public FeedbackService Feedback { get; private set; }
         public SaveService Save { get; private set; }
         public NarrativeService Narrative { get; private set; }
@@ -29,7 +31,9 @@ namespace SeriousGame.App
 
             var store = new InMemoryTraceStore();
             var fileStore = new FileTraceStore();
-            Trace = new TraceService(store, fileStore);
+            Trace = new TraceService(store, fileStore, Session, PlayerState, config);
+
+            Auth = new AuthService(config != null ? config.firebaseWebApiKey : null);
 
             Feedback = new FeedbackService(Trace, config != null ? config.traceTaxonomy : null, PlayerState);
             Save = new SaveService(Session, PlayerState);

@@ -10,8 +10,6 @@ namespace SeriousGame.Narrative
 {
     public class YarnCommandBridge : MonoBehaviour
     {
-        private static YarnCommandBridge _instance;
-
         [Header("Context (optional override)")]
         // [SerializeField] private AppContext contextOverride;
 
@@ -21,16 +19,11 @@ namespace SeriousGame.Narrative
         [Header("Optional Player")]
         [SerializeField] private PlayerController player;
 
-        [Header("Trace Cloud")]
-        [SerializeField] private string firebaseUrl;
-
         // private AppContext Context => contextOverride != null ? contextOverride : GameBootstrap.Context;
         private static AppContext Context => GameBootstrap.Context;
 
         private void Awake()
         {
-            _instance = this;
-
             var ctx = Context;
             if (ctx != null && ctx.Narrative != null)
             {
@@ -43,9 +36,6 @@ namespace SeriousGame.Narrative
 
         private void OnDestroy()
         {
-            if (_instance == this)
-                _instance = null;
-
             var ctx = Context;
             if (ctx != null && ctx.Narrative != null)
                 ctx.Narrative.UnbindRunner();
@@ -58,8 +48,8 @@ namespace SeriousGame.Narrative
             if (ctx == null || ctx.Trace == null) return;
 
             var sessionId = ctx.Session != null ? ctx.Session.CurrentSessionId : "";
-            var actor = ctx.Session != null && !string.IsNullOrWhiteSpace(ctx.Session.ParticipantId)
-                ? ctx.Session.ParticipantId
+            var actor = ctx.Session != null && !string.IsNullOrWhiteSpace(ctx.Session.PlayerId)
+                ? ctx.Session.PlayerId
                 : sessionId;
             var yarnNode = ctx.Narrative != null ? ctx.Narrative.CurrentNode : "";
             var context = ctx.Trace.BuildContext(
@@ -93,8 +83,8 @@ namespace SeriousGame.Narrative
             if (string.IsNullOrWhiteSpace(traceTypeId) || string.IsNullOrWhiteSpace(choiceId)) return;
 
             var sessionId = ctx.Session != null ? ctx.Session.CurrentSessionId : "";
-            var actor = ctx.Session != null && !string.IsNullOrWhiteSpace(ctx.Session.ParticipantId)
-                ? ctx.Session.ParticipantId
+            var actor = ctx.Session != null && !string.IsNullOrWhiteSpace(ctx.Session.PlayerId)
+                ? ctx.Session.PlayerId
                 : sessionId;
             var yarnNode = ctx.Narrative != null ? ctx.Narrative.CurrentNode : "";
             var context = ctx.Trace.BuildContext(
@@ -118,25 +108,7 @@ namespace SeriousGame.Narrative
             var ctx = Context;
             if (ctx == null || ctx.Trace == null || ctx.Session == null) return;
 
-            if (_instance == null)
-            {
-                Debug.LogWarning("[YarnCommandBridge] No instance available for chapter_end.");
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(_instance.firebaseUrl))
-            {
-                Debug.LogWarning("[YarnCommandBridge] Firebase URL is empty.");
-                return;
-            }
-
-            var sessionId = ctx.Session.CurrentSessionId;
-            var participantId = ctx.Session.ParticipantId;
-            var events = ctx.Trace.GetSession(sessionId);
-            var payload = SeriousGame.Trace.CloudTraceStore.BuildBatchJson(sessionId, participantId, chapterId, events);
-
-            var cloud = new SeriousGame.Trace.CloudTraceStore(_instance.firebaseUrl);
-            _instance.StartCoroutine(cloud.PushDataToFirebase(payload));
+            _ = ctx.Trace.SendSessionData(true, chapterId);
         }
 
         [YarnCommand("add_state")]

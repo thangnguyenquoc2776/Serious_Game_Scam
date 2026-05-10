@@ -1,100 +1,116 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
+using Newtonsoft.Json;
 
 namespace SeriousGame.Trace
 {
     public class CloudTraceStore
     {
-        [Serializable]
-        private class TraceBatch
+        public async Task<bool> SendSessionData(ChapterSessionDTO dto, string projectId, string authToken)
         {
-            public string sessionId;
-            public string participantId;
-            public string chapterId;
-            public List<TraceEvent> events = new List<TraceEvent>();
-            public long unixMs;
-        }
-
-        private readonly string _firebaseUrl;
-
-        public CloudTraceStore(string firebaseUrl)
-        {
-            _firebaseUrl = firebaseUrl != null ? firebaseUrl.Trim() : string.Empty;
-        }
-
-        public IEnumerator PushDataToFirebase(string jsonPayload)
-        {
-            if (string.IsNullOrWhiteSpace(_firebaseUrl))
+            if (dto == null)
             {
-                Debug.LogWarning("[CloudTraceStore] Missing Firebase URL.");
-                yield break;
+                Debug.LogWarning("[CloudTraceStore] DTO is null.");
+                return false;
             }
 
-            if (string.IsNullOrWhiteSpace(jsonPayload))
+            var url = BuildUrl(projectId, dto.session_id, authToken);
+            if (string.IsNullOrWhiteSpace(url))
             {
-                Debug.LogWarning("[CloudTraceStore] Payload is empty.");
-                yield break;
+                Debug.LogWarning("[CloudTraceStore] Invalid Firebase URL.");
+                return false;
             }
 
-            var body = Encoding.UTF8.GetBytes(jsonPayload);
-            using (var request = new UnityWebRequest(_firebaseUrl, "POST"))
+            var json = JsonConvert.SerializeObject(dto);
+            var body = Encoding.UTF8.GetBytes(json);
+
+            using (var request = new UnityWebRequest(url, "PUT"))
             {
                 request.uploadHandler = new UploadHandlerRaw(body);
                 request.downloadHandler = new DownloadHandlerBuffer();
                 request.SetRequestHeader("Content-Type", "application/json");
 
-                Debug.Log($"[CloudTraceStore] Sending {body.Length} bytes to {_firebaseUrl}");
-                yield return request.SendWebRequest();
+                Debug.Log($"[CloudTraceStore] Sending {body.Length} bytes to {url}");
+                await SendWebRequestAsync(request);
 
                 if (request.result == UnityWebRequest.Result.Success)
                 {
                     Debug.Log($"[CloudTraceStore] Upload success. HTTP {request.responseCode}. Response: {request.downloadHandler.text}");
+                    return true;
                 }
-                else
+
+                Debug.LogWarning($"[CloudTraceStore] Upload failed. HTTP {request.responseCode}. Error: {request.error}");
+                Debug.LogWarning($"[CloudTraceStore] Response: {request.downloadHandler.text}");
+                return false;
+            }
+        }
+
+        public bool SendSessionDataBlocking(ChapterSessionDTO dto, string projectId, string authToken, int timeoutMs = 4000)
+        {
+            if (dto == null)
+            {
+                Debug.LogWarning("[CloudTraceStore] DTO is null.");
+                return false;
+            }
+
+            var url = BuildUrl(projectId, dto.session_id, authToken);
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                Debug.LogWarning("[CloudTraceStore] Invalid Firebase URL.");
+                return false;
+            }
+
+            var json = JsonConvert.SerializeObject(dto);
+            var body = Encoding.UTF8.GetBytes(json);
+
+            using (var request = new UnityWebRequest(url, "PUT"))
+            {
+                request.uploadHandler = new UploadHandlerRaw(body);
+                request.downloadHandler = new DownloadHandlerBuffer();
+                request.SetRequestHeader("Content-Type", "application/json");
+
+                Debug.Log($"[CloudTraceStore] Sending {body.Length} bytes to {url} (blocking)");
+                var operation = request.SendWebRequest();
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+                while (!operation.isDone && watch.ElapsedMilliseconds < timeoutMs)
                 {
-                    Debug.LogWarning($"[CloudTraceStore] Upload failed. HTTP {request.responseCode}. Error: {request.error}");
-                    Debug.LogWarning($"[CloudTraceStore] Response: {request.downloadHandler.text}");
                 }
+
+                if (!operation.isDone)
+                {
+                    request.Abort();
+                    Debug.LogWarning("[CloudTraceStore] Upload timed out.");
+                    return false;
+                }
+
+                if (request.result == UnityWebRequest.Result.Success)
+                {
+                    Debug.Log($"[CloudTraceStore] Upload success. HTTP {request.responseCode}. Response: {request.downloadHandler.text}");
+                    return true;
+                }
+
+                Debug.LogWarning($"[CloudTraceStore] Upload failed. HTTP {request.responseCode}. Error: {request.error}");
+                Debug.LogWarning($"[CloudTraceStore] Response: {request.downloadHandler.text}");
+                return false;
             }
         }
 
-        public static string BuildBatchJson(string sessionId, string participantId, string chapterId, List<TraceEvent> events)
+        private static string BuildUrl(string projectId, string sessionId, string authToken)
         {
-            var batch = new TraceBatch
-            {
-                sessionId = sessionId ?? string.Empty,
-                participantId = participantId ?? string.Empty,
-                chapterId = chapterId ?? string.Empty,
-                events = events ?? new List<TraceEvent>(),
-                unixMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()
-            };
+            if (string.IsNullOrWhiteSpace(projectId) || string.IsNullOrWhiteSpace(sessionId) || string.IsNullOrWhiteSpace(authToken))
+                return null;
 
-            return JsonUtility.ToJson(batch, true);
+            return $"https://{projectId}.firebaseio.com/sessions/{sessionId}.json?auth={authToken}";
         }
 
-        public static IEnumerator PushSessionTrace(
-            TraceService trace,
-            SeriousGame.App.SessionService session,
-            string firebaseUrl,
-            string chapterId = "")
+        private static async Task SendWebRequestAsync(UnityWebRequest request)
         {
-            if (trace == null || session == null)
-            {
-                Debug.LogWarning("[CloudTraceStore] Missing TraceService or SessionService.");
-                yield break;
-            }
-
-            var sessionId = session.CurrentSessionId;
-            var participantId = session.ParticipantId;
-            var events = trace.GetSession(sessionId);
-            var payload = BuildBatchJson(sessionId, participantId, chapterId, events);
-
-            var cloud = new CloudTraceStore(firebaseUrl);
-            yield return cloud.PushDataToFirebase(payload);
+            var operation = request.SendWebRequest();
+            while (!operation.isDone)
+                await Task.Yield();
         }
     }
 }

@@ -1,23 +1,20 @@
 namespace SeriousGame.State
 {   
-    //!use for definition
     public static class GameStateKeys
     {
-        public const string Money = "STATE_MONEY";
-        public const string Suspicion = "STATE_SUSPICION";
-        public const string Confidence = "STATE_CONFIDENCE";
-        public const string Support = "STATE_SUPPORT";
-        public const string Trauma = "STATE_TRAUMA";
-        public const string Trust = "STATE_TRUST";
+        public const string ScoreHelpSeeking = "SCORE_HELP_SEEKING";
+        public const string ScorePressureResistance = "SCORE_PRESSURE_RESISTANCE";
+        public const string ScoreInformationVerification = "SCORE_INFORMATION_VERIFICATION";
+        public const string ScoreRiskRecognition = "SCORE_RISK_RECOGNITION";
+        public const string ScoreCommunityWarning = "SCORE_COMMUNITY_WARNING";
 
         public static readonly string[] AllKeys =
         {
-            Money,
-            Suspicion,
-            Confidence,
-            Support,
-            Trauma,
-            Trust
+            ScoreHelpSeeking,
+            ScorePressureResistance,
+            ScoreInformationVerification,
+            ScoreRiskRecognition,
+            ScoreCommunityWarning
         };
 
         public static readonly string[] DefaultKeys = AllKeys;

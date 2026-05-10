@@ -38,5 +38,12 @@ namespace SeriousGame.App
                 ctx.Session.Begin();
         }
 
+        private void OnApplicationQuit()
+        {
+            var ctx = Context;
+            if (ctx != null && ctx.Trace != null)
+                ctx.Trace.SendSessionDataBlocking(false);
+        }
+
     }
 }
