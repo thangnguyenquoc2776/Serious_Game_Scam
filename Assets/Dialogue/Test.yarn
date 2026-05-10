@@ -16,6 +16,8 @@ Hệ thống: Chào mừng Khoa đến với node kiểm tra. Bạn muốn test 
     <<jump Test_Trace>>
 -> Test Hệ thống Save & Load
     <<jump Test_Save>>
+-> Test end game    
+    <<chapter_end>>
 -> Test luồng cốt truyện    
 ===
 
