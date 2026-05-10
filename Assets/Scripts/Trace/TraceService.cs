@@ -31,7 +31,7 @@ namespace SeriousGame.Trace
             var e = new TraceEvent
             {
                 sessionId = sessionId ?? "",
-                actor = actor ?? "",
+                actor = actor ?? "", //playerid
                 verb = verb,
                 objectId = objectId,
                 result = result,

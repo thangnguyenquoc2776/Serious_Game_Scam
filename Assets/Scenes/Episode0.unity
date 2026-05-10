@@ -257,7 +257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8309902628685535410, guid: 52571f68872914e24837210513edea1d, type: 3}
       propertyPath: startNode
-      value: Global_Variables
+      value: Start
       objectReference: {fileID: 0}
     - target: {fileID: 8309902628685535410, guid: 52571f68872914e24837210513edea1d, type: 3}
       propertyPath: yarnProject
@@ -3638,6 +3638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Narrative.YarnCommandBridge
   runner: {fileID: 2129185476}
   player: {fileID: 1098518042}
+  firebaseUrl: https://serious-game-scam-default-rtdb.asia-southeast1.firebasedatabase.app/traces.json
 --- !u!114 &2129185480 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8635081094713202853, guid: 52571f68872914e24837210513edea1d, type: 3}

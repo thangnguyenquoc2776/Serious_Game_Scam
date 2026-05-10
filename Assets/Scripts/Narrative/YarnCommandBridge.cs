@@ -10,6 +10,8 @@ namespace SeriousGame.Narrative
 {
     public class YarnCommandBridge : MonoBehaviour
     {
+        private static YarnCommandBridge _instance;
+
         [Header("Context (optional override)")]
         // [SerializeField] private AppContext contextOverride;
 
@@ -19,11 +21,16 @@ namespace SeriousGame.Narrative
         [Header("Optional Player")]
         [SerializeField] private PlayerController player;
 
+        [Header("Trace Cloud")]
+        [SerializeField] private string firebaseUrl;
+
         // private AppContext Context => contextOverride != null ? contextOverride : GameBootstrap.Context;
         private static AppContext Context => GameBootstrap.Context;
 
         private void Awake()
         {
+            _instance = this;
+
             var ctx = Context;
             if (ctx != null && ctx.Narrative != null)
             {
@@ -36,6 +43,9 @@ namespace SeriousGame.Narrative
 
         private void OnDestroy()
         {
+            if (_instance == this)
+                _instance = null;
+
             var ctx = Context;
             if (ctx != null && ctx.Narrative != null)
                 ctx.Narrative.UnbindRunner();
@@ -100,6 +110,33 @@ namespace SeriousGame.Narrative
                 choiceId,
                 null,
                 context);
+        }
+
+        [YarnCommand("chapter_end")]
+        public static void ChapterEnd(string chapterId = "")
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.Trace == null || ctx.Session == null) return;
+
+            if (_instance == null)
+            {
+                Debug.LogWarning("[YarnCommandBridge] No instance available for chapter_end.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(_instance.firebaseUrl))
+            {
+                Debug.LogWarning("[YarnCommandBridge] Firebase URL is empty.");
+                return;
+            }
+
+            var sessionId = ctx.Session.CurrentSessionId;
+            var participantId = ctx.Session.ParticipantId;
+            var events = ctx.Trace.GetSession(sessionId);
+            var payload = SeriousGame.Trace.CloudTraceStore.BuildBatchJson(sessionId, participantId, chapterId, events);
+
+            var cloud = new SeriousGame.Trace.CloudTraceStore(_instance.firebaseUrl);
+            _instance.StartCoroutine(cloud.PushDataToFirebase(payload));
         }
 
         [YarnCommand("add_state")]
