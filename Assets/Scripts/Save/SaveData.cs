@@ -19,6 +19,7 @@ namespace SeriousGame.Save
         public string currentEpisodeId;
         public string currentUnityScene;
         public string currentYarnNode;
+        public string currentMilestoneId;
         public PlayerStateSnapshot playerState;
         public List<SaveFlagEntry> flags = new List<SaveFlagEntry>();
     }

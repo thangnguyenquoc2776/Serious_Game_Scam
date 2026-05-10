@@ -35,9 +35,11 @@ namespace SeriousGame.App
 
             Auth = new AuthService(config != null ? config.firebaseWebApiKey : null);
 
+            // Narrative context should exist before SaveService so save/load can include node and milestone.
+            Narrative = GetComponent<NarrativeService>();
+
             Feedback = new FeedbackService(Trace, config != null ? config.traceTaxonomy : null, PlayerState);
-            Save = new SaveService(Session, PlayerState);
-            Narrative = new NarrativeService(this);
+            Save = new SaveService(Session, PlayerState, Narrative);
         }
 
         private void OnDestroy()

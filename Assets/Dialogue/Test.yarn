@@ -5,6 +5,8 @@ tags:
 <<show_toast "Bắt đầu bài kiểm tra hệ thống">>
 <<show_hint "Mẹo: Hãy kiểm tra kỹ các đường link lạ.">>
 
+<<set_milestone 0>>
+
 Hệ thống: Chào mừng Khoa đến với node kiểm tra. Bạn muốn test phần nào?
 -> Test Flag & Biến hội thoại (GameStateManager)
     <<jump Test_Flags>>
@@ -72,14 +74,14 @@ title: Test_Trace
 ---
 // Test ghi log hành vi vào file trace.jsonl[cite: 1]
 Hệ thống: Đang giả lập hành vi kiểm tra thông tin chính thống...
-<<trace T_VERIFY_OFFICIAL>>[cite: 1]
+// <<trace T_VERIFY_OFFICIAL>>[cite: 1]
 
 Hệ thống: Bây giờ hãy chọn một lựa chọn để test trace_choice.
 -> Chọn phương án rủi ro
-    <<trace_choice "CHOICE_RISKY" "T_CLICK_LINK">>[cite: 1]
+   <<trace T_VERIFY_OFFICIAL 1>>
     Hệ thống: Đã ghi log hành vi nhấn link rủi ro.
 -> Chọn phương án an toàn
-    <<trace_choice "CHOICE_SAFE" "T_EXIT_APP">>[cite: 1]
+    <<trace T_VERIFY_OFFICIAL 2>>
     Hệ thống: Đã ghi log hành vi thoát app an toàn.
 
 Hệ thống: Hãy kiểm tra file trace.jsonl trong persistentDataPath để xem kết quả.[cite: 1]

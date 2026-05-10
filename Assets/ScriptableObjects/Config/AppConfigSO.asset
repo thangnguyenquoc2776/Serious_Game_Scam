@@ -16,5 +16,6 @@ MonoBehaviour:
   mainMenuSceneName: MainMenu
   demoEpisodeSceneName: Episode0
   skipMainMenuAndAutoStartEpisode: 1
-  defaultEpisode: {fileID: 11400000, guid: 4013437e55aa70d469894046307a829c, type: 2}
+  firebaseProjectId: serious-game-scam
+  firebaseWebApiKey: AIzaSyC4awZbiWrUd9S2Sav-XgVA11YCAiag200
   traceTaxonomy: {fileID: 11400000, guid: a909c0caf58cd22448b4736ebcafef0b, type: 2}

@@ -42,29 +42,24 @@ namespace SeriousGame.Narrative
         }
 
         [YarnCommand("trace")]
-        public static void TraceCommand(string traceTypeId)
+        public static void TraceCommand(string traceTypeId, int choiceid)
         {
             var ctx = Context;
             if (ctx == null || ctx.Trace == null) return;
 
             var sessionId = ctx.Session != null ? ctx.Session.CurrentSessionId : "";
-            var actor = ctx.Session != null && !string.IsNullOrWhiteSpace(ctx.Session.PlayerId)
-                ? ctx.Session.PlayerId
-                : sessionId;
             var yarnNode = ctx.Narrative != null ? ctx.Narrative.CurrentNode : "";
-            var context = ctx.Trace.BuildContext(
-                SceneManager.GetActiveScene().name,
-                yarnNode,
-                SceneManager.GetActiveScene().name,
+            var milestoneId = ctx.Narrative != null ? ctx.Narrative.CurrentMilestoneId : "";
+            var routeId = string.IsNullOrWhiteSpace(yarnNode) ? "Node_Unknown" : yarnNode;
+            var trace = ctx.Trace.BuildTrace(
+                sessionId,
+                milestoneId,
+                routeId,
+                choiceid,
+                traceTypeId, // time stamp bên ham buildtrace co them
                 ctx.PlayerState != null ? ctx.PlayerState.GetSnapshot() : null);
 
-            ctx.Trace.LogEvent(
-                sessionId,
-                actor,
-                traceTypeId,
-                string.IsNullOrWhiteSpace(yarnNode) ? "Node_Unknown" : yarnNode,
-                null,
-                context);
+            ctx.Trace.LogEvent(trace);
         }
 
         [YarnCommand("set_node")]
@@ -75,34 +70,35 @@ namespace SeriousGame.Narrative
             ctx.Narrative.SetCurrentNode(nodeName);
         }
 
-        [YarnCommand("trace_choice")]
-        public static void TraceChoice(string choiceId, string traceTypeId)
+        [YarnCommand("set_milestone")]
+        public static void SetMilestone(int milestoneId)
         {
             var ctx = Context;
-            if (ctx == null || ctx.Trace == null) return;
-            if (string.IsNullOrWhiteSpace(traceTypeId) || string.IsNullOrWhiteSpace(choiceId)) return;
-
-            var sessionId = ctx.Session != null ? ctx.Session.CurrentSessionId : "";
-            var actor = ctx.Session != null && !string.IsNullOrWhiteSpace(ctx.Session.PlayerId)
-                ? ctx.Session.PlayerId
-                : sessionId;
-            var yarnNode = ctx.Narrative != null ? ctx.Narrative.CurrentNode : "";
-            var context = ctx.Trace.BuildContext(
-                SceneManager.GetActiveScene().name,
-                yarnNode,
-                SceneManager.GetActiveScene().name,
-                ctx.PlayerState != null ? ctx.PlayerState.GetSnapshot() : null);
-
-            ctx.Trace.LogEvent(
-                sessionId,
-                actor,
-                traceTypeId,
-                choiceId,
-                null,
-                context);
+            if (ctx == null || ctx.Narrative == null) return;
+            ctx.Narrative.SetCurrentMilestone(milestoneId.ToString());
         }
 
-        [YarnCommand("chapter_end")]
+        // [YarnCommand("trace_choice")]
+        // public static void TraceChoice(string choiceId, string traceTypeId)
+        // {
+        //     var ctx = Context;
+        //     if (ctx == null || ctx.Trace == null) return;
+        //     if (string.IsNullOrWhiteSpace(traceTypeId) || string.IsNullOrWhiteSpace(choiceId)) return;
+
+        //     var sessionId = ctx.Session != null ? ctx.Session.CurrentSessionId : "";
+        //     var yarnNode = ctx.Narrative != null ? ctx.Narrative.CurrentNode : "";
+        //     var trace = ctx.Trace.BuildTrace(
+        //         sessionId,
+        //         traceTypeId,
+        //         choiceId,
+        //         SceneManager.GetActiveScene().name,
+        //         yarnNode,
+        //         ctx.PlayerState != null ? ctx.PlayerState.GetSnapshot() : null);
+
+        //     ctx.Trace.LogEvent(trace);
+        // }
+
+         [YarnCommand("chapter_end")]
         public static void ChapterEnd(string chapterId = "")
         {
             var ctx = Context;
@@ -142,7 +138,8 @@ namespace SeriousGame.Narrative
             var episodeId = SceneManager.GetActiveScene().name;
 
             var currentNode = ctx.Narrative != null ? ctx.Narrative.CurrentNode : "";
-            ctx.Save.SaveCurrent(episodeId, currentNode);
+            var currentMilestone = ctx.Narrative != null ? ctx.Narrative.CurrentMilestoneId : "";
+            ctx.Save.SaveCurrent(episodeId, currentNode, currentMilestone);
         }
 
         [YarnCommand("show_phone_chat")]
@@ -214,11 +211,11 @@ namespace SeriousGame.Narrative
             SeriousGame.App.GameEventBus.RaiseToastRequested(message);
         }
 
-        [YarnCommand("test_func")]
-        public static void test_func(string message)
-        {
-            if (string.IsNullOrWhiteSpace(message)) return;
-            Debug.Log($"[YarnCommandBridge] test_func called with message: {message}");
-        }
+        // [YarnCommand("test_func")]
+        // public static void test_func(string message)
+        // {
+        //     if (string.IsNullOrWhiteSpace(message)) return;
+        //     Debug.Log($"[YarnCommandBridge] test_func called with message: {message}");
+        // }
     }
 }

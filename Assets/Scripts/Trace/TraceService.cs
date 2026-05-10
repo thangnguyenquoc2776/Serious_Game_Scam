@@ -32,60 +32,50 @@ namespace SeriousGame.Trace
             _config = config;
         }
 
-        public void LogEvent(
+        public GameTrace BuildTrace(
             string sessionId,
-            string actor,
-            string verb,
-            string objectId,
-            TraceEvent.ResultData result,
-            TraceEvent.ContextData context)
-        {
-            if (string.IsNullOrWhiteSpace(verb) || string.IsNullOrWhiteSpace(objectId))
-                return;
-
-            var e = new TraceEvent
-            {
-                sessionId = sessionId ?? "",
-                actor = actor ?? "", //playerid
-                verb = verb,
-                objectId = objectId,
-                result = result,
-                context = context,
-                unixMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()
-            };
-            //store the event in both the in-memory store and the persistent store (if available)
-            RecordEventInternal(e);
-            Debug.Log($"[TraceService] Logged event: {verb} {objectId} (session: {sessionId}, actor: {actor})");
-        }
-        // Helper method to build context data for trace events, can be extended with more fields as needed.
-        public TraceEvent.ContextData BuildContext(
-            string episodeId,
-            string yarnNode,
-            string unityScene,
+            string milestoneId,
+            string routeid,
+            int choiceId,
+            string traceId,
+            // string objectId,
+            // string episodeId,
+            // string yarnNode,
             PlayerStateSnapshot stateBefore)
         {
-            Debug.Log($"[TraceService] Built context: episodeId={episodeId}, yarnNode={yarnNode}, unityScene={unityScene}");
-            return new TraceEvent.ContextData
+            return new GameTrace
             {
-                episodeId = episodeId ?? "",
-                yarnNode = yarnNode ?? "",
-                unityScene = string.IsNullOrWhiteSpace(unityScene) ? SceneManager.GetActiveScene().name : unityScene,
-                stateBefore = stateBefore
+                sessionId = sessionId ?? "",
+                milestone_id = milestoneId ?? string.Empty,
+                route_id = routeid ?? string.Empty,
+                choice_id = choiceId.ToString(),
+                trace_id = traceId ?? string.Empty,
+                // object_id = objectId ?? string.Empty,
+                timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
+                score_state = BuildScoreState(stateBefore)
             };
-            
-        }
-        //store the event in both the in-memory store and the persistent store (if available)
-        private void RecordEventInternal(TraceEvent e)
-        {
-            _store.Add(e);
-            if (_persistentStore != null)
-                _persistentStore.Add(e);
-            Debug.Log($"[TraceService] Recorded event: {e.verb} {e.objectId}");
         }
 
-        public System.Collections.Generic.List<TraceEvent> GetSession(string sessionId)
+        public void LogEvent(GameTrace trace)
+        {
+            if (trace == null) return;
+            RecordTraceInternal(trace);
+            Debug.Log($"[TraceService] Logged trace event: {trace.trace_id} {trace.route_id} choice {trace.choice_id}");
+        }
+
+        //store the trace in both the in-memory store and the persistent store (if available)
+        private void RecordTraceInternal(GameTrace trace)
+        {
+            _store.Add(trace);
+            if (_persistentStore != null)
+                _persistentStore.Add(trace);
+            Debug.Log($"[TraceService] Recorded trace: {trace.trace_id} {trace.route_id} choice {trace.choice_id}");
+        }
+
+        public System.Collections.Generic.List<GameTrace> GetSession(string sessionId)
             => _store.GetBySession(sessionId);
 
+        // ham nay se duoc goi khi ket thuc chapter, de gui toan bo trace events trong session do len cloud. Ham su dung async/await de thuc hien viec gui du lieu mot cach non-blocking, giup tranh tinh trang treo game neu viec gui du lieu bi cham hoac gap loi. Tuy nhien, neu muon dam bao viec gui du lieu da hoan thanh truoc khi cho phep player tiep tuc, co the su dung ham SendSessionDataBlocking thay the. Hien tai chi co goi sendsessiondata async, sau nay co the them sendsessiondatablocking neu can.
         public async Task<bool> SendSessionData(bool isCompleted, string chapterId = "")
         {
             if (_session == null)
@@ -110,9 +100,11 @@ namespace SeriousGame.Trace
             if (dto == null) return false;
 
             var cloud = new CloudTraceStore();
+            Debug.Log($"[TraceService] Sending session data for session '{dto.session_id}' with {dto.traces.Count} traces, total playtime {dto.total_playtime_seconds} seconds, is_completed={dto.is_completed}");
             return await cloud.SendSessionData(dto, _config.firebaseProjectId, _session.AuthToken);
         }
 
+        //ham nay tuong tu nhu SendSessionData, nhung thay vi su dung async/await thi ham se thuc hien gui du lieu mot cach blocking, co the phu hop hon trong mot so tinh huong (vd: khi ket thuc chapter, muon dam bao du lieu da duoc gui len cloud truoc khi cho phep player tiep tuc vao chapter tiep theo)
         public bool SendSessionDataBlocking(bool isCompleted, string chapterId = "")
         {
             if (_session == null)
@@ -140,6 +132,7 @@ namespace SeriousGame.Trace
             return cloud.SendSessionDataBlocking(dto, _config.firebaseProjectId, _session.AuthToken);
         }
 
+        //ham nay build ra 1 ChapterSessionDTO tuong ung voi session hien tai, gom thong tin ve session (player id, start time), thong tin ve chapter (chapter id), va list trace events trong session do. Sau do ham se duoc su dung de gui du lieu len cloud.
         private ChapterSessionDTO BuildSessionDto(bool isCompleted, string chapterId)
         {
             if (_session == null) return null;
@@ -163,7 +156,7 @@ namespace SeriousGame.Trace
                 total_playtime_seconds = totalSeconds,
                 is_completed = isCompleted,
                 final_scores = BuildFinalScores(),
-                traces = BuildTraces(sessionId, chapterId)
+                traces = GetSession(sessionId)
             };
         }
 
@@ -179,37 +172,6 @@ namespace SeriousGame.Trace
             scores.SCORE_COMMUNITY_WARNING = _state.Get(GameStateKeys.ScoreCommunityWarning);
 
             return scores;
-        }
-
-        private List<GameTrace> BuildTraces(string sessionId, string chapterId)
-        {
-            var result = new List<GameTrace>();
-            var events = GetSession(sessionId);
-            if (events == null) return result;
-
-            for (int i = 0; i < events.Count; i++)
-            {
-                var e = events[i];
-                if (e == null) continue;
-
-                var trace = new GameTrace
-                {
-                    milestone_id = !string.IsNullOrWhiteSpace(chapterId)
-                        ? chapterId
-                        : (e.context != null ? e.context.episodeId : string.Empty),
-                    route_id = e.context != null ? e.context.yarnNode : string.Empty,
-                    choice_id = e.objectId ?? string.Empty,
-                    trace_id = e.verb ?? string.Empty,
-                    action_id = e.verb ?? string.Empty,
-                    object_id = e.objectId ?? string.Empty,
-                    timestamp = e.unixMs,
-                    score_state = BuildScoreState(e.context != null ? e.context.stateBefore : null)
-                };
-
-                result.Add(trace);
-            }
-
-            return result;
         }
 
         private Dictionary<string, int> BuildScoreState(PlayerStateSnapshot snapshot)

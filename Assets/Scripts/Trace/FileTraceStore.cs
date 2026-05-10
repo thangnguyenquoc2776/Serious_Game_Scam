@@ -1,12 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace SeriousGame.Trace
 {
     public class FileTraceStore : ITraceStore
     {
+        [Serializable]
+        private class TraceRecord
+        {
+            public string sessionId;
+            public GameTrace trace;
+        }
+
         private readonly string _filePath;
         private readonly object _lock = new object();
 
@@ -17,21 +25,26 @@ namespace SeriousGame.Trace
 
         public string FilePath => _filePath;
 
-        public void Add(TraceEvent e)
+        public void Add(GameTrace trace)
         {
-            if (e == null) return;
-            var json = JsonUtility.ToJson(e);
+            if (trace == null) return;
+            var record = new TraceRecord
+            {
+                sessionId = trace.sessionId,
+                trace = trace
+            };
+            var json = JsonConvert.SerializeObject(record);
 
             lock (_lock)
             {
                 File.AppendAllText(_filePath, json + Environment.NewLine);
             }
-            Debug.Log($"[FileTraceStore] Added event to file: {json}");
+            Debug.Log($"[FileTraceStore] Added trace to file: {json}");
         }
 
-        public List<TraceEvent> GetBySession(string sessionId)
+        public List<GameTrace> GetBySession(string sessionId)
         {
-            var res = new List<TraceEvent>();
+            var res = new List<GameTrace>();
             if (string.IsNullOrWhiteSpace(sessionId)) return res;
             if (!File.Exists(_filePath)) return res;
 
@@ -41,18 +54,18 @@ namespace SeriousGame.Trace
                 var line = lines[i];
                 if (string.IsNullOrWhiteSpace(line)) continue;
 
-                TraceEvent e = null;
+                TraceRecord record = null;
                 try
                 {
-                    e = JsonUtility.FromJson<TraceEvent>(line);
+                    record = JsonConvert.DeserializeObject<TraceRecord>(line);
                 }
                 catch
                 {
                     continue;
                 }
 
-                if (e != null && e.sessionId == sessionId)
-                    res.Add(e);
+                if (record != null && record.sessionId == sessionId && record.trace != null)
+                    res.Add(record.trace);
             }
 
             return res;
@@ -71,10 +84,10 @@ namespace SeriousGame.Trace
                 var line = lines[i];
                 if (string.IsNullOrWhiteSpace(line)) continue;
 
-                TraceEvent e = null;
+                TraceRecord record = null;
                 try
                 {
-                    e = JsonUtility.FromJson<TraceEvent>(line);
+                    record = JsonConvert.DeserializeObject<TraceRecord>(line);
                 }
                 catch
                 {
@@ -82,7 +95,7 @@ namespace SeriousGame.Trace
                     continue;
                 }
 
-                if (e == null || e.sessionId != sessionId)
+                if (record == null || record.sessionId != sessionId)
                     kept.Add(line);
             }
 

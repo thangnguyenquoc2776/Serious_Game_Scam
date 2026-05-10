@@ -19,18 +19,18 @@ namespace SeriousGame.Feedback
         }
 
         // Quick and simple feedback report generation based on trace events and player state.ss
-        public FeedbackReport GenerateEndChapterReport(string sessionId)
+        public FeedbackReport GenerateEndChapterReport(string sessionId) // cái này hiện tại đang tính cộng trừ cơ bản, chưa có logic phức tạp gì, nhưng sau này có thể mở rộng thêm các kiểu phân tích khác (ví dụ: dựa trên sequence của trace events, hoặc kết hợp với state snapshot để đưa ra nhận định chính xác hơn)
         {
             var report = new FeedbackReport();
             var events = _trace.GetSession(sessionId);
 
-            // Count by verb
+            // Count by trace_id
             var count = new Dictionary<string, int>();
             foreach (var e in events)
             {
-                if (string.IsNullOrWhiteSpace(e.verb)) continue;
-                if (!count.ContainsKey(e.verb)) count[e.verb] = 0;
-                count[e.verb]++;
+                if (string.IsNullOrWhiteSpace(e.trace_id)) continue;
+                if (!count.ContainsKey(e.trace_id)) count[e.trace_id] = 0;
+                count[e.trace_id]++;
             }
 
             int score = 0;

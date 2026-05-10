@@ -103,7 +103,7 @@ namespace SeriousGame.Trace
             if (string.IsNullOrWhiteSpace(projectId) || string.IsNullOrWhiteSpace(sessionId) || string.IsNullOrWhiteSpace(authToken))
                 return null;
 
-            return $"https://{projectId}.firebaseio.com/sessions/{sessionId}.json?auth={authToken}";
+            return $"https://{projectId}-default-rtdb.asia-southeast1.firebasedatabase.app/sessions/{sessionId}.json?auth={authToken}";
         }
 
         private static async Task SendWebRequestAsync(UnityWebRequest request)

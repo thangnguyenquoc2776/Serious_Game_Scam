@@ -5,18 +5,42 @@ using SeriousGame.Runtime;
 
 namespace SeriousGame.Narrative
 {
-    public class NarrativeService
+    public class NarrativeService : MonoBehaviour
     {
-        private readonly AppContext _context;
+        private AppContext _context;
         private DialogueRunner _runner;
         private PlayerController _player;
 
-        public NarrativeService(AppContext context)
+        // public NarrativeService(AppContext context)
+        // {
+        //     _context = context;
+        // }
+
+        void Awake()
         {
-            _context = context;
+            _context = GameBootstrap.Context;
         }
 
-        private void OnDialogueStarted()
+        void Update()
+        {
+            updateCurrentNode();
+        }
+
+        private void updateCurrentNode()
+        {
+            if (_runner != null && _runner.IsDialogueRunning)
+            {
+                SetCurrentNode(_runner.Dialogue.CurrentNode);
+            }
+        }
+
+        // // string getMilestoneId()
+        // {
+        //    return CurrentNode.Substring(0, CurrentNode.IndexOf('_')); // e.g. Node_1 => Node
+        // }
+
+        [YarnCommand("toast")]
+        public void OnDialogueStarted()
         {   
             if (_player != null)
             {
@@ -26,7 +50,7 @@ namespace SeriousGame.Narrative
             }
         }
 
-        private void OnDialogueEnded()
+        public void OnDialogueEnded()
         {
             if (_player != null)
             {
@@ -37,6 +61,7 @@ namespace SeriousGame.Narrative
         }
 
         public string CurrentNode { get; private set; }
+        public string CurrentMilestoneId { get; private set; } = string.Empty;
 
         public void BindRunner(DialogueRunner runner)
         {
@@ -69,6 +94,12 @@ namespace SeriousGame.Narrative
             CurrentNode = nodeName;
         }
 
+        public void SetCurrentMilestone(string milestoneId)
+        {   
+            Debug.Log($"[NarrativeService] Setting current milestone to '{milestoneId}'");
+            CurrentMilestoneId = milestoneId ?? string.Empty;
+        }
+
         public void StartNode(string nodeName)
         {
             if (string.IsNullOrWhiteSpace(nodeName)) return;
@@ -78,9 +109,10 @@ namespace SeriousGame.Narrative
                 return;
             }
 
-            CurrentNode = nodeName;
+            // CurrentNode = nodeName;
             _runner.StartDialogue(nodeName);
         }
+
 
         public AppContext GetContext()
         {
