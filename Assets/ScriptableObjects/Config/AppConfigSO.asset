@@ -18,4 +18,4 @@ MonoBehaviour:
   skipMainMenuAndAutoStartEpisode: 1
   firebaseProjectId: serious-game-scam
   firebaseWebApiKey: AIzaSyC4awZbiWrUd9S2Sav-XgVA11YCAiag200
-  traceTaxonomy: {fileID: 11400000, guid: a909c0caf58cd22448b4736ebcafef0b, type: 2}
+  evidenceMapping: {fileID: 11400000, guid: 1bdd633ca4845a84b9780db90c5fd155, type: 2}

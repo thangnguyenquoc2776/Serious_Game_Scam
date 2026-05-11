@@ -18,6 +18,6 @@ namespace SeriousGame.Content
         public string firebaseWebApiKey;
 
         [Header("Content")]
-        public TraceTaxonomySO traceTaxonomy;
+        public EvidenceMappingSO evidenceMapping;
     }
 }

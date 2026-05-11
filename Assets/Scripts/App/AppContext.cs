@@ -38,7 +38,10 @@ namespace SeriousGame.App
             // Narrative context should exist before SaveService so save/load can include node and milestone.
             Narrative = GetComponent<NarrativeService>();
 
-            Feedback = new FeedbackService(Trace, config != null ? config.traceTaxonomy : null, PlayerState);
+            Feedback = new FeedbackService(
+                Trace,
+                config != null ? config.evidenceMapping : null,
+                PlayerState);
             Save = new SaveService(Session, PlayerState, Narrative);
         }
 

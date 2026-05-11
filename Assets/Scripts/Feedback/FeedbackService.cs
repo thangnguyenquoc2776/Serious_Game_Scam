@@ -8,14 +8,34 @@ namespace SeriousGame.Feedback
     public class FeedbackService
     {
         private readonly TraceService _trace;
-        private readonly SeriousGame.Content.TraceTaxonomySO _taxonomy;
+        private readonly EvidenceMappingSO _mapping;
         private readonly PlayerStateService _state;
 
-        public FeedbackService(TraceService trace, SeriousGame.Content.TraceTaxonomySO taxonomy, PlayerStateService state = null)
+        public FeedbackService(
+            TraceService trace,
+            EvidenceMappingSO mapping,
+            PlayerStateService state = null)
         {
             _trace = trace;
-            _taxonomy = taxonomy;
+            _mapping = mapping;
             _state = state;
+        }
+
+        public void ApplyTrace(string traceId)
+        {
+            if (_state == null) return;
+            if (_mapping == null || string.IsNullOrWhiteSpace(traceId)) return;
+
+            var entry = _mapping.Find(traceId);
+            if (entry == null || entry.scoreDeltas == null) return;
+
+            for (int i = 0; i < entry.scoreDeltas.Length; i++)
+            {
+                var delta = entry.scoreDeltas[i];
+                if (delta == null || string.IsNullOrWhiteSpace(delta.scoreKey)) continue;
+                if (!GameStateKeys.IsValid(delta.scoreKey)) continue;
+                _state.Add(delta.scoreKey, delta.delta);
+            }
         }
 
         // Quick and simple feedback report generation based on trace events and player state.ss
@@ -36,18 +56,20 @@ namespace SeriousGame.Feedback
             int score = 0;
             foreach (var kv in count)
             {
-                var def = _taxonomy != null ? _taxonomy.Find(kv.Key) : null;
-                int w = def != null ? def.riskWeight : 0;
-                score += w * kv.Value;
+                var entry = _mapping != null ? _mapping.Find(kv.Key) : null;
+                int deltaSum = GetTotalDelta(entry);
+                score += deltaSum * kv.Value;
 
-                var title = def != null ? def.displayName : kv.Key;
-                var detail = def != null ? def.description : "Không có mô tả traceType (bạn cần bổ sung TraceTypeSO).";
+                var title = entry != null && !string.IsNullOrWhiteSpace(entry.displayName) ? entry.displayName : kv.Key;
+                var detail = entry != null && !string.IsNullOrWhiteSpace(entry.description)
+                    ? entry.description
+                    : "Không có mô tả evidence mapping (bạn cần bổ sung EvidenceMappingSO).";
 
                 report.items.Add(new FeedbackItem
                 {
                     title = $"{title} (x{kv.Value})",
                     detail = detail,
-                    scoreDelta = w * kv.Value
+                    scoreDelta = deltaSum * kv.Value
                 });
             }
 
@@ -78,6 +100,21 @@ namespace SeriousGame.Feedback
 
             report.rawSummaryText = text;
             return report;
+        }
+
+        private static int GetTotalDelta(EvidenceMappingEntry entry)
+        {
+            if (entry == null || entry.scoreDeltas == null) return 0;
+
+            int sum = 0;
+            for (int i = 0; i < entry.scoreDeltas.Length; i++)
+            {
+                var delta = entry.scoreDeltas[i];
+                if (delta == null) continue;
+                sum += delta.delta;
+            }
+
+            return sum;
         }
     }
 }

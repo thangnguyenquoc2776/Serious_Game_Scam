@@ -73,16 +73,14 @@ Hệ thống: Bạn có thấy tin nhắn hiện lên trong UI Phone không?
 title: Test_Trace
 ---
 // Test ghi log hành vi vào file trace.jsonl[cite: 1]
-Hệ thống: Đang giả lập hành vi kiểm tra thông tin chính thống...
+// Hệ thống: Đang giả lập hành vi kiểm tra thông tin chính thống...
 // <<trace T_VERIFY_OFFICIAL>>[cite: 1]
 
-Hệ thống: Bây giờ hãy chọn một lựa chọn để test trace_choice.
--> Chọn phương án rủi ro
-   <<trace T_VERIFY_OFFICIAL 1>>
-    Hệ thống: Đã ghi log hành vi nhấn link rủi ro.
--> Chọn phương án an toàn
-    <<trace T_VERIFY_OFFICIAL 2>>
-    Hệ thống: Đã ghi log hành vi thoát app an toàn.
+Hệ thống: Bây giờ hãy chọn một lựa chọn để test trace
+-> Doc thong tin lien quan
+   <<trace TRACE_READ_RELEVANT_INFO 1>>
+-> Hoi nguoi ta
+    <<trace TRACE_ASK_PERSON 2>>
 
 Hệ thống: Hãy kiểm tra file trace.jsonl trong persistentDataPath để xem kết quả.[cite: 1]
 <<jump Start>>
@@ -160,4 +158,33 @@ Hệ thống: Bạn có thể tắt game, mở lại và dùng SaveService.Load(
 // Thang ban: chao mung may da tro lai lan 3
 // ===
 
+// title: noi_chuyen
+// position: 62,1362
+// ---
+// // [Cảnh] CH1_M0_R0_BB_7 - Phòng 308
+// // [Hiển thị] Hành lang tầng 3; cửa 308 mở hé. Trong phòng có Quân và Huy.
+
+// // [Kể chuyện]
+// Tôi kéo vali lên tầng, tìm tới phòng 308.
+// Hành lang dài, hai bên là những cánh cửa giống nhau đến mức tôi phải nhìn lại số phòng vài lần cho chắc.
+
+// Quân: “Ông phòng 308 mới vô hả?”
+// Minh: "Sáng đi học sớm vậy ông?"
+// Quân: “Ừ đó. Vali ông nhìn hơi chiến nha, bánh xe sắp nghỉ hưu rồi kìa.”
+// Minh: “Nó nghỉ từ cổng rồi ông.”
+// Quân: “Vậy là vào KTX cái có drama liền. Tín hiệu tốt đó.”
+// Huy: “Em để đồ gọn bên kia trước. Thẻ phòng với giấy tờ giữ kỹ.”
+// Huy: “Nhóm tòa có thông báo thì nhớ xem. Mấy hôm đầu dễ sót lắm.”
+// Minh: “Dạ, em vừa vào nhóm rồi anh.”
+
+// // [Kể chuyện]
+// Đoạn trò chuyện ban đầu làm tôi bớt căng hơn một chút.
+// Ít nhất, hai người cùng phòng không khó nói chuyện như tôi sợ.
+
+// // [Tuỳ chọn] Có thể nói chuyện thêm trước khi qua mạch chính.
+// -> (Tuỳ chọn) Nói chuyện thêm với Quân/Huy
+//     <<jump CH1_M0_R0_TC_8>>
+// -> Tiếp tục mạch chính
+//     <<jump CH1_M0_R0_BB_9>>
+// ===
 

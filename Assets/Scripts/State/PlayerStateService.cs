@@ -8,6 +8,8 @@ namespace SeriousGame.State
     public class PlayerStateService
     {
         [SerializeField]
+        //states includes all numeric states, such as scores and progress indicators. The value is typically clamped between 0 and 100 to represent different levels of achievement or status.
+
         private readonly Dictionary<string, int> _states = new Dictionary<string, int>();
         [SerializeField]
         private readonly Dictionary<string, bool> _flags = new Dictionary<string, bool>();
@@ -143,7 +145,7 @@ namespace SeriousGame.State
 
         private static int Clamp(int value)
         {
-            return Mathf.Clamp(value, 0, 3);
+            return Mathf.Clamp(value, 0, 100);
         }
 
         private static bool IsKeyAllowed(string key)

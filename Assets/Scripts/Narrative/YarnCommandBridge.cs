@@ -60,6 +60,8 @@ namespace SeriousGame.Narrative
                 ctx.PlayerState != null ? ctx.PlayerState.GetSnapshot() : null);
 
             ctx.Trace.LogEvent(trace);
+            if (ctx.Feedback != null)
+                ctx.Feedback.ApplyTrace(traceTypeId);
         }
 
         [YarnCommand("set_node")]
@@ -105,6 +107,7 @@ namespace SeriousGame.Narrative
             if (ctx == null || ctx.Trace == null || ctx.Session == null) return;
 
             _ = ctx.Trace.SendSessionData(true, chapterId);
+            SeriousGame.App.GameEventBus.RaiseSummaryRequested();
         }
 
         [YarnCommand("add_state")]
