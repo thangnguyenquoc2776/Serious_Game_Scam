@@ -7,10 +7,12 @@ namespace SeriousGame.App
         // UI requests
         public static event Action<string> OnPhoneChatRequested;
         public static event Action<string, string> OnPhoneMessageReceived;
+        public static event Action<string> OnPcChatRequested;
         public static event Action<string> OnDialogueRequested;
         public static event Action<string> OnToastRequested;
         public static event Action OnSummaryRequested;
         public static event Action<string> OnHintRequested;
+        public static event Action<string> OnSwitchUIRequested;
 
         public static void RaisePhoneChatRequested(string interactionId)
         {
@@ -20,6 +22,11 @@ namespace SeriousGame.App
         public static void RaisePhoneMessageReceived(string characterName, string message)
         {
             OnPhoneMessageReceived?.Invoke(characterName, message);
+        }
+
+        public static void RaisePcChatRequested(string interactionId)
+        {
+            OnPcChatRequested?.Invoke(interactionId);
         }
 
         public static void RaiseDialogueRequested(string nodeName)
@@ -40,6 +47,11 @@ namespace SeriousGame.App
         public static void RaiseHintRequested(string message)
         {
             OnHintRequested?.Invoke(message);
+        }
+
+        public static void RaiseSwitchUIRequested(string uitype)
+        {
+            OnSwitchUIRequested?.Invoke(uitype);
         }
     }
 }

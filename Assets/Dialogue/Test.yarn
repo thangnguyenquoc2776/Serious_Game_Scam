@@ -58,17 +58,17 @@ Hệ thống: Sau khi cập nhật, tiền của bạn là: {get_state("STATE_MO
 <<jump Start>>
 ===
 
-title: Test_Phone
----
-// Test GameEventBus gửi lệnh tới PhoneUIListener[cite: 1]
-<<show_chat "Hacker" "Chào bạn, mình có món quà bất ngờ cho bạn đây">>[cite: 1]
-<<show_chat "Hacker" "Nhấn vào link này nhé: http://scam.link">>[cite: 1]
+// title: Test_Phone
+// ---
+// // Test GameEventBus gửi lệnh tới PhoneUIListener[cite: 1]
+// <<show_chat "Hacker" "Chào bạn, mình có món quà bất ngờ cho bạn đây">>[cite: 1]
+// <<show_chat "Hacker" "Nhấn vào link này nhé: http://scam.link">>[cite: 1]
 
-Hệ thống: Bạn có thấy tin nhắn hiện lên trong UI Phone không?
--> Có, đã hiện.
--> Chưa thấy gì.
-<<jump Start>>
-===
+// Hệ thống: Bạn có thấy tin nhắn hiện lên trong UI Phone không?
+// -> Có, đã hiện.
+// -> Chưa thấy gì.
+// <<jump Start>>
+// ===
 
 title: Test_Trace
 ---

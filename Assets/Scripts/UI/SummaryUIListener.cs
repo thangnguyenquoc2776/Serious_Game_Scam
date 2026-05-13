@@ -15,14 +15,13 @@ namespace SeriousGame.UI
         [SerializeField] private TMP_Text riskRecognitionText;
         [SerializeField] private TMP_Text communityWarningText;
 
-        private void OnEnable()
-        {
-            GameEventBus.OnSummaryRequested += HandleSummaryRequested;
-        }
+        [Header("Behavior")]
+        [SerializeField] private bool startHidden = true;
 
-        private void OnDisable()
+        private void Awake()
         {
-            GameEventBus.OnSummaryRequested -= HandleSummaryRequested;
+            if (startHidden)
+                Hide();
         }
 
         public void Hide()
@@ -30,12 +29,17 @@ namespace SeriousGame.UI
             SetVisible(false);
         }
 
-        private void HandleSummaryRequested()
+        public void ShowFromContext()
         {
             var ctx = GameBootstrap.Context;
             if (ctx == null || ctx.PlayerState == null) return;
+            Show(ctx.PlayerState);
+        }
 
-            UpdateScores(ctx.PlayerState);
+        public void Show(PlayerStateService state)
+        {
+            if (state == null) return;
+            UpdateScores(state);
             SetVisible(true);
         }
 

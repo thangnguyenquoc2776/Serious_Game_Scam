@@ -20,7 +20,8 @@ namespace SeriousGame.App
         public FeedbackService Feedback { get; private set; }
         public SaveService Save { get; private set; }
         public NarrativeService Narrative { get; private set; }
-
+        public QuestService Quest { get; private set; }
+    
         public void Init(AppConfigSO config)
         {
             Config = config;
@@ -37,7 +38,7 @@ namespace SeriousGame.App
 
             // Narrative context should exist before SaveService so save/load can include node and milestone.
             Narrative = GetComponent<NarrativeService>();
-
+            Quest = GetComponent<QuestService>();
             Feedback = new FeedbackService(
                 Trace,
                 config != null ? config.evidenceMapping : null,

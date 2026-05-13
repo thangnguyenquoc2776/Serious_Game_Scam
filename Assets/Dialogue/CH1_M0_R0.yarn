@@ -125,11 +125,9 @@ Minh: “Dạ chị ơi, nhóm này là nhóm chính thức của tòa hả ch�
 Chị Linh: “Ừ, đúng rồi em. Nhóm này chỉ để nhận thông báo của tòa A thôi.”
 Chị Linh: “Mấy thông tin như giờ giấc, nội quy, mất thẻ, báo sửa đồ… sẽ nhắn trong đó.”
 Minh: “Dạ, em hiểu rồi.”
-
-// [Cập nhật - Trace]
-// TraceType: TRACE_ASK_PERSON
-// Biến liên quan: SCORE_HELP_SEEKING, SCORE_INFORMATION_VERIFICATION
-<<trace TRACE_ASK_PERSON 5>>
+-> Di luong
+-> Minh: chi oi cho em hoi
+<<trace TRACE_ASK_PERSON "chi Linh">>
 
 <<jump CH1_M0_R0_BB_6>>
 ===

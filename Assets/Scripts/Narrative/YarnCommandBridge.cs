@@ -80,25 +80,11 @@ namespace SeriousGame.Narrative
             ctx.Narrative.SetCurrentMilestone(milestoneId.ToString());
         }
 
-        // [YarnCommand("trace_choice")]
-        // public static void TraceChoice(string choiceId, string traceTypeId)
-        // {
-        //     var ctx = Context;
-        //     if (ctx == null || ctx.Trace == null) return;
-        //     if (string.IsNullOrWhiteSpace(traceTypeId) || string.IsNullOrWhiteSpace(choiceId)) return;
-
-        //     var sessionId = ctx.Session != null ? ctx.Session.CurrentSessionId : "";
-        //     var yarnNode = ctx.Narrative != null ? ctx.Narrative.CurrentNode : "";
-        //     var trace = ctx.Trace.BuildTrace(
-        //         sessionId,
-        //         traceTypeId,
-        //         choiceId,
-        //         SceneManager.GetActiveScene().name,
-        //         yarnNode,
-        //         ctx.PlayerState != null ? ctx.PlayerState.GetSnapshot() : null);
-
-        //     ctx.Trace.LogEvent(trace);
-        // }
+        [YarnCommand("set_objective")]
+        public static void SetObjective(string objectiveId)
+        {
+            GameBootstrap.Context.Quest.SetObjective(objectiveId);
+        }
 
          [YarnCommand("chapter_end")]
         public static void ChapterEnd(string chapterId = "")
@@ -145,19 +131,32 @@ namespace SeriousGame.Narrative
             ctx.Save.SaveCurrent(episodeId, currentNode, currentMilestone);
         }
 
-        [YarnCommand("show_phone_chat")]
-        public static void ShowPhoneChat(string interactionId)
+        // [YarnCommand("show_phone_chat")]
+        // public static void ShowPhoneChat(string interactionId)
+        // {
+        //     if (string.IsNullOrWhiteSpace(interactionId)) return;
+        //     SeriousGame.App.GameEventBus.RaisePhoneChatRequested(interactionId);
+        // }
+
+        // [YarnCommand("show_pc_chat")]
+        // public static void ShowPcChat(string interactionId)
+        // {
+        //     if (string.IsNullOrWhiteSpace(interactionId)) return;
+        //     SeriousGame.App.GameEventBus.RaisePcChatRequested(interactionId);
+        // }
+
+        [YarnCommand("switch_ui")]
+        public static void SwitchUI(string uitype)
         {
-            if (string.IsNullOrWhiteSpace(interactionId)) return;
-            SeriousGame.App.GameEventBus.RaisePhoneChatRequested(interactionId);
+            SeriousGame.App.GameEventBus.RaiseSwitchUIRequested(uitype);
         }
 
-        [YarnCommand("show_chat")]
-        public static void ShowChat(string characterName, string message)
-        {
-            if (string.IsNullOrWhiteSpace(message)) return;
-            SeriousGame.App.GameEventBus.RaisePhoneMessageReceived(characterName, message);
-        }
+        // [YarnCommand("show_chat")]
+        // public static void ShowChat(string characterName, string message)
+        // {
+        //     if (string.IsNullOrWhiteSpace(message)) return;
+        //     SeriousGame.App.GameEventBus.RaisePhoneMessageReceived(characterName, message);
+        // }
 
         [YarnCommand("show_hint")]
         public static void ShowHint(string message)
