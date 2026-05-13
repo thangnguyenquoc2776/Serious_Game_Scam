@@ -1,44 +1,39 @@
 // Assets/Scripts/UI/OutcomeToastUI.cs
-using System.Collections;
-using TMPro;
 using UnityEngine;
 
 namespace SeriousGame.UI
 {
     public class OutcomeToastUI : MonoBehaviour
     {
-        [SerializeField] private TMP_Text text;
-        [SerializeField] private float showSeconds = 2f;
+        [SerializeField] private float showSeconds = 10f;
 
-        private Coroutine _co;
+        private ToastNotification _toastNotification;
 
         private void Awake()
         {
-            Hide();
+            _toastNotification = FindObjectOfType<ToastNotification>(true);
         }
 
         public void Show(string message)
         {
-            if (text == null) return;
+            if (string.IsNullOrWhiteSpace(message)) return;
 
-            text.text = message ?? "";
-            gameObject.SetActive(true);
+            if (_toastNotification == null)
+                _toastNotification = FindObjectOfType<ToastNotification>(true);
 
-            if (_co != null) StopCoroutine(_co);
-            _co = StartCoroutine(AutoHide());
+            if (_toastNotification == null || _toastNotification._messagePrefab == null)
+            {
+                Debug.LogWarning("[OutcomeToastUI] ToastNotification not found or missing prefab.");
+                return;
+            }
+
+            ToastNotification.Show(message, showSeconds);
         }
 
         public void Hide()
         {
-            if (_co != null) StopCoroutine(_co);
-            _co = null;
-            gameObject.SetActive(false);
-        }
-
-        private IEnumerator AutoHide()
-        {
-            yield return new WaitForSeconds(showSeconds);
-            Hide();
+            if (_toastNotification != null)
+                ToastNotification.Hide();
         }
     }
 }
