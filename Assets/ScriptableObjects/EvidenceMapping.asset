@@ -15,15 +15,310 @@ MonoBehaviour:
   mappings:
   - traceId: TRACE_READ_RELEVANT_INFO
     displayName: "\u0110\u1ECDc th\xF4ng tin li\xEAn quan  "
-    description: 
+    description: "Ng\u01B0\u1EDDi ch\u01A1i \u0111\u1ECDc email, th\xF4ng b\xE1o,
+      tin ghim, h\u01B0\u1EDBng d\u1EABn ho\u1EB7c n\u1ED9i dung c\xF3 li\xEAn quan
+      tr\u1EF1c ti\u1EBFp \u0111\u1EBFn quy\u1EBFt \u0111\u1ECBnh"
     scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: 0
     - scoreKey: SCORE_INFORMATION_VERIFICATION
       delta: 2
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: 0
+    - scoreKey: SCORE_HELP_SEEKING
+      delta: 0
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 0
   - traceId: TRACE_ASK_PERSON
-    displayName: "H\u1ECFi ng\u01B0\u1EDDi \u0111\xE1ng tin  "
-    description: 
+    displayName: "H\u1ECFi ng\u01B0\u1EDDi \u0111\xE1ng tin"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i h\u1ECFi b\u1EA1n c\xF9ng ph\xF2ng, nh\xF3m
+      h\u1ECDc t\u1EADp, ng\u01B0\u1EDDi h\u1ED7 tr\u1EE3 ch\xEDnh th\u1EE9c ho\u1EB7c
+      ng\u01B0\u1EDDi c\xF3 kh\u1EA3 n\u0103ng x\xE1c minh khi ch\u01B0a ch\u1EAFc
+      ch\u1EAFn."
     scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: 0
+    - scoreKey: SCORE_INFORMATION_VERIFICATION
+      delta: 2
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: 0
     - scoreKey: SCORE_HELP_SEEKING
       delta: 5
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 0
+  - traceId: TRACE_INSPECT_SOURCE
+    displayName: "Ki\u1EC3m tra ngu\u1ED3n"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i ki\u1EC3m tra ng\u01B0\u1EDDi g\u1EEDi,
+      \u0111\u01B0\u1EDDng link, bi\u1EC3u m\u1EABu, s\u1ED1 \u0111i\u1EC7n tho\u1EA1i,
+      m\xE3 \u0111\u01A1n, t\xEAn nh\xF3m, t\xE0i kho\u1EA3n nh\u1EADn ti\u1EC1n
+      ho\u1EB7c \u0111\u01A1n v\u1ECB t\u1ED5 ch\u1EE9c."
+    scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: 3
+    - scoreKey: SCORE_INFORMATION_VERIFICATION
+      delta: 5
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: 0
+    - scoreKey: SCORE_HELP_SEEKING
+      delta: 0
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 0
+  - traceId: TRACE_DETECT_RED_FLAG
+    displayName: "Nh\u1EADn ra d\u1EA5u hi\u1EC7u b\u1EA5t th\u01B0\u1EDDng"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i ph\xE1t hi\u1EC7n m\u1ED9t chi ti\u1EBFt
+      \u0111\xE1ng ng\u1EDD nh\u01B0 domain l\u1EA1, t\xE0i kho\u1EA3n kh\xF4ng kh\u1EDBp,
+      y\xEAu c\u1EA7u g\u1EA5p, quy tr\xECnh l\u1EA1 ho\u1EB7c th\xF4ng tin m\u1EADp
+      m\u1EDD."
+    scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: 7
+    - scoreKey: SCORE_INFORMATION_VERIFICATION
+      delta: 3
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: 0
+    - scoreKey: SCORE_HELP_SEEKING
+      delta: 0
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 0
+  - traceId: TRACE_IGNORE_RED_FLAG
+    displayName: "B\u1ECF qua d\u1EA5u hi\u1EC7u b\u1EA5t th\u01B0\u1EDDng"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i ti\u1EBFp t\u1EE5c l\xE0m theo d\xF9
+      t\xECnh hu\u1ED1ng \u0111\xE3 c\xF3 d\u1EA5u hi\u1EC7u \u0111\xE1ng ng\u1EDD
+      \u0111\u01B0\u1EE3c th\u1EC3 hi\u1EC7n r\xF5."
+    scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: -6
+    - scoreKey: SCORE_INFORMATION_VERIFICATION
+      delta: -3
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: 0
+    - scoreKey: SCORE_HELP_SEEKING
+      delta: 0
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 0
+  - traceId: TRACE_CONTACT_VERIFY
+    displayName: "X\xE1c minh qua k\xEAnh kh\xE1c"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i g\u1ECDi, nh\u1EAFn ho\u1EB7c ki\u1EC3m
+      tra qua m\u1ED9t k\xEAnh \u0111\u1ED9c l\u1EADp \u0111\u1EC3 x\xE1c minh danh
+      t\xEDnh, th\xF4ng tin, \u0111\u01A1n h\xE0ng ho\u1EB7c quy tr\xECnh."
+    scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: 3
+    - scoreKey: SCORE_INFORMATION_VERIFICATION
+      delta: 8
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: 0
+    - scoreKey: SCORE_HELP_SEEKING
+      delta: 4
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 0
+  - traceId: XXXX
+    displayName: "Nh\u1EADn ra d\u1EA5u hi\u1EC7u b\u1EA5t th\u01B0\u1EDDng"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i ti\u1EBFp t\u1EE5c l\xE0m theo d\xF9
+      t\xECnh hu\u1ED1ng \u0111\xE3 c\xF3 d\u1EA5u hi\u1EC7u \u0111\xE1ng ng\u1EDD
+      \u0111\u01B0\u1EE3c th\u1EC3 hi\u1EC7n r\xF5."
+    scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: 0
+    - scoreKey: SCORE_INFORMATION_VERIFICATION
+      delta: 3
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: 6
+    - scoreKey: SCORE_HELP_SEEKING
+      delta: 0
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 0
+  - traceId: XXXX
+    displayName: "Nh\u1EADn ra d\u1EA5u hi\u1EC7u b\u1EA5t th\u01B0\u1EDDng"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i t\u1EEB ch\u1ED1i l\xE0m theo y\xEAu
+      c\u1EA7u ch\u01B0a x\xE1c minh, t\u1EEB ch\u1ED1i chuy\u1EC3n ti\u1EC1n, t\u1EEB
+      ch\u1ED1i nh\u1EADp th\xF4ng tin ho\u1EB7c t\u1EEB ch\u1ED1i ti\u1EBFp t\u1EE5c
+      quy tr\xECnh \u0111\xE1ng ng\u1EDD."
+    scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: 3
+    - scoreKey: SCORE_INFORMATION_VERIFICATION
+      delta: 3
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: 6
+    - scoreKey: SCORE_HELP_SEEKING
+      delta: 0
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 0
+  - traceId: XXXX
+    displayName: "Nh\u1EADn ra d\u1EA5u hi\u1EC7u b\u1EA5t th\u01B0\u1EDDng"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i ti\u1EBFp t\u1EE5c l\xE0m theo d\xF9
+      t\xECnh hu\u1ED1ng \u0111\xE3 c\xF3 d\u1EA5u hi\u1EC7u \u0111\xE1ng ng\u1EDD
+      \u0111\u01B0\u1EE3c th\u1EC3 hi\u1EC7n r\xF5."
+    scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: -2
+    - scoreKey: SCORE_INFORMATION_VERIFICATION
+      delta: -4
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: 0
+    - scoreKey: SCORE_HELP_SEEKING
+      delta: 0
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 0
+  - traceId: XXXX
+    displayName: "Nh\u1EADn ra d\u1EA5u hi\u1EC7u b\u1EA5t th\u01B0\u1EDDng"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i m\u1EDF bi\u1EC3u m\u1EABu ch\u01B0a
+      r\xF5 ngu\u1ED3n, ch\u01B0a x\xE1c minh \u0111\u01A1n v\u1ECB qu\u1EA3n l\xFD
+      ho\u1EB7c c\xF3 d\u1EA5u hi\u1EC7u m\u1EADp m\u1EDD."
+    scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: -3
+    - scoreKey: SCORE_INFORMATION_VERIFICATION
+      delta: -5
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: 0
+    - scoreKey: SCORE_HELP_SEEKING
+      delta: 0
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 0
+  - traceId: TRACE_FILL_BASIC_INFO
+    displayName: "Nh\u1EADp th\xF4ng tin c\u01A1 b\u1EA3n"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i nh\u1EADp h\u1ECD t\xEAn, m\xE3 s\u1ED1
+      sinh vi\xEAn, s\u1ED1 \u0111i\u1EC7n tho\u1EA1i, l\u1EDBp, khoa ho\u1EB7c n\u01A1i
+      \u1EDF v\xE0o ngu\u1ED3n ch\u01B0a x\xE1c minh."
+    scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: -4
+    - scoreKey: SCORE_INFORMATION_VERIFICATION
+      delta: -7
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: 0
+    - scoreKey: SCORE_HELP_SEEKING
+      delta: 0
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 0
+  - traceId: TRACE_FILL_SENSITIVE_INFO
+    displayName: "Nh\u1EADp th\xF4ng tin nh\u1EA1y c\u1EA3m"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i nh\u1EADp CCCD, ph\xF2ng \u1EDF, t\xE0i
+      kho\u1EA3n ng\xE2n h\xE0ng, th\xF4ng tin t\xE0i ch\xEDnh ho\u1EB7c d\u1EEF
+      li\u1EC7u c\xF3 kh\u1EA3 n\u0103ng b\u1ECB khai th\xE1c cao v\xE0o ngu\u1ED3n
+      ch\u01B0a x\xE1c minh."
+    scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: -6
+    - scoreKey: SCORE_INFORMATION_VERIFICATION
+      delta: -12
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: -4
+    - scoreKey: SCORE_HELP_SEEKING
+      delta: 0
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 0
+  - traceId: TRACE_SUBMIT_CREDENTIAL
+    displayName: "G\u1EEDi t\xE0i kho\u1EA3n/m\u1EADt kh\u1EA9u"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i nh\u1EADp ho\u1EB7c g\u1EEDi th\xF4ng
+      tin \u0111\u0103ng nh\u1EADp v\xE0o ngu\u1ED3n ch\u01B0a x\xE1c minh."
+    scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: -10
+    - scoreKey: SCORE_INFORMATION_VERIFICATION
+      delta: -20
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: -6
+    - scoreKey: SCORE_HELP_SEEKING
+      delta: 0
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 0
+  - traceId: TRACE_SUBMIT_AUTH_CODE
+    displayName: "G\u1EEDi m\xE3 OTP/m\xE3 x\xE1c th\u1EF1c"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i nh\u1EADp, g\u1EEDi ho\u1EB7c cung c\u1EA5p
+      OTP, m\xE3 giao d\u1ECBch, m\xE3 \u0111\u0103ng nh\u1EADp ho\u1EB7c m\xE3 x\xE1c
+      th\u1EF1c cho ngu\u1ED3n ch\u01B0a x\xE1c minh."
+    scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: -12
+    - scoreKey: SCORE_INFORMATION_VERIFICATION
+      delta: -24
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: -8
+    - scoreKey: SCORE_HELP_SEEKING
+      delta: 0
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 0
+  - traceId: TRACE_TRANSFER_MONEY
+    displayName: "Chuy\u1EC3n ti\u1EC1n khi ch\u01B0a x\xE1c minh"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i chuy\u1EC3n ti\u1EC1n, thanh to\xE1n,
+      \u0111\u1EB7t c\u1ECDc ho\u1EB7c \u0111\xF3ng ph\xED trong khi ch\u01B0a x\xE1c
+      minh \u0111\u1EE7 th\xF4ng tin."
+    scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: -7
+    - scoreKey: SCORE_INFORMATION_VERIFICATION
+      delta: -15
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: -8
+    - scoreKey: SCORE_HELP_SEEKING
+      delta: 0
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 0
+  - traceId: TRACE_ACT_UNDER_PRESSURE
+    displayName: "H\xE0nh \u0111\u1ED9ng d\u01B0\u1EDBi \xE1p l\u1EF1c"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i th\u1EF1c hi\u1EC7n h\xE0nh vi r\u1EE7i
+      ro v\xEC b\u1ECB h\u1ED1i, s\u1EE3 m\u1EA5t c\u01A1 h\u1ED9i, s\u1EE3 phi\u1EC1n
+      ng\u01B0\u1EDDi kh\xE1c, s\u1EE3 b\u1EA1n gi\u1EADn ho\u1EB7c mu\u1ED1n x\u1EED
+      l\xFD nhanh."
+    scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: 0
+    - scoreKey: SCORE_INFORMATION_VERIFICATION
+      delta: -3
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: -8
+    - scoreKey: SCORE_HELP_SEEKING
+      delta: 0
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 0
+  - traceId: TRACE_ACCEPT_RISKY_REQUEST
+    displayName: "\u0110\u1ED3ng \xFD y\xEAu c\u1EA7u r\u1EE7i ro"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i \u0111\u1ED3ng \xFD l\xE0m theo l\u1EDDi
+      m\u1EDDi, y\xEAu c\u1EA7u, \u01B0u \u0111\xE3i ho\u1EB7c quy tr\xECnh ch\u01B0a
+      r\xF5 ngu\u1ED3n."
+    scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: -5
+    - scoreKey: SCORE_INFORMATION_VERIFICATION
+      delta: -5
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: -4
+    - scoreKey: SCORE_HELP_SEEKING
+      delta: 0
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 0
+  - traceId: TRACE_WARN_OTHERS
+    displayName: "C\u1EA3nh b\xE1o ng\u01B0\u1EDDi kh\xE1c"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i c\u1EA3nh b\xE1o b\u1EA1n b\xE8, nh\xF3m
+      h\u1ECDc t\u1EADp, ng\u01B0\u1EDDi li\xEAn quan ho\u1EB7c c\u1ED9ng \u0111\u1ED3ng
+      trong game v\u1EC1 ngu\u1ED3n \u0111\xE1ng ng\u1EDD."
+    scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: 0
+    - scoreKey: SCORE_INFORMATION_VERIFICATION
+      delta: 0
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: 0
+    - scoreKey: SCORE_HELP_SEEKING
+      delta: 0
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 8
+  - traceId: TRACE_REPORT_SOURCE
+    displayName: "B\xE1o c\xE1o ngu\u1ED3n \u0111\xE1ng ng\u1EDD"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i b\xE1o c\xE1o t\xE0i kho\u1EA3n, email,
+      \u0111\u01B0\u1EDDng link, s\u1ED1 \u0111i\u1EC7n tho\u1EA1i, nh\xF3m ho\u1EB7c
+      bi\u1EC3u m\u1EABu c\xF3 d\u1EA5u hi\u1EC7u l\u1EEBa \u0111\u1EA3o."
+    scoreDeltas:
+    - scoreKey: SCORE_RISK_RECOGNITION
+      delta: 0
     - scoreKey: SCORE_INFORMATION_VERIFICATION
       delta: 2
+    - scoreKey: SCORE_PRESSURE_RESISTANCE
+      delta: 0
+    - scoreKey: SCORE_HELP_SEEKING
+      delta: 0
+    - scoreKey: SCORE_COMMUNITY_WARNING
+      delta: 8
