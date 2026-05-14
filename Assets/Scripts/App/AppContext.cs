@@ -38,7 +38,18 @@ namespace SeriousGame.App
 
             // Narrative context should exist before SaveService so save/load can include node and milestone.
             Narrative = GetComponent<NarrativeService>();
+            if (Narrative == null)
+            {
+                Debug.LogWarning("[AppContext] NarrativeService missing on GameBootstrap; adding a default one at runtime.");
+                Narrative = gameObject.AddComponent<NarrativeService>();
+            }
+
             Quest = GetComponent<QuestService>();
+            if (Quest == null)
+            {
+                Debug.LogWarning("[AppContext] QuestService missing on GameBootstrap; adding a default one at runtime. (Objective toast map will be unassigned.)");
+                Quest = gameObject.AddComponent<QuestService>();
+            }
             Feedback = new FeedbackService(
                 Trace,
                 config != null ? config.evidenceMapping : null,

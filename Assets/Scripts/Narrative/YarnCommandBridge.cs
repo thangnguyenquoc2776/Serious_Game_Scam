@@ -83,7 +83,19 @@ namespace SeriousGame.Narrative
         [YarnCommand("set_objective")]
         public static void SetObjective(string objectiveId)
         {
-            GameBootstrap.Context.Quest.SetObjective(objectiveId);
+            var ctx = Context;
+            if (ctx == null)
+            {
+                Debug.LogWarning("[YarnCommandBridge] GameBootstrap.Context is null; cannot set objective.");
+                return;
+            }
+            if (ctx.Quest == null)
+            {
+                Debug.LogWarning("[YarnCommandBridge] QuestService is not available (missing on GameBootstrap object); cannot set objective.");
+                return;
+            }
+
+            ctx.Quest.SetObjective(objectiveId);
         }
 
          [YarnCommand("chapter_end")]

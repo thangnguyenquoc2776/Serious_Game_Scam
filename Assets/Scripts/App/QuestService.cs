@@ -20,7 +20,8 @@ namespace SeriousGame.App
         void Start()
         {
             // Khởi tạo nhiệm vụ đầu tiên khi bắt đầu game
-            SetObjective(StartObjectiveId);
+            if (string.IsNullOrWhiteSpace(CurrentObjectiveId) && !string.IsNullOrWhiteSpace(StartObjectiveId))
+                SetObjective(StartObjectiveId);
         }
         public void SetObjective(string objectiveId)
         {

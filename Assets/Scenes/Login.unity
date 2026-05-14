@@ -3614,6 +3614,7 @@ GameObject:
   - component: {fileID: 1205577188}
   - component: {fileID: 1205577187}
   - component: {fileID: 1205577189}
+  - component: {fileID: 1205577190}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3661,6 +3662,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aed92717e5a95a4d811878ddd942bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Narrative.NarrativeService
+--- !u!114 &1205577190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205577186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d528b7c519eeb449bc3526d3c65353f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.App.QuestService
+  StartObjectiveId: 
+  objectiveToastMap: {fileID: 0}
 --- !u!1 &1327570124
 GameObject:
   m_ObjectHideFlags: 0
@@ -3813,7 +3828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51cbb891de597bd4e9ab67c68de96457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.UI.UIFlowManager
-  episodeSceneNameOverride: 
+  episodeSceneNameOverride: Map episode 1
   mainMenuSceneNameOverride: 
 --- !u!1 &1381315603
 GameObject:

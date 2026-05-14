@@ -57,6 +57,7 @@ Chi Linh: "Um. Lam xong quay lai day, roi em quet ma nhom toa de nhan thong bao.
 Minh: "Da, em cam on chi."
 
 <<set_objective "OBJ_M0_DO_PAPERWORK">>
+<<jump CH1_M0_DO_PAPERWORK>>
 ===
 
 title: CH1_M0_DO_PAPERWORK
@@ -65,6 +66,7 @@ title: CH1_M0_DO_PAPERWORK
 Minh: "Thu tuc xong roi. The phong va noi quy day du."
 
 <<set_objective "OBJ_M0_SCAN_QR">>
+<<jump CH1_M0_ASK_QR>>
 ===
 
 title: CH1_M0_ASK_QR
@@ -85,6 +87,7 @@ Minh: "Roi, xong nhom toa."
 Minh: "Gio len phong 308 thoi."
 
 <<set_objective "OBJ_M0_GO_ROOM">>
+<<chapter_end>>
 ===
 
 title: CH1_M0_ENTER_ROOM

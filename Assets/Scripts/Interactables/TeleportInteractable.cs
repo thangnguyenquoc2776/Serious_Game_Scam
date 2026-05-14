@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using SeriousGame.App;
 using SeriousGame.Runtime;
@@ -14,6 +15,10 @@ public class TeleportInteractable : MonoBehaviour
     [Tooltip("Nếu có, chỉ cho teleport khi flag này thoả điều kiện.")]
     public string requiredFlagKey;       // ví dụ: "PASSED_GUARD"
     public bool requiredValue = true;
+
+    [Header("Objective -> Yarn Node (tuỳ chọn)")]
+    public List<ObjectiveNodeMap> nodeMappings = new List<ObjectiveNodeMap>();
+    public string fallbackNode;
 
     [Header("One-shot?")]
     public bool oneShot = true;
@@ -56,6 +61,8 @@ public class TeleportInteractable : MonoBehaviour
             }
         }
 
+        TryStartNodeForObjective();
+
         if (destinationPoint == null)
         {
             Debug.LogWarning("[TeleportInteractable] destinationPoint chưa được gán.");
@@ -89,5 +96,26 @@ public class TeleportInteractable : MonoBehaviour
             // Không có fader thì teleport ngay lập tức
             targetPlayer.TeleportTo(destinationPoint);
         }
+    }
+
+    private void TryStartNodeForObjective()
+    {
+        var ctx = GameBootstrap.Context;
+        if (ctx == null || ctx.Narrative == null) return;
+
+        var currentObjectiveId = ctx.Quest != null ? ctx.Quest.CurrentObjectiveId : null;
+        ObjectiveNodeMap match = null;
+
+        if (nodeMappings != null && !string.IsNullOrWhiteSpace(currentObjectiveId))
+            match = nodeMappings.Find(m => m.objectiveId == currentObjectiveId);
+
+        if (match != null && !string.IsNullOrWhiteSpace(match.yarnNode))
+        {
+            ctx.Narrative.StartNode(match.yarnNode);
+            return;
+        }
+
+        if (!string.IsNullOrWhiteSpace(fallbackNode))
+            ctx.Narrative.StartNode(fallbackNode);
     }
 }

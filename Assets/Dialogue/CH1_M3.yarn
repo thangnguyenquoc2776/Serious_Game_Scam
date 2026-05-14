@@ -11,7 +11,8 @@ Nam: "Chuyen vao tai khoan ban tui nhe."
 -> Chuyen tien
     <<jump CH1_M3_TRANSFER>>
 -> Hoi Quan/Huy
-    <<jump CH1_M3_ASK_ROOMMATES>>
+    <<switch_ui "normal">>
+    <<set_objective "OBJ_M3_TALK_ROOMMATES">>
 -> Chat van lai
     <<jump CH1_M3_QUESTION>>
 ===
@@ -26,7 +27,8 @@ Nam: "Dang gap viec, goi khong duoc. Chuyen giup tui di."
 -> Van chuyen
     <<jump CH1_M3_TRANSFER>>
 -> Hoi Quan/Huy
-    <<jump CH1_M3_ASK_ROOMMATES>>
+    <<switch_ui "normal">>
+    <<set_objective "OBJ_M3_TALK_ROOMMATES">>
 ===
 
 title: CH1_M3_TRANSFER
@@ -36,10 +38,10 @@ title: CH1_M3_TRANSFER
 Minh: "Ok, tui chuyen." 
 
 <<switch_ui "normal">>
-<<jump CH1_M3_END>>
+<<set_objective "OBJ_M4_CHECK_EMAIL">>
 ===
 
-title: CH1_M3_ASK_ROOMMATES
+title: CH1_M3_TALK_ROOMMATES
 ---
 <<trace TRACE_ASK_PERSON 4>>
 <<switch_ui "normal">>
@@ -50,19 +52,15 @@ Huy: "Neu Nam can that, xac minh qua kenh khac duoc."
 -> Canh bao nhom BTL
     <<jump CH1_M3_WARN_GROUP>>
 -> Thoi, bo qua
-    <<jump CH1_M3_END>>
+    <<set_objective "OBJ_M4_CHECK_EMAIL">>
 ===
 
 title: CH1_M3_WARN_GROUP
 ---
 <<trace TRACE_WARN_OTHERS 5>>
+<<switch_ui "phone">>
 Minh: "Minh nhan tin canh bao nhom BTL."
+<<switch_ui "normal">>
 
-<<jump CH1_M3_END>>
-===
-
-title: CH1_M3_END
----
-<<set_milestone 4>>
 <<set_objective "OBJ_M4_CHECK_EMAIL">>
 ===

@@ -54,6 +54,13 @@ title: CH1_M2_CHECK_APP
 Minh: "Don cua minh van dang van chuyen."
 Minh: "Khong co yeu cau chuyen tien ngoai app."
 
-<<set_milestone 3>>
+<<set_objective "OBJ_M2_GO_ROOM">>
+===
+
+title: CH1_M2_GO_ROOM
+---
+// Quay ve phong 308
+Minh: "Ve phong da, coi Nam nhan gi khong." 
+
 <<set_objective "OBJ_M3_OPEN_NAM_CHAT">>
 ===

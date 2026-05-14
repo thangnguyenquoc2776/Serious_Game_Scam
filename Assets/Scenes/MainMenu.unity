@@ -2877,7 +2877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51cbb891de597bd4e9ab67c68de96457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.UI.UIFlowManager
-  episodeSceneNameOverride: 
+  episodeSceneNameOverride: Map episode 1
   mainMenuSceneNameOverride: 
 --- !u!1 &1381315603
 GameObject:
