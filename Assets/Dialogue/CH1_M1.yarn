@@ -1,0 +1,89 @@
+title: CH1_M1_OPEN_LAPTOP
+---
+// M1: tim tai lieu (tren laptop/PC)
+<<set_milestone 1>>
+<<switch_ui "pc">>
+
+Minh: "De xem thu co tai lieu gi khong..."
+Minh: "Ui, bai dang free tai lieu cho tan sinh vien."
+
+-> Mo link tai lieu
+    <<jump CH1_M1_OPEN_LINK>>
+-> Hoi Quan/Huy
+    <<jump CH1_M1_TALK_ROOMMATES>>
+-> Bo qua vi thay hoi nghi
+    <<jump CH1_M1_SKIP>>
+===
+
+title: CH1_M1_OPEN_LINK
+---
+<<trace TRACE_OPEN_UNVERIFIED_LINK 1>>
+Minh: "Trang nay bat dang nhap..."
+
+-> Dang nhap tai khoan
+    <<jump CH1_M1_SUBMIT_CREDENTIAL>>
+-> Dong lai, thay bat thuong
+    <<jump CH1_M1_CLOSE_LINK>>
+===
+
+title: CH1_M1_SUBMIT_CREDENTIAL
+---
+Minh: "Thoi thu dang nhap xem..."
+<<trace TRACE_SUBMIT_CREDENTIAL 2>>
+
+<<switch_ui "normal">>
+// Sau khi bi lo tai khoan, quay sang hoi Huy/Quan
+<<set_objective "OBJ_M1_TALK_ROOMMATES_AFTER_RISK">>
+===
+
+title: CH1_M1_CLOSE_LINK
+---
+Minh: "Thoi dong lai. Cai nay co mui." 
+<<trace TRACE_DETECT_RED_FLAG 3>>
+
+<<switch_ui "normal">>
+<<set_objective "OBJ_M1_TALK_ROOMMATES">>
+===
+
+title: CH1_M1_ASK_ROOMMATES
+---
+<<jump CH1_M1_TALK_ROOMMATES>>
+===
+
+title: CH1_M1_TALK_ROOMMATES
+---
+<<trace TRACE_ASK_PERSON 4>>
+<<switch_ui "normal">>
+
+Quan: "Link nay nhin kha nghi."
+Huy: "Kiem tra nguon truoc. Tai lieu thi nen lay tu LMS hoac nhom lop."
+<<trace TRACE_INSPECT_SOURCE 5>>
+
+<<jump CH1_M1_END>>
+===
+
+title: CH1_M1_SKIP
+---
+Minh: "Thay no hoi la, bo qua vay."
+<<trace TRACE_DETECT_RED_FLAG 6>>
+
+<<switch_ui "normal">>
+<<jump CH1_M1_END>>
+===
+
+title: CH1_M1_TALK_ROOMMATES_AFTER_RISK
+---
+// Node nay goi khi vua lo tai khoan va quay sang hoi Huy/Quan
+Quan: "Ong vua nhap mat khau vao do ha?"
+Huy: "Doi mat khau li, dang xuat thiet bi la, bat 2FA."
+Huy: "Tai lieu hoc khong bao gio can mat khau mang xa hoi." 
+
+<<jump CH1_M1_END>>
+===
+
+title: CH1_M1_END
+---
+// Ket thuc M1, chuyen sang M2
+<<set_milestone 2>>
+<<set_objective "OBJ_M2_PHONE_CALL">>
+===

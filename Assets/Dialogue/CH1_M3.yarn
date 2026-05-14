@@ -1,0 +1,68 @@
+title: CH1_M3_OPEN_NAM_CHAT
+---
+// M3: Nam muon tien (mo chat rieng)
+<<set_milestone 3>>
+<<switch_ui "phone">>
+
+Nam: "Minh oi, tui ket qua."
+Nam: "Cho tui muon 250k giai quyet gap."
+Nam: "Chuyen vao tai khoan ban tui nhe."
+
+-> Chuyen tien
+    <<jump CH1_M3_TRANSFER>>
+-> Hoi Quan/Huy
+    <<jump CH1_M3_ASK_ROOMMATES>>
+-> Chat van lai
+    <<jump CH1_M3_QUESTION>>
+===
+
+title: CH1_M3_QUESTION
+---
+Minh: "Ong dang o dau? Goi duoc khong?"
+Minh: "Sao khong chuyen vao tai khoan ong?"
+Nam: "Dang gap viec, goi khong duoc. Chuyen giup tui di."
+<<trace TRACE_DETECT_RED_FLAG 1>>
+
+-> Van chuyen
+    <<jump CH1_M3_TRANSFER>>
+-> Hoi Quan/Huy
+    <<jump CH1_M3_ASK_ROOMMATES>>
+===
+
+title: CH1_M3_TRANSFER
+---
+<<trace TRACE_TRANSFER_MONEY 2>>
+<<trace TRACE_ACT_UNDER_PRESSURE 3>>
+Minh: "Ok, tui chuyen." 
+
+<<switch_ui "normal">>
+<<jump CH1_M3_END>>
+===
+
+title: CH1_M3_ASK_ROOMMATES
+---
+<<trace TRACE_ASK_PERSON 4>>
+<<switch_ui "normal">>
+
+Quan: "Tai khoan nghe la la. Nen goi truc tiep xem."
+Huy: "Neu Nam can that, xac minh qua kenh khac duoc."
+
+-> Canh bao nhom BTL
+    <<jump CH1_M3_WARN_GROUP>>
+-> Thoi, bo qua
+    <<jump CH1_M3_END>>
+===
+
+title: CH1_M3_WARN_GROUP
+---
+<<trace TRACE_WARN_OTHERS 5>>
+Minh: "Minh nhan tin canh bao nhom BTL."
+
+<<jump CH1_M3_END>>
+===
+
+title: CH1_M3_END
+---
+<<set_milestone 4>>
+<<set_objective "OBJ_M4_CHECK_EMAIL">>
+===

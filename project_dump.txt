@@ -22,8 +22,8 @@
         │   ├── GameBootstrap.cs.meta
         │   ├── GameEventBus.cs
         │   ├── GameEventBus.cs.meta
-        │   ├── MainMenuStart.cs
-        │   ├── MainMenuStart.cs.meta
+        │   ├── QuestService.cs
+        │   ├── QuestService.cs.meta
         │   ├── SceneService.cs
         │   ├── SceneService.cs.meta
         │   ├── SessionService.cs
@@ -34,10 +34,10 @@
         ├── Content
         │   ├── AppConfigSO.cs
         │   ├── AppConfigSO.cs.meta
-        │   ├── TraceTaxonomySO.cs
-        │   ├── TraceTaxonomySO.cs.meta
-        │   ├── TraceTypeSO.cs
-        │   └── TraceTypeSO.cs.meta
+        │   ├── EvidenceMappingSO.cs
+        │   ├── EvidenceMappingSO.cs.meta
+        │   ├── ObjectiveToastMap.cs
+        │   └── ObjectiveToastMap.cs.meta
         ├── Feedback
         │   ├── FeedbackReport.cs
         │   ├── FeedbackReport.cs.meta
@@ -102,16 +102,26 @@
         └── UI
             ├── BillboardToCamera.cs
             ├── BillboardToCamera.cs.meta
+            ├── ChatDialoguePanel.cs
+            ├── ChatDialoguePanel.cs.meta
+            ├── ChatDialogueView.cs
+            ├── ChatDialogueView.cs.meta
+            ├── GameplayUIRoot.cs
+            ├── GameplayUIRoot.cs.meta
             ├── LoginUI.cs
             ├── LoginUI.cs.meta
             ├── OutcomeToastUI.cs
             ├── OutcomeToastUI.cs.meta
+            ├── PauseMenuController.cs
+            ├── PauseMenuController.cs.meta
             ├── ScreenFader.cs
             ├── ScreenFader.cs.meta
-            ├── ToastUIListener.cs
-            ├── ToastUIListener.cs.meta
+            ├── SummaryUIListener.cs
+            ├── SummaryUIListener.cs.meta
             ├── UIFlowManager.cs
-            └── UIFlowManager.cs.meta
+            ├── UIFlowManager.cs.meta
+            ├── UITester.cs
+            └── UITester.cs.meta
 
 ===== FILE MANIFEST =====
 - Assets/Scripts/App.meta — 180 bytes — ok
@@ -127,29 +137,29 @@
 - Assets/Scripts/State.meta — 172 bytes — ok
 - Assets/Scripts/Trace.meta — 180 bytes — ok
 - Assets/Scripts/UI.meta — 180 bytes — ok
-- Assets/Scripts/App/AppContext.cs — 1852 bytes — ok
+- Assets/Scripts/App/AppContext.cs — 2016 bytes — ok
 - Assets/Scripts/App/AppContext.cs.meta — 60 bytes — ok
 - Assets/Scripts/App/GameBootstrap.cs — 1306 bytes — ok
 - Assets/Scripts/App/GameBootstrap.cs.meta — 60 bytes — ok
-- Assets/Scripts/App/GameEventBus.cs — 1386 bytes — ok
+- Assets/Scripts/App/GameEventBus.cs — 1804 bytes — ok
 - Assets/Scripts/App/GameEventBus.cs.meta — 59 bytes — ok
-- Assets/Scripts/App/MainMenuStart.cs — 1012 bytes — ok
-- Assets/Scripts/App/MainMenuStart.cs.meta — 60 bytes — ok
+- Assets/Scripts/App/QuestService.cs — 1445 bytes — ok
+- Assets/Scripts/App/QuestService.cs.meta — 59 bytes — ok
 - Assets/Scripts/App/SceneService.cs — 524 bytes — ok
 - Assets/Scripts/App/SceneService.cs.meta — 60 bytes — ok
 - Assets/Scripts/App/SessionService.cs — 1196 bytes — ok
 - Assets/Scripts/App/SessionService.cs.meta — 60 bytes — ok
 - Assets/Scripts/Auth/AuthService.cs — 3408 bytes — ok
 - Assets/Scripts/Auth/AuthService.cs.meta — 59 bytes — ok
-- Assets/Scripts/Content/AppConfigSO.cs — 685 bytes — ok
+- Assets/Scripts/Content/AppConfigSO.cs — 689 bytes — ok
 - Assets/Scripts/Content/AppConfigSO.cs.meta — 60 bytes — ok
-- Assets/Scripts/Content/TraceTaxonomySO.cs — 603 bytes — ok
-- Assets/Scripts/Content/TraceTaxonomySO.cs.meta — 60 bytes — ok
-- Assets/Scripts/Content/TraceTypeSO.cs — 645 bytes — ok
-- Assets/Scripts/Content/TraceTypeSO.cs.meta — 60 bytes — ok
+- Assets/Scripts/Content/EvidenceMappingSO.cs — 1021 bytes — ok
+- Assets/Scripts/Content/EvidenceMappingSO.cs.meta — 59 bytes — ok
+- Assets/Scripts/Content/ObjectiveToastMap.cs — 1776 bytes — ok
+- Assets/Scripts/Content/ObjectiveToastMap.cs.meta — 59 bytes — ok
 - Assets/Scripts/Feedback/FeedbackReport.cs — 387 bytes — ok
 - Assets/Scripts/Feedback/FeedbackReport.cs.meta — 60 bytes — ok
-- Assets/Scripts/Feedback/FeedbackService.cs — 3336 bytes — ok
+- Assets/Scripts/Feedback/FeedbackService.cs — 4635 bytes — ok
 - Assets/Scripts/Feedback/FeedbackService.cs.meta — 60 bytes — ok
 - Assets/Scripts/Interactables/StateFlagInteractable.cs — 1529 bytes — ok
 - Assets/Scripts/Interactables/StateFlagInteractable.cs.meta — 60 bytes — ok
@@ -159,7 +169,7 @@
 - Assets/Scripts/Narrative/NarrativeService.cs.meta — 59 bytes — ok
 - Assets/Scripts/Narrative/YarnAutoStart.cs — 616 bytes — ok
 - Assets/Scripts/Narrative/YarnAutoStart.cs.meta — 59 bytes — ok
-- Assets/Scripts/Narrative/YarnCommandBridge.cs — 7891 bytes — ok
+- Assets/Scripts/Narrative/YarnCommandBridge.cs — 7861 bytes — ok
 - Assets/Scripts/Narrative/YarnCommandBridge.cs.meta — 59 bytes — ok
 - Assets/Scripts/Phone/PhoneUIListener.cs — 1743 bytes — ok
 - Assets/Scripts/Phone/PhoneUIListener.cs.meta — 59 bytes — ok
@@ -167,7 +177,7 @@
 - Assets/Scripts/Player/PlayerController.cs.meta — 60 bytes — ok
 - Assets/Scripts/Runtime/IInteractable.cs — 113 bytes — ok
 - Assets/Scripts/Runtime/IInteractable.cs.meta — 59 bytes — ok
-- Assets/Scripts/Runtime/NodeInteractable.cs — 765 bytes — ok
+- Assets/Scripts/Runtime/NodeInteractable.cs — 1961 bytes — ok
 - Assets/Scripts/Runtime/NodeInteractable.cs.meta — 59 bytes — ok
 - Assets/Scripts/Save/SaveData.cs — 655 bytes — ok
 - Assets/Scripts/Save/SaveData.cs.meta — 59 bytes — ok
@@ -177,7 +187,7 @@
 - Assets/Scripts/State/GameStateKeys.cs.meta — 59 bytes — ok
 - Assets/Scripts/State/PlayerStateDebugger.cs — 734 bytes — ok
 - Assets/Scripts/State/PlayerStateDebugger.cs.meta — 59 bytes — ok
-- Assets/Scripts/State/PlayerStateService.cs — 4993 bytes — ok
+- Assets/Scripts/State/PlayerStateService.cs — 5189 bytes — ok
 - Assets/Scripts/State/PlayerStateService.cs.meta — 59 bytes — ok
 - Assets/Scripts/State/PlayerStateSnapshot.cs — 1384 bytes — ok
 - Assets/Scripts/State/PlayerStateSnapshot.cs.meta — 59 bytes — ok
@@ -200,16 +210,26 @@
 - Assets/Scripts/Trace/Dto/GameTrace.cs.meta — 59 bytes — ok
 - Assets/Scripts/UI/BillboardToCamera.cs — 857 bytes — ok
 - Assets/Scripts/UI/BillboardToCamera.cs.meta — 60 bytes — ok
+- Assets/Scripts/UI/ChatDialoguePanel.cs — 2079 bytes — ok
+- Assets/Scripts/UI/ChatDialoguePanel.cs.meta — 59 bytes — ok
+- Assets/Scripts/UI/ChatDialogueView.cs — 6571 bytes — ok
+- Assets/Scripts/UI/ChatDialogueView.cs.meta — 59 bytes — ok
+- Assets/Scripts/UI/GameplayUIRoot.cs — 5550 bytes — ok
+- Assets/Scripts/UI/GameplayUIRoot.cs.meta — 59 bytes — ok
 - Assets/Scripts/UI/LoginUI.cs — 1995 bytes — ok
 - Assets/Scripts/UI/LoginUI.cs.meta — 59 bytes — ok
-- Assets/Scripts/UI/OutcomeToastUI.cs — 1014 bytes — ok
+- Assets/Scripts/UI/OutcomeToastUI.cs — 1109 bytes — ok
 - Assets/Scripts/UI/OutcomeToastUI.cs.meta — 60 bytes — ok
+- Assets/Scripts/UI/PauseMenuController.cs — 1840 bytes — ok
+- Assets/Scripts/UI/PauseMenuController.cs.meta — 59 bytes — ok
 - Assets/Scripts/UI/ScreenFader.cs — 1786 bytes — ok
 - Assets/Scripts/UI/ScreenFader.cs.meta — 60 bytes — ok
-- Assets/Scripts/UI/ToastUIListener.cs — 807 bytes — ok
-- Assets/Scripts/UI/ToastUIListener.cs.meta — 59 bytes — ok
+- Assets/Scripts/UI/SummaryUIListener.cs — 2353 bytes — ok
+- Assets/Scripts/UI/SummaryUIListener.cs.meta — 59 bytes — ok
 - Assets/Scripts/UI/UIFlowManager.cs — 2181 bytes — ok
 - Assets/Scripts/UI/UIFlowManager.cs.meta — 59 bytes — ok
+- Assets/Scripts/UI/UITester.cs — 932 bytes — ok
+- Assets/Scripts/UI/UITester.cs.meta — 59 bytes — ok
 
 
 
@@ -369,7 +389,8 @@ namespace SeriousGame.App
         public FeedbackService Feedback { get; private set; }
         public SaveService Save { get; private set; }
         public NarrativeService Narrative { get; private set; }
-
+        public QuestService Quest { get; private set; }
+    
         public void Init(AppConfigSO config)
         {
             Config = config;
@@ -386,8 +407,11 @@ namespace SeriousGame.App
 
             // Narrative context should exist before SaveService so save/load can include node and milestone.
             Narrative = GetComponent<NarrativeService>();
-
-            Feedback = new FeedbackService(Trace, config != null ? config.traceTaxonomy : null, PlayerState);
+            Quest = GetComponent<QuestService>();
+            Feedback = new FeedbackService(
+                Trace,
+                config != null ? config.evidenceMapping : null,
+                PlayerState);
             Save = new SaveService(Session, PlayerState, Narrative);
         }
 
@@ -468,10 +492,12 @@ namespace SeriousGame.App
         // UI requests
         public static event Action<string> OnPhoneChatRequested;
         public static event Action<string, string> OnPhoneMessageReceived;
+        public static event Action<string> OnPcChatRequested;
         public static event Action<string> OnDialogueRequested;
         public static event Action<string> OnToastRequested;
         public static event Action OnSummaryRequested;
         public static event Action<string> OnHintRequested;
+        public static event Action<string> OnSwitchUIRequested;
 
         public static void RaisePhoneChatRequested(string interactionId)
         {
@@ -481,6 +507,11 @@ namespace SeriousGame.App
         public static void RaisePhoneMessageReceived(string characterName, string message)
         {
             OnPhoneMessageReceived?.Invoke(characterName, message);
+        }
+
+        public static void RaisePcChatRequested(string interactionId)
+        {
+            OnPcChatRequested?.Invoke(interactionId);
         }
 
         public static void RaiseDialogueRequested(string nodeName)
@@ -502,6 +533,11 @@ namespace SeriousGame.App
         {
             OnHintRequested?.Invoke(message);
         }
+
+        public static void RaiseSwitchUIRequested(string uitype)
+        {
+            OnSwitchUIRequested?.Invoke(uitype);
+        }
     }
 }
 
@@ -509,44 +545,51 @@ File GameEventBus.cs.meta
 fileFormatVersion: 2
 guid: 243a6bfae74ff8d439deadb3ef4634e5
 
-File MainMenuStart.cs
-﻿// // Assets/Scripts/App/MainMenuStart.cs
-// using UnityEngine;
-// using UnityEngine.SceneManagement;
-// using SeriousGame.UI;
+File QuestService.cs
+using System;
+using UnityEngine;
 
-// namespace SeriousGame.App
-// {
-//     public class MainMenuStart : MonoBehaviour
-//     {
-//         [SerializeField] private UIFlowManager flowManager;
+namespace SeriousGame.App
+{
+    public class QuestService : MonoBehaviour
+    {
+        // Lưu trữ ID nhiệm vụ hiện tại
+        public string CurrentObjectiveId { get; private set; }
+        public string StartObjectiveId;
 
-//         public void StartDemo()
-//         {
-//             if (flowManager != null)
-//             {
-//                 flowManager.StartGame();
-//                 return;
-//             }
+        [Header("Objective Toast")]
+        [SerializeField] private ObjectiveToastMap objectiveToastMap;
 
-//             var ctx = GameBootstrap.Context;
-//             var cfg = ctx != null ? ctx.Config : null;
-//             var target = cfg != null ? cfg.demoEpisodeSceneName : null;
+        // Event để báo cho UI biết mà cập nhật text trên màn hình (dùng Action hoặc GameEventBus của bạn)
+        public event Action<string> OnObjectiveChanged;
 
-//             if (string.IsNullOrWhiteSpace(target))
-//             {
-//                 Debug.LogError("[MainMenuStart] Không xác định được scene để start demo (Config thiếu?).");
-//                 return;
-//             }
+        // Hàm chuyển sang nhiệm vụ mới
 
-//             SceneManager.LoadScene(target);
-//         }
-//     }
-// }
+        void Start()
+        {
+            // Khởi tạo nhiệm vụ đầu tiên khi bắt đầu game
+            SetObjective(StartObjectiveId);
+        }
+        public void SetObjective(string objectiveId)
+        {
+            CurrentObjectiveId = objectiveId;
+            Debug.Log($"[QuestService] Nhiệm vụ mới: {objectiveId}");
+            
+            // Báo cho UI (nếu có UI lắng nghe)
+            OnObjectiveChanged?.Invoke(objectiveId);
+            if (string.IsNullOrWhiteSpace(objectiveId)) return;
 
-File MainMenuStart.cs.meta
+            if (objectiveToastMap != null && objectiveToastMap.TryGetMessage(objectiveId, out var message))
+                GameEventBus.RaiseToastRequested(message);
+            else
+                GameEventBus.RaiseToastRequested(objectiveId);
+        }
+    }
+}
+
+File QuestService.cs.meta
 fileFormatVersion: 2
-guid: df947432c4d3e1c4e8764089734c4683
+guid: 7d528b7c519eeb449bc3526d3c65353f
 
 File SceneService.cs
 using UnityEngine;
@@ -744,7 +787,7 @@ namespace SeriousGame.Content
         public string firebaseWebApiKey;
 
         [Header("Content")]
-        public TraceTaxonomySO traceTaxonomy;
+        public EvidenceMappingSO evidenceMapping;
     }
 }
 
@@ -752,59 +795,115 @@ File AppConfigSO.cs.meta
 fileFormatVersion: 2
 guid: 9bf335a8482cc194a933c9fa5193db5a
 
-File TraceTaxonomySO.cs
-﻿// Assets/Scripts/Content/TraceTaxonomySO.cs
+File EvidenceMappingSO.cs
 using UnityEngine;
 
 namespace SeriousGame.Content
 {
-    [CreateAssetMenu(menuName = "SeriousGame/Trace/TraceTaxonomy", fileName = "TraceTaxonomy")]
-    public class TraceTaxonomySO : ScriptableObject
+    [CreateAssetMenu(menuName = "SeriousGame/Trace/EvidenceMapping", fileName = "EvidenceMapping")]
+    public class EvidenceMappingSO : ScriptableObject
     {
-        public TraceTypeSO[] traceTypes;
+        public EvidenceMappingEntry[] mappings;
 
-        public TraceTypeSO Find(string id)
+        public EvidenceMappingEntry Find(string traceId)
         {
-            if (string.IsNullOrWhiteSpace(id) || traceTypes == null) return null;
+            if (string.IsNullOrWhiteSpace(traceId) || mappings == null) return null;
 
-            foreach (var t in traceTypes)
-                if (t != null && t.traceTypeId == id) return t;
+            foreach (var entry in mappings)
+            {
+                if (entry != null && entry.traceId == traceId)
+                    return entry;
+            }
 
             return null;
         }
     }
-}
 
-File TraceTaxonomySO.cs.meta
-fileFormatVersion: 2
-guid: f908c5865e7569941a2a27472e533b56
-
-File TraceTypeSO.cs
-﻿// Assets/Scripts/Content/TraceTypeSO.cs
-using UnityEngine;
-
-namespace SeriousGame.Content
-{
-    [CreateAssetMenu(menuName = "SeriousGame/Trace/TraceType", fileName = "TraceType")]
-    public class TraceTypeSO : ScriptableObject
+    [System.Serializable]
+    public class EvidenceMappingEntry
     {
-        [Header("Identity")]
-        public string traceTypeId = "T_VERIFY_OFFICIAL";
-
-        [Header("UI")]
-        public string displayName = "Xác minh kênh chính thống";
+        public string traceId;
+        public string displayName;
         [TextArea] public string description;
+        public ScoreDelta[] scoreDeltas;
+    }
 
-        [Header("Scoring")]
-        // riskWeight > 0: hành vi rủi ro
-        // riskWeight < 0: hành vi tốt
-        public int riskWeight = -2;
+    [System.Serializable]
+    public class ScoreDelta
+    {
+        public string scoreKey;
+        public int delta;
     }
 }
 
-File TraceTypeSO.cs.meta
+File EvidenceMappingSO.cs.meta
 fileFormatVersion: 2
-guid: 246c6a7a8788f61488fe7486f16b9e7d
+guid: 3b63ae9df88aa0049916338dc70bf6e9
+
+File ObjectiveToastMap.cs
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace SeriousGame.App
+{
+    [CreateAssetMenu(menuName = "SeriousGame/Objective Toast Map", fileName = "ObjectiveToastMap")]
+    public class ObjectiveToastMap : ScriptableObject
+    {
+        [Serializable]
+        public class Entry
+        {
+            public string message;
+            public string[] objectiveIds;
+        }
+
+        [SerializeField] private bool fallbackToObjectiveId = true;
+        [SerializeField] private List<Entry> entries = new List<Entry>();
+
+        private Dictionary<string, string> _cache;
+
+        public bool TryGetMessage(string objectiveId, out string message)
+        {
+            message = null;
+            if (string.IsNullOrWhiteSpace(objectiveId)) return false;
+
+            EnsureCache();
+
+            if (_cache.TryGetValue(objectiveId, out message) && !string.IsNullOrWhiteSpace(message))
+                return true;
+
+            if (fallbackToObjectiveId)
+            {
+                message = objectiveId;
+                return true;
+            }
+
+            return false;
+        }
+
+        private void EnsureCache()
+        {
+            if (_cache != null) return;
+
+            _cache = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            foreach (var entry in entries)
+            {
+                if (entry == null || entry.objectiveIds == null) continue;
+
+                foreach (var id in entry.objectiveIds)
+                {
+                    if (string.IsNullOrWhiteSpace(id)) continue;
+                    if (_cache.ContainsKey(id)) continue;
+                    _cache.Add(id, entry.message);
+                }
+            }
+        }
+    }
+}
+
+File ObjectiveToastMap.cs.meta
+fileFormatVersion: 2
+guid: 5f81b7a1959823c40932f5a39e82d9a4
 
 
 Folder Assets/Scripts/Feedback
@@ -843,14 +942,34 @@ namespace SeriousGame.Feedback
     public class FeedbackService
     {
         private readonly TraceService _trace;
-        private readonly SeriousGame.Content.TraceTaxonomySO _taxonomy;
+        private readonly EvidenceMappingSO _mapping;
         private readonly PlayerStateService _state;
 
-        public FeedbackService(TraceService trace, SeriousGame.Content.TraceTaxonomySO taxonomy, PlayerStateService state = null)
+        public FeedbackService(
+            TraceService trace,
+            EvidenceMappingSO mapping,
+            PlayerStateService state = null)
         {
             _trace = trace;
-            _taxonomy = taxonomy;
+            _mapping = mapping;
             _state = state;
+        }
+
+        public void ApplyTrace(string traceId)
+        {
+            if (_state == null) return;
+            if (_mapping == null || string.IsNullOrWhiteSpace(traceId)) return;
+
+            var entry = _mapping.Find(traceId);
+            if (entry == null || entry.scoreDeltas == null) return;
+
+            for (int i = 0; i < entry.scoreDeltas.Length; i++)
+            {
+                var delta = entry.scoreDeltas[i];
+                if (delta == null || string.IsNullOrWhiteSpace(delta.scoreKey)) continue;
+                if (!GameStateKeys.IsValid(delta.scoreKey)) continue;
+                _state.Add(delta.scoreKey, delta.delta);
+            }
         }
 
         // Quick and simple feedback report generation based on trace events and player state.ss
@@ -871,18 +990,20 @@ namespace SeriousGame.Feedback
             int score = 0;
             foreach (var kv in count)
             {
-                var def = _taxonomy != null ? _taxonomy.Find(kv.Key) : null;
-                int w = def != null ? def.riskWeight : 0;
-                score += w * kv.Value;
+                var entry = _mapping != null ? _mapping.Find(kv.Key) : null;
+                int deltaSum = GetTotalDelta(entry);
+                score += deltaSum * kv.Value;
 
-                var title = def != null ? def.displayName : kv.Key;
-                var detail = def != null ? def.description : "Không có mô tả traceType (bạn cần bổ sung TraceTypeSO).";
+                var title = entry != null && !string.IsNullOrWhiteSpace(entry.displayName) ? entry.displayName : kv.Key;
+                var detail = entry != null && !string.IsNullOrWhiteSpace(entry.description)
+                    ? entry.description
+                    : "Không có mô tả evidence mapping (bạn cần bổ sung EvidenceMappingSO).";
 
                 report.items.Add(new FeedbackItem
                 {
                     title = $"{title} (x{kv.Value})",
                     detail = detail,
-                    scoreDelta = w * kv.Value
+                    scoreDelta = deltaSum * kv.Value
                 });
             }
 
@@ -913,6 +1034,21 @@ namespace SeriousGame.Feedback
 
             report.rawSummaryText = text;
             return report;
+        }
+
+        private static int GetTotalDelta(EvidenceMappingEntry entry)
+        {
+            if (entry == null || entry.scoreDeltas == null) return 0;
+
+            int sum = 0;
+            for (int i = 0; i < entry.scoreDeltas.Length; i++)
+            {
+                var delta = entry.scoreDeltas[i];
+                if (delta == null) continue;
+                sum += delta.delta;
+            }
+
+            return sum;
         }
     }
 }
@@ -1315,6 +1451,8 @@ namespace SeriousGame.Narrative
                 ctx.PlayerState != null ? ctx.PlayerState.GetSnapshot() : null);
 
             ctx.Trace.LogEvent(trace);
+            if (ctx.Feedback != null)
+                ctx.Feedback.ApplyTrace(traceTypeId);
         }
 
         [YarnCommand("set_node")]
@@ -1333,25 +1471,11 @@ namespace SeriousGame.Narrative
             ctx.Narrative.SetCurrentMilestone(milestoneId.ToString());
         }
 
-        // [YarnCommand("trace_choice")]
-        // public static void TraceChoice(string choiceId, string traceTypeId)
-        // {
-        //     var ctx = Context;
-        //     if (ctx == null || ctx.Trace == null) return;
-        //     if (string.IsNullOrWhiteSpace(traceTypeId) || string.IsNullOrWhiteSpace(choiceId)) return;
-
-        //     var sessionId = ctx.Session != null ? ctx.Session.CurrentSessionId : "";
-        //     var yarnNode = ctx.Narrative != null ? ctx.Narrative.CurrentNode : "";
-        //     var trace = ctx.Trace.BuildTrace(
-        //         sessionId,
-        //         traceTypeId,
-        //         choiceId,
-        //         SceneManager.GetActiveScene().name,
-        //         yarnNode,
-        //         ctx.PlayerState != null ? ctx.PlayerState.GetSnapshot() : null);
-
-        //     ctx.Trace.LogEvent(trace);
-        // }
+        [YarnCommand("set_objective")]
+        public static void SetObjective(string objectiveId)
+        {
+            GameBootstrap.Context.Quest.SetObjective(objectiveId);
+        }
 
          [YarnCommand("chapter_end")]
         public static void ChapterEnd(string chapterId = "")
@@ -1360,6 +1484,7 @@ namespace SeriousGame.Narrative
             if (ctx == null || ctx.Trace == null || ctx.Session == null) return;
 
             _ = ctx.Trace.SendSessionData(true, chapterId);
+            SeriousGame.App.GameEventBus.RaiseSummaryRequested();
         }
 
         [YarnCommand("add_state")]
@@ -1397,19 +1522,32 @@ namespace SeriousGame.Narrative
             ctx.Save.SaveCurrent(episodeId, currentNode, currentMilestone);
         }
 
-        [YarnCommand("show_phone_chat")]
-        public static void ShowPhoneChat(string interactionId)
+        // [YarnCommand("show_phone_chat")]
+        // public static void ShowPhoneChat(string interactionId)
+        // {
+        //     if (string.IsNullOrWhiteSpace(interactionId)) return;
+        //     SeriousGame.App.GameEventBus.RaisePhoneChatRequested(interactionId);
+        // }
+
+        // [YarnCommand("show_pc_chat")]
+        // public static void ShowPcChat(string interactionId)
+        // {
+        //     if (string.IsNullOrWhiteSpace(interactionId)) return;
+        //     SeriousGame.App.GameEventBus.RaisePcChatRequested(interactionId);
+        // }
+
+        [YarnCommand("switch_ui")]
+        public static void SwitchUI(string uitype)
         {
-            if (string.IsNullOrWhiteSpace(interactionId)) return;
-            SeriousGame.App.GameEventBus.RaisePhoneChatRequested(interactionId);
+            SeriousGame.App.GameEventBus.RaiseSwitchUIRequested(uitype);
         }
 
-        [YarnCommand("show_chat")]
-        public static void ShowChat(string characterName, string message)
-        {
-            if (string.IsNullOrWhiteSpace(message)) return;
-            SeriousGame.App.GameEventBus.RaisePhoneMessageReceived(characterName, message);
-        }
+        // [YarnCommand("show_chat")]
+        // public static void ShowChat(string characterName, string message)
+        // {
+        //     if (string.IsNullOrWhiteSpace(message)) return;
+        //     SeriousGame.App.GameEventBus.RaisePhoneMessageReceived(characterName, message);
+        // }
 
         [YarnCommand("show_hint")]
         public static void ShowHint(string message)
@@ -1696,21 +1834,36 @@ guid: e887f31dc34e1c9428b721b9d8b163a1
 File NodeInteractable.cs
 using UnityEngine;
 using SeriousGame.App;
+using System;
+using System.Collections.Generic;
 
 namespace SeriousGame.Runtime
-{
+{   
+    [Serializable]
+    public class ObjectiveNodeMap
+    {
+        public string objectiveId; // Mã nhiệm vụ (ví dụ: OBJ_TALK_GUARD_1)
+        public string yarnNode;    // Node tương ứng (ví dụ: Guard_FirstTime)
+    }
     public class NodeInteractable : MonoBehaviour, IInteractable
     {
         [Header("Yarn Node")]
-        public string nodeName;
+        // public string nodeName;
+        [Header("Danh sách ánh xạ Nhiệm vụ -> Hội thoại")]
+        public List<ObjectiveNodeMap> nodeMappings;
+        public string fallbackNode;  // Ví dụ: Friend_Busy_Dialogue
+
+        // [Header("Điều kiện Nhiệm vụ")]
+        // [Tooltip("Mã nhiệm vụ bắt buộc phải có để chạy Main Node")]
+        // public string requiredObjectiveId; // Ví dụ: OBJ_FIND_FRIEND
 
         public void Interact()
         {
-            if (string.IsNullOrWhiteSpace(nodeName))
-            {
-                Debug.LogWarning("[NodeInteractable] nodeName is empty.");
-                return;
-            }
+            // if (string.IsNullOrWhiteSpace(nodeName))
+            // {
+            //     Debug.LogWarning("[NodeInteractable] nodeName is empty.");
+            //     return;
+            // }
 
             var ctx = GameBootstrap.Context;
             if (ctx == null || ctx.Narrative == null)
@@ -1718,8 +1871,19 @@ namespace SeriousGame.Runtime
                 Debug.LogWarning("[NodeInteractable] NarrativeService not available.");
                 return;
             }
+            var currentObjectiveId = ctx.Quest != null ? ctx.Quest.CurrentObjectiveId : null;
+            
+            var match = nodeMappings.Find(m => m.objectiveId == currentObjectiveId);
 
-            ctx.Narrative.StartNode(nodeName);
+            if (match != null)
+            {
+                GameBootstrap.Context.Narrative.StartNode(match.yarnNode);
+            }
+            else
+            {
+                GameBootstrap.Context.Narrative.StartNode(fallbackNode);
+                // Debug.Log("Chua duoc tuong tac bay gio");
+            }
         }
     }
 }
@@ -1985,6 +2149,8 @@ namespace SeriousGame.State
     public class PlayerStateService
     {
         [SerializeField]
+        //states includes all numeric states, such as scores and progress indicators. The value is typically clamped between 0 and 100 to represent different levels of achievement or status.
+
         private readonly Dictionary<string, int> _states = new Dictionary<string, int>();
         [SerializeField]
         private readonly Dictionary<string, bool> _flags = new Dictionary<string, bool>();
@@ -2120,7 +2286,7 @@ namespace SeriousGame.State
 
         private static int Clamp(int value)
         {
-            return Mathf.Clamp(value, 0, 3);
+            return Mathf.Clamp(value, 0, 100);
         }
 
         private static bool IsKeyAllowed(string key)
@@ -2823,6 +2989,459 @@ File BillboardToCamera.cs.meta
 fileFormatVersion: 2
 guid: b9ee208fc48735d4cbb6ac3c85832d92
 
+File ChatDialoguePanel.cs
+using UnityEngine;
+using Yarn.Unity;
+
+namespace SeriousGame.UI
+{
+    public class ChatDialoguePanel : MonoBehaviour
+    {
+        [Header("Root")]
+        [SerializeField] private GameObject root;
+
+        [Header("Yarn")]
+        [SerializeField] private DialogueRunner runner;
+        [SerializeField] private ChatDialogueView view;
+
+        [Header("Behavior")]
+        [SerializeField] private bool hideOnComplete = true;
+        [SerializeField] private bool clearOnStart = true;
+
+        private void Awake()
+        {
+            if (root == null)
+                root = gameObject;
+
+            if (runner != null)
+                runner.onDialogueComplete.AddListener(HandleDialogueComplete);
+        }
+
+        private void OnDestroy()
+        {
+            if (runner != null)
+                runner.onDialogueComplete.RemoveListener(HandleDialogueComplete);
+        }
+
+        public void StartChat(string nodeName)
+        {
+            if (string.IsNullOrWhiteSpace(nodeName)) return;
+
+            if (root != null)
+                root.SetActive(true);
+
+            if (clearOnStart)
+                view?.ClearMessages();
+
+            if (runner == null)
+            {
+                Debug.LogWarning("[ChatDialoguePanel] Missing DialogueRunner.");
+                return;
+            }
+
+            if (runner.IsDialogueRunning)
+                runner.Stop().Forget();
+
+            runner.StartDialogue(nodeName).Forget();
+        }
+
+        public void AppendMessage(string speaker, string message)
+        {
+            if (root != null)
+                root.SetActive(true);
+
+            view?.AppendMessage(speaker, message);
+        }
+
+        public void ClearMessages()
+        {
+            view?.ClearMessages();
+        }
+
+        public void Hide()
+        {
+            if (root != null)
+                root.SetActive(false);
+        }
+
+        private void HandleDialogueComplete()
+        {
+            if (hideOnComplete)
+                Hide();
+        }
+    }
+}
+
+File ChatDialoguePanel.cs.meta
+fileFormatVersion: 2
+guid: a20c01233354c794ea73cc81bd5b20b1
+
+File ChatDialogueView.cs
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+using Yarn.Unity;
+
+namespace SeriousGame.UI
+{
+    public class ChatDialogueView : DialoguePresenterBase
+    {   
+
+        [Header("References")]
+        [SerializeField] private DialogueRunner dialogueRunner;
+        [Header("Messages")]
+        [SerializeField] private Transform contentRoot;
+        [SerializeField] private ScrollRect scrollRect;
+        [SerializeField] private GameObject leftBubblePrefab;
+        [SerializeField] private GameObject rightBubblePrefab;
+        [SerializeField] private bool includeCharacterName = true;
+        [SerializeField] private string playerName = "Bạn";
+
+        [Header("Options")]
+        [SerializeField] private Transform optionsRoot;
+        [SerializeField] private GameObject optionButtonPrefab;
+
+        [Header("Flow")]
+        [SerializeField] private bool autoAdvance = true;
+        [SerializeField] private float autoAdvanceDelay = 0.2f;
+
+        private readonly List<GameObject> optionButtons = new List<GameObject>();
+
+        public override YarnTask OnDialogueStartedAsync()
+        {
+            ClearOptions();
+            return YarnTask.CompletedTask;
+        }
+
+        public override YarnTask OnDialogueCompleteAsync()
+        {
+            ClearOptions();
+            return YarnTask.CompletedTask;
+        }
+
+        public override async YarnTask RunLineAsync(LocalizedLine line, LineCancellationToken token)
+        {
+            var speaker = line.CharacterName ?? string.Empty;
+            var text = line.TextWithoutCharacterName.Text;
+            AppendMessage(speaker, text);
+
+            if (autoAdvance)
+            {
+                await YarnTask.Delay((int)(autoAdvanceDelay * 1000f), token.NextContentToken).SuppressCancellationThrow();
+            }
+            else
+            {
+                await YarnTask.WaitUntilCanceled(token.NextContentToken).SuppressCancellationThrow();
+            }
+        }
+
+        public override async YarnTask<DialogueOption?> RunOptionsAsync(DialogueOption[] dialogueOptions, LineCancellationToken cancellationToken)
+        {
+            if (dialogueOptions == null || dialogueOptions.Length == 0)
+                return null; // <-- Changed here
+
+            if (optionsRoot == null || optionButtonPrefab == null)
+            {
+                Debug.LogWarning("[ChatDialogueView] Missing optionsRoot or optionButtonPrefab.");
+                return null; // <-- Changed here
+            }
+
+            ClearOptions();
+
+            var tcs = new YarnTaskCompletionSource<DialogueOption?>();
+            CancellationTokenRegistration registration = cancellationToken.NextContentToken.Register(() =>
+            {
+                tcs.TrySetResult(null);
+            });
+
+            foreach (var option in dialogueOptions)
+            {
+                var buttonObject = Instantiate(optionButtonPrefab, optionsRoot);
+                optionButtons.Add(buttonObject);
+
+                var button = buttonObject.GetComponent<Button>();
+                var label = buttonObject.GetComponentInChildren<TMP_Text>();
+                if (label != null)
+                    label.text = option.Line.TextWithoutCharacterName.Text;
+
+                if (button != null)
+                {
+                    button.interactable = option.IsAvailable;
+                    button.onClick.AddListener(() =>
+                    {
+                        if (!option.IsAvailable) return;
+                        tcs.TrySetResult(option);
+                    });
+                }
+            }
+
+            var selected = await tcs.Task;
+            registration.Dispose();
+            ClearOptions();
+            return selected;
+        }
+
+        public void AppendMessage(string speaker, string message)
+        {
+            if (string.IsNullOrWhiteSpace(message)) return;
+            if (contentRoot == null)
+            {
+                Debug.LogWarning("[ChatDialogueView] Missing contentRoot.");
+                return;
+            }
+
+            var prefab = ResolveBubblePrefab(speaker);
+            if (prefab == null)
+            {
+                Debug.LogWarning("[ChatDialogueView] Missing bubble prefab.");
+                return;
+            }
+
+            var bubble = Instantiate(prefab, contentRoot);
+            var text = bubble.GetComponentInChildren<TMP_Text>();
+            if (text != null)
+            {
+                if (includeCharacterName && !string.IsNullOrWhiteSpace(speaker))
+                    text.text = speaker + ": " + message;
+                else
+                    text.text = message;
+            }
+
+            ScrollToBottom();
+        }
+
+        public void ClearMessages()
+        {
+            if (contentRoot == null) return;
+            for (int i = contentRoot.childCount - 1; i >= 0; i--)
+            {
+                Destroy(contentRoot.GetChild(i).gameObject);
+            }
+        }
+
+        private GameObject ResolveBubblePrefab(string speaker)
+        {
+            if (!string.IsNullOrWhiteSpace(playerName)
+                && !string.IsNullOrWhiteSpace(speaker)
+                && rightBubblePrefab != null
+                && string.Equals(playerName, speaker, StringComparison.OrdinalIgnoreCase))
+            {
+                return rightBubblePrefab;
+            }
+
+            return leftBubblePrefab != null ? leftBubblePrefab : rightBubblePrefab;
+        }
+
+        private void ClearOptions()
+        {
+            for (int i = 0; i < optionButtons.Count; i++)
+            {
+                if (optionButtons[i] != null)
+                    Destroy(optionButtons[i]);
+            }
+            optionButtons.Clear();
+        }
+
+        private void ScrollToBottom()
+        {
+            Canvas.ForceUpdateCanvases();
+            if (scrollRect != null)
+                scrollRect.verticalNormalizedPosition = 0f;
+        }
+
+        public void AdvanceDialogue()
+      {
+        if (dialogueRunner != null)
+            {
+                // Lệnh này sẽ phát lệnh Cancel đến cái `token.NextContentToken` đang treo ở trên
+                dialogueRunner.RequestNextLine();
+            }
+            else
+            {
+                Debug.LogWarning("[ChatDialogueView] Ê, quên kéo DialogueRunner vào Inspector kìa!");
+            }
+        }
+    }
+}
+
+File ChatDialogueView.cs.meta
+fileFormatVersion: 2
+guid: 9f2be3b3ceac4864e9b37a575d778999
+
+File GameplayUIRoot.cs
+using TMPro;
+using UnityEngine;
+using SeriousGame.App;
+using SeriousGame.Runtime;
+
+namespace SeriousGame.UI
+{
+    public class GameplayUIRoot : MonoBehaviour
+    {
+        [Header("Chat Panels")]
+        [SerializeField] private ChatDialoguePanel phonePanel;
+        [SerializeField] private ChatDialoguePanel pcPanel;
+
+        [Header("Summary")]
+        [SerializeField] private SummaryUIListener summaryUI;
+
+        [Header("Toast")]
+        [SerializeField] private OutcomeToastUI toastUI;
+
+        [Header("Hint")]
+        [SerializeField] private GameObject hintRoot;
+        [SerializeField] private TMP_Text hintText;
+
+        [Header("Optional Player Lock")]
+        [SerializeField] private PlayerController player;
+        [SerializeField] private bool lockPlayerOnOverlay = true;
+
+        [Header("UI Presenters (Canvas Groups)")]
+        [SerializeField] private CanvasGroup normalDialogueUI;
+        [SerializeField] private CanvasGroup phoneChatUI;
+        [SerializeField] private CanvasGroup PCUI;
+        
+
+        public void HandleSwitchUIRequested(string uitype)
+        {
+            if (uitype == "phone")
+            {
+                // Bật Phone, Tắt Normal (Chỉ tắt hiển thị, script Yarn vẫn chạy ngầm)
+                ToggleCanvasGroup(phoneChatUI, true);
+                ToggleCanvasGroup(normalDialogueUI, false);
+                ToggleCanvasGroup(PCUI, false);
+            }
+            else if (uitype == "normal")
+            {
+                // Bật Normal, Tắt Phone
+                ToggleCanvasGroup(normalDialogueUI, true);
+                ToggleCanvasGroup(phoneChatUI, false);
+                ToggleCanvasGroup(PCUI, false);
+            }
+             else if (uitype == "pc")
+            {
+                // Bật PC, Tắt Normal
+                ToggleCanvasGroup(PCUI, true);
+                ToggleCanvasGroup(normalDialogueUI, false);
+                ToggleCanvasGroup(phoneChatUI, false);
+            }
+        }
+
+        private void ToggleCanvasGroup(CanvasGroup cg, bool isVisible)
+        {
+            if (cg == null) return;
+            cg.alpha = isVisible ? 1f : 0f;
+            cg.interactable = isVisible;
+            cg.blocksRaycasts = isVisible;
+        }
+
+        private void OnEnable()
+        {
+            GameEventBus.OnPhoneChatRequested += HandlePhoneChatRequested;
+            GameEventBus.OnPhoneMessageReceived += HandlePhoneMessage;
+            GameEventBus.OnPcChatRequested += HandlePcChatRequested;
+            GameEventBus.OnSummaryRequested += HandleSummaryRequested;
+            GameEventBus.OnToastRequested += HandleToastRequested;
+            GameEventBus.OnHintRequested += HandleHintRequested;
+            GameEventBus.OnSwitchUIRequested += HandleSwitchUIRequested;
+        }
+
+        private void OnDisable()
+        {
+            GameEventBus.OnPhoneChatRequested -= HandlePhoneChatRequested;
+            GameEventBus.OnPhoneMessageReceived -= HandlePhoneMessage;
+            GameEventBus.OnPcChatRequested -= HandlePcChatRequested;
+            GameEventBus.OnSummaryRequested -= HandleSummaryRequested;
+            GameEventBus.OnToastRequested -= HandleToastRequested;
+            GameEventBus.OnHintRequested -= HandleHintRequested;
+            GameEventBus.OnSwitchUIRequested -= HandleSwitchUIRequested;
+        }
+
+        private void Start()
+        {
+            ToggleCanvasGroup(normalDialogueUI, true);
+            ToggleCanvasGroup(phoneChatUI, false);
+            ToggleCanvasGroup(PCUI, false);
+        }
+
+        private void HandlePhoneChatRequested(string nodeName)
+        {
+            if (phonePanel == null) return;
+            phonePanel.StartChat(nodeName);
+            SetPlayerLock(true);
+        }
+
+        private void HandlePcChatRequested(string nodeName)
+        {
+            if (pcPanel == null) return;
+            pcPanel.StartChat(nodeName);
+            SetPlayerLock(true);
+        }
+
+        private void HandlePhoneMessage(string speaker, string message)
+        {
+            if (phonePanel == null) return;
+            phonePanel.AppendMessage(speaker, message);
+        }
+
+        private void HandleSummaryRequested()
+        {
+            if (summaryUI == null) return;
+            summaryUI.ShowFromContext();
+            SetPlayerLock(true);
+        }
+
+        private void HandleToastRequested(string message)
+        {
+            if (toastUI == null) return;
+            toastUI.Show(message);
+        }
+
+        private void HandleHintRequested(string message)
+        {
+            if (hintText != null)
+                hintText.text = message ?? string.Empty;
+
+            if (hintRoot != null)
+                hintRoot.SetActive(!string.IsNullOrWhiteSpace(message));
+        }
+
+        public void ClosePhone()
+        {
+            if (phonePanel != null)
+                phonePanel.Hide();
+            SetPlayerLock(false);
+        }
+
+        public void ClosePc()
+        {
+            if (pcPanel != null)
+                pcPanel.Hide();
+            SetPlayerLock(false);
+        }
+
+        public void CloseSummary()
+        {
+            if (summaryUI != null)
+                summaryUI.Hide();
+            SetPlayerLock(false);
+        }
+
+        private void SetPlayerLock(bool locked)
+        {
+            if (!lockPlayerOnOverlay || player == null) return;
+            player.SetLockState(locked);
+        }
+    }
+}
+
+File GameplayUIRoot.cs.meta
+fileFormatVersion: 2
+guid: caef34fad437f344eb1c8b056e4e0ba8
+
 File LoginUI.cs
 using System.Threading.Tasks;
 using UnityEngine;
@@ -2899,46 +3518,41 @@ guid: 8df7c36f0f82dd14ab8fe08cd3dd4052
 
 File OutcomeToastUI.cs
 // Assets/Scripts/UI/OutcomeToastUI.cs
-using System.Collections;
-using TMPro;
 using UnityEngine;
 
 namespace SeriousGame.UI
 {
     public class OutcomeToastUI : MonoBehaviour
     {
-        [SerializeField] private TMP_Text text;
-        [SerializeField] private float showSeconds = 2f;
+        [SerializeField] private float showSeconds = 10f;
 
-        private Coroutine _co;
+        private ToastNotification _toastNotification;
 
         private void Awake()
         {
-            Hide();
+            _toastNotification = FindObjectOfType<ToastNotification>(true);
         }
 
         public void Show(string message)
         {
-            if (text == null) return;
+            if (string.IsNullOrWhiteSpace(message)) return;
 
-            text.text = message ?? "";
-            gameObject.SetActive(true);
+            if (_toastNotification == null)
+                _toastNotification = FindObjectOfType<ToastNotification>(true);
 
-            if (_co != null) StopCoroutine(_co);
-            _co = StartCoroutine(AutoHide());
+            if (_toastNotification == null || _toastNotification._messagePrefab == null)
+            {
+                Debug.LogWarning("[OutcomeToastUI] ToastNotification not found or missing prefab.");
+                return;
+            }
+
+            ToastNotification.Show(message, showSeconds);
         }
 
         public void Hide()
         {
-            if (_co != null) StopCoroutine(_co);
-            _co = null;
-            gameObject.SetActive(false);
-        }
-
-        private IEnumerator AutoHide()
-        {
-            yield return new WaitForSeconds(showSeconds);
-            Hide();
+            if (_toastNotification != null)
+                ToastNotification.Hide();
         }
     }
 }
@@ -2946,6 +3560,86 @@ namespace SeriousGame.UI
 File OutcomeToastUI.cs.meta
 fileFormatVersion: 2
 guid: 73c08fba95e11244b90e189625a09bc7
+
+File PauseMenuController.cs
+using UnityEngine;
+using SeriousGame.Runtime;
+
+namespace SeriousGame.UI
+{
+    public class PauseMenuController : MonoBehaviour
+    {
+        [Header("UI")]
+        [SerializeField] private GameObject menuRoot;
+
+        [Header("Flow")]
+        [SerializeField] private UIFlowManager flowManager;
+
+        [Header("Optional Player")]
+        [SerializeField] private PlayerController player;
+        [SerializeField] private bool pauseTime = true;
+
+        private void Awake()
+        {
+            if (menuRoot != null)
+                menuRoot.SetActive(false);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                TogglePause();
+        }
+
+        private void OnDisable()
+        {
+            if (pauseTime)
+                Time.timeScale = 1f;
+        }
+
+        public void TogglePause()
+        {   
+            if (menuRoot == null) return;
+            if (menuRoot.activeSelf)
+                Resume();
+            else
+                Pause();
+        }
+
+        public void Pause()
+        {
+            if (menuRoot != null)
+                menuRoot.SetActive(true);
+            if (pauseTime)
+                Time.timeScale = 0f;
+            if (player != null)
+                player.SetLockState(true);
+        }
+
+        public void Resume()
+        {
+            if (menuRoot != null)
+                menuRoot.SetActive(false);
+            if (pauseTime)
+                Time.timeScale = 1f;
+            if (player != null)
+                player.SetLockState(false);
+        }
+
+        public void QuitToMenu()
+        {
+            if (pauseTime)
+                Time.timeScale = 1f;
+
+            if (flowManager != null)
+                flowManager.QuitToMenu();
+        }
+    }
+}
+
+File PauseMenuController.cs.meta
+fileFormatVersion: 2
+guid: c7fc541b477455a4ca9ad398fea1fdac
 
 File ScreenFader.cs
 using System;
@@ -3021,43 +3715,85 @@ File ScreenFader.cs.meta
 fileFormatVersion: 2
 guid: 544de859a82a9b241b520fbc8b017bd5
 
-File ToastUIListener.cs
+File SummaryUIListener.cs
+using TMPro;
 using UnityEngine;
 using SeriousGame.App;
+using SeriousGame.State;
 
 namespace SeriousGame.UI
 {
-    public class ToastUIListener : MonoBehaviour
+    public class SummaryUIListener : MonoBehaviour
     {
-        [SerializeField] private OutcomeToastUI toastUI;
+        [Header("UI")]
+        [SerializeField] private CanvasGroup canvasGroup;
+        [SerializeField] private TMP_Text helpSeekingText;
+        [SerializeField] private TMP_Text pressureResistanceText;
+        [SerializeField] private TMP_Text informationVerificationText;
+        [SerializeField] private TMP_Text riskRecognitionText;
+        [SerializeField] private TMP_Text communityWarningText;
 
-        private void OnEnable()
+        [Header("Behavior")]
+        [SerializeField] private bool startHidden = true;
+
+        private void Awake()
         {
-            GameEventBus.OnToastRequested += HandleToastRequested;
+            if (startHidden)
+                Hide();
         }
 
-        private void OnDisable()
+        public void Hide()
         {
-            GameEventBus.OnToastRequested -= HandleToastRequested;
+            SetVisible(false);
         }
 
-        private void HandleToastRequested(string message)
+        public void ShowFromContext()
         {
-            if (toastUI == null)
+            var ctx = GameBootstrap.Context;
+            if (ctx == null || ctx.PlayerState == null) return;
+            Show(ctx.PlayerState);
+        }
+
+        public void Show(PlayerStateService state)
+        {
+            if (state == null) return;
+            UpdateScores(state);
+            SetVisible(true);
+        }
+
+        private void UpdateScores(PlayerStateService state)
+        {
+            SetText(helpSeekingText, state.Get(GameStateKeys.ScoreHelpSeeking));
+            SetText(pressureResistanceText, state.Get(GameStateKeys.ScorePressureResistance));
+            SetText(informationVerificationText, state.Get(GameStateKeys.ScoreInformationVerification));
+            SetText(riskRecognitionText, state.Get(GameStateKeys.ScoreRiskRecognition));
+            SetText(communityWarningText, state.Get(GameStateKeys.ScoreCommunityWarning));
+        }
+
+        private void SetText(TMP_Text text, int value)
+        {
+            if (text != null)
+                text.text = value.ToString();
+        }
+
+        private void SetVisible(bool visible)
+        {
+            if (canvasGroup != null)
             {
-                Debug.LogWarning("[ToastUIListener] OutcomeToastUI not assigned.");
+                canvasGroup.alpha = visible ? 1f : 0f;
+                canvasGroup.interactable = visible;
+                canvasGroup.blocksRaycasts = visible;
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(message)) return;
-            toastUI.Show(message);
+            gameObject.SetActive(visible);
         }
     }
 }
 
-File ToastUIListener.cs.meta
+File SummaryUIListener.cs.meta
 fileFormatVersion: 2
-guid: 1c84f39a524ed1a4d9c9d02c85bec458
+guid: b6ba065618d3fc74f9a34f5afcf39357
 
 File UIFlowManager.cs
 using System.Threading.Tasks;
@@ -3130,5 +3866,36 @@ namespace SeriousGame.UI
 File UIFlowManager.cs.meta
 fileFormatVersion: 2
 guid: 51cbb891de597bd4e9ab67c68de96457
+
+File UITester.cs
+using UnityEngine;
+using SeriousGame.App; // Import namespace chứa GameEventBus
+
+public class UITester : MonoBehaviour
+{
+    void Update()
+    {
+        // Nhấn phím P để giả lập hành động người chơi mở tin nhắn của Guard_Main
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            // Lệnh này sẽ tự động bật UI Điện thoại và kích hoạt Node "Guard_Main"
+            GameEventBus.RaiseSwitchUIRequested("phone");
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            // Lệnh này sẽ tự động bật UI Normal và kích hoạt Node "Guard_Main"
+            GameEventBus.RaiseSwitchUIRequested("normal");
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            // Lệnh này sẽ tự động bật UI PC và kích hoạt Node "Guard_Main"
+            GameEventBus.RaiseSwitchUIRequested("pc");
+        }
+    }
+}
+
+File UITester.cs.meta
+fileFormatVersion: 2
+guid: b81cf56473ab70649a8438890d7a5e3a
 
 

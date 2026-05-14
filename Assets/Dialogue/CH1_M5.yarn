@@ -1,0 +1,12 @@
+title: CH1_M5_OPEN_RECAP
+---
+// M5: recap va tong ket chuong
+<<set_milestone 5>>
+<<switch_ui "phone">>
+
+Minh: "De xem lai nhung viec da xay ra..."
+Minh: "Co nhieu tinh huong phai can than hon." 
+
+<<show_summary>>
+<<chapter_end "CH1">>
+===

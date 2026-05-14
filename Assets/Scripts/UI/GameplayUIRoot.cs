@@ -86,6 +86,13 @@ namespace SeriousGame.UI
             GameEventBus.OnSwitchUIRequested -= HandleSwitchUIRequested;
         }
 
+        private void Start()
+        {
+            ToggleCanvasGroup(normalDialogueUI, true);
+            ToggleCanvasGroup(phoneChatUI, false);
+            ToggleCanvasGroup(PCUI, false);
+        }
+
         private void HandlePhoneChatRequested(string nodeName)
         {
             if (phonePanel == null) return;

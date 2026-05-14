@@ -1,0 +1,125 @@
+title: CH1_M0_START
+---
+// CH1 - M0: Den KTX, nhan phong, gap ban moi, vao lop
+<<set_milestone 0>>
+
+Minh: "Toi noi roi. Gio vao hoi bac bao ve truoc." 
+
+// Bat dau quest dau tien: hoi bac bao ve
+<<set_objective "OBJ_M0_TALK_GUARD">>
+===
+
+title: CH1_M0_CHECK_EMAIL
+---
+// Tuong tac tuy chon: mo email nhan phong
+<<switch_ui "phone">>
+Minh: "Toa A, phong 308. Lam thu tuc o sanh tiep nhan."
+Minh: "Can CCCD, email xac nhan, MSSV..."
+<<trace TRACE_READ_RELEVANT_INFO 1>>
+<<switch_ui "normal">>
+
+// Quay ve muc tieu hoi bac bao ve
+<<set_objective "OBJ_M0_TALK_GUARD">>
+===
+
+title: CH1_M0_TALK_GUARD
+---
+Bac bao ve: "Chau nhan phong ha?"
+Minh: "Da, con moi len nhan phong a."
+Bac bao ve: "Toa nao?"
+Minh: "Da toa A."
+Bac bao ve: "Co email xac nhan chua?"
+Minh: "Da co."
+Bac bao ve: "Roi, con vao sanh ben kia. Toi ban huong dan, nguoi ta chi tiep cho."
+Minh: "Da, con cam on bac."
+
+// Di vao sanh tiep nhan
+<<set_objective "OBJ_M0_GO_LOBBY">>
+===
+
+title: CH1_M0_GO_LOBBY
+---
+// Tuong tac voi loi vao toa A / sanh tiep nhan
+Minh: "Di vao sanh tiep nhan thoi."
+
+<<set_objective "OBJ_M0_TALK_LINH">>
+===
+
+title: CH1_M0_TALK_LINH
+---
+Chi Linh: "Em nhan phong ha?"
+Minh: "Da, em ten Nguyen Minh, phong 308."
+Chi Linh: "Toa A dung khong em?"
+Minh: "Da dung."
+Chi Linh: "Em vao van phong ben kia lam thu tuc nhan the phong nha. Chuan bi email xac nhan, CCCD voi MSSV."
+Minh: "Da, em vao do luon ha chi?"
+Chi Linh: "Um. Lam xong quay lai day, roi em quet ma nhom toa de nhan thong bao."
+Minh: "Da, em cam on chi."
+
+<<set_objective "OBJ_M0_DO_PAPERWORK">>
+===
+
+title: CH1_M0_DO_PAPERWORK
+---
+// Tuong tac voi van phong tiep nhan
+Minh: "Thu tuc xong roi. The phong va noi quy day du."
+
+<<set_objective "OBJ_M0_SCAN_QR">>
+===
+
+title: CH1_M0_ASK_QR
+---
+// Tuy chon hoi them ve nhom thong bao
+Minh: "Da chi oi, nhom nay la nhom chinh thuc cua toa ha chi?"
+Chi Linh: "Dung roi em. Thong bao gio giac, noi quy, bao sua do... se nhan trong nhom do."
+Minh: "Da, em hieu roi."
+<<trace TRACE_ASK_PERSON 2>>
+
+<<set_objective "OBJ_M0_SCAN_QR">>
+===
+
+title: CH1_M0_SCAN_QR
+---
+// Quet QR vao nhom toa
+Minh: "Roi, xong nhom toa."
+Minh: "Gio len phong 308 thoi."
+
+<<set_objective "OBJ_M0_GO_ROOM">>
+===
+
+title: CH1_M0_ENTER_ROOM
+---
+// Vao phong 308 va gap Quan, Huy
+Quan: "Ong phong 308 moi vo ha?"
+Minh: "Uh, tui la Minh."
+Quan: "Vali ong nhin hoi chien do."
+Minh: "No nghi tu cong roi."
+Huy: "Em de do gon ben kia truoc. The phong voi giay to giu ky."
+Huy: "Nhom toa co thong bao thi nho xem. May hom dau de sot lam."
+Minh: "Da, em vua vao nhom roi anh."
+
+<<set_objective "OBJ_M0_GO_CLASS">>
+===
+
+title: CH1_M0_GO_CLASS
+---
+// Di den lop hoc dau tien
+Minh: "Toi lop moi kip."
+
+<<set_objective "OBJ_M0_TALK_NAM_MAI">>
+===
+
+title: CH1_M0_TALK_NAM_MAI
+---
+// Gap Nam va Mai o lop hoc
+Nam: "Ban chua co nhom ha?"
+Minh: "Chua."
+Mai: "Minh lam nhom voi tui va Nam nhe."
+Minh: "Ok."
+Mai: "Minh tim tai lieu nen va phan mo dau nha."
+Nam: "Toi lo vi du minh hoa."
+
+// Bat dau M1: tim tai lieu
+<<set_milestone 1>>
+<<set_objective "OBJ_M1_OPEN_LAPTOP">>
+===

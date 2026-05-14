@@ -1,0 +1,86 @@
+title: CH1_M4_CHECK_EMAIL
+---
+// M4: email hoc bong gia
+<<set_milestone 4>>
+<<switch_ui "phone">>
+
+Minh: "Email hoc bong... 5 trieu?" 
+Minh: "Han 23:59 hom nay." 
+
+-> Mo form xac nhan
+    <<jump CH1_M4_OPEN_FORM>>
+-> Hoi nhom BTL
+    <<jump CH1_M4_ASK_GROUP>>
+-> Hoi Quan/Huy
+    <<jump CH1_M4_ASK_ROOMMATES>>
+===
+
+title: CH1_M4_OPEN_FORM
+---
+<<trace TRACE_OPEN_UNVERIFIED_FORM 1>>
+Minh: "Form yeu cau nhieu thong tin..."
+
+-> Dien thong tin
+    <<jump CH1_M4_FILL_FORM>>
+-> Dong lai
+    <<jump CH1_M4_CLOSE_FORM>>
+===
+
+title: CH1_M4_FILL_FORM
+---
+<<trace TRACE_FILL_BASIC_INFO 2>>
+Minh: "Dien ho ten, MSSV..."
+<<trace TRACE_FILL_SENSITIVE_INFO 3>>
+Minh: "Dien thong tin ngan hang..."
+
+-> Nhap OTP
+    <<jump CH1_M4_SUBMIT_OTP>>
+-> Dung lai
+    <<jump CH1_M4_CLOSE_FORM>>
+===
+
+title: CH1_M4_SUBMIT_OTP
+---
+<<trace TRACE_SUBMIT_AUTH_CODE 4>>
+Minh: "Da nhap OTP." 
+
+<<switch_ui "normal">>
+<<jump CH1_M4_END>>
+===
+
+title: CH1_M4_CLOSE_FORM
+---
+<<trace TRACE_REFUSE_RISKY_REQUEST 5>>
+Minh: "Thoi, dung lai."
+
+<<switch_ui "normal">>
+<<jump CH1_M4_END>>
+===
+
+title: CH1_M4_ASK_GROUP
+---
+<<trace TRACE_ASK_PERSON 6>>
+Minh: "Gui email vao nhom nho coi."
+Mai: "Email nay khong giong kenh truong. Link va han cung nghi."
+<<trace TRACE_INSPECT_SOURCE 7>>
+
+<<switch_ui "normal">>
+<<jump CH1_M4_END>>
+===
+
+title: CH1_M4_ASK_ROOMMATES
+---
+<<trace TRACE_ASK_PERSON 8>>
+Quan: "5 trieu, han gap the nay thi coi ky." 
+Huy: "Email khong chinh thong. OTP thi khong bao gio dua cho ben ngoai." 
+<<trace TRACE_INSPECT_SOURCE 9>>
+
+<<switch_ui "normal">>
+<<jump CH1_M4_END>>
+===
+
+title: CH1_M4_END
+---
+<<set_milestone 5>>
+<<set_objective "OBJ_M5_OPEN_RECAP">>
+===
