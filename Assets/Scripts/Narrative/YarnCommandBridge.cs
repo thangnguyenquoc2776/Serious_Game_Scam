@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
@@ -5,11 +6,18 @@ using SeriousGame.App;
 using SeriousGame.Trace;
 using SeriousGame.State;
 using SeriousGame.Runtime;
+using AppContext = SeriousGame.App.AppContext;
 
 namespace SeriousGame.Narrative
 {
     public class YarnCommandBridge : MonoBehaviour
     {
+        [Serializable]
+        private class TeleportPoint
+        {
+            public string id;
+            public Transform target;
+        }
         [Header("Context (optional override)")]
         // [SerializeField] private AppContext contextOverride;
 
@@ -19,11 +27,18 @@ namespace SeriousGame.Narrative
         [Header("Optional Player")]
         [SerializeField] private PlayerController player;
 
+        [Header("Teleport Points")]
+        [SerializeField] private TeleportPoint[] teleportPoints;
+
         // private AppContext Context => contextOverride != null ? contextOverride : GameBootstrap.Context;
         private static AppContext Context => GameBootstrap.Context;
+        private static YarnCommandBridge _instance;
 
         private void Awake()
         {
+            if (_instance == null)
+                _instance = this;
+
             var ctx = Context;
             if (ctx != null && ctx.Narrative != null)
             {
@@ -36,9 +51,59 @@ namespace SeriousGame.Narrative
 
         private void OnDestroy()
         {
+            if (_instance == this)
+                _instance = null;
+
             var ctx = Context;
             if (ctx != null && ctx.Narrative != null)
                 ctx.Narrative.UnbindRunner();
+        }
+
+        [YarnCommand("fade_in_out")]
+        public static void FadeInOut(float fadeSeconds = 1f, float holdSeconds = 0f)
+        {
+            if (ScreenFader.Instance == null) return;
+            ScreenFader.Instance.FadeOutInHold(fadeSeconds, holdSeconds);
+        }
+
+        [YarnCommand("fade_in")]
+        public static void FadeIn(float fadeSeconds = 1f)
+        {
+            if (ScreenFader.Instance == null) return;
+            ScreenFader.Instance.FadeOut(fadeSeconds);
+        }
+
+        [YarnCommand("fade_out")]
+        public static void FadeOut(float fadeSeconds = 1f)
+        {
+            if (ScreenFader.Instance == null) return;
+            ScreenFader.Instance.FadeIn(fadeSeconds);
+        }
+
+        [YarnCommand("teleport_to")]
+        public static void TeleportTo(string pointId)
+        {
+            if (_instance == null)
+            {
+                Debug.LogWarning("[YarnCommandBridge] TeleportTo failed: bridge instance missing.");
+                return;
+            }
+
+            var target = _instance.ResolveTeleportPoint(pointId);
+            if (target == null)
+            {
+                Debug.LogWarning($"[YarnCommandBridge] TeleportTo failed: point '{pointId}' not found.");
+                return;
+            }
+
+            var pc = _instance.ResolvePlayer();
+            if (pc == null)
+            {
+                Debug.LogWarning("[YarnCommandBridge] TeleportTo failed: PlayerController not found.");
+                return;
+            }
+
+            pc.TeleportTo(target);
         }
 
         [YarnCommand("trace")]
@@ -130,6 +195,29 @@ namespace SeriousGame.Narrative
             SeriousGame.App.GameEventBus.RaiseSummaryRequested();
         }
 
+        private Transform ResolveTeleportPoint(string pointId)
+        {
+            if (teleportPoints == null || string.IsNullOrWhiteSpace(pointId)) return null;
+            foreach (var entry in teleportPoints)
+            {
+                if (entry == null || entry.target == null) continue;
+                if (!string.Equals(entry.id, pointId, StringComparison.OrdinalIgnoreCase)) continue;
+                return entry.target;
+            }
+            return null;
+        }
+
+        private PlayerController ResolvePlayer()
+        {
+            if (player != null) return player;
+
+#if UNITY_2023_1_OR_NEWER || UNITY_2022_2_OR_NEWER
+            return FindAnyObjectByType<PlayerController>();
+#else
+            return FindObjectOfType<PlayerController>();
+#endif
+        }
+
         [YarnCommand("save_game")]
         public static void SaveGame()
         {
@@ -170,12 +258,12 @@ namespace SeriousGame.Narrative
         //     SeriousGame.App.GameEventBus.RaisePhoneMessageReceived(characterName, message);
         // }
 
-        [YarnCommand("show_hint")]
-        public static void ShowHint(string message)
-        {
-            if (string.IsNullOrWhiteSpace(message)) return;
-            SeriousGame.App.GameEventBus.RaiseHintRequested(message);
-        }
+        // [YarnCommand("show_hint")]
+        // public static void ShowHint(string message)
+        // {
+        //     if (string.IsNullOrWhiteSpace(message)) return;
+        //     SeriousGame.App.GameEventBus.RaiseHintRequested(message);
+        // }
 
         [YarnCommand("set_state")]
         public static void SetState(string key, int value)
@@ -218,18 +306,12 @@ namespace SeriousGame.Narrative
             return ctx.PlayerState.CheckFlag(key);
         }
 
-        [YarnCommand("show_toast")]
-        public static void ShowToast(string message)
-        {
-            if (string.IsNullOrWhiteSpace(message)) return;
-            SeriousGame.App.GameEventBus.RaiseToastRequested(message);
-        }
-
-        // [YarnCommand("test_func")]
-        // public static void test_func(string message)
+        // [YarnCommand("show_toast")]
+        // public static void ShowToast(string message)
         // {
         //     if (string.IsNullOrWhiteSpace(message)) return;
-        //     Debug.Log($"[YarnCommandBridge] test_func called with message: {message}");
+        //     SeriousGame.App.GameEventBus.RaiseToastRequested(message);
         // }
+
     }
 }

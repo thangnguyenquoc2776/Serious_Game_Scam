@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Episode0.unity
     guid: 1018a3c3aad5ec54ebf00bdd1c342d5b
   - enabled: 1
+    path: Assets/Scenes/Map episode 1.unity
+    guid: 10b158767b440554ebe7710d7b811d13
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: ea5c9ce169b31c14e9676664011b79ef
   m_configObjects:

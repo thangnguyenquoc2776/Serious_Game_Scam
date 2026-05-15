@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using SeriousGame.App;
@@ -7,6 +8,13 @@ namespace SeriousGame.UI
 {
     public class GameplayUIRoot : MonoBehaviour
     {
+        [Serializable]
+        private class StaticUIEntry
+        {
+            public string id;
+            public GameObject root;
+        }
+
         [Header("Chat Panels")]
         [SerializeField] private ChatDialoguePanel phonePanel;
         [SerializeField] private ChatDialoguePanel pcPanel;
@@ -29,6 +37,9 @@ namespace SeriousGame.UI
         [SerializeField] private CanvasGroup normalDialogueUI;
         [SerializeField] private CanvasGroup phoneChatUI;
         [SerializeField] private CanvasGroup PCUI;
+
+        [Header("Static UI (SetActive)")]
+        [SerializeField] private StaticUIEntry[] staticUiEntries;
         
 
         public void HandleSwitchUIRequested(string uitype)
@@ -53,6 +64,49 @@ namespace SeriousGame.UI
                 ToggleCanvasGroup(PCUI, true);
                 ToggleCanvasGroup(normalDialogueUI, false);
                 ToggleCanvasGroup(phoneChatUI, false);
+            }
+            else
+            {
+                HandleStaticUI(uitype);
+            }
+        }
+
+        private void HandleStaticUI(string uitype)
+        {
+            if (string.IsNullOrWhiteSpace(uitype)) return;
+
+            const string showPrefix = "show:";
+            const string hidePrefix = "hide:";
+
+            if (uitype.StartsWith(showPrefix, StringComparison.OrdinalIgnoreCase))
+            {
+                var id = uitype.Substring(showPrefix.Length).Trim();
+                SetStaticUiActive(id, true);
+                return;
+            }
+
+            if (uitype.StartsWith(hidePrefix, StringComparison.OrdinalIgnoreCase))
+            {
+                var id = uitype.Substring(hidePrefix.Length).Trim();
+                SetStaticUiActive(id, false);
+                return;
+            }
+
+            // Default: treat the value as an id to show.
+            SetStaticUiActive(uitype.Trim(), true);
+        }
+
+        private void SetStaticUiActive(string id, bool isActive)
+        {
+            if (string.IsNullOrWhiteSpace(id) || staticUiEntries == null) return;
+
+            foreach (var entry in staticUiEntries)
+            {
+                if (entry == null || entry.root == null) continue;
+                if (!string.Equals(entry.id, id, StringComparison.OrdinalIgnoreCase)) continue;
+
+                entry.root.SetActive(isActive);
+                return;
             }
         }
 

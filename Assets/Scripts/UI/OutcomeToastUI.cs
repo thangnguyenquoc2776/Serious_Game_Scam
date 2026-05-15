@@ -11,7 +11,7 @@ namespace SeriousGame.UI
 
         private void Awake()
         {
-            _toastNotification = FindObjectOfType<ToastNotification>(true);
+            _toastNotification = FindFirstObjectByType<ToastNotification>();
         }
 
         public void Show(string message)
@@ -19,7 +19,7 @@ namespace SeriousGame.UI
             if (string.IsNullOrWhiteSpace(message)) return;
 
             if (_toastNotification == null)
-                _toastNotification = FindObjectOfType<ToastNotification>(true);
+                _toastNotification = FindFirstObjectByType<ToastNotification>();
 
             if (_toastNotification == null || _toastNotification._messagePrefab == null)
             {
