@@ -1,66 +1,117 @@
-title: CH1_M2_PHONE_CALL
+title: CH1_M2_TC_1
 ---
-// M2: cuoc goi shipper gia (hoi truong)
 <<set_milestone 2>>
-<<switch_ui "phone">>
+<<switch_ui "phone_chat">>
 
-Minh: "Alo?"
-Shipper: "Em co don hang giao KTX. Can thanh toan truoc 118.000."
-Shipper: "Em chuyen khoan roi anh se gui bao ve." 
+Minh: “Ông ơi, có shipper gọi bảo chuyển khoản trước rồi gửi đồ ở cổng. Có nên chuyển không?”
 
--> Chuyen tien luon
-    <<jump CH1_M2_TRANSFER>>
--> Hen lai hom khac
-    <<jump CH1_M2_DELAY>>
--> Nhan tin hoi phong 308
-    <<jump CH1_M2_ASK_ROOM>>
+<<trace TRACE_ASK_PERSON 3 "shipper_call">>
+
+Minh: “Không ai trả lời kịp…”
+Shipper: “Em ơi, anh còn đứng ở cổng nè. Chuyển giúp anh lẹ đi, anh còn chạy đơn khác.”
+Minh: “Dạ… để em xem chút.”
+Shipper: “Xem gì nữa em, đúng tên Minh, đúng KTX tòa A rồi. Em không nhận thì anh hủy đơn đó.”
+
+-> Chuyển tiền luôn
+    <<jump CH1_M2_R1_BB_1>>
+-> Hẹn lại hôm khác
+    <<jump CH1_M2_R2_BB_1>>
 ===
 
-title: CH1_M2_ASK_ROOM
+title: CH1_M2_R1_BB_1
 ---
-<<trace TRACE_ASK_PERSON 1>>
-Minh: "De tui nhan tin hoi phong da..."
-Minh: "Khong ai tra loi kip."
-Shipper: "Em chuyen nhanh giup anh nhe, con nhieu don lam."
+<<set_milestone 2>>
+<<switch_ui "phone_chat">>
 
--> Chuyen tien
-    <<jump CH1_M2_TRANSFER>>
--> Hen lai
-    <<jump CH1_M2_DELAY>>
-===
+Minh: “Em đang ở hội trường, không ra được liền.”
+Shipper: “Vậy chuyển khoản đi em. Anh để bảo vệ cho, lát em xuống lấy.”
+Minh: “Dạ… số tài khoản anh đọc lại giúp em.”
+Shipper: “Rồi, em chuyển đúng nội dung tên Minh nha.”
 
-title: CH1_M2_TRANSFER
----
-<<trace TRACE_TRANSFER_MONEY 2>>
-<<trace TRACE_ACT_UNDER_PRESSURE 3>>
-Minh: "Roi, em chuyen roi."
+<<trace TRACE_TRANSFER_MONEY 1 "shipper_call">>
+
+Minh: “Em chuyển rồi đó anh.”
+Shipper: “Ừ, anh gửi bảo vệ nha.”
 
 <<switch_ui "normal">>
-<<set_objective "OBJ_M2_CHECK_APP">>
+<<fade_in_out "1" "1">>
+<<wait 1>>
+
+<<jump CH1_M2_R1_BB_2>>
 ===
 
-title: CH1_M2_DELAY
+title: CH1_M2_R1_BB_2
 ---
-<<trace TRACE_DELAY_ACTION 4>>
-Minh: "Em dang o hoi truong, khong ra duoc. De em hen lai." 
+Minh: “Khoan…”
+Minh: “Đơn của mình chưa tới mà?”
+Minh: “Vậy hồi nãy là ai?”
+
+<<jump CH1_M2_R0_BB_1>>
+===
+
+title: CH1_M2_R2_BB_1
+---
+<<set_milestone 2>>
+<<switch_ui "phone_chat">>
+
+Minh: “Anh ơi, giờ em đang ở hội trường nên không ra được.”
+Shipper: “Vậy em chuyển khoản trước đi. Anh để hàng lại cho bảo vệ.”
+Minh: “Dạ thôi, nếu không giao được thì anh hẹn lại giúp em. Em sẽ nhận trực tiếp sau.”
+Shipper: “Anh còn nhiều đơn lắm. Không chuyển giờ thì anh hủy đó.”
+Minh: “Dạ, vậy anh hủy hoặc giao lại sau giúp em. Em không chuyển khi chưa nhận hàng được.”
+
+<<trace TRACE_DELAY_ACTION 2 "shipper_call">>
 
 <<switch_ui "normal">>
-<<set_objective "OBJ_M2_CHECK_APP">>
+<<fade_in_out "1" "1">>
+<<wait 1>>
+
+<<jump CH1_M2_R2_BB_2>>
 ===
 
-title: CH1_M2_CHECK_APP
+title: CH1_M2_R2_BB_2
 ---
-// Kiem tra app mua hang tai khu nhan hang
-Minh: "Don cua minh van dang van chuyen."
-Minh: "Khong co yeu cau chuyen tien ngoai app."
+Minh: “Dự kiến giao ngày mai…”
+Minh: “Thanh toán qua app rồi…”
+Minh: “Vậy số hồi nãy chắc không phải shipper đơn này.”
 
-<<set_objective "OBJ_M2_GO_ROOM">>
+<<jump CH1_M2_R0_BB_1>>
 ===
 
-title: CH1_M2_GO_ROOM
+title: CH1_M2_R0_BB_1
 ---
-// Quay ve phong 308
-Minh: "Ve phong da, coi Nam nhan gi khong." 
+Minh: “Mấy chuyện nhỏ nhỏ này mà không để ý là rối thật.”
+Minh: “Thôi, làm bài cho xong đã.”
 
+<<fade_in_out "1" "1">>
+<<wait 1>>
+
+<<jump CH1_M2_R0_BB_2>>
+===
+
+title: CH1_M2_R0_BB_2
+---
+Minh: “Hôm sau, mình gần như ngồi làm bài cả ngày.”
+Minh: “Sáng xem lại tài liệu. Chiều sửa phần ghi chú. Tối mở laptop lên lần nữa.”
+
+<<jump CH1_M2_R0_BB_3>>
+===
+
+title: CH1_M2_R0_BB_3
+---
 <<set_objective "OBJ_M3_OPEN_NAM_CHAT">>
+<<switch_ui "phone_chat">>
+
+Nam: “Minh ơi, ông còn thức không?”
+Nam: “Tui đang kẹt chút chuyện.”
+Nam: “Ông chuyển giúp tui 250k được không? Tối tui gửi lại.”
+Nam: “Gấp nha ông, tui đang ngoài đường.”
+Nam: “Ông chuyển qua số này giúp tui nha. Tài khoản bạn tui, tui đang mượn máy.”
+
+-> Chuyển tiền luôn
+    <<jump CH1_M3_R1_BB_1>>
+-> Hỏi anh em trong phòng
+    <<jump CH1_M3_R2_BB_1>>
+-> Chất vấn lại
+    <<jump CH1_M3_TC_1>>
 ===

@@ -80,7 +80,7 @@ Minh: “Vậy cứ vào sảnh trước đã.”
 // Ghi chú: Người chơi chủ động xem lại thông tin chính thức trước khi làm thủ tục. Nếu bỏ qua tương tác này thì không gọi trace.
 <<trace TRACE_READ_RELEVANT_INFO 1>>
 
-<<switch_ui "hide:phone">>
+// <<switch_ui "hide:phone">>
 <<switch_ui "normal">>
 
 // **[Chuyển cảnh]**

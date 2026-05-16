@@ -1,79 +1,180 @@
-title: CH1_M1_OPEN_LAPTOP
+title: CH1_M1_R1_BB_1
 ---
-// M1: tim tai lieu (tren laptop/PC)
 <<set_milestone 1>>
-<<switch_ui "pc">>
-
-Minh: "De xem thu co tai lieu gi khong..."
-Minh: "Ui, bai dang free tai lieu cho tan sinh vien."
-
--> Mo link tai lieu
-    <<jump CH1_M1_OPEN_LINK>>
--> Hoi Quan/Huy
-    <<switch_ui "normal">>
-    <<set_objective "OBJ_M1_TALK_ROOMMATES">>
--> Bo qua vi thay hoi nghi
-    <<trace TRACE_DETECT_RED_FLAG 6>>
-    <<switch_ui "normal">>
-    <<set_objective "OBJ_M1_GO_HALL">>
-===
-
-title: CH1_M1_OPEN_LINK
----
-<<trace TRACE_OPEN_UNVERIFIED_LINK 1>>
-Minh: "Trang nay bat dang nhap..."
-
--> Dang nhap tai khoan
-    <<jump CH1_M1_SUBMIT_CREDENTIAL>>
--> Dong lai, thay bat thuong
-    <<jump CH1_M1_CLOSE_LINK>>
-===
-
-title: CH1_M1_SUBMIT_CREDENTIAL
----
-Minh: "Thoi thu dang nhap xem..."
-<<trace TRACE_SUBMIT_CREDENTIAL 2>>
-
-<<switch_ui "normal">>
-// Sau khi bi lo tai khoan, quay sang hoi Huy/Quan
-<<set_objective "OBJ_M1_TALK_ROOMMATES_AFTER_RISK">>
-===
-
-title: CH1_M1_CLOSE_LINK
----
-Minh: "Thoi dong lai. Cai nay co mui." 
-<<trace TRACE_DETECT_RED_FLAG 3>>
-
-<<switch_ui "normal">>
-<<set_objective "OBJ_M1_GO_HALL">>
-===
-
-title: CH1_M1_TALK_ROOMMATES
----
-<<trace TRACE_ASK_PERSON 4>>
 <<switch_ui "normal">>
 
-Quan: "Link nay nhin kha nghi."
-Huy: "Kiem tra nguon truoc. Tai lieu thi nen lay tu LMS hoac nhom lop."
-<<trace TRACE_INSPECT_SOURCE 5>>
+<<switch_ui "show:phone:Doc_Link">>
+<<wait 1>>
+<<switch_ui "hide:phone">>
+<<switch_ui "normal">>
 
-<<set_objective "OBJ_M1_GO_HALL">>
+Minh: “Ủa, phải đăng nhập mới tải được à?”
+Minh: “Chắc để xác minh thành viên nhóm hay gì đó…”
+Minh: “Thôi, làm nhanh rồi lấy tài liệu gửi nhóm.”
+
+-> Bấm đăng nhập bằng tài khoản MXH
+    <<jump CH1_M1_R1_BB_2>>
 ===
 
-title: CH1_M1_TALK_ROOMMATES_AFTER_RISK
+title: CH1_M1_R1_BB_2
 ---
-// Node nay goi khi vua lo tai khoan va quay sang hoi Huy/Quan
-Quan: "Ong vua nhap mat khau vao do ha?"
-Huy: "Doi mat khau li, dang xuat thiet bi la, bat 2FA."
-Huy: "Tai lieu hoc khong bao gio can mat khau mang xa hoi." 
+<<switch_ui "show:phone:Doc_Login_Form">>
+<<wait 1>>
+<<switch_ui "hide:phone">>
+<<switch_ui "normal">>
 
-<<set_objective "OBJ_M1_GO_HALL">>
+Minh: “Dòng này nhỏ quá…”
+Minh: “Nhưng chắc trang tổng hợp ngoài nên ghi vậy thôi.”
+Minh: “Mình cần phần mở đầu trước 22:00 nữa.”
+
+<<switch_ui "show:phone:Doc_Login_Loading">>
+<<wait 1>>
+<<switch_ui "hide:phone">>
+<<switch_ui "normal">>
+
+Minh: “Sao không thấy tài liệu đâu…”
+Minh: “Khoan, đăng nhập mới là sao?”
+Minh: “Hình như không ổn rồi.”
+
+<<trace TRACE_SUBMIT_CREDENTIAL 1 "free_doc_login">>
+
+<<jump CH1_M1_R1_BB_3>>
 ===
 
-title: CH1_M1_GO_HALL
+title: CH1_M1_R1_BB_3
 ---
-// Ket thuc M1, di toi hoi truong de bat dau M2
-Minh: "Thoi, toi hoi truong truoc da." 
+Minh: “Ông ơi, tui vừa đăng nhập cái trang tài liệu này xong mà nó báo đăng nhập mới…”
+Quân: “Khoan. Trang nào?”
+Minh: “Cái bài full tài liệu Giải tích trong group.”
+Quân: “Ông nhập mật khẩu vô đó luôn hả?”
+Minh: “Ừ… tại nó bảo xác minh để lấy Drive.”
+Quân: “Bro…”
+Huy: “Đổi mật khẩu ngay. Đăng xuất các phiên lạ. Bật xác thực hai lớp nếu có.”
+Minh: “Dạ.”
+Huy: “Lần sau trang tài liệu mà bắt nhập mật khẩu mạng xã hội thì dừng lại. Tài liệu học không cần quyền đó.”
 
+<<jump CH1_M1_R0_BB_1>>
+===
+
+title: CH1_M1_R2_BB_1
+---
+<<switch_ui "show:phone:Doc_Post">>
+<<wait 1>>
+<<switch_ui "hide:phone">>
+<<switch_ui "normal">>
+
+Minh: “Ông ơi, cái link tài liệu này có ổn không?”
+Quân: “Đâu đưa tui coi.”
+
+<<trace TRACE_ASK_PERSON 2 "free_doc_link">>
+
+<<jump CH1_M1_R2_BB_2>>
+===
+
+title: CH1_M1_R2_BB_2
+---
+Huy: “Em mở thử phần xem trước link, đừng đăng nhập gì hết.”
+Minh: “Dạ.”
+
+Huy: “Không phải link trường. Cũng không phải hệ thống lớp.”
+Quân: “Với lại tài liệu gì mà bắt xác minh bằng tài khoản mạng xã hội.”
+Minh: “Vậy bỏ hả?”
+Huy: “Bỏ link đó. Tài liệu thì kiếm từ nguồn khác.”
+Minh: “Nguồn nào ổn hơn anh?”
+Huy: “LMS, nhóm lớp, hoặc hỏi trực tiếp bạn trong nhóm. Cần thì hỏi Mai xem có slide hay đề cương không.”
+
+<<trace TRACE_INSPECT_SOURCE 2 "free_doc_link">>
+
+<<jump CH1_M1_R2_BB_3>>
+===
+
+title: CH1_M1_R2_BB_3
+---
+<<switch_ui "phone_chat">>
+Minh: “Mọi người có nguồn tài liệu nền nào ổn không? Mình thấy mấy link trong group ngoài hơi loạn.”
+Mai: “Mình có slide giới thiệu môn với vài ghi chú từ hệ thống lớp. Để mình gửi.”
+Nam: “Tui kiếm thêm ví dụ mẫu. Minh lấy phần định nghĩa cơ bản với mở bài thôi là được.”
+Minh: “Ok, cảm ơn nha.”
+<<switch_ui "normal">>
+
+<<jump CH1_M1_R0_BB_1>>
+===
+
+title: CH1_M1_R3_BB_1
+---
+<<switch_ui "show:phone:Doc_Post">>
+<<wait 1>>
+<<switch_ui "hide:phone">>
+<<switch_ui "normal">>
+
+Minh: “Thôi, nhìn rối quá.”
+Minh: “Bấm thì cũng ngại, hỏi thì cũng phiền…”
+Minh: “Lát nữa tính tiếp vậy.”
+
+<<jump CH1_M1_R3_BB_2>>
+===
+
+title: CH1_M1_R3_BB_2
+---
+<<switch_ui "phone_chat">>
+Mai: “Mọi người gửi phần của mình nha, mình ráp slide.”
+Nam: “Tui gửi ví dụ rồi.”
+Mai: “Minh ơi, phần mở đầu của cậu sao rồi?”
+<<switch_ui "normal">>
+
+Minh: “Chết rồi…”
+Minh: “Mình chưa có tài liệu nền tử tế.”
+Minh: “Giờ mà nói chưa làm được thì kỳ quá.”
+
+<<jump CH1_M1_R0_BB_1>>
+===
+
+title: CH1_M1_R0_BB_1
+---
+Minh: “Bài nhỏ thôi, nhưng lên trình bày vẫn run thật.”
+Nam: “Bình tĩnh nha. Nói gọn đúng ý là được.”
+Mai: “Ừ. Lên đi.”
+
+<<fade_in_out "1" "1">>
+<<wait 1>>
+
+<<jump CH1_M1_R0_BB_2>>
+===
+
+title: CH1_M1_R0_BB_2
+---
+Minh: “Sau vài ngày ở KTX, mình bắt đầu thấy thiếu đủ thứ.”
+Minh: “Mua ở ngoài cũng được, nhưng đặt online cho nhanh.”
+
+<<switch_ui "show:phone:Order_App">>
+<<wait 1>>
+<<switch_ui "hide:phone">>
+<<switch_ui "normal">>
+
+Minh: “Chắc vài ngày nữa tới.”
+
+<<fade_in_out "1" "1">>
+<<wait 1>>
+
+<<jump CH1_M1_R0_BB_3>>
+===
+
+title: CH1_M1_R0_BB_3
+---
 <<set_objective "OBJ_M2_PHONE_CALL">>
+<<switch_ui "phone_chat">>
+
+Minh: “Ai gọi giờ này vậy…”
+Shipper: “Em là Minh đúng không? Có đơn giao tới KTX nè.”
+Minh: “Dạ đúng rồi anh.”
+Shipper: “Anh đang ở cổng. Đơn này cần thanh toán trước 118 nghìn. Em chuyển khoản giúp anh rồi anh gửi bảo vệ cho.”
+Minh: “Em đang ở hội trường, chắc chưa ra ngay được.”
+Shipper: “Anh còn nhiều đơn lắm em. Không chuyển nhanh anh hủy đơn hoặc đi đơn khác đó.”
+
+-> Chuyển tiền luôn
+    <<jump CH1_M2_R1_BB_1>>
+-> Hẹn lại hôm khác
+    <<jump CH1_M2_R2_BB_1>>
+-> Nhắn tin hỏi phòng
+    <<jump CH1_M2_TC_1>>
 ===

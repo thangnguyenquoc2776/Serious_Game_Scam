@@ -1,66 +1,144 @@
-title: CH1_M3_OPEN_NAM_CHAT
+title: CH1_M3_TC_1
 ---
-// M3: Nam muon tien (mo chat rieng)
 <<set_milestone 3>>
-<<switch_ui "phone">>
+<<switch_ui "phone_chat">>
 
-Nam: "Minh oi, tui ket qua."
-Nam: "Cho tui muon 250k giai quyet gap."
-Nam: "Chuyen vao tai khoan ban tui nhe."
+Minh: “Ông đang ở đâu vậy?”
+Nam: “Ngoài đường.”
+Minh: “Ngoài đường chỗ nào? Có gọi được không?”
+Nam: “Không tiện gọi. Chuyển lẹ giúp tui đi.”
+Minh: “Sáng nay ông bảo phần ví dụ sẽ gửi lúc mấy giờ ấy nhỉ?”
+Nam: “Tí gửi. Giờ chuyển trước giúp tui.”
+Minh: “Sao không chuyển vào tài khoản của ông?”
+Nam: “Tài khoản tui lỗi. Tài khoản bạn tui. Nhanh nha.”
 
--> Chuyen tien
-    <<jump CH1_M3_TRANSFER>>
--> Hoi Quan/Huy
-    <<switch_ui "normal">>
-    <<set_objective "OBJ_M3_TALK_ROOMMATES">>
--> Chat van lai
-    <<jump CH1_M3_QUESTION>>
+<<trace TRACE_DETECT_RED_FLAG 3 "nam_private_chat">>
+
+-> Vẫn chuyển tiền
+    <<jump CH1_M3_R1_BB_1>>
+-> Hỏi anh em trong phòng
+    <<jump CH1_M3_R2_BB_1>>
+-> Không chuyển và bỏ qua
+    <<jump CH1_M3_R0_BB_1>>
 ===
 
-title: CH1_M3_QUESTION
+title: CH1_M3_R1_BB_1
 ---
-Minh: "Ong dang o dau? Goi duoc khong?"
-Minh: "Sao khong chuyen vao tai khoan ong?"
-Nam: "Dang gap viec, goi khong duoc. Chuyen giup tui di."
-<<trace TRACE_DETECT_RED_FLAG 1>>
+<<set_milestone 3>>
+<<switch_ui "phone_chat">>
 
--> Van chuyen
-    <<jump CH1_M3_TRANSFER>>
--> Hoi Quan/Huy
-    <<switch_ui "normal">>
-    <<set_objective "OBJ_M3_TALK_ROOMMATES">>
+Minh: “Chắc ông ấy đang kẹt thật.”
+Minh: “Mình chuyển trước rồi tối hỏi lại sau vậy.”
+
+<<trace TRACE_TRANSFER_MONEY 1 "nam_private_chat">>
+
+Minh: “Ok, tui chuyển.”
+
+<<jump CH1_M3_R1_BB_2>>
 ===
 
-title: CH1_M3_TRANSFER
+title: CH1_M3_R1_BB_2
 ---
-<<trace TRACE_TRANSFER_MONEY 2>>
-<<trace TRACE_ACT_UNDER_PRESSURE 3>>
-Minh: "Ok, tui chuyen." 
+<<switch_ui "phone_chat">>
+
+Mai: “Nam ơi, hồi nãy cậu nhắn riêng Minh hả?”
+Nam: “Không? Tui đang làm ví dụ mà.”
+Nam: “Khoan, có ai nhận được tin nhắn mượn tiền từ tài khoản tui không?”
+Nam: “Hình như tài khoản tui bị đăng nhập lạ.”
+
+Minh: “…”
+Minh: “Khoan, vậy người nãy giờ nhắn mình là ai?”
+Quân: “Sao mặt ông căng vậy?”
+Minh: “Tui vừa chuyển 250k…”
+Quân: “Cho Nam?”
+Minh: “Tui tưởng vậy.”
+Huy: “Em chụp lại giao dịch, lưu số tài khoản, rồi nhắn Nam khóa tài khoản ngay.”
 
 <<switch_ui "normal">>
+<<jump CH1_M3_R0_BB_1>>
+===
+
+title: CH1_M3_R2_BB_1
+---
+<<set_milestone 3>>
+<<switch_ui "normal">>
+
+Minh: “Ông coi giúp tui cái này được không?”
+Quân: “Nam trong nhóm ông hả?”
+Minh: “Ừ. Mới nhắn mượn tiền.”
+Quân: “Tài khoản bạn tui… nghe hơi lạ nha.”
+Huy: “Gọi trực tiếp hoặc hỏi trong nhóm. Đừng chuyển qua tài khoản lạ.”
+
+<<trace TRACE_ASK_PERSON 2 "nam_private_chat">>
+
+<<jump CH1_M3_R2_BB_2>>
+===
+
+title: CH1_M3_R2_BB_2
+---
+<<switch_ui "phone_chat">>
+
+Minh: “Nam ơi, ông vừa nhắn riêng tui hả?”
+Mai: “Có chuyện gì vậy?”
+Nam: “Không? Tui đang làm ví dụ.”
+Minh: “Tài khoản ông nhắn tui mượn 250k, bảo chuyển qua tài khoản bạn.”
+Nam: “Không phải tui.”
+Nam: “Chết rồi, hình như tài khoản tui bị đăng nhập lạ.”
+Mai: “Nam đổi mật khẩu trước đi. Minh đừng chuyển.”
+Minh: “Ừ, mình chưa chuyển.”
+
+<<trace TRACE_CONTACT_VERIFY 2 "nam_private_chat">>
+
+<<jump CH1_M3_R2_BB_3>>
+===
+
+title: CH1_M3_R2_BB_3
+---
+<<switch_ui "phone_chat">>
+
+Minh: “Mọi người cẩn thận nha. Tài khoản Nam đang nhắn riêng mượn tiền.”
+Minh: “Đừng chuyển nếu chưa gọi xác nhận.”
+Mai: “Mình nhắn thêm vào nhóm lớp luôn. Có thể không chỉ nhóm mình bị.”
+Nam: “Cảm ơn mọi người. Tui đang đổi mật khẩu.”
+
+<<trace TRACE_WARN_OTHERS 2 "nam_private_chat">>
+
+<<switch_ui "normal">>
+<<jump CH1_M3_R0_BB_1>>
+===
+
+title: CH1_M3_R0_BB_1
+---
+Minh: “Vụ tài khoản Nam làm cả nhóm hơi chững lại.”
+Minh: “Dù theo hướng nào, mình cũng hiểu thêm một chuyện: lừa đảo đôi khi đến bằng tên của người mình vừa tin.”
+
+<<jump CH1_M3_R0_BB_2>>
+===
+
+title: CH1_M3_R0_BB_2
+---
+Minh: “Tiền trong ví xuống nhanh hơn mình nghĩ.”
+Minh: “Có hôm mở app ngân hàng chỉ để nhìn số dư rồi tắt đi.”
+
+<<jump CH1_M3_R0_BB_3>>
+===
+
+title: CH1_M3_R0_BB_3
+---
 <<set_objective "OBJ_M4_CHECK_EMAIL">>
-===
-
-title: CH1_M3_TALK_ROOMMATES
----
-<<trace TRACE_ASK_PERSON 4>>
+<<switch_ui "show:phone:Scholarship_Email">>
+<<wait 1>>
+<<switch_ui "hide:phone">>
 <<switch_ui "normal">>
 
-Quan: "Tai khoan nghe la la. Nen goi truc tiep xem."
-Huy: "Neu Nam can that, xac minh qua kenh khac duoc."
+Minh: “Học bổng?”
+Minh: “5 triệu…”
+Minh: “Đúng lúc thật.”
 
--> Canh bao nhom BTL
-    <<jump CH1_M3_WARN_GROUP>>
--> Thoi, bo qua
-    <<set_objective "OBJ_M4_CHECK_EMAIL">>
-===
-
-title: CH1_M3_WARN_GROUP
----
-<<trace TRACE_WARN_OTHERS 5>>
-<<switch_ui "phone">>
-Minh: "Minh nhan tin canh bao nhom BTL."
-<<switch_ui "normal">>
-
-<<set_objective "OBJ_M4_CHECK_EMAIL">>
+-> Nhập OTP xác thực vào luôn
+    <<jump CH1_M4_R1_BB_1>>
+-> Đi hỏi nhóm BTL
+    <<jump CH1_M4_R2_BB_1>>
+-> Đi hỏi anh em trong phòng
+    <<jump CH1_M4_R3_BB_1>>
 ===
