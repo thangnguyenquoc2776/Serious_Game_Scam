@@ -1,4 +1,5 @@
 title: CH1_M4_R1_BB_1
+position: 572,12
 ---
 <<set_milestone 4>>
 <<switch_ui "show:phone:Scholarship_Email">>
@@ -21,6 +22,7 @@ Minh: “Chắc để đối chiếu hồ sơ thôi.”
 ===
 
 title: CH1_M4_R1_BB_2
+position: 572,237
 ---
 <<switch_ui "show:phone:Scholarship_Form_2">>
 <<wait 1>>
@@ -37,6 +39,7 @@ Minh: “Nhưng sao cảm giác hơi nhanh vậy ta?”
 ===
 
 title: CH1_M4_R1_BB_3
+position: 572,462
 ---
 <<switch_ui "show:phone:Scholarship_OTP">>
 <<wait 1>>
@@ -53,6 +56,7 @@ Minh: “Nhưng mã sắp hết hạn rồi.”
 ===
 
 title: CH1_M4_R1_BB_4
+position: 572,687
 ---
 Minh: “Anh Huy ơi…”
 Huy: “Gì em?”
@@ -60,7 +64,7 @@ Minh: “Em vừa nhập OTP vào form học bổng. Xong ngân hàng báo cản
 Huy: “OTP ngân hàng?”
 Minh: “Dạ…”
 Huy: “Khóa giao dịch ngay. Gọi tổng đài ngân hàng. Không nhập thêm gì nữa.”
-Quân: “Khoan, form nào? Học bổng mà xin OTP ngân hàng là sai rồi.”
+Quan: “Khoan, form nào? Học bổng mà xin OTP ngân hàng là sai rồi.”
 Minh: “Em tưởng là xác nhận tài khoản nhận học bổng…”
 Huy: “Không. OTP là để xác thực giao dịch hoặc đăng nhập. Không ai phát học bổng bằng cách bắt em nhập OTP vào form ngoài.”
 
@@ -68,6 +72,7 @@ Huy: “Không. OTP là để xác thực giao dịch hoặc đăng nhập. Khô
 ===
 
 title: CH1_M4_R2_BB_1
+position: 292,237
 ---
 <<set_milestone 4>>
 <<switch_ui "phone_chat">>
@@ -84,6 +89,7 @@ Minh: “Đây.”
 ===
 
 title: CH1_M4_R2_BB_2
+position: 292,462
 ---
 <<switch_ui "phone_chat">>
 
@@ -101,6 +107,7 @@ Mai: “Mấy học bổng thật thường có thông báo trên website trư�
 ===
 
 title: CH1_M4_R2_BB_3
+position: 292,687
 ---
 <<switch_ui "phone_chat">>
 
@@ -115,6 +122,7 @@ Mai: “Ai nhận được thì kiểm tra trên website/phòng CTSV trước nh
 ===
 
 title: CH1_M4_R3_BB_1
+position: 12,462
 ---
 <<set_milestone 4>>
 <<switch_ui "normal">>
@@ -122,7 +130,7 @@ title: CH1_M4_R3_BB_1
 Minh: “Anh Huy ơi, anh coi giúp em cái mail này được không?”
 Huy: “Mail gì?”
 Minh: “Học bổng tân sinh viên. Nó bảo hỗ trợ 5 triệu, xác nhận trước 23:59.”
-Quân: “5 triệu? Nghe thơm vậy.”
+Quan: “5 triệu? Nghe thơm vậy.”
 Minh: “Thơm nên em mới thấy hơi sợ.”
 
 <<trace TRACE_ASK_PERSON 3 "scholarship_email">>
@@ -131,9 +139,10 @@ Minh: “Thơm nên em mới thấy hơi sợ.”
 ===
 
 title: CH1_M4_R3_BB_2
+position: 12,687
 ---
 Minh: “Nhìn kỹ lại thì đúng là không giống mail trường thật.”
-Quân: “Mấy cái này hay đánh vào lúc mình đang cần tiền.”
+Quan: “Mấy cái này hay đánh vào lúc mình đang cần tiền.”
 Huy: “Em lưu lại ảnh chụp. Mai cần thì hỏi kênh chính thức. Còn bây giờ đóng form đi.”
 Minh: “Dạ.”
 
@@ -143,9 +152,10 @@ Minh: “Dạ.”
 ===
 
 title: CH1_M4_R0_BB_1
+position: 292,912
 ---
 Minh: “Một cái mail thôi mà kéo theo đủ chuyện…”
-Quân: “Đời sinh viên mà. Có học phần, có deadline, có cả boss ẩn dạng link lạ.”
+Quan: “Đời sinh viên mà. Có học phần, có deadline, có cả boss ẩn dạng link lạ.”
 Huy: “Nói ngắn gọn là: cái gì liên quan tiền, tài khoản, OTP thì kiểm tra trước.”
 Minh: “Dạ.”
 

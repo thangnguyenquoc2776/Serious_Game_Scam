@@ -139,6 +139,8 @@ Minh đi qua cổng, vào sân KTX, hướng về sảnh tiếp nhận.
 <<fade_in_out "1" "1">>
 <<wait 1>>
 <<teleport_to "hall">>
+<<wait 2>>
+Minh: Mình phải tới gặp chị đó để hỏi về thủ tục nhận phòng
 
 <<set_objective "OBJ_M0_TALK_LINH">>
 ===
@@ -319,22 +321,22 @@ position: 502,785
 // `tủ cá nhân`
 // `quạt treo tường`
 // `vài thùng đồ chưa dọn hết`
-// Quân ngồi trên giường, đang cắm sạc điện thoại.
+// Quan ngồi trên giường, đang cắm sạc điện thoại.
 // Huy ngồi ở bàn, đeo một bên tai nghe. Laptop của Huy đang mở nhiều tab tài liệu.
 
 // **[Hành động]**
 // Người chơi bấm tương tác với cửa phòng 308.
 
 // **[Hội thoại]**
-Quân: “Ông phòng 308 mới vô hả?”
+Quan: “Ông phòng 308 mới vô hả?”
 
 Minh: “Ừ, tui là Minh. Chắc giường kia của tui ha?”
 
-Quân: “Ừ đó. Vali ông nhìn hơi chiến nha, bánh xe sắp nghỉ hưu rồi kìa.”
+Quan: “Ừ đó. Vali ông nhìn hơi chiến nha, bánh xe sắp nghỉ hưu rồi kìa.”
 
 Minh: “Nó nghỉ từ cổng rồi ông.”
 
-Quân: “Vậy là vào KTX cái có drama liền. Tín hiệu tốt đó.”
+Quan: “Vậy là vào KTX cái có drama liền. Tín hiệu tốt đó.”
 
 Huy: “Em để đồ gọn bên kia trước. Thẻ phòng với giấy tờ giữ kỹ.”
 
@@ -342,7 +344,7 @@ Huy: “Nhóm tòa có thông báo thì nhớ xem. Mấy hôm đầu dễ sót l
 
 Minh: “Dạ, em vừa vào nhóm rồi anh.”
 
--> Nói chuyện thêm với Quân và Huy
+-> Nói chuyện thêm với Quan và Huy
     <<jump CH1_M0_R0_TC_8>>
 -> Sắp xếp hành lý và nghỉ ngơi
     <<jump CH1_M0_R0_BB_9>>
@@ -353,31 +355,31 @@ Minh: “Dạ, em vừa vào nhóm rồi anh.”
 Ít nhất, hai người cùng phòng không khó nói chuyện như tôi sợ.
 
 // **[Chuyển cảnh]**
-// Người chơi có thể tương tác thêm với Quân/Huy trước khi tiếp tục mạch chính.
+// Người chơi có thể tương tác thêm với Quan/Huy trước khi tiếp tục mạch chính.
 
 // <<set_objective "OBJ_M0_GO_CLASS">>
 ===
 
 // **[Tuỳ chọn]**
-// `CH1_M0_R0_TC_8` - Nói chuyện thêm với Quân/Huy
-// Người chơi có thể tương tác thêm với Quân hoặc Huy. Nếu bỏ qua, mạch chính vẫn tiếp tục.
+// `CH1_M0_R0_TC_8` - Nói chuyện thêm với Quan/Huy
+// Người chơi có thể tương tác thêm với Quan hoặc Huy. Nếu bỏ qua, mạch chính vẫn tiếp tục.
 
 title: CH1_M0_R0_TC_8
 position: 531,979
 ---
 // **[Hành động]**
-// Người chơi bấm tương tác với Quân hoặc Huy.
+// Người chơi bấm tương tác với Quan hoặc Huy.
 
 // **[Hội thoại]**
 Minh: “Mấy ngày đầu ở KTX có gì cần để ý không ông?”
 
-Quân: “Có. Một là mua ổ khóa.”
+Quan: “Có. Một là mua ổ khóa.”
 
-Quân: “Hai là thiếu gì thì hỏi, đừng tự solo như nhân vật chính anime.”
+Quan: “Hai là thiếu gì thì hỏi, đừng tự solo như nhân vật chính anime.”
 
 Minh: “Nghe như tutorial sinh tồn ấy.”
 
-Quân: “Thì đúng rồi. KTX là open world mà không có minimap.”
+Quan: “Thì đúng rồi. KTX là open world mà không có minimap.”
 
 Huy: “Nhóm tòa thì theo thông báo chính thức.”
 
@@ -406,7 +408,7 @@ position: 526,1171
 // **[Kể chuyện]**
 <<fade_in 2>>
 <<wait 2>>
-Tối đó, tôi đi ăn cùng Quân và Huy, rồi mua thêm vài món căn bản cho phòng.
+Tối đó, tôi đi ăn cùng Quan và Huy, rồi mua thêm vài món căn bản cho phòng.
 
 Ổ khóa, móc áo, xô nhựa, khăn, đèn kẹp bàn. Mỗi món không đắt lắm, nhưng cộng lại thì ví tôi mỏng đi thấy rõ.
 
@@ -591,118 +593,47 @@ Minh: “Ừ, mình biết rồi.”
 
 -> Họp đã xong, tắt điện thoại
 
-// **[Kể chuyện]**
-// Sau cuộc họp, tôi nhìn phần việc của mình thêm một lúc.
-
-// Tìm tài liệu nền nghe thì đơn giản, nhưng tôi mới vào đại học được đúng một ngày. Nguồn nào đáng tin, nguồn nào chỉ là bài đăng gom nhặt lung tung, thật ra tôi cũng chưa chắc.
-
-// **[Chuyển cảnh]**
-// Chuyển sang cảnh Minh ngồi ở bàn học trong phòng 308.
 <<switch_ui "normal">>
 
 <<set_objective "OBJ_M0_FIND_DOCUMENT">>
-Bây giờ mình phải tìm tài liệu thôi
+Bây giờ mình phải tìm tài liệu, deadline là trước 22:00
 ->Tìm tài liệu
-    <<jump CH1_M0_R0_BB_13>>>>
+    <<jump CH1_M0_R0_BB_13>>
 ===
 
-// **[Cảnh]**
-// `CH1_M0_R0_BB_13` - Tìm tài liệu trên Facebook
 
 title: CH1_M0_R0_BB_13
 position: 493,2382
 ---
+
+Để lên mạng xã hội tìm vài nhóm đã, chắc trên đó có thể tìm được thứ có ích
+-> Mở mạng xã hội
 <<switch_ui "show:pc:Group1">>
 
-// **[Hiển thị]**
-// Phòng 308 buổi tối.
-// Quân nằm trên giường lướt điện thoại. Huy ngồi ở bàn, đeo tai nghe học bài. Minh ngồi trước laptop/điện thoại.
-// Màn hình hiện thanh tìm kiếm Facebook:
-// `Tài liệu Giải tích 1 sinh viên năm nhất`
-// Kết quả hiện ra:
-// `Tài liệu đại học năm nhất`
-// `Giải tích 1 - chia sẻ tài liệu`
-// `Hội sinh viên KTX TP.HCM`
-// `Tài liệu đại cương Bách Khoa`
-
-// **[Hành động]**
-// Người chơi bấm tham gia/xem một số nhóm để tìm tài liệu.
-
-// **[Hiển thị]**
-// Một số trạng thái hiện ra:
-// `Đã tham gia`
-// `Xem bài viết công khai`
-// `Đang chờ duyệt`
-// Trong feed xuất hiện nhiều bài lẫn lộn:
-// `Pass giáo trình Giải tích 1 giá rẻ`
-// `Tổng hợp đề cương các môn đại cương`
-// `Full tài liệu năm nhất - nhận ngay`
-// `Tuyển CTV online cho sinh viên mới`
-
-// **[Hội thoại]**
 Minh: “Nhiều nhóm thật…”
 
 Minh: “Nhìn cái nào cũng có vẻ liên quan, mà cũng hơi lộn xộn.”
 
 Minh: “Mình chỉ cần tài liệu nền để làm phần mở đầu thôi mà cũng rối vậy.”
+Minh: Nhóm sinh viên năm nhất này nghe có vẻ ok nhỉ, chắc vô coi thử
+-> Vào nhóm
+    <<switch_ui "show:pc:Group2">>
 
-// **[Kể chuyện]**
-
-// **[Chuyển cảnh]**
-// Feed Facebook cuộn xuống, một bài đăng nổi bật hiện ra.
-
-// **[Cảnh]**
-// `CH1_M0_R0_BB_14` - Bài đăng tài liệu miễn phí
-
-// **[Hiển thị]**
-// Màn hình hiện bài đăng trong nhóm Facebook.
-// Người đăng:
-// `Tài liệu sinh viên HCM`
-// Nội dung bài đăng:
-// `FULL TÀI LIỆU GIẢI TÍCH 1 + NHẬP MÔN NGÀNH`
-// `Drive tổng hợp cho tân sinh viên`
-// `Có đề cương, ví dụ mẫu, slide cũ`
-// `Bấm vào link để nhận tài liệu miễn phí`
-// Nút lớn:
-// `NHẬN TÀI LIỆU`
-// Bên dưới có vài bình luận:
-// `Cho em xin với ạ`
-// `Link này cần đăng nhập hả mọi người?`
-// `Em năm nhất cần gấp, cảm ơn ad`
-
-// **[Kể chuyện]**
-<<switch_ui "show:pc:Group2">>
-
-// **[Hội thoại]**
 Minh: “Full tài liệu Giải tích 1... đúng thứ mình đang cần luôn.”
 
 Minh: “Có cả đề cương với ví dụ mẫu.”
 
-Minh: “Nhưng sao phải bấm link nhận riêng nhỉ?”
+Minh: Nhưng sao phải bấm link nhận riêng nhỉ?
 
-// **[Lựa chọn]**
-// `CH1_M0_R0_BB_14_A` - Đăng nhập tài khoản và mật khẩu MXH theo yêu cầu.
-// `CH1_M0_R0_BB_14_B` - Hỏi trong phòng.
-// `CH1_M0_R0_BB_14_C` - Bỏ không tìm nữa.
 
--> Đăng nhập tài khoản và mật khẩu MXH theo yêu cầu
-    // **[Chuyển cảnh]**
-    // Camera phóng vào nút `NHẬN TÀI LIỆU`.
-    // Màn hình chuyển sang giao diện link tài liệu.
-    // Chuyển sang `CH1_M1_R1`.
-    <<jump CH1_M1_R1>>
+-> Mở link
+    <<jump CH1_M1_R1_BB_1>>
 
 -> Hỏi trong phòng mọi người trong phòng
-    // **[Chuyển cảnh]**
-    // Minh quay sang Quân/Huy hoặc gửi link vào chat phòng.
-    // Chuyển sang `CH1_M1_R2`.
-    <<jump CH1_M1_R2>>
+    <<jump CH1_M1_R2_BB_1>>
 
--> Bỏ không tìm nữa
-    // **[Chuyển cảnh]**
-    // Minh tắt bài đăng, nhìn lại khung chat nhóm `Nhóm 1 - Giải tích` vẫn chưa có phần mở đầu của mình.
-    // Chuyển sang `CH1_M1_R3`.
-    <<jump CH1_M1_R3>>
+-> Nhìn nguy hiểm, không tìm nữa
+    <<jump CH1_M1_R3_BB_1>>
 ===
 
 title: CH1_M0_LEN_PHONG
@@ -712,6 +643,7 @@ position: 503,626
 <<fade_in_out "1" "1">>
 <<wait 1>>
 <<teleport_to "room">>
+<<wait 2>>
 <<set_objective "OBJ_M0_TALK_QUAN">>
 ===
 
@@ -723,7 +655,6 @@ position: 523,1530
 <<fade_in_out "1" "1">>
 <<wait 1>>
 <<teleport_to "classroom">>
-
 <<wait 2 >>
 
 Giảng viên:  "Em chú ý vào lớp đúng giờ nhé”

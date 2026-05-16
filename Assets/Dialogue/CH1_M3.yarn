@@ -1,4 +1,5 @@
 title: CH1_M3_TC_1
+position: 62,12
 ---
 <<set_milestone 3>>
 <<switch_ui "phone_chat">>
@@ -23,6 +24,7 @@ Nam: “Tài khoản tui lỗi. Tài khoản bạn tui. Nhanh nha.”
 ===
 
 title: CH1_M3_R1_BB_1
+position: 292,237
 ---
 <<set_milestone 3>>
 <<switch_ui "phone_chat">>
@@ -38,6 +40,7 @@ Minh: “Ok, tui chuyển.”
 ===
 
 title: CH1_M3_R1_BB_2
+position: 292,687
 ---
 <<switch_ui "phone_chat">>
 
@@ -48,9 +51,9 @@ Nam: “Hình như tài khoản tui bị đăng nhập lạ.”
 
 Minh: “…”
 Minh: “Khoan, vậy người nãy giờ nhắn mình là ai?”
-Quân: “Sao mặt ông căng vậy?”
+Quan: “Sao mặt ông căng vậy?”
 Minh: “Tui vừa chuyển 250k…”
-Quân: “Cho Nam?”
+Quan: “Cho Nam?”
 Minh: “Tui tưởng vậy.”
 Huy: “Em chụp lại giao dịch, lưu số tài khoản, rồi nhắn Nam khóa tài khoản ngay.”
 
@@ -59,14 +62,15 @@ Huy: “Em chụp lại giao dịch, lưu số tài khoản, rồi nhắn Nam kh
 ===
 
 title: CH1_M3_R2_BB_1
+position: 12,237
 ---
 <<set_milestone 3>>
 <<switch_ui "normal">>
 
 Minh: “Ông coi giúp tui cái này được không?”
-Quân: “Nam trong nhóm ông hả?”
+Quan: “Nam trong nhóm ông hả?”
 Minh: “Ừ. Mới nhắn mượn tiền.”
-Quân: “Tài khoản bạn tui… nghe hơi lạ nha.”
+Quan: “Tài khoản bạn tui… nghe hơi lạ nha.”
 Huy: “Gọi trực tiếp hoặc hỏi trong nhóm. Đừng chuyển qua tài khoản lạ.”
 
 <<trace TRACE_ASK_PERSON 2 "nam_private_chat">>
@@ -75,6 +79,7 @@ Huy: “Gọi trực tiếp hoặc hỏi trong nhóm. Đừng chuyển qua tài 
 ===
 
 title: CH1_M3_R2_BB_2
+position: 12,462
 ---
 <<switch_ui "phone_chat">>
 
@@ -93,6 +98,7 @@ Minh: “Ừ, mình chưa chuyển.”
 ===
 
 title: CH1_M3_R2_BB_3
+position: 12,687
 ---
 <<switch_ui "phone_chat">>
 
@@ -108,6 +114,7 @@ Nam: “Cảm ơn mọi người. Tui đang đổi mật khẩu.”
 ===
 
 title: CH1_M3_R0_BB_1
+position: 292,912
 ---
 Minh: “Vụ tài khoản Nam làm cả nhóm hơi chững lại.”
 Minh: “Dù theo hướng nào, mình cũng hiểu thêm một chuyện: lừa đảo đôi khi đến bằng tên của người mình vừa tin.”
@@ -116,6 +123,7 @@ Minh: “Dù theo hướng nào, mình cũng hiểu thêm một chuyện: lừa 
 ===
 
 title: CH1_M3_R0_BB_2
+position: 292,1137
 ---
 Minh: “Tiền trong ví xuống nhanh hơn mình nghĩ.”
 Minh: “Có hôm mở app ngân hàng chỉ để nhìn số dư rồi tắt đi.”
@@ -124,6 +132,7 @@ Minh: “Có hôm mở app ngân hàng chỉ để nhìn số dư rồi tắt đ
 ===
 
 title: CH1_M3_R0_BB_3
+position: 267,1384
 ---
 <<set_objective "OBJ_M4_CHECK_EMAIL">>
 <<switch_ui "show:phone:Scholarship_Email">>
