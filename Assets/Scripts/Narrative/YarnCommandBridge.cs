@@ -108,7 +108,7 @@ namespace SeriousGame.Narrative
         }
 
         [YarnCommand("trace")]
-        public static void TraceCommand(string traceTypeId, int choiceid)
+        public static void TraceCommand(string traceTypeId, int choiceid, string objectName = "")
         {
             var ctx = Context;
             if (ctx == null || ctx.Trace == null) return;
@@ -123,6 +123,7 @@ namespace SeriousGame.Narrative
                 routeId,
                 choiceid,
                 traceTypeId, // time stamp bên ham buildtrace co them
+                objectName,
                 ctx.PlayerState != null ? ctx.PlayerState.GetSnapshot() : null);
 
             ctx.Trace.LogEvent(trace);

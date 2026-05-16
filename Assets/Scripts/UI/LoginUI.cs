@@ -15,12 +15,18 @@ namespace SeriousGame.UI
         [Header("Status")]
         [SerializeField] private TMP_Text statusText;
 
+        private bool isLoggingIn;
+
         public async void OnLoginClicked()
         {
+            if (isLoggingIn) return;
+            isLoggingIn = true;
+
             var ctx = GameBootstrap.Context;
             if (ctx == null || ctx.Auth == null)
             {
                 SetStatus("Auth service not ready.");
+                isLoggingIn = false;
                 return;
             }
 
@@ -33,6 +39,7 @@ namespace SeriousGame.UI
             if (!ok)
             {
                 SetStatus("Login failed. Check credentials.");
+                isLoggingIn = false;
                 return;
             }
 
@@ -41,6 +48,7 @@ namespace SeriousGame.UI
 
             SetStatus("Login success.");
             await LoadMainMenuAsync(ctx);
+            isLoggingIn = false;
         }
 
         private async Task LoadMainMenuAsync(AppContext ctx)

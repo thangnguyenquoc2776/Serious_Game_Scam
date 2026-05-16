@@ -19,6 +19,11 @@ namespace SeriousGame.App
                 PlayerId = playerId;
         }
 
+        public void MarkStartTime()
+        {
+            StartTimeUnixMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+        }
+
         public void Restore(string sessionId, string playerId = null)
         {
             CurrentSessionId = sessionId;

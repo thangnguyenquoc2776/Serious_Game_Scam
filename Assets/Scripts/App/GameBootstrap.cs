@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using SeriousGame.Content;
 
 namespace SeriousGame.App
@@ -10,6 +12,16 @@ namespace SeriousGame.App
         [SerializeField] private AppConfigSO config;
 
         private static GameBootstrap _instance;
+
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += HandleSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= HandleSceneLoaded;
+        }
 
         private void Awake()
         {
@@ -34,8 +46,22 @@ namespace SeriousGame.App
 
             Context = ctx;
 
-            if (ctx.Session != null && string.IsNullOrWhiteSpace(ctx.Session.CurrentSessionId))
-                ctx.Session.Begin();
+        }
+
+        private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (config == null) return;
+            if (string.IsNullOrWhiteSpace(config.demoEpisodeSceneName)) return;
+            if (!string.Equals(scene.name, config.demoEpisodeSceneName, StringComparison.OrdinalIgnoreCase)) return;
+
+            var ctx = Context;
+            if (ctx != null && ctx.Session != null)
+            {
+                if (string.IsNullOrWhiteSpace(ctx.Session.CurrentSessionId))
+                    ctx.Session.Begin(ctx.Session.PlayerId);
+                else
+                    ctx.Session.MarkStartTime();
+            }
         }
 
         private void OnApplicationQuit()

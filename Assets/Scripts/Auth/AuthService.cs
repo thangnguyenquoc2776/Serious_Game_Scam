@@ -33,6 +33,8 @@ namespace SeriousGame.Auth
                 return false;
             }
 
+            email = email.Trim();
+
             var url = $"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={_webApiKey}";
             var payload = new
             {
@@ -44,39 +46,58 @@ namespace SeriousGame.Auth
             var json = JsonConvert.SerializeObject(payload);
             var body = Encoding.UTF8.GetBytes(json);
 
-            using (var request = new UnityWebRequest(url, "POST"))
+            const int maxAttempts = 3;
+            for (int attempt = 1; attempt <= maxAttempts; attempt++)
             {
-                request.uploadHandler = new UploadHandlerRaw(body);
-                request.downloadHandler = new DownloadHandlerBuffer();
-                request.SetRequestHeader("Content-Type", "application/json");
-
-                Debug.Log("[AuthService] Sending login request...");
-                await SendWebRequestAsync(request);
-
-                if (request.result != UnityWebRequest.Result.Success)
+                using (var request = new UnityWebRequest(url, "POST"))
                 {
+                    request.uploadHandler = new UploadHandlerRaw(body);
+                    request.downloadHandler = new DownloadHandlerBuffer();
+                    request.SetRequestHeader("Content-Type", "application/json");
+                    request.timeout = 10;
+
+                    Debug.Log($"[AuthService] Sending login request (attempt {attempt}/{maxAttempts})...");
+                    await SendWebRequestAsync(request);
+
+                    if (request.result == UnityWebRequest.Result.Success)
+                    {
+                        var responseText = request.downloadHandler.text;
+                        Debug.Log("[AuthService] Login success.");
+
+                        try
+                        {
+                            var response = JsonConvert.DeserializeObject<AuthResponse>(responseText);
+                            IdToken = response != null ? response.idToken : null;
+                            LocalId = response != null ? response.localId : null;
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.LogWarning($"[AuthService] Failed to parse auth response: {ex.Message}");
+                            return false;
+                        }
+
+                        return !string.IsNullOrWhiteSpace(IdToken) && !string.IsNullOrWhiteSpace(LocalId);
+                    }
+
+                    var isTransient = request.result == UnityWebRequest.Result.ConnectionError
+                        || request.responseCode == 0
+                        || request.responseCode == 429
+                        || request.responseCode >= 500;
+
                     Debug.LogWarning($"[AuthService] Login failed. HTTP {request.responseCode}. Error: {request.error}");
                     Debug.LogWarning($"[AuthService] Response: {request.downloadHandler.text}");
+
+                    if (isTransient && attempt < maxAttempts)
+                    {
+                        await Task.Delay(400 * attempt);
+                        continue;
+                    }
+
                     return false;
                 }
-
-                var responseText = request.downloadHandler.text;
-                Debug.Log("[AuthService] Login success.");
-
-                try
-                {
-                    var response = JsonConvert.DeserializeObject<AuthResponse>(responseText);
-                    IdToken = response != null ? response.idToken : null;
-                    LocalId = response != null ? response.localId : null;
-                }
-                catch (Exception ex)
-                {
-                    Debug.LogWarning($"[AuthService] Failed to parse auth response: {ex.Message}");
-                    return false;
-                }
-
-                return !string.IsNullOrWhiteSpace(IdToken) && !string.IsNullOrWhiteSpace(LocalId);
             }
+
+            return false;
         }
 
         private static async Task SendWebRequestAsync(UnityWebRequest request)

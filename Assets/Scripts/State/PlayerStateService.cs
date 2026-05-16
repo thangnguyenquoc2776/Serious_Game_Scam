@@ -7,6 +7,8 @@ namespace SeriousGame.State
     [System.Serializable]
     public class PlayerStateService
     {
+        private const int DefaultScoreValue = 50;
+
         [SerializeField]
         //states includes all numeric states, such as scores and progress indicators. The value is typically clamped between 0 and 100 to represent different levels of achievement or status.
 
@@ -20,7 +22,7 @@ namespace SeriousGame.State
             {
                 var key = GameStateKeys.DefaultKeys[i];
                 if (!string.IsNullOrWhiteSpace(key))
-                    _states[key] = 0;
+                    _states[key] = DefaultScoreValue;
             }
         }
 
@@ -139,7 +141,7 @@ namespace SeriousGame.State
             {
                 var key = GameStateKeys.DefaultKeys[i];
                 if (!string.IsNullOrWhiteSpace(key) && !_states.ContainsKey(key))
-                    _states[key] = 0;
+                    _states[key] = DefaultScoreValue;
             }
         }
 

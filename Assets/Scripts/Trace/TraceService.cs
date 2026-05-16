@@ -38,6 +38,7 @@ namespace SeriousGame.Trace
             string routeid,
             int choiceId,
             string traceId,
+            string objectName,
             // string objectId,
             // string episodeId,
             // string yarnNode,
@@ -50,6 +51,7 @@ namespace SeriousGame.Trace
                 route_id = routeid ?? string.Empty,
                 choice_id = choiceId.ToString(),
                 trace_id = traceId ?? string.Empty,
+                object_name = objectName ?? string.Empty,
                 // object_id = objectId ?? string.Empty,
                 timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
                 score_state = BuildScoreState(stateBefore)
