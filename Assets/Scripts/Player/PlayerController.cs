@@ -38,7 +38,7 @@ namespace SeriousGame.Runtime
         }
 
         // Thêm hàm để điều khiển chuột
-        public void SetLockState(bool locked)
+    public void SetLockState(bool locked)
         {   Debug.Log($"[PlayerController] SetLockState: {locked}");
             isLocked = locked;
             Cursor.lockState = locked ? CursorLockMode.None : CursorLockMode.Locked;

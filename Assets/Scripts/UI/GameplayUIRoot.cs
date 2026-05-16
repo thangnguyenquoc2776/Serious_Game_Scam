@@ -38,15 +38,23 @@ namespace SeriousGame.UI
         [SerializeField] private CanvasGroup phoneChatUI;
         [SerializeField] private CanvasGroup PCUI;
 
-        [Header("Static UI (SetActive)")]
-        [SerializeField] private StaticUIEntry[] staticUiEntries;
+        [Header("Static UI Roots")]
+        [SerializeField] private GameObject phoneStaticRoot;
+        [SerializeField] private GameObject pcStaticRoot;
+
+        [Header("Static UI Images (Children of Image Root)")]
+        [SerializeField] private StaticUIEntry[] phoneStaticImages;
+        [SerializeField] private StaticUIEntry[] pcStaticImages;
         
 
         public void HandleSwitchUIRequested(string uitype)
         {
-            if (uitype == "phone")
+            if (uitype == "phone_chat")
             {
                 // Bật Phone, Tắt Normal (Chỉ tắt hiển thị, script Yarn vẫn chạy ngầm)
+                HideAllStatic();
+                phonePanel?.Show();
+                pcPanel?.Hide();
                 ToggleCanvasGroup(phoneChatUI, true);
                 ToggleCanvasGroup(normalDialogueUI, false);
                 ToggleCanvasGroup(PCUI, false);
@@ -54,6 +62,9 @@ namespace SeriousGame.UI
             else if (uitype == "normal")
             {
                 // Bật Normal, Tắt Phone
+                HideAllStatic();
+                phonePanel?.Hide();
+                pcPanel?.Hide();
                 ToggleCanvasGroup(normalDialogueUI, true);
                 ToggleCanvasGroup(phoneChatUI, false);
                 ToggleCanvasGroup(PCUI, false);
@@ -61,6 +72,8 @@ namespace SeriousGame.UI
              else if (uitype == "pc")
             {
                 // Bật PC, Tắt Normal
+                HideAllStatic();
+                phonePanel?.Hide();
                 ToggleCanvasGroup(PCUI, true);
                 ToggleCanvasGroup(normalDialogueUI, false);
                 ToggleCanvasGroup(phoneChatUI, false);
@@ -80,34 +93,148 @@ namespace SeriousGame.UI
 
             if (uitype.StartsWith(showPrefix, StringComparison.OrdinalIgnoreCase))
             {
-                var id = uitype.Substring(showPrefix.Length).Trim();
-                SetStaticUiActive(id, true);
+                var args = uitype.Substring(showPrefix.Length).Trim();
+                HandleStaticShow(args);
                 return;
             }
 
             if (uitype.StartsWith(hidePrefix, StringComparison.OrdinalIgnoreCase))
             {
-                var id = uitype.Substring(hidePrefix.Length).Trim();
-                SetStaticUiActive(id, false);
+                var args = uitype.Substring(hidePrefix.Length).Trim();
+                HandleStaticHide(args);
                 return;
             }
 
             // Default: treat the value as an id to show.
-            SetStaticUiActive(uitype.Trim(), true);
+            HandleStaticShow(uitype.Trim());
         }
 
-        private void SetStaticUiActive(string id, bool isActive)
+        private void HandleStaticShow(string args)
         {
-            if (string.IsNullOrWhiteSpace(id) || staticUiEntries == null) return;
-
-            foreach (var entry in staticUiEntries)
+            var (channel, id) = ParseStaticArgs(args);
+            if (string.IsNullOrWhiteSpace(channel))
             {
-                if (entry == null || entry.root == null) continue;
-                if (!string.Equals(entry.id, id, StringComparison.OrdinalIgnoreCase)) continue;
+                // Backward compatibility: no channel -> use phone by default.
+                channel = "phone";
+                id = args;
+            }
 
-                entry.root.SetActive(isActive);
+            if (string.Equals(channel, "phone", StringComparison.OrdinalIgnoreCase))
+            {
+                ShowStaticOnRoot(phoneStaticRoot, phoneStaticImages, id);
+            }
+            else if (string.Equals(channel, "pc", StringComparison.OrdinalIgnoreCase))
+            {
+                ShowStaticOnRoot(pcStaticRoot, pcStaticImages, id);
+            }
+        }
+
+        private void HandleStaticHide(string args)
+        {
+            var (channel, id) = ParseStaticArgs(args);
+            if (string.IsNullOrWhiteSpace(channel)) return;
+
+            if (string.Equals(channel, "phone", StringComparison.OrdinalIgnoreCase))
+            {
+                HideStaticOnRoot(phoneStaticRoot, phoneStaticImages, id);
+            }
+            else if (string.Equals(channel, "pc", StringComparison.OrdinalIgnoreCase))
+            {
+                HideStaticOnRoot(pcStaticRoot, pcStaticImages, id);
+            }
+        }
+
+        private static (string channel, string id) ParseStaticArgs(string args)
+        {
+            if (string.IsNullOrWhiteSpace(args)) return (string.Empty, string.Empty);
+
+            var parts = args.Split(':');
+            if (parts.Length == 1) return (parts[0].Trim(), string.Empty);
+
+            var channel = parts[0].Trim();
+            var id = parts[1].Trim();
+            return (channel, id);
+        }
+
+        private void ShowStaticOnRoot(GameObject root, StaticUIEntry[] entries, string id)
+        {
+            HideAllDynamic();
+            HideStaticOtherRoot(root);
+            SetRootVisible(root, true);
+            SetStaticImagesActive(entries, id);
+        }
+
+        private void HideStaticOnRoot(GameObject root, StaticUIEntry[] entries, string id)
+        {
+            if (!string.IsNullOrWhiteSpace(id))
+            {
+                SetStaticImagesActive(entries, id, false);
                 return;
             }
+
+            SetStaticImagesActive(entries, null);
+            SetRootVisible(root, false);
+        }
+
+        private void HideAllDynamic()
+        {
+            ToggleCanvasGroup(normalDialogueUI, false);
+            ToggleCanvasGroup(phoneChatUI, false);
+            ToggleCanvasGroup(PCUI, false);
+        }
+
+        private void HideAllStatic()
+        {
+            SetStaticImagesActive(phoneStaticImages, null);
+            SetStaticImagesActive(pcStaticImages, null);
+            SetRootVisible(phoneStaticRoot, false);
+            SetRootVisible(pcStaticRoot, false);
+        }
+
+        private void HideStaticOtherRoot(GameObject activeRoot)
+        {
+            if (activeRoot == phoneStaticRoot)
+            {
+                SetStaticImagesActive(pcStaticImages, null);
+                SetRootVisible(pcStaticRoot, false);
+            }
+            else if (activeRoot == pcStaticRoot)
+            {
+                SetStaticImagesActive(phoneStaticImages, null);
+                SetRootVisible(phoneStaticRoot, false);
+            }
+        }
+
+        private static void SetStaticImagesActive(StaticUIEntry[] entries, string id, bool? forceState = null)
+        {
+            if (entries == null) return;
+
+            foreach (var entry in entries)
+            {
+                if (entry == null || entry.root == null) continue;
+
+                var isMatch = !string.IsNullOrWhiteSpace(id)
+                    && string.Equals(entry.id, id, StringComparison.OrdinalIgnoreCase);
+
+                var isActive = forceState ?? isMatch;
+                entry.root.SetActive(isActive);
+            }
+        }
+
+        private static void SetRootVisible(GameObject root, bool isVisible)
+        {
+            if (root == null) return;
+
+            var canvasGroup = root.GetComponent<CanvasGroup>();
+            if (canvasGroup != null)
+            {
+                canvasGroup.alpha = isVisible ? 1f : 0f;
+                canvasGroup.interactable = isVisible;
+                canvasGroup.blocksRaycasts = isVisible;
+                return;
+            }
+
+            root.SetActive(isVisible);
         }
 
         private void ToggleCanvasGroup(CanvasGroup cg, bool isVisible)
@@ -145,6 +272,9 @@ namespace SeriousGame.UI
             ToggleCanvasGroup(normalDialogueUI, true);
             ToggleCanvasGroup(phoneChatUI, false);
             ToggleCanvasGroup(PCUI, false);
+            ToggleCanvasGroup(PCUI, false);
+            SetRootVisible(phoneStaticRoot, false);
+            SetRootVisible(pcStaticRoot, false);
         }
 
         private void HandlePhoneChatRequested(string nodeName)

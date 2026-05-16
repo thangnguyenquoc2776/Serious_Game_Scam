@@ -15,11 +15,23 @@ namespace SeriousGame.UI
         [Header("Behavior")]
         [SerializeField] private bool hideOnComplete = true;
         [SerializeField] private bool clearOnStart = true;
+        [SerializeField] private bool hideWithCanvasGroup = true;
+
+        private CanvasGroup rootCanvasGroup;
 
         private void Awake()
         {
             if (root == null)
                 root = gameObject;
+
+            if (root != null && !root.activeSelf)
+                root.SetActive(true);
+
+            rootCanvasGroup = root != null ? root.GetComponent<CanvasGroup>() : null;
+            if (hideWithCanvasGroup && root != null && rootCanvasGroup == null)
+                rootCanvasGroup = root.AddComponent<CanvasGroup>();
+
+            view?.SetCaptureLines(false);
 
             if (runner != null)
                 runner.onDialogueComplete.AddListener(HandleDialogueComplete);
@@ -36,7 +48,9 @@ namespace SeriousGame.UI
             if (string.IsNullOrWhiteSpace(nodeName)) return;
 
             if (root != null)
-                root.SetActive(true);
+                SetRootVisible(true);
+
+            view?.SetCaptureLines(true);
 
             if (clearOnStart)
                 view?.ClearMessages();
@@ -53,10 +67,18 @@ namespace SeriousGame.UI
             runner.StartDialogue(nodeName).Forget();
         }
 
+        public void Show()
+        {
+            if (root != null)
+                SetRootVisible(true);
+
+            view?.SetCaptureLines(true);
+        }
+
         public void AppendMessage(string speaker, string message)
         {
             if (root != null)
-                root.SetActive(true);
+                SetRootVisible(true);
 
             view?.AppendMessage(speaker, message);
         }
@@ -68,8 +90,24 @@ namespace SeriousGame.UI
 
         public void Hide()
         {
-            if (root != null)
-                root.SetActive(false);
+            SetRootVisible(false);
+
+            view?.SetCaptureLines(false);
+        }
+
+        private void SetRootVisible(bool isVisible)
+        {
+            if (root == null) return;
+
+            if (hideWithCanvasGroup && rootCanvasGroup != null)
+            {
+                rootCanvasGroup.alpha = isVisible ? 1f : 0f;
+                rootCanvasGroup.interactable = isVisible;
+                rootCanvasGroup.blocksRaycasts = isVisible;
+                return;
+            }
+
+            root.SetActive(isVisible);
         }
 
         private void HandleDialogueComplete()

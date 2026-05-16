@@ -1,6 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Threading;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,32 +18,31 @@ namespace SeriousGame.UI
         [SerializeField] private GameObject leftBubblePrefab;
         [SerializeField] private GameObject rightBubblePrefab;
         [SerializeField] private bool includeCharacterName = true;
-        [SerializeField] private string playerName = "Bạn";
-
-        [Header("Options")]
-        [SerializeField] private Transform optionsRoot;
-        [SerializeField] private GameObject optionButtonPrefab;
+        [SerializeField] private string playerName = "Minh";
 
         [Header("Flow")]
         [SerializeField] private bool autoAdvance = true;
         [SerializeField] private float autoAdvanceDelay = 0.2f;
+        [SerializeField] private bool captureLines = false;
+        [SerializeField] private bool autoScrollToBottom = true;
 
-        private readonly List<GameObject> optionButtons = new List<GameObject>();
+        private Coroutine scrollRoutine;
 
         public override YarnTask OnDialogueStartedAsync()
         {
-            ClearOptions();
             return YarnTask.CompletedTask;
         }
 
         public override YarnTask OnDialogueCompleteAsync()
         {
-            ClearOptions();
             return YarnTask.CompletedTask;
         }
 
         public override async YarnTask RunLineAsync(LocalizedLine line, LineCancellationToken token)
         {
+            if (!captureLines)
+                return;
+
             var speaker = line.CharacterName ?? string.Empty;
             var text = line.TextWithoutCharacterName.Text;
             AppendMessage(speaker, text);
@@ -57,52 +55,6 @@ namespace SeriousGame.UI
             {
                 await YarnTask.WaitUntilCanceled(token.NextContentToken).SuppressCancellationThrow();
             }
-        }
-
-        public override async YarnTask<DialogueOption?> RunOptionsAsync(DialogueOption[] dialogueOptions, LineCancellationToken cancellationToken)
-        {
-            if (dialogueOptions == null || dialogueOptions.Length == 0)
-                return null; // <-- Changed here
-
-            if (optionsRoot == null || optionButtonPrefab == null)
-            {
-                Debug.LogWarning("[ChatDialogueView] Missing optionsRoot or optionButtonPrefab.");
-                return null; // <-- Changed here
-            }
-
-            ClearOptions();
-
-            var tcs = new YarnTaskCompletionSource<DialogueOption?>();
-            CancellationTokenRegistration registration = cancellationToken.NextContentToken.Register(() =>
-            {
-                tcs.TrySetResult(null);
-            });
-
-            foreach (var option in dialogueOptions)
-            {
-                var buttonObject = Instantiate(optionButtonPrefab, optionsRoot);
-                optionButtons.Add(buttonObject);
-
-                var button = buttonObject.GetComponent<Button>();
-                var label = buttonObject.GetComponentInChildren<TMP_Text>();
-                if (label != null)
-                    label.text = option.Line.TextWithoutCharacterName.Text;
-
-                if (button != null)
-                {
-                    button.interactable = option.IsAvailable;
-                    button.onClick.AddListener(() =>
-                    {
-                        if (!option.IsAvailable) return;
-                        tcs.TrySetResult(option);
-                    });
-                }
-            }
-
-            var selected = await tcs.Task;
-            registration.Dispose();
-            ClearOptions();
-            return selected;
         }
 
         public void AppendMessage(string speaker, string message)
@@ -122,16 +74,10 @@ namespace SeriousGame.UI
             }
 
             var bubble = Instantiate(prefab, contentRoot);
-            var text = bubble.GetComponentInChildren<TMP_Text>();
-            if (text != null)
-            {
-                if (includeCharacterName && !string.IsNullOrWhiteSpace(speaker))
-                    text.text = speaker + ": " + message;
-                else
-                    text.text = message;
-            }
+            ApplyBubbleText(bubble, speaker, message);
 
-            ScrollToBottom();
+            if (autoScrollToBottom)
+                ScrollToBottom();
         }
 
         public void ClearMessages()
@@ -156,21 +102,73 @@ namespace SeriousGame.UI
             return leftBubblePrefab != null ? leftBubblePrefab : rightBubblePrefab;
         }
 
-        private void ClearOptions()
-        {
-            for (int i = 0; i < optionButtons.Count; i++)
-            {
-                if (optionButtons[i] != null)
-                    Destroy(optionButtons[i]);
-            }
-            optionButtons.Clear();
-        }
-
         private void ScrollToBottom()
         {
+            if (scrollRect == null) return;
+
+            if (scrollRoutine != null)
+                StopCoroutine(scrollRoutine);
+
+            scrollRoutine = StartCoroutine(ScrollToBottomNextFrame());
+        }
+
+        private IEnumerator ScrollToBottomNextFrame()
+        {
+            yield return new WaitForEndOfFrame();
+
+            if (scrollRect == null) yield break;
+
             Canvas.ForceUpdateCanvases();
-            if (scrollRect != null)
-                scrollRect.verticalNormalizedPosition = 0f;
+            LayoutRebuilder.ForceRebuildLayoutImmediate(scrollRect.content);
+            scrollRect.verticalNormalizedPosition = 0f;
+            Canvas.ForceUpdateCanvases();
+        }
+
+        public void SetCaptureLines(bool isCapturing)
+        {
+            captureLines = isCapturing;
+        }
+
+        private void ApplyBubbleText(GameObject bubble, string speaker, string message)
+        {
+            if (bubble == null) return;
+
+            var tmps = bubble.GetComponentsInChildren<TMP_Text>(true);
+            TMP_Text nameText = null;
+            TMP_Text bodyText = null;
+
+            for (int i = 0; i < tmps.Length; i++)
+            {
+                var tmp = tmps[i];
+                if (tmp == null) continue;
+
+                var name = tmp.gameObject.name;
+                if (nameText == null && name.IndexOf("Character", StringComparison.OrdinalIgnoreCase) >= 0)
+                    nameText = tmp;
+                else if (nameText == null && name.IndexOf("Name", StringComparison.OrdinalIgnoreCase) >= 0)
+                    nameText = tmp;
+
+                if (bodyText == null && string.Equals(name, "Text", StringComparison.OrdinalIgnoreCase))
+                    bodyText = tmp;
+            }
+
+            if (nameText != null)
+                nameText.text = includeCharacterName ? speaker : string.Empty;
+
+            if (bodyText != null)
+            {
+                bodyText.text = message;
+                return;
+            }
+
+            var fallback = bubble.GetComponentInChildren<TMP_Text>();
+            if (fallback != null)
+            {
+                if (includeCharacterName && !string.IsNullOrWhiteSpace(speaker))
+                    fallback.text = speaker + ": " + message;
+                else
+                    fallback.text = message;
+            }
         }
 
         public void AdvanceDialogue()

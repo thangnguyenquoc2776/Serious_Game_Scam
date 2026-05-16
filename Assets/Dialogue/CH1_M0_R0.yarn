@@ -62,8 +62,10 @@ position: 463,-324
 // `Phòng: 308`
 // `Làm thủ tục tại: Sảnh tiếp nhận sinh viên mới`
 // `Cần chuẩn bị: CCCD, email xác nhận, mã số sinh viên`
-
-<<switch_ui "show:mail_nhan_phong">>
+->Kiểm tra mail
+    <<switch_ui "show:phone:Mail_nhan_phong_1">>
+    ->Mở mail
+        <<switch_ui "show:phone:Mail_nhan_phong_2">>
 
 // **[Hội thoại]**
 Minh: “Tòa A, phòng 308.”
@@ -78,10 +80,12 @@ Minh: “Vậy cứ vào sảnh trước đã.”
 // Ghi chú: Người chơi chủ động xem lại thông tin chính thức trước khi làm thủ tục. Nếu bỏ qua tương tác này thì không gọi trace.
 <<trace TRACE_READ_RELEVANT_INFO 1>>
 
-<<switch_ui "hide:mail_nhan_phong">>
+<<switch_ui "hide:phone">>
+<<switch_ui "normal">>
 
 // **[Chuyển cảnh]**
 // Quay lại khu vực cổng KTX.
+
 
 <<set_objective "OBJ_M0_TALK_GUARD">>
 ===
@@ -99,6 +103,7 @@ position: 472,-155
 // Bác bảo vệ đứng gần lối vào, thỉnh thoảng chỉ đường cho sinh viên mới.
 
 // **[Hội thoại]**
+
 Bác bảo vệ: “Cháu nhận phòng hả?”
 
 Minh: “Dạ, con mới lên nhận phòng ạ.”
@@ -178,10 +183,10 @@ Chị Linh: “Em đợi chị làm thủ tục nhận thẻ phòng nha”
 Minh: “Dạ”
 
 Chị Linh: “Đây là giấy nhận phòng của em nhé”
--> Xem giấy nhận phòng
-    <<switch_ui "show:giay_nhan_phong">>
-    -> Cất giấy nhận phòng
-        <<switch_ui "hide:giay_nhan_phong">>
+// -> Xem giấy nhận phòng
+//     <<switch_ui "show:giay_nhan_phong">>
+//     -> Cất giấy nhận phòng
+//         <<switch_ui "hide:giay_nhan_phong">>
 
 Minh: “Dạ, em cảm ơn chị.”
 
@@ -276,7 +281,7 @@ position: 490,477
 // `Vui lòng theo dõi thông báo chính thức tại nhóm này.`
 // `Không cung cấp mật khẩu, OTP hoặc thông tin tài khoản cá nhân cho bất kỳ ai.`
 ->Quét QR
-    <<switch_ui "show:group_a_qr">>
+    // <<switch_ui "show:group_a_qr">>
 
 // **[Hội thoại]**
 Minh: “Rồi, xong nhóm tòa.”
@@ -284,9 +289,9 @@ Minh: “Rồi, xong nhóm tòa.”
 Minh: “Giờ lên phòng 308 thôi.”
 
 // **[Kể chuyện]**
-Tôi cất điện thoại, kéo vali về phía thang máy.
+// Tôi cất điện thoại, kéo vali về phía thang máy.
 -> Tắt điện thoại
-    <<switch_ui "hide:group_a_qr">>
+    // <<switch_ui "hide:group_a_qr">>
 
 // **[Chuyển cảnh]**
 // Fade ngắn. Chuyển sang hành lang tầng 3.
@@ -400,7 +405,7 @@ position: 526,1171
 ---
 // **[Kể chuyện]**
 <<fade_in 2>>
-<<wait 3>>
+<<wait 2>>
 Tối đó, tôi đi ăn cùng Quân và Huy, rồi mua thêm vài món căn bản cho phòng.
 
 Ổ khóa, móc áo, xô nhựa, khăn, đèn kẹp bàn. Mỗi món không đắt lắm, nhưng cộng lại thì ví tôi mỏng đi thấy rõ.
@@ -567,30 +572,9 @@ title: CH1_M0_R0_BB_12
 color: blue
 position: 522,2134
 ---
-// **[Kể chuyện]**
-// Tối đó, tôi vào cuộc họp nhóm với Nam và Mai.
-
-// Cuộc họp không dài. Bài cũng không quá lớn, nhưng vì nhóm phải trình bày đầu tiên nên không ai dám để tới mai mới tính.
-
-// **[Hiển thị]**
-// Màn hình laptop/điện thoại hiện cuộc gọi nhóm.
-// Tên cuộc gọi:
-// `Nhóm 1 - Giải tích`
-// Các khung nhỏ:
-// `Nam`
-// `Mai`
-// `Minh`
-// Bảng phân việc hiện bên cạnh:
-// `Mai: Tóm tắt ý chính + kiểm tra bố cục slide`
-// `Nam: Tìm ví dụ minh họa + chuẩn bị phần kết`
-// `Minh: Tìm tài liệu nền + phác phần mở đầu`
-// Deadline nhỏ trên UI:
-// `Gửi ý trước 22:00 tối nay`
-
-// **[Hội thoại]**
 Bắt đầu họp với mọi người thôi
 
-<<switch_ui "show:meeting">>
+<<switch_ui "phone_chat">>
 Mai: “Bài này nhỏ, nhưng nhóm mình trình bày đầu nên phải làm gọn và chắc.”
 
 Nam: “Tui kiếm ví dụ minh họa. Có ví dụ dễ hiểu thì trình bày đỡ khô.”
@@ -605,8 +589,7 @@ Nam: “Có gì không rõ thì nhắn nha. Đừng im im tới lúc ráp bài m
 
 Minh: “Ừ, mình biết rồi.”
 
--> Họp đã xong, tắt meeting
-    <<switch_ui "hide:meeting">>
+-> Họp đã xong, tắt điện thoại
 
 // **[Kể chuyện]**
 // Sau cuộc họp, tôi nhìn phần việc của mình thêm một lúc.
@@ -615,8 +598,10 @@ Minh: “Ừ, mình biết rồi.”
 
 // **[Chuyển cảnh]**
 // Chuyển sang cảnh Minh ngồi ở bàn học trong phòng 308.
+<<switch_ui "normal">>
 
 <<set_objective "OBJ_M0_FIND_DOCUMENT">>
+Bây giờ mình phải tìm tài liệu thôi
 ->Tìm tài liệu
     <<jump CH1_M0_R0_BB_13>>>>
 ===
@@ -627,7 +612,7 @@ Minh: “Ừ, mình biết rồi.”
 title: CH1_M0_R0_BB_13
 position: 493,2382
 ---
-<<switch_ui "show:facebook_group">>
+<<switch_ui "show:pc:Group1">>
 
 // **[Hiển thị]**
 // Phòng 308 buổi tối.
@@ -662,7 +647,6 @@ Minh: “Nhìn cái nào cũng có vẻ liên quan, mà cũng hơi lộn xộn.�
 Minh: “Mình chỉ cần tài liệu nền để làm phần mở đầu thôi mà cũng rối vậy.”
 
 // **[Kể chuyện]**
-Tôi kéo xuống thêm một đoạn. Bài nào cũng hứa có tài liệu, nhưng nhìn nhanh thì khó biết nguồn nào thật sự đáng tin.
 
 // **[Chuyển cảnh]**
 // Feed Facebook cuộn xuống, một bài đăng nổi bật hiện ra.
@@ -687,9 +671,7 @@ Tôi kéo xuống thêm một đoạn. Bài nào cũng hứa có tài liệu, nh
 // `Em năm nhất cần gấp, cảm ơn ad`
 
 // **[Kể chuyện]**
-Bài đăng hiện ra đúng lúc tôi đang bí tài liệu.
-
-“Full tài liệu”, “tân sinh viên”, “miễn phí” — mấy chữ đó nghe quá đúng thứ tôi đang cần, nhất là khi phần mở đầu của nhóm vẫn đang chờ tôi gửi.
+<<switch_ui "show:pc:Group2">>
 
 // **[Hội thoại]**
 Minh: “Full tài liệu Giải tích 1... đúng thứ mình đang cần luôn.”

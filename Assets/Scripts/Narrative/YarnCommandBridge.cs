@@ -47,6 +47,7 @@ namespace SeriousGame.Narrative
                 if (player != null)
                     ctx.Narrative.BindPlayer(player);
             }
+            player.SetLockState(true); // Lock player controls until narrative starts
         }
 
         private void OnDestroy()
