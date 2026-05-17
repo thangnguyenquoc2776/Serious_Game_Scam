@@ -53,6 +53,17 @@ namespace SeriousGame.UI
             {
                 // Bật Phone, Tắt Normal (Chỉ tắt hiển thị, script Yarn vẫn chạy ngầm)
                 HideAllStatic();
+                phonePanel?.ClearMessages();
+                phonePanel?.Show();
+                pcPanel?.Hide();
+                ToggleCanvasGroup(phoneChatUI, true);
+                ToggleCanvasGroup(normalDialogueUI, false);
+                ToggleCanvasGroup(PCUI, false);
+            }
+            else if (uitype == "phone_chat_keep")
+            {
+                // Bật Phone và giữ nguyên lịch sử bubble hiện có
+                HideAllStatic();
                 phonePanel?.Show();
                 pcPanel?.Hide();
                 ToggleCanvasGroup(phoneChatUI, true);
@@ -342,7 +353,19 @@ namespace SeriousGame.UI
 
         private void SetPlayerLock(bool locked)
         {
-            if (!lockPlayerOnOverlay || player == null) return;
+            if (!lockPlayerOnOverlay)
+            {
+                Debug.Log("[GameplayUIRoot] lockPlayerOnOverlay is false; skipping player lock.");
+                return;
+            }
+
+            if (player == null)
+            {
+                Debug.LogWarning("[GameplayUIRoot] PlayerController is null; cannot change lock state.");
+                return;
+            }
+
+            Debug.Log($"[GameplayUIRoot] Setting player lock = {locked}");
             player.SetLockState(locked);
         }
     }

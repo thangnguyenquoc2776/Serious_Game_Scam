@@ -8,25 +8,31 @@ namespace SeriousGame.UI
     public class SummaryUIListener : MonoBehaviour
     {
         [Header("UI")]
-        [SerializeField] private CanvasGroup canvasGroup;
         [SerializeField] private TMP_Text helpSeekingText;
         [SerializeField] private TMP_Text pressureResistanceText;
         [SerializeField] private TMP_Text informationVerificationText;
         [SerializeField] private TMP_Text riskRecognitionText;
         [SerializeField] private TMP_Text communityWarningText;
+        
+        [Header("Labels (optional)")]
+        [SerializeField] private string helpSeekingLabel = "Help Seeking";
+        [SerializeField] private string pressureResistanceLabel = "Pressure Resistance";
+        [SerializeField] private string informationVerificationLabel = "Information Verification";
+        [SerializeField] private string riskRecognitionLabel = "Risk Recognition";
+        [SerializeField] private string communityWarningLabel = "Community Warning";
 
         [Header("Behavior")]
-        [SerializeField] private bool startHidden = true;
+        [SerializeField] private bool startInactive = true;
 
         private void Awake()
         {
-            if (startHidden)
-                Hide();
+            if (startInactive)
+                gameObject.SetActive(false);
         }
 
         public void Hide()
         {
-            SetVisible(false);
+            gameObject.SetActive(false);
         }
 
         public void ShowFromContext()
@@ -39,36 +45,25 @@ namespace SeriousGame.UI
         public void Show(PlayerStateService state)
         {
             if (state == null) return;
+            gameObject.SetActive(true);
             UpdateScores(state);
-            SetVisible(true);
         }
 
         private void UpdateScores(PlayerStateService state)
         {
-            SetText(helpSeekingText, state.Get(GameStateKeys.ScoreHelpSeeking));
-            SetText(pressureResistanceText, state.Get(GameStateKeys.ScorePressureResistance));
-            SetText(informationVerificationText, state.Get(GameStateKeys.ScoreInformationVerification));
-            SetText(riskRecognitionText, state.Get(GameStateKeys.ScoreRiskRecognition));
-            SetText(communityWarningText, state.Get(GameStateKeys.ScoreCommunityWarning));
+            SetText(helpSeekingText, helpSeekingLabel, state.Get(GameStateKeys.ScoreHelpSeeking));
+            SetText(pressureResistanceText, pressureResistanceLabel, state.Get(GameStateKeys.ScorePressureResistance));
+            SetText(informationVerificationText, informationVerificationLabel, state.Get(GameStateKeys.ScoreInformationVerification));
+            SetText(riskRecognitionText, riskRecognitionLabel, state.Get(GameStateKeys.ScoreRiskRecognition));
+            SetText(communityWarningText, communityWarningLabel, state.Get(GameStateKeys.ScoreCommunityWarning));
         }
 
-        private void SetText(TMP_Text text, int value)
+        private void SetText(TMP_Text text, string label, int value)
         {
-            if (text != null)
-                text.text = value.ToString();
+            if (text == null) return;
+            var prefix = string.IsNullOrWhiteSpace(label) ? string.Empty : (label + ": ");
+            text.text = prefix + value.ToString();
         }
 
-        private void SetVisible(bool visible)
-        {
-            if (canvasGroup != null)
-            {
-                canvasGroup.alpha = visible ? 1f : 0f;
-                canvasGroup.interactable = visible;
-                canvasGroup.blocksRaycasts = visible;
-                return;
-            }
-
-            gameObject.SetActive(visible);
-        }
     }
 }
