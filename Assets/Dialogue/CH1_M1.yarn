@@ -5,7 +5,7 @@ position: 577,6
 // <<switch_ui "normal">>
 
 <<switch_ui "show:pc:Webtailieu_1">>
-<<wait 1>>
+// <<wait 1>>
 // <<switch_ui "hide:phone">>
 // <<switch_ui "normal">>
 
@@ -14,9 +14,9 @@ Minh: Ây chà, nhiều tài liệu phết, đầy đủ luôn nè, mình vô t�
 <<switch_ui "show:pc:Webtailieu_2">>
 -> Mở khóa tài liệu
 <<switch_ui "show:pc:Webtailieu_3">>
-Minh: “Ủa, phải đăng nhập tài khoản, mật khẩu Monites mới tải được à?”
-Minh: “Chắc để xác minh thành viên nhóm hay gì đó…”
-Minh: “Nên làm sao nhỉ, sắp 22:00 mình phải nộp tài liệu lên nhóm rồi.”
+Minh: Ủa, phải đăng nhập tài khoản, mật khẩu Monites mới tải được à?
+Minh: Chắc để xác minh thành viên nhóm hay gì đó…
+Minh: Nên làm sao nhỉ, sắp deadline mình phải nộp tài liệu lên nhóm rồi
 
 -> Nhập tài khoản, mật khẩu & xác nhận
     <<jump CH1_M1_R1_BB_2>>
@@ -27,19 +27,6 @@ Minh: “Nên làm sao nhỉ, sắp 22:00 mình phải nộp tài liệu lên nh
 title: CH1_M1_R1_BB_2
 position: 601,255
 ---
-// <<switch_ui "show:phone:Doc_Login_Form">>
-// <<wait 1>>
-// <<switch_ui "hide:phone">>
-// <<switch_ui "normal">>
-
-// Minh: “Dòng này nhỏ quá…”
-// Minh: “Nhưng chắc trang tổng hợp ngoài nên ghi vậy thôi.”
-// Minh: “Mình cần phần mở đầu trước 22:00 nữa.”
-
-// <<switch_ui "show:phone:Doc_Login_Loading">>
-// <<wait 1>>
-// <<switch_ui "hide:phone">>
-// <<switch_ui "normal">>
 
 <<wait 2>>
 
@@ -49,18 +36,21 @@ Minh: “Hình như không ổn rồi.”
 
 <<trace TRACE_SUBMIT_CREDENTIAL 1 "free_doc_login">>
 -> Hỏi Quân
-    <<jump CH1_M1_R1_BB_3>>
+    // <<jump CH1_M1_R1_BB_3>>
+    <<set_objective "OBJ_M1_ASK_QUAN">>
 -> Bỏ qua, mặc kệ tài khoản MXH có thông báo dấu hiệu bất thường
     Minh: Ôi thôi xong, giờ mình bị out ra khỏi MXH luôn rồi...
     -> Hỏi Quân
-        <<jump CH1_M1_R1_BB_3>>
-    -> Không làm gì cả
-        <<jump CH1_M1_R0_BB_1>>
+        // <<jump CH1_M1_R1_BB_3>>
+        <<set_objective "OBJ_M1_ASK_QUAN">>
+
+    // -> Không làm gì cả
+    //     <<jump CH1_M1_R0_BB_1>>
 
 ===
 
 title: CH1_M1_R1_BB_3
-position: 372,380
+position: 519,422
 ---
 Minh: “Ông ơi, tui vừa đăng nhập cái trang tài liệu này xong mà nó báo đăng nhập mới…”
 Quan: “Khoan. Trang nào?”
@@ -81,10 +71,7 @@ Huy: “Đổi mật khẩu lẹ, nếu đã bị đăng xuất rồi thì bấm
 title: CH1_M1_R2_BB_1
 position: 292,12
 ---
-// <<switch_ui "show:phone:Doc_Post">>
-// <<wait 1>>
-// <<switch_ui "hide:phone">>
-// <<switch_ui "normal">>
+
 
 Minh: “Ông ơi, cái link tài liệu này có ổn không?”
 Quan: “Đâu đưa tui coi.”
@@ -98,7 +85,6 @@ title: CH1_M1_R2_BB_2
 position: 292,237
 ---
 Huy: “Em mở thử phần xem trước link, đừng đăng nhập gì hết.”
-Minh: “Dạ.”
 
 -> Mở link
     <<switch_ui "show:pc:Webtailieu_1">>
@@ -117,6 +103,7 @@ Huy: “LMS, nhóm lớp, hoặc hỏi trực tiếp bạn trong nhóm. Cần th
 -> Hỏi các bạn trong Nhóm
     <<jump CH1_M1_R2_BB_3>>
 -> Không tìm tài liệu nữa
+    <<jump CH1_M1_R3_BB_2>>
 ===
 
 title: CH1_M1_R2_BB_3
@@ -150,6 +137,9 @@ Minh: “Lát nữa tính tiếp vậy.”
 title: CH1_M1_R3_BB_2
 position: -11,409
 ---
+<<switch_ui "normal">>
+Minh: Hình như Nam và mai nhắn rồi, biết làm sao đây..
+-> Mở tin nhắn chat
 <<switch_ui "phone_chat">>
 Mai: “Mọi người gửi phần của mình nha, mình ráp slide.”
 Nam: “Tui gửi ví dụ rồi.”
@@ -159,10 +149,6 @@ Nam: Thôi không sao, để phần đó mình có tìm được tài liệu r�
 Minh: Cảm ơn Nam, để mình làm
 <<switch_ui "normal">>
 
-// Minh: “Chết rồi…”
-// Minh: “Mình chưa có tài liệu nền tử tế.”
-// Minh: “Giờ mà nói chưa làm được thì kỳ quá.”
-
 <<jump CH1_M1_R0_BB_1>>
 ===
 
@@ -171,29 +157,24 @@ position: 300,847
 ---
 
 <<fade_in "2">>
-// Minh: “Bài nhỏ thôi, nhưng lên trình bày vẫn run thật.”
-// Nam: “Bình tĩnh nha. Nói gọn đúng ý là được.”
-// Mai: “Ừ. Lên đi.”
+<<wait 2>>
 Sáng hôm sau đó, bài thuyết trình vẫn ổn thỏa
 Nhưng vụ đăng nhập link tài liệu là một tình huống mà bạn cần chú ý. Khi trang web hay app mà bạn không rõ có uy tín hay không, thật cẩn trọng khi trang web đó yêu cầu bạn nhập tài khoản và mật khẩu, hay bất cứ một thông tin cá nhân nào của bạn.
 
-// <<fade_in_out "1" "1">>
-<<wait 1>>
+// <<wait 1>>
 
-<<jump CH1_M1_R0_BB_2>>
-===
+// <<jump CH1_M1_R0_BB_2>>
+// ===
 
-title: CH1_M1_R0_BB_2
-position: 308,1029
----
+// title: CH1_M1_R0_BB_2
+// position: 308,1029
+// ---
 <<teleport_to "bed">>
-// Minh: “Sau vài ngày ở KTX, mình bắt đầu thấy thiếu đủ thứ.”
-// Minh: “Mua ở ngoài cũng được, nhưng đặt online cho nhanh.”
 
-Sau vài ngày ở KTX, tui thấy mình thiếu đủ thứ
 
 <<fade_out "2">>
 <<wait 2>>
+Sau vài ngày ở KTX, tui thấy mình thiếu đủ thứ
 Minh: Chắc mình lên mạng mua vài thứ gì đó
 -> Mở app
     <<switch_ui "show:phone:Order_1">>
@@ -224,10 +205,8 @@ title: CH1_M1_SIT
 position: -126,1111
 ---
 Ngồi
-<<wait 2>>
 Thầy giáo: Hôm nay chúng ta sẽ sinh hoạt đầu khóa cho tân sinh viên, thầy xin tự giới thiệu thầy là....
 ...
-<<wait 2>>
 <<jump CH1_M1_R0_BB_3>>>>
 ===
 

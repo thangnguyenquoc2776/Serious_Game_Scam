@@ -1,4 +1,4 @@
-title: CH1_M3_TC_1
+﻿title: CH1_M3_TC_1
 position: 140,42
 ---
 <<set_milestone 3>>
@@ -13,11 +13,12 @@ Nam: “Tí gửi. Giờ chuyển trước giúp tui.”
 Minh: “Sao không chuyển vào tài khoản của ông?”
 Nam: “Tài khoản tui lỗi. Tài khoản bạn tui. Nhanh nha.”
 
-<<trace TRACE_DETECT_RED_FLAG 3 "nam_private_chat">>
 
 -> Vẫn chuyển tiền
+    <<trace TRACE_TRANSFER_MONEY 1 "nam_private_chat">>
     <<jump CH1_M3_R1_BB_1>>
 -> Hỏi anh em trong phòng
+    <<trace TRACE_ASK_PERSON 2 "nam_private_chat">>
     <<jump CH1_M3_R2_BB_1>>
 -> Không chuyển và bỏ qua
     <<jump CH1_M3_R0_BB_1>>
@@ -32,9 +33,8 @@ position: 312,244
 Minh: Chắc ông ấy đang kẹt thật
 Minh: Mình chuyển trước rồi tối hỏi lại sau vậy
 
-<<trace TRACE_TRANSFER_MONEY 1 "nam_private_chat">>
 <<wait 2>>
-<<switch_ui "phone_chat">>
+<<switch_ui "phone_chat_keep">>
 Minh: “Ok, tui chuyển rồi nha Nam”
 
 <<jump CH1_M3_R1_BB_2>>
@@ -51,7 +51,7 @@ Hình như có thông báo tin nhắn nhóm BTL
 
 <<switch_ui "phone_chat">>
 
-Mai: “Nam ơi, hồi nãy cậu nhắn riêng Minh hả?”
+Mai: “Nam ơi, hồi nãy cậu nhắn riêng mình hả?”
 Nam: “Không? Tui đang làm ví dụ mà.”
 Nam: “Khoan, có ai nhận được tin nhắn mượn tiền từ tài khoản tui không?”
 Nam: “Hình như tài khoản tui bị đăng nhập lạ.”
@@ -82,7 +82,7 @@ Minh: “Ừ. Mới nhắn mượn tiền.”
 Quan: “Tài khoản bạn tui… nghe hơi lạ nha.”
 Huy: “Gọi trực tiếp hoặc hỏi trong nhóm. Đừng chuyển qua tài khoản lạ.”
 
-<<trace TRACE_ASK_PERSON 2 "nam_private_chat">>
+
 
 <<jump CH1_M3_R2_BB_2>>
 ===
@@ -104,7 +104,9 @@ Mai: “Nam đổi mật khẩu trước đi. Minh đừng chuyển.”
 Minh: “Ừ, mình chưa chuyển.”
 
 <<trace TRACE_CONTACT_VERIFY 2 "nam_private_chat">>
+
 -> Nhắn cảnh báo mọi người  
+    <<trace TRACE_WARN_OTHERS 2 "nam_private_chat">>
     <<jump CH1_M3_R2_BB_3>>
 -> Thôi được rồi, mình sẽ rút kinh nghiệm cho bản thân
     <<jump CH1_M3_R0_BB_1>>
@@ -121,8 +123,6 @@ Minh: “Đừng chuyển nếu chưa gọi xác nhận.”
 Mai: “Mình nhắn thêm vào nhóm lớp luôn. Có thể không chỉ nhóm mình bị.”
 Nam: “Cảm ơn mọi người. Tui đang đổi mật khẩu.”
 
-<<trace TRACE_WARN_OTHERS 2 "nam_private_chat">>
-
 <<switch_ui "normal">>
 <<jump CH1_M3_R0_BB_1>>
 ===
@@ -134,7 +134,8 @@ position: 292,912
 <<fade_in 2>>
 <<wait 2>>
 Vụ tài khoản Nam làm cả nhóm hơi chững lại
-Dù theo hướng nào, mình cũng hiểu thêm một chuyện: lừa đảo đôi khi đến bằng tên của người mình vừa tin
+Dù theo hướng nào, mình cũng hiểu thêm một chuyện 
+Lừa đảo đôi khi đến từ việc đánh thẳng vào niềm tin của bản thân vào một người quen, người thân
 
 <<jump CH1_M3_R0_BB_2>>
 ===
@@ -145,8 +146,8 @@ position: 292,1137
 <<teleport_to "bed">>
 <<fade_out 2>>
 <<wait 2>>
-Minh: “Tiền trong ví xuống nhanh hơn mình nghĩ.”
-Minh: Có hôm mở app ngân hàng chỉ để nhìn số dư rồi tắt đi
+Minh: Tiền trong ví xuống nhanh hơn mình nghĩ, phải làm sao đây
+// Minh: Có hôm mở app ngân hàng chỉ để nhìn số dư rồi tắt đi
 Minh: Hình như có mail, để xem cái gì thế nhỉ
 <<set_objective "OBJ_CH1_M3_CHECKMAIL">>
 
@@ -178,5 +179,6 @@ Minh: “Đúng lúc thật.”
 -> Đi hỏi nhóm BTL
     <<jump CH1_M4_R2_BB_1>>
 -> Đi hỏi anh em trong phòng
-    <<jump CH1_M4_R3_BB_1>>
+    <<set_objective "OBJ_CH1_M3_ASK_QUAN">>
+    // <<jump CH1_M4_R3_BB_1>>
 ===

@@ -1,71 +1,35 @@
-title: CH1_M0_R0_BB_1
+﻿title: CH1_M0_R0_BB_1
 color: red
 position: 483,-504
 ---
-// # **CH1_M0_R0**
-// Route mở đầu duy nhất: nhận phòng KTX → phòng 308 → buổi học đầu → gặp Nam/Mai → nhóm bài tập nhỏ → tìm tài liệu → dẫn vào `CH1_M1`
-// ---
 
 <<set_milestone 0>>
 
-// **[Cảnh]**
-// `CH1_M0_R0_BB_1` - Ngoài cổng KTX
 
-// **[Kể chuyện]**
-Tôi kéo vali xuống khỏi xe, đứng lại trước cổng KTX.
+Minh: Tới nơi rồi
 
-Buổi chiều ở đây đông hơn tôi tưởng. Người kéo vali, người ôm thùng đồ, người gọi điện cho phụ huynh, người đứng nhìn bảng chỉ dẫn. Còn tôi thì vẫn đang cố xác định việc đầu tiên mình cần làm.
+Minh: Đông thật
 
-// **[Hiển thị]**
-// Khu vực cổng KTX.
-// Bên trái là chốt bảo vệ có biển:
-// `BẢO VỆ`
-// Gần cổng có bảng:
-// `SẢNH TIẾP NHẬN SINH VIÊN MỚI →`
-// Góc phải màn hình hiện icon điện thoại:
-// `Thông tin nhận phòng KTX - Nguyễn Minh`
-// Minh đứng trước cổng với balo, túi đồ và vali xám bạc hơi lệch bánh.
-
-// **[Hội thoại]**
-Minh: “Tới nơi rồi.”
-
-Minh: “Đông thật…”
-
-Minh: “Giờ chắc phải vào sảnh làm thủ tục trước.”
+Minh: Giờ chắc phải vào sảnh làm thủ tục trước
 ->Kiểm tra lại mail thông tin nhận phòng 
     <<jump CH1_M0_R0_TC_2>>
 ->Đi vào hỏi bác bảo vệ 
     <<set_objective "OBJ_M0_TALK_GUARD">>
 
-// **[Hành động]**
-// Người chơi bắt đầu điều khiển Minh ở khu vực trước cổng KTX.
-
-// **[Chuyển cảnh]**
-// Mạch chính yêu cầu người chơi đi tới chốt bảo vệ. Trước khi đi, người chơi có thể mở điện thoại xem nhanh thông tin nhận phòng.
 
 ===
 
-// **[Tuỳ chọn]**
-// `CH1_M0_R0_TC_2` - Xem nhanh thông tin nhận phòng
-// Người chơi có thể mở điện thoại để xem nhanh email nhận phòng. Nếu bỏ qua, mạch chính vẫn tiếp tục.
 
 title: CH1_M0_R0_TC_2
 position: 463,-324
 ---
-// **[Hành động]**
-// Người chơi mở điện thoại.
 
-// **[Hiển thị]**
-// Màn hình điện thoại hiện email nhận phòng ở dạng xem nhanh:
-// `Thông tin nhận phòng KTX - Nguyễn Minh`
-// `Tòa: A`
-// `Phòng: 308`
-// `Làm thủ tục tại: Sảnh tiếp nhận sinh viên mới`
-// `Cần chuẩn bị: CCCD, email xác nhận, mã số sinh viên`
 ->Kiểm tra mail
     <<switch_ui "show:phone:Mail_nhan_phong_1">>
     ->Mở mail
         <<switch_ui "show:phone:Mail_nhan_phong_2">>
+        // -> Đóng mail
+        // <<switch_ui "normal">>
 
 // **[Hội thoại]**
 Minh: “Tòa A, phòng 308.”
@@ -74,68 +38,49 @@ Minh: “Làm thủ tục ở sảnh tiếp nhận.”
 
 Minh: “Vậy cứ vào sảnh trước đã.”
 
-// **[Cập nhật]**
-// TraceType: `TRACE_READ_RELEVANT_INFO`
-// Biến liên quan: `SCORE_INFORMATION_VERIFICATION`
-// Ghi chú: Người chơi chủ động xem lại thông tin chính thức trước khi làm thủ tục. Nếu bỏ qua tương tác này thì không gọi trace.
-<<trace TRACE_READ_RELEVANT_INFO 1>>
 
-// <<switch_ui "hide:phone">>
+<<trace TRACE_READ_RELEVANT_INFO 1 "Check_in_mail">>
+
+
 <<switch_ui "normal">>
 
-// **[Chuyển cảnh]**
-// Quay lại khu vực cổng KTX.
 
 
 <<set_objective "OBJ_M0_TALK_GUARD">>
 ===
 
-// **[Cảnh]**
-// `CH1_M0_R0_BB_3` - Hỏi bác bảo vệ
 
 title: CH1_M0_R0_BB_3
 position: 472,-155
 ---
-// **[Hành động]**
-// Người chơi điều khiển Minh tới gần chốt bảo vệ và bấm tương tác.
 
-// **[Hiển thị]**
-// Bác bảo vệ đứng gần lối vào, thỉnh thoảng chỉ đường cho sinh viên mới.
+-> Hỏi bác bảo vệ
+    Bác bảo vệ: “Cháu nhận phòng hả?”
 
-// **[Hội thoại]**
+    Minh: “Dạ, con mới lên nhận phòng ạ.”
 
-Bác bảo vệ: “Cháu nhận phòng hả?”
+    Bác bảo vệ: “Tòa nào?”
 
-Minh: “Dạ, con mới lên nhận phòng ạ.”
+    Minh: “Dạ tòa A.”
 
-Bác bảo vệ: “Tòa nào?”
+    Bác bảo vệ: “Có email xác nhận chưa?”
 
-Minh: “Dạ tòa A.”
+    Minh: “Dạ có.”
 
-Bác bảo vệ: “Có email xác nhận chưa?”
+    Bác bảo vệ: “Rồi, con vào sảnh bên kia. Tới bàn hướng dẫn, người ta chỉ tiếp cho.”
 
-Minh: “Dạ có.”
+    Minh: “Dạ, con cảm ơn bác.”
+-> Đi vào trong và không hỏi
 
-Bác bảo vệ: “Rồi, con vào sảnh bên kia. Tới bàn hướng dẫn, người ta chỉ tiếp cho.”
-
-Minh: “Dạ, con cảm ơn bác.”
-
-// **[Kể chuyện]**
-Tôi gật đầu, kéo vali theo hướng bác chỉ.
-
-// **[Chuyển cảnh]**
-// Minh đi qua cổng, vào sân KTX, hướng về sảnh tiếp nhận.
 
 <<set_objective "OBJ_M0_GO_LOBBY">>
 ===
 
-// **[Chuyển cảnh]**
-// Minh đi qua cổng, vào sân KTX, hướng về sảnh tiếp nhận.
 
 title: CH1_M0_R0_BB_3_2
 position: 456,3
 ---
-Minh đi qua cổng, vào sân KTX, hướng về sảnh tiếp nhận.
+->Đi tới sảnh tiếp nhận
 <<fade_in_out "1" "1">>
 <<wait 1>>
 <<teleport_to "hall">>
@@ -145,33 +90,11 @@ Minh: Mình phải tới gặp chị đó để hỏi về thủ tục nhận ph
 <<set_objective "OBJ_M0_TALK_LINH">>
 ===
 
-// **[Cảnh]**
-// `CH1_M0_R0_BB_4` - Sảnh tiếp nhận sinh viên mới
 
 title: CH1_M0_R0_BB_4
 position: 480,178
 ---
-// **[Kể chuyện]**
-// Tôi bước vào sảnh KTX.
 
-// Bên trong rộng hơn tôi tưởng. Người đứng chờ, người kéo vali, người hỏi thủ tục, người gọi điện cho phụ huynh. Tôi giữ chặt điện thoại và tập giấy tờ, cố đi đúng bàn hướng dẫn.
-
-// **[Hiển thị]**
-// Sảnh KTX.
-// Có bàn hướng dẫn với bảng:
-// `HỖ TRỢ SINH VIÊN MỚI`
-// Chị Linh đứng gần bàn, đeo thẻ:
-// `Hỗ trợ sinh viên - Linh`
-// Phía sau là lối vào văn phòng tiếp nhận của tòa A.
-// Trên bảng thông báo gần đó có một mã QR lớn:
-// `KTX Tòa A - Thông báo sinh viên`
-// Có logo KTX và dòng nhỏ:
-// `Kênh cập nhật thông báo chính thức cho sinh viên Tòa A`
-
-// **[Hành động]**
-// Người chơi điều khiển Minh tới bàn hướng dẫn và bấm tương tác với chị Linh.
-
-// **[Hội thoại]**
 Chị Linh: “Em nhận phòng hả?”
 
 Minh: “Dạ, em tên Nguyễn Minh, phòng 308.”
@@ -185,58 +108,21 @@ Chị Linh: “Em đợi chị làm thủ tục nhận thẻ phòng nha”
 Minh: “Dạ”
 
 Chị Linh: “Đây là giấy nhận phòng của em nhé”
-// -> Xem giấy nhận phòng
-//     <<switch_ui "show:giay_nhan_phong">>
-//     -> Cất giấy nhận phòng
-//         <<switch_ui "hide:giay_nhan_phong">>
-
-Minh: “Dạ, em cảm ơn chị.”
+Chị Linh: Tòa có nhóm thông báo, em có thể tham gia để cập nhật thông tin thường xuyên nhé
 
 -> Hỏi về nhóm thông báo
     <<jump CH1_M0_R0_TC_5 >>
--> Đi lên nhận phòng
+-> Không hỏi, đi lên nhận phòng
     <<set_objective "OBJ_M0_GO_ROOM">>
 
 ===
 
-// **[Kể chuyện]**
-// `CH1_M0_R0_BB_4` - Sảnh tiếp nhận sinh viên mới
-
-// title: CH1_M0_R0_DO_PAPERWORK
-// position: 742,560
-// ---
-// Tôi kéo vali vào khu văn phòng tiếp nhận theo hướng chị Linh chỉ.
-
-// Bên trong, người phụ trách tòa kiểm tra email xác nhận, đối chiếu CCCD, rồi đưa tôi ký tên vào danh sách nhận phòng. Sau vài phút, tôi nhận thẻ phòng, một tờ nội quy ngắn và hướng dẫn cơ bản của tòa A.
-
-// Không có gì quá phức tạp, nhưng vì đông người nên tôi vẫn thấy hơi căng.
-
-// // **[Hiển thị]**
-// // UI thủ tục hiện ngắn:
-// // `Nguyễn Minh - Tòa A - Phòng 308`
-// // `Trạng thái: Đã nhận thẻ phòng`
-// // `Vật phẩm nhận được: Thẻ phòng, nội quy tòa A`
-
-// // **[Hội thoại]**
-// Minh: “Rồi, thẻ phòng có rồi.”
-
-// Minh: “Giờ quay lại chỗ chị Linh quét nhóm tòa.”
-
-// // **[Chuyển cảnh]**
-// // Minh quay lại khu bàn hướng dẫn ở sảnh.
-
-// <<set_objective "OBJ_M0_SCAN_QR">>
-// ===
-
-// **[Tuỳ chọn]**
-// `CH1_M0_R0_TC_5` - Hỏi thêm về nhóm thông báo
-// Người chơi có thể hỏi chị Linh về mã QR nhóm tòa. Nếu bỏ qua, Minh vẫn quét mã nhóm tòa và mạch chính tiếp tục.
 
 title: CH1_M0_R0_TC_5
 position: 486,331
 ---
-// **[Hội thoại]**
-Minh: “Dạ chị ơi, nhóm này là nhóm chính thức của tòa hả chị?”
+
+Minh: Dạ chị ơi, nhóm này là nhóm chính thức của tòa hả chị?
 
 Chị Linh: “Ừ, đúng rồi em. Nhóm này chỉ để nhận thông báo của tòa A thôi.”
 
@@ -246,57 +132,24 @@ Minh: “Dạ, em hiểu rồi.”
 
 Chị Linh: “Em có thể quét mã QR ở trên tường phía sau nhé”
 
-// **[Cập nhật]**
-// TraceType: `TRACE_ASK_PERSON`
-// Biến liên quan: `SCORE_HELP_SEEKING`, `SCORE_INFORMATION_VERIFICATION`
-// Ghi chú: Người chơi hỏi người hỗ trợ chính thức để xác nhận kênh thông báo trước khi tham gia. Nếu bỏ qua tương tác này thì không gọi trace.
-<<trace TRACE_ASK_PERSON 2>>
+<<trace TRACE_ASK_PERSON 2 "Instructor">>
 
-// **[Chuyển cảnh]**
-// Quay lại mã QR nhóm tòa.
 
 <<set_objective "OBJ_M0_SCAN_QR">>
 ===
 
-// **[Cảnh]**
-// `CH1_M0_R0_BB_6` - Vào nhóm tòa và lên phòng 308
+
 
 title: CH1_M0_R0_BB_6
 position: 490,477
 ---
-// **[Hành động]**
-// Người chơi quét mã QR `KTX Tòa A - Thông báo sinh viên`.
 
-// **[Hiển thị]**
-// Điện thoại hiện màn hình xem trước nhóm:
-// `KTX Tòa A - Thông báo sinh viên`
-// `Kênh cập nhật thông báo chính thức cho sinh viên Tòa A`
-// Nút UI:
-// `Tham gia nhóm`
-
-// **[Hành động]**
-// Người chơi bấm `Tham gia nhóm`.
-
-// **[Hiển thị]**
-// Tin ghim đầu nhóm hiện ngắn:
-// `Chào mừng sinh viên Tòa A.`
-// `Vui lòng theo dõi thông báo chính thức tại nhóm này.`
-// `Không cung cấp mật khẩu, OTP hoặc thông tin tài khoản cá nhân cho bất kỳ ai.`
 ->Quét QR
-    // <<switch_ui "show:group_a_qr">>
 
-// **[Hội thoại]**
-Minh: “Rồi, xong nhóm tòa.”
+Minh: Rồi, xong nhóm tòa
 
-Minh: “Giờ lên phòng 308 thôi.”
+Minh: Giờ lên phòng 308 thôi
 
-// **[Kể chuyện]**
-// Tôi cất điện thoại, kéo vali về phía thang máy.
--> Tắt điện thoại
-    // <<switch_ui "hide:group_a_qr">>
-
-// **[Chuyển cảnh]**
-// Fade ngắn. Chuyển sang hành lang tầng 3.
 
 <<set_objective "OBJ_M0_GO_ROOM">>
 ===
@@ -338,19 +191,19 @@ Minh: “Mấy ngày đầu ở KTX có gì cần để ý không ông?”
 
 Quan: “Có. Một là mua ổ khóa.”
 
-Quan: “Hai là thiếu gì thì hỏi, đừng tự solo như nhân vật chính anime.”
+Quan: “Hai là thiếu gì thì hỏi, đừng ngại với mọi người nhé”
 
-Minh: “Nghe như tutorial sinh tồn ấy.”
+// Minh: “Nghe như tutorial sinh tồn ấy.”
 
-Quan: “Thì đúng rồi. KTX là open world mà không có minimap.”
+// Quan: “Thì đúng rồi. KTX là open world mà không có minimap.”
 
-Huy: “Nhóm tòa thì theo thông báo chính thức.”
+// Huy: “Nhóm tòa thì theo thông báo chính thức.”
 
-Huy: “Còn mấy group mua bán, tài liệu, việc làm thêm thì coi kỹ nguồn. Mới vô dễ bị dụ vì cái gì cũng thấy cần.”
+// Huy: “Còn mấy group mua bán, tài liệu, việc làm thêm thì coi kỹ nguồn. Mới vô dễ bị dụ vì cái gì cũng thấy cần.”
 
-Minh: “Dạ. Chắc em phải tập thói quen nhìn nguồn trước thật.”
+// Minh: “Dạ. Chắc em phải tập thói quen nhìn nguồn trước thật.”
 
-<<trace TRACE_ASK_PERSON 3>>
+<<trace TRACE_ASK_PERSON 3 "friend">>
 
 <<jump CH1_M0_R0_BB_9>>
 ===
@@ -368,166 +221,56 @@ Tối đó, tôi đi ăn cùng Quan và Huy, rồi mua thêm vài món căn bả
 Đêm đầu ở KTX không quá tệ. Chỉ là tiếng cửa phòng, tiếng dép ngoài hành lang và tiếng thông báo điện thoại làm tôi tỉnh giấc vài lần.
 
 Điều này khiến tui dậy muộn sáng hôm sau
-<<jump CH1_M0_R0_BB_10>>
 
-// **[Hiển thị]**
-// Montage ngắn:
-// `Căn tin đông sinh viên, khay cơm đặt lên bàn.`
-// `Cửa hàng nhỏ dưới KTX có móc áo, ổ khóa, xô, đèn kẹp, ổ cắm.`
-// `Ví điện tử của Minh hiện vài giao dịch nhỏ liên tiếp.`
-// `Phòng 308 về đêm, đèn tắt dần.`
-// `Màn hình điện thoại báo thức sáng hôm sau.`
-
-// **[Chuyển cảnh]**
-// Màn hình tối dần. Chuyển sang sáng hôm sau.
-
-===
-
-// **[Cảnh]**
-// `CH1_M0_R0_BB_10` - Buổi học đầu tiên đi trễ
-
-title: CH1_M0_R0_BB_10
-position: 515,1381
----
 <<fade_out 2>>
 <<wait 2>>
 Minh: Hôm nay có tiết mà mình ngủ quên, phải sắp xếp để đi học lẹ thôi
 
-// **[Kể chuyện]**
-
-
 <<set_objective "OBJ_M0_ENTER_CLASS">>
 
-// **[Hiển thị]**
-// Màn hình điện thoại hiện lịch học:
-// `Giải tích 1`
-// `Phòng: B2-304`
-// `Thời gian: 7:00`
-// Đồng hồ trên UI:
-// `6:56`
-// Màn hình chuyển nhanh qua vài lát cắt:
-// `Minh chạy xuống cầu thang.`
-// `Minh băng qua sân trường.`
-// `Minh đứng trước dãy phòng học, nhìn biển phòng.`
-// `Đồng hồ UI chuyển sang 7:02.`
-
-// **[Hội thoại]**
-// Minh: “B2-304… B2-304…”
-
-// Minh: “Mới ngày đầu mà đi trễ thì hơi huyền thoại rồi đó.”
-
-// **[Hiển thị]**
-// Ở gần cửa lớp, một nam sinh khác cũng đang đứng nhìn số phòng, tay cầm điện thoại. Đây là Nam.
-
-// **[Hội thoại]**
-// Nam: “Ê, ông cũng tìm phòng B2-304 hả?”
-
-// Minh: “Ừ. Giải tích 1 đúng không?”
-
-// Nam: “Đúng rồi. Vậy là tui không trễ một mình.”
-
-// Minh: “Cảm ơn ông, nghe câu đó tự nhiên đỡ quê hơn.”
-
-// Nam: “Vào lẹ đi, đứng đây thêm là quê đôi.”
-
-// **[Hành động]**
-// Người chơi bấm tương tác cửa lớp để vào học.
-
-// **[Hiển thị]**
-// Minh và Nam mở cửa lớp.
-// Giảng viên đã bắt đầu giới thiệu môn. Một vài sinh viên quay lại nhìn.
-
-// **[Hội thoại]**
-// Giảng viên: “Hai em vào nhanh rồi ổn định chỗ ngồi.”
-
-// Minh: “Dạ.”
-
-// Nam: “Dạ.”
-
-// **[Kể chuyện]**
-// Tôi cúi đầu đi nhanh xuống cuối lớp. Nam ngồi xuống ghế bên cạnh, cũng thở ra nhẹ như vừa thoát một pha quê tập thể.
-
-// **[Chuyển cảnh]**
-// Chuyển sang cuối buổi học.
-
-// <<jump CH1_M0_R0_BB_11>>
 ===
 
-// **[Cảnh]**
-// `CH1_M0_R0_BB_11` - Bài tập nhóm nhỏ và nhóm đầu tiên
+
 
 title: CH1_M0_R0_BB_11
 position: 517,1704
 ---
-// **[Hiển thị]**
-// Màn hình lớp học cuối buổi.
-// Trên slide máy chiếu:
-// `BÀI TẬP NHÓM NHỎ - TUẦN 1`
-// `Nội dung: Tóm tắt ý chính và trình bày ví dụ minh họa`
-// `Hình thức: Thuyết trình ngắn theo nhóm 3 người`
-// `Thời lượng: 5 - 7 phút / nhóm`
-// `Lưu ý: Nhóm đầu tiên trình bày vào buổi sau`
-// Một danh sách nhóm hiện trên màn hình. Dòng đầu tiên đang trống thành viên.
 
-// **[Hội thoại]**
-
-// **[Hiển thị]**
-// Một vài sinh viên bắt đầu quay sang tìm nhóm. Mai đang ngồi gần đó, mở điện thoại xem danh sách nhóm.
-
-// **[Hội thoại]**
 Minh: Chào ông tui là Minh
 
-Nam: “Tui là Nam, ông có nhóm chưa?”
+Nam: Tui là Nam, ông có nhóm chưa?
 
-Minh: “Chưa. Mới vào lớp còn chưa kịp nhớ mặt ai.”
+Minh: Chưa. Mới vào lớp còn chưa kịp nhớ mặt ai.
 
-Nam: “Tui cũng chưa. Nãy tui thấy bạn kia cũng đang tìm nhóm.”
+Nam: Tui cũng chưa. Nãy tui thấy bạn kia cũng đang tìm nhóm.
 
-Nam: “Mai, nhóm bà đủ người chưa?”
+Nam: Mai, nhóm bà đủ người chưa?
 
-Mai: “Chưa. Mình đang tìm thêm hai người.”
+Mai: Chưa. Mình đang tìm thêm hai người.
 
-Nam: “Vậy ba đứa mình ghép luôn được không?”
+Nam: Vậy ba đứa mình ghép luôn được không?
 
-Mai: “Được. Nhưng nếu mình bị xếp nhóm đầu thì phải chia việc liền đó.”
+Mai: Được. Nhưng nếu mình bị xếp nhóm đầu thì phải chia việc liền đó.
 
-// **[Hiển thị]**
-// UI danh sách nhóm cập nhật:
-// `Nhóm 1:`
-// `Nguyễn Minh`
-// `Trần Hoài Nam`
-// `Lê Nhật Mai`
-// Dòng bên phải hiện:
-// `Thứ tự trình bày: Nhóm 1 - Buổi sau`
 
-// **[Hội thoại]**
-Minh: “Khoan, nhóm mình là nhóm 1 luôn hả?”
 
-Nam: “Chúc mừng. Vừa lập nhóm đã được lên sóng.”
+Minh: Khoan, nhóm mình là nhóm 1 luôn hả?
 
-Mai: “Vậy tối nay mình họp nhanh. Bài nhỏ thôi, nhưng phải có tài liệu nền với ví dụ rõ.”
+Nam: Chúc mừng. Vừa lập nhóm đã được lên sóng
+
+Mai: Vậy tối nay mình họp nhanh. Bài nhỏ thôi, nhưng phải có tài liệu nền với ví dụ rõ.
 
 Minh: “Ừ, tối mình họp.”
 
-// **[Kể chuyện]**
-Tôi không ngờ mình có nhóm nhanh vậy.
-
-Càng không ngờ nhóm vừa lập xong đã đứng đầu danh sách thuyết trình buổi sau.
-
-// **[Chuyển cảnh]**
-// Chuyển sang tối cùng ngày ở phòng 308.
 
 <<set_objective "OBJ_M0_LEAVE_CLASS">>
 ===
-
-// **[Cảnh]**
-// `CH1_M0_R0_BB_12` - Họp nhóm và chia việc
 
 title: CH1_M0_R0_BB_12
 color: blue
 position: 522,2134
 ---
-Bắt đầu họp với mọi người thôi
+Cũng sắp deadline rồi, bắt đầu họp với mọi người thôi
 
 <<switch_ui "phone_chat">>
 Mai: “Bài này nhỏ, nhưng nhóm mình trình bày đầu nên phải làm gọn và chắc.”
@@ -549,7 +292,7 @@ Minh: “Ừ, mình biết rồi.”
 <<switch_ui "normal">>
 
 <<set_objective "OBJ_M0_FIND_DOCUMENT">>
-Bây giờ mình phải tìm tài liệu, deadline là trước 22:00
+Bây giờ mình phải tìm tài liệu, deadline là trước 10 giờ tối nay
 ->Tìm tài liệu
     <<jump CH1_M0_R0_BB_13>>
 ===
@@ -563,36 +306,36 @@ position: 493,2382
 -> Mở mạng xã hội
 <<switch_ui "show:pc:Group_1">>
 
-Minh: “Nhiều nhóm thật…”
+Minh: Nhiều nhóm thật…
 
-Minh: “Nhìn cái nào cũng có vẻ liên quan, mà cũng hơi lộn xộn.”
+Minh: Nhìn cái nào cũng có vẻ liên quan, mà cũng hơi lộn xộn.
 
-Minh: “Mình chỉ cần tài liệu nền để làm phần mở đầu thôi mà cũng rối vậy.”
+Minh: Mình chỉ cần tài liệu nền để làm phần mở đầu thôi mà cũng rối vậy.
 Minh: Nhóm sinh viên năm nhất này nghe có vẻ ok nhỉ, chắc vô coi thử
 -> Vào nhóm
     <<switch_ui "show:pc:Group_2">>
+Minh: Ồ, có ông nào đăng bài gì đây
 
-Minh: “Full tài liệu Giải tích 1... đúng thứ mình đang cần luôn.”
-
-Minh: “Có cả đề cương với ví dụ mẫu.”
-
-Minh: Nhưng sao phải bấm link nhận riêng nhỉ?
+Minh: Full tài liệu Giải tích 1... đúng thứ mình đang cần luôn
+Minh: Có cả đề cương với ví dụ mẫu
 
 
 -> Mở link
     <<jump CH1_M1_R1_BB_1>>
 
--> Hỏi trong phòng mọi người trong phòng
+-> Hỏi thử trong phòng mọi người trong phòng
+    <<switch_ui "normal">>
+    <<set_objective "OBJ_M1_ASK_QUAN">>
     <<jump CH1_M1_R2_BB_1>>
 
--> Nhìn nguy hiểm, không tìm nữa
+-> Không tìm nữa
     <<jump CH1_M1_R3_BB_1>>
 ===
 
 title: CH1_M0_LEN_PHONG
 position: 503,626
 ---
--> Đi lên phòng thôi
+-> Đi lên phòng
 <<fade_in_out "1" "1">>
 <<wait 1>>
 <<teleport_to "room">>
@@ -610,15 +353,15 @@ position: 523,1530
 <<teleport_to "classroom">>
 <<wait 2 >>
 
-Giảng viên:  "Em chú ý vào lớp đúng giờ nhé”
+Giảng viên:  Em chú ý vào lớp đúng giờ nhé
 
-Minh: “Dạ.”
+Minh: Dạ
 
-Giảng viên: “Nãy thầy nói tới đâu rồi nhỉ?”
-Giảng viên: “À, môn này sẽ có các bài thuyết trình nhóm, hôm nay thầy sẽ nói về bài đầu tiên”
-Giảng viên: “Bài này nhỏ thôi, mục tiêu là để các em làm quen cách trình bày và trao đổi nhóm.”
+Giảng viên: Nãy thầy nói tới đâu rồi nhỉ?
+Giảng viên: À, môn này sẽ có các bài thuyết trình nhóm, hôm nay thầy sẽ nói về bài đầu tiên
+Giảng viên: Bài này nhỏ thôi, mục tiêu là để các em làm quen cách trình bày và trao đổi nhóm.
 
-Giảng viên: “Mỗi nhóm ba người. Nhóm đầu tiên sẽ trình bày vào buổi sau.”
+Giảng viên: Mỗi nhóm ba người. Nhóm đầu tiên sẽ trình bày vào buổi sau
 Giảng viên: Các em có thể bắt đầu tìm nhóm từ buổi hôm nay, chọn nhóm xong các em có thể đi về nhé
 
 <<set_objective "OBJ_M0_FIND_GROUP">>

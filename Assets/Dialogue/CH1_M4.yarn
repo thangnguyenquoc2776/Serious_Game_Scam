@@ -98,12 +98,20 @@ Nam: “Nhưng nó có tên tân sinh viên, học bổng các thứ mà.”
 Mai: “Tên thì ai cũng đặt được. Quan trọng là nguồn gửi với quy trình.”
 Mai: “Minh bấm form chưa?”
 Minh: “Mình mới mở mail thôi. Chưa nhập gì.”
-Mai: “Tốt. Đừng nhập vội.”
-Mai: “Mấy học bổng thật thường có thông báo trên website trường hoặc phòng CTSV. Không gửi form lạ rồi bắt xác nhận gấp kiểu này.”
+Mai: “Tốt. Đừng nhập vội. Mình nhìn là biết học bổng này không ổn rồi”
+-> Hỏi Mai về nguồn học bổng uy tín
+    <<trace TRACE_INSPECT_SOURCE 2 "scholarship_email">>
+    Minh: Vậy nguồn học bổng nào mới uy tín vậy Mai?
+    Mai: Mấy học bổng thật thường có thông báo trên website trường hoặc phòng CTSV. Không gửi form lạ rồi bắt xác nhận gấp kiểu này
+    Minh: Cảm ơn Mai
+-> Không hỏi
 
-<<trace TRACE_INSPECT_SOURCE 2 "scholarship_email">>
 
-<<jump CH1_M4_R2_BB_3>>
+
+-> Nhắn lên nhóm lớp để cảnh báo mọi người
+    <<jump CH1_M4_R2_BB_3>>
+-> Thôi kệ, chắc mọi người cũng biết
+     <<jump CH1_M4_R0_BB_1>>
 ===
 
 title: CH1_M4_R2_BB_3
@@ -159,6 +167,6 @@ Quan: “Đời sinh viên mà. Có học phần, có deadline, có cả boss �
 Huy: “Nói ngắn gọn là: cái gì liên quan tiền, tài khoản, OTP thì kiểm tra trước.”
 Minh: “Dạ.”
 
-// <<set_objective "OBJ_M5_OPEN_RECAP">>
-// <<jump CH1_M5>>
+<<wait 2>>
+<<jump CH1_M5_OPEN_RECAP>>
 ===

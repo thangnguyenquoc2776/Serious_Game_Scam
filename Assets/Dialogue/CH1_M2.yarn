@@ -51,6 +51,8 @@ Shipper: “Rồi, em chuyển đúng nội dung tên Minh nha.”
 Rồi giao dịch thành công
 
 <<trace TRACE_TRANSFER_MONEY 1 "shipper_call">>
+<<trace TRACE_IGNORE_RED_FLAG 1 "shipper_call">>
+<<trace TRACE_ACT_UNDER_PRESSURE 1 "shipper_call">>
 
 <<switch_ui "normal">>
 <<fade_in_out "1" "1">>
@@ -135,9 +137,11 @@ Minh: Mình có nên kiểm tra lại đơn hàng cái không nhỉ?
 -> Kiểm tra
     <<wait 2>>
     <<switch_ui "show:phone:Order_3">>
-    Minh: “Dự kiến giao ngày mai…”
-    Minh: “Vậy số hồi nãy chắc không phải shipper đơn này. Hên thật
+    Minh: Dự kiến giao ngày mai…
+    Minh: Vậy số hồi nãy chắc không phải shipper đơn này. Hên thật
+    <<trace TRACE_DETECT_RED_FLAG 1 "shipper_call">>
 -> Thôi kệ 
+    <<trace TRACE_IGNORE_RED_FLAG 1 "shipper_call">>
 
 
 <<jump CH1_M2_R0_BB_1>>
@@ -149,28 +153,30 @@ position: 8,1010
 
 <<fade_in 2>>
 <<wait 2>>
-Mấy ngày đã trôi qua kể từ lần bị shipper đó
+Nếu gặp phải những tình huống tương tự như shipper lúc nãy, bạn nên bình tĩnh, kiểm tra lại, xác minh thông tin. Không nên hành động vội vã khi bị hối thúc. Áp lực về tâm lý, thời gian là một trong những tác nhân làm thay đổi hành vi con người
+
+<<wait 2>>
 Tối hôm đó, lúc tui đang ngồi làm bài tập lớn...
 // Minh: “Mấy chuyện nhỏ nhỏ này mà không để ý là rối thật.”
 // Minh: “Thôi, làm bài cho xong đã.”
 
 
-<<jump CH1_M2_R0_BB_2>>
-===
+// <<jump CH1_M2_R0_BB_2>>
+// ===
 
-title: CH1_M2_R0_BB_2
-position: 9,1171
----
-// Minh: “Hôm sau, mình gần như ngồi làm bài cả ngày.”
-// Minh: “Sáng xem lại tài liệu. Chiều sửa phần ghi chú. Tối mở laptop lên lần nữa.”
+// title: CH1_M2_R0_BB_2
+// position: 9,1171
+// ---
+// // Minh: “Hôm sau, mình gần như ngồi làm bài cả ngày.”
+// // Minh: “Sáng xem lại tài liệu. Chiều sửa phần ghi chú. Tối mở laptop lên lần nữa.”
 
-<<jump CH1_M2_R0_BB_3>>
+// <<jump CH1_M2_R0_BB_3>>
 
-===
+// ===
 
-title: CH1_M2_R0_BB_3
-position: 10,1346
----
+// title: CH1_M2_R0_BB_3
+// position: 10,1346
+// ---
 <<teleport_to "bed">>
 <<wait 2>>
 <<fade_out 2>>
@@ -181,16 +187,20 @@ Minh: Hình như có ai nhắn tin
 <<set_objective "OBJ_M3_OPEN_NAM_CHAT">>
 <<switch_ui "phone_chat">>
 
-Nam: “Minh ơi, ông còn thức không?”
-Nam: “Tui đang kẹt chút chuyện.”
-Nam: “Ông chuyển giúp tui 250k được không? Tối tui gửi lại.”
-Nam: “Gấp nha ông, tui đang ngoài đường.”
-Nam: “Ông chuyển qua số này giúp tui nha. Tài khoản bạn tui, tui đang mượn máy.”
+Nam: Minh ơi, ông còn thức không?
+Nam: Tui đang kẹt chút chuyện
+Nam: Ông chuyển giúp tui 250k được không? Tối tui gửi lại
+Nam: Gấp nha ông, tui đang ngoài đường
+Nam: Ông chuyển qua số này giúp tui nha. Tài khoản bạn tui, tui đang mượn máy
 
 -> Chuyển tiền luôn
+    <<trace TRACE_TRANSFER_MONEY 1 "nam_private_chat">>
     <<jump CH1_M3_R1_BB_1>>
 -> Hỏi anh em trong phòng
-    <<jump CH1_M3_R2_BB_1>>
+    <<trace TRACE_ASK_PERSON 2 "nam_private_chat">>
+    <<set_objective "OBJ_CH1_M3_ASK_QUAN">>
+    // <<jump CH1_M3_R2_BB_1>>
 -> Chất vấn lại
+    <<trace TRACE_DETECT_RED_FLAG 3 "nam_private_chat">>
     <<jump CH1_M3_TC_1>>
 ===

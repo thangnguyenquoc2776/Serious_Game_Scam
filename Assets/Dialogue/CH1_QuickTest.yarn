@@ -13,6 +13,8 @@ Quick test menu - choose a module
     <<jump TEST_M3>>
 -> Test M4 (scholarship email)
     <<jump TEST_M4>>
+-> Test M5 (end game)
+    <<jump CH1_M5_OPEN_RECAP>>
 ===
 
 title: TEST_M0
@@ -50,7 +52,7 @@ title: TEST_M3
 title: TEST_M4
 ---
 <<set_milestone 4>>
-<<set_objective "OBJ_CH1_M3_CHECKMAIL">>
-<<teleport_to "bed">>
-<<jump CH1_M3_R0_BB_3>>
+// <<set_objective "OBJ_CH1_M3_CHECKMAIL">>
+// <<teleport_to "bed">>
+<<jump CH1_M3_R0_BB_2>>
 ===
