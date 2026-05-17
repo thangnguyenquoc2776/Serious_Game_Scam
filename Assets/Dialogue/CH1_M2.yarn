@@ -184,7 +184,7 @@ Tối hôm đó, lúc tui đang ngồi làm bài tập lớn...
 // <<fade_in_out "1" "1">>
 Minh: Hình như có ai nhắn tin
 ->Kiểm tra tin nhắn
-<<set_objective "OBJ_M3_OPEN_NAM_CHAT">>
+// <<set_objective "OBJ_M3_OPEN_NAM_CHAT">>
 <<switch_ui "phone_chat">>
 
 Nam: Minh ơi, ông còn thức không?

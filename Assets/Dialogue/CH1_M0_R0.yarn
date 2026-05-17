@@ -56,19 +56,12 @@ position: 472,-155
 
 -> Hỏi bác bảo vệ
     Bác bảo vệ: “Cháu nhận phòng hả?”
-
     Minh: “Dạ, con mới lên nhận phòng ạ.”
-
     Bác bảo vệ: “Tòa nào?”
-
     Minh: “Dạ tòa A.”
-
     Bác bảo vệ: “Có email xác nhận chưa?”
-
     Minh: “Dạ có.”
-
     Bác bảo vệ: “Rồi, con vào sảnh bên kia. Tới bàn hướng dẫn, người ta chỉ tiếp cho.”
-
     Minh: “Dạ, con cảm ơn bác.”
 -> Đi vào trong và không hỏi
 
@@ -315,19 +308,17 @@ Minh: Nhóm sinh viên năm nhất này nghe có vẻ ok nhỉ, chắc vô coi t
 -> Vào nhóm
     <<switch_ui "show:pc:Group_2">>
 Minh: Ồ, có ông nào đăng bài gì đây
-
+    <<switch_ui "show:pc:Group_4">>
 Minh: Full tài liệu Giải tích 1... đúng thứ mình đang cần luôn
 Minh: Có cả đề cương với ví dụ mẫu
 
 
 -> Mở link
     <<jump CH1_M1_R1_BB_1>>
-
 -> Hỏi thử trong phòng mọi người trong phòng
     <<switch_ui "normal">>
     <<set_objective "OBJ_M1_ASK_QUAN">>
-    <<jump CH1_M1_R2_BB_1>>
-
+    // <<jump CH1_M1_R2_BB_1>>
 -> Không tìm nữa
     <<jump CH1_M1_R3_BB_1>>
 ===
