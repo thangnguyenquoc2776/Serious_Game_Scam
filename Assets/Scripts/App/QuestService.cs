@@ -6,7 +6,7 @@ namespace SeriousGame.App
     public class QuestService : MonoBehaviour
     {
         // Lưu trữ ID nhiệm vụ hiện tại
-        public string CurrentObjectiveId { get; private set; }
+        public string CurrentObjectiveId;
         public string StartObjectiveId;
 
         [Header("Objective Toast")]

@@ -15,7 +15,7 @@ Minh: Ây da, chắc bận rồi nên không trả lời
 <<trace TRACE_ASK_PERSON 3 "shipper_call">>
 
 -> Mở điện thoại tiếp tục cuộc gọi
-<<switch_ui "Phone:Phone_call_2">>
+<<switch_ui "show:phone:Phone_call_2">>
 Shipper: “Em ơi, anh còn đứng ở cổng nè. Chuyển giúp anh lẹ đi, anh còn chạy đơn khác.”
 Minh: “Dạ… để em xem chút.”
 Shipper: “Xem gì nữa em, đúng tên Minh, đúng KTX tòa A rồi. Em không nhận thì anh hủy đơn đó.”
@@ -30,24 +30,24 @@ title: CH1_M2_R1_BB_1
 position: 317,220
 ---
 <<set_milestone 2>>
-<<switch_ui "Phone:Phone_call_2">>
+<<switch_ui "show:phone:Phone_call_2">>
 
 Minh: “Em đang ở hội trường, không ra được liền.”
-Shipper: “Vậy chuyển khoản đi em. Anh để cho anh shipper kế bên, lát em xuống lấy.”
+Shipper: “Vậy chuyển khoản đi em. Anh để lại cho bảo vệ nhé, lát em xuống lấy.”
 Minh: “Dạ… số tài khoản anh đọc lại giúp em.”
 Shipper: “Rồi, em chuyển đúng nội dung tên Minh nha.”
 
 ->Mở app ngân hàng
-<<switch_ui "Phone:Bank_1">>
+<<switch_ui "show:phone:Bank_1">>
 ->Chuyển tiền
-<<switch_ui "Phone:Bank_2">>
+<<switch_ui "show:phone:Bank_2">>
 ->Xác nhận
-<<switch_ui "Phone:Bank_3">>
+<<switch_ui "show:phone:Bank_3">>
 ->Nhập OTP
-<<switch_ui "Phone:Bank_4">>
+<<switch_ui "show:phone:Bank_4">>
 
 <<wait 2>>
-<<switch_ui "Phone:Bank_5">>
+<<switch_ui "show:phone:Bank_5">>
 Rồi giao dịch thành công
 
 <<trace TRACE_TRANSFER_MONEY 1 "shipper_call">>
@@ -67,21 +67,27 @@ position: 366,393
 <<wait 1>>
 <<teleport_to "gate">>
 <<wait 2 >>
-<<jump CH1_M2_R1_BB_2>>
+<<set_objective "OBJ_CH1_M2_TAKE_SHIP_2">>
+Đi ra hỏi bác bảo vệ về gói hàng
+
 ===
 
 title: CH1_M2_R1_BB_2
-position: 332,574
+position: 354,571
 ---
-<<set_objective "OBJ_CH1_M2_TAKE_SHIP_2">>
-Đi tìm anh shipper để lấy hàng thôi
+Minh: Dạ bác ơi cho con hỏi hồi nãy có anh shipper nào gửi lại gói hàng không ạ?
+Minh: Con tên là Minh
+Bảo vệ: Không có rồi con ơi, bác ở đây nãy giờ không thấy ai cả
+Bảo vệ: Con qua bên kia đường hỏi anh shipper đó thử
+Minh: Dạ con cảm ơn bác
 
+<<wait 2>>
+<<set_objective "OBJ_CH1_M2_TAKE_SHIP_3">>
 ===
 
 title: CH1_M2_R1_BB_3
-position: 215,756
+position: 356,769
 ---
-
 Minh: Anh ơi cho em hỏi hồi nãy có anh shipper nào gửi lại gói hàng cho em không ạ?
 Shipper: Em tên gì ?
 Minh: Dạ em tên Minh
@@ -92,10 +98,11 @@ Minh: Dạ hồi nãy anh shipper gọi em, nói em chuyển tiền rồi ảnh 
 Shipper: Em kiểm tra lại xem, mở app lên xem lại đơn thử
 -> Mở app kiểm tra lại đơn
 <<wait 2>>
-<<switch_ui "Phone:Order_3">>
+<<switch_ui "show:phone:Order_3">>
 
 Trạng thái đang vận chuyển, ôi thôi xong rồi...
 
+<<switch_ui "normal">>
 
 <<jump CH1_M2_R0_BB_1>>
 ===
@@ -104,7 +111,7 @@ title: CH1_M2_R2_BB_1
 position: 12,237
 ---
 <<set_milestone 2>>
-<<switch_ui "Phone:Phone_call_2">>
+<<switch_ui "show:phone:Phone_call_2">>
 
 Minh: “Anh ơi, giờ em đang ở hội trường nên không ra được.”
 Shipper: “Vậy em chuyển khoản trước đi. Anh để hàng lại cho bảo vệ.”
@@ -127,7 +134,7 @@ position: 12,462
 Minh: Mình có nên kiểm tra lại đơn hàng cái không nhỉ?
 -> Kiểm tra
     <<wait 2>>
-    <<switch_ui "Phone:Order_3">>
+    <<switch_ui "show:phone:Order_3">>
     Minh: “Dự kiến giao ngày mai…”
     Minh: “Vậy số hồi nãy chắc không phải shipper đơn này. Hên thật
 -> Thôi kệ 
@@ -139,11 +146,14 @@ Minh: Mình có nên kiểm tra lại đơn hàng cái không nhỉ?
 title: CH1_M2_R0_BB_1
 position: 8,1010
 ---
-Minh: “Mấy chuyện nhỏ nhỏ này mà không để ý là rối thật.”
-Minh: “Thôi, làm bài cho xong đã.”
 
-<<fade_in_out "1" "1">>
-<<wait 1>>
+<<fade_in 2>>
+<<wait 2>>
+Mấy ngày đã trôi qua kể từ lần bị shipper đó
+Tối hôm đó, lúc tui đang ngồi làm bài tập lớn...
+// Minh: “Mấy chuyện nhỏ nhỏ này mà không để ý là rối thật.”
+// Minh: “Thôi, làm bài cho xong đã.”
+
 
 <<jump CH1_M2_R0_BB_2>>
 ===
@@ -151,15 +161,23 @@ Minh: “Thôi, làm bài cho xong đã.”
 title: CH1_M2_R0_BB_2
 position: 9,1171
 ---
-Minh: “Hôm sau, mình gần như ngồi làm bài cả ngày.”
-Minh: “Sáng xem lại tài liệu. Chiều sửa phần ghi chú. Tối mở laptop lên lần nữa.”
+// Minh: “Hôm sau, mình gần như ngồi làm bài cả ngày.”
+// Minh: “Sáng xem lại tài liệu. Chiều sửa phần ghi chú. Tối mở laptop lên lần nữa.”
 
 <<jump CH1_M2_R0_BB_3>>
+
 ===
 
 title: CH1_M2_R0_BB_3
 position: 10,1346
 ---
+<<teleport_to "bed">>
+<<wait 2>>
+<<fade_out 2>>
+
+// <<fade_in_out "1" "1">>
+Minh: Hình như có ai nhắn tin
+->Kiểm tra tin nhắn
 <<set_objective "OBJ_M3_OPEN_NAM_CHAT">>
 <<switch_ui "phone_chat">>
 

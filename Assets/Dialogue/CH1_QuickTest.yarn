@@ -1,0 +1,56 @@
+title: TEST_QUICK_START
+color: orange
+---
+Quick test menu - choose a module
+
+-> Test M0 (start at gate)
+    <<jump TEST_M0>>
+-> Test M1 (branch node with 3 choices)
+    <<jump TEST_M1>>
+-> Test M2 (shipper call)
+    <<jump TEST_M2>>
+-> Test M3 (Nam borrow money)
+    <<jump TEST_M3>>
+-> Test M4 (scholarship email)
+    <<jump TEST_M4>>
+===
+
+title: TEST_M0
+---
+<<set_milestone 0>>
+<<set_objective "OBJ_M0_TALK_GUARD">>
+<<teleport_to "gate">>
+<<jump CH1_M0_R0_BB_1>>
+===
+
+title: TEST_M1
+---
+<<set_milestone 1>>
+<<set_objective "OBJ_M0_FIND_DOCUMENT">>
+<<teleport_to "room">>
+<<jump CH1_M0_R0_BB_13>>
+===
+
+title: TEST_M2
+---
+<<set_milestone 2>>
+<<set_objective "OBJ_M1_SIT">>
+// <<teleport_to "classroom2">>
+<<jump CH1_M1_DI_TOI_TRUONG>>
+===
+
+title: TEST_M3
+---
+<<set_milestone 3>>
+// <<set_objective "OBJ_M3_OPEN_NAM_CHAT">>
+// <<teleport_to "bed">>
+<<jump CH1_M2_R0_BB_3>>
+===
+
+title: TEST_M4
+---
+<<set_milestone 4>>
+<<set_objective "OBJ_CH1_M3_CHECKMAIL">>
+<<teleport_to "bed">>
+<<jump CH1_M3_R0_BB_3>>
+===

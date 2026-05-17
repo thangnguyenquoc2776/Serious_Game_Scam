@@ -4,16 +4,16 @@ position: 577,6
 <<set_milestone 1>>
 // <<switch_ui "normal">>
 
-<<switch_ui "show:phone:Webtailieu_1">>
+<<switch_ui "show:pc:Webtailieu_1">>
 <<wait 1>>
 // <<switch_ui "hide:phone">>
 // <<switch_ui "normal">>
 
 Minh: Ây chà, nhiều tài liệu phết, đầy đủ luôn nè, mình vô tài liệu Giải tích 1 xem thử
 -> Xem tài liệu
-<<switch_ui "show:phone:Webtailieu_2">>
+<<switch_ui "show:pc:Webtailieu_2">>
 -> Mở khóa tài liệu
-<<switch_ui "show:phone:Webtailieu_3">>
+<<switch_ui "show:pc:Webtailieu_3">>
 Minh: “Ủa, phải đăng nhập tài khoản, mật khẩu Monites mới tải được à?”
 Minh: “Chắc để xác minh thành viên nhóm hay gì đó…”
 Minh: “Nên làm sao nhỉ, sắp 22:00 mình phải nộp tài liệu lên nhóm rồi.”
@@ -101,13 +101,13 @@ Huy: “Em mở thử phần xem trước link, đừng đăng nhập gì hết.
 Minh: “Dạ.”
 
 -> Mở link
-    <<switch_ui "show:phone:Webtailieu_1">>
+    <<switch_ui "show:pc:Webtailieu_1">>
 
 Huy: “Không phải link trường. Cũng không phải hệ thống lớp.”
 -> Mở tài liệu xem thử
-<<switch_ui "show:phone:Webtailieu_2">>
+<<switch_ui "show:pc:Webtailieu_2">>
 -> Mở khóa tài liệu
-<<switch_ui "show:phone:Webtailieu_3">>
+<<switch_ui "show:pc:Webtailieu_3">>
 Quan: “Với lại tài liệu gì mà bắt xác minh bằng tài khoản mạng xã hội.”
 Minh: “Vậy bỏ hả?”
 Huy: “Bỏ link đó. Tài liệu thì kiếm từ nguồn khác.”
@@ -192,20 +192,17 @@ position: 308,1029
 
 Sau vài ngày ở KTX, tui thấy mình thiếu đủ thứ
 
-<<fade_in "2">>
-
+<<fade_out "2">>
+<<wait 2>>
 Minh: Chắc mình lên mạng mua vài thứ gì đó
 -> Mở app
-<<switch_ui "show:phone:Order1">>
-// <<wait 1>>
-// <<switch_ui "hide:phone">>
-// <<switch_ui "normal">>
--> Đặt hàng
-<<switch_ui "show:phone:Order1">>
+    <<switch_ui "show:phone:Order_1">>
+    -> Đặt hàng
+        <<switch_ui "show:phone:Order_2">>
 Minh: “Chắc vài ngày nữa tới.”
 
 Minh: Thôi đặt xong rồi, giờ tranh thủ lên trường, hôm nay có buổi sinh hoạt đầu khóa
-
+<<switch_ui "normal">>
 <<set_objective "OBJ_M1_ENTER_CLASS">>
 
 // <<jump CH1_M1_R0_BB_3>>

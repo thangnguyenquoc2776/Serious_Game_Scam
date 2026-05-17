@@ -1,5 +1,5 @@
 title: CH1_M3_TC_1
-position: 62,12
+position: 140,42
 ---
 <<set_milestone 3>>
 <<switch_ui "phone_chat">>
@@ -24,17 +24,18 @@ Nam: “Tài khoản tui lỗi. Tài khoản bạn tui. Nhanh nha.”
 ===
 
 title: CH1_M3_R1_BB_1
-position: 292,237
+position: 312,244
 ---
 <<set_milestone 3>>
-<<switch_ui "phone_chat">>
+<<switch_ui "normal">>
 
-Minh: “Chắc ông ấy đang kẹt thật.”
-Minh: “Mình chuyển trước rồi tối hỏi lại sau vậy.”
+Minh: Chắc ông ấy đang kẹt thật
+Minh: Mình chuyển trước rồi tối hỏi lại sau vậy
 
 <<trace TRACE_TRANSFER_MONEY 1 "nam_private_chat">>
-
-Minh: “Ok, tui chuyển.”
+<<wait 2>>
+<<switch_ui "phone_chat">>
+Minh: “Ok, tui chuyển rồi nha Nam”
 
 <<jump CH1_M3_R1_BB_2>>
 ===
@@ -42,6 +43,12 @@ Minh: “Ok, tui chuyển.”
 title: CH1_M3_R1_BB_2
 position: 292,687
 ---
+
+<<switch_ui "normal">>
+Hình như có thông báo tin nhắn nhóm BTL
+-> Vào nhóm BTL xem tin nhắn
+// <<wait 1>>
+
 <<switch_ui "phone_chat">>
 
 Mai: “Nam ơi, hồi nãy cậu nhắn riêng Minh hả?”
@@ -49,6 +56,8 @@ Nam: “Không? Tui đang làm ví dụ mà.”
 Nam: “Khoan, có ai nhận được tin nhắn mượn tiền từ tài khoản tui không?”
 Nam: “Hình như tài khoản tui bị đăng nhập lạ.”
 
+<<wait 2>>
+<<switch_ui "normal">>
 Minh: “…”
 Minh: “Khoan, vậy người nãy giờ nhắn mình là ai?”
 Quan: “Sao mặt ông căng vậy?”
@@ -62,7 +71,7 @@ Huy: “Em chụp lại giao dịch, lưu số tài khoản, rồi nhắn Nam kh
 ===
 
 title: CH1_M3_R2_BB_1
-position: 12,237
+position: -85,236
 ---
 <<set_milestone 3>>
 <<switch_ui "normal">>
@@ -81,6 +90,8 @@ Huy: “Gọi trực tiếp hoặc hỏi trong nhóm. Đừng chuyển qua tài 
 title: CH1_M3_R2_BB_2
 position: 12,462
 ---
+
+-> Nhắn vào nhóm BTL
 <<switch_ui "phone_chat">>
 
 Minh: “Nam ơi, ông vừa nhắn riêng tui hả?”
@@ -93,13 +104,16 @@ Mai: “Nam đổi mật khẩu trước đi. Minh đừng chuyển.”
 Minh: “Ừ, mình chưa chuyển.”
 
 <<trace TRACE_CONTACT_VERIFY 2 "nam_private_chat">>
-
-<<jump CH1_M3_R2_BB_3>>
+-> Nhắn cảnh báo mọi người  
+    <<jump CH1_M3_R2_BB_3>>
+-> Thôi được rồi, mình sẽ rút kinh nghiệm cho bản thân
+    <<jump CH1_M3_R0_BB_1>>
 ===
 
 title: CH1_M3_R2_BB_3
 position: 12,687
 ---
+
 <<switch_ui "phone_chat">>
 
 Minh: “Mọi người cẩn thận nha. Tài khoản Nam đang nhắn riêng mượn tiền.”
@@ -116,8 +130,11 @@ Nam: “Cảm ơn mọi người. Tui đang đổi mật khẩu.”
 title: CH1_M3_R0_BB_1
 position: 292,912
 ---
-Minh: “Vụ tài khoản Nam làm cả nhóm hơi chững lại.”
-Minh: “Dù theo hướng nào, mình cũng hiểu thêm một chuyện: lừa đảo đôi khi đến bằng tên của người mình vừa tin.”
+
+<<fade_in 2>>
+<<wait 2>>
+Vụ tài khoản Nam làm cả nhóm hơi chững lại
+Dù theo hướng nào, mình cũng hiểu thêm một chuyện: lừa đảo đôi khi đến bằng tên của người mình vừa tin
 
 <<jump CH1_M3_R0_BB_2>>
 ===
@@ -125,26 +142,38 @@ Minh: “Dù theo hướng nào, mình cũng hiểu thêm một chuyện: lừa 
 title: CH1_M3_R0_BB_2
 position: 292,1137
 ---
+<<teleport_to "bed">>
+<<fade_out 2>>
+<<wait 2>>
 Minh: “Tiền trong ví xuống nhanh hơn mình nghĩ.”
-Minh: “Có hôm mở app ngân hàng chỉ để nhìn số dư rồi tắt đi.”
+Minh: Có hôm mở app ngân hàng chỉ để nhìn số dư rồi tắt đi
+Minh: Hình như có mail, để xem cái gì thế nhỉ
+<<set_objective "OBJ_CH1_M3_CHECKMAIL">>
 
-<<jump CH1_M3_R0_BB_3>>
+// <<jump CH1_M3_R0_BB_3>>
 ===
+
+
 
 title: CH1_M3_R0_BB_3
 position: 267,1384
 ---
-<<set_objective "OBJ_M4_CHECK_EMAIL">>
-<<switch_ui "show:phone:Scholarship_Email">>
+// <<set_objective "OBJ_M4_CHECK_EMAIL">>
+Để xem mail gì đây
+<<switch_ui "show:pc:Mailhocbong_1">>
 <<wait 1>>
-<<switch_ui "hide:phone">>
-<<switch_ui "normal">>
+// <<switch_ui "hide:phone">>
+// <<switch_ui "normal">>
+-> Xem nội dung mail
+<<switch_ui "show:pc:Mailhocbong_2">>
 
 Minh: “Học bổng?”
 Minh: “5 triệu…”
 Minh: “Đúng lúc thật.”
 
--> Nhập OTP xác thực vào luôn
+<<wait 2>>
+
+-> Xác thực hồ sơ
     <<jump CH1_M4_R1_BB_1>>
 -> Đi hỏi nhóm BTL
     <<jump CH1_M4_R2_BB_1>>

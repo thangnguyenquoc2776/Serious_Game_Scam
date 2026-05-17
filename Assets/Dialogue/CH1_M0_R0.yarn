@@ -307,27 +307,7 @@ Minh: “Giờ lên phòng 308 thôi.”
 title: CH1_M0_R0_BB_7
 position: 502,785
 ---
-// **[Kể chuyện]**
-// Tôi kéo vali lên tầng, tìm tới phòng 308.
 
-// Hành lang dài, hai bên là những cánh cửa giống nhau đến mức tôi phải nhìn lại số phòng vài lần cho chắc.
-
-// **[Hiển thị]**
-// Hành lang tầng 3.
-// Cửa phòng `308` đang mở hé.
-// Bên trong phòng có:
-// `2 giường tầng`
-// `3 bàn học`
-// `tủ cá nhân`
-// `quạt treo tường`
-// `vài thùng đồ chưa dọn hết`
-// Quan ngồi trên giường, đang cắm sạc điện thoại.
-// Huy ngồi ở bàn, đeo một bên tai nghe. Laptop của Huy đang mở nhiều tab tài liệu.
-
-// **[Hành động]**
-// Người chơi bấm tương tác với cửa phòng 308.
-
-// **[Hội thoại]**
 Quan: “Ông phòng 308 mới vô hả?”
 
 Minh: “Ừ, tui là Minh. Chắc giường kia của tui ha?”
@@ -348,29 +328,12 @@ Minh: “Dạ, em vừa vào nhóm rồi anh.”
     <<jump CH1_M0_R0_TC_8>>
 -> Sắp xếp hành lý và nghỉ ngơi
     <<jump CH1_M0_R0_BB_9>>
-
-// **[Kể chuyện]**
-Đoạn trò chuyện ban đầu làm tôi bớt căng hơn một chút.
-
-Ít nhất, hai người cùng phòng không khó nói chuyện như tôi sợ.
-
-// **[Chuyển cảnh]**
-// Người chơi có thể tương tác thêm với Quan/Huy trước khi tiếp tục mạch chính.
-
-// <<set_objective "OBJ_M0_GO_CLASS">>
 ===
-
-// **[Tuỳ chọn]**
-// `CH1_M0_R0_TC_8` - Nói chuyện thêm với Quan/Huy
-// Người chơi có thể tương tác thêm với Quan hoặc Huy. Nếu bỏ qua, mạch chính vẫn tiếp tục.
 
 title: CH1_M0_R0_TC_8
 position: 531,979
 ---
-// **[Hành động]**
-// Người chơi bấm tương tác với Quan hoặc Huy.
 
-// **[Hội thoại]**
 Minh: “Mấy ngày đầu ở KTX có gì cần để ý không ông?”
 
 Quan: “Có. Một là mua ổ khóa.”
@@ -387,25 +350,15 @@ Huy: “Còn mấy group mua bán, tài liệu, việc làm thêm thì coi kỹ 
 
 Minh: “Dạ. Chắc em phải tập thói quen nhìn nguồn trước thật.”
 
-// **[Cập nhật]**
-// TraceType: `TRACE_ASK_PERSON`
-// Biến liên quan: `SCORE_HELP_SEEKING`, `SCORE_INFORMATION_VERIFICATION`
-// Ghi chú: Người chơi chủ động hỏi bạn cùng phòng/người có kinh nghiệm để lấy thông tin sinh hoạt. Nếu bỏ qua tương tác này thì không gọi trace.
 <<trace TRACE_ASK_PERSON 3>>
-
-// **[Chuyển cảnh]**
-// Quay lại mạch chính.
 
 <<jump CH1_M0_R0_BB_9>>
 ===
 
-// **[Cảnh]**
-// `CH1_M0_R0_BB_9` - Tối đầu ở KTX
 
 title: CH1_M0_R0_BB_9
 position: 526,1171
 ---
-// **[Kể chuyện]**
 <<fade_in 2>>
 <<wait 2>>
 Tối đó, tôi đi ăn cùng Quan và Huy, rồi mua thêm vài món căn bản cho phòng.
@@ -608,7 +561,7 @@ position: 493,2382
 
 Để lên mạng xã hội tìm vài nhóm đã, chắc trên đó có thể tìm được thứ có ích
 -> Mở mạng xã hội
-<<switch_ui "show:pc:Group1">>
+<<switch_ui "show:pc:Group_1">>
 
 Minh: “Nhiều nhóm thật…”
 
@@ -617,7 +570,7 @@ Minh: “Nhìn cái nào cũng có vẻ liên quan, mà cũng hơi lộn xộn.�
 Minh: “Mình chỉ cần tài liệu nền để làm phần mở đầu thôi mà cũng rối vậy.”
 Minh: Nhóm sinh viên năm nhất này nghe có vẻ ok nhỉ, chắc vô coi thử
 -> Vào nhóm
-    <<switch_ui "show:pc:Group2">>
+    <<switch_ui "show:pc:Group_2">>
 
 Minh: “Full tài liệu Giải tích 1... đúng thứ mình đang cần luôn.”
 

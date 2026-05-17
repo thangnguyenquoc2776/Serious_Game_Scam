@@ -2,53 +2,50 @@ title: CH1_M4_R1_BB_1
 position: 572,12
 ---
 <<set_milestone 4>>
-<<switch_ui "show:phone:Scholarship_Email">>
-<<wait 1>>
-<<switch_ui "hide:phone">>
-<<switch_ui "normal">>
+<<switch_ui "show:pc:Form_1">>
+// <<wait 1>>
+// <<switch_ui "hide:phone">>
+// <<switch_ui "normal">>
 
 Minh: “Học bổng Đồng hành Tân sinh viên 2025…”
 Minh: “Hạn xác nhận: 23:59 hôm nay.”
 
-<<switch_ui "show:phone:Scholarship_Form_1">>
-<<wait 1>>
-<<switch_ui "hide:phone">>
-<<switch_ui "normal">>
 
 Minh: “Mấy thông tin này trường cũng có rồi mà…”
 Minh: “Chắc để đối chiếu hồ sơ thôi.”
-
+-> Nhập thông tin và tiếp tục
 <<jump CH1_M4_R1_BB_2>>
 ===
 
 title: CH1_M4_R1_BB_2
 position: 572,237
 ---
-<<switch_ui "show:phone:Scholarship_Form_2">>
+<<switch_ui "show:pc:Form_2">>
 <<wait 1>>
-<<switch_ui "hide:phone">>
-<<switch_ui "normal">>
 
 Minh: “Tới tài khoản ngân hàng luôn à…”
 Minh: “Nhận học bổng thì chắc cũng cần tài khoản thật.”
 Minh: “Nhưng sao cảm giác hơi nhanh vậy ta?”
 
 <<trace TRACE_FILL_SENSITIVE_INFO 1 "scholarship_form">>
-
+-> Lưu thông tin
+<<switch_ui "show:pc:Form_3">>
+-> Mở cổng xác minh
 <<jump CH1_M4_R1_BB_3>>
 ===
 
 title: CH1_M4_R1_BB_3
 position: 572,462
 ---
-<<switch_ui "show:phone:Scholarship_OTP">>
-<<wait 1>>
-<<switch_ui "hide:phone">>
-<<switch_ui "normal">>
-
-Minh: “OTP?”
-Minh: “Nhận học bổng mà cũng cần OTP ngân hàng hả…”
-Minh: “Nhưng mã sắp hết hạn rồi.”
+<<switch_ui "show:pc:Webhocbong_1">>
+<<wait 2>>
+-> Đăng nhập và xác minh
+<<switch_ui "show:pc:Webhocbong_2">>
+<<wait 2>>
+Minh: OTP?
+Minh: Nhận học bổng mà cũng cần OTP ngân hàng hả…
+Minh: Nhưng mã sắp hết hạn rồi
+-> Nhập OTP và hoàn tất xác minh
 
 <<trace TRACE_SUBMIT_AUTH_CODE 1 "scholarship_otp">>
 
@@ -58,6 +55,9 @@ Minh: “Nhưng mã sắp hết hạn rồi.”
 title: CH1_M4_R1_BB_4
 position: 572,687
 ---
+Chắc mình nên hỏi anh em thử
+
+<<switch_ui "normal">>
 Minh: “Anh Huy ơi…”
 Huy: “Gì em?”
 Minh: “Em vừa nhập OTP vào form học bổng. Xong ngân hàng báo cảnh báo bất thường.”
@@ -91,8 +91,8 @@ Minh: “Đây.”
 title: CH1_M4_R2_BB_2
 position: 292,462
 ---
-<<switch_ui "phone_chat">>
-
+// <<switch_ui "phone_chat">>
+<<wait 3>>
 Mai: “Địa chỉ gửi không giống mail trường.”
 Nam: “Nhưng nó có tên tân sinh viên, học bổng các thứ mà.”
 Mai: “Tên thì ai cũng đặt được. Quan trọng là nguồn gửi với quy trình.”
