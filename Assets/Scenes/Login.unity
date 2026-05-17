@@ -3677,7 +3677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.App.QuestService
   CurrentObjectiveId: 
   StartObjectiveId: 
-  objectiveToastMap: {fileID: 0}
+  objectiveToastMap: {fileID: 11400000, guid: 45a09155f204bb6459c96a37f559dce5, type: 2}
 --- !u!114 &1205577191
 MonoBehaviour:
   m_ObjectHideFlags: 0
