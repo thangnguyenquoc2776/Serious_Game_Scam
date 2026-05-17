@@ -28,9 +28,9 @@ title: TEST_M0
 title: TEST_M1
 ---
 <<set_milestone 1>>
-<<set_objective "OBJ_M0_FIND_DOCUMENT">>
-<<teleport_to "room">>
-<<jump CH1_M0_R0_BB_13>>
+// <<set_objective "OBJ_M0_FIND_DOCUMENT">>
+<<teleport_to "table">>
+<<jump CH1_M0_R0_BB_12>>
 ===
 
 title: TEST_M2

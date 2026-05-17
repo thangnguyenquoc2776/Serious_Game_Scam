@@ -152,8 +152,8 @@ position: 8,1010
 ---
 
 <<fade_in 2>>
-<<wait 2>>
-Nếu gặp phải những tình huống tương tự như shipper lúc nãy, bạn nên bình tĩnh, kiểm tra lại, xác minh thông tin. Không nên hành động vội vã khi bị hối thúc. Áp lực về tâm lý, thời gian là một trong những tác nhân làm thay đổi hành vi con người
+// <<wait 2>>
+// Nếu gặp phải những tình huống tương tự như shipper lúc nãy, bạn nên bình tĩnh, kiểm tra lại, xác minh thông tin. Không nên hành động vội vã khi bị hối thúc. Áp lực về tâm lý, thời gian là một trong những tác nhân làm thay đổi hành vi con người
 
 <<wait 2>>
 Tối hôm đó, lúc tui đang ngồi làm bài tập lớn...

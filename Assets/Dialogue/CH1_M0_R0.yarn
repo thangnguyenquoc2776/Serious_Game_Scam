@@ -215,6 +215,7 @@ Tối đó, tôi đi ăn cùng Quan và Huy, rồi mua thêm vài món căn bả
 
 Điều này khiến tui dậy muộn sáng hôm sau
 
+<<teleport_to  "bed">>
 <<fade_out 2>>
 <<wait 2>>
 Minh: Hôm nay có tiết mà mình ngủ quên, phải sắp xếp để đi học lẹ thôi
@@ -317,7 +318,7 @@ Minh: Có cả đề cương với ví dụ mẫu
     <<jump CH1_M1_R1_BB_1>>
 -> Hỏi thử trong phòng mọi người trong phòng
     <<switch_ui "normal">>
-    <<set_objective "OBJ_M1_ASK_QUAN">>
+    <<set_objective "OBJ_M1_ASK_QUAN_2">>
     // <<jump CH1_M1_R2_BB_1>>
 -> Không tìm nữa
     <<jump CH1_M1_R3_BB_1>>

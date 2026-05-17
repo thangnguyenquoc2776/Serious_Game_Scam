@@ -37,13 +37,13 @@ Minh: “Hình như không ổn rồi.”
 <<trace TRACE_SUBMIT_CREDENTIAL 1 "free_doc_login">>
 -> Hỏi Quân
     // <<jump CH1_M1_R1_BB_3>>
-    <<set_objective "OBJ_M1_ASK_QUAN">>
+    <<set_objective "OBJ_M1_ASK_QUAN_1">>
     <<switch_ui "normal">>
 -> Bỏ qua, mặc kệ tài khoản MXH có thông báo dấu hiệu bất thường
     Minh: Ôi thôi xong, giờ mình bị out ra khỏi MXH luôn rồi...
     -> Hỏi Quân
         // <<jump CH1_M1_R1_BB_3>>
-        <<set_objective "OBJ_M1_ASK_QUAN">>
+        <<set_objective "OBJ_M1_ASK_QUAN_1">>
         <<switch_ui "normal">>
 
     // -> Không làm gì cả
