@@ -5,7 +5,7 @@ position: 46,17
 -> Mở điện thoại nhắn hỏi Quân
 <<switch_ui "phone_chat">>
 
-Minh: “Ông ơi, có shipper gọi bảo chuyển khoản trước rồi gửi đồ ở cổng. Có nên chuyển không?”
+Minh: Ông ơi, có shipper gọi bảo chuyển khoản trước rồi gửi đồ ở cổng. Có nên chuyển không?
 
 <<wait 4>>
 
@@ -16,9 +16,9 @@ Minh: Ây da, chắc bận rồi nên không trả lời
 
 -> Mở điện thoại tiếp tục cuộc gọi
 <<switch_ui "show:phone:Phone_call_2">>
-Shipper: “Em ơi, anh còn đứng ở cổng nè. Chuyển giúp anh lẹ đi, anh còn chạy đơn khác.”
-Minh: “Dạ… để em xem chút.”
-Shipper: “Xem gì nữa em, đúng tên Minh, đúng KTX tòa A rồi. Em không nhận thì anh hủy đơn đó.”
+Shipper: Em ơi, anh còn đứng ở cổng nè. Chuyển giúp anh lẹ đi, anh còn chạy đơn khác.
+Minh: Dạ… để em xem chút.
+Shipper: Xem gì nữa em, đúng tên Minh, đúng KTX tòa A rồi. Em không nhận thì anh hủy đơn đó.
 
 -> Chuyển tiền luôn
     <<jump CH1_M2_R1_BB_1>>
@@ -32,10 +32,10 @@ position: 317,220
 <<set_milestone 2>>
 <<switch_ui "show:phone:Phone_call_2">>
 
-Minh: “Em đang ở hội trường, không ra được liền.”
-Shipper: “Vậy chuyển khoản đi em. Anh để lại cho bảo vệ nhé, lát em xuống lấy.”
-Minh: “Dạ… số tài khoản anh đọc lại giúp em.”
-Shipper: “Rồi, em chuyển đúng nội dung tên Minh nha.”
+Minh: Em đang ở hội trường, không ra được liền.
+Shipper: Vậy chuyển khoản đi em. Anh để lại cho bảo vệ nhé, lát em xuống lấy.
+Minh: Dạ… số tài khoản anh đọc lại giúp em.
+Shipper: Rồi, em chuyển đúng nội dung tên Minh nha.
 
 ->Mở app ngân hàng
 <<switch_ui "show:phone:Bank_1">>
@@ -115,11 +115,11 @@ position: 12,237
 <<set_milestone 2>>
 <<switch_ui "show:phone:Phone_call_2">>
 
-Minh: “Anh ơi, giờ em đang ở hội trường nên không ra được.”
-Shipper: “Vậy em chuyển khoản trước đi. Anh để hàng lại cho bảo vệ.”
-Minh: “Dạ thôi, nếu không giao được thì anh hẹn lại giúp em. Em sẽ nhận trực tiếp sau.”
-Shipper: “Anh còn nhiều đơn lắm. Không chuyển giờ thì anh hủy đó.”
-Minh: “Dạ, vậy anh hủy hoặc giao lại sau giúp em. Em không chuyển khi chưa nhận hàng được.”
+Minh: Anh ơi, giờ em đang ở hội trường nên không ra được.
+Shipper: Vậy em chuyển khoản trước đi. Anh để hàng lại cho bảo vệ.
+Minh: Dạ thôi, nếu không giao được thì anh hẹn lại giúp em. Em sẽ nhận trực tiếp sau.
+Shipper: Anh còn nhiều đơn lắm. Không chuyển giờ thì anh hủy đó.
+Minh: Dạ, vậy anh hủy hoặc giao lại sau giúp em. Em không chuyển khi chưa nhận hàng được.
 
 <<trace TRACE_DELAY_ACTION 2 "shipper_call">>
 

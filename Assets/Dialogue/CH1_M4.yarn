@@ -7,12 +7,12 @@ position: 572,12
 // <<switch_ui "hide:phone">>
 // <<switch_ui "normal">>
 
-Minh: “Học bổng Đồng hành Tân sinh viên 2025…”
-Minh: “Hạn xác nhận: 23:59 hôm nay.”
+Minh: Học bổng Đồng hành Tân sinh viên 2025…
+Minh: Hạn xác nhận: 23:59 hôm nay.
 
 
-Minh: “Mấy thông tin này trường cũng có rồi mà…”
-Minh: “Chắc để đối chiếu hồ sơ thôi.”
+Minh: Mấy thông tin này trường cũng có rồi mà…
+Minh: Chắc để đối chiếu hồ sơ thôi.
 -> Nhập thông tin và tiếp tục
 <<jump CH1_M4_R1_BB_2>>
 ===
@@ -23,9 +23,9 @@ position: 572,237
 <<switch_ui "show:pc:Form_2">>
 <<wait 1>>
 
-Minh: “Tới tài khoản ngân hàng luôn à…”
-Minh: “Nhận học bổng thì chắc cũng cần tài khoản thật.”
-Minh: “Nhưng sao cảm giác hơi nhanh vậy ta?”
+Minh: Tới tài khoản ngân hàng luôn à…
+Minh: Nhận học bổng thì chắc cũng cần tài khoản thật.
+Minh: Nhưng sao cảm giác hơi nhanh vậy ta?
 
 <<trace TRACE_FILL_SENSITIVE_INFO 1 "scholarship_form">>
 -> Lưu thông tin
@@ -58,15 +58,15 @@ position: 572,687
 Chắc mình nên hỏi anh em thử
 
 <<switch_ui "normal">>
-Minh: “Anh Huy ơi…”
-Huy: “Gì em?”
-Minh: “Em vừa nhập OTP vào form học bổng. Xong ngân hàng báo cảnh báo bất thường.”
-Huy: “OTP ngân hàng?”
-Minh: “Dạ…”
-Huy: “Khóa giao dịch ngay. Gọi tổng đài ngân hàng. Không nhập thêm gì nữa.”
-Quan: “Khoan, form nào? Học bổng mà xin OTP ngân hàng là sai rồi.”
-Minh: “Em tưởng là xác nhận tài khoản nhận học bổng…”
-Huy: “Không. OTP là để xác thực giao dịch hoặc đăng nhập. Không ai phát học bổng bằng cách bắt em nhập OTP vào form ngoài.”
+Minh: Anh Huy ơi…
+Huy: Gì em?
+Minh: Em vừa nhập OTP vào form học bổng. Xong ngân hàng báo cảnh báo bất thường.
+Huy: OTP ngân hàng?
+Minh: Dạ…
+Huy: Khóa giao dịch ngay. Gọi tổng đài ngân hàng. Không nhập thêm gì nữa.
+Quan: Khoan, form nào? Học bổng mà xin OTP ngân hàng là sai rồi.
+Minh: Em tưởng là xác nhận tài khoản nhận học bổng…
+Huy: Không. OTP là để xác thực giao dịch hoặc đăng nhập. Không ai phát học bổng bằng cách bắt em nhập OTP vào form ngoài.
 
 <<jump CH1_M4_R0_BB_1>>
 ===
@@ -77,11 +77,11 @@ position: 292,237
 <<set_milestone 4>>
 <<switch_ui "phone_chat">>
 
-Minh: “Mọi người có biết học bổng này không?”
-Minh: “Mail ghi hỗ trợ tân sinh viên 5 triệu, hạn xác nhận trước 23:59.”
-Nam: “Nghe ngon quá vậy.”
-Mai: “Khoan, gửi mình xem địa chỉ mail với link form.”
-Minh: “Đây.”
+Minh: Mọi người có biết học bổng này không?
+Minh: Mail ghi hỗ trợ tân sinh viên 5 triệu, hạn xác nhận trước 23:59.
+Nam: Nghe ngon quá vậy.
+Mai: Khoan, gửi mình xem địa chỉ mail với link form.
+Minh: Đây.
 
 <<trace TRACE_ASK_PERSON 2 "scholarship_email">>
 
@@ -93,12 +93,12 @@ position: 292,462
 ---
 // <<switch_ui "phone_chat">>
 <<wait 3>>
-Mai: “Địa chỉ gửi không giống mail trường.”
-Nam: “Nhưng nó có tên tân sinh viên, học bổng các thứ mà.”
-Mai: “Tên thì ai cũng đặt được. Quan trọng là nguồn gửi với quy trình.”
-Mai: “Minh bấm form chưa?”
-Minh: “Mình mới mở mail thôi. Chưa nhập gì.”
-Mai: “Tốt. Đừng nhập vội. Mình nhìn là biết học bổng này không ổn rồi”
+Mai: Địa chỉ gửi không giống mail trường.
+Nam: Nhưng nó có tên tân sinh viên, học bổng các thứ mà.
+Mai: Tên thì ai cũng đặt được. Quan trọng là nguồn gửi với quy trình.
+Mai: Minh bấm form chưa?
+Minh: Mình mới mở mail thôi. Chưa nhập gì.
+Mai: Tốt. Đừng nhập vội. Mình nhìn là biết học bổng này không ổn rồi
 -> Hỏi Mai về nguồn học bổng uy tín
     <<trace TRACE_INSPECT_SOURCE 2 "scholarship_email">>
     Minh: Vậy nguồn học bổng nào mới uy tín vậy Mai?
@@ -119,9 +119,9 @@ position: 292,687
 ---
 <<switch_ui "phone_chat">>
 
-Minh: “Mọi người cẩn thận mail học bổng Đồng hành Tân sinh viên 2025 nha.”
-Minh: “Mail này không giống nguồn chính thức, link form lạ và có hạn xác nhận gấp.”
-Mai: “Ai nhận được thì kiểm tra trên website/phòng CTSV trước nhé.”
+Minh: Mọi người cẩn thận mail học bổng Đồng hành Tân sinh viên 2025 nha.
+Minh: Mail này không giống nguồn chính thức, link form lạ và có hạn xác nhận gấp.
+Mai: Ai nhận được thì kiểm tra trên website/phòng CTSV trước nhé.
 
 <<trace TRACE_WARN_OTHERS 2 "scholarship_email">>
 
@@ -135,11 +135,11 @@ position: 12,462
 <<set_milestone 4>>
 <<switch_ui "normal">>
 
-Minh: “Anh Huy ơi, anh coi giúp em cái mail này được không?”
-Huy: “Mail gì?”
-Minh: “Học bổng tân sinh viên. Nó bảo hỗ trợ 5 triệu, xác nhận trước 23:59.”
-Quan: “5 triệu? Nghe thơm vậy.”
-Minh: “Thơm nên em mới thấy hơi sợ.”
+Minh: Anh Huy ơi, anh coi giúp em cái mail này được không?
+Huy: Mail gì?
+Minh: Học bổng tân sinh viên. Nó bảo hỗ trợ 5 triệu, xác nhận trước 23:59.
+Quan: 5 triệu? Nghe thơm vậy.
+Minh: Thơm nên em mới thấy hơi sợ.
 
 <<trace TRACE_ASK_PERSON 3 "scholarship_email">>
 
@@ -149,10 +149,10 @@ Minh: “Thơm nên em mới thấy hơi sợ.”
 title: CH1_M4_R3_BB_2
 position: 12,687
 ---
-Minh: “Nhìn kỹ lại thì đúng là không giống mail trường thật.”
-Quan: “Mấy cái này hay đánh vào lúc mình đang cần tiền.”
-Huy: “Em lưu lại ảnh chụp. Mai cần thì hỏi kênh chính thức. Còn bây giờ đóng form đi.”
-Minh: “Dạ.”
+Minh: Nhìn kỹ lại thì đúng là không giống mail trường thật.
+Quan: Mấy cái này hay đánh vào lúc mình đang cần tiền.
+Huy: Em lưu lại ảnh chụp. Mai cần thì hỏi kênh chính thức. Còn bây giờ đóng form đi.
+Minh: Dạ.
 
 <<trace TRACE_REFUSE_RISKY_REQUEST 3 "scholarship_email">>
 
@@ -162,10 +162,10 @@ Minh: “Dạ.”
 title: CH1_M4_R0_BB_1
 position: 292,912
 ---
-Minh: “Một cái mail thôi mà kéo theo đủ chuyện…”
-Quan: “Đời sinh viên mà. Có học phần, có deadline, có cả boss ẩn dạng link lạ.”
-Huy: “Nói ngắn gọn là: cái gì liên quan tiền, tài khoản, OTP thì kiểm tra trước.”
-Minh: “Dạ.”
+Minh: Một cái mail thôi mà kéo theo đủ chuyện…
+Quan: Đời sinh viên mà. Có học phần, có deadline, có cả boss ẩn dạng link lạ.
+Huy: Nói ngắn gọn là: cái gì liên quan tiền, tài khoản, OTP thì kiểm tra trước.
+Minh: Dạ.
 
 <<wait 2>>
 <<jump CH1_M5_OPEN_RECAP>>

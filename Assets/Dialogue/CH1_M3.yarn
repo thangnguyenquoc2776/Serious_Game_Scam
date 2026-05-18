@@ -4,14 +4,14 @@ position: 140,42
 <<set_milestone 3>>
 <<switch_ui "phone_chat">>
 
-Minh: “Ông đang ở đâu vậy?”
-Nam: “Ngoài đường.”
-Minh: “Ngoài đường chỗ nào? Có gọi được không?”
-Nam: “Không tiện gọi. Chuyển lẹ giúp tui đi.”
-Minh: “Sáng nay ông bảo phần ví dụ sẽ gửi lúc mấy giờ ấy nhỉ?”
-Nam: “Tí gửi. Giờ chuyển trước giúp tui.”
-Minh: “Sao không chuyển vào tài khoản của ông?”
-Nam: “Tài khoản tui lỗi. Tài khoản bạn tui. Nhanh nha.”
+Minh: Ông đang ở đâu vậy?
+Nam: Ngoài đường.
+Minh: Ngoài đường chỗ nào? Có gọi được không?
+Nam: Không tiện gọi. Chuyển lẹ giúp tui đi.
+Minh: Sáng nay ông bảo phần ví dụ sẽ gửi lúc mấy giờ ấy nhỉ?
+Nam: Tí gửi. Giờ chuyển trước giúp tui.
+Minh: Sao không chuyển vào tài khoản của ông?
+Nam: Tài khoản tui lỗi. Tài khoản bạn tui. Nhanh nha.
 
 
 -> Vẫn chuyển tiền
@@ -35,7 +35,7 @@ Minh: Mình chuyển trước rồi tối hỏi lại sau vậy
 
 <<wait 2>>
 <<switch_ui "phone_chat_keep">>
-Minh: “Ok, tui chuyển rồi nha Nam”
+Minh: Ok, tui chuyển rồi nha Nam
 
 <<jump CH1_M3_R1_BB_2>>
 ===
@@ -51,20 +51,20 @@ Hình như có thông báo tin nhắn nhóm BTL
 
 <<switch_ui "phone_chat">>
 
-Mai: “Nam ơi, hồi nãy cậu nhắn riêng mình hả?”
-Nam: “Không? Tui đang làm ví dụ mà.”
-Nam: “Khoan, có ai nhận được tin nhắn mượn tiền từ tài khoản tui không?”
-Nam: “Hình như tài khoản tui bị đăng nhập lạ.”
+Mai: Nam ơi, hồi nãy cậu nhắn riêng mình hả?
+Nam: Không? Tui đang làm ví dụ mà.
+Nam: Khoan, có ai nhận được tin nhắn mượn tiền từ tài khoản tui không?
+Nam: Hình như tài khoản tui bị đăng nhập lạ.
 
 <<wait 2>>
 <<switch_ui "normal">>
-Minh: “…”
-Minh: “Khoan, vậy người nãy giờ nhắn mình là ai?”
-Quan: “Sao mặt ông căng vậy?”
-Minh: “Tui vừa chuyển 250k…”
-Quan: “Cho Nam?”
-Minh: “Tui tưởng vậy.”
-Huy: “Em chụp lại giao dịch, lưu số tài khoản, rồi nhắn Nam khóa tài khoản ngay.”
+Minh: …
+Minh: Khoan, vậy người nãy giờ nhắn mình là ai?
+Quan: Sao mặt ông căng vậy?
+Minh: Tui vừa chuyển 250k…
+Quan: Cho Nam?
+Minh: Tui tưởng vậy.
+Huy: Em chụp lại giao dịch, lưu số tài khoản, rồi nhắn Nam khóa tài khoản ngay.
 
 <<switch_ui "normal">>
 <<jump CH1_M3_R0_BB_1>>
@@ -76,11 +76,11 @@ position: -85,236
 <<set_milestone 3>>
 <<switch_ui "normal">>
 
-Minh: “Ông coi giúp tui cái này được không?”
-Quan: “Nam trong nhóm ông hả?”
-Minh: “Ừ. Mới nhắn mượn tiền.”
-Quan: “Tài khoản bạn tui… nghe hơi lạ nha.”
-Huy: “Gọi trực tiếp hoặc hỏi trong nhóm. Đừng chuyển qua tài khoản lạ.”
+Minh: Ông coi giúp tui cái này được không?
+Quan: Nam trong nhóm ông hả?
+Minh: Ừ. Mới nhắn mượn tiền.
+Quan: Tài khoản bạn tui… nghe hơi lạ nha.
+Huy: Gọi trực tiếp hoặc hỏi trong nhóm. Đừng chuyển qua tài khoản lạ.
 
 
 
@@ -94,14 +94,14 @@ position: 12,462
 -> Nhắn vào nhóm BTL
 <<switch_ui "phone_chat">>
 
-Minh: “Nam ơi, ông vừa nhắn riêng tui hả?”
-Mai: “Có chuyện gì vậy?”
-Nam: “Không? Tui đang làm ví dụ.”
-Minh: “Tài khoản ông nhắn tui mượn 250k, bảo chuyển qua tài khoản bạn.”
-Nam: “Không phải tui.”
-Nam: “Chết rồi, hình như tài khoản tui bị đăng nhập lạ.”
-Mai: “Nam đổi mật khẩu trước đi. Minh đừng chuyển.”
-Minh: “Ừ, mình chưa chuyển.”
+Minh: Nam ơi, ông vừa nhắn riêng tui hả?
+Mai: Có chuyện gì vậy?
+Nam: Không? Tui đang làm ví dụ.
+Minh: Tài khoản ông nhắn tui mượn 250k, bảo chuyển qua tài khoản bạn.
+Nam: Không phải tui.
+Nam: Chết rồi, hình như tài khoản tui bị đăng nhập lạ.
+Mai: Nam đổi mật khẩu trước đi. Minh đừng chuyển.
+Minh: Ừ, mình chưa chuyển.
 
 <<trace TRACE_CONTACT_VERIFY 2 "nam_private_chat">>
 
@@ -118,10 +118,10 @@ position: 12,687
 
 <<switch_ui "phone_chat">>
 
-Minh: “Mọi người cẩn thận nha. Tài khoản Nam đang nhắn riêng mượn tiền.”
-Minh: “Đừng chuyển nếu chưa gọi xác nhận.”
-Mai: “Mình nhắn thêm vào nhóm lớp luôn. Có thể không chỉ nhóm mình bị.”
-Nam: “Cảm ơn mọi người. Tui đang đổi mật khẩu.”
+Minh: Mọi người cẩn thận nha. Tài khoản Nam đang nhắn riêng mượn tiền.
+Minh: Đừng chuyển nếu chưa gọi xác nhận.
+Mai: Mình nhắn thêm vào nhóm lớp luôn. Có thể không chỉ nhóm mình bị.
+Nam: Cảm ơn mọi người. Tui đang đổi mật khẩu.
 
 <<switch_ui "normal">>
 <<jump CH1_M3_R0_BB_1>>
@@ -168,9 +168,9 @@ position: 267,1384
 -> Xem nội dung mail
 <<switch_ui "show:pc:Mailhocbong_2">>
 
-Minh: “Học bổng?”
-Minh: “5 triệu…”
-Minh: “Đúng lúc thật.”
+Minh: Học bổng?
+Minh: 5 triệu…
+Minh: Đúng lúc thật.
 
 <<wait 2>>
 
@@ -179,6 +179,7 @@ Minh: “Đúng lúc thật.”
 -> Đi hỏi nhóm BTL
     <<jump CH1_M4_R2_BB_1>>
 -> Đi hỏi anh em trong phòng
+    <<switch_ui "normal">>
     <<set_objective "OBJ_CH1_M3_ASK_QUAN">>
     // <<jump CH1_M4_R3_BB_1>>
 ===

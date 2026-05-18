@@ -31,8 +31,8 @@ position: 601,255
 <<wait 2>>
 
 Minh: Sao không thấy tài liệu đâu…
-Minh: “Khoan, tài khoản có lượt đăng nhập mới là sao?”
-Minh: “Hình như không ổn rồi.”
+Minh: Khoan, tài khoản có lượt đăng nhập mới là sao?
+Minh: Hình như không ổn rồi.
 
 <<trace TRACE_SUBMIT_CREDENTIAL 1 "free_doc_login">>
 -> Hỏi Quân
@@ -54,15 +54,15 @@ Minh: “Hình như không ổn rồi.”
 title: CH1_M1_R1_BB_3
 position: 519,422
 ---
-Minh: “Ông ơi, tui vừa đăng nhập cái trang tài liệu này xong mà nó báo đăng nhập mới…”
-Quan: “Khoan. Trang nào?”
-Minh: “Cái bài full tài liệu Giải tích trong group.”
-Quan: “Ông nhập mật khẩu vô đó luôn hả?”
-Minh: “Ừ… tại nó bảo xác minh để lấy Drive.”
-Quan: “Bro…”
-Huy: “Đổi mật khẩu lẹ, nếu đã bị đăng xuất rồi thì bấm quên mật khẩu. Đăng xuất các phiên lạ. Bật xác thực hai lớp nếu có.”
+Minh: Ông ơi, tui vừa đăng nhập cái trang tài liệu này xong mà nó báo đăng nhập mới…
+Quan: Khoan. Trang nào?
+Minh: Cái bài full tài liệu Giải tích trong group.
+Quan: Ông nhập mật khẩu vô đó luôn hả?
+Minh: Ừ… tại nó bảo xác minh để lấy Drive.
+Quan: Bro…
+Huy: Đổi mật khẩu lẹ, nếu đã bị đăng xuất rồi thì bấm quên mật khẩu. Đăng xuất các phiên lạ. Bật xác thực hai lớp nếu có.
 -> Làm những gì anh Huy nói
-    Huy: “Lần sau trang tài liệu mà bắt nhập mật khẩu mạng xã hội thì dừng lại. Tài liệu học không cần quyền đó.”
+    Huy: Lần sau trang tài liệu mà bắt nhập mật khẩu mạng xã hội thì dừng lại. Tài liệu học không cần quyền đó.
     Minh: Thôi để mình nhắn lên nhóm hỏi
     <<jump CH1_M1_R3_BB_2>>
 -> Không làm
@@ -75,8 +75,8 @@ position: 292,12
 ---
 
 
-Minh: “Ông ơi, cái link tài liệu này có ổn không?”
-Quan: “Đâu đưa tui coi.”
+Minh: Ông ơi, cái link tài liệu này có ổn không?
+Quan: Đâu đưa tui coi.
 
 <<trace TRACE_ASK_PERSON 2 "free_doc_link">>
 
@@ -86,21 +86,21 @@ Quan: “Đâu đưa tui coi.”
 title: CH1_M1_R2_BB_2
 position: 292,237
 ---
-Huy: “Em mở thử phần xem trước link, đừng đăng nhập gì hết.”
+Huy: Em mở thử phần xem trước link, đừng đăng nhập gì hết.
 
 -> Mở link
     <<switch_ui "show:pc:Webtailieu_1">>
 
-Huy: “Không phải link trường. Cũng không phải hệ thống lớp.”
+Huy: Không phải link trường. Cũng không phải hệ thống lớp.
 -> Mở tài liệu xem thử
 <<switch_ui "show:pc:Webtailieu_2">>
 -> Mở khóa tài liệu
 <<switch_ui "show:pc:Webtailieu_3">>
-Quan: “Với lại tài liệu gì mà bắt xác minh bằng tài khoản mạng xã hội.”
-Minh: “Vậy bỏ hả?”
-Huy: “Bỏ link đó. Tài liệu thì kiếm từ nguồn khác.”
-Minh: “Nguồn nào ổn hơn anh?”
-Huy: “LMS, nhóm lớp, hoặc hỏi trực tiếp bạn trong nhóm. Cần thì hỏi mấy bạn xem có slide hay đề cương không.”
+Quan: Với lại tài liệu gì mà bắt xác minh bằng tài khoản mạng xã hội.
+Minh: Vậy bỏ hả?
+Huy: Bỏ link đó. Tài liệu thì kiếm từ nguồn khác.
+Minh: Nguồn nào ổn hơn anh?
+Huy: LMS, nhóm lớp, hoặc hỏi trực tiếp bạn trong nhóm. Cần thì hỏi mấy bạn xem có slide hay đề cương không.
 <<trace TRACE_INSPECT_SOURCE 2 "free_doc_link">>
 -> Hỏi các bạn trong Nhóm
     <<jump CH1_M1_R2_BB_3>>
@@ -112,9 +112,9 @@ title: CH1_M1_R2_BB_3
 position: 290,601
 ---
 <<switch_ui "phone_chat">>
-Minh: “Mọi người có nguồn tài liệu nền nào ổn không? Mình thấy mấy link trong group ngoài hơi loạn.”
-Mai: “Mình có slide giới thiệu môn với vài ghi chú từ trang môn học trên hệ thống. Để mình gửi.”
-Nam: “Tui kiếm thêm ví dụ mẫu. Minh lấy phần định nghĩa cơ bản với mở bài thôi là được.”
+Minh: Mọi người có nguồn tài liệu nền nào ổn không? Mình thấy mấy link trong group ngoài hơi loạn.
+Mai: Mình có slide giới thiệu môn với vài ghi chú từ trang môn học trên hệ thống. Để mình gửi.
+Nam: Tui kiếm thêm ví dụ mẫu. Minh lấy phần định nghĩa cơ bản với mở bài thôi là được.
 Minh: Ok, cảm ơn Nam nha, để mình làm
 <<switch_ui "normal">>
 
@@ -129,9 +129,9 @@ position: -8,31
 // <<switch_ui "hide:phone">>
 // <<switch_ui "normal">>
 
-Minh: “Thôi, nhìn rối quá, thấy hơi nguy hiểm.”
-Minh: “Bấm thì cũng ngại, hỏi thì cũng phiền…”
-Minh: “Lát nữa tính tiếp vậy.”
+Minh: Thôi, nhìn rối quá, thấy hơi nguy hiểm.
+Minh: Bấm thì cũng ngại, hỏi thì cũng phiền…
+Minh: Lát nữa tính tiếp vậy.
 
 <<jump CH1_M1_R3_BB_2>>
 ===
@@ -143,9 +143,9 @@ position: -11,409
 Minh: Hình như Nam và mai nhắn rồi, biết làm sao đây..
 -> Mở tin nhắn chat
 <<switch_ui "phone_chat">>
-Mai: “Mọi người gửi phần của mình nha, mình ráp slide.”
-Nam: “Tui gửi ví dụ rồi.”
-Mai: “Minh ơi, phần mở đầu của cậu sao rồi?”
+Mai: Mọi người gửi phần của mình nha, mình ráp slide.
+Nam: Tui gửi ví dụ rồi.
+Mai: Minh ơi, phần mở đầu của cậu sao rồi?
 Minh: Mình xin lỗi, nãy giờ mình chưa kiếm được tài liệu
 Nam: Thôi không sao, để phần đó mình có tìm được tài liệu rồi, cậu cứ lấy phần giới thiệu với mở đầu là được nhé
 Minh: Cảm ơn Nam, để mình làm
@@ -182,7 +182,7 @@ Minh: Chắc mình lên mạng mua vài thứ gì đó
     <<switch_ui "show:phone:Order_1">>
     -> Đặt hàng
         <<switch_ui "show:phone:Order_2">>
-Minh: “Chắc vài ngày nữa tới.”
+Minh: Chắc vài ngày nữa tới.
 
 Minh: Thôi đặt xong rồi, giờ tranh thủ lên trường, hôm nay có buổi sinh hoạt đầu khóa
 <<switch_ui "normal">>
@@ -224,12 +224,12 @@ position: 117,1311
 
 ->Nghe điện thoại
     <<switch_ui "Phone:Phone_call_2">>
-    Minh: “Ai gọi giờ này vậy…”
-    Shipper: “Em là Minh đúng không? Có đơn giao tới KTX nè.”
-    Minh: “Dạ đúng rồi anh.”
-    Shipper: “Anh đang ở cổng. Đơn này cần thanh toán trước 118 nghìn. Em chuyển khoản giúp anh rồi anh gửi bảo vệ cho.”
-    Minh: “Em đang ở hội trường, chắc chưa ra ngay được.”
-    Shipper: “Anh còn nhiều đơn lắm em. Không chuyển nhanh anh hủy đơn hoặc đi đơn khác đó.”
+    Minh: Ai gọi giờ này vậy…
+        Shipper: Em là Minh đúng không? Có đơn giao tới KTX nè.
+        Minh: Dạ đúng rồi anh.
+        Shipper: Anh đang ở cổng. Đơn này cần thanh toán trước 118 nghìn. Em chuyển khoản giúp anh rồi anh gửi bảo vệ cho.
+        Minh: Em đang ở hội trường, chắc chưa ra ngay được.
+        Shipper: Anh còn nhiều đơn lắm em. Không chuyển nhanh anh hủy đơn hoặc đi đơn khác đó.
 ->Không nghe
     Điện thoại: reng renggg
     -> Mở điện thoại
@@ -237,12 +237,12 @@ position: 117,1311
     Thôi để nghe thử xem cái gì
     -> Nghe điện thoại
         <<switch_ui "Phone:Phone_call_2">>
-        Minh: “Ai gọi giờ này vậy…”
-        Shipper: “Em là Minh đúng không? Có đơn giao tới KTX nè.”
-        Minh: “Dạ đúng rồi anh.”
-        Shipper: “Anh đang ở cổng. Đơn này cần thanh toán trước 118 nghìn. Em chuyển khoản giúp anh rồi anh gửi bảo vệ cho.”
-        Minh: “Em đang ở hội trường, chắc chưa ra ngay được.”
-        Shipper: “Anh còn nhiều đơn lắm em. Không chuyển nhanh anh hủy đơn hoặc đi đơn khác đó.”
+        Minh: Ai gọi giờ này vậy…
+        Shipper: Em là Minh đúng không? Có đơn giao tới KTX nè.
+        Minh: Dạ đúng rồi anh.
+        Shipper: Anh đang ở cổng. Đơn này cần thanh toán trước 118 nghìn. Em chuyển khoản giúp anh rồi anh gửi bảo vệ cho.
+        Minh: Em đang ở hội trường, chắc chưa ra ngay được.
+        Shipper: Anh còn nhiều đơn lắm em. Không chuyển nhanh anh hủy đơn hoặc đi đơn khác đó.
 
 <<wait 4>>
 -> Chuyển tiền luôn
