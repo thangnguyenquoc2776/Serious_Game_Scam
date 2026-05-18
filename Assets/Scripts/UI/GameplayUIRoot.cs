@@ -312,7 +312,7 @@ namespace SeriousGame.UI
         {
             if (summaryUI == null) return;
             summaryUI.ShowFromContext();
-            SetPlayerLock(true);
+            SetPlayerHardLock(true);
         }
 
         private void HandleToastRequested(string message)
@@ -348,7 +348,7 @@ namespace SeriousGame.UI
         {
             if (summaryUI != null)
                 summaryUI.Hide();
-            SetPlayerLock(false);
+            SetPlayerHardLock(false);
         }
 
         private void SetPlayerLock(bool locked)
@@ -359,14 +359,42 @@ namespace SeriousGame.UI
                 return;
             }
 
-            if (player == null)
+            var resolvedPlayer = ResolvePlayer();
+            if (resolvedPlayer == null) return;
+
+            Debug.Log($"[GameplayUIRoot] Setting player lock = {locked}");
+            resolvedPlayer.SetLockState(locked);
+        }
+
+        private void SetPlayerHardLock(bool locked)
+        {
+            if (!lockPlayerOnOverlay)
             {
-                Debug.LogWarning("[GameplayUIRoot] PlayerController is null; cannot change lock state.");
+                Debug.Log("[GameplayUIRoot] lockPlayerOnOverlay is false; skipping player hard lock.");
                 return;
             }
 
-            Debug.Log($"[GameplayUIRoot] Setting player lock = {locked}");
-            player.SetLockState(locked);
+            var resolvedPlayer = ResolvePlayer();
+            if (resolvedPlayer == null) return;
+
+            Debug.Log($"[GameplayUIRoot] Setting player hard lock = {locked}");
+            resolvedPlayer.SetHardLock(locked);
+        }
+
+        private PlayerController ResolvePlayer()
+        {
+            if (player != null) return player;
+
+#if UNITY_2023_1_OR_NEWER || UNITY_2022_2_OR_NEWER
+            player = FindAnyObjectByType<PlayerController>();
+#else
+            player = FindObjectOfType<PlayerController>();
+#endif
+
+            if (player == null)
+                Debug.LogWarning("[GameplayUIRoot] PlayerController is null; cannot change lock state.");
+
+            return player;
         }
     }
 }
