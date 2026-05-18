@@ -207,8 +207,10 @@ title: CH1_M1_SIT
 position: -126,1111
 ---
 Ngồi
+<<sit "OBJ_M1_SIT">>
 Thầy giáo: Hôm nay chúng ta sẽ sinh hoạt đầu khóa cho tân sinh viên, thầy xin tự giới thiệu thầy là....
 ...
+<<unsit>>
 <<jump CH1_M1_R0_BB_3>>>>
 ===
 

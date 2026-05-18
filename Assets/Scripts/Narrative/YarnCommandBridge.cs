@@ -18,6 +18,16 @@ namespace SeriousGame.Narrative
             public string id;
             public Transform target;
         }
+
+        [Serializable]
+        private class SeatPoint
+        {
+            public string id;
+            public Transform seat;
+            public Vector3 positionOffset;
+            public Vector3 rotationOffsetEuler;
+            public Vector3 cameraLocalOffset;
+        }
         [Header("Context (optional override)")]
         // [SerializeField] private AppContext contextOverride;
 
@@ -29,6 +39,9 @@ namespace SeriousGame.Narrative
 
         [Header("Teleport Points")]
         [SerializeField] private TeleportPoint[] teleportPoints;
+
+        [Header("Seat Points")]
+        [SerializeField] private SeatPoint[] seatPoints;
 
         // private AppContext Context => contextOverride != null ? contextOverride : GameBootstrap.Context;
         private static AppContext Context => GameBootstrap.Context;
@@ -105,6 +118,41 @@ namespace SeriousGame.Narrative
             }
 
             pc.TeleportTo(target);
+        }
+
+        [YarnCommand("sit")]
+        public static void Sit(string seatId)
+        {
+            if (_instance == null)
+            {
+                Debug.LogWarning("[YarnCommandBridge] Sit failed: bridge instance missing.");
+                return;
+            }
+
+            var seat = _instance.ResolveSeatPoint(seatId);
+            if (seat == null || seat.seat == null)
+            {
+                Debug.LogWarning($"[YarnCommandBridge] Sit failed: seat '{seatId}' not found.");
+                return;
+            }
+
+            var pc = _instance.ResolvePlayer();
+            if (pc == null)
+            {
+                Debug.LogWarning("[YarnCommandBridge] Sit failed: PlayerController not found.");
+                return;
+            }
+
+            pc.Sit(seat.seat, seat.positionOffset, seat.rotationOffsetEuler, seat.cameraLocalOffset);
+        }
+
+        [YarnCommand("unsit")]
+        public static void UnSit()
+        {
+            if (_instance == null) return;
+            var pc = _instance.ResolvePlayer();
+            if (pc == null) return;
+            pc.UnSit();
         }
 
         [YarnCommand("trace")]
@@ -205,6 +253,18 @@ namespace SeriousGame.Narrative
                 if (entry == null || entry.target == null) continue;
                 if (!string.Equals(entry.id, pointId, StringComparison.OrdinalIgnoreCase)) continue;
                 return entry.target;
+            }
+            return null;
+        }
+
+        private SeatPoint ResolveSeatPoint(string seatId)
+        {
+            if (seatPoints == null || string.IsNullOrWhiteSpace(seatId)) return null;
+            foreach (var entry in seatPoints)
+            {
+                if (entry == null || entry.seat == null) continue;
+                if (!string.Equals(entry.id, seatId, StringComparison.OrdinalIgnoreCase)) continue;
+                return entry;
             }
             return null;
         }

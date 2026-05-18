@@ -15,10 +15,23 @@ namespace SeriousGame.Runtime
         public float mouseSensitivity = 2f;
         public Transform cameraHolder;
 
+        [Header("Camera Mode")]
+        public Camera thirdPersonCamera;
+        public Camera firstPersonCamera;
+
+        [Header("Seating")]
+        public bool allowLookWhileSeated = true;
+        public bool allowInteractWhileSeated = false;
+        public bool lockMovementWhileSeated = true;
+
         private Rigidbody rb;
         private float xRotation = 0f;
         // Trong PlayerController.cs
         public bool isLocked = false;
+        private bool hardLocked = false;
+        private bool isSeated = false;
+        private Vector3 originalCameraLocalPos;
+        private Vector3 lastSeatedCameraOffset;
 
         Animator animator;
 
@@ -28,22 +41,43 @@ namespace SeriousGame.Runtime
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             animator = GetComponentInChildren<Animator>();
+
+            if (cameraHolder != null)
+                originalCameraLocalPos = cameraHolder.localPosition;
         }
 
         void Update()
         {   
             if (isLocked) return;
-            HandleMouseLook();
-            HandleInteraction();
+
+            if (!isSeated || allowLookWhileSeated)
+                HandleMouseLook();
+
+            if (!isSeated || allowInteractWhileSeated)
+                HandleInteraction();
         }
 
         // Thêm hàm để điều khiển chuột
     public void SetLockState(bool locked)
-        {   Debug.Log($"[PlayerController] SetLockState: {locked}");
+        {
+            if (hardLocked && !locked) return;
+            ApplyLockState(locked);
+        }
+
+        public void SetHardLock(bool locked)
+        {
+            hardLocked = locked;
+            ApplyLockState(locked);
+        }
+
+        private void ApplyLockState(bool locked)
+        {
+            Debug.Log($"[PlayerController] SetLockState: {locked}");
             isLocked = locked;
             Cursor.lockState = locked ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = locked;
-            rb.linearVelocity = Vector3.zero; // Dừng lập tức
+            if (rb != null)
+                rb.linearVelocity = Vector3.zero; // Dừng lập tức
 
             // Khi khoá điều khiển, đảm bảo Animator không còn trạng thái đi bộ
             if (locked && animator != null)
@@ -54,6 +88,7 @@ namespace SeriousGame.Runtime
         void FixedUpdate()
         {   
             if (isLocked) return;
+            if (isSeated && lockMovementWhileSeated) return;
             HandleMovement();
         }
 
@@ -106,6 +141,57 @@ namespace SeriousGame.Runtime
                     interactable?.Interact();
                 }
             }
+        }
+
+        public void Sit(Transform seat, Vector3 positionOffset, Vector3 rotationOffsetEuler, Vector3 cameraLocalOffset)
+        {
+            if (seat == null) return;
+
+            if (!isSeated)
+            {
+                if (rb != null)
+                    lastSeatedCameraOffset = Vector3.zero;
+                if (cameraHolder != null)
+                    originalCameraLocalPos = cameraHolder.localPosition;
+            }
+
+            isSeated = true;
+            lastSeatedCameraOffset = cameraLocalOffset;
+
+            var worldPos = seat.TransformPoint(positionOffset);
+            if (rb != null)
+                rb.position = worldPos;
+            else
+                transform.position = worldPos;
+
+            transform.rotation = seat.rotation * Quaternion.Euler(rotationOffsetEuler);
+
+            if (rb != null)
+                rb.linearVelocity = Vector3.zero;
+
+            if (cameraHolder != null)
+                cameraHolder.localPosition = originalCameraLocalPos + cameraLocalOffset;
+
+            SetCameraMode(true);
+        }
+
+        public void UnSit()
+        {
+            if (!isSeated) return;
+
+            isSeated = false;
+            if (cameraHolder != null)
+                cameraHolder.localPosition = originalCameraLocalPos;
+
+            SetCameraMode(false);
+        }
+
+        private void SetCameraMode(bool firstPerson)
+        {
+            if (thirdPersonCamera != null)
+                thirdPersonCamera.enabled = !firstPerson;
+            if (firstPersonCamera != null)
+                firstPersonCamera.enabled = firstPerson;
         }
 
         // Teleport player tới một vị trí/rotation định trước (ví dụ: phòng office)

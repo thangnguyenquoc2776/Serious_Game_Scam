@@ -159,6 +159,9 @@ Minh: Hình như có mail, để xem cái gì thế nhỉ
 title: CH1_M3_R0_BB_3
 position: 267,1384
 ---
+
+->Ngồi
+<<sit "OBJ_CH1_M3_CHECKMAIL">>
 // <<set_objective "OBJ_M4_CHECK_EMAIL">>
 Để xem mail gì đây
 <<switch_ui "show:pc:Mailhocbong_1">>
@@ -179,6 +182,7 @@ Minh: Đúng lúc thật.
 -> Đi hỏi nhóm BTL
     <<jump CH1_M4_R2_BB_1>>
 -> Đi hỏi anh em trong phòng
+    <<unsit>>
     <<switch_ui "normal">>
     <<set_objective "OBJ_CH1_M3_ASK_QUAN">>
     // <<jump CH1_M4_R3_BB_1>>
