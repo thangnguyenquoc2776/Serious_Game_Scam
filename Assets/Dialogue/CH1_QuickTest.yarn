@@ -15,6 +15,10 @@ Quick test menu - choose a module
     <<jump TEST_M4>>
 -> Test M5 (end game)
     <<jump CH1_M5_OPEN_RECAP>>
+-> Test sit
+    <<sit "room_chair">>
+-> Test teleport
+    <<teleport_to "school">>
 ===
 
 title: TEST_M0
@@ -29,15 +33,13 @@ title: TEST_M1
 ---
 <<set_milestone 1>>
 // <<set_objective "OBJ_M0_FIND_DOCUMENT">>
-<<teleport_to "table">>
+  <<sit "room_chair">>
 <<jump CH1_M0_R0_BB_12>>
 ===
 
 title: TEST_M2
 ---
 <<set_milestone 2>>
-<<set_objective "OBJ_M1_SIT">>
-// <<teleport_to "classroom2">>
 <<jump CH1_M1_DI_TOI_TRUONG>>
 ===
 

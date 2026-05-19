@@ -24,6 +24,12 @@ namespace SeriousGame.State
                 if (!string.IsNullOrWhiteSpace(key))
                     _states[key] = DefaultScoreValue;
             }
+            for (int i = 0; i < GameStateKeys.AllFlagKeys.Length; i++)
+            {
+                var key = GameStateKeys.AllFlagKeys[i];
+                if (!string.IsNullOrWhiteSpace(key))
+                    _flags[key] = false;
+            }
         }
 
         public int Get(string key)
@@ -48,13 +54,13 @@ namespace SeriousGame.State
 
         public bool CheckFlag(string key)
         {
-            if (!IsKeyAllowed(key)) return false;
+            if (!IsFlagKeyAllowed(key)) return false;
             return _flags.TryGetValue(key, out var value) && value;
         }
 
         public void SetFlag(string key, bool value)
         {
-            if (!IsKeyAllowed(key)) return;
+            if (!IsFlagKeyAllowed(key)) return;
             _flags[key] = value;
             Debug.Log($"[PlayerStateService] Set flag '{key}' to {value}");
         }
@@ -76,7 +82,7 @@ namespace SeriousGame.State
             int count = 0;
             foreach (var kv in _flags)
             {
-                if (kv.Key.StartsWith(prefix) && kv.Value && IsKeyAllowed(kv.Key))
+                if (kv.Key.StartsWith(prefix) && kv.Value && IsFlagKeyAllowed(kv.Key))
                     count++;
             }
             return count;
@@ -132,7 +138,7 @@ namespace SeriousGame.State
                 {
                     var entry = snapshot.flags[i];
                     if (entry == null || string.IsNullOrWhiteSpace(entry.key)) continue;
-                    if (!IsKeyAllowed(entry.key)) continue;
+                    if (!IsFlagKeyAllowed(entry.key)) continue;
                     _flags[entry.key] = entry.value;
                 }
             }
@@ -142,6 +148,12 @@ namespace SeriousGame.State
                 var key = GameStateKeys.DefaultKeys[i];
                 if (!string.IsNullOrWhiteSpace(key) && !_states.ContainsKey(key))
                     _states[key] = DefaultScoreValue;
+            }
+            for (int i = 0; i < GameStateKeys.AllFlagKeys.Length; i++)
+            {
+                var key = GameStateKeys.AllFlagKeys[i];
+                if (!string.IsNullOrWhiteSpace(key) && !_flags.ContainsKey(key))
+                    _flags[key] = false;
             }
         }
 
@@ -153,6 +165,13 @@ namespace SeriousGame.State
         private static bool IsKeyAllowed(string key)
         {
             return GameStateKeys.IsValid(key);
+        }
+        private static bool IsFlagKeyAllowed(string key)
+        {
+            // Nếu bạn muốn Yarn có thể tạo cờ thoải mái mà không cần khai báo trước trong script,
+            // bạn có thể chỉ cần đổi hàm này thành: return !string.IsNullOrWhiteSpace(key);
+            // Nhưng để quản lý code tốt (như cách bạn đang làm), thì hãy giữ như dưới đây:
+            return GameStateKeys.IsValidFlag(key);
         }
     }
 }

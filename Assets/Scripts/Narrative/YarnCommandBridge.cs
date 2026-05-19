@@ -293,19 +293,6 @@ namespace SeriousGame.Narrative
             ctx.Save.SaveCurrent(episodeId, currentNode, currentMilestone);
         }
 
-        // [YarnCommand("show_phone_chat")]
-        // public static void ShowPhoneChat(string interactionId)
-        // {
-        //     if (string.IsNullOrWhiteSpace(interactionId)) return;
-        //     SeriousGame.App.GameEventBus.RaisePhoneChatRequested(interactionId);
-        // }
-
-        // [YarnCommand("show_pc_chat")]
-        // public static void ShowPcChat(string interactionId)
-        // {
-        //     if (string.IsNullOrWhiteSpace(interactionId)) return;
-        //     SeriousGame.App.GameEventBus.RaisePcChatRequested(interactionId);
-        // }
 
         [YarnCommand("switch_ui")]
         public static void SwitchUI(string uitype)
@@ -313,19 +300,6 @@ namespace SeriousGame.Narrative
             SeriousGame.App.GameEventBus.RaiseSwitchUIRequested(uitype);
         }
 
-        // [YarnCommand("show_chat")]
-        // public static void ShowChat(string characterName, string message)
-        // {
-        //     if (string.IsNullOrWhiteSpace(message)) return;
-        //     SeriousGame.App.GameEventBus.RaisePhoneMessageReceived(characterName, message);
-        // }
-
-        // [YarnCommand("show_hint")]
-        // public static void ShowHint(string message)
-        // {
-        //     if (string.IsNullOrWhiteSpace(message)) return;
-        //     SeriousGame.App.GameEventBus.RaiseHintRequested(message);
-        // }
 
         [YarnCommand("set_state")]
         public static void SetState(string key, int value)
@@ -333,6 +307,14 @@ namespace SeriousGame.Narrative
             var ctx = Context;
             if (ctx == null || ctx.PlayerState == null) return;
             ctx.PlayerState.Set(key, value);
+        }
+
+        [YarnFunction("get_state")]
+        public static int GetState(string key)
+        {
+            var ctx = GameBootstrap.Context;
+            if (ctx == null || ctx.PlayerState == null) return 0;
+            return ctx.PlayerState.Get(key);
         }
 
         [YarnCommand("set_flag")]
@@ -350,15 +332,6 @@ namespace SeriousGame.Narrative
         {
             SetFlag(key, false);
         }
-
-        [YarnFunction("get_state")]
-        public static int GetState(string key)
-        {
-            var ctx = GameBootstrap.Context;
-            if (ctx == null || ctx.PlayerState == null) return 0;
-            return ctx.PlayerState.Get(key);
-        }
-
         [YarnFunction("get_flag")]
         public static bool GetFlag(string key)
         {
@@ -367,6 +340,7 @@ namespace SeriousGame.Narrative
             if (ctx == null || ctx.PlayerState == null) return false;
             return ctx.PlayerState.CheckFlag(key);
         }
+
 
         // [YarnCommand("show_toast")]
         // public static void ShowToast(string message)

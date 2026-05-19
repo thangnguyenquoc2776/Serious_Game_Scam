@@ -5,24 +5,31 @@ position: 46,17
 -> Mở điện thoại nhắn hỏi Quân
 <<switch_ui "phone_chat">>
 
-Minh: Ông ơi, có shipper gọi bảo chuyển khoản trước rồi gửi đồ ở cổng. Có nên chuyển không?
+Minh: Quân ơi ông có ở đó không cho tui hỏi xíu
+Minh: Hồi tuần trước tui có đặt mua vài món đồ online
+Minh: Nay có shipper gọi bảo chuyển khoản trước rồi gửi đồ ở cổng. Tui có nên chuyển không?
 
 <<wait 4>>
 
 <<switch_ui "normal">>
-Minh: Ây da, chắc bận rồi nên không trả lời
-
-<<trace TRACE_ASK_PERSON 3 "shipper_call">>
+Minh: Chắc Quân bận rồi nên không trả lời
+Minh: Mình phải tự giải quyết thôi
 
 -> Mở điện thoại tiếp tục cuộc gọi
 <<switch_ui "show:phone:Phone_call_2">>
-Shipper: Em ơi, anh còn đứng ở cổng nè. Chuyển giúp anh lẹ đi, anh còn chạy đơn khác.
-Minh: Dạ… để em xem chút.
-Shipper: Xem gì nữa em, đúng tên Minh, đúng KTX tòa A rồi. Em không nhận thì anh hủy đơn đó.
+Shipper: Em ơi, anh còn đứng ở cổng nè. Chuyển giúp anh lẹ đi, anh còn chạy đơn khác nữa
+Minh: Dạ… để em xem chút
+Shipper: Xem gì nữa em, đúng tên Minh, đúng KTX tòa A rồi. Em không nhận thì anh hủy đơn đó
+Shipper: Lẹ lên đi em ơi anh không có thời gian
+Shipper: Em không tranh thủ lấy, đơn sẽ bị hủy và trả về cửa hàng đó nhé
 
 -> Chuyển tiền luôn
+    <<trace TRACE_TRANSFER_MONEY 1 "shipper_call">>
+    <<trace TRACE_IGNORE_RED_FLAG 1 "shipper_call">>
+    <<trace TRACE_ACT_UNDER_PRESSURE 1 "shipper_call">>
     <<jump CH1_M2_R1_BB_1>>
 -> Hẹn lại hôm khác
+    <<trace TRACE_DELAY_ACTION 2 "shipper_call">>
     <<jump CH1_M2_R2_BB_1>>
 ===
 
@@ -32,10 +39,10 @@ position: 317,220
 <<set_milestone 2>>
 <<switch_ui "show:phone:Phone_call_2">>
 
-Minh: Em đang ở hội trường, không ra được liền.
+Minh: Em đang ở hội trường, không ra được liền
 Shipper: Vậy chuyển khoản đi em. Anh để lại cho bảo vệ nhé, lát em xuống lấy.
-Minh: Dạ… số tài khoản anh đọc lại giúp em.
-Shipper: Rồi, em chuyển đúng nội dung tên Minh nha.
+Minh: Dạ… số tài khoản anh đọc lại giúp em
+Shipper: Rồi, em chuyển đúng nội dung tên Minh nha
 
 ->Mở app ngân hàng
 <<switch_ui "show:phone:Bank_1">>
@@ -45,32 +52,33 @@ Shipper: Rồi, em chuyển đúng nội dung tên Minh nha.
 <<switch_ui "show:phone:Bank_3">>
 ->Nhập OTP
 <<switch_ui "show:phone:Bank_4">>
-
+->Xác nhận OTP
 <<wait 2>>
 <<switch_ui "show:phone:Bank_5">>
 Rồi giao dịch thành công
 
-<<trace TRACE_TRANSFER_MONEY 1 "shipper_call">>
-<<trace TRACE_IGNORE_RED_FLAG 1 "shipper_call">>
-<<trace TRACE_ACT_UNDER_PRESSURE 1 "shipper_call">>
+<<switch_ui "show:phone:Phone_call_2">>
+Minh: Em chuyển rồi đó anh
+Shipper: Ừ, anh gửi bảo vệ nha
 
 <<switch_ui "normal">>
 <<fade_in_out "1" "1">>
 <<wait 1>>
-Minh: Sinh hoạt xong rồi, giờ ra lấy hàng thôi
+Minh: Sinh hoạt xong rồi, chắc giờ mình xuống cổng KTX lấy hàng thôi
 <<set_objective "OBJ_CH1_M2_TAKE_SHIP">>
 ===
 
 title: CH1_M2_TAKE_SHIP
 position: 366,393
 ---
-Đi ra cổng nhận hàng
-<<fade_in_out "1" "1">>
-<<wait 1>>
-<<teleport_to "gate">>
-<<wait 2 >>
-<<set_objective "OBJ_CH1_M2_TAKE_SHIP_2">>
-Đi ra hỏi bác bảo vệ về gói hàng
+->Đi ra cổng KTX
+    <<fade_in_out "1" "1">>
+    <<wait 1>>
+    <<teleport_to "gate">>
+    <<wait 2 >>
+    <<set_objective "OBJ_CH1_M2_TAKE_SHIP_2">>
+    Mình: Giờ đi ra hỏi bác bảo vệ về gói hàng
+->Hủy
 
 ===
 
@@ -94,15 +102,16 @@ Minh: Anh ơi cho em hỏi hồi nãy có anh shipper nào gửi lại gói hàn
 Shipper: Em tên gì ?
 Minh: Dạ em tên Minh
 
-<<wait 2>>
+<<wait 1>>
 Shipper: Không có em ơi, nãy giờ không có ai gửi lại hàng hết
 Minh: Dạ hồi nãy anh shipper gọi em, nói em chuyển tiền rồi ảnh để lại đồ, giờ em xong em mới xuống lấy ạ
 Shipper: Em kiểm tra lại xem, mở app lên xem lại đơn thử
 -> Mở app kiểm tra lại đơn
-<<wait 2>>
-<<switch_ui "show:phone:Order_3">>
-
-Trạng thái đang vận chuyển, ôi thôi xong rồi...
+    <<trace TRACE_READ_RELEVANT_INFO 1 "shipper_call">>
+    <<wait 1>>
+    <<switch_ui "show:phone:Order_3">>
+    Trạng thái đang vận chuyển, vậy là đơn của mình chưa tới mà. Thôi xong rồi...
+-> Không kiểm tra
 
 <<switch_ui "normal">>
 
@@ -115,16 +124,24 @@ position: 12,237
 <<set_milestone 2>>
 <<switch_ui "show:phone:Phone_call_2">>
 
-Minh: Anh ơi, giờ em đang ở hội trường nên không ra được.
-Shipper: Vậy em chuyển khoản trước đi. Anh để hàng lại cho bảo vệ.
-Minh: Dạ thôi, nếu không giao được thì anh hẹn lại giúp em. Em sẽ nhận trực tiếp sau.
-Shipper: Anh còn nhiều đơn lắm. Không chuyển giờ thì anh hủy đó.
-Minh: Dạ, vậy anh hủy hoặc giao lại sau giúp em. Em không chuyển khi chưa nhận hàng được.
-
-<<trace TRACE_DELAY_ACTION 2 "shipper_call">>
+Minh: Anh ơi, giờ em đang ở hội trường nên không ra được
+Shipper: Vậy em chuyển khoản trước đi. Anh để hàng lại cho bảo vệ
+Minh: Dạ thôi, nếu không giao được thì anh hẹn lại giúp em. Em sẽ nhận trực tiếp sau
+Shipper: Anh còn nhiều đơn lắm. Không chuyển giờ thì anh hủy đó, nhanh đi em anh không có thời gian
+Shipper: Anh hủy đơn là em phải đặt lại đó nha
+Shipper: Anh nói thật
+Shipper: Anh đem hàng tới đây rồi, giờ anh gửi bác bảo vệ. Em chỉ cần chuyển khoản cho anh
+Shipper: Xíu em xuống bác bảo vệ lấy hàng. Anh còn nhiều đơn nên giờ anh phải đi gấp
+-> Chuyển tiền luôn
+    <<trace TRACE_TRANSFER_MONEY 1 "shipper_call">>
+    <<trace TRACE_IGNORE_RED_FLAG 1 "shipper_call">>
+    <<trace TRACE_ACT_UNDER_PRESSURE 1 "shipper_call">>
+    <<jump CH1_M2_R1_BB_1>>
+-> Từ chối chuyển khoản
+    Minh: Dạ, vậy anh hủy hoặc giao lại sau giúp em. Em không chuyển khi chưa nhận hàng được
+    <<trace TRACE_DETECT_RED_FLAG 2 "shipper_call">>
 
 <<switch_ui "normal">>
-<<fade_in_out "1" "1">>
 <<wait 1>>
 
 <<jump CH1_M2_R2_BB_2>>
@@ -135,14 +152,13 @@ position: 12,462
 ---
 Minh: Mình có nên kiểm tra lại đơn hàng cái không nhỉ?
 -> Kiểm tra
+    <<trace TRACE_READ_RELEVANT_INFO 1 "shipper_call">>
     <<wait 2>>
     <<switch_ui "show:phone:Order_3">>
     Minh: Dự kiến giao ngày mai…
-    Minh: Vậy số hồi nãy chắc không phải shipper đơn này. Hên thật
-    <<trace TRACE_DETECT_RED_FLAG 1 "shipper_call">>
+    Minh: Nghĩa là số hồi nãy không phải shipper đơn này. Vậy người hồi nãy gọi cho mình là ai ?
 -> Thôi kệ 
-    <<trace TRACE_IGNORE_RED_FLAG 1 "shipper_call">>
-
+<<switch_ui "normal">>
 
 <<jump CH1_M2_R0_BB_1>>
 ===
@@ -152,39 +168,37 @@ position: 8,1010
 ---
 
 <<fade_in 2>>
-// <<wait 2>>
-// Nếu gặp phải những tình huống tương tự như shipper lúc nãy, bạn nên bình tĩnh, kiểm tra lại, xác minh thông tin. Không nên hành động vội vã khi bị hối thúc. Áp lực về tâm lý, thời gian là một trong những tác nhân làm thay đổi hành vi con người
+<<wait 2>>
+Nếu gặp phải những tình huống tương tự như shipper lúc nãy, bạn nên bình tĩnh, kiểm tra lại, xác minh thông tin. Không nên hành động vội vã khi bị hối thúc. Áp lực về tâm lý, thời gian là một trong những tác nhân làm thay đổi hành vi con người
 
 <<wait 2>>
-Tối hôm đó, lúc tui đang ngồi làm bài tập lớn...
-// Minh: “Mấy chuyện nhỏ nhỏ này mà không để ý là rối thật.”
-// Minh: “Thôi, làm bài cho xong đã.”
+Đã trôi qua vài ngày kể từ vụ shipper. 
+Sau buổi thuyết trình đầu tiên, nhóm tôi vẫn giữ liên lạc để sửa lại vài phần ghi chú và chuẩn bị cho các bài tiếp theo. Nam hay gửi ví dụ, Mai thường tổng kết lại để rõ ràng hơn, còn tôi cố học cách đừng để phần mình trôi sát deadline nữa..
+Tối hôm đó, lúc tui đang ngồi làm bài thì...
 
+<<jump CH1_M2_R0_BB_2>>
+===
 
-// <<jump CH1_M2_R0_BB_2>>
-// ===
+title: CH1_M2_R0_BB_2
+position: 9,1171
+---
 
-// title: CH1_M2_R0_BB_2
-// position: 9,1171
-// ---
-// // Minh: “Hôm sau, mình gần như ngồi làm bài cả ngày.”
-// // Minh: “Sáng xem lại tài liệu. Chiều sửa phần ghi chú. Tối mở laptop lên lần nữa.”
+<<jump CH1_M2_R0_BB_3>>
 
-// <<jump CH1_M2_R0_BB_3>>
+===
 
-// ===
-
-// title: CH1_M2_R0_BB_3
-// position: 10,1346
-// ---
-<<teleport_to "bed">>
+title: CH1_M2_R0_BB_3
+position: 10,1346
+---
+// <<teleport_to "bed">>
+<<sit "room_chair">>
 <<wait 2>>
 <<fade_out 2>>
 
 // <<fade_in_out "1" "1">>
 Minh: Hình như có ai nhắn tin
 ->Kiểm tra tin nhắn
-// <<set_objective "OBJ_M3_OPEN_NAM_CHAT">>
+<<set_objective "OBJ_M3_OPEN_NAM_CHAT">>
 <<switch_ui "phone_chat">>
 
 Nam: Minh ơi, ông còn thức không?
@@ -199,7 +213,6 @@ Nam: Ông chuyển qua số này giúp tui nha. Tài khoản bạn tui, tui đan
 -> Hỏi anh em trong phòng
     <<trace TRACE_ASK_PERSON 2 "nam_private_chat">>
     <<set_objective "OBJ_CH1_M3_ASK_QUAN">>
-    // <<jump CH1_M3_R2_BB_1>>
 -> Chất vấn lại
     <<trace TRACE_DETECT_RED_FLAG 3 "nam_private_chat">>
     <<jump CH1_M3_TC_1>>

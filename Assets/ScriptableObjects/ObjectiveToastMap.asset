@@ -32,8 +32,8 @@ MonoBehaviour:
     - OBJ_M0_SCAN_QR
   - message: "\u0110I \u0110\u1EBEN TR\u01AF\u1EDCNG"
     objectiveIds:
-    - OBJ_M0_ENTER_CLASS
     - OBJ_M1_ENTER_CLASS
+    - OBJ_M0_GO_SCHOOL
   - message: "\u0110I V\u1EC0"
     objectiveIds:
     - OBJ_M0_LEAVE_CLASS
@@ -63,3 +63,6 @@ MonoBehaviour:
   - message: "KI\u1EC2M TRA MAIL"
     objectiveIds:
     - OBJ_CH1_M3_CHECKMAIL
+  - message: "V\xC0O L\u1EDAP"
+    objectiveIds:
+    - OBJ_M0_ENTER_CLASS
