@@ -19,9 +19,9 @@ Quick test menu - choose a module
 
 title: TEST_M0
 ---
-<<set_milestone 0>>
-<<set_objective "OBJ_M0_TALK_GUARD">>
-<<teleport_to "gate">>
+// <<set_milestone 0>>
+// <<set_objective "OBJ_M0_TALK_GUARD">>
+// <<teleport_to "gate">>
 <<jump CH1_M0_R0_BB_1>>
 ===
 
