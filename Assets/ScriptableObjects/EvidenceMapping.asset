@@ -112,11 +112,11 @@ MonoBehaviour:
       delta: 4
     - scoreKey: SCORE_COMMUNITY_WARNING
       delta: 0
-  - traceId: XXXX
-    displayName: "Nh\u1EADn ra d\u1EA5u hi\u1EC7u b\u1EA5t th\u01B0\u1EDDng"
-    description: "Ng\u01B0\u1EDDi ch\u01A1i ti\u1EBFp t\u1EE5c l\xE0m theo d\xF9
-      t\xECnh hu\u1ED1ng \u0111\xE3 c\xF3 d\u1EA5u hi\u1EC7u \u0111\xE1ng ng\u1EDD
-      \u0111\u01B0\u1EE3c th\u1EC3 hi\u1EC7n r\xF5."
+  - traceId: TRACE_DELAY_ACTION
+    displayName: "Tr\xEC ho\xE3n \u0111\u1EC3 ki\u1EC3m tra"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i kh\xF4ng h\xE0nh \u0111\u1ED9ng ngay,
+      xin th\xEAm th\u1EDDi gian, h\u1EB9n l\u1EA1i ho\u1EB7c d\u1EEBng nh\u1ECBp
+      quy\u1EBFt \u0111\u1ECBnh \u0111\u1EC3 ki\u1EC3m tra th\xEAm."
     scoreDeltas:
     - scoreKey: SCORE_RISK_RECOGNITION
       delta: 0
@@ -128,8 +128,8 @@ MonoBehaviour:
       delta: 0
     - scoreKey: SCORE_COMMUNITY_WARNING
       delta: 0
-  - traceId: XXXX
-    displayName: "Nh\u1EADn ra d\u1EA5u hi\u1EC7u b\u1EA5t th\u01B0\u1EDDng"
+  - traceId: TRACE_REFUSE_RISKY_REQUEST
+    displayName: "T\u1EEB ch\u1ED1i y\xEAu c\u1EA7u r\u1EE7i ro"
     description: "Ng\u01B0\u1EDDi ch\u01A1i t\u1EEB ch\u1ED1i l\xE0m theo y\xEAu
       c\u1EA7u ch\u01B0a x\xE1c minh, t\u1EEB ch\u1ED1i chuy\u1EC3n ti\u1EC1n, t\u1EEB
       ch\u1ED1i nh\u1EADp th\xF4ng tin ho\u1EB7c t\u1EEB ch\u1ED1i ti\u1EBFp t\u1EE5c
@@ -145,11 +145,10 @@ MonoBehaviour:
       delta: 0
     - scoreKey: SCORE_COMMUNITY_WARNING
       delta: 0
-  - traceId: XXXX
-    displayName: "Nh\u1EADn ra d\u1EA5u hi\u1EC7u b\u1EA5t th\u01B0\u1EDDng"
-    description: "Ng\u01B0\u1EDDi ch\u01A1i ti\u1EBFp t\u1EE5c l\xE0m theo d\xF9
-      t\xECnh hu\u1ED1ng \u0111\xE3 c\xF3 d\u1EA5u hi\u1EC7u \u0111\xE1ng ng\u1EDD
-      \u0111\u01B0\u1EE3c th\u1EC3 hi\u1EC7n r\xF5."
+  - traceId: TRACE_OPEN_UNVERIFIED_LINK
+    displayName: "M\u1EDF link ch\u01B0a x\xE1c minh"
+    description: "Ng\u01B0\u1EDDi ch\u01A1i m\u1EDF \u0111\u01B0\u1EDDng d\u1EABn
+      ch\u01B0a r\xF5 ngu\u1ED3n ho\u1EB7c ch\u01B0a x\xE1c minh."
     scoreDeltas:
     - scoreKey: SCORE_RISK_RECOGNITION
       delta: -2
@@ -161,8 +160,8 @@ MonoBehaviour:
       delta: 0
     - scoreKey: SCORE_COMMUNITY_WARNING
       delta: 0
-  - traceId: XXXX
-    displayName: "Nh\u1EADn ra d\u1EA5u hi\u1EC7u b\u1EA5t th\u01B0\u1EDDng"
+  - traceId: TRACE_OPEN_UNVERIFIED_FORM
+    displayName: "M\u1EDF form ch\u01B0a x\xE1c minh"
     description: "Ng\u01B0\u1EDDi ch\u01A1i m\u1EDF bi\u1EC3u m\u1EABu ch\u01B0a
       r\xF5 ngu\u1ED3n, ch\u01B0a x\xE1c minh \u0111\u01A1n v\u1ECB qu\u1EA3n l\xFD
       ho\u1EB7c c\xF3 d\u1EA5u hi\u1EC7u m\u1EADp m\u1EDD."
