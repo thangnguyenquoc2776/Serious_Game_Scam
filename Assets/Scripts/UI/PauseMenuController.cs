@@ -70,14 +70,5 @@ namespace SeriousGame.UI
             if (flowManager != null)
                 flowManager.QuitToMenu();
         }
-
-        public void QuitGame()
-        {
-            if (pauseTime)
-                Time.timeScale = 1f;
-
-            if (flowManager != null)
-                flowManager.QuitGame();
-        }
     }
 }
