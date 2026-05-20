@@ -67,8 +67,18 @@ namespace SeriousGame.App
         private void OnApplicationQuit()
         {
             var ctx = Context;
-            if (ctx != null && ctx.Trace != null)
-                ctx.Trace.SendSessionDataBlocking(false);
+            if (ctx != null && ctx.Trace != null && IsEpisodeScene())
+                ctx.Trace.SendSessionDataOnQuitBlocking();
+        }
+
+        private bool IsEpisodeScene()
+        {
+            if (config == null || string.IsNullOrWhiteSpace(config.demoEpisodeSceneName)) return false;
+
+            var active = SceneManager.GetActiveScene().name;
+            if (string.IsNullOrWhiteSpace(active)) return false;
+
+            return string.Equals(active, config.demoEpisodeSceneName, StringComparison.OrdinalIgnoreCase);
         }
 
     }

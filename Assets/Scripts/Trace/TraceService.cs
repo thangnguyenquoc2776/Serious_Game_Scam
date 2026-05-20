@@ -17,6 +17,10 @@ namespace SeriousGame.Trace
         private readonly SessionService _session;
         private readonly PlayerStateService _state;
         private readonly AppConfigSO _config;
+        private string _sentSessionId;
+        private string _sendInProgressSessionId;
+        private string _completedSessionId;
+        private string _completedChapterId;
 
         public TraceService(
             ITraceStore store,
@@ -86,6 +90,16 @@ namespace SeriousGame.Trace
                 return false;
             }
 
+            var sessionId = _session.CurrentSessionId;
+            if (isCompleted && !string.IsNullOrWhiteSpace(sessionId))
+            {
+                _completedSessionId = sessionId;
+                _completedChapterId = chapterId;
+            }
+
+            if (!CanSendSession(sessionId, isCompleted))
+                return false;
+
             if (_config == null || string.IsNullOrWhiteSpace(_config.firebaseProjectId))
             {
                 Debug.LogWarning("[TraceService] Missing Firebase project ID.");
@@ -103,7 +117,21 @@ namespace SeriousGame.Trace
 
             var cloud = new CloudTraceStore();
             Debug.Log($"[TraceService] Sending session data for session '{dto.session_id}' with {dto.traces.Count} traces, total playtime {dto.total_playtime_seconds} seconds, is_completed={dto.is_completed}");
-            return await cloud.SendSessionData(dto, _config.firebaseProjectId, _session.AuthToken);
+            _sendInProgressSessionId = sessionId;
+            try
+            {
+                var ok = await cloud.SendSessionData(dto, _config.firebaseProjectId, _session.AuthToken);
+                if (ok)
+                {
+                    _sentSessionId = sessionId;
+                }
+                return ok;
+            }
+            finally
+            {
+                if (IsSameSession(_sendInProgressSessionId, sessionId))
+                    _sendInProgressSessionId = null;
+            }
         }
 
         //ham nay tuong tu nhu SendSessionData, nhung thay vi su dung async/await thi ham se thuc hien gui du lieu mot cach blocking, co the phu hop hon trong mot so tinh huong (vd: khi ket thuc chapter, muon dam bao du lieu da duoc gui len cloud truoc khi cho phep player tiep tuc vao chapter tiep theo)
@@ -114,6 +142,16 @@ namespace SeriousGame.Trace
                 Debug.LogWarning("[TraceService] Missing SessionService.");
                 return false;
             }
+
+            var sessionId = _session.CurrentSessionId;
+            if (isCompleted && !string.IsNullOrWhiteSpace(sessionId))
+            {
+                _completedSessionId = sessionId;
+                _completedChapterId = chapterId;
+            }
+
+            if (!CanSendSession(sessionId, isCompleted))
+                return false;
 
             if (_config == null || string.IsNullOrWhiteSpace(_config.firebaseProjectId))
             {
@@ -131,7 +169,99 @@ namespace SeriousGame.Trace
             if (dto == null) return false;
 
             var cloud = new CloudTraceStore();
-            return cloud.SendSessionDataBlocking(dto, _config.firebaseProjectId, _session.AuthToken);
+            _sendInProgressSessionId = sessionId;
+            try
+            {
+                var ok = cloud.SendSessionDataBlocking(dto, _config.firebaseProjectId, _session.AuthToken);
+                if (ok)
+                {
+                    _sentSessionId = sessionId;
+                }
+                return ok;
+            }
+            finally
+            {
+                if (IsSameSession(_sendInProgressSessionId, sessionId))
+                    _sendInProgressSessionId = null;
+            }
+        }
+
+        public async Task<bool> SendSessionDataOnQuit()
+        {
+            if (_session == null)
+            {
+                Debug.LogWarning("[TraceService] Missing SessionService.");
+                return false;
+            }
+
+            var sessionId = _session.CurrentSessionId;
+            if (string.IsNullOrWhiteSpace(sessionId)) return false;
+
+            if (IsSessionCompleted(sessionId))
+                return await SendSessionData(true, _completedChapterId ?? string.Empty);
+
+            return await SendSessionData(false);
+        }
+
+        public bool SendSessionDataOnQuitBlocking()
+        {
+            if (_session == null)
+            {
+                Debug.LogWarning("[TraceService] Missing SessionService.");
+                return false;
+            }
+
+            var sessionId = _session.CurrentSessionId;
+            if (string.IsNullOrWhiteSpace(sessionId)) return false;
+
+            if (IsSessionCompleted(sessionId))
+                return SendSessionDataBlocking(true, _completedChapterId ?? string.Empty);
+
+            return SendSessionDataBlocking(false);
+        }
+
+        private bool IsSameSession(string left, string right)
+        {
+            if (string.IsNullOrWhiteSpace(left) || string.IsNullOrWhiteSpace(right)) return false;
+            return string.Equals(left, right, StringComparison.Ordinal);
+        }
+
+        private bool IsSessionCompleted(string sessionId)
+            => IsSameSession(_completedSessionId, sessionId);
+
+        private bool HasSentSession(string sessionId)
+            => IsSameSession(_sentSessionId, sessionId);
+
+        private bool IsSendInProgress(string sessionId)
+            => IsSameSession(_sendInProgressSessionId, sessionId);
+
+        private bool CanSendSession(string sessionId, bool isCompleted)
+        {
+            if (string.IsNullOrWhiteSpace(sessionId))
+            {
+                Debug.LogWarning("[TraceService] SessionId is empty.");
+                return false;
+            }
+
+            if (IsSendInProgress(sessionId))
+            {
+                Debug.LogWarning("[TraceService] Session send already in progress.");
+                return false;
+            }
+
+            if (HasSentSession(sessionId))
+            {
+                Debug.Log($"[TraceService] Session '{sessionId}' already sent. Skipping duplicate.");
+                return false;
+            }
+
+            if (!isCompleted && IsSessionCompleted(sessionId))
+            {
+                Debug.Log($"[TraceService] Session '{sessionId}' already completed. Skipping incomplete send.");
+                return false;
+            }
+
+            return true;
         }
 
         //ham nay build ra 1 ChapterSessionDTO tuong ung voi session hien tai, gom thong tin ve session (player id, start time), thong tin ve chapter (chapter id), va list trace events trong session do. Sau do ham se duoc su dung de gui du lieu len cloud.

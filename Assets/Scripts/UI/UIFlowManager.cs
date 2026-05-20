@@ -30,8 +30,8 @@ namespace SeriousGame.UI
         public async void QuitToMenu()
         {
             var ctx = GameBootstrap.Context;
-            if (ctx != null && ctx.Trace != null)
-                await ctx.Trace.SendSessionData(false);
+            if (ctx != null && ctx.Trace != null && IsEpisodeScene(ctx))
+                await ctx.Trace.SendSessionDataOnQuit();
 
             var target = ResolveMainMenuScene(ctx);
             if (string.IsNullOrWhiteSpace(target))
@@ -41,6 +41,15 @@ namespace SeriousGame.UI
             }
 
             SceneManager.LoadScene(target);
+        }
+
+        public async void QuitGame()
+        {
+            var ctx = GameBootstrap.Context;
+            if (ctx != null && ctx.Trace != null && IsEpisodeScene(ctx))
+                await ctx.Trace.SendSessionDataOnQuit();
+
+            Application.Quit();
         }
 
         public void LoadScene(string sceneName)
@@ -61,6 +70,17 @@ namespace SeriousGame.UI
             if (!string.IsNullOrWhiteSpace(mainMenuSceneNameOverride))
                 return mainMenuSceneNameOverride;
             return ctx != null && ctx.Config != null ? ctx.Config.mainMenuSceneName : null;
+        }
+
+        private bool IsEpisodeScene(AppContext ctx)
+        {
+            var episode = ResolveEpisodeScene(ctx);
+            if (string.IsNullOrWhiteSpace(episode)) return false;
+
+            var active = SceneManager.GetActiveScene().name;
+            if (string.IsNullOrWhiteSpace(active)) return false;
+
+            return string.Equals(active, episode, System.StringComparison.OrdinalIgnoreCase);
         }
     }
 }
