@@ -3,10 +3,14 @@ color: red
 position: 483,-504
 ---
 <<set_milestone 0>>
-
-Tôi là một sinh viên năm nhất từ quê lên thành phố, hôm nay tôi lên ký túc xá để làm thủ tục nhận phòng
+<<fade_in 0>>
+<<wait 2>>
+Tôi là Minh, một sinh viên năm nhất từ quê lên thành phố
+Hôm nay tôi lên ký túc xá để làm thủ tục nhận phòng
+Vì tôi lên đây khá trễ, nên tôi phải tranh thủ sắp xếp mọi thứ để sẵn sàng cho buổi lên lớp đầu tiên vào ngày mai
+<<fade_out 3>>
+<<wait 3>>
 Minh: Tới nơi rồi
-Minh: Đông thật
 Minh: Giờ chắc phải vào sảnh làm thủ tục đã
 ->Kiểm tra lại mail thông tin nhận phòng, sau đó đi hỏi bác bảo vệ
     <<trace TRACE_READ_RELEVANT_INFO 1 "Check_in_mail">>
@@ -43,7 +47,7 @@ position: 472,-155
     Minh: Dạ tòa A.
     Bác bảo vệ: Có email xác nhận chưa?
     Minh: Dạ có.
-    Bác bảo vệ: Rồi, con vào sảnh bên kia. Tới bàn hướng dẫn, các cô sẽ chỉ tiếp cho
+    Bác bảo vệ: Rồi, con vào sảnh bên kia. Tới bàn hướng dẫn, các cô sẽ hướng dẫn tiếp cho
     Minh: Dạ, con cảm ơn bác
 -> Đi vào trong và không hỏi
 
