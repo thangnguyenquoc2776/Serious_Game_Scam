@@ -5,9 +5,10 @@ position: 483,-504
 <<set_milestone 0>>
 <<fade_in 0>>
 <<wait 2>>
-Tôi là Minh, một sinh viên năm nhất từ quê lên thành phố
-Hôm nay tôi lên ký túc xá để làm thủ tục nhận phòng
-Vì tôi lên đây khá trễ, nên tôi phải tranh thủ sắp xếp mọi thứ để sẵn sàng cho buổi lên lớp đầu tiên vào ngày mai
+Tôi là Minh, một sinh viên năm nhất từ quê lên thành phố để học đại học
+Tôi học ở Đại học Kỹ thuật Hạ Minh
+Tua ngược lại 1 tháng trước, đó là hôm đầu tiên tôi lên ký túc xá để làm thủ tục nhận phòng
+Vì tôi lên thành phố khá trễ, nên tôi phải tranh thủ sắp xếp mọi thứ để sẵn sàng cho buổi lên lớp đầu tiên vào ngày tiếp theo
 <<fade_out 3>>
 <<wait 3>>
 Minh: Tới nơi rồi
@@ -304,8 +305,8 @@ position: 526,1926
 <<wait 1>>
 <<teleport_to "bed">>
 Hôm đó về phòng KTX, vì mệt nên tôi ngủ tới chiều tối
-Thức dậy trễ một tí là đã quên việc họp nhóm
-<<fade_in 1>>
+Thức dậy trễ một tí là đã lỡ buổi họp nhóm
+<<fade_out 1>>
 
 <<wait 2>>
 Minh: Tối rồi, bây giờ mình phải nhắn tin lên nhóm bàn về việc thuyết trình thôi

@@ -237,7 +237,7 @@ position: 138,1968
 Minh: Tiếc thật, 5 triệu là một con số đủ để mình có thể trang trải cuộc sống thêm một xíu
 <<fade_in 2>>
 <<wait 2>>
-Khi nhận được một email tương tự như email học bổng ở tình huống trên, bạn nên kiểm tra kỹ nguồn gốc của email, kiểm tra các thông tin trong email thật kỹ, hỏi những người xung quanh để tránh sai sót, dẫn đến những hậu quả đáng tiếc
+Đi học xa nhà, tiền trong ví vơi đi nhanh hơn tôi tưởng. Sự xuất hiện của một email học bổng vào đúng lúc kinh tế đang eo hẹp giống như một chiếc phao cứu sinh, khiến người ta dễ dàng bám lấy mà quên mất việc kiểm tra xem nó có thực sự an toàn hay không. Bọn lừa đảo rất biết cách khai thác sự chật vật của sinh viên. Chúng dùng một con số đủ hấp dẫn để làm mồi nhử, từng bước kéo tôi vào việc giao nộp các thông tin nhạy cảm. Lằn ranh giữa việc chớp lấy cơ hội và sập bẫy lừa đảo thực sự rất mong manh
 
 <<wait 2>>
 <<jump CH1_M5_OPEN_RECAP>>

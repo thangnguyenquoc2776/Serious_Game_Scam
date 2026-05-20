@@ -161,8 +161,9 @@ position: 280,870
 <<unsit>>
 <<fade_in "2">>
 <<wait 2>>
-Sáng hôm sau đó, bài thuyết trình vẫn ổn thỏa
-Nhưng vụ đăng nhập link tài liệu là một tình huống mà bạn cần chú ý. Khi trang web hay app mà bạn không rõ có uy tín hay không, thật cẩn trọng khi trang web đó yêu cầu bạn nhập tài khoản và mật khẩu, hay bất cứ một thông tin cá nhân nào của bạn
+// Sáng hôm sau đó, bài thuyết trình vẫn ổn thỏa
+// Nhưng vụ đăng nhập link tài liệu là một tình huống mà tôi cần chú ý. Khi vào một trang web hay app không rõ có uy tín hay không, tôi phải thật cẩn trọng khi trang web đó yêu cầu nhập tài khoản và mật khẩu, hay bất cứ một thông tin cá nhân nào của bản thân
+Tôi từng nghĩ lừa đảo phải là thứ gì đó tinh vi lắm. Nhưng hóa ra, đôi khi nó chỉ bắt đầu bằng một bài đăng chia sẻ tài liệu miễn phí đánh trúng vào sự lo lắng và nhu cầu của một sinh viên. Sự hấp tấp muốn có được lợi ích ngay lập tức đã che mờ đi thói quen kiểm chứng cơ bản. Một đường link lạ, một yêu cầu đăng nhập vô lý... bài học đầu tiên ở đại học của tôi không nằm trên giảng đường, mà là việc phải biết dừng lại một chút để kiểm tra, xác nhận trước những thứ miễn phí trên mạng
 
 <<jump CH1_M1_R0_BB_2>>
 ===

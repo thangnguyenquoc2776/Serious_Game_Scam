@@ -182,9 +182,8 @@ position: 250,1540
 <<fade_in 2>>
 <<wait 2>>
 
-Vụ tài khoản Nam làm cả nhóm hơi chững lại.
-Dù theo hướng nào, Minh cũng hiểu thêm một chuyện
-Lừa đảo đôi khi đến từ việc đánh thẳng vào niềm tin của bản thân vào một người quen, người thân, hay những người mà ta không hề cảnh giác
+Vụ tài khoản của Nam làm cả nhóm có chút chững lại. So với những người lạ trên mạng, một tin nhắn từ người quen dễ dàng vượt qua mọi lớp phòng vệ tâm lý của tôi. Lừa đảo đôi khi tàn nhẫn ở chỗ, chúng không đánh vào sự tham lam, mà đánh thẳng vào lòng tốt và sự tin tưởng. Dù quyết định thế nào đi nữa, sự việc này cũng dạy cho tôi một điều
+Khi có người thân quen nhờ vả chuyện tiền bạc hoặc một chuyện gì đó đáng ngờ, ta càng phải tìm cách xác minh trực tiếp. Sự tin tưởng và lòng tốt chỉ có ý nghĩa khi ta đặt đúng chỗ
 
 <<set_objective "OBJ_CH1_M3_CHECKMAIL">>
 
