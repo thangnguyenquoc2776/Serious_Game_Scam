@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using SeriousGame.Runtime;
 namespace SeriousGame.Runtime
@@ -28,7 +29,9 @@ namespace SeriousGame.Runtime
         private float xRotation = 0f;
         // Trong PlayerController.cs
         public bool isLocked = false;
-        private bool hardLocked = false;
+        private const string LegacyLockSource = "Legacy";
+        private readonly HashSet<string> softLockSources = new HashSet<string>();
+        private readonly HashSet<string> hardLockSources = new HashSet<string>();
         private bool isSeated = false;
         private Vector3 originalCameraLocalPos;
         private Vector3 lastSeatedCameraOffset;
@@ -58,29 +61,51 @@ namespace SeriousGame.Runtime
         }
 
         // Thêm hàm để điều khiển chuột
-    public void SetLockState(bool locked)
+        public void SetLockState(bool locked)
         {
-            if (hardLocked && !locked) return;
-            ApplyLockState(locked);
+            SetLockState(LegacyLockSource, locked);
         }
 
         public void SetHardLock(bool locked)
         {
-            hardLocked = locked;
-            ApplyLockState(locked);
+            SetHardLock(LegacyLockSource, locked);
         }
 
-        private void ApplyLockState(bool locked)
+        public void SetLockState(string source, bool locked)
         {
-            Debug.Log($"[PlayerController] SetLockState: {locked}");
-            isLocked = locked;
-            Cursor.lockState = locked ? CursorLockMode.None : CursorLockMode.Locked;
-            Cursor.visible = locked;
+            UpdateLockSources(softLockSources, source, locked);
+            ApplyLockState();
+        }
+
+        public void SetHardLock(string source, bool locked)
+        {
+            UpdateLockSources(hardLockSources, source, locked);
+            ApplyLockState();
+        }
+
+        private void UpdateLockSources(HashSet<string> sources, string source, bool locked)
+        {
+            if (string.IsNullOrWhiteSpace(source))
+                source = LegacyLockSource;
+
+            if (locked)
+                sources.Add(source);
+            else
+                sources.Remove(source);
+        }
+
+        private void ApplyLockState()
+        {
+            var shouldLock = softLockSources.Count > 0 || hardLockSources.Count > 0;
+            Debug.Log($"[PlayerController] SetLockState: {shouldLock} (soft={softLockSources.Count}, hard={hardLockSources.Count})");
+            isLocked = shouldLock;
+            Cursor.lockState = shouldLock ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = shouldLock;
             if (rb != null)
                 rb.linearVelocity = Vector3.zero; // Dừng lập tức
 
             // Khi khoá điều khiển, đảm bảo Animator không còn trạng thái đi bộ
-            if (locked && animator != null)
+            if (shouldLock && animator != null)
             {
                 animator.SetBool("isWalking", false);
             }

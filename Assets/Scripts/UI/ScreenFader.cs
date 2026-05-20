@@ -10,6 +10,9 @@ public class ScreenFader : MonoBehaviour
     [Header("Canvas Group đen full màn hình")]
     public CanvasGroup canvasGroup; // alpha 0 => trong suốt, 1 => đen
 
+    [Header("Startup")]
+    [SerializeField] private bool startBlack = false;
+
     void Awake()
     {
         Instance = this;
@@ -20,9 +23,23 @@ public class ScreenFader : MonoBehaviour
 
         if (canvasGroup != null)
         {
-            canvasGroup.alpha = 0f;
-            canvasGroup.blocksRaycasts = false;
+            canvasGroup.alpha = startBlack ? 1f : 0f;
+            canvasGroup.blocksRaycasts = startBlack;
         }
+    }
+
+    public void SetBlackImmediate()
+    {
+        if (canvasGroup == null) return;
+        StopAllCoroutines();
+        SetAlphaImmediate(1f, true);
+    }
+
+    public void SetClearImmediate()
+    {
+        if (canvasGroup == null) return;
+        StopAllCoroutines();
+        SetAlphaImmediate(0f, false);
     }
 
     public void FadeOutIn(float fadeDuration, Action onMiddle)
@@ -131,5 +148,11 @@ public class ScreenFader : MonoBehaviour
         canvasGroup.alpha = targetAlpha;
         if (!blockRaycasts)
             canvasGroup.blocksRaycasts = false;
+    }
+
+    private void SetAlphaImmediate(float targetAlpha, bool blockRaycasts)
+    {
+        canvasGroup.alpha = targetAlpha;
+        canvasGroup.blocksRaycasts = blockRaycasts;
     }
 }

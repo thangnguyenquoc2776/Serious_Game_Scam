@@ -45,7 +45,7 @@ namespace SeriousGame.Narrative
             if (_player != null)
             {
                 // Khoá di chuyển, xoay chuột, hiện Cursor
-                _player.SetLockState(true);
+                _player.SetLockState("Dialogue", true);
                 Debug.Log("[NarrativeService] Dialogue started, locking player controls.");
             }
         }
@@ -55,7 +55,7 @@ namespace SeriousGame.Narrative
             if (_player != null)
             {
                 // Mở lại di chuyển, ẩn Cursor để tiếp tục chơi
-                _player.SetLockState(false);
+                _player.SetLockState("Dialogue", false);
                 Debug.Log("[NarrativeService] Dialogue ended, unlocking player controls.");
             }
         }

@@ -8,6 +8,9 @@ namespace SeriousGame.UI
 {
     public class GameplayUIRoot : MonoBehaviour
     {
+        private const string PhoneLockSource = "PhoneChat";
+        private const string PcLockSource = "PcChat";
+        private const string SummaryLockSource = "SummaryUI";
         [Serializable]
         private class StaticUIEntry
         {
@@ -292,14 +295,14 @@ namespace SeriousGame.UI
         {
             if (phonePanel == null) return;
             phonePanel.StartChat(nodeName);
-            SetPlayerLock(true);
+            SetPlayerLock(true, PhoneLockSource);
         }
 
         private void HandlePcChatRequested(string nodeName)
         {
             if (pcPanel == null) return;
             pcPanel.StartChat(nodeName);
-            SetPlayerLock(true);
+            SetPlayerLock(true, PcLockSource);
         }
 
         private void HandlePhoneMessage(string speaker, string message)
@@ -312,7 +315,7 @@ namespace SeriousGame.UI
         {
             if (summaryUI == null) return;
             summaryUI.ShowFromContext();
-            SetPlayerHardLock(true);
+            SetPlayerHardLock(true, SummaryLockSource);
         }
 
         private void HandleToastRequested(string message)
@@ -334,24 +337,24 @@ namespace SeriousGame.UI
         {
             if (phonePanel != null)
                 phonePanel.Hide();
-            SetPlayerLock(false);
+            SetPlayerLock(false, PhoneLockSource);
         }
 
         public void ClosePc()
         {
             if (pcPanel != null)
                 pcPanel.Hide();
-            SetPlayerLock(false);
+            SetPlayerLock(false, PcLockSource);
         }
 
         public void CloseSummary()
         {
             if (summaryUI != null)
                 summaryUI.Hide();
-            SetPlayerHardLock(false);
+            SetPlayerHardLock(false, SummaryLockSource);
         }
 
-        private void SetPlayerLock(bool locked)
+        private void SetPlayerLock(bool locked, string source)
         {
             if (!lockPlayerOnOverlay)
             {
@@ -362,11 +365,11 @@ namespace SeriousGame.UI
             var resolvedPlayer = ResolvePlayer();
             if (resolvedPlayer == null) return;
 
-            Debug.Log($"[GameplayUIRoot] Setting player lock = {locked}");
-            resolvedPlayer.SetLockState(locked);
+            Debug.Log($"[GameplayUIRoot] Setting player lock = {locked} (source={source})");
+            resolvedPlayer.SetLockState(source, locked);
         }
 
-        private void SetPlayerHardLock(bool locked)
+        private void SetPlayerHardLock(bool locked, string source)
         {
             if (!lockPlayerOnOverlay)
             {
@@ -377,8 +380,8 @@ namespace SeriousGame.UI
             var resolvedPlayer = ResolvePlayer();
             if (resolvedPlayer == null) return;
 
-            Debug.Log($"[GameplayUIRoot] Setting player hard lock = {locked}");
-            resolvedPlayer.SetHardLock(locked);
+            Debug.Log($"[GameplayUIRoot] Setting player hard lock = {locked} (source={source})");
+            resolvedPlayer.SetHardLock(source, locked);
         }
 
         private PlayerController ResolvePlayer()

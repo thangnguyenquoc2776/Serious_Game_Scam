@@ -60,7 +60,7 @@ namespace SeriousGame.Narrative
                 if (player != null)
                     ctx.Narrative.BindPlayer(player);
             }
-            player.SetLockState(true); // Lock player controls until narrative starts
+            player.SetLockState("Dialogue", true); // Lock player controls until narrative starts
         }
 
         private void OnDestroy()
@@ -92,6 +92,13 @@ namespace SeriousGame.Narrative
         {
             if (ScreenFader.Instance == null) return;
             ScreenFader.Instance.FadeIn(fadeSeconds);
+        }
+
+        [YarnCommand("fade_black")]
+        public static void FadeBlack()
+        {
+            if (ScreenFader.Instance == null) return;
+            ScreenFader.Instance.SetBlackImmediate();
         }
 
         [YarnCommand("teleport_to")]
