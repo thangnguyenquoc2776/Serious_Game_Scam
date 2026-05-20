@@ -55,5 +55,5 @@ title: TEST_M4
 <<set_milestone 4>>
 // <<set_objective "OBJ_CH1_M3_CHECKMAIL">>
 // <<teleport_to "bed">>
-<<jump CH1_M3_R0_BB_2>>
+<<jump CH1_M3_R0_BB_4>>
 ===

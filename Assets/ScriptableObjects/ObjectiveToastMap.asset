@@ -21,7 +21,7 @@ MonoBehaviour:
   - message: "\u0110I \u0110\u1EBEN S\u1EA2NH"
     objectiveIds:
     - OBJ_M0_GO_LOBBY
-  - message: "N\xD3I CHUY\u1EC6N V\u1EDAI CH\u1ECA LINH"
+  - message: "N\xD3I CHUY\u1EC6N V\u1EDAI CH\u1ECA \u1EDE B\xC0N"
     objectiveIds:
     - OBJ_M0_TALK_LINH
   - message: "\u0110I L\xCAN PH\xD2NG"
@@ -42,9 +42,11 @@ MonoBehaviour:
     - OBJ_M0_FIND_DOCUMENT
   - message: "H\u1ECEI M\u1ECCI NG\u01AF\u1EDCI TRONG PH\xD2NG"
     objectiveIds:
-    - OBJ_M0_TALK_QUAN
-    - OBJ_M1_ASK_QUAN
-    - OBJ_CH1_M3_ASK_QUAN
+    - OBJ_M1_ASK_QUAN_1
+    - OBJ_M1_ASK_QUAN_2
+    - OBJ_M3_ASK_QUAN
+    - OBJ_M4_ASK_QUAN
+    - OBJ_M4_ASK_QUAN_2
   - message: "T\xCCM NH\xD3M"
     objectiveIds:
     - OBJ_M0_FIND_GROUP
@@ -66,3 +68,15 @@ MonoBehaviour:
   - message: "V\xC0O L\u1EDAP"
     objectiveIds:
     - OBJ_M0_ENTER_CLASS
+  - message: "N\xD3I CHUY\u1EC6N V\u1EDAI M\u1ECCI NG\u01AF\u1EDCI TRONG PH\xD2NG"
+    objectiveIds:
+    - OBJ_M0_TALK_QUAN
+  - message: "\u0110I XU\u1ED0NG C\u1ED4NG KTX"
+    objectiveIds:
+    - OBJ_CH1_M2_TAKE_SHIP
+  - message: "\u0110I XU\u1ED0NG C\u1ED4NG KTX"
+    objectiveIds:
+    - OBJ_M3_OPEN_NAM_CHAT
+  - message: "\u0110I XU\u1ED0NG C\u1ED4NG KTX"
+    objectiveIds:
+    - OBJ_M3_TALK_NAM

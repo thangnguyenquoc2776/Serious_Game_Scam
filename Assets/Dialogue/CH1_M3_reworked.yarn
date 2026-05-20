@@ -7,11 +7,11 @@ position: 215,37
 Minh: Ông đang ở đâu vậy?
 Nam: Ngoài đường
 Minh: Ngoài đường chỗ nào? Có gọi được không?
-Nam: Không tiện gọi. Chuyển lẹ giúp tui đi
+Nam: Không tiện gọi. Chuyển lẹ giúp tôi đi
 Minh: Sáng nay ông bảo phần ví dụ sẽ gửi lúc mấy giờ ấy nhỉ?
-Nam: Tí gửi. Giờ chuyển trước giúp tui
+Nam: Tí gửi. Giờ chuyển trước giúp tôi
 Minh: Sao không chuyển vào tài khoản của ông?
-Nam: Tài khoản tui lỗi. Tài khoản bạn tui. Nhanh nha
+Nam: Tài khoản tôi lỗi. Tài khoản bạn tôi. Nhanh nha
 
 -> Chuyển khoản cho Nam
     <<trace TRACE_TRANSFER_MONEY 1 "nam_private_chat">>
@@ -20,7 +20,7 @@ Nam: Tài khoản tui lỗi. Tài khoản bạn tui. Nhanh nha
 -> Hỏi anh em trong phòng
     <<trace TRACE_ASK_PERSON 2 "nam_private_chat">>
     <<unsit>>
-    <<set_objective "OBJ_CH1_M3_ASK_QUAN">>
+    <<set_objective "OBJ_M3_ASK_QUAN">>
 -> Không chuyển khoản
     <<trace TRACE_REFUSE_RISKY_REQUEST 3 "nam_private_chat">>
     <<jump CH1_M3_TC_2>>
@@ -34,9 +34,9 @@ Minh: Mình có nên nhắn Mai để hỏi chuyện này không nhỉ
 ->Hỏi lại Mai
     <<trace TRACE_ASK_PERSON 1 "nam_private_chat">>
     <<switch_ui "phone_chat">>
-    Minh: Mai ơi, Nam vừa nhắn riêng tui mượn tiền
-    Mai: Ủa? Tui cũng vừa thấy một tin nhắn rất giống vậy
-    Mai: Tui cũng không rõ có phải là Nam hay không 
+    Minh: Mai ơi, Nam vừa nhắn riêng tôi mượn tiền
+    Mai: Ủa? Tôi cũng vừa thấy một tin nhắn rất giống vậy
+    Mai: Tôi cũng không rõ có phải là Nam hay không 
     
     <<wait 1>>
     <<switch_ui "normal">>
@@ -56,7 +56,7 @@ Minh: Thôi, mình chuyển trước rồi kiểm tra sau.
 
 <<wait 1>>
 <<switch_ui "phone_chat_keep">>
-Minh: Tui chuyển rồi nha Nam.
+Minh: Tôi chuyển rồi nha Nam.
 Nam: Ok, cảm ơn ông.
 
 <<wait 1>>
@@ -70,18 +70,18 @@ position: -123,265
 <<set_milestone 3>>
 <<switch_ui "normal">>
 
-Minh: Ông coi giúp tui cái này được không?
-Quan: Nam trong nhóm ông hả?
+Minh: Ông coi giúp tôi cái này được không?
+Quân: Nam trong nhóm ông hả?
 Minh: Ừ. Mới nhắn mượn tiền, bảo chuyển qua tài khoản bạn
-Quan: Tài khoản bạn tui... nghe hơi lạ nha
+Quân: Tài khoản bạn tôi... nghe hơi lạ nha
 Huy: Cứ xác minh thêm trước đã. Gọi trực tiếp hoặc hỏi người nào quen bạn đó
-Minh: Vậy tui nên nhắn Mai kiểm tra thêm không?
+Minh: Vậy tôi nên nhắn Mai kiểm tra thêm không?
 -> Nhắn Mai
     <<switch_ui "phone_chat">>
     <<trace TRACE_ASK_PERSON 1 "nam_private_chat">>
-    Minh: Mai ơi, Nam vừa nhắn riêng tui mượn tiền
-    Mai: Ủa? Tui cũng vừa thấy một tin nhắn rất giống vậy
-    Mai: Tui cũng không rõ có phải là Nam hay không 
+    Minh: Mai ơi, Nam vừa nhắn riêng tôi mượn tiền
+    Mai: Ủa? Tôi cũng vừa thấy một tin nhắn rất giống vậy
+    Mai: Tôi cũng không rõ có phải là Nam hay không 
     <<wait 1>>
     <<switch_ui "normal">>
     <<jump CH1_M3_R2_BB_1_A>>
@@ -130,9 +130,9 @@ Minh: Mai à?
 <<switch_ui "phone_chat">>
 
 Mai: Minh ơi, nãy cậu có nhận được tin nhắn mượn tiền từ Nam không?
-Minh: Ừ, tui vừa nhận xong
-Mai: Tui cũng vừa bị nhắn y chang
-Mai: Tui thấy nó lạ lắm, nên nhắn cậu hỏi cho chắc
+Minh: Ừ, tôi vừa nhận xong
+Mai: Tôi cũng vừa bị nhắn y chang
+Mai: Tôi thấy nó lạ lắm, nên nhắn cậu hỏi cho chắc
 Minh: Vậy là không ổn thật rồi...
 
 <<wait 2>>
@@ -158,10 +158,10 @@ position: 274,1335
 ---
 
 Minh: Ủa, Nam?
-Nam: Sao nhìn tui căng vậy?
+Nam: Sao nhìn tôi căng vậy?
 Minh: Hôm qua cậu nhắn mượn tiền, bảo chuyển qua tài khoản bạn
-Nam: Tui không nhắn riêng ông chuyện đó
-Nam: Tài khoản tui bị mất mấy ngày nay rồi
+Nam: Tôi không nhắn riêng ông chuyện đó
+Nam: Tài khoản tôi bị mất mấy ngày nay rồi
 Minh: Vậy tin nhắn đó là giả mạo thật à?
 Minh: Mình có nên nhắn tin cảnh báo lên nhóm lớp không nhỉ?
 
@@ -183,41 +183,51 @@ position: 250,1540
 <<wait 2>>
 
 Vụ tài khoản Nam làm cả nhóm hơi chững lại.
-Dù theo hướng nào, Minh cũng hiểu thêm một chuyện:
-lừa đảo đôi khi đến từ việc đánh thẳng vào niềm tin vào một người quen.
+Dù theo hướng nào, Minh cũng hiểu thêm một chuyện
+Lừa đảo đôi khi đến từ việc đánh thẳng vào niềm tin của bản thân vào một người quen, người thân, hay những người mà ta không hề cảnh giác
 
 <<set_objective "OBJ_CH1_M3_CHECKMAIL">>
 
 <<jump CH1_M3_R0_BB_4>>
 ===
 
-
-
 title: CH1_M3_R0_BB_4
+position: 292,1137
+---
+<<teleport_to "bed">>
+<<fade_out 2>>
+<<wait 2>>
+Sau một thời gian ở KTX, tôi bắt đầu quen hơn với nhịp sống mới.
+Đi học, ăn uống, làm bài nhóm, mua đồ lặt vặt, in tài liệu. Mỗi khoản không quá lớn, nhưng cộng lại thì cũng tương đối
+Minh: Tiền trong ví xuống nhanh hơn mình nghĩ, phải làm sao đây
+Minh: Hình như có mail, để xem cái gì thế nhỉ
+<<set_objective "OBJ_CH1_M3_CHECKMAIL">>
+
+===
+
+title: CH1_M3_R0_BB_5
 position: 307,1724
 ---
 -> Ngồi
-<<sit "room_chair">>
-Để xem mail gì đây
-<<switch_ui "show:pc:Mailhocbong_1">>
-<<wait 1>>
-<<switch_ui "normal">>
--> Xem nội dung mail
-<<switch_ui "show:pc:Mailhocbong_2">>
-
-Minh: Học bổng?
-Minh: 5 triệu...
-Minh: Đúng lúc thật.
-
-<<wait 2>>
-
--> Xác thực hồ sơ
-    <<jump CH1_M4_R1_BB_1>>
--> Đi hỏi nhóm BTL
-    <<jump CH1_M4_R2_BB_1>>
--> Đi hỏi anh em trong phòng
-    <<unsit>>
-    <<switch_ui "normal">>
-    <<set_objective "OBJ_CH1_M3_ASK_QUAN">>
-    // <<jump CH1_M4_R3_BB_1>>
+    <<sit "room_chair">>
+    Để xem mail gì đây
+    <<switch_ui "show:pc:Mailhocbong_1">>
+    <<wait 1>>
+    -> Xem nội dung mail
+    <<switch_ui "show:pc:Mailhocbong_2">>
+    Minh: Học bổng?
+    Minh: 5 triệu...
+    Minh: Đúng lúc thật, mình cũng đang hơi khó khăn
+    Minh: Mình nên làm gì bây giờ?
+    <<wait 1>>
+    -> Xác nhận hồ sơ
+        <<trace TRACE_OPEN_UNVERIFIED_FORM 1 "scholarship_email">>
+        <<jump CH1_M4_R1_BB_1>>
+    -> Đi hỏi mọi người trong phòng
+        <<trace TRACE_ASK_PERSON 3 "scholarship_email">>
+        <<unsit>>
+        <<switch_ui "normal">>
+        <<set_objective "OBJ_M4_ASK_QUAN">>
+        // <<jump CH1_M4_R3_BB_1>>
+->Hủy
 ===

@@ -1,171 +1,243 @@
 title: CH1_M4_R1_BB_1
-position: 572,12
+position: 532,55
 ---
 <<set_milestone 4>>
 <<switch_ui "show:pc:Form_1">>
-// <<wait 1>>
-// <<switch_ui "hide:phone">>
-// <<switch_ui "normal">>
+
 
 Minh: Học bổng Đồng hành Tân sinh viên 2025…
-Minh: Hạn xác nhận: 23:59 hôm nay.
-
-
+Minh: Hạn xác nhận: 23:59 hôm nay
 Minh: Mấy thông tin này trường cũng có rồi mà…
-Minh: Chắc để đối chiếu hồ sơ thôi.
--> Nhập thông tin và tiếp tục
-<<jump CH1_M4_R1_BB_2>>
+Minh: Chắc để đối chiếu hồ sơ thôi
+-> Nhập thông tin cơ bản và tiếp tục
+    <<trace TRACE_FILL_BASIC_INFO 1 "scholarship_form">>
+    <<jump CH1_M4_R1_BB_2>>
+-> Dừng lại, thoát form
+    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "scholarship_form">>
+    <<switch_ui "normal">>
+    <<jump CH1_M4_R0_BB_0>>
 ===
 
+
 title: CH1_M4_R1_BB_2
-position: 572,237
+position: 587,215
 ---
 <<switch_ui "show:pc:Form_2">>
 <<wait 1>>
 
-Minh: Tới tài khoản ngân hàng luôn à…
-Minh: Nhận học bổng thì chắc cũng cần tài khoản thật.
-Minh: Nhưng sao cảm giác hơi nhanh vậy ta?
-
-<<trace TRACE_FILL_SENSITIVE_INFO 1 "scholarship_form">>
--> Lưu thông tin
-<<switch_ui "show:pc:Form_3">>
--> Mở cổng xác minh
-<<jump CH1_M4_R1_BB_3>>
+Minh: Tới tài khoản ngân hàng luôn à
+Minh: Nhận học bổng thì chắc cũng cần tài khoản thật
+-> Nhập thông tin tài khoản ngân hàng và tiếp tục
+    <<trace TRACE_FILL_SENSITIVE_INFO 1 "scholarship_form">>
+    <<jump CH1_M4_R1_BB_3>>
+-> Dừng lại, thoát form
+    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "scholarship_form">>
+    <<switch_ui "normal">>
+    <<jump CH1_M4_R0_BB_0>>
+    
 ===
 
 title: CH1_M4_R1_BB_3
-position: 572,462
+position: 576,393
 ---
-<<switch_ui "show:pc:Webhocbong_1">>
+<<switch_ui "show:pc:Form_3">>
+-> Mở cổng xác minh
+    <<jump CH1_M4_R1_BB_4>>
+-> Dừng lại, thoát form
+    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "scholarship_form">>
+    <<switch_ui "normal">>
+    <<jump CH1_M4_R0_BB_0>>
+===
+title: CH1_M4_R1_BB_4
+position: 561,565
+---
+<<switch_ui "show:pc:Form_4">>
 <<wait 2>>
--> Đăng nhập và xác minh
-<<switch_ui "show:pc:Webhocbong_2">>
-<<wait 2>>
-Minh: OTP?
+-> Điền thông tin đăng nhập và xác minh của ngân hàng điện tử
+    <<trace TRACE_FILL_SENSITIVE_INFO 1 "scholarship_form">>
+    <<jump CH1_M4_R1_BB_5>>
+->Dừng lại, thoát form
+    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "scholarship_form">>
+    <<switch_ui "normal">>
+    <<jump CH1_M4_R0_BB_0>>
+===
+
+title: CH1_M4_R1_BB_5
+position: 566,762
+---
+<<switch_ui "show:pc:Form_5">>
+
 Minh: Nhận học bổng mà cũng cần OTP ngân hàng hả…
 Minh: Nhưng mã sắp hết hạn rồi
+Minh: Mình có nên nhập OTP không?
 -> Nhập OTP và hoàn tất xác minh
+    <<trace TRACE_SUBMIT_AUTH_CODE 1 "scholarship_otp">>
+    <<wait 2>>
+    Minh: Hình như điện thoại có thông báo gì thì phải
+    -> Kiểm tra điện thoại
+    Minh: Chết rồi, sao app ngân hàng lại có cảnh báo bất thường thế này
+    Minh: Tại sao tiền trong tài khoản mình lại bị trừ hết rồi vậy
+    <<jump CH1_M4_R1_BB_6>>
+->Dừng lại, thoát form
+    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "scholarship_form">>
+    <<switch_ui "normal">>
+    <<jump CH1_M4_R0_BB_0>>
 
-<<trace TRACE_SUBMIT_AUTH_CODE 1 "scholarship_otp">>
-
-<<jump CH1_M4_R1_BB_4>>
 ===
 
-title: CH1_M4_R1_BB_4
-position: 572,687
+title: CH1_M4_R1_BB_6
+position: 562,913
 ---
-Chắc mình nên hỏi anh em thử
-
 <<switch_ui "normal">>
+Mình có nên hỏi mọi người không nhỉ?
+-> Hỏi mọi người trong phòng
+    <<trace TRACE_ASK_PERSON 1 "scholarship_form">>
+    <<unsit>>
+    <<set_objective "OBJ_M4_ASK_QUAN_2">>
+->Không hỏi
+    <<jump CH1_M4_R0_BB_0>>
+===
+
+title: CH1_M4_R1_BB_7
+position: 566,1185
+---
+<<switch_ui "normal">>
+<<unsit>>
 Minh: Anh Huy ơi…
 Huy: Gì em?
-Minh: Em vừa nhập OTP vào form học bổng. Xong ngân hàng báo cảnh báo bất thường.
+Minh: Em vừa nhập OTP vào form học bổng. Xong ngân hàng báo cảnh báo bất thường, rồi tài khoản em bị trừ tiền
 Huy: OTP ngân hàng?
 Minh: Dạ…
-Huy: Khóa giao dịch ngay. Gọi tổng đài ngân hàng. Không nhập thêm gì nữa.
-Quan: Khoan, form nào? Học bổng mà xin OTP ngân hàng là sai rồi.
+Huy: Vào app khóa thẻ ngân hàng ngay. Gọi tổng đài ngân hàng. Không nhập thêm gì nữa
+Quân: Khoan, form nào? Học bổng mà xin OTP ngân hàng là sai rồi
 Minh: Em tưởng là xác nhận tài khoản nhận học bổng…
-Huy: Không. OTP là để xác thực giao dịch hoặc đăng nhập. Không ai phát học bổng bằng cách bắt em nhập OTP vào form ngoài.
+Huy: Không. OTP là để xác thực giao dịch hoặc đăng nhập. Không ai phát học bổng bằng cách bắt em nhập OTP vào form ngoài
 
-<<jump CH1_M4_R0_BB_1>>
+<<jump CH1_M4_R0_BB_0>>
 ===
 
-title: CH1_M4_R2_BB_1
-position: 292,237
----
-<<set_milestone 4>>
-<<switch_ui "phone_chat">>
 
-Minh: Mọi người có biết học bổng này không?
-Minh: Mail ghi hỗ trợ tân sinh viên 5 triệu, hạn xác nhận trước 23:59.
-Nam: Nghe ngon quá vậy.
-Mai: Khoan, gửi mình xem địa chỉ mail với link form.
-Minh: Đây.
-
-<<trace TRACE_ASK_PERSON 2 "scholarship_email">>
-
-<<jump CH1_M4_R2_BB_2>>
-===
-
-title: CH1_M4_R2_BB_2
-position: 292,462
----
+// title: CH1_M4_R2_BB_1
+// position: 37,346
+// ---
+// <<set_milestone 4>>
 // <<switch_ui "phone_chat">>
-<<wait 3>>
-Mai: Địa chỉ gửi không giống mail trường.
-Nam: Nhưng nó có tên tân sinh viên, học bổng các thứ mà.
-Mai: Tên thì ai cũng đặt được. Quan trọng là nguồn gửi với quy trình.
-Mai: Minh bấm form chưa?
-Minh: Mình mới mở mail thôi. Chưa nhập gì.
-Mai: Tốt. Đừng nhập vội. Mình nhìn là biết học bổng này không ổn rồi
--> Hỏi Mai về nguồn học bổng uy tín
-    <<trace TRACE_INSPECT_SOURCE 2 "scholarship_email">>
-    Minh: Vậy nguồn học bổng nào mới uy tín vậy Mai?
-    Mai: Mấy học bổng thật thường có thông báo trên website trường hoặc phòng CTSV. Không gửi form lạ rồi bắt xác nhận gấp kiểu này
-    Minh: Cảm ơn Mai
--> Không hỏi
+
+// Minh: Mọi người có biết học bổng này không?
+// Minh: Mail ghi hỗ trợ tân sinh viên 5 triệu, hạn xác nhận trước 23:59
+// Nam: Nghe ngon quá vậy
+// Mai: Khoan, gửi mình xem địa chỉ mail với link form
+// -> Mở mail xem lại
+//     <<switch_ui "pc:Mailhocbong_2">>
+//     ->Tắt
+// <<switch_ui "phone_chat_keep">>
+// Minh: Đây
+// Minh: donghanhtsv@mail.com
+// Minh: Link form: www.abcd.com
+
+// <<jump CH1_M4_R2_BB_2>>
+// ===
+
+// title: CH1_M4_R2_BB_2
+// position: -6,548
+// ---
+// <<wait 3>>
+// Mai: Địa chỉ gửi không giống mail trường, mọi người cần chú ý mail trường sẽ có đuôi mở rộng là @...edu.vn nhé
+// Nam: Nhưng nó có tên tân sinh viên, học bổng các thứ mà
+// Mai: Tên thì ai cũng đặt được. Quan trọng là nguồn gửi với quy trình
+// Mai: Minh bấm form chưa?
+// Minh: Mình mới mở mail thôi. Chưa nhập gì
+// Mai: Tốt. Đừng nhập vội. Mình nhìn là biết học bổng này không ổn rồi
+// -> Hỏi Mai về nguồn học bổng uy tín
+//     <<trace TRACE_INSPECT_SOURCE 1 "scholarship_email">>
+//     Minh: Vậy nguồn học bổng nào mới uy tín vậy Mai?
+//     Mai: Mấy học bổng thật thường có thông báo trên website trường hoặc phòng CTSV. Không gửi form lạ rồi bắt xác nhận gấp kiểu này
+//     Minh: Cảm ơn Mai
+// -> Không hỏi
 
 
+// -> Nhắn lên nhóm lớp để cảnh báo mọi người
+//     <<jump CH1_M4_R2_BB_3>>
+// -> Thôi kệ, chắc mọi người cũng biết
+//      <<jump CH1_M4_R0_BB_1>>
+// ===
 
--> Nhắn lên nhóm lớp để cảnh báo mọi người
-    <<jump CH1_M4_R2_BB_3>>
--> Thôi kệ, chắc mọi người cũng biết
-     <<jump CH1_M4_R0_BB_1>>
-===
+// title: CH1_M4_R0_BB_0
+// position: 177,1654
+// ---
+// Minh: Cái mail học bổng này có đáng ngờ không nhỉ
+// -> Có đáng ngờ
+//     <<trace TRACE_DETECT_RED_FLAG 1 "scholarship_email">>
+//     <<jump CH1_M4_R0_BB_0_A>>
+// -> Không đáng ngờ lắm, là mail chính thống
+//     <<trace TRACE_IGNORE_RED_FLAG 1 "scholarship_email">>
+//     <<jump CH1_M4_R0_BB_1>>
 
-title: CH1_M4_R2_BB_3
-position: 292,687
+// ===
+
+title: CH1_M4_R0_BB_0
+position: -157,1750
 ---
-<<switch_ui "phone_chat">>
-
-Minh: Mọi người cẩn thận mail học bổng Đồng hành Tân sinh viên 2025 nha.
-Minh: Mail này không giống nguồn chính thức, link form lạ và có hạn xác nhận gấp.
-Mai: Ai nhận được thì kiểm tra trên website/phòng CTSV trước nhé.
-
-<<trace TRACE_WARN_OTHERS 2 "scholarship_email">>
+<<wait 2>>
+Mình có nên nhắn vào nhóm BTL để cảnh báo cho mọi người không nhỉ?
+-> Nhắn vào nhóm 
+    <<trace TRACE_WARN_OTHERS 1 "scholarship_email">>
+    <<switch_ui "phone_chat">>
+    Minh: Mọi người cẩn thận mail học bổng Đồng hành Tân sinh viên 2025 nha
+    Minh: Mail này không giống nguồn chính thức, link form lạ và có hạn xác nhận gấp
+    Mai: Vậy hả, lúc sáng mình cũng vừa nhận được mail đó, cũng may là Minh cảnh báo đó, mình không có quen ai để hỏi về việc này cả
+    Mai: Cảm ơn Minh nhé
+->Không nhắn
 
 <<switch_ui "normal">>
 <<jump CH1_M4_R0_BB_1>>
 ===
 
 title: CH1_M4_R3_BB_1
-position: 12,462
+position: -303,652
 ---
 <<set_milestone 4>>
 <<switch_ui "normal">>
 
 Minh: Anh Huy ơi, anh coi giúp em cái mail này được không?
 Huy: Mail gì?
-Minh: Học bổng tân sinh viên. Nó bảo hỗ trợ 5 triệu, xác nhận trước 23:59.
-Quan: 5 triệu? Nghe thơm vậy.
-Minh: Thơm nên em mới thấy hơi sợ.
-
-<<trace TRACE_ASK_PERSON 3 "scholarship_email">>
-
-<<jump CH1_M4_R3_BB_2>>
+Minh: Học bổng tân sinh viên. Nó bảo hỗ trợ 5 triệu, xác nhận trước 23:59
+Quân: 5 triệu? Nghe thơm vậy
+Minh: Thơm nên tôi mới thấy hơi sợ
+Quân: Cái này mình cũng không rõ
+Huy: Em cứ kiểm tra kỹ mail đó có phải nguồn chính thống không, nguồn chính thống thường là các mail có đuôi edu hoặc edu.vn nhé
+->Kiểm tra lại mail
+    <<trace TRACE_INSPECT_SOURCE 1 "scholarship_email">>
+    <<switch_ui "show:pc:Mailhocbong_2">>
+    -> Đóng mail
+        <<jump CH1_M4_R3_BB_2>>
+->Không kiểm tra lại
+    <<jump CH1_M4_R3_BB_2>>
 ===
 
 title: CH1_M4_R3_BB_2
-position: 12,687
+position: -306,993
 ---
-Minh: Nhìn kỹ lại thì đúng là không giống mail trường thật.
-Quan: Mấy cái này hay đánh vào lúc mình đang cần tiền.
-Huy: Em lưu lại ảnh chụp. Mai cần thì hỏi kênh chính thức. Còn bây giờ đóng form đi.
-Minh: Dạ.
-
-<<trace TRACE_REFUSE_RISKY_REQUEST 3 "scholarship_email">>
-
-<<jump CH1_M4_R0_BB_1>>
+<<switch_ui "normal">>
+Minh: Vậy bây giờ mình phải tự đưa ra quyết định
+Minh: Mình nên làm gì nhỉ ?
+-> Xác nhận hồ sơ
+    <<trace TRACE_OPEN_UNVERIFIED_FORM 1 "scholarship_email">>
+    <<jump CH1_M4_R1_BB_1>>
+-> Đóng mail, không xem nữa
+    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "scholarship_email">>
+    <<jump CH1_M4_R0_BB_0>>
 ===
 
 title: CH1_M4_R0_BB_1
-position: 292,912
+position: 138,1968
 ---
-Minh: Một cái mail thôi mà kéo theo đủ chuyện…
-Quan: Đời sinh viên mà. Có học phần, có deadline, có cả boss ẩn dạng link lạ.
-Huy: Nói ngắn gọn là: cái gì liên quan tiền, tài khoản, OTP thì kiểm tra trước.
-Minh: Dạ.
+<<switch_ui "normal">>
+<<wait 1>>
+Minh: Tiếc thật, 5 triệu là một con số đủ để mình có thể trang trải cuộc sống thêm một xíu
+<<fade_in 2>>
+<<wait 2>>
+Khi nhận được một email tương tự như email học bổng ở tình huống trên, bạn nên kiểm tra kỹ nguồn gốc của email, kiểm tra các thông tin trong email thật kỹ, hỏi những người xung quanh để tránh sai sót, dẫn đến những hậu quả đáng tiếc
 
 <<wait 2>>
 <<jump CH1_M5_OPEN_RECAP>>

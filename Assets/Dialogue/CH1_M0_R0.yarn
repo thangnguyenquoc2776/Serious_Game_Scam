@@ -142,15 +142,15 @@ position: 502,785
 
 Quân: Ông cũng phòng 308 mới vô hả?
 
-Minh: Ừ, tui là Minh. Chắc giường kia của tui ha?
+Minh: Ừ, tôi là Minh. Chắc giường kia của tôi ha?
 
 Quân: Ừ đó. Vali ông nhìn hơi chiến nha, bánh xe muốn mòn luôn rồi kìa
 
-Minh: Haha, tui đem hơi nhiều đồ, với cả vali cũng cũ rồi ông
+Minh: Haha, tôi đem hơi nhiều đồ, với cả vali cũng cũ rồi ông
 
-Minh: mà ông tên là gì?
+Minh: Mà ông tên là gì?
 
-Quân: Tui là Quân, cũng là sinh viên năm nhất, tui mới lên đây được vài hôm
+Quân: Tôi là Quân, cũng là sinh viên năm nhất, tôi mới lên đây được vài hôm
 
 Quân: Còn đây là anh Huy
 
@@ -182,7 +182,7 @@ Quân: Có. Một là mua các vật dụng cá nhân cho đủ xài
 
 Quân: Hai là thiếu gì thì hỏi, đừng ngại với mọi người nhé
 
-Quân: Ngoài ra nếu ông có chuyện gì thì cứ thoải mái chia sẻ với mọi người nhé, Tụi tui sẵn lòng
+Quân: Ngoài ra nếu ông có chuyện gì thì cứ thoải mái chia sẻ với mọi người nhé, Tụi tôi sẵn lòng
 
 <<jump CH1_M0_R0_BB_9>>
 ===
@@ -231,7 +231,7 @@ position: 517,1343
 ---
 Nam: Ê, ông cũng học phòng B2-304 hả
 Minh: Ừ. Giải tích 1 đúng không?
-Nam: Đúng rồi. Vậy là tui không trễ một mình
+Nam: Đúng rồi. Vậy là tôi không trễ một mình
 Minh: Cảm ơn ông, nghe câu đó tự nhiên đỡ quê hơn
 Nam: Vào lẹ đi, đứng đây thêm là quê đôi
 ->Vào lớp
@@ -248,7 +248,7 @@ Nam: Dạ
 
 Buổi học hôm đó chủ yếu là về giới thiệu môn học
 Thầy cũng kêu chúng tôi tìm nhóm
-2 tiết trôi qua, cuối cùng tui cũng được về, nhưng trước mắt tui phải tìm Nhóm
+2 tiết trôi qua, cuối cùng tôi cũng được về, nhưng trước mắt tôi phải tìm Nhóm
 
 <<sit "classroom_chair">>
 
@@ -269,7 +269,7 @@ Nam: Ông có nhóm chưa?
 
 Minh: Chưa. Mới vào lớp còn chưa kịp nhớ mặt ai
 
-Nam: Tui cũng chưa. Nãy tui thấy bạn kia cũng đang tìm nhóm
+Nam: Tôi cũng chưa. Nãy tôi thấy bạn kia cũng đang tìm nhóm
 
 Nam: Mai, nhóm bà đủ người chưa?
 
@@ -296,12 +296,15 @@ position: 526,1926
 ---
 ->Về phòng
 
-<<fade_in_out "1" "1">>
+<<fade_in 1>>
 <<wait 1>>
-<<teleport_to "room">>
+<<teleport_to "bed">>
+Hôm đó về phòng KTX, vì mệt nên tôi ngủ tới chiều tối
+Thức dậy trễ một tí là đã quên việc họp nhóm
+<<fade_in 1>>
 
 <<wait 2>>
-Minh: Tối rồi, bây giờ mình phải họp team thôi
+Minh: Tối rồi, bây giờ mình phải nhắn tin lên nhóm bàn về việc thuyết trình thôi
 <<set_objective "OBJ_M0_MEETING">>
 ===
 
@@ -312,22 +315,23 @@ position: 522,2134
 ---
 
 <<sit "room_chair">>
-Cũng sắp deadline rồi, bắt đầu họp với mọi người thôi
+Cũng sắp deadline rồi, bắt đầu bàn với mọi người thôi
 
 <<switch_ui "phone_chat">>
-Mai: Bài này nhỏ, nhưng nhóm mình trình bày đầu nên phải làm gọn và chắc.
+Mai: Chào mọi người, như sáng nay đã hẹn, chúng ta sẽ bàn về phần thuyết trình cho bữa sau
+Mai: Bài này nhỏ, nhưng nhóm mình trình bày đầu nên phải làm gọn và chắc
 
-Nam: Tui kiếm ví dụ minh họa. Có ví dụ dễ hiểu thì trình bày đỡ khô.
+Nam: Tôi kiếm ví dụ minh họa. Có ví dụ dễ hiểu thì trình bày đỡ khô khan
 
-Mai: Mình lo bố cục với phần lý thuyết chính.
+Mai: Mình lo bố cục với phần lý thuyết chính
 
-Mai: Minh tìm giúp mình tài liệu nền với phác phần mở đầu được không? Không cần dài, chỉ cần đúng nguồn.
+Mai: Minh tìm giúp mình tài liệu nền với phác phần mở đầu được không? Không cần dài, chỉ cần chính xác
 
-Minh: Ừ, được. Mình sẽ kiếm rồi gửi lại nhóm.
+Minh: Ừ, được. Mình sẽ kiếm rồi gửi lại nhóm
 
-Nam: Có gì không rõ thì nhắn nha. Đừng im im tới lúc ráp bài mới biết thiếu.
+Nam: Có gì không rõ thì nhắn nha. Đừng im im tới lúc ráp bài mới biết thiếu
 
-Minh: Ừ, mình biết rồi.
+Minh: Ừ, mình biết rồi
 
 -> Họp đã xong, tắt điện thoại
 
@@ -352,28 +356,32 @@ Minh: Nhiều nhóm thật…
 
 Minh: Nhìn cái nào cũng có vẻ liên quan, mà cũng hơi lộn xộn
 
-Minh: Mình chỉ cần tài liệu nền để làm phần mở đầu thôi mà cũng rối vậy.
+Minh: Mình chỉ cần tài liệu lý thuyết để làm phần mở đầu thôi mà cũng rối vậy
 Minh: Nhóm sinh viên năm nhất này nghe có vẻ ok nhỉ, chắc vô coi thử
 -> Vào nhóm
     <<switch_ui "show:pc:Group_2">>
 
 
--> Kéo xuống dưới
+-> Nhiều bài đăng quá, kéo xuống dưới
     <<switch_ui "show:pc:Group_3">>
 
 Minh: Ồ, có anh nào đăng bài gì đây
+->Mở bài viết
     <<switch_ui "show:pc:Group_4">>
 Minh: Full tài liệu Giải tích 1... đúng thứ mình đang cần luôn
 Minh: Có cả đề cương với ví dụ mẫu
 Minh: Giờ mình nên làm gì đây nhỉ?
 
--> Mở link
+-> Mở link, xem thử ở trong đó có gì
+    <<trace TRACE_OPEN_UNVERIFIED_LINK 1 "free_doc_link">>
     <<jump CH1_M1_R1_BB_1>>
--> Hỏi thử trong phòng mọi người trong phòng
+-> Hỏi mọi người trong phòng
+    <<trace TRACE_ASK_PERSON 2 "free_doc_link">>
     <<switch_ui "normal">>
     <<unsit>>
     <<set_objective "OBJ_M1_ASK_QUAN_2">>
--> Thôi không tìm nữa
+-> Link nào cũng không rõ nguồn, thôi không tìm nữa
+    <<trace TRACE_INSPECT_SOURCE 3 "free_doc_link">>
     <<jump CH1_M1_R3_BB_1>>
 ===
 

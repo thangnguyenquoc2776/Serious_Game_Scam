@@ -1,12 +1,8 @@
 title: CH1_M5_OPEN_RECAP
 ---
-// M5: recap va tong ket chuong
 <<set_milestone 5>>
-// <<switch_ui "phone">>
+<<switch_ui "normal">>
+Trước khi vào KTX, tôi nghĩ mình chỉ cần lo chuyện học, chuyện phòng ở, chuyện quen bạn mới. Nhưng hóa ra đời sống sinh viên còn phải đối mặt với nhiều thứ khác, trong đó có các hành vi lừa đảo. Để có thể nhận biết và phòng tránh, tôi phải học cách cẩn thận hơn, biết chậm lại đúng lúc, kiểm tra đúng chỗ, và hỏi đúng người trước khi tự đẩy mình vào rắc rối
 
-// Minh: "De xem lai nhung viec da xay ra..."
-// Minh: "Co nhieu tinh huong phai can than hon." 
-
-// <<show_summary>>
 <<chapter_end "CH1">>
 ===
