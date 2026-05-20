@@ -191,8 +191,8 @@ Minh: Chắc vài ngày nữa tới..
 <<switch_ui "normal">>
 <<fade_in "2">>
 <<wait 2>>
-Khoảng một tuần sau, tôi tham gia một buổi sinh hoạt ở hội trường.
-Các thầy cô trong khoa nói về nội quy, hoạt động sinh viên và vài thông báo đầu khóa.
+Khoảng một tuần sau, tôi tham gia một buổi sinh hoạt ở hội trường
+Các thầy cô trong khoa nói về nội quy, hoạt động sinh viên và vài thông báo đầu khóa
 
 // <<teleport_to "classroom2">>
 <<fade_out "2">>
@@ -219,7 +219,7 @@ position: 267,1386
 ---
 ->Ngồi
     <<sit "audi_chair">>
-Thầy giáo: Hôm nay chúng ta sẽ sinh hoạt đầu khóa cho tân sinh viên, thầy xin tự giới thiệu thầy là....
+Giảng viên : Hôm nay chúng ta sẽ sinh hoạt đầu khóa cho tân sinh viên, thầy xin tự giới thiệu thầy là....
 <<jump CH1_M1_R0_BB_3>>>>
 ===
 

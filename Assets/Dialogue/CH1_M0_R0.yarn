@@ -3,8 +3,7 @@ color: red
 position: 483,-504
 ---
 <<set_milestone 0>>
-<<fade_in 0>>
-<<wait 2>>
+<<wait 1>>
 Tôi là Minh, một sinh viên năm nhất từ quê lên thành phố để học đại học
 Tôi học ở Đại học Kỹ thuật Hạ Minh
 Tua ngược lại 1 tháng trước, đó là hôm đầu tiên tôi lên ký túc xá để làm thủ tục nhận phòng
@@ -132,7 +131,7 @@ position: 490,477
 title: CH1_M0_LEN_PHONG
 position: 503,626
 ---
--> Đi lên phòng
+-> Đi vào thang máy
     <<fade_in_out "1" "1">>
     <<wait 1>>
     <<teleport_to "room">>
@@ -144,6 +143,7 @@ position: 503,626
 title: CH1_M0_R0_BB_7
 position: 502,785
 ---
+Minh: Chào mọi người
 
 Quân: Ông cũng phòng 308 mới vô hả?
 
@@ -203,7 +203,7 @@ Tối đó, tôi đi ăn cùng Quân và anh Huy, rồi mua thêm vài món căn
 
 Ổ khóa, móc áo, xô nhựa, khăn, đèn bàn. Mỗi món không đắt lắm, nhưng cộng lại thì ví tôi mỏng đi thấy rõ
 
-Đêm đầu ở KTX không quá tệ. Chỉ là tiếng cửa phòng, tiếng dép ngoài hành lang và tiếng thông báo điện thoại làm tôi tỉnh giấc vài lần.
+Đêm đầu ở KTX không quá tệ. Chỉ là tiếng cửa phòng, tiếng dép ngoài hành lang và tiếng thông báo điện thoại làm tôi tỉnh giấc vài lần
 
 Điều này khiến tôi dậy muộn sáng hôm sau
 
@@ -238,7 +238,7 @@ Nam: Ê, ông cũng học phòng B2-304 hả
 Minh: Ừ. Giải tích 1 đúng không?
 Nam: Đúng rồi. Vậy là tôi không trễ một mình
 Minh: Cảm ơn ông, nghe câu đó tự nhiên đỡ quê hơn
-Nam: Vào lẹ đi, đứng đây thêm là quê đôi
+Nam: Vào lẹ đi, đứng đây thêm nữa thì kỳ lắm 
 ->Vào lớp
 <<fade_in_out "1" "1">>
 <<wait 1>>
@@ -253,14 +253,14 @@ Nam: Dạ
 
 Buổi học hôm đó chủ yếu là về giới thiệu môn học
 Thầy cũng kêu chúng tôi tìm nhóm
-2 tiết trôi qua, cuối cùng tôi cũng được về, nhưng trước mắt tôi phải tìm Nhóm
+2 tiết trôi qua, cuối cùng tôi cũng được về, nhưng trước mắt tôi phải tìm nhóm
 
 <<sit "classroom_chair">>
 
 <<fade_out 2>>
 <<wait 2>>
 
-->Rời khỏi chỗ ngồi để ra Về
+->Rời khỏi chỗ ngồi
 <<unsit>>
 <<set_objective "OBJ_M0_FIND_GROUP">>
 
