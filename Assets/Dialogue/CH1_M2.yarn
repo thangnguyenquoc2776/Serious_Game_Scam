@@ -195,10 +195,9 @@ position: 10,1346
 <<wait 2>>
 <<fade_out 2>>
 
-// <<fade_in_out "1" "1">>
 Minh: Hình như có ai nhắn tin
-->Kiểm tra tin nhắn
 <<set_objective "OBJ_M3_OPEN_NAM_CHAT">>
+->Kiểm tra tin nhắn
 <<switch_ui "phone_chat">>
 
 Nam: Minh ơi, ông còn thức không?
@@ -209,11 +208,15 @@ Nam: Ông chuyển qua số này giúp tui nha. Tài khoản bạn tui, tui đan
 
 -> Chuyển tiền luôn
     <<trace TRACE_TRANSFER_MONEY 1 "nam_private_chat">>
+    <<trace TRACE_ACCEPT_RISKY_REQUEST 1 "nam_private_chat">>
     <<jump CH1_M3_R1_BB_1>>
 -> Hỏi anh em trong phòng
     <<trace TRACE_ASK_PERSON 2 "nam_private_chat">>
+    <<unsit>>
     <<set_objective "OBJ_CH1_M3_ASK_QUAN">>
 -> Chất vấn lại
     <<trace TRACE_DETECT_RED_FLAG 3 "nam_private_chat">>
+    <<trace TRACE_DELAY_ACTION 3 "nam_private_chat">>
+    <<trace TRACE_CONTACT_VERIFY 3 "nam_private_chat">>
     <<jump CH1_M3_TC_1>>
 ===

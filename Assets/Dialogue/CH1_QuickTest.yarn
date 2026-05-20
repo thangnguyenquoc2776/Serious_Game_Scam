@@ -46,8 +46,7 @@ title: TEST_M2
 title: TEST_M3
 ---
 <<set_milestone 3>>
-// <<set_objective "OBJ_M3_OPEN_NAM_CHAT">>
-// <<teleport_to "bed">>
+
 <<jump CH1_M2_R0_BB_1>>
 ===
 
