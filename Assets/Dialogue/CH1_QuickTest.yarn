@@ -14,7 +14,7 @@ Quick test menu - choose a module
 -> Test M4 (scholarship email)
     <<jump TEST_M4>>
 -> Test M5 (end game)
-    <<jump CH1_M5_OPEN_RECAP>>
+    <<jump CH1_M4_R0_BB_1>>
 -> Test sit
     <<sit "room_chair">>
 -> Test teleport
