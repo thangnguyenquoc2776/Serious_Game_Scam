@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using SeriousGame.App;
 using SeriousGame.State;
+using SeriousGame.Content;
 
 namespace SeriousGame.UI
 {
@@ -13,6 +14,15 @@ namespace SeriousGame.UI
         [SerializeField] private TMP_Text informationVerificationText;
         [SerializeField] private TMP_Text riskRecognitionText;
         [SerializeField] private TMP_Text communityWarningText;
+
+        [Header("Feedback UI (optional)")]
+        [SerializeField] private TMP_Text helpSeekingFeedbackText;
+        [SerializeField] private TMP_Text pressureResistanceFeedbackText;
+        [SerializeField] private TMP_Text informationVerificationFeedbackText;
+        [SerializeField] private TMP_Text riskRecognitionFeedbackText;
+        [SerializeField] private TMP_Text communityWarningFeedbackText;
+        [SerializeField] private TMP_Text totalScoreText;
+        [SerializeField] private TMP_Text totalFeedbackText;
         
         [Header("Labels (optional)")]
         [SerializeField] private string helpSeekingLabel = "Help Seeking";
@@ -20,6 +30,10 @@ namespace SeriousGame.UI
         [SerializeField] private string informationVerificationLabel = "Information Verification";
         [SerializeField] private string riskRecognitionLabel = "Risk Recognition";
         [SerializeField] private string communityWarningLabel = "Community Warning";
+        [SerializeField] private string totalLabel = "Total Score";
+
+        [Header("Feedback Mapping")]
+        [SerializeField] private ScoreFeedbackMappingSO scoreFeedbackMapping;
 
         [Header("Behavior")]
         [SerializeField] private bool startInactive = true;
@@ -51,18 +65,67 @@ namespace SeriousGame.UI
 
         private void UpdateScores(PlayerStateService state)
         {
-            SetText(helpSeekingText, helpSeekingLabel, state.Get(GameStateKeys.ScoreHelpSeeking));
-            SetText(pressureResistanceText, pressureResistanceLabel, state.Get(GameStateKeys.ScorePressureResistance));
-            SetText(informationVerificationText, informationVerificationLabel, state.Get(GameStateKeys.ScoreInformationVerification));
-            SetText(riskRecognitionText, riskRecognitionLabel, state.Get(GameStateKeys.ScoreRiskRecognition));
-            SetText(communityWarningText, communityWarningLabel, state.Get(GameStateKeys.ScoreCommunityWarning));
+            var helpSeeking = state.Get(GameStateKeys.ScoreHelpSeeking);
+            var pressureResistance = state.Get(GameStateKeys.ScorePressureResistance);
+            var informationVerification = state.Get(GameStateKeys.ScoreInformationVerification);
+            var riskRecognition = state.Get(GameStateKeys.ScoreRiskRecognition);
+            var communityWarning = state.Get(GameStateKeys.ScoreCommunityWarning);
+
+            SetScoreWithFeedback(helpSeekingText, helpSeekingFeedbackText, helpSeekingLabel, GameStateKeys.ScoreHelpSeeking, helpSeeking);
+            SetScoreWithFeedback(pressureResistanceText, pressureResistanceFeedbackText, pressureResistanceLabel, GameStateKeys.ScorePressureResistance, pressureResistance);
+            SetScoreWithFeedback(informationVerificationText, informationVerificationFeedbackText, informationVerificationLabel, GameStateKeys.ScoreInformationVerification, informationVerification);
+            SetScoreWithFeedback(riskRecognitionText, riskRecognitionFeedbackText, riskRecognitionLabel, GameStateKeys.ScoreRiskRecognition, riskRecognition);
+            SetScoreWithFeedback(communityWarningText, communityWarningFeedbackText, communityWarningLabel, GameStateKeys.ScoreCommunityWarning, communityWarning);
+
+            var total = Mathf.RoundToInt((helpSeeking + pressureResistance + informationVerification + riskRecognition + communityWarning) / 5f);
+            SetScoreWithFeedback(totalScoreText, totalFeedbackText, totalLabel, ScoreFeedbackMappingSO.TotalScoreKey, total);
         }
 
-        private void SetText(TMP_Text text, string label, int value)
+        private void SetScoreWithFeedback(TMP_Text scoreText, TMP_Text feedbackText, string label, string scoreKey, int value)
         {
-            if (text == null) return;
-            var prefix = string.IsNullOrWhiteSpace(label) ? string.Empty : (label + ": ");
-            text.text = prefix + value.ToString();
+            if (scoreText != null)
+            {
+                var prefix = string.IsNullOrWhiteSpace(label) ? string.Empty : (label + ": ");
+                scoreText.text = prefix + value.ToString();
+            }
+
+            var feedback = BuildFeedbackText(scoreKey, value);
+            if (feedbackText != null)
+            {
+                feedbackText.text = feedback;
+            }
+            else if (scoreText != null && !string.IsNullOrWhiteSpace(feedback))
+            {
+                scoreText.text += "\n" + feedback;
+            }
+        }
+
+        private string BuildFeedbackText(string scoreKey, int value)
+        {
+            var mapping = ResolveMapping();
+            if (mapping == null) return string.Empty;
+
+            if (!mapping.TryGetFeedback(scoreKey, value, out var entry) || entry == null)
+                return string.Empty;
+
+            if (string.IsNullOrWhiteSpace(entry.ratingLabel))
+                return entry.feedback ?? string.Empty;
+
+            if (string.IsNullOrWhiteSpace(entry.feedback))
+                return entry.ratingLabel;
+
+            return entry.ratingLabel + ": " + entry.feedback;
+        }
+
+        private ScoreFeedbackMappingSO ResolveMapping()
+        {
+            if (scoreFeedbackMapping != null) return scoreFeedbackMapping;
+
+            var ctx = GameBootstrap.Context;
+            if (ctx != null && ctx.Config != null)
+                return ctx.Config.scoreFeedbackMapping;
+
+            return null;
         }
 
     }
