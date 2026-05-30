@@ -181,11 +181,9 @@ MonoBehaviour:
     - minInclusive: 41
       maxInclusive: 55
       ratingLabel: "Th\u1EE5 \u0111\u1ED9ng"
-      feedback: "B\u1EA1n \u0111\xE3 t\u1EF1 b\u1EA3o v\u1EC7 b\u1EA3n th\xE2n th\xE0nh
-        c\xF4ng, nh\u01B0ng l\u1EA1i qu\xEAn m\u1EA5t c\u1ED9ng \u0111\u1ED3ng. L\u1EA7n
-        sau, khi th\u1EA5y b\u1EABy l\u1EEBa \u0111\u1EA3o, h\xE3y b\u1EDBt ch\xFAt
-        th\u1EDDi gian nh\u1EAFn m\u1ED9t tin c\u1EA3nh b\xE1o cho m\u1ECDi ng\u01B0\u1EDDi
-        nh\xE9"
+      feedback: "L\u1EA7n sau, khi th\u1EA5y b\u1EABy l\u1EEBa \u0111\u1EA3o, h\xE3y
+        b\u1EDBt ch\xFAt th\u1EDDi gian nh\u1EAFn m\u1ED9t tin c\u1EA3nh b\xE1o cho
+        m\u1ECDi ng\u01B0\u1EDDi nh\xE9"
     - minInclusive: 56
       maxInclusive: 75
       ratingLabel: "Ch\u1EE7 \u0111\u1ED9ng"
