@@ -24,17 +24,17 @@ MonoBehaviour:
   - message: "N\xD3I CHUY\u1EC6N V\u1EDAI CH\u1ECA \u1EDE B\xC0N"
     objectiveIds:
     - OBJ_M0_TALK_LINH
-  - message: "\u0110I L\xCAN PH\xD2NG"
+  - message: "\u0110I V\xC0O THANG M\xC1Y \u0110\u1EC2 L\xCAN PH\xD2NG"
     objectiveIds:
     - OBJ_M0_GO_ROOM
   - message: "QU\xC9T M\xC3 QR NH\xD3M T\xD2A"
     objectiveIds:
     - OBJ_M0_SCAN_QR
-  - message: "\u0110I \u0110\u1EBEN TR\u01AF\u1EDCNG"
+  - message: "RA C\u1EECA V\xC0 \u0110I \u0110\u1EBEN TR\u01AF\u1EDCNG"
     objectiveIds:
     - OBJ_M1_ENTER_CLASS
     - OBJ_M0_GO_SCHOOL
-  - message: "\u0110I V\u1EC0"
+  - message: "RA C\u1EECA \u0110I V\u1EC0"
     objectiveIds:
     - OBJ_M0_LEAVE_CLASS
   - message: "T\xCCM T\xC0I LI\u1EC6U"
@@ -50,7 +50,7 @@ MonoBehaviour:
   - message: "T\xCCM NH\xD3M"
     objectiveIds:
     - OBJ_M0_FIND_GROUP
-  - message: "H\u1ECCP NH\xD3M"
+  - message: "M\u1EDE LAPTOP  \u0110\u1EC2 H\u1ECCP NH\xD3M"
     objectiveIds:
     - OBJ_M0_MEETING
   - message: "T\xCCM CH\xD5 NG\u1ED2I"
@@ -62,21 +62,21 @@ MonoBehaviour:
   - message: "T\xCCM SHIPPER"
     objectiveIds:
     - OBJ_CH1_M2_TAKE_SHIP_3
-  - message: "KI\u1EC2M TRA MAIL"
+  - message: "M\u1EDE LAPTOP KI\u1EC2M TRA MAIL"
     objectiveIds:
     - OBJ_CH1_M3_CHECKMAIL
-  - message: "V\xC0O L\u1EDAP"
+  - message: "\u0110I V\xC0O L\u1EDAP"
     objectiveIds:
     - OBJ_M0_ENTER_CLASS
   - message: "N\xD3I CHUY\u1EC6N V\u1EDAI M\u1ECCI NG\u01AF\u1EDCI TRONG PH\xD2NG"
     objectiveIds:
     - OBJ_M0_TALK_QUAN
-  - message: "\u0110I XU\u1ED0NG C\u1ED4NG KTX"
+  - message: "RA C\u1EECA \u0110\u1EC2 \u0110I XU\u1ED0NG C\u1ED4NG KTX"
     objectiveIds:
     - OBJ_CH1_M2_TAKE_SHIP
-  - message: "\u0110I XU\u1ED0NG C\u1ED4NG KTX"
+  - message: "C\xD3 TIN NH\u1EAEN"
     objectiveIds:
     - OBJ_M3_OPEN_NAM_CHAT
-  - message: "\u0110I XU\u1ED0NG C\u1ED4NG KTX"
+  - message: "\u0110I V\xC0O L\u1EDAP"
     objectiveIds:
     - OBJ_M3_TALK_NAM
