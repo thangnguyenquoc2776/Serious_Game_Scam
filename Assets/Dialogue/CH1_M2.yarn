@@ -24,12 +24,12 @@ Shipper: Lẹ lên đi em ơi anh không có thời gian
 Shipper: Em không tranh thủ lấy, đơn sẽ bị hủy và trả về cửa hàng đó nhé
 
 -> Chuyển tiền luôn
-    <<trace TRACE_TRANSFER_MONEY 1 "shipper_call">>
-    <<trace TRACE_IGNORE_RED_FLAG 1 "shipper_call">>
-    <<trace TRACE_ACT_UNDER_PRESSURE 1 "shipper_call">>
+    <<trace TRACE_TRANSFER_MONEY 1 "m2_shipper_call">>
+    // <<trace TRACE_IGNORE_RED_FLAG 1 "shipper_call">>
+    // <<trace TRACE_ACT_UNDER_PRESSURE 1 "shipper_call">>
     <<jump CH1_M2_R1_BB_1>>
 -> Hẹn lại hôm khác
-    <<trace TRACE_DELAY_ACTION 2 "shipper_call">>
+    <<trace TRACE_DELAY_ACTION 2 "m2_shipper_call">>
     <<jump CH1_M2_R2_BB_1>>
 ===
 
@@ -108,7 +108,7 @@ Shipper: Không có em ơi, nãy giờ không có ai gửi lại hàng hết
 Minh: Dạ hồi nãy anh shipper gọi em, nói em chuyển tiền rồi ảnh để lại đồ, giờ em xong em mới xuống lấy ạ
 Shipper: Em kiểm tra lại xem, mở app lên xem lại đơn thử
 -> Mở app kiểm tra lại đơn
-    <<trace TRACE_INSPECT_SOURCE 1 "shipper_call">>
+    <<trace TRACE_INSPECT_SOURCE 1 "m2_app_checkorder">>
     <<wait 1>>
     <<switch_ui "show:phone:Order_3">>
     Trạng thái đang vận chuyển, vậy là đơn của mình chưa tới mà. Thôi xong rồi...
@@ -134,13 +134,14 @@ Shipper: Anh nói thật
 Shipper: Anh đem hàng tới đây rồi, giờ anh gửi bác bảo vệ. Em chỉ cần chuyển khoản cho anh
 Shipper: Xíu em xuống bác bảo vệ lấy hàng. Anh còn nhiều đơn nên giờ anh phải đi gấp
 -> Chuyển tiền luôn
-    <<trace TRACE_TRANSFER_MONEY 1 "shipper_call">>
-    <<trace TRACE_IGNORE_RED_FLAG 1 "shipper_call">>
-    <<trace TRACE_ACT_UNDER_PRESSURE 1 "shipper_call">>
+    <<trace TRACE_TRANSFER_MONEY 1 "m2_shipper_call">>
+    // <<trace TRACE_IGNORE_RED_FLAG 1 "shipper_call">>
+    // <<trace TRACE_ACT_UNDER_PRESSURE 1 "shipper_call">>
     <<jump CH1_M2_R1_BB_1>>
 -> Từ chối chuyển khoản
     Minh: Dạ, vậy anh hủy hoặc giao lại sau giúp em. Em không chuyển khi chưa nhận hàng được
-    <<trace TRACE_DETECT_RED_FLAG 2 "shipper_call">>
+    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "m2_shipper_call">>
+    // <<trace TRACE_DETECT_RED_FLAG 2 "shipper_call">>
 
 <<switch_ui "normal">>
 <<wait 1>>
@@ -153,7 +154,7 @@ position: 12,462
 ---
 Minh: Mình có nên kiểm tra lại đơn hàng cái không nhỉ?
 -> Kiểm tra
-    <<trace TRACE_INSPECT_SOURCE 1 "shipper_call">>
+    <<trace TRACE_INSPECT_SOURCE 1 "m2_app_checkorder">>
     <<wait 2>>
     <<switch_ui "show:phone:Order_3">>
     Minh: Dự kiến giao ngày mai…
@@ -209,17 +210,17 @@ Nam: Gấp nha ông, tôi đang ngoài đường
 Nam: Ông chuyển qua số này giúp tôi nha. Tài khoản bạn tôi, tôi đang mượn máy
 
 -> Chuyển tiền luôn
-    <<trace TRACE_TRANSFER_MONEY 1 "nam_private_chat">>
-    <<trace TRACE_ACCEPT_RISKY_REQUEST 1 "nam_private_chat">>
+    <<trace TRACE_TRANSFER_MONEY 1 "m3_namchat_borrowmoney">>
+    // <<trace TRACE_ACCEPT_RISKY_REQUEST 1 "nam_private_chat">>
     <<jump CH1_M3_R1_BB_1>>
--> Hỏi anh em trong phòng
-    <<trace TRACE_ASK_PERSON 2 "nam_private_chat">>
+-> Hỏi mọi người trong phòng
+    <<trace TRACE_ASK_PERSON 2 "m3_namchat_askroomate">>
     <<unsit>>
     <<set_objective "OBJ_M3_ASK_QUAN">>
     //M3_R2_BB_1
 -> Chất vấn lại
-    <<trace TRACE_DETECT_RED_FLAG 3 "nam_private_chat">>
-    <<trace TRACE_DELAY_ACTION 3 "nam_private_chat">>
-    <<trace TRACE_CONTACT_VERIFY 3 "nam_private_chat">>
+    <<trace TRACE_DETECT_RED_FLAG 3 "m3_namchat_borrowmoney">>
+    // <<trace TRACE_DELAY_ACTION 3 "nam_private_chat">>
+    // <<trace TRACE_CONTACT_VERIFY 3 "nam_private_chat">>
     <<jump CH1_M3_TC_1>>
 ===

@@ -14,15 +14,15 @@ Minh: Sao không chuyển vào tài khoản của ông?
 Nam: Tài khoản tôi lỗi. Tài khoản bạn tôi. Nhanh nha
 
 -> Chuyển khoản cho Nam
-    <<trace TRACE_TRANSFER_MONEY 1 "nam_private_chat">>
-    <<trace TRACE_ACCEPT_RISKY_REQUEST 1 "nam_private_chat">>
+    <<trace TRACE_TRANSFER_MONEY 1 "m3_namchat_borrowmoney">>
+    // <<trace TRACE_ACCEPT_RISKY_REQUEST 1 "nam_private_chat">>
     <<jump CH1_M3_R1_BB_1>>
--> Hỏi anh em trong phòng
-    <<trace TRACE_ASK_PERSON 2 "nam_private_chat">>
+-> Hỏi mọi người trong phòng
+    <<trace TRACE_ASK_PERSON 2 "m3_namchat_roomate">>
     <<unsit>>
     <<set_objective "OBJ_M3_ASK_QUAN">>
 -> Không chuyển khoản
-    <<trace TRACE_REFUSE_RISKY_REQUEST 3 "nam_private_chat">>
+    <<trace TRACE_REFUSE_RISKY_REQUEST 3 "m3_namchat_borrowmoney">>
     <<jump CH1_M3_TC_2>>
 ===
 
@@ -32,7 +32,7 @@ position: 531,314
 <<switch_ui "normal">>
 Minh: Mình có nên nhắn Mai để hỏi chuyện này không nhỉ
 ->Hỏi lại Mai
-    <<trace TRACE_ASK_PERSON 1 "nam_private_chat">>
+    <<trace TRACE_ASK_PERSON 1 "m3_namchat_Mai">>
     <<switch_ui "phone_chat">>
     Minh: Mai ơi, Nam vừa nhắn riêng tôi mượn tiền
     Mai: Ủa? Tôi cũng vừa thấy một tin nhắn rất giống vậy
@@ -78,7 +78,7 @@ Huy: Cứ xác minh thêm trước đã. Gọi trực tiếp hoặc hỏi ngư�
 Minh: Vậy tôi nên nhắn Mai kiểm tra thêm không?
 -> Nhắn Mai
     <<switch_ui "phone_chat">>
-    <<trace TRACE_ASK_PERSON 1 "nam_private_chat">>
+    <<trace TRACE_ASK_PERSON 1 "m3_namchat_Mai">>
     Minh: Mai ơi, Nam vừa nhắn riêng tôi mượn tiền
     Mai: Ủa? Tôi cũng vừa thấy một tin nhắn rất giống vậy
     Mai: Tôi cũng không rõ có phải là Nam hay không 
@@ -96,10 +96,10 @@ position: -299,548
 Minh: Mai cũng thấy khả nghi...
 Minh: Thôi, giờ mình phải tự quyết định
 ->Chuyển khoản
-    <<trace TRACE_TRANSFER_MONEY 1 "nam_private_chat">>
-    <<trace TRACE_ACCEPT_RISKY_REQUEST 1 "nam_private_chat">>
+    <<trace TRACE_TRANSFER_MONEY 1 "m3_namchat_borrowmoney">>
+    // <<trace TRACE_ACCEPT_RISKY_REQUEST 1 "nam_private_chat">>
 ->Không chuyển
-    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "nam_private_chat">>
+    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "m3_namchat_borrowmoney">>
 <<jump CH1_M3_R0_BB_1>>
 ===
 
@@ -110,10 +110,10 @@ position: -70,546
 Minh: Thôi cứ tự quyết đã, chắc không cần hỏi Mai
 Minh: Dù sao mình cũng phải tự quyết định
 ->Chuyển khoản
-    <<trace TRACE_TRANSFER_MONEY 1 "nam_private_chat">>
-    <<trace TRACE_ACCEPT_RISKY_REQUEST 1 "nam_private_chat">>
+    <<trace TRACE_TRANSFER_MONEY 1 "m3_namchat_borrowmoney">>
+    // <<trace TRACE_ACCEPT_RISKY_REQUEST 1 "nam_private_chat">>
 ->Không chuyển
-    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "nam_private_chat">>
+    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "m3_namchat_borrowmoney">>
 <<jump CH1_M3_R0_BB_0>>
 ===
 
@@ -148,7 +148,7 @@ position: 281,1118
 <<teleport_to "school">>
 Sáng hôm sau tôi có tiết học nên phải lên trường, tôi cũng gặp Nam ở đó
 <<fade_out 2>>
-<<wait 1>>>>
+<<wait 1>>
 <<set_objective "OBJ_M3_TALK_NAM">>
 
 ===
@@ -166,7 +166,7 @@ Minh: Vậy tin nhắn đó là giả mạo thật à?
 Minh: Mình có nên nhắn tin cảnh báo lên nhóm lớp không nhỉ?
 
 -> Cảnh báo nhóm lớp
-    <<trace TRACE_WARN_OTHERS 2 "nam_private_chat">>
+    <<trace TRACE_WARN_OTHERS 2 "m3_classgroup">>
     <<switch_ui "phone_chat">>
     Minh: Các bạn ơi tài khoản của Nam đã bị hack rồi, nên nếu bạn nào có nhận tin nhắn mượn tiền từ Nam thì đừng làm làm theo nhé!
 -> Không báo nhóm lớp
@@ -176,7 +176,7 @@ Minh: Mình có nên nhắn tin cảnh báo lên nhóm lớp không nhỉ?
 
 
 title: CH1_M3_R0_BB_3
-position: 250,1540
+position: 261,1534
 ---
 <<switch_ui "normal">>
 <<fade_in 2>>
@@ -191,7 +191,7 @@ Khi có người thân quen nhờ vả chuyện tiền bạc hoặc một chuy�
 ===
 
 title: CH1_M3_R0_BB_4
-position: 292,1137
+position: 265,1710
 ---
 <<teleport_to "bed">>
 <<fade_out 2>>
@@ -205,7 +205,7 @@ Minh: Hình như có mail, để xem cái gì thế nhỉ
 ===
 
 title: CH1_M3_R0_BB_5
-position: 307,1724
+position: 286,1883
 ---
 -> Ngồi
     <<sit "room_chair">>
@@ -220,10 +220,10 @@ position: 307,1724
     Minh: Mình nên làm gì bây giờ?
     <<wait 1>>
     -> Xác nhận hồ sơ
-        <<trace TRACE_OPEN_UNVERIFIED_FORM 1 "scholarship_email">>
+        <<trace TRACE_OPEN_UNVERIFIED_FORM 1 "m4_email_scholarship">>
         <<jump CH1_M4_R1_BB_1>>
     -> Đi hỏi mọi người trong phòng
-        <<trace TRACE_ASK_PERSON 3 "scholarship_email">>
+        <<trace TRACE_ASK_PERSON 3 "m4_email_scholarship_askroomate">>
         <<unsit>>
         <<switch_ui "normal">>
         <<set_objective "OBJ_M4_ASK_QUAN">>

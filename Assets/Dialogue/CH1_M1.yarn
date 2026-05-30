@@ -15,9 +15,10 @@ Minh: Chắc để xác minh thành viên nhóm hay gì đó…
 Minh: Nên làm sao nhỉ, sắp deadline mình phải nộp tài liệu lên nhóm rồi
 
 -> Nhập tài khoản, mật khẩu & xác nhận
-    <<trace TRACE_SUBMIT_CREDENTIAL 1 "free_doc_login">>
+    <<trace TRACE_SUBMIT_CREDENTIAL 1 "m1_freedoc_login">>
     <<jump CH1_M1_R1_BB_2>>
 -> Dừng lại không xem nữa
+    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "m1_freedoc_login">>
     <<jump CH1_M1_R3_BB_2>>
 ===
 
@@ -81,7 +82,7 @@ position: 270,409
 Huy: Em mở link xem trước thử, đừng đăng nhập gì hết
 
 -> Mở link
-    <<trace TRACE_OPEN_UNVERIFIED_LINK 1 "free_doc_link">>
+    <<trace TRACE_OPEN_UNVERIFIED_LINK 1 "m1_link_freedoc">>
     <<switch_ui "show:pc:Webtailieu_1">>
     -> Mở tài liệu xem thử
     <<switch_ui "show:pc:Webtailieu_3">>
@@ -92,7 +93,8 @@ Huy: Em mở link xem trước thử, đừng đăng nhập gì hết
     Minh: Vậy bỏ hả?
     Huy: Bỏ link đó. Tài liệu thì kiếm từ nguồn khác
 -> Link không rõ nguồn, không mở link
-    <<trace TRACE_INSPECT_SOURCE 2 "free_doc_link">>
+    // <<trace TRACE_INSPECT_SOURCE 2 "m1_link_freedoc">>
+    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "m1_link_freedoc">>
     Minh: Dạ thôi em thấy bấm vô link lạ nguy hiểm quá 
     Minh: Em thấy nguồn không rõ nên không dám vào
 
@@ -258,14 +260,14 @@ position: 293,1587
 
 <<wait 3>>
 -> Chuyển tiền luôn
-    <<trace TRACE_TRANSFER_MONEY 1 "shipper_call">>
-    <<trace TRACE_IGNORE_RED_FLAG 1 "shipper_call">>
-    <<trace TRACE_ACT_UNDER_PRESSURE 1 "shipper_call">>
+    <<trace TRACE_TRANSFER_MONEY 1 "m2_shipper_call">>
+    // <<trace TRACE_IGNORE_RED_FLAG 1 "m2_shipper_call">>
+    // <<trace TRACE_ACT_UNDER_PRESSURE 1 "m2_shipper_call">>
     <<jump CH1_M2_R1_BB_1>>
 -> Hẹn lại hôm khác
-    <<trace TRACE_DELAY_ACTION 2 "shipper_call">>
+    <<trace TRACE_DELAY_ACTION 2 "m2_shipper_call">>
     <<jump CH1_M2_R2_BB_1>>
 -> Nhắn tin hỏi bạn cùng phòng Quân
-    <<trace TRACE_ASK_PERSON 3 "shipper_call">>
+    <<trace TRACE_ASK_PERSON 3 "m2_shipper_call">>
     <<jump CH1_M2_TC_1>>
 ===

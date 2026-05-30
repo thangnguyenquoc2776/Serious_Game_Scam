@@ -13,7 +13,7 @@ Vì tôi lên thành phố khá trễ, nên tôi phải tranh thủ sắp xếp 
 Minh: Tới nơi rồi
 Minh: Giờ chắc phải vào sảnh làm thủ tục đã
 ->Kiểm tra lại mail thông tin nhận phòng, sau đó đi hỏi bác bảo vệ
-    <<trace TRACE_READ_RELEVANT_INFO 1 "Check_in_mail">>
+    <<trace TRACE_READ_RELEVANT_INFO 1 "m0_email_checkin">>
     <<jump CH1_M0_R0_TC_2>>
 ->Đi vào hỏi bác bảo vệ luôn 
     <<set_objective "OBJ_M0_TALK_GUARD">>
@@ -89,7 +89,7 @@ Chị Linh: Đây là giấy nhận phòng của em nhé
 Chị Linh: Tòa có nhóm thông báo, em có thể tham gia để cập nhật thông tin thường xuyên nhé
 
 -> Hỏi về nhóm thông báo
-    <<trace TRACE_ASK_PERSON 1 "Instructor">>
+    <<trace TRACE_ASK_PERSON 1 "m0_linh_askgroup">>
     <<jump CH1_M0_R0_TC_5 >>
 -> Không hỏi, đi lên nhận phòng
     <<set_objective "OBJ_M0_GO_ROOM">>
@@ -170,7 +170,7 @@ Huy: Nhóm tòa có thông báo thì nhớ xem. Mấy hôm đầu dễ sót lắ
     Huy: Vậy thôi khi khác em vô cũng được không sao
 <<endif>>
 -> Nói chuyện thêm với Quân và Huy để làm quen, cải thiện mối quan hệ
-    <<trace TRACE_ASK_PERSON 1 "friend">>
+    // <<trace TRACE_ASK_PERSON 1 "friend">>
     <<set_flag "MAKE_FRIEND">>
     <<jump CH1_M0_R0_TC_8>>
 -> Sắp xếp hành lý và nghỉ ngơi
@@ -378,15 +378,15 @@ Minh: Có cả đề cương với ví dụ mẫu
 Minh: Giờ mình nên làm gì đây nhỉ?
 
 -> Mở link, xem thử ở trong đó có gì
-    <<trace TRACE_OPEN_UNVERIFIED_LINK 1 "free_doc_link">>
+    <<trace TRACE_OPEN_UNVERIFIED_LINK 1 "m1_link_freedoc">>
     <<jump CH1_M1_R1_BB_1>>
 -> Hỏi mọi người trong phòng
-    <<trace TRACE_ASK_PERSON 2 "free_doc_link">>
+    <<trace TRACE_ASK_PERSON 2 "m1_roommate_askdoc">>
     <<switch_ui "normal">>
     <<unsit>>
     <<set_objective "OBJ_M1_ASK_QUAN_2">>
 -> Link nào cũng không rõ nguồn, thôi không tìm nữa
-    <<trace TRACE_INSPECT_SOURCE 3 "free_doc_link">>
+    <<trace TRACE_INSPECT_SOURCE 3 "m1_link_freedoc">>
     <<jump CH1_M1_R3_BB_1>>
 ===
 

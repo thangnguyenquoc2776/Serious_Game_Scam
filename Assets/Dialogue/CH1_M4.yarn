@@ -10,10 +10,10 @@ Minh: Hạn xác nhận: 23:59 hôm nay
 Minh: Mấy thông tin này trường cũng có rồi mà…
 Minh: Chắc để đối chiếu hồ sơ thôi
 -> Nhập thông tin cơ bản và tiếp tục
-    <<trace TRACE_FILL_BASIC_INFO 1 "scholarship_form">>
+    <<trace TRACE_FILL_BASIC_INFO 1 "m4_scholarship_form">>
     <<jump CH1_M4_R1_BB_2>>
 -> Dừng lại, thoát form
-    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "scholarship_form">>
+    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "m4_scholarship_form">>
     <<switch_ui "normal">>
     <<jump CH1_M4_R0_BB_0>>
 ===
@@ -28,10 +28,10 @@ position: 587,215
 Minh: Tới tài khoản ngân hàng luôn à
 Minh: Nhận học bổng thì chắc cũng cần tài khoản thật
 -> Nhập thông tin tài khoản ngân hàng và tiếp tục
-    <<trace TRACE_FILL_SENSITIVE_INFO 1 "scholarship_form">>
+    <<trace TRACE_FILL_SENSITIVE_INFO 1 "m4_form_bankaccount">>
     <<jump CH1_M4_R1_BB_3>>
 -> Dừng lại, thoát form
-    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "scholarship_form">>
+    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "m4_form_bankaccount">>
     <<switch_ui "normal">>
     <<jump CH1_M4_R0_BB_0>>
     
@@ -44,7 +44,7 @@ position: 576,393
 -> Mở cổng xác minh
     <<jump CH1_M4_R1_BB_4>>
 -> Dừng lại, thoát form
-    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "scholarship_form">>
+    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "m4_form_banklogin">>
     <<switch_ui "normal">>
     <<jump CH1_M4_R0_BB_0>>
 ===
@@ -54,10 +54,10 @@ position: 561,565
 <<switch_ui "show:pc:Form_4">>
 <<wait 2>>
 -> Điền thông tin đăng nhập và xác minh của ngân hàng điện tử
-    <<trace TRACE_FILL_SENSITIVE_INFO 1 "scholarship_form">>
+    <<trace TRACE_SUBMIT_CREDENTIAL 1 "m4_form_banklogin">>
     <<jump CH1_M4_R1_BB_5>>
 ->Dừng lại, thoát form
-    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "scholarship_form">>
+    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "m4_form_banklogin">>
     <<switch_ui "normal">>
     <<jump CH1_M4_R0_BB_0>>
 ===
@@ -71,7 +71,7 @@ Minh: Nhận học bổng mà cũng cần OTP ngân hàng hả…
 Minh: Nhưng mã sắp hết hạn rồi
 Minh: Mình có nên nhập OTP không?
 -> Nhập OTP và hoàn tất xác minh
-    <<trace TRACE_SUBMIT_AUTH_CODE 1 "scholarship_otp">>
+    <<trace TRACE_SUBMIT_AUTH_CODE 1 "m4_otp_bankauth">>
     <<wait 2>>
     Minh: Hình như điện thoại có thông báo gì thì phải
     -> Kiểm tra điện thoại
@@ -79,7 +79,7 @@ Minh: Mình có nên nhập OTP không?
     Minh: Tại sao tiền trong tài khoản mình lại bị trừ hết rồi vậy
     <<jump CH1_M4_R1_BB_6>>
 ->Dừng lại, thoát form
-    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "scholarship_form">>
+    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "m4_otp_bankauth">>
     <<switch_ui "normal">>
     <<jump CH1_M4_R0_BB_0>>
 
@@ -91,7 +91,7 @@ position: 562,913
 <<switch_ui "normal">>
 Mình có nên hỏi mọi người không nhỉ?
 -> Hỏi mọi người trong phòng
-    <<trace TRACE_ASK_PERSON 1 "scholarship_form">>
+    <<trace TRACE_ASK_PERSON 1 "m4_roommate">>
     <<unsit>>
     <<set_objective "OBJ_M4_ASK_QUAN_2">>
 ->Không hỏi
@@ -181,7 +181,7 @@ position: -157,1750
 <<wait 2>>
 Mình có nên nhắn vào nhóm BTL để cảnh báo cho mọi người không nhỉ?
 -> Nhắn vào nhóm 
-    <<trace TRACE_WARN_OTHERS 1 "scholarship_email">>
+    <<trace TRACE_WARN_OTHERS 1 "m4_classgroup">>
     <<switch_ui "phone_chat">>
     Minh: Mọi người cẩn thận mail học bổng Đồng hành Tân sinh viên 2025 nha
     Minh: Mail này không giống nguồn chính thức, link form lạ và có hạn xác nhận gấp
@@ -207,7 +207,7 @@ Minh: Thơm nên tôi mới thấy hơi sợ
 Quân: Cái này mình cũng không rõ
 Huy: Em cứ kiểm tra kỹ mail đó có phải nguồn chính thống không, nguồn chính thống thường là các mail có đuôi edu hoặc edu.vn nhé
 ->Kiểm tra lại mail
-    <<trace TRACE_INSPECT_SOURCE 1 "scholarship_email">>
+    <<trace TRACE_INSPECT_SOURCE 1 "m4_email_scholarship">>
     <<switch_ui "show:pc:Mailhocbong_2">>
     -> Đóng mail
         <<jump CH1_M4_R3_BB_2>>
@@ -222,10 +222,10 @@ position: -306,993
 Minh: Vậy bây giờ mình phải tự đưa ra quyết định
 Minh: Mình nên làm gì nhỉ ?
 -> Xác nhận hồ sơ
-    <<trace TRACE_OPEN_UNVERIFIED_FORM 1 "scholarship_email">>
+    <<trace TRACE_OPEN_UNVERIFIED_FORM 1 "m4_email_scholarship">>
     <<jump CH1_M4_R1_BB_1>>
 -> Đóng mail, không xem nữa
-    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "scholarship_email">>
+    <<trace TRACE_REFUSE_RISKY_REQUEST 2 "m4_email_scholarship">>
     <<jump CH1_M4_R0_BB_0>>
 ===
 
@@ -239,6 +239,5 @@ Minh: Tiếc thật, 5 triệu là một con số đủ để mình có thể tr
 <<wait 2>>
 Đi học xa nhà, tiền trong ví vơi đi nhanh hơn tôi tưởng. Sự xuất hiện của một email học bổng vào đúng lúc kinh tế đang eo hẹp giống như một chiếc phao cứu sinh, khiến người ta dễ dàng bám lấy mà quên mất việc kiểm tra xem nó có thực sự an toàn hay không. Bọn lừa đảo rất biết cách khai thác sự chật vật của sinh viên. Chúng dùng một con số đủ hấp dẫn để làm mồi nhử, từng bước kéo tôi vào việc giao nộp các thông tin nhạy cảm. Lằn ranh giữa việc chớp lấy cơ hội và sập bẫy lừa đảo thực sự rất mong manh
 
-<<wait 2>>
 <<jump CH1_M5_OPEN_RECAP>>
 ===
