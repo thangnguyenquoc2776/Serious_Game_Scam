@@ -19,3 +19,4 @@ MonoBehaviour:
   firebaseProjectId: serious-game-scam
   firebaseWebApiKey: AIzaSyC4awZbiWrUd9S2Sav-XgVA11YCAiag200
   evidenceMapping: {fileID: 11400000, guid: 1bdd633ca4845a84b9780db90c5fd155, type: 2}
+  scoreFeedbackMapping: {fileID: 11400000, guid: 1d93ff2176dafd440a4863625af59f05, type: 2}

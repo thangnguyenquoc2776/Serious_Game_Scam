@@ -19,5 +19,8 @@ namespace SeriousGame.Content
 
         [Header("Content")]
         public EvidenceMappingSO evidenceMapping;
+
+        [Header("Feedback")]
+        public ScoreFeedbackMappingSO scoreFeedbackMapping;
     }
 }

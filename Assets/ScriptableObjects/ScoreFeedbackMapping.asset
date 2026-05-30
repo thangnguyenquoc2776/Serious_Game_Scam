@@ -1,0 +1,202 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec2cc317f90da3428dc8e67ce0f9a83, type: 3}
+  m_Name: ScoreFeedbackMapping
+  m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.Content.ScoreFeedbackMappingSO
+  groups:
+  - scoreKey: SCORE_RISK_RECOGNITION
+    entries:
+    - minInclusive: 0
+      maxInclusive: 25
+      ratingLabel: "R\u1EE7i ro r\u1EA5t cao"
+      feedback: "B\u1EA1n \u0111ang \u1EDF m\u1EE9c b\xE1o \u0111\u1ED9ng \u0111\u1ECF
+        v\u1EC1 nh\u1EADn th\u1EE9c r\u1EE7i ro. Vi\u1EC7c \u0111i\u1EC1n th\xF4ng
+        tin nh\u1EA1y c\u1EA3m v\xE0o c\xE1c form/web l\u1EA1 t\u01B0\u01A1ng \u0111\u01B0\u01A1ng
+        v\u1EDBi vi\u1EC7c b\u1EA1n t\u1EF1 m\u1EDF c\u1EEDa nh\xE0 m\u1EDDi k\u1EBB
+        gian v\xE0o"
+    - minInclusive: 26
+      maxInclusive: 40
+      ratingLabel: "R\u1EE7i ro cao  "
+      feedback: "B\u1EA1n c\xF2n kh\xE1 ch\u1EE7 quan tr\u01B0\u1EDBc c\xE1c b\u1EABy
+        gi\u0103ng s\u1EB5n. H\xE3y t\u1EADp quan s\xE1t k\u1EF9 c\xE1c th\xF4ng
+        tin, v\xED d\u1EE5 nh\u01B0 \u0111\u1ECBa ch\u1EC9 email, t\xEAn ng\u01B0\u1EDDi
+        g\u1EEDi v\xE0 c\xE1c y\xEAu c\u1EA7u v\xF4 l\xFD tr\u01B0\u1EDBc khi thao
+        t\xE1c"
+    - minInclusive: 41
+      maxInclusive: 55
+      ratingLabel: "Ch\u01B0a \u1ED5n \u0111\u1ECBnh  "
+      feedback: "Kh\u1EA3 n\u0103ng nh\u1EADn di\u1EC7n r\u1EE7i ro c\u1EE7a b\u1EA1n
+        ch\u01B0a th\u1EF1c s\u1EF1 \u1ED5n \u0111\u1ECBnh. \u0110\u1EEBng ch\u1EC9
+        l\u1EDD \u0111i c\xE1c chi ti\u1EBFt l\u1EA1, h\xE3y t\u1EADp ph\xE2n t\xEDch
+        xem t\u1EA1i sao n\xF3 l\u1EA1i xu\u1EA5t hi\u1EC7n"
+    - minInclusive: 56
+      maxInclusive: 70
+      ratingLabel: "Kh\xE1 an to\xE0n "
+      feedback: "K\u1EF9 n\u0103ng nh\u1EADn di\u1EC7n r\u1EE7i ro c\u1EE7a b\u1EA1n
+        kh\xE1 t\u1ED1t! B\u1EA1n hi\u1EBFm khi b\u1ECB m\u1EAFc l\u1EEBa b\u1EDFi
+        nh\u1EEFng m\u1ED3i nh\u1EED h\u1EDDi h\u1EE3t ho\u1EB7c c\xE1c bi\u1EC3u
+        m\u1EABu kh\xF4ng r\xF5 r\xE0ng"
+    - minInclusive: 71
+      maxInclusive: 100
+      ratingLabel: "R\u1EA5t t\u1ED1t"
+      feedback: "Tuy\u1EC7t v\u1EDDi! S\u1EF1 nh\u1EA1y b\xE9n c\u1EE7a b\u1EA1n
+        ch\xEDnh l\xE0 t\u1EA5m khi\xEAn v\u1EEFng ch\u1EAFc nh\u1EA5t. Kh\xF4ng
+        m\u1ED9t m\xE1nh kh\xF3e l\u1EEBa \u0111\u1EA3o n\xE0o c\xF3 th\u1EC3 qua
+        m\u1EAFt \u0111\u01B0\u1EE3c b\u1EA1n"
+  - scoreKey: SCORE_INFORMATION_VERIFICATION
+    entries:
+    - minInclusive: 0
+      maxInclusive: 25
+      ratingLabel: "R\u1EE7i ro r\u1EA5t cao"
+      feedback: "B\u1EA1n \u0111ang h\xE0nh \u0111\u1ED9ng d\u1EF1a tr\xEAn ni\u1EC1m
+        tin m\xF9 qu\xE1ng. Tuy\u1EC7t \u0111\u1ED1i kh\xF4ng \u0111\u01B0\u1EE3c
+        th\u1EF1c hi\u1EC7n c\xE1c h\xE0nh \u0111\u1ED9ng nh\u01B0 chuy\u1EC3n ti\u1EC1n
+        hay \u0111\u0103ng nh\u1EADp n\u1EBFu ch\u01B0a t\u1EF1 m\xECnh x\xE1c minh
+        ngu\u1ED3n g\u1ED1c"
+    - minInclusive: 26
+      maxInclusive: 40
+      ratingLabel: "R\u1EE7i ro cao  "
+      feedback: "B\u1EA1n r\u1EA5t d\u1EC5 tin v\xE0o nh\u1EEFng g\xEC nh\xECn th\u1EA5y
+        tr\xEAn m\xE0n h\xECnh. H\xE3y nh\u1EDB: M\u1ECDi email hay tin nh\u1EAFn
+        m\u1EA1o danh \u0111\u1EC1u c\xF3 th\u1EC3 l\xE0m gi\u1EA3 c\u1EF1c k\u1EF3
+        tinh vi\r\n"
+    - minInclusive: 41
+      maxInclusive: 60
+      ratingLabel: "Ch\u01B0a \u1ED5n \u0111\u1ECBnh  "
+      feedback: "B\u1EA1n c\xF3 \xFD th\u1EE9c v\u1EC1 vi\u1EC7c th\xF4ng tin c\xF3
+        th\u1EC3 b\u1ECB l\xE0m gi\u1EA3, nh\u01B0ng l\u1EA1i ng\u1EA1i \u0111i ki\u1EC3m
+        ch\u1EE9ng. H\xE3y t\u1EA1o th\xF3i quen \u0111\u1ED1i chi\u1EBFu, ki\u1EC3m
+        tra th\xF4ng tin nh\xE9"
+    - minInclusive: 61
+      maxInclusive: 75
+      ratingLabel: "Kh\xE1 an to\xE0n "
+      feedback: "B\u1EA1n c\xF3 th\xF3i quen \u0111\u1ED1i chi\u1EBFu th\xF4ng tin
+        r\u1EA5t \u0111\xE1ng khen! Vi\u1EC7c t\u1EF1 m\xECnh ki\u1EC3m tra c\xE1c
+        th\xF4ng tin c\u1EA7n thi\u1EBFt \u0111\xE3 gi\xFAp b\u1EA1n tr\xE1nh \u0111\u01B0\u1EE3c
+        nh\u1EEFng c\xFA l\u1EEBa ngo\u1EA1n m\u1EE5c"
+    - minInclusive: 76
+      maxInclusive: 100
+      ratingLabel: "T\u1ED1t "
+      feedback: "B\u1EA1n l\xE0 m\u1ED9t ng\u01B0\u1EDDi x\xE1c minh th\xF4ng tin
+        m\u1EABu m\u1EF1c. Th\xF3i quen ki\u1EC3m ch\u1EE9ng c\u1EE7a b\u1EA1n \u0111\u1EA3m
+        b\u1EA3o m\u1ECDi quy\u1EBFt \u0111\u1ECBnh \u0111\u01B0a ra \u0111\u1EC1u
+        an to\xE0n tuy\u1EC7t \u0111\u1ED1i"
+  - scoreKey: SCORE_PRESSURE_RESISTANCE
+    entries:
+    - minInclusive: 0
+      maxInclusive: 25
+      ratingLabel: "R\u1EE7i ro r\u1EA5t cao"
+      feedback: "B\u1EA1n r\u1EA5t d\u1EC5 b\u1ECB thao t\xFAng khi t\xECnh hu\u1ED1ng
+        tr\u1EDF n\xEAn c\u1EA5p b\xE1ch. K\u1EBB l\u1EEBa \u0111\u1EA3o lu\xF4n
+        l\u1EE3i d\u1EE5ng s\u1EF1 v\u1ED9i v\xE3 c\u1EE7a b\u1EA1n \u0111\u1EC3
+        ra tay. H\xE3y h\u1ECDc c\xE1ch ch\u1EADm l\u1EA1i!"
+    - minInclusive: 26
+      maxInclusive: 40
+      ratingLabel: "R\u1EE7i ro cao  "
+      feedback: "\xC1p l\u1EF1c th\u1EDDi gian ho\u1EB7c c\xE1c c\u01A1 h\u1ED9i
+        h\u1EA5p d\u1EABn r\u1EA5t d\u1EC5 khi\u1EBFn ch\xFAng ta \u0111\u01B0a ra
+        quy\u1EBFt \u0111\u1ECBnh nhanh ch\xF3ng. H\xE3y lu\xF4n \u01B0u ti\xEAn
+        s\u1EF1 an to\xE0n b\u1EA3o m\u1EADt l\xEAn tr\xEAn s\u1EF1 v\u1ED9i v\xE3"
+    - minInclusive: 41
+      maxInclusive: 60
+      ratingLabel: "Ch\u01B0a \u1ED5n \u0111\u1ECBnh  "
+      feedback: "B\u1EA1n bi\u1EBFt ch\u1EA7n ch\u1EEB khi b\u1ECB th\xFAc \xE9p,
+        nh\u01B0ng s\u1EF1 ph\xF2ng v\u1EC7 n\xE0y ch\u01B0a \u0111\u1EE7 ki\xEAn
+        \u0111\u1ECBnh. H\xE3y d\u1EE9t kho\xE1t h\u01A1n n\u1EBFu b\u1EA1n th\u1EA5y
+        t\xECnh hu\u1ED1ng kh\xF4ng r\xF5 r\xE0ng ho\u1EB7c \u0111\xE1ng ng\u1EDD
+        nh\xE9"
+    - minInclusive: 61
+      maxInclusive: 70
+      ratingLabel: "Kh\xE1 an to\xE0n "
+      feedback: "B\u1EA1n c\xF3 tinh th\u1EA7n kh\xE1 v\u1EEFng v\xE0ng! Nh\u1EEFng
+        \xE1p l\u1EF1c v\u1EC1 c\u1EA3m x\xFAc hay th\u1EDDi gian kh\xF4ng th\u1EC3
+        l\xE0m lung lay \u0111\u01B0\u1EE3c b\u1EA1n"
+    - minInclusive: 71
+      maxInclusive: 100
+      ratingLabel: "T\u1ED1t "
+      feedback: "Kh\u1EA3 n\u0103ng gi\u1EEF c\xE1i \u0111\u1EA7u l\u1EA1nh c\u1EE7a
+        b\u1EA1n c\u1EF1c k\u1EF3 \u0111\xE1ng n\u1EC3! B\u1EA1n lu\xF4n l\xE0m ch\u1EE7
+        t\xECnh hu\u1ED1ng v\xE0 kh\xF4ng bao gi\u1EDD \u0111\u1EC3 c\u1EA3m x\xFAc
+        hay \xE1p l\u1EF1c th\u1EDDi gian chi ph\u1ED1i."
+  - scoreKey: SCORE_HELP_SEEKING
+    entries:
+    - minInclusive: 0
+      maxInclusive: 25
+      ratingLabel: "R\u1EE7i ro r\u1EA5t cao"
+      feedback: "B\u1EA1n \u0111ang t\u1EF1 nh\u1ED1t m\xECnh trong v\xF9ng nguy
+        hi\u1EC3m. Khi \u0111\u1EE9ng tr\u01B0\u1EDBc c\xE1c quy\u1EBFt \u0111\u1ECBnh
+        r\u1EE7i ro, vi\u1EC7c t\u1EF1 xoay x\u1EDF m\u1ED9t m\xECnh th\u01B0\u1EDDng
+        d\u1EABn \u0111\u1EBFn h\u1EADu qu\u1EA3 t\u1ED3i t\u1EC7"
+    - minInclusive: 26
+      maxInclusive: 40
+      ratingLabel: "R\u1EE7i ro cao  "
+      feedback: "B\u1EA1n d\u01B0\u1EDDng nh\u01B0 ng\u1EA1i phi\u1EC1n ng\u01B0\u1EDDi
+        kh\xE1c n\xEAn th\u01B0\u1EDDng t\u1EF1 gi\u1EA3i quy\u1EBFt. \u0110\xF4i
+        khi, m\u1ED9t c\xE2u h\u1ECFi nh\u1ECF cho ng\u01B0\u1EDDi c\xF3 kinh nghi\u1EC7m
+        s\u1EBD c\u1EE9u b\u1EA1n m\u1ED9t b\xE0n thua tr\xF4ng th\u1EA5y\r\r\n"
+    - minInclusive: 41
+      maxInclusive: 55
+      ratingLabel: "Th\u1EE5 \u0111\u1ED9ng"
+      feedback: "B\u1EA1n c\xF3 th\u1EC3 t\u1EF1 x\u1EED l\xFD t\xECnh hu\u1ED1ng,
+        nh\u01B0ng l\u1EA1i thi\u1EBFu s\u1EF1 k\u1EBFt n\u1ED1i. \u0110\u1EEBng
+        ng\u1EA7n ng\u1EA1i h\u1ECFi b\u1EA1n c\xF9ng ph\xF2ng ho\u1EB7c anh ch\u1ECB
+        kh\xF3a tr\xEAn khi g\u1EB7p email hay tin nh\u1EAFn l\u1EA1"
+    - minInclusive: 56
+      maxInclusive: 70
+      ratingLabel: "Ch\u1EE7 \u0111\u1ED9ng"
+      feedback: "B\u1EA1n bi\u1EBFt c\xE1ch t\u1EADn d\u1EE5ng kinh nghi\u1EC7m c\u1EE7a
+        t\u1EADp th\u1EC3! Vi\u1EC7c ch\u1EE7 \u0111\u1ED9ng h\u1ECFi \xFD ki\u1EBFn
+        nh\u1EEFng ng\u01B0\u1EDDi xung quanh \u0111\xE3 gi\xFAp b\u1EA1n nh\xECn
+        nh\u1EADn v\u1EA5n \u0111\u1EC1 s\xE1ng su\u1ED1t h\u01A1n"
+    - minInclusive: 71
+      maxInclusive: 100
+      ratingLabel: "R\u1EA5t ch\u1EE7 \u0111\u1ED9ng"
+      feedback: "Tuy\u1EC7t v\u1EDDi! B\u1EA1n hi\u1EC3u r\u1EA5t r\xF5 s\u1EE9c
+        m\u1EA1nh c\u1EE7a s\u1EF1 tr\u1EE3 gi\xFAp. Vi\u1EC7c lu\xF4n c\xF3 th\xF3i
+        quen tham v\u1EA5n ng\u01B0\u1EDDi \u0111\xE1ng tin c\u1EADy gi\xFAp b\u1EA1n
+        \u0111i nh\u1EEFng b\u01B0\u1EDBc v\xF4 c\xF9ng v\u1EEFng ch\u1EAFc"
+  - scoreKey: SCORE_COMMUNITY_WARNING
+    entries:
+    - minInclusive: 0
+      maxInclusive: 25
+      ratingLabel: "R\u1EE7i ro r\u1EA5t cao"
+      feedback: "H\xE0nh \u0111\u1ED9ng c\u1EE7a b\u1EA1n kh\xF4ng ch\u1EC9 g\xE2y
+        nguy hi\u1EC3m cho b\u1EA3n th\xE2n m\xE0 c\xF2n \u1EA3nh h\u01B0\u1EDFng
+        tr\u1EF1c ti\u1EBFp \u0111\u1EBFn s\u1EF1 an to\xE0n c\u1EE7a t\u1EADp th\u1EC3\r\n"
+    - minInclusive: 26
+      maxInclusive: 40
+      ratingLabel: "R\u1EE7i ro cao  "
+      feedback: "Vi\u1EC7c gi\u1EEF im l\u1EB7ng khi ph\xE1t hi\u1EC7n l\u1EEBa \u0111\u1EA3o
+        c\xF3 th\u1EC3 khi\u1EBFn nh\u1EEFng ng\u01B0\u1EDDi b\u1EA1n xung quanh
+        tr\u1EDF th\xE0nh n\u1EA1n nh\xE2n ti\u1EBFp theo. H\xE3y l\xEAn ti\u1EBFng!"
+    - minInclusive: 41
+      maxInclusive: 55
+      ratingLabel: "Th\u1EE5 \u0111\u1ED9ng"
+      feedback: "B\u1EA1n \u0111\xE3 t\u1EF1 b\u1EA3o v\u1EC7 b\u1EA3n th\xE2n th\xE0nh
+        c\xF4ng, nh\u01B0ng l\u1EA1i qu\xEAn m\u1EA5t c\u1ED9ng \u0111\u1ED3ng. L\u1EA7n
+        sau, khi th\u1EA5y b\u1EABy l\u1EEBa \u0111\u1EA3o, h\xE3y b\u1EDBt ch\xFAt
+        th\u1EDDi gian nh\u1EAFn m\u1ED9t tin c\u1EA3nh b\xE1o cho m\u1ECDi ng\u01B0\u1EDDi
+        nh\xE9"
+    - minInclusive: 56
+      maxInclusive: 75
+      ratingLabel: "Ch\u1EE7 \u0111\u1ED9ng"
+      feedback: "B\u1EA1n l\xE0 m\u1ED9t th\xE0nh vi\xEAn r\u1EA5t c\xF3 tr\xE1ch
+        nhi\u1EC7m! H\xE0nh \u0111\u1ED9ng nh\u1EAFc nh\u1EDF k\u1ECBp th\u1EDDi
+        c\u1EE7a b\u1EA1n tr\xEAn nh\xF3m l\u1EDBp \u0111\xE3 gi\xFAp nhi\u1EC1u
+        b\u1EA1n b\xE8 kh\xF4ng b\u1ECB s\u1EADp b\u1EABy."
+    - minInclusive: 76
+      maxInclusive: 100
+      ratingLabel: "T\u1ED1t "
+      feedback: "B\u1EA1n ch\xEDnh l\xE0 m\u1ED9t 'hi\u1EC7p s\u0129 b\u1EA3o m\u1EADt'
+        \u0111\xEDch th\u1EF1c! S\u1EF1 ch\u1EE7 \u0111\u1ED9ng c\u1EA3nh b\xE1o
+        c\u1EE7a b\u1EA1n \u0111\xF3ng vai tr\xF2 s\u1ED1ng c\xF2n trong vi\u1EC7c
+        lan t\u1ECFa m\xF4i tr\u01B0\u1EDDng m\u1EA1ng an to\xE0n"
