@@ -5,14 +5,17 @@ position: 577,6
 
 <<switch_ui "show:pc:Webtailieu_1">>
 
-Minh: Ây chà, nhiều tài liệu phết, đầy đủ luôn nè, mình vô tài liệu Giải tích 1 xem thử
+Tôi ngồi bấm qua bấm lại trên trang mình mới tìm được. Phải công nhận là trông nó đẹp thật
+
+Minh: Ái chà, nhiều tài liệu phết, đầy đủ luôn nè, mình vô tài liệu Giải tích 1 xem thử
 -> Xem tài liệu
 <<switch_ui "show:pc:Webtailieu_3">>
 -> Mở khóa tài liệu
 <<switch_ui "show:pc:Webtailieu_4">>
 Minh: Ủa, phải đăng nhập tài khoản, mật khẩu Monites mới tải được à?
 Minh: Chắc để xác minh thành viên nhóm hay gì đó…
-Minh: Nên làm sao nhỉ, sắp deadline mình phải nộp tài liệu lên nhóm rồi
+Minh: Nên làm sao nhỉ, sắp tới hạn mình phải đưa tài liệu lên với mọi người rồi
+Minh: Có nên đăng nhập vào không ta?
 
 -> Nhập tài khoản, mật khẩu & xác nhận
     <<trace TRACE_SUBMIT_CREDENTIAL 1 "m1_freedoc_login">>
@@ -27,15 +30,15 @@ position: 601,255
 ---
 <<wait 2>>
 
-Minh: Sao không thấy tài liệu đâu…
-Minh: Khoan, tài khoản có lượt đăng nhập mới là sao?
-Minh: Hình như không ổn rồi
+Minh: Ơ? Sao trang này nó đứng luôn rồi? Tài liệu đâu???
+Tài khoản của tôi sau đó hiện lên các lượt đăng nhập mới
+Minh: Hình như không ổn rồi. Chuyện gì thế này???
 
 -> Hỏi mọi người trong phòng
     <<unsit>>
     <<set_objective "OBJ_M1_ASK_QUAN_1">>
     <<switch_ui "normal">>
--> Bỏ qua, mặc kệ tài khoản MXH có thông báo dấu hiệu bất thường
+-> Mặc kệ tài khoản có thông báo bất thường
     Minh: Ôi thôi xong, giờ mình bị out ra khỏi tài khoản mạng xã hội luôn rồi...
     <<jump CH1_M1_R3_BB_2>>
     // -> Hỏi Quân
