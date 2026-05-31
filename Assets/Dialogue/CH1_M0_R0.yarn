@@ -4,18 +4,22 @@ position: 483,-504
 ---
 <<set_milestone 0>>
 <<wait 1>>
-Tôi là Minh, một sinh viên năm nhất từ quê lên thành phố để học đại học
-Tôi học ở Đại học Kỹ thuật Hạ Minh
-Tua ngược lại 1 tháng trước, đó là hôm đầu tiên tôi lên ký túc xá để làm thủ tục nhận phòng
-Vì tôi lên thành phố khá trễ, nên tôi phải tranh thủ sắp xếp mọi thứ để sẵn sàng cho buổi lên lớp đầu tiên vào ngày tiếp theo
+???: Đã đến trạm Kí túc xá Hạ Minh, những ai xuống trạm vui lòng khẩn trương
+Minh: Đến rồi sao, mình vừa mới nằm được chút thôi mà
+Minh: Xuống thôi
+Tôi cầm lấy ba lô của mình và bước xuống xe 
 <<fade_out 3>>
 <<wait 3>>
-Minh: Tới nơi rồi
-Minh: Giờ chắc phải vào sảnh làm thủ tục đã
+Minh: Mình đến rồi sao? Lần đầu mình đi xa nhà đến vậy
+Minh: Cố lên!
+Minh: Mà khoan, giờ mình tìm với nhận phòng kiểu gì đây ta?
+Minh: À phải rồi, lúc trước mình đăng kí với thanh toán thông qua mail của Trung tâm Kí túc xá
+Minh: Có bác bảo vệ bên kia kìa. Để mình mở mail lên xem lại rồi qua đó nhỉ?
+Minh: Hay là qua hỏi bác bảo vệ bên kia luôn ta?
 ->Kiểm tra lại mail thông tin nhận phòng, sau đó đi hỏi bác bảo vệ
     <<trace TRACE_READ_RELEVANT_INFO 1 "m0_email_checkin">>
     <<jump CH1_M0_R0_TC_2>>
-->Đi vào hỏi bác bảo vệ luôn 
+->Đi đến hỏi bác bảo vệ luôn 
     <<set_objective "OBJ_M0_TALK_GUARD">>
 ===
 
@@ -27,9 +31,9 @@ position: 463,-324
     <<switch_ui "show:phone:Mail_nhan_phong_1">>
     ->Mở mail
         <<switch_ui "show:phone:Mail_nhan_phong_2">>
-Minh: Tòa A, phòng 308
-Minh: Làm thủ tục ở sảnh tiếp nhận
-Minh: Vậy cứ vào sảnh trước đã
+Minh: Mình ở tòa A, phòng 308
+Minh: Lúc mới vào thì làm thủ tục ở sảnh tiếp nhận
+Minh: Vậy được rồi, ta cứ vào sảnh trước đã
 -> Tắt mail
 
 <<switch_ui "normal">>
@@ -41,15 +45,16 @@ title: CH1_M0_R0_BB_3
 position: 472,-155
 ---
 -> Hỏi bác bảo vệ
-    Bác bảo vệ: Con vô có việc gì?
-    Minh: Dạ, hôm nay con mới lên nhận phòng
-    Bác bảo vệ: Tòa nào?
-    Minh: Dạ tòa A.
-    Bác bảo vệ: Có email xác nhận chưa?
-    Minh: Dạ có.
-    Bác bảo vệ: Rồi, con vào sảnh bên kia. Tới bàn hướng dẫn, các cô sẽ hướng dẫn tiếp cho
-    Minh: Dạ, con cảm ơn bác
--> Đi vào trong và không hỏi
+    Bác bảo vệ: Có chuyện gì không con?
+    Minh: Dạ con chào bác ạ, hôm nay con lên nhận phòng ấy bác
+    Bác bảo vệ: Con ở tòa nào?
+    Minh: Dạ con ở tòa A ạ
+    Bác bảo vệ: Con đã có mail xác nhận chưa?
+    Minh: Dạ con có rồi ạ
+    Bác bảo vệ: Vậy được rồi, con cứ đi thẳng vào trong kia
+    Bác bảo vệ: Xong thì cứ vào sảnh, các cô ở đó sẽ hướng dẫn tiếp cho con
+    Minh: Dạ, con cảm ơn bác ạ. Con chào bác
+-> Đi vào trong và không hỏi gì
 
 <<set_objective "OBJ_M0_GO_LOBBY">>
 ===
@@ -63,7 +68,9 @@ position: 456,3
 <<wait 1>>
 <<teleport_to "hall">>
 <<wait 2>>
-Minh: Mình phải tới gặp chị ngay bàn đó để hỏi về thủ tục nhận phòng
+Minh: Trong này cũng rộng quá ta 
+Minh: Hình như có chị nào đó ở bên kia
+Minh: Mình phải tới gặp chị ngay bàn đó để hỏi về thủ tục nhận phòng mới được
 
 <<set_objective "OBJ_M0_TALK_LINH">>
 ===
@@ -73,25 +80,27 @@ title: CH1_M0_R0_BB_4
 position: 480,178
 ---
 
-Chị Linh: Em nhận phòng hả?
+Chị Linh: Em nhận phòng à? Qua đây
 
-Minh: Dạ, em tên Nguyễn Minh, phòng 308
+Minh: Dạ em chào chị ạ
 
-Chị Linh: Tòa A đúng không em?
+Chị Linh: Chờ chị một chút
+Chị Linh: Em tên gì, ở phòng nào?
 
-Minh: Dạ đúng
+Minh: Dạ em là Nguyễn Minh, em ở phòng 308 ạ
 
-Chị Linh: Em đợi chị làm thủ tục nhận thẻ phòng nha
-Minh: Dạ
+Chị Linh: Okay. Em đợi chị một lúc làm thủ tục nhận thẻ ra vào nha
+Minh: Dạ, vâng
 <<wait 1>>
 
-Chị Linh: Đây là giấy nhận phòng của em nhé
-Chị Linh: Tòa có nhóm thông báo, em có thể tham gia để cập nhật thông tin thường xuyên nhé
+Chị Linh: Đây là thẻ ra vào của em nhé
+Chị Linh: Khi ra vào kí túc xá em nhớ quẹt thẻ rồi mới đi nhé, trong trường hợp thang máy bị khoá, em cũng có thể dùng thẻ quẹt đấy
+Chị Linh: À, em có thể vào nhóm thông báo của toà để cập nhật thông tin từ toà và kí túc xá nhé
 
 -> Hỏi về nhóm thông báo
     <<trace TRACE_ASK_PERSON 1 "m0_linh_askgroup">>
     <<jump CH1_M0_R0_TC_5 >>
--> Không hỏi, đi lên nhận phòng
+-> Không hỏi, đi lên nhận phòng luôn
     <<set_objective "OBJ_M0_GO_ROOM">>
 
 ===
@@ -101,15 +110,15 @@ title: CH1_M0_R0_TC_5
 position: 486,331
 ---
 
-Minh: Dạ chị ơi, nhóm này là nhóm chính thức của tòa hả chị?
+Minh: Dạ chị ơi, chị cho em hỏi nhóm này là nhóm chính thức của tòa hả chị?
 
-Chị Linh: Ừ, đúng rồi em. Nhóm này chỉ để nhận thông báo của tòa A thôi.
+Chị Linh: Ừ, đúng rồi em. Nhóm này là nhóm để các sinh viên nhận thông báo từ ban quán lí tòa A
 
-Chị Linh: Mấy thông tin như giờ giấc, nội quy, mất thẻ, báo sửa đồ… sẽ nhắn trong đó.
+Chị Linh: Các thông tin mới nhất, sự kiện, hay những gì có thể cập nhật bên chị sẽ thông tin đến các em qua nhóm nhé
 
-Minh: Dạ, em hiểu rồi.
+Minh: Dạ, em hiểu rồi. Chị có thể cho em hỏi là em vào nhóm bằng cách nào không ạ?
 
-Chị Linh: Em có thể quét mã QR ở trên tường phía sau nhé
+Chị Linh: Em có thể quét mã QR ở trên tường phía sau kia nha
 
 
 <<set_objective "OBJ_M0_SCAN_QR">>
@@ -121,8 +130,9 @@ position: 490,477
 ---
 
 ->Quét QR
-    Minh: Rồi, xong nhóm tòa
-    Minh: Giờ lên phòng thôi
+    Minh: Rồi, xong. Tuyệt cú mèo!
+    Minh: Giờ thì lên phòng thôi
+    Minh: Không biết có gì hay ho đang chờ đón đây
     <<set_flag "QR_SCAN">>
     <<set_objective "OBJ_M0_GO_ROOM">>
 -> Hủy
@@ -143,33 +153,41 @@ position: 503,626
 title: CH1_M0_R0_BB_7
 position: 502,785
 ---
-Minh: Chào mọi người
+Minh: Em chào mọi người ạ
 
-Quân: Ông cũng phòng 308 mới vô hả?
+Quân: Ông phòng 308 đúng không? Anh Huy xem phòng mình có thành viên mới này
+Huy: Chào em nhé. Mà em tên gì thế? Năm nhất đúng không?
 
-Minh: Ừ, tôi là Minh. Chắc giường kia của tôi ha?
+Minh: Dạ, em tên là Minh ạ. Đúng rồi anh ơi, em năm nhất ấy
 
-Quân: Ừ đó. Vali ông nhìn hơi chiến nha, bánh xe muốn mòn luôn rồi kìa
+Quân: Vậy là cùng tuổi với tui rồi. Tui là Quân, năm nhất, rất vui được gặp ông
+Quân: À còn đây là anh Huy, anh ấy lớn hơn hai đứa mình một tuổi. Trông vậy thôi chứ nhiều kinh nghiệm lắm đấy
 
-Minh: Haha, tôi đem hơi nhiều đồ, với cả vali cũng cũ rồi ông
+Huy lườm Quân một cái. Nhận thấy đã trêu chọc thành công, Quân phá lên cười khoái chí
 
-Minh: Mà ông tên là gì?
+Minh: Mọi người vui tính quá ạ. Mà sao phòng mình chỉ có hai anh em thế? Em tưởng là phòng mình là phòng sáu mà ta?
 
-Quân: Tôi là Quân, cũng là sinh viên năm nhất, tôi mới lên đây được vài hôm
+Huy: Phòng mình có ba ông khác nữa, nhưng có hai ông thì đã lâu rồi không lên đây. Nghe nói là vừa đi làm vừa học, nên đang tạm thời ở chỗ khác rồi
+Huy: Còn ông còn lại thì đang về quê, khả năng hết kì này ông ấy mới lên em ạ
 
-Quân: Còn đây là anh Huy
+Quân: Phòng thoáng lắm, cứ chọn chỗ thoải mái nhá. Né giường của tui với anh Huy ra là được rồi
 
-Huy: Chào Minh, em để đồ gọn bên kia trước. Thẻ phòng với giấy tờ giữ kỹ
+Minh: Vậy để tui nằm giường dưới bên này là đẹp rồi. Hehe
 
-Huy: Nhóm tòa có thông báo thì nhớ xem. Mấy hôm đầu dễ sót lắm
+Huy: Em cứ để đồ bên đó đi nhé. 
+
+Huy: À mà quên mất, em có thẻ rồi đúng không? Nhớ giữ cho cẩn thận, dễ mất lắm đó nhé
+
+Huy: Em đã vào nhóm toà chưa?
 
 <<if get_flag("QR_SCAN") == true>>
-    Minh: Dạ, em vừa vào nhóm rồi anh
+    Minh: Dạ, em vừa vào nhóm rồi anh ơi
+    Huy: Okay, vậy được rồi
 <<else>>
-    Minh: Dạ lúc nãy chị ở dưới có bảo em vào nhóm nhưng em không vào ạ
-    Huy: Vậy thôi khi khác em vô cũng được không sao
+    Minh: Dạ lúc nãy chị ở dưới có bảo em vào nhóm nhưng em chưa có vào ấy ạ
+    Huy: Vậy thôi để khi khác, không thì tí anh thêm vào cho
 <<endif>>
--> Nói chuyện thêm với Quân và Huy để làm quen, cải thiện mối quan hệ
+-> Nói chuyện thêm với Quân và Huy
     // <<trace TRACE_ASK_PERSON 1 "friend">>
     <<set_flag "MAKE_FRIEND">>
     <<jump CH1_M0_R0_TC_8>>
@@ -181,13 +199,21 @@ title: CH1_M0_R0_TC_8
 position: 531,979
 ---
 
-Minh: Mấy ngày đầu ở KTX có gì cần để ý không ông?
+Minh: À phải rồi. Ông có chuẩn bị gì khi lên đây không Quân?
 
-Quân: Có. Một là mua các vật dụng cá nhân cho đủ xài
+Quân: Có chứ ông. Mà tui mới lên đây sớm hơn ông một hôm à. Chưa có chuẩn bị gì thêm hết
 
-Quân: Hai là thiếu gì thì hỏi, đừng ngại với mọi người nhé
+Quân: Hay là tí tụi mình ra tạp hoá mua mấy cái cần thiết đi 
 
-Quân: Ngoài ra nếu ông có chuyện gì thì cứ thoải mái chia sẻ với mọi người nhé, Tụi tôi sẵn lòng
+Minh: Hay quá, tui đi với luôn
+
+Quân: Anh Huy đâu rồi, truyền thống không anh 
+
+Huy: Cũng được, nay tụi mình đi ăn nhé, tối rồi 
+
+Quân: Đi ăn chung cho vui đi Minh 
+
+Minh: Để em thu xếp cái rồi mình đi ạ
 
 <<jump CH1_M0_R0_BB_9>>
 ===
@@ -199,17 +225,36 @@ position: 526,1171
 <<fade_in 2>>
 <<wait 2>>
 <<teleport_to  "bed">>
-Tối đó, tôi đi ăn cùng Quân và anh Huy, rồi mua thêm vài món căn bản cho phòng
 
-Ổ khóa, móc áo, xô nhựa, khăn, đèn bàn. Mỗi món không đắt lắm, nhưng cộng lại thì ví tôi mỏng đi thấy rõ
+Sau đó, tôi đã đi ăn tối cùng với Quân và anh Huy trên một quán ngoài chợ gần kí túc xá Hạ Minh
 
-Đêm đầu ở KTX không quá tệ. Chỉ là tiếng cửa phòng, tiếng dép ngoài hành lang và tiếng thông báo điện thoại làm tôi tỉnh giấc vài lần
+Đi bộ ra ngoài trong không khí mát mẻ đúng là đỉnh thật sự
 
-Điều này khiến tôi dậy muộn sáng hôm sau
+Xong thì chúng tôi ghé qua tạp hoá, mua sắm vài thứ cần thiết liên quan đến phòng, cũng như là cho cả tôi nữa
+
+Cũng nhiều thứ thật, may mà trước đó mẹ đã chuyển cho tôi một khoản trước để dự phòng
+
+Chắc mẹ cũng biết là kiểu gì cũng phải sắm khi lần đầu lên đây rồi
+
+Cuối cùng thì tôi cùng với Quân và anh Huy vui vẻ đi về. Đúng là họ thân thiện thật 
+
+Mong rằng những tháng ngày sắp tới sẽ thật là vui tươi
+
+Mà về tới cũng khuya rồi, nên chuẩn bị một lúc nữa, tôi đã lên giường đi ngủ
 
 <<fade_out 2>>
 <<wait 2>>
-Minh: Thôi rồi, hôm nay có tiết mà mình ngủ quên, phải sắp xếp để đi học lẹ thôi
+Minh: ...
+
+Tôi dụi mắt, ngồi dậy. Cảm giác tỉnh dậy cứ như ở một nơi xa lạ
+Ấy thế mà, nơi này sẽ đồng hành với tôi trong những năm tháng sắp tới
+
+Minh: Mà khoan? Hôm nay mình đáng lí phải đi học rồi chứ nhỉ?
+Tôi cuống cuồng mở máy ra xem. Và đúng thế thật
+Minh: Xong luôn, bữa đầu mà đã trễ rồi. Mình phải nhanh lên
+
+Tôi hoả tốc làm mọi thứ thật lẹ rồi ba chân bốn cẳng chạy bộ, vâng là chạy bộ lên trường ngay ngày đầu tiên đi học
+Có lẽ đi xa quá cũng khiến tôi mệt mỏi chăng?
 
 <<set_objective "OBJ_M0_GO_SCHOOL">>
 ===
@@ -224,7 +269,10 @@ position: 523,1530
 <<wait 1>>
 <<teleport_to "school">>
 <<wait 2 >>
-
+Vừa đi bộ chạy một lúc thì tôi cũng tới trường
+Minh: Mình học ở phòng nào ta 
+Tôi phải mất một lúc mới biết mình học ở đâu
+Khi đến cửa lớp, tôi thấy một sinh viên cũng đang đứng trước cửa, có lẽ cũng đang đi trễ giống tôi
 
 <<set_objective "OBJ_M0_ENTER_CLASS">>
 
@@ -234,26 +282,32 @@ position: 523,1530
 title: CH1_M0_R0_BB_10
 position: 517,1343
 ---
-Nam: Ê, ông cũng học phòng B2-304 hả
-Minh: Ừ. Giải tích 1 đúng không?
-Nam: Đúng rồi. Vậy là tôi không trễ một mình
-Minh: Cảm ơn ông, nghe câu đó tự nhiên đỡ quê hơn
-Nam: Vào lẹ đi, đứng đây thêm nữa thì kỳ lắm 
+
+
+Nam: Ê, có phải ông cũng học môn Giải tích 1 phòng B3-402 không?
+Minh: Ừ, đúng rồi ông. Tui đi trễ nên giờ mới chuẩn bị vô nè
+Nam: Vậy là tui không trễ một mình rồi. Thôi vậy hai đứa mình vào luôn cho kịp
+Minh: Không biết có bị nói gì không ta. Tụi mình vào thôi
 ->Vào lớp
 <<fade_in_out "1" "1">>
 <<wait 1>>
 <<teleport_to "classroom">>
 <<wait 1>>
-Giảng viên: Hai em vào nhanh rồi ổn định chỗ ngồi
+Minh: Dạ tụi em tới trễ ạ, thầy cho tụi em xin vào lớp với
+Giảng viên: Hai em vào đi, xuống dưới kia nhé
 Minh: Dạ
 Nam: Dạ
 
 <<fade_in 2>>
 <<wait 2>>
 
-Buổi học hôm đó chủ yếu là về giới thiệu môn học
-Thầy cũng kêu chúng tôi tìm nhóm
-2 tiết trôi qua, cuối cùng tôi cũng được về, nhưng trước mắt tôi phải tìm nhóm
+Tôi ngồi vào chỗ, Nam cũng vậy. Chúng tôi tranh thủ trò chuyện đôi chút
+Giới thiệu cũng như làm quen nhau trong lúc học 
+Xem như tôi cũng đã có người bạn đầu tiên trong trường rồi 
+Tiết học diễn ra khá suôn sẻ, do là bữa đầu nên kiến thức cũng không nặng lắm
+Chủ yếu tôi được làm quen với một số thứ mới. Trong đó có bài tập nhỏ với bài tập lớn
+Thầy có nói chúng tôi sẽ phải tìm nhóm để sớm điền danh sách trên trang của thầy tạo 
+Khả năng tôi sẽ hỏi Nam một chút
 
 <<sit "classroom_chair">>
 
@@ -270,27 +324,39 @@ title: CH1_M0_R0_BB_11
 position: 517,1704
 ---
 
-Nam: Ông có nhóm chưa?
+Nam: Minh, tui thấy bà này chưa có nhóm nè. Tụi mình gộp lại đủ ba người là đẹp ấy
 
-Minh: Chưa. Mới vào lớp còn chưa kịp nhớ mặt ai
+Minh: Nghe cũng được ấy, vậy tụi mình lập nhóm đi. Bà tên gì vậy?
 
-Nam: Tôi cũng chưa. Nãy tôi thấy bạn kia cũng đang tìm nhóm
+Mai: Tui tên là Mai, hai ông tên là gì?
 
-Nam: Mai, nhóm bà đủ người chưa?
+Nam: Tui là Nam, còn đây là Minh ấy. Mong tụi mình giúp đỡ lẫn nhau nha
 
-Mai: Chưa. Mình đang tìm thêm hai người
+Mai: Okay mấy ông. Vậy giờ mình lên điền luôn nhỉ?
 
-Nam: Vậy ba đứa mình ghép luôn được không?
+Nam: Điền cho cái bài tập nhỏ tụi mình sẽ thuyết trình đúng không bà?
 
-Mai: Được. Nhưng nếu mình bị xếp nhóm đầu thì phải chia việc liền đó
+Mai: Đúng rồi ông, tụi mình phải lên chọn tuần với bài thuyết trình ấy
 
-Minh: Khoan, nhóm mình là nhóm 1 luôn hả?
+Nhóm tôi lên điền thì nhận ra các khung khác có tuần đẹp đều đã bị giành mất
 
-Nam: Chúc mừng. Vừa lập nhóm đã được lên sóng
+Minh: Chỉ còn mỗi nhóm đầu tiên là đỡ thôi, mấy nhóm cuối cùng thì cũng xa quá nhỉ?
 
-Mai: Vậy tối nay mình họp nhanh. Bài nhỏ thôi, nhưng phải có tài liệu nền với ví dụ rõ.
+Nam: Ừ, làm cuối chắc là không nên. Vậy tụi mình chọn cái đầu đi
 
-Minh: Ừ, tối mình họp.
+Mai: Vậy tối nay mình họp nhanh đi, tuần đầu chắc cũng không khó đâu. Tụi mình chịu khó chút là được
+
+Nam: Ủa? Tui tưởng tuần sau mình mới thuyết trình mà bà?
+
+Mai: Đâu có, nãy trước khi hai ông vô, thầy có bảo là ngày mai lớp mình học bù luôn vì tuần sau thầy có việc ấy
+
+Nam: Thiệt luôn à trời, khó thật sự
+
+Mai: Không sao đâu mấy ông, vậy tối tụi mình vô họp nhé.
+
+Minh: Ừ, vậy tối tụi mình họp đi. 
+
+Sau đó thì tôi, Nam và Mai đã lập nhóm trò chuyện cho môn học này. Giờ thì tôi sẽ về phòng và chuẩn bị tối làm bài thôi
 
 
 <<set_objective "OBJ_M0_LEAVE_CLASS">>
@@ -304,12 +370,17 @@ position: 526,1926
 <<fade_in 1>>
 <<wait 1>>
 <<teleport_to "bed">>
-Hôm đó về phòng KTX, vì mệt nên tôi ngủ tới chiều tối
-Thức dậy trễ một tí là đã lỡ buổi họp nhóm
+
+Minh: ...
+Minh: Mấy giờ rồi nhỉ?
+
+Tôi chợt nhớ lại mình đã nằm ở đây từ lúc về tới giờ rồi. Có lẽ do tôi mệt quá ngủ thiếp đi chăng?
 <<fade_out 1>>
 
 <<wait 2>>
-Minh: Tối rồi, bây giờ mình phải nhắn tin lên nhóm bàn về việc thuyết trình thôi
+Tôi xem giờ 
+Minh: May quá, vừa tới giờ
+Minh: Để mình lên nhóm xem sao
 <<set_objective "OBJ_M0_MEETING">>
 ===
 
@@ -320,30 +391,36 @@ position: 522,2134
 ---
 
 <<sit "room_chair">>
-Cũng sắp deadline rồi, bắt đầu bàn với mọi người thôi
-
+Tôi ngồi xuống, mở điện thoại rồi vào ứng dụng trò chuyện
 <<switch_ui "phone_chat">>
-Mai: Chào mọi người, như sáng nay đã hẹn, chúng ta sẽ bàn về phần thuyết trình cho bữa sau
-Mai: Bài này nhỏ, nhưng nhóm mình trình bày đầu nên phải làm gọn và chắc
+Mai: Hello mọi người, hình như tới giờ rồi phải không
+Mai: Tụi mình trao đổi qua tin nhắn luôn nhé, tại bên tui đang hơi ồn, không có vô được 
+Minh: Okay bà ơi
+Mai: Bài của tụi mình tui thấy chia ra ba phần được ấy, tại nó có ba mục
+Mai: Tui tính chia ra mỗi đứa làm một phần, xong rồi tụi mình gộp lại trình bày nó vào slide được không?
+Nam: OK bà ơi. Vậy tui nhận phần 1 nha bà
+Mai: Tui lấy phần 2 luôn nha. Vậy Minh phần còn lại nhé
+Minh: Được thôi, để tui nhận phần 3 nha 
 
-Nam: Tôi kiếm ví dụ minh họa. Có ví dụ dễ hiểu thì trình bày đỡ khô khan
+Nam: Tui thấy các phần của mình đều phải nghiên cứu tài liệu mới rồi mới làm được nhỉ? Có ai ở đây rành mấy cái này không?
 
-Mai: Mình lo bố cục với phần lý thuyết chính
+Mai: Không ông ơi
 
-Mai: Minh tìm giúp mình tài liệu nền với phác phần mở đầu được không? Không cần dài, chỉ cần chính xác
+Minh: Tui cũng vầy
 
-Minh: Ừ, được. Mình sẽ kiếm rồi gửi lại nhóm
+Nam: Vậy thôi tụi mình chia nhau ra tìm hiểu đi rồi tự làm nhé
 
-Nam: Có gì không rõ thì nhắn nha. Đừng im im tới lúc ráp bài mới biết thiếu
+Minh: Okay 
 
-Minh: Ừ, mình biết rồi
+Mai: Làm thôi mấy ông, lẹ chứ không là không kịp
 
--> Họp đã xong, tắt điện thoại
+-> Tắt điện thoại
 
 <<switch_ui "normal">>
 
 <<set_objective "OBJ_M0_FIND_DOCUMENT">>
-Bây giờ mình phải tìm tài liệu, deadline là trước 10 giờ tối nay
+Minh: Giờ phải tìm tài liệu để làm cái đã. Trông có vẻ khoai đây. Phải lẹ chứ sợ không kịp mất
+
 ->Tìm tài liệu
     <<jump CH1_M0_R0_BB_13>>
 ===
@@ -353,39 +430,40 @@ title: CH1_M0_R0_BB_13
 position: 493,2382
 ---
 
-Để lên mạng xã hội tìm vài nhóm đã, chắc trên đó có thể tìm được thứ có ích
+Minh: Tìm ở đâu bây giờ ta? Hay là mình tìm thử các hội nhóm trên mạng xã hội xem có không nhỉ?
 -> Mở mạng xã hội
 <<switch_ui "show:pc:Group_1">>
 
-Minh: Nhiều nhóm thật…
+Minh: Ui nhiều nhóm thật…
 
-Minh: Nhìn cái nào cũng có vẻ liên quan, mà cũng hơi lộn xộn
+Minh: Lần đầu thấy mấy nhóm này luôn, chắc phải thử vào xem cả vậy
 
-Minh: Mình chỉ cần tài liệu lý thuyết để làm phần mở đầu thôi mà cũng rối vậy
-Minh: Nhóm sinh viên năm nhất này nghe có vẻ ok nhỉ, chắc vô coi thử
+Dạo một vòng chưa thấy gì, tôi qua nhóm này tới nhóm khác. Phần đa chỉ thấy các bài đăng không liên quan đến phần tôi đang cần
+
+Minh: Nhóm sinh viên năm nhất này nghe có vẻ ổn đấy nhỉ, chắc vô coi thử xem sao
 -> Vào nhóm
     <<switch_ui "show:pc:Group_2">>
 
 
--> Nhiều bài đăng quá, kéo xuống dưới
+-> Kéo xuống dưới
     <<switch_ui "show:pc:Group_3">>
 
-Minh: Ồ, có anh nào đăng bài gì đây
-->Mở bài viết
+Minh: Ê, có bài này hay hay này
+->Bấm vào bài viết
     <<switch_ui "show:pc:Group_4">>
-Minh: Full tài liệu Giải tích 1... đúng thứ mình đang cần luôn
-Minh: Có cả đề cương với ví dụ mẫu
-Minh: Giờ mình nên làm gì đây nhỉ?
+Minh: Full tài liệu Giải tích 1... chuẩn cơm mẹ nấu luôn rồi
+Minh: Tuyệt cú mèo luôn!
+Minh: Nhiều file dữ vậy luôn sao, giờ mình nên làm gì đây?
 
--> Mở link, xem thử ở trong đó có gì
+-> Mở link
     <<trace TRACE_OPEN_UNVERIFIED_LINK 1 "m1_link_freedoc">>
     <<jump CH1_M1_R1_BB_1>>
--> Hỏi mọi người trong phòng
+-> Hỏi thử mọi người trong phòng
     <<trace TRACE_ASK_PERSON 2 "m1_roommate_askdoc">>
     <<switch_ui "normal">>
     <<unsit>>
     <<set_objective "OBJ_M1_ASK_QUAN_2">>
--> Link nào cũng không rõ nguồn, thôi không tìm nữa
+-> Không tìm nữa
     <<trace TRACE_INSPECT_SOURCE 3 "m1_link_freedoc">>
     <<jump CH1_M1_R3_BB_1>>
 ===
