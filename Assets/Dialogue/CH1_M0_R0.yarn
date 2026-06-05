@@ -45,6 +45,7 @@ title: CH1_M0_R0_BB_3
 position: 472,-155
 ---
 -> Hỏi bác bảo vệ
+    <<trace TRACE_ASK_PERSON 1 "m0_guard">>
     Bác bảo vệ: Có chuyện gì không con?
     Minh: Dạ con chào bác ạ, hôm nay con lên nhận phòng ấy bác
     Bác bảo vệ: Con ở tòa nào?

@@ -185,7 +185,7 @@ Mình có nên nhắn vào nhóm BTL để cảnh báo cho mọi người không
     <<switch_ui "phone_chat">>
     Minh: Mọi người cẩn thận mail học bổng Đồng hành Tân sinh viên 2025 nha
     Minh: Mail này không giống nguồn chính thức, link form lạ và có hạn xác nhận gấp
-    Mai: Vậy hả, lúc sáng mình cũng vừa nhận được mail đó, cũng may là Minh cảnh báo đó, mình không có quen ai để hỏi về việc này cả
+    Mai: Vậy hả, lúc sáng tui cũng vừa nhận được mail đó, cũng may là Minh cảnh báo đó, tui không có quen ai để hỏi về việc này cả
     Mai: Cảm ơn Minh nhé
 ->Không nhắn
 
@@ -203,8 +203,8 @@ Minh: Anh Huy ơi, anh coi giúp em cái mail này được không?
 Huy: Mail gì?
 Minh: Học bổng tân sinh viên. Nó bảo hỗ trợ 5 triệu, xác nhận trước 23:59
 Quân: 5 triệu? Nghe thơm vậy
-Minh: Thơm nên tôi mới thấy hơi sợ
-Quân: Cái này mình cũng không rõ
+Minh: Thơm nên tui mới thấy hơi sợ
+Quân: Cái này tui cũng không rõ
 Huy: Em cứ kiểm tra kỹ mail đó có phải nguồn chính thống không, nguồn chính thống thường là các mail có đuôi edu hoặc edu.vn nhé
 ->Kiểm tra lại mail
     <<trace TRACE_INSPECT_SOURCE 1 "m4_email_scholarship">>
@@ -212,6 +212,7 @@ Huy: Em cứ kiểm tra kỹ mail đó có phải nguồn chính thống không,
     -> Đóng mail
         <<jump CH1_M4_R3_BB_2>>
 ->Không kiểm tra lại
+    <<trace TRACE_IGNORE_RED_FLAG 2 "m4_huy_advice">>
     <<jump CH1_M4_R3_BB_2>>
 ===
 

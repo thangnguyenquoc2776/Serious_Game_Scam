@@ -5,9 +5,9 @@ position: 46,17
 -> Mở điện thoại nhắn hỏi Quân
 <<switch_ui "phone_chat">>
 
-Minh: Quân ơi ông có ở đó không cho tôi hỏi xíu
-Minh: Hồi tuần trước tôi có đặt mua vài món đồ online
-Minh: Nay có shipper gọi bảo chuyển khoản trước rồi gửi đồ ở cổng. Tôi có nên chuyển không?
+Minh: Quân ơi ông có ở đó không cho tui hỏi xíu
+Minh: Hồi tuần trước tui có đặt mua vài món đồ online
+Minh: Nay có shipper gọi bảo chuyển khoản trước rồi gửi đồ ở cổng. Tui có nên chuyển không?
 
 <<wait 4>>
 
@@ -113,6 +113,7 @@ Shipper: Em kiểm tra lại xem, mở app lên xem lại đơn thử
     <<switch_ui "show:phone:Order_3">>
     Trạng thái đang vận chuyển, vậy là đơn của mình chưa tới mà. Thôi xong rồi...
 -> Không kiểm tra
+    <<trace TRACE_IGNORE_RED_FLAG 2 "m2_shipper_call">>
 
 <<switch_ui "normal">>
 
@@ -160,6 +161,7 @@ Minh: Mình có nên kiểm tra lại đơn hàng cái không nhỉ?
     Minh: Dự kiến giao ngày mai…
     Minh: Nghĩa là số hồi nãy không phải shipper đơn này. Vậy người hồi nãy gọi cho mình là ai ?
 -> Thôi kệ 
+    <<trace TRACE_IGNORE_RED_FLAG 1 "m2_shipper_call">>
 <<switch_ui "normal">>
 
 <<jump CH1_M2_R0_BB_1>>
@@ -204,10 +206,10 @@ Minh: Hình như có ai nhắn tin
 <<switch_ui "phone_chat">>
 
 Nam: Minh ơi, ông còn thức không?
-Nam: Tôi đang kẹt chút chuyện
-Nam: Ông chuyển giúp tôi 250k được không? Tối tôi gửi lại
-Nam: Gấp nha ông, tôi đang ngoài đường
-Nam: Ông chuyển qua số này giúp tôi nha. Tài khoản bạn tôi, tôi đang mượn máy
+Nam: Tui đang kẹt chút chuyện
+Nam: Ông chuyển giúp tui 250k được không? Tối tui gửi lại
+Nam: Gấp nha ông, tui đang ngoài đường
+Nam: Ông chuyển qua số này giúp tui nha. Tài khoản bạn tui, tui đang mượn máy
 
 -> Chuyển tiền luôn
     <<trace TRACE_TRANSFER_MONEY 1 "m3_namchat_borrowmoney">>

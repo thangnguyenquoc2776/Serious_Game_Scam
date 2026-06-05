@@ -12,7 +12,7 @@ Minh: Ái chà, nhiều tài liệu phết, đầy đủ luôn nè, mình vô t�
 <<switch_ui "show:pc:Webtailieu_3">>
 -> Mở khóa tài liệu
 <<switch_ui "show:pc:Webtailieu_4">>
-Minh: Ủa, phải đăng nhập tài khoản, mật khẩu Monites mới tải được à?
+Minh: Ủa, phải đăng nhập tài khoản, mật khẩu MXH Monites mới tải được à?
 Minh: Chắc để xác minh thành viên nhóm hay gì đó…
 Minh: Nên làm sao nhỉ, sắp tới hạn mình phải đưa tài liệu lên với mọi người rồi
 Minh: Có nên đăng nhập vào không ta?
@@ -39,7 +39,7 @@ Minh: Hình như không ổn rồi. Chuyện gì thế này???
     <<set_objective "OBJ_M1_ASK_QUAN_1">>
     <<switch_ui "normal">>
 -> Mặc kệ tài khoản có thông báo bất thường
-    Minh: Ôi thôi xong, giờ mình bị out ra khỏi tài khoản mạng xã hội luôn rồi...
+    <<trace TRACE_IGNORE_RED_FLAG 1 "m1_account_warning">>
     <<jump CH1_M1_R3_BB_2>>
     // -> Hỏi Quân
     //     <<unsit>>
@@ -50,7 +50,7 @@ Minh: Hình như không ổn rồi. Chuyện gì thế này???
 title: CH1_M1_R1_BB_3
 position: 597,446
 ---
-Minh: Ông ơi, tôi vừa đăng nhập cái trang tài liệu này xong mà nó báo đăng nhập mới…
+Minh: Ông ơi, tui vừa đăng nhập cái trang tài liệu này xong mà nó báo đăng nhập mới…
 Quân: Khoan. Trang nào?
 Minh: Cái bài full tài liệu Giải tích trong group
 Quân: Ông nhập mật khẩu vô đó luôn hả?
@@ -64,7 +64,8 @@ Huy: Đổi mật khẩu lẹ, nếu đã bị đăng xuất rồi thì bấm qu
     Minh: Lay hoay mãi mà vẫn chưa tìm được tài liệu, không biết phải làm sao
     <<jump CH1_M1_R3_BB_2>>
 -> Không làm
-    Minh: Mất tài khoản luôn rồi mà tài liệu cũng chưa có, mình biết phải làm sao đây
+    <<trace TRACE_IGNORE_RED_FLAG 2 "m1_huy_advice">>
+    Minh: Tài liệu đến giờ vẫn chưa tìm được, mình biết phải làm sao đây
     <<jump CH1_M1_R3_BB_2>>
 ===
 
@@ -74,7 +75,7 @@ position: 292,12
 <<set_milestone 1>>
 
 Minh: Ông ơi, cái link tài liệu này có ổn không?
-Quân: Đâu đưa tôi coi
+Quân: Đâu đưa tui coi
 -> Mở bài viết cho Quân xem 
     <<switch_ui "show:pc:Group_4">>
 <<jump CH1_M1_R2_BB_2>>
@@ -118,10 +119,10 @@ title: CH1_M1_R2_BB_3
 position: 276,655
 ---
 <<switch_ui "phone_chat">>
-Minh: Mọi người có nguồn tài liệu nào ổn không? Mình thấy mấy link trong group ngoài hơi loạn
-Mai: Mình có slide giới thiệu môn với vài ghi chú từ trang môn học trên hệ thống. Để mình gửi
-Nam: Tôi kiếm thêm ví dụ mẫu. Minh lấy phần định nghĩa cơ bản với mở bài thôi là được
-Minh: Ok, cảm ơn Nam nha, để mình làm
+Minh: Mọi người có nguồn tài liệu nào ổn không? Tui thấy mấy link trong group ngoài hơi loạn
+Mai: Tui có slide giới thiệu môn với vài ghi chú từ trang môn học trên hệ thống. Để tui gửi
+Nam: Tui kiếm thêm ví dụ mẫu. Minh lấy phần định nghĩa cơ bản với mở bài thôi là được
+Minh: Ok, cảm ơn Nam nha, để tui làm
 -> Tắt điện thoại
 <<switch_ui "normal">>
 
@@ -148,13 +149,13 @@ position: -13,555
 Minh: Hình như Nam và mai nhắn rồi, biết làm sao đây..
 -> Mở tin nhắn chat
 <<switch_ui "phone_chat">>
-Mai: Mọi người gửi phần của mình nha, mình ráp slide
-Nam: Tôi gửi ví dụ rồi
-Mai: Minh ơi, phần mở đầu của cậu sao rồi?
+Mai: Mọi người gửi phần của mình nha, tui ráp slide
+Nam: Tui gửi ví dụ rồi
+Mai: Minh ơi, phần mở đầu của ông sao rồi?
     -> Xin lỗi vì chưa kiếm được tài liệu
-    Minh: Mình xin lỗi, nãy giờ mình chưa kiếm được tài liệu
-Nam: Thôi không sao, để phần đó mình có tìm được tài liệu rồi, cậu cứ lấy phần giới thiệu với mở đầu là được nhé
-Minh: Cảm ơn Nam, để mình làm
+    Minh: Tui xin lỗi, nãy giờ tui chưa kiếm được tài liệu
+Nam: Thôi không sao, để phần đó tui có tìm được tài liệu rồi, ông cứ lấy phần giới thiệu với mở đầu là được nhé
+Minh: Cảm ơn Nam, để tui làm
 <<switch_ui "normal">>
 
 <<jump CH1_M1_R0_BB_1>>
@@ -228,7 +229,7 @@ position: 267,1386
 ->Ngồi
     <<sit "audi_chair">>
 Giảng viên : Hôm nay chúng ta sẽ sinh hoạt đầu khóa cho tân sinh viên, thầy xin tự giới thiệu thầy là....
-<<jump CH1_M1_R0_BB_3>>>>
+<<jump CH1_M1_R0_BB_3>>
 ===
 
 title: CH1_M1_R0_BB_3

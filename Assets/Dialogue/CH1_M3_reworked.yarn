@@ -7,11 +7,11 @@ position: 215,37
 Minh: Ông đang ở đâu vậy?
 Nam: Ngoài đường
 Minh: Ngoài đường chỗ nào? Có gọi được không?
-Nam: Không tiện gọi. Chuyển lẹ giúp tôi đi
+Nam: Không tiện gọi. Chuyển lẹ giúp tui đi
 Minh: Sáng nay ông bảo phần ví dụ sẽ gửi lúc mấy giờ ấy nhỉ?
-Nam: Tí gửi. Giờ chuyển trước giúp tôi
+Nam: Tí gửi. Giờ chuyển trước giúp tui
 Minh: Sao không chuyển vào tài khoản của ông?
-Nam: Tài khoản tôi lỗi. Tài khoản bạn tôi. Nhanh nha
+Nam: Tài khoản tui lỗi. Tài khoản bạn tui. Nhanh nha
 
 -> Chuyển khoản cho Nam
     <<trace TRACE_TRANSFER_MONEY 1 "m3_namchat_borrowmoney">>
@@ -34,9 +34,9 @@ Minh: Mình có nên nhắn Mai để hỏi chuyện này không nhỉ
 ->Hỏi lại Mai
     <<trace TRACE_ASK_PERSON 1 "m3_namchat_Mai">>
     <<switch_ui "phone_chat">>
-    Minh: Mai ơi, Nam vừa nhắn riêng tôi mượn tiền
-    Mai: Ủa? Tôi cũng vừa thấy một tin nhắn rất giống vậy
-    Mai: Tôi cũng không rõ có phải là Nam hay không 
+    Minh: Mai ơi, Nam vừa nhắn riêng tui mượn tiền
+    Mai: Ủa? Tui cũng vừa thấy một tin nhắn rất giống vậy
+    Mai: Tui cũng không rõ có phải là Nam hay không 
     
     <<wait 1>>
     <<switch_ui "normal">>
@@ -56,7 +56,7 @@ Minh: Thôi, mình chuyển trước rồi kiểm tra sau.
 
 <<wait 1>>
 <<switch_ui "phone_chat_keep">>
-Minh: Tôi chuyển rồi nha Nam.
+Minh: Tui chuyển rồi nha Nam.
 Nam: Ok, cảm ơn ông.
 
 <<wait 1>>
@@ -70,18 +70,18 @@ position: -123,265
 <<set_milestone 3>>
 <<switch_ui "normal">>
 
-Minh: Ông coi giúp tôi cái này được không?
+Minh: Ông coi giúp tui cái này được không?
 Quân: Nam trong nhóm ông hả?
 Minh: Ừ. Mới nhắn mượn tiền, bảo chuyển qua tài khoản bạn
-Quân: Tài khoản bạn tôi... nghe hơi lạ nha
+Quân: Tài khoản bạn tui... nghe hơi lạ nha
 Huy: Cứ xác minh thêm trước đã. Gọi trực tiếp hoặc hỏi người nào quen bạn đó
-Minh: Vậy tôi nên nhắn Mai kiểm tra thêm không?
+Minh: Vậy tui nên nhắn Mai kiểm tra thêm không?
 -> Nhắn Mai
     <<switch_ui "phone_chat">>
     <<trace TRACE_ASK_PERSON 1 "m3_namchat_Mai">>
-    Minh: Mai ơi, Nam vừa nhắn riêng tôi mượn tiền
-    Mai: Ủa? Tôi cũng vừa thấy một tin nhắn rất giống vậy
-    Mai: Tôi cũng không rõ có phải là Nam hay không 
+    Minh: Mai ơi, Nam vừa nhắn riêng tui mượn tiền
+    Mai: Ủa? Tui cũng vừa thấy một tin nhắn rất giống vậy
+    Mai: Tui cũng không rõ có phải là Nam hay không 
     <<wait 1>>
     <<switch_ui "normal">>
     <<jump CH1_M3_R2_BB_1_A>>
@@ -129,10 +129,10 @@ Minh: Mai à?
 -> Kiểm tra tin nhắn
 <<switch_ui "phone_chat">>
 
-Mai: Minh ơi, nãy cậu có nhận được tin nhắn mượn tiền từ Nam không?
-Minh: Ừ, tôi vừa nhận xong
-Mai: Tôi cũng vừa bị nhắn y chang
-Mai: Tôi thấy nó lạ lắm, nên nhắn cậu hỏi cho chắc
+Mai: Minh ơi, nãy ông có nhận được tin nhắn mượn tiền từ Nam không?
+Minh: Ừ, tui vừa nhận xong
+Mai: Tui cũng vừa bị nhắn y chang
+Mai: Tui thấy hơi lạ, nên nhắn ông hỏi cho chắc
 Minh: Vậy là không ổn thật rồi...
 
 <<wait 2>>
@@ -158,10 +158,10 @@ position: 274,1335
 ---
 
 Minh: Ủa, Nam?
-Nam: Sao nhìn tôi căng vậy?
-Minh: Hôm qua cậu nhắn mượn tiền, bảo chuyển qua tài khoản bạn
-Nam: Tôi không nhắn riêng ông chuyện đó
-Nam: Tài khoản tôi bị mất mấy ngày nay rồi
+Nam: Sao nhìn tui căng vậy?
+Minh: Hôm qua ông nhắn mượn tiền, bảo chuyển qua tài khoản bạn
+Nam: Tui không nhắn riêng ông chuyện đó
+Nam: Tài khoản tui bị mất mấy ngày nay rồi
 Minh: Vậy tin nhắn đó là giả mạo thật à?
 Minh: Mình có nên nhắn tin cảnh báo lên nhóm lớp không nhỉ?
 

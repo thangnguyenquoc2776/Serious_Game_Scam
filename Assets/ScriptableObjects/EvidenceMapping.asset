@@ -136,7 +136,7 @@ MonoBehaviour:
       quy tr\xECnh \u0111\xE1ng ng\u1EDD."
     scoreDeltas:
     - scoreKey: SCORE_RISK_RECOGNITION
-      delta: 3
+      delta: 5
     - scoreKey: SCORE_INFORMATION_VERIFICATION
       delta: 3
     - scoreKey: SCORE_PRESSURE_RESISTANCE
