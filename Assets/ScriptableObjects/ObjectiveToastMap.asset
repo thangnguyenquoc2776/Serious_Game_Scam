@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f81b7a1959823c40932f5a39e82d9a4, type: 3}
+  m_Name: ObjectiveToastMap
+  m_EditorClassIdentifier: Assembly-CSharp::SeriousGame.App.ObjectiveToastMap
+  fallbackToObjectiveId: 1
+  entries:
+  - message: "\u0110I G\u1EB6P B\xC1C B\u1EA2O V\u1EC6"
+    objectiveIds:
+    - OBJ_M0_TALK_GUARD
+    - OBJ_CH1_M2_TAKE_SHIP_2
+  - message: "\u0110I \u0110\u1EBEN S\u1EA2NH"
+    objectiveIds:
+    - OBJ_M0_GO_LOBBY
+  - message: "N\xD3I CHUY\u1EC6N V\u1EDAI CH\u1ECA \u1EDE B\xC0N"
+    objectiveIds:
+    - OBJ_M0_TALK_LINH
+  - message: "\u0110I V\xC0O THANG M\xC1Y \u0110\u1EC2 L\xCAN PH\xD2NG"
+    objectiveIds:
+    - OBJ_M0_GO_ROOM
+  - message: "QU\xC9T M\xC3 QR NH\xD3M T\xD2A"
+    objectiveIds:
+    - OBJ_M0_SCAN_QR
+  - message: "RA C\u1EECA V\xC0 \u0110I \u0110\u1EBEN TR\u01AF\u1EDCNG"
+    objectiveIds:
+    - OBJ_M1_ENTER_CLASS
+    - OBJ_M0_GO_SCHOOL
+  - message: "RA C\u1EECA \u0110I V\u1EC0"
+    objectiveIds:
+    - OBJ_M0_LEAVE_CLASS
+  - message: "T\xCCM T\xC0I LI\u1EC6U"
+    objectiveIds:
+    - OBJ_M0_FIND_DOCUMENT
+  - message: "H\u1ECEI M\u1ECCI NG\u01AF\u1EDCI TRONG PH\xD2NG"
+    objectiveIds:
+    - OBJ_M1_ASK_QUAN_1
+    - OBJ_M1_ASK_QUAN_2
+    - OBJ_M3_ASK_QUAN
+    - OBJ_M4_ASK_QUAN
+    - OBJ_M4_ASK_QUAN_2
+  - message: "T\xCCM NH\xD3M"
+    objectiveIds:
+    - OBJ_M0_FIND_GROUP
+  - message: "M\u1EDE LAPTOP  \u0110\u1EC2 H\u1ECCP NH\xD3M"
+    objectiveIds:
+    - OBJ_M0_MEETING
+  - message: "T\xCCM CH\xD5 NG\u1ED2I"
+    objectiveIds:
+    - OBJ_M1_SIT
+  - message: "C\xD3 \u0110I\u1EC6N THO\u1EA0I"
+    objectiveIds:
+    - OBJ_M2_PHONE_CALL
+  - message: "T\xCCM SHIPPER"
+    objectiveIds:
+    - OBJ_CH1_M2_TAKE_SHIP_3
+  - message: "M\u1EDE LAPTOP KI\u1EC2M TRA MAIL"
+    objectiveIds:
+    - OBJ_CH1_M3_CHECKMAIL
+  - message: "\u0110I V\xC0O L\u1EDAP"
+    objectiveIds:
+    - OBJ_M0_ENTER_CLASS
+  - message: "N\xD3I CHUY\u1EC6N V\u1EDAI M\u1ECCI NG\u01AF\u1EDCI TRONG PH\xD2NG"
+    objectiveIds:
+    - OBJ_M0_TALK_QUAN
+  - message: "RA C\u1EECA \u0110\u1EC2 \u0110I XU\u1ED0NG C\u1ED4NG KTX"
+    objectiveIds:
+    - OBJ_CH1_M2_TAKE_SHIP
+  - message: "C\xD3 TIN NH\u1EAEN"
+    objectiveIds:
+    - OBJ_M3_OPEN_NAM_CHAT
+  - message: "\u0110I V\xC0O L\u1EDAP"
+    objectiveIds:
+    - OBJ_M3_TALK_NAM

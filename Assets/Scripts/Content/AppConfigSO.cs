@@ -13,8 +13,14 @@ namespace SeriousGame.Content
         [Header("Flow")]
         public bool skipMainMenuAndAutoStartEpisode = true;
 
+        [Header("Firebase")]
+        public string firebaseProjectId;
+        public string firebaseWebApiKey;
+
         [Header("Content")]
-        public EpisodeSO defaultEpisode;
-        public TraceTaxonomySO traceTaxonomy;
+        public EvidenceMappingSO evidenceMapping;
+
+        [Header("Feedback")]
+        public ScoreFeedbackMappingSO scoreFeedbackMapping;
     }
 }

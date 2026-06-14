@@ -4,13 +4,13 @@ namespace SeriousGame.Trace
 {
     public class InMemoryTraceStore : ITraceStore
     {
-        private readonly List<TraceEvent> _events = new();
+        private readonly List<GameTrace> _events = new();
 
-        public void Add(TraceEvent e) => _events.Add(e);
+        public void Add(GameTrace trace) => _events.Add(trace);
 
-        public List<TraceEvent> GetBySession(string sessionId)
+        public List<GameTrace> GetBySession(string sessionId)
         {
-            var res = new List<TraceEvent>();
+            var res = new List<GameTrace>();
             for (int i = 0; i < _events.Count; i++)
                 if (_events[i].sessionId == sessionId) res.Add(_events[i]);
             return res;

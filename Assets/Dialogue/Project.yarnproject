@@ -1,0 +1,26 @@
+{
+  "projectFileVersion": 4,
+  "sourceFiles": ["**/*.yarn"],
+  "excludeFiles": ["**/*~/*", "./Samples/Yarn Spinner*/*"],
+  "localisation": {
+    "en": {},
+  },
+  "baseLanguage": "vi",
+  "compilerOptions": {
+    "diagnosticsSeverity": {},
+  },
+  "editorOptions": {
+    "yarnScriptEditor": {
+      "projectGraphPositions": {
+        "Scenario_Demo.yarn": {
+          "x": 21,
+          "y": -11,
+        },
+        "test.yarn": {
+          "x": 12,
+          "y": 182,
+        },
+      },
+    },
+  },
+}

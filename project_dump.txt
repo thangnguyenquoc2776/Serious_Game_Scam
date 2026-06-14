@@ -1,0 +1,3901 @@
+===== PROJECT TREE =====
+./
+└── Assets
+    └── Scripts
+        ├── App.meta
+        ├── Auth.meta
+        ├── Content.meta
+        ├── Feedback.meta
+        ├── Interactables.meta
+        ├── Narrative.meta
+        ├── Phone.meta
+        ├── Player.meta
+        ├── Runtime.meta
+        ├── Save.meta
+        ├── State.meta
+        ├── Trace.meta
+        ├── UI.meta
+        ├── App
+        │   ├── AppContext.cs
+        │   ├── AppContext.cs.meta
+        │   ├── GameBootstrap.cs
+        │   ├── GameBootstrap.cs.meta
+        │   ├── GameEventBus.cs
+        │   ├── GameEventBus.cs.meta
+        │   ├── QuestService.cs
+        │   ├── QuestService.cs.meta
+        │   ├── SceneService.cs
+        │   ├── SceneService.cs.meta
+        │   ├── SessionService.cs
+        │   └── SessionService.cs.meta
+        ├── Auth
+        │   ├── AuthService.cs
+        │   └── AuthService.cs.meta
+        ├── Content
+        │   ├── AppConfigSO.cs
+        │   ├── AppConfigSO.cs.meta
+        │   ├── EvidenceMappingSO.cs
+        │   ├── EvidenceMappingSO.cs.meta
+        │   ├── ObjectiveToastMap.cs
+        │   └── ObjectiveToastMap.cs.meta
+        ├── Feedback
+        │   ├── FeedbackReport.cs
+        │   ├── FeedbackReport.cs.meta
+        │   ├── FeedbackService.cs
+        │   └── FeedbackService.cs.meta
+        ├── Interactables
+        │   ├── StateFlagInteractable.cs
+        │   ├── StateFlagInteractable.cs.meta
+        │   ├── TeleportInteractable.cs
+        │   └── TeleportInteractable.cs.meta
+        ├── Narrative
+        │   ├── NarrativeService.cs
+        │   ├── NarrativeService.cs.meta
+        │   ├── YarnAutoStart.cs
+        │   ├── YarnAutoStart.cs.meta
+        │   ├── YarnCommandBridge.cs
+        │   └── YarnCommandBridge.cs.meta
+        ├── Phone
+        │   ├── PhoneUIListener.cs
+        │   └── PhoneUIListener.cs.meta
+        ├── Player
+        │   ├── PlayerController.cs
+        │   └── PlayerController.cs.meta
+        ├── Runtime
+        │   ├── IInteractable.cs
+        │   ├── IInteractable.cs.meta
+        │   ├── NodeInteractable.cs
+        │   └── NodeInteractable.cs.meta
+        ├── Save
+        │   ├── SaveData.cs
+        │   ├── SaveData.cs.meta
+        │   ├── SaveService.cs
+        │   └── SaveService.cs.meta
+        ├── State
+        │   ├── GameStateKeys.cs
+        │   ├── GameStateKeys.cs.meta
+        │   ├── PlayerStateDebugger.cs
+        │   ├── PlayerStateDebugger.cs.meta
+        │   ├── PlayerStateService.cs
+        │   ├── PlayerStateService.cs.meta
+        │   ├── PlayerStateSnapshot.cs
+        │   └── PlayerStateSnapshot.cs.meta
+        ├── Trace
+        │   ├── CloudTraceStore.cs
+        │   ├── CloudTraceStore.cs.meta
+        │   ├── Dto.meta
+        │   ├── FileTraceStore.cs
+        │   ├── FileTraceStore.cs.meta
+        │   ├── InMemoryTraceStore.cs
+        │   ├── InMemoryTraceStore.cs.meta
+        │   ├── ITraceStore.cs
+        │   ├── ITraceStore.cs.meta
+        │   ├── TraceService.cs
+        │   ├── TraceService.cs.meta
+        │   └── Dto
+        │       ├── ChapterSessionDTO.cs
+        │       ├── ChapterSessionDTO.cs.meta
+        │       ├── FinalScores.cs
+        │       ├── FinalScores.cs.meta
+        │       ├── GameTrace.cs
+        │       └── GameTrace.cs.meta
+        └── UI
+            ├── BillboardToCamera.cs
+            ├── BillboardToCamera.cs.meta
+            ├── ChatDialoguePanel.cs
+            ├── ChatDialoguePanel.cs.meta
+            ├── ChatDialogueView.cs
+            ├── ChatDialogueView.cs.meta
+            ├── GameplayUIRoot.cs
+            ├── GameplayUIRoot.cs.meta
+            ├── LoginUI.cs
+            ├── LoginUI.cs.meta
+            ├── OutcomeToastUI.cs
+            ├── OutcomeToastUI.cs.meta
+            ├── PauseMenuController.cs
+            ├── PauseMenuController.cs.meta
+            ├── ScreenFader.cs
+            ├── ScreenFader.cs.meta
+            ├── SummaryUIListener.cs
+            ├── SummaryUIListener.cs.meta
+            ├── UIFlowManager.cs
+            ├── UIFlowManager.cs.meta
+            ├── UITester.cs
+            └── UITester.cs.meta
+
+===== FILE MANIFEST =====
+- Assets/Scripts/App.meta — 180 bytes — ok
+- Assets/Scripts/Auth.meta — 172 bytes — ok
+- Assets/Scripts/Content.meta — 180 bytes — ok
+- Assets/Scripts/Feedback.meta — 180 bytes — ok
+- Assets/Scripts/Interactables.meta — 180 bytes — ok
+- Assets/Scripts/Narrative.meta — 172 bytes — ok
+- Assets/Scripts/Phone.meta — 180 bytes — ok
+- Assets/Scripts/Player.meta — 180 bytes — ok
+- Assets/Scripts/Runtime.meta — 180 bytes — ok
+- Assets/Scripts/Save.meta — 172 bytes — ok
+- Assets/Scripts/State.meta — 172 bytes — ok
+- Assets/Scripts/Trace.meta — 180 bytes — ok
+- Assets/Scripts/UI.meta — 180 bytes — ok
+- Assets/Scripts/App/AppContext.cs — 2016 bytes — ok
+- Assets/Scripts/App/AppContext.cs.meta — 60 bytes — ok
+- Assets/Scripts/App/GameBootstrap.cs — 1306 bytes — ok
+- Assets/Scripts/App/GameBootstrap.cs.meta — 60 bytes — ok
+- Assets/Scripts/App/GameEventBus.cs — 1804 bytes — ok
+- Assets/Scripts/App/GameEventBus.cs.meta — 59 bytes — ok
+- Assets/Scripts/App/QuestService.cs — 1445 bytes — ok
+- Assets/Scripts/App/QuestService.cs.meta — 59 bytes — ok
+- Assets/Scripts/App/SceneService.cs — 524 bytes — ok
+- Assets/Scripts/App/SceneService.cs.meta — 60 bytes — ok
+- Assets/Scripts/App/SessionService.cs — 1196 bytes — ok
+- Assets/Scripts/App/SessionService.cs.meta — 60 bytes — ok
+- Assets/Scripts/Auth/AuthService.cs — 3408 bytes — ok
+- Assets/Scripts/Auth/AuthService.cs.meta — 59 bytes — ok
+- Assets/Scripts/Content/AppConfigSO.cs — 689 bytes — ok
+- Assets/Scripts/Content/AppConfigSO.cs.meta — 60 bytes — ok
+- Assets/Scripts/Content/EvidenceMappingSO.cs — 1021 bytes — ok
+- Assets/Scripts/Content/EvidenceMappingSO.cs.meta — 59 bytes — ok
+- Assets/Scripts/Content/ObjectiveToastMap.cs — 1776 bytes — ok
+- Assets/Scripts/Content/ObjectiveToastMap.cs.meta — 59 bytes — ok
+- Assets/Scripts/Feedback/FeedbackReport.cs — 387 bytes — ok
+- Assets/Scripts/Feedback/FeedbackReport.cs.meta — 60 bytes — ok
+- Assets/Scripts/Feedback/FeedbackService.cs — 4635 bytes — ok
+- Assets/Scripts/Feedback/FeedbackService.cs.meta — 60 bytes — ok
+- Assets/Scripts/Interactables/StateFlagInteractable.cs — 1529 bytes — ok
+- Assets/Scripts/Interactables/StateFlagInteractable.cs.meta — 60 bytes — ok
+- Assets/Scripts/Interactables/TeleportInteractable.cs — 3187 bytes — ok
+- Assets/Scripts/Interactables/TeleportInteractable.cs.meta — 60 bytes — ok
+- Assets/Scripts/Narrative/NarrativeService.cs — 3571 bytes — ok
+- Assets/Scripts/Narrative/NarrativeService.cs.meta — 59 bytes — ok
+- Assets/Scripts/Narrative/YarnAutoStart.cs — 616 bytes — ok
+- Assets/Scripts/Narrative/YarnAutoStart.cs.meta — 59 bytes — ok
+- Assets/Scripts/Narrative/YarnCommandBridge.cs — 7861 bytes — ok
+- Assets/Scripts/Narrative/YarnCommandBridge.cs.meta — 59 bytes — ok
+- Assets/Scripts/Phone/PhoneUIListener.cs — 1743 bytes — ok
+- Assets/Scripts/Phone/PhoneUIListener.cs.meta — 59 bytes — ok
+- Assets/Scripts/Player/PlayerController.cs — 4226 bytes — ok
+- Assets/Scripts/Player/PlayerController.cs.meta — 60 bytes — ok
+- Assets/Scripts/Runtime/IInteractable.cs — 113 bytes — ok
+- Assets/Scripts/Runtime/IInteractable.cs.meta — 59 bytes — ok
+- Assets/Scripts/Runtime/NodeInteractable.cs — 1961 bytes — ok
+- Assets/Scripts/Runtime/NodeInteractable.cs.meta — 59 bytes — ok
+- Assets/Scripts/Save/SaveData.cs — 655 bytes — ok
+- Assets/Scripts/Save/SaveData.cs.meta — 59 bytes — ok
+- Assets/Scripts/Save/SaveService.cs — 5406 bytes — ok
+- Assets/Scripts/Save/SaveService.cs.meta — 59 bytes — ok
+- Assets/Scripts/State/GameStateKeys.cs — 1090 bytes — ok
+- Assets/Scripts/State/GameStateKeys.cs.meta — 59 bytes — ok
+- Assets/Scripts/State/PlayerStateDebugger.cs — 734 bytes — ok
+- Assets/Scripts/State/PlayerStateDebugger.cs.meta — 59 bytes — ok
+- Assets/Scripts/State/PlayerStateService.cs — 5189 bytes — ok
+- Assets/Scripts/State/PlayerStateService.cs.meta — 59 bytes — ok
+- Assets/Scripts/State/PlayerStateSnapshot.cs — 1384 bytes — ok
+- Assets/Scripts/State/PlayerStateSnapshot.cs.meta — 59 bytes — ok
+- Assets/Scripts/Trace/CloudTraceStore.cs — 4675 bytes — ok
+- Assets/Scripts/Trace/CloudTraceStore.cs.meta — 59 bytes — ok
+- Assets/Scripts/Trace/Dto.meta — 172 bytes — ok
+- Assets/Scripts/Trace/FileTraceStore.cs — 3120 bytes — ok
+- Assets/Scripts/Trace/FileTraceStore.cs.meta — 59 bytes — ok
+- Assets/Scripts/Trace/InMemoryTraceStore.cs — 690 bytes — ok
+- Assets/Scripts/Trace/InMemoryTraceStore.cs.meta — 60 bytes — ok
+- Assets/Scripts/Trace/ITraceStore.cs — 259 bytes — ok
+- Assets/Scripts/Trace/ITraceStore.cs.meta — 60 bytes — ok
+- Assets/Scripts/Trace/TraceService.cs — 8908 bytes — ok
+- Assets/Scripts/Trace/TraceService.cs.meta — 60 bytes — ok
+- Assets/Scripts/Trace/Dto/ChapterSessionDTO.cs — 1308 bytes — ok
+- Assets/Scripts/Trace/Dto/ChapterSessionDTO.cs.meta — 59 bytes — ok
+- Assets/Scripts/Trace/Dto/FinalScores.cs — 344 bytes — ok
+- Assets/Scripts/Trace/Dto/FinalScores.cs.meta — 59 bytes — ok
+- Assets/Scripts/Trace/Dto/GameTrace.cs — 630 bytes — ok
+- Assets/Scripts/Trace/Dto/GameTrace.cs.meta — 59 bytes — ok
+- Assets/Scripts/UI/BillboardToCamera.cs — 857 bytes — ok
+- Assets/Scripts/UI/BillboardToCamera.cs.meta — 60 bytes — ok
+- Assets/Scripts/UI/ChatDialoguePanel.cs — 2079 bytes — ok
+- Assets/Scripts/UI/ChatDialoguePanel.cs.meta — 59 bytes — ok
+- Assets/Scripts/UI/ChatDialogueView.cs — 6571 bytes — ok
+- Assets/Scripts/UI/ChatDialogueView.cs.meta — 59 bytes — ok
+- Assets/Scripts/UI/GameplayUIRoot.cs — 5550 bytes — ok
+- Assets/Scripts/UI/GameplayUIRoot.cs.meta — 59 bytes — ok
+- Assets/Scripts/UI/LoginUI.cs — 1995 bytes — ok
+- Assets/Scripts/UI/LoginUI.cs.meta — 59 bytes — ok
+- Assets/Scripts/UI/OutcomeToastUI.cs — 1109 bytes — ok
+- Assets/Scripts/UI/OutcomeToastUI.cs.meta — 60 bytes — ok
+- Assets/Scripts/UI/PauseMenuController.cs — 1840 bytes — ok
+- Assets/Scripts/UI/PauseMenuController.cs.meta — 59 bytes — ok
+- Assets/Scripts/UI/ScreenFader.cs — 1786 bytes — ok
+- Assets/Scripts/UI/ScreenFader.cs.meta — 60 bytes — ok
+- Assets/Scripts/UI/SummaryUIListener.cs — 2353 bytes — ok
+- Assets/Scripts/UI/SummaryUIListener.cs.meta — 59 bytes — ok
+- Assets/Scripts/UI/UIFlowManager.cs — 2181 bytes — ok
+- Assets/Scripts/UI/UIFlowManager.cs.meta — 59 bytes — ok
+- Assets/Scripts/UI/UITester.cs — 932 bytes — ok
+- Assets/Scripts/UI/UITester.cs.meta — 59 bytes — ok
+
+
+
+Folder Assets/Scripts
+File App.meta
+fileFormatVersion: 2
+guid: bced9433f1c3a8b4892f7dacf497fa71
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+
+File Auth.meta
+fileFormatVersion: 2
+guid: 8e727ffe2d4c1394eb5cbf64a4e29d29
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+
+File Content.meta
+fileFormatVersion: 2
+guid: 09717abd77ee137469de55bb29abb21d
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+
+File Feedback.meta
+fileFormatVersion: 2
+guid: f292ae804846d3d49be9c7ebe77ab4c2
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+
+File Interactables.meta
+fileFormatVersion: 2
+guid: 7560647516bce9f4d8bdd52d27f9990c
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+
+File Narrative.meta
+fileFormatVersion: 2
+guid: 3db8205acaf7d664884c9289af2cae61
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+
+File Phone.meta
+fileFormatVersion: 2
+guid: 176da5f3a2b722d4e971f875baf0fc84
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+
+File Player.meta
+fileFormatVersion: 2
+guid: 663599c09c7fbe14cadff30a64c386e1
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+
+File Runtime.meta
+fileFormatVersion: 2
+guid: ef39ae2c9cb393444bde495df15bd5eb
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+
+File Save.meta
+fileFormatVersion: 2
+guid: 63852d96c1c946344a584cf49a9ab4d7
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+
+File State.meta
+fileFormatVersion: 2
+guid: 74ff6974dd748cd478b7597a4da0ba5c
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+
+File Trace.meta
+fileFormatVersion: 2
+guid: b4eede84f656e1349ac29e2c56270d1a
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+
+File UI.meta
+fileFormatVersion: 2
+guid: cf4cd15125c935f478faf83d2319ac43
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+
+
+Folder Assets/Scripts/App
+File AppContext.cs
+using UnityEngine;
+using SeriousGame.Content;
+using SeriousGame.Trace;
+using SeriousGame.Feedback;
+using SeriousGame.State;
+using SeriousGame.Save;
+using SeriousGame.Narrative;
+using SeriousGame.Auth;
+
+namespace SeriousGame.App
+{
+    public class AppContext : MonoBehaviour
+    {
+        public AppConfigSO Config { get; private set; }
+        public SceneService Scenes { get; private set; }
+        public SessionService Session { get; private set; }
+        public PlayerStateService PlayerState { get; private set; }
+        public TraceService Trace { get; private set; }
+        public AuthService Auth { get; private set; }
+        public FeedbackService Feedback { get; private set; }
+        public SaveService Save { get; private set; }
+        public NarrativeService Narrative { get; private set; }
+        public QuestService Quest { get; private set; }
+    
+        public void Init(AppConfigSO config)
+        {
+            Config = config;
+
+            Scenes = new SceneService();
+            Session = new SessionService();
+            PlayerState = new PlayerStateService();
+
+            var store = new InMemoryTraceStore();
+            var fileStore = new FileTraceStore();
+            Trace = new TraceService(store, fileStore, Session, PlayerState, config);
+
+            Auth = new AuthService(config != null ? config.firebaseWebApiKey : null);
+
+            // Narrative context should exist before SaveService so save/load can include node and milestone.
+            Narrative = GetComponent<NarrativeService>();
+            Quest = GetComponent<QuestService>();
+            Feedback = new FeedbackService(
+                Trace,
+                config != null ? config.evidenceMapping : null,
+                PlayerState);
+            Save = new SaveService(Session, PlayerState, Narrative);
+        }
+
+        private void OnDestroy()
+        {
+            if (Narrative != null)
+                Narrative.Dispose();
+        }
+    }
+}
+
+File AppContext.cs.meta
+fileFormatVersion: 2
+guid: 14008bf6b8961db4ea832bdeab4fa5b0
+
+File GameBootstrap.cs
+using UnityEngine;
+using SeriousGame.Content;
+
+namespace SeriousGame.App
+{
+    public class GameBootstrap : MonoBehaviour
+    {
+        public static AppContext Context { get; private set; }
+
+        [SerializeField] private AppConfigSO config;
+
+        private static GameBootstrap _instance;
+
+        private void Awake()
+        {
+            if (_instance != null && _instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            if (config == null)
+            {
+                Debug.LogError("[GameBootstrap] Missing AppConfigSO reference.");
+                return;
+            }
+
+            var ctx = GetComponent<AppContext>();
+            if (ctx == null) ctx = gameObject.AddComponent<AppContext>();
+            ctx.Init(config);
+
+            Context = ctx;
+
+            if (ctx.Session != null && string.IsNullOrWhiteSpace(ctx.Session.CurrentSessionId))
+                ctx.Session.Begin();
+        }
+
+        private void OnApplicationQuit()
+        {
+            var ctx = Context;
+            if (ctx != null && ctx.Trace != null)
+                ctx.Trace.SendSessionDataBlocking(false);
+        }
+
+    }
+}
+
+File GameBootstrap.cs.meta
+fileFormatVersion: 2
+guid: cbfc82bd4234fae44bbf8ec13943ced7
+
+File GameEventBus.cs
+using System;
+
+namespace SeriousGame.App
+{
+    public static class GameEventBus
+    {
+        // UI requests
+        public static event Action<string> OnPhoneChatRequested;
+        public static event Action<string, string> OnPhoneMessageReceived;
+        public static event Action<string> OnPcChatRequested;
+        public static event Action<string> OnDialogueRequested;
+        public static event Action<string> OnToastRequested;
+        public static event Action OnSummaryRequested;
+        public static event Action<string> OnHintRequested;
+        public static event Action<string> OnSwitchUIRequested;
+
+        public static void RaisePhoneChatRequested(string interactionId)
+        {
+            OnPhoneChatRequested?.Invoke(interactionId);
+        }
+
+        public static void RaisePhoneMessageReceived(string characterName, string message)
+        {
+            OnPhoneMessageReceived?.Invoke(characterName, message);
+        }
+
+        public static void RaisePcChatRequested(string interactionId)
+        {
+            OnPcChatRequested?.Invoke(interactionId);
+        }
+
+        public static void RaiseDialogueRequested(string nodeName)
+        {
+            OnDialogueRequested?.Invoke(nodeName);
+        }
+
+        public static void RaiseToastRequested(string message)
+        {
+            OnToastRequested?.Invoke(message);
+        }
+
+        public static void RaiseSummaryRequested()
+        {
+            OnSummaryRequested?.Invoke();
+        }
+
+        public static void RaiseHintRequested(string message)
+        {
+            OnHintRequested?.Invoke(message);
+        }
+
+        public static void RaiseSwitchUIRequested(string uitype)
+        {
+            OnSwitchUIRequested?.Invoke(uitype);
+        }
+    }
+}
+
+File GameEventBus.cs.meta
+fileFormatVersion: 2
+guid: 243a6bfae74ff8d439deadb3ef4634e5
+
+File QuestService.cs
+using System;
+using UnityEngine;
+
+namespace SeriousGame.App
+{
+    public class QuestService : MonoBehaviour
+    {
+        // Lưu trữ ID nhiệm vụ hiện tại
+        public string CurrentObjectiveId { get; private set; }
+        public string StartObjectiveId;
+
+        [Header("Objective Toast")]
+        [SerializeField] private ObjectiveToastMap objectiveToastMap;
+
+        // Event để báo cho UI biết mà cập nhật text trên màn hình (dùng Action hoặc GameEventBus của bạn)
+        public event Action<string> OnObjectiveChanged;
+
+        // Hàm chuyển sang nhiệm vụ mới
+
+        void Start()
+        {
+            // Khởi tạo nhiệm vụ đầu tiên khi bắt đầu game
+            SetObjective(StartObjectiveId);
+        }
+        public void SetObjective(string objectiveId)
+        {
+            CurrentObjectiveId = objectiveId;
+            Debug.Log($"[QuestService] Nhiệm vụ mới: {objectiveId}");
+            
+            // Báo cho UI (nếu có UI lắng nghe)
+            OnObjectiveChanged?.Invoke(objectiveId);
+            if (string.IsNullOrWhiteSpace(objectiveId)) return;
+
+            if (objectiveToastMap != null && objectiveToastMap.TryGetMessage(objectiveId, out var message))
+                GameEventBus.RaiseToastRequested(message);
+            else
+                GameEventBus.RaiseToastRequested(objectiveId);
+        }
+    }
+}
+
+File QuestService.cs.meta
+fileFormatVersion: 2
+guid: 7d528b7c519eeb449bc3526d3c65353f
+
+File SceneService.cs
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+namespace SeriousGame.App
+{
+    public class SceneService
+    {
+        public void Load(string sceneName)
+        {
+            if (string.IsNullOrWhiteSpace(sceneName)) return;
+            SceneManager.LoadScene(sceneName);
+        }
+
+        public AsyncOperation LoadAsync(string sceneName)
+        {
+            if (string.IsNullOrWhiteSpace(sceneName)) return null;
+            return SceneManager.LoadSceneAsync(sceneName);
+        }
+    }
+}
+
+File SceneService.cs.meta
+fileFormatVersion: 2
+guid: 6f0ad13584521b348a8fe6495ec8d774
+
+File SessionService.cs
+using System;
+
+namespace SeriousGame.App
+{
+    public class SessionService
+    {
+        public string CurrentSessionId { get; private set; }
+        public string PlayerId { get; private set; }
+        public string AuthToken { get; private set; }
+        public long StartTimeUnixMs { get; private set; }
+
+        public string ParticipantId => PlayerId;
+
+        public void Begin(string playerId = null)
+        {
+            CurrentSessionId = Guid.NewGuid().ToString("N");
+            StartTimeUnixMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+            if (!string.IsNullOrWhiteSpace(playerId))
+                PlayerId = playerId;
+        }
+
+        public void Restore(string sessionId, string playerId = null)
+        {
+            CurrentSessionId = sessionId;
+            if (!string.IsNullOrWhiteSpace(playerId))
+                PlayerId = playerId;
+        }
+
+        public void SetAuth(string playerId, string authToken)
+        {
+            if (!string.IsNullOrWhiteSpace(playerId))
+                PlayerId = playerId;
+            if (!string.IsNullOrWhiteSpace(authToken))
+                AuthToken = authToken;
+        }
+    }
+}
+
+File SessionService.cs.meta
+fileFormatVersion: 2
+guid: 3110d079d16ef5e4497016cd73cb637b
+
+
+Folder Assets/Scripts/Auth
+File AuthService.cs
+using System;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.Networking;
+using Newtonsoft.Json;
+
+namespace SeriousGame.Auth
+{
+    public class AuthService
+    {
+        private readonly string _webApiKey;
+
+        public string IdToken { get; private set; }
+        public string LocalId { get; private set; }
+
+        public AuthService(string webApiKey)
+        {
+            _webApiKey = webApiKey != null ? webApiKey.Trim() : string.Empty;
+        }
+
+        public async Task<bool> LoginWithEmail(string email, string password)
+        {
+            if (string.IsNullOrWhiteSpace(_webApiKey))
+            {
+                Debug.LogWarning("[AuthService] Missing Web API Key.");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+            {
+                Debug.LogWarning("[AuthService] Email or password is empty.");
+                return false;
+            }
+
+            var url = $"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={_webApiKey}";
+            var payload = new
+            {
+                email = email,
+                password = password,
+                returnSecureToken = true
+            };
+
+            var json = JsonConvert.SerializeObject(payload);
+            var body = Encoding.UTF8.GetBytes(json);
+
+            using (var request = new UnityWebRequest(url, "POST"))
+            {
+                request.uploadHandler = new UploadHandlerRaw(body);
+                request.downloadHandler = new DownloadHandlerBuffer();
+                request.SetRequestHeader("Content-Type", "application/json");
+
+                Debug.Log("[AuthService] Sending login request...");
+                await SendWebRequestAsync(request);
+
+                if (request.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogWarning($"[AuthService] Login failed. HTTP {request.responseCode}. Error: {request.error}");
+                    Debug.LogWarning($"[AuthService] Response: {request.downloadHandler.text}");
+                    return false;
+                }
+
+                var responseText = request.downloadHandler.text;
+                Debug.Log("[AuthService] Login success.");
+
+                try
+                {
+                    var response = JsonConvert.DeserializeObject<AuthResponse>(responseText);
+                    IdToken = response != null ? response.idToken : null;
+                    LocalId = response != null ? response.localId : null;
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogWarning($"[AuthService] Failed to parse auth response: {ex.Message}");
+                    return false;
+                }
+
+                return !string.IsNullOrWhiteSpace(IdToken) && !string.IsNullOrWhiteSpace(LocalId);
+            }
+        }
+
+        private static async Task SendWebRequestAsync(UnityWebRequest request)
+        {
+            var operation = request.SendWebRequest();
+            while (!operation.isDone)
+                await Task.Yield();
+        }
+
+        [Serializable]
+        private class AuthResponse
+        {
+            public string idToken;
+            public string localId;
+        }
+    }
+}
+
+File AuthService.cs.meta
+fileFormatVersion: 2
+guid: 850b12cbcad49eb4e9526aa5331e663e
+
+
+Folder Assets/Scripts/Content
+File AppConfigSO.cs
+using UnityEngine;
+
+namespace SeriousGame.Content
+{
+    [CreateAssetMenu(menuName = "SeriousGame/AppConfig", fileName = "AppConfig")]
+    public class AppConfigSO : ScriptableObject
+    {
+        [Header("Scene Names")]
+        public string bootSceneName = "Boot";
+        public string mainMenuSceneName = "MainMenu";
+        public string demoEpisodeSceneName = "Episode_Demo";
+
+        [Header("Flow")]
+        public bool skipMainMenuAndAutoStartEpisode = true;
+
+        [Header("Firebase")]
+        public string firebaseProjectId;
+        public string firebaseWebApiKey;
+
+        [Header("Content")]
+        public EvidenceMappingSO evidenceMapping;
+    }
+}
+
+File AppConfigSO.cs.meta
+fileFormatVersion: 2
+guid: 9bf335a8482cc194a933c9fa5193db5a
+
+File EvidenceMappingSO.cs
+using UnityEngine;
+
+namespace SeriousGame.Content
+{
+    [CreateAssetMenu(menuName = "SeriousGame/Trace/EvidenceMapping", fileName = "EvidenceMapping")]
+    public class EvidenceMappingSO : ScriptableObject
+    {
+        public EvidenceMappingEntry[] mappings;
+
+        public EvidenceMappingEntry Find(string traceId)
+        {
+            if (string.IsNullOrWhiteSpace(traceId) || mappings == null) return null;
+
+            foreach (var entry in mappings)
+            {
+                if (entry != null && entry.traceId == traceId)
+                    return entry;
+            }
+
+            return null;
+        }
+    }
+
+    [System.Serializable]
+    public class EvidenceMappingEntry
+    {
+        public string traceId;
+        public string displayName;
+        [TextArea] public string description;
+        public ScoreDelta[] scoreDeltas;
+    }
+
+    [System.Serializable]
+    public class ScoreDelta
+    {
+        public string scoreKey;
+        public int delta;
+    }
+}
+
+File EvidenceMappingSO.cs.meta
+fileFormatVersion: 2
+guid: 3b63ae9df88aa0049916338dc70bf6e9
+
+File ObjectiveToastMap.cs
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace SeriousGame.App
+{
+    [CreateAssetMenu(menuName = "SeriousGame/Objective Toast Map", fileName = "ObjectiveToastMap")]
+    public class ObjectiveToastMap : ScriptableObject
+    {
+        [Serializable]
+        public class Entry
+        {
+            public string message;
+            public string[] objectiveIds;
+        }
+
+        [SerializeField] private bool fallbackToObjectiveId = true;
+        [SerializeField] private List<Entry> entries = new List<Entry>();
+
+        private Dictionary<string, string> _cache;
+
+        public bool TryGetMessage(string objectiveId, out string message)
+        {
+            message = null;
+            if (string.IsNullOrWhiteSpace(objectiveId)) return false;
+
+            EnsureCache();
+
+            if (_cache.TryGetValue(objectiveId, out message) && !string.IsNullOrWhiteSpace(message))
+                return true;
+
+            if (fallbackToObjectiveId)
+            {
+                message = objectiveId;
+                return true;
+            }
+
+            return false;
+        }
+
+        private void EnsureCache()
+        {
+            if (_cache != null) return;
+
+            _cache = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            foreach (var entry in entries)
+            {
+                if (entry == null || entry.objectiveIds == null) continue;
+
+                foreach (var id in entry.objectiveIds)
+                {
+                    if (string.IsNullOrWhiteSpace(id)) continue;
+                    if (_cache.ContainsKey(id)) continue;
+                    _cache.Add(id, entry.message);
+                }
+            }
+        }
+    }
+}
+
+File ObjectiveToastMap.cs.meta
+fileFormatVersion: 2
+guid: 5f81b7a1959823c40932f5a39e82d9a4
+
+
+Folder Assets/Scripts/Feedback
+File FeedbackReport.cs
+using System.Collections.Generic;
+
+namespace SeriousGame.Feedback
+{
+    public class FeedbackItem
+    {
+        public string title;
+        public string detail;
+        public int scoreDelta;
+    }
+
+    public class FeedbackReport
+    {
+        public int totalRiskScore;
+        public List<FeedbackItem> items = new();
+        public string rawSummaryText;
+    }
+}
+
+File FeedbackReport.cs.meta
+fileFormatVersion: 2
+guid: 35a1c7196fb31254581036d993efa28d
+
+File FeedbackService.cs
+﻿using System.Collections.Generic;
+using SeriousGame.Trace;
+using SeriousGame.State;
+using SeriousGame.Content;
+
+namespace SeriousGame.Feedback
+{
+    public class FeedbackService
+    {
+        private readonly TraceService _trace;
+        private readonly EvidenceMappingSO _mapping;
+        private readonly PlayerStateService _state;
+
+        public FeedbackService(
+            TraceService trace,
+            EvidenceMappingSO mapping,
+            PlayerStateService state = null)
+        {
+            _trace = trace;
+            _mapping = mapping;
+            _state = state;
+        }
+
+        public void ApplyTrace(string traceId)
+        {
+            if (_state == null) return;
+            if (_mapping == null || string.IsNullOrWhiteSpace(traceId)) return;
+
+            var entry = _mapping.Find(traceId);
+            if (entry == null || entry.scoreDeltas == null) return;
+
+            for (int i = 0; i < entry.scoreDeltas.Length; i++)
+            {
+                var delta = entry.scoreDeltas[i];
+                if (delta == null || string.IsNullOrWhiteSpace(delta.scoreKey)) continue;
+                if (!GameStateKeys.IsValid(delta.scoreKey)) continue;
+                _state.Add(delta.scoreKey, delta.delta);
+            }
+        }
+
+        // Quick and simple feedback report generation based on trace events and player state.ss
+        public FeedbackReport GenerateEndChapterReport(string sessionId) // cái này hiện tại đang tính cộng trừ cơ bản, chưa có logic phức tạp gì, nhưng sau này có thể mở rộng thêm các kiểu phân tích khác (ví dụ: dựa trên sequence của trace events, hoặc kết hợp với state snapshot để đưa ra nhận định chính xác hơn)
+        {
+            var report = new FeedbackReport();
+            var events = _trace.GetSession(sessionId);
+
+            // Count by trace_id
+            var count = new Dictionary<string, int>();
+            foreach (var e in events)
+            {
+                if (string.IsNullOrWhiteSpace(e.trace_id)) continue;
+                if (!count.ContainsKey(e.trace_id)) count[e.trace_id] = 0;
+                count[e.trace_id]++;
+            }
+
+            int score = 0;
+            foreach (var kv in count)
+            {
+                var entry = _mapping != null ? _mapping.Find(kv.Key) : null;
+                int deltaSum = GetTotalDelta(entry);
+                score += deltaSum * kv.Value;
+
+                var title = entry != null && !string.IsNullOrWhiteSpace(entry.displayName) ? entry.displayName : kv.Key;
+                var detail = entry != null && !string.IsNullOrWhiteSpace(entry.description)
+                    ? entry.description
+                    : "Không có mô tả evidence mapping (bạn cần bổ sung EvidenceMappingSO).";
+
+                report.items.Add(new FeedbackItem
+                {
+                    title = $"{title} (x{kv.Value})",
+                    detail = detail,
+                    scoreDelta = deltaSum * kv.Value
+                });
+            }
+
+            report.totalRiskScore = score;
+
+            // Compose text quick MVP
+            var text = "TỔNG KẾT\n";
+            text += $"RiskScore: {score} (âm là tốt, dương là rủi ro)\n\n";
+            foreach (var it in report.items)
+            {
+                text += $"- {it.title}: {it.scoreDelta}\n  {it.detail}\n";
+            }
+
+            if (_state != null)
+            {
+                var snapshot = _state.GetSnapshot();
+                if (snapshot != null && snapshot.entries != null && snapshot.entries.Count > 0)
+                {
+                    text += "\nState snapshot:\n";
+                    for (int i = 0; i < snapshot.entries.Count; i++)
+                    {
+                        var entry = snapshot.entries[i];
+                        if (entry == null) continue;
+                        text += $"- {entry.key}: {entry.value}\n";
+                    }
+                }
+            }
+
+            report.rawSummaryText = text;
+            return report;
+        }
+
+        private static int GetTotalDelta(EvidenceMappingEntry entry)
+        {
+            if (entry == null || entry.scoreDeltas == null) return 0;
+
+            int sum = 0;
+            for (int i = 0; i < entry.scoreDeltas.Length; i++)
+            {
+                var delta = entry.scoreDeltas[i];
+                if (delta == null) continue;
+                sum += delta.delta;
+            }
+
+            return sum;
+        }
+    }
+}
+
+File FeedbackService.cs.meta
+fileFormatVersion: 2
+guid: fd6b2f523080b42448d3e97ec38b81bd
+
+
+Folder Assets/Scripts/Interactables
+File StateFlagInteractable.cs
+using UnityEngine;
+using SeriousGame.App;
+using SeriousGame.Runtime;
+
+// Interactable chỉ dùng để set GameState, không trigger Beat/Episode
+public class StateFlagInteractable : MonoBehaviour
+{
+    [Header("Game State Key to set")]
+    public string flagKey;
+
+    public bool valueToSet = true;
+
+    [Header("One-shot?")]
+    public bool oneShot = true;
+
+    private bool _used = false;
+
+    [Header("UI Prompt")]
+    public GameObject interactPrompt; // Text/Canvas worldspace: "Press E to interact"
+
+    void Start()
+    {
+        UpdatePromptVisibility();
+    }
+
+    public void Interact()
+    {
+        if (oneShot && _used) return;
+
+        _used = true;
+
+        // Ẩn prompt sau khi đã tương tác
+        UpdatePromptVisibility();
+
+        if (string.IsNullOrEmpty(flagKey))
+        {
+            Debug.LogWarning("[StateFlagInteractable] flagKey is empty.");
+            return;
+        }
+
+        var ctx = GameBootstrap.Context;
+        if (ctx == null || ctx.PlayerState == null)
+        {
+            Debug.LogWarning("[StateFlagInteractable] PlayerState is not available.");
+            return;
+        }
+
+        ctx.PlayerState.SetFlag(flagKey, valueToSet);
+    }
+
+    void UpdatePromptVisibility()
+    {
+        if (interactPrompt != null)
+        {
+            // Nếu oneShot và đã dùng rồi thì ẩn, còn lại thì hiện
+            bool show = !(oneShot && _used);
+            interactPrompt.SetActive(show);
+        }
+    }
+}
+
+File StateFlagInteractable.cs.meta
+fileFormatVersion: 2
+guid: 43a7649ebc5bfe648b1ceb8b3863e582
+
+File TeleportInteractable.cs
+using UnityEngine;
+using SeriousGame.App;
+using SeriousGame.Runtime;
+
+// Interactable dùng để teleport player tới một vị trí (vd: qua cổng -> vào office)
+// Có thể kích hoạt bằng nhấn E (IInteractable) hoặc tự động khi player bước vào trigger.
+public class TeleportInteractable : MonoBehaviour
+{
+    [Header("Player & Destination")]
+    public PlayerController player;      // kéo PlayerController vào đây
+    public Transform destinationPoint;   // Empty ở phòng office
+
+    [Header("Điều kiện (tuỳ chọn)")]
+    [Tooltip("Nếu có, chỉ cho teleport khi flag này thoả điều kiện.")]
+    public string requiredFlagKey;       // ví dụ: "PASSED_GUARD"
+    public bool requiredValue = true;
+
+    [Header("One-shot?")]
+    public bool oneShot = true;
+    private bool _used = false;
+
+    public void Interact()
+    {
+        // Kích hoạt khi player nhấn E (thông qua PlayerController)
+        TryTeleport(player);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        // Kích hoạt tự động khi player bước vào vùng trigger
+        var pc = other.GetComponentInParent<PlayerController>();
+        if (pc == null) return;
+
+        TryTeleport(pc);
+    }
+
+    void TryTeleport(PlayerController targetPlayer)
+    {
+        if (oneShot && _used) return;
+
+        // Nếu có điều kiện state thì kiểm tra trước
+        if (!string.IsNullOrEmpty(requiredFlagKey))
+        {
+            var ctx = GameBootstrap.Context;
+            if (ctx == null || ctx.PlayerState == null)
+            {
+                Debug.LogWarning("[TeleportInteractable] PlayerState is not available.");
+                return;
+            }
+
+            bool current = ctx.PlayerState.CheckFlag(requiredFlagKey);
+            if (current != requiredValue)
+            {
+                Debug.Log("[TeleportInteractable] Condition not met: " + requiredFlagKey);
+                return; // chưa qua được bảo vệ thì chưa cho vào office
+            }
+        }
+
+        if (destinationPoint == null)
+        {
+            Debug.LogWarning("[TeleportInteractable] destinationPoint chưa được gán.");
+            return;
+        }
+
+        // Ưu tiên player lấy từ tham số (trigger). Nếu null thì fallback về field được gán sẵn.
+        if (targetPlayer == null)
+        {
+            targetPlayer = player;
+        }
+
+        if (targetPlayer == null)
+        {
+            Debug.LogWarning("[TeleportInteractable] PlayerController chưa được gán hoặc không tìm thấy từ trigger.");
+            return;
+        }
+
+        _used = true;
+
+        // Nếu có ScreenFader thì fade tối rồi teleport, sau đó sáng lại
+        if (ScreenFader.Instance != null)
+        {
+            ScreenFader.Instance.FadeOutIn(1f, () =>
+            {
+                targetPlayer.TeleportTo(destinationPoint);
+            });
+        }
+        else
+        {
+            // Không có fader thì teleport ngay lập tức
+            targetPlayer.TeleportTo(destinationPoint);
+        }
+    }
+}
+
+File TeleportInteractable.cs.meta
+fileFormatVersion: 2
+guid: 5cf43388ba85b3e49a7c10be5657c5f1
+
+
+Folder Assets/Scripts/Narrative
+File NarrativeService.cs
+using UnityEngine;
+using Yarn.Unity;
+using SeriousGame.App;
+using SeriousGame.Runtime;
+
+namespace SeriousGame.Narrative
+{
+    public class NarrativeService : MonoBehaviour
+    {
+        private AppContext _context;
+        private DialogueRunner _runner;
+        private PlayerController _player;
+
+        // public NarrativeService(AppContext context)
+        // {
+        //     _context = context;
+        // }
+
+        void Awake()
+        {
+            _context = GameBootstrap.Context;
+        }
+
+        void Update()
+        {
+            updateCurrentNode();
+        }
+
+        private void updateCurrentNode()
+        {
+            if (_runner != null && _runner.IsDialogueRunning)
+            {
+                SetCurrentNode(_runner.Dialogue.CurrentNode);
+            }
+        }
+
+        // // string getMilestoneId()
+        // {
+        //    return CurrentNode.Substring(0, CurrentNode.IndexOf('_')); // e.g. Node_1 => Node
+        // }
+
+        [YarnCommand("toast")]
+        public void OnDialogueStarted()
+        {   
+            if (_player != null)
+            {
+                // Khoá di chuyển, xoay chuột, hiện Cursor
+                _player.SetLockState(true);
+                Debug.Log("[NarrativeService] Dialogue started, locking player controls.");
+            }
+        }
+
+        public void OnDialogueEnded()
+        {
+            if (_player != null)
+            {
+                // Mở lại di chuyển, ẩn Cursor để tiếp tục chơi
+                _player.SetLockState(false);
+                Debug.Log("[NarrativeService] Dialogue ended, unlocking player controls.");
+            }
+        }
+
+        public string CurrentNode { get; private set; }
+        public string CurrentMilestoneId { get; private set; } = string.Empty;
+
+        public void BindRunner(DialogueRunner runner)
+        {
+            if (_runner == runner) return;
+            UnbindRunner();
+
+            _runner = runner;
+            if (_runner != null)
+            {
+                _runner.onDialogueStart.AddListener(OnDialogueStarted);
+                _runner.onDialogueComplete.AddListener(OnDialogueEnded);
+            }
+        }
+
+        public void UnbindRunner()
+        {
+            if (_runner == null) return;
+            _runner.onDialogueStart.RemoveListener(OnDialogueStarted);
+            _runner.onDialogueComplete.RemoveListener(OnDialogueEnded);
+            _runner = null;
+        }
+
+        public void BindPlayer(PlayerController player)
+        {
+            _player = player;
+        }
+
+        public void SetCurrentNode(string nodeName)
+        {
+            CurrentNode = nodeName;
+        }
+
+        public void SetCurrentMilestone(string milestoneId)
+        {   
+            Debug.Log($"[NarrativeService] Setting current milestone to '{milestoneId}'");
+            CurrentMilestoneId = milestoneId ?? string.Empty;
+        }
+
+        public void StartNode(string nodeName)
+        {
+            if (string.IsNullOrWhiteSpace(nodeName)) return;
+            if (_runner == null)
+            {
+                Debug.LogWarning("[NarrativeService] DialogueRunner not bound.");
+                return;
+            }
+
+            // CurrentNode = nodeName;
+            _runner.StartDialogue(nodeName);
+        }
+
+
+        public AppContext GetContext()
+        {
+            return _context;
+        }
+        public void Dispose()
+        {
+            UnbindRunner();
+        }
+    }
+}
+
+File NarrativeService.cs.meta
+fileFormatVersion: 2
+guid: 5aed92717e5a95a4d811878ddd942bbb
+
+File YarnAutoStart.cs
+// using UnityEngine;
+// using SeriousGame.App;
+
+// namespace SeriousGame.Narrative
+// {
+//     public class YarnAutoStart : MonoBehaviour
+//     {
+//         public string nodeName;
+//         public bool startOnEnable = true;
+
+//         private void Start()
+//         {
+//             if (startOnEnable)
+//                 StartNode();
+//         }
+
+//         public void StartNode()
+//         {
+//             var ctx = GameBootstrap.Context;
+//             if (ctx == null || ctx.Narrative == null) return;
+//             ctx.Narrative.StartNode(nodeName);
+//         }
+//     }
+// }
+
+File YarnAutoStart.cs.meta
+fileFormatVersion: 2
+guid: 9716c926ddb334f4e873584c522e5fee
+
+File YarnCommandBridge.cs
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using Yarn.Unity;
+using SeriousGame.App;
+using SeriousGame.Trace;
+using SeriousGame.State;
+using SeriousGame.Runtime;
+
+namespace SeriousGame.Narrative
+{
+    public class YarnCommandBridge : MonoBehaviour
+    {
+        [Header("Context (optional override)")]
+        // [SerializeField] private AppContext contextOverride;
+
+        [Header("Yarn")]
+        [SerializeField] private DialogueRunner runner;
+
+        [Header("Optional Player")]
+        [SerializeField] private PlayerController player;
+
+        // private AppContext Context => contextOverride != null ? contextOverride : GameBootstrap.Context;
+        private static AppContext Context => GameBootstrap.Context;
+
+        private void Awake()
+        {
+            var ctx = Context;
+            if (ctx != null && ctx.Narrative != null)
+            {
+                if (runner != null)
+                    ctx.Narrative.BindRunner(runner);
+                if (player != null)
+                    ctx.Narrative.BindPlayer(player);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            var ctx = Context;
+            if (ctx != null && ctx.Narrative != null)
+                ctx.Narrative.UnbindRunner();
+        }
+
+        [YarnCommand("trace")]
+        public static void TraceCommand(string traceTypeId, int choiceid)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.Trace == null) return;
+
+            var sessionId = ctx.Session != null ? ctx.Session.CurrentSessionId : "";
+            var yarnNode = ctx.Narrative != null ? ctx.Narrative.CurrentNode : "";
+            var milestoneId = ctx.Narrative != null ? ctx.Narrative.CurrentMilestoneId : "";
+            var routeId = string.IsNullOrWhiteSpace(yarnNode) ? "Node_Unknown" : yarnNode;
+            var trace = ctx.Trace.BuildTrace(
+                sessionId,
+                milestoneId,
+                routeId,
+                choiceid,
+                traceTypeId, // time stamp bên ham buildtrace co them
+                ctx.PlayerState != null ? ctx.PlayerState.GetSnapshot() : null);
+
+            ctx.Trace.LogEvent(trace);
+            if (ctx.Feedback != null)
+                ctx.Feedback.ApplyTrace(traceTypeId);
+        }
+
+        [YarnCommand("set_node")]
+        public static void SetNode(string nodeName)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.Narrative == null) return;
+            ctx.Narrative.SetCurrentNode(nodeName);
+        }
+
+        [YarnCommand("set_milestone")]
+        public static void SetMilestone(int milestoneId)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.Narrative == null) return;
+            ctx.Narrative.SetCurrentMilestone(milestoneId.ToString());
+        }
+
+        [YarnCommand("set_objective")]
+        public static void SetObjective(string objectiveId)
+        {
+            GameBootstrap.Context.Quest.SetObjective(objectiveId);
+        }
+
+         [YarnCommand("chapter_end")]
+        public static void ChapterEnd(string chapterId = "")
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.Trace == null || ctx.Session == null) return;
+
+            _ = ctx.Trace.SendSessionData(true, chapterId);
+            SeriousGame.App.GameEventBus.RaiseSummaryRequested();
+        }
+
+        [YarnCommand("add_state")]
+        public static void AddState(string key, int delta)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.PlayerState == null) return;
+            ctx.PlayerState.Add(key, delta);
+        }
+
+        [YarnCommand("load_scene")]
+        public static void LoadScene(string sceneName)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.Scenes == null) return;
+            ctx.Scenes.Load(sceneName);
+        }
+
+        [YarnCommand("show_summary")]
+        public static void ShowSummary()
+        {
+            SeriousGame.App.GameEventBus.RaiseSummaryRequested();
+        }
+
+        [YarnCommand("save_game")]
+        public static void SaveGame()
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.Save == null) return;
+
+            var episodeId = SceneManager.GetActiveScene().name;
+
+            var currentNode = ctx.Narrative != null ? ctx.Narrative.CurrentNode : "";
+            var currentMilestone = ctx.Narrative != null ? ctx.Narrative.CurrentMilestoneId : "";
+            ctx.Save.SaveCurrent(episodeId, currentNode, currentMilestone);
+        }
+
+        // [YarnCommand("show_phone_chat")]
+        // public static void ShowPhoneChat(string interactionId)
+        // {
+        //     if (string.IsNullOrWhiteSpace(interactionId)) return;
+        //     SeriousGame.App.GameEventBus.RaisePhoneChatRequested(interactionId);
+        // }
+
+        // [YarnCommand("show_pc_chat")]
+        // public static void ShowPcChat(string interactionId)
+        // {
+        //     if (string.IsNullOrWhiteSpace(interactionId)) return;
+        //     SeriousGame.App.GameEventBus.RaisePcChatRequested(interactionId);
+        // }
+
+        [YarnCommand("switch_ui")]
+        public static void SwitchUI(string uitype)
+        {
+            SeriousGame.App.GameEventBus.RaiseSwitchUIRequested(uitype);
+        }
+
+        // [YarnCommand("show_chat")]
+        // public static void ShowChat(string characterName, string message)
+        // {
+        //     if (string.IsNullOrWhiteSpace(message)) return;
+        //     SeriousGame.App.GameEventBus.RaisePhoneMessageReceived(characterName, message);
+        // }
+
+        [YarnCommand("show_hint")]
+        public static void ShowHint(string message)
+        {
+            if (string.IsNullOrWhiteSpace(message)) return;
+            SeriousGame.App.GameEventBus.RaiseHintRequested(message);
+        }
+
+        [YarnCommand("set_state")]
+        public static void SetState(string key, int value)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.PlayerState == null) return;
+            ctx.PlayerState.Set(key, value);
+        }
+
+        [YarnCommand("set_flag")]
+        public static void SetFlag(string key, bool value = true)
+        {
+            if (string.IsNullOrWhiteSpace(key)) return;
+            var ctx = Context;
+            if (ctx == null || ctx.PlayerState == null) return;
+            ctx.PlayerState.SetFlag(key, value);
+        }
+     
+
+        [YarnCommand("clear_flag")]
+        public static void ClearFlag(string key)
+        {
+            SetFlag(key, false);
+        }
+
+        [YarnFunction("get_state")]
+        public static int GetState(string key)
+        {
+            var ctx = GameBootstrap.Context;
+            if (ctx == null || ctx.PlayerState == null) return 0;
+            return ctx.PlayerState.Get(key);
+        }
+
+        [YarnFunction("get_flag")]
+        public static bool GetFlag(string key)
+        {
+            if (string.IsNullOrWhiteSpace(key)) return false;
+            var ctx = GameBootstrap.Context;
+            if (ctx == null || ctx.PlayerState == null) return false;
+            return ctx.PlayerState.CheckFlag(key);
+        }
+
+        [YarnCommand("show_toast")]
+        public static void ShowToast(string message)
+        {
+            if (string.IsNullOrWhiteSpace(message)) return;
+            SeriousGame.App.GameEventBus.RaiseToastRequested(message);
+        }
+
+        // [YarnCommand("test_func")]
+        // public static void test_func(string message)
+        // {
+        //     if (string.IsNullOrWhiteSpace(message)) return;
+        //     Debug.Log($"[YarnCommandBridge] test_func called with message: {message}");
+        // }
+    }
+}
+
+File YarnCommandBridge.cs.meta
+fileFormatVersion: 2
+guid: f5b11f653e1ff2e418684f22d63c5739
+
+
+Folder Assets/Scripts/Phone
+File PhoneUIListener.cs
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using SeriousGame.App;
+
+namespace SeriousGame.Phone
+{
+    public class PhoneUIListener : MonoBehaviour
+    {
+        [Header("UI Root")]
+        [SerializeField] private GameObject phoneRoot;
+
+        [Header("Message List")]
+        [SerializeField] private ScrollRect scrollRect;
+        [SerializeField] private Transform contentRoot;
+        [SerializeField] private GameObject messageBubblePrefab;
+
+        private void OnEnable()
+        {
+            GameEventBus.OnPhoneMessageReceived += HandlePhoneMessage;
+        }
+
+        private void OnDisable()
+        {
+            GameEventBus.OnPhoneMessageReceived -= HandlePhoneMessage;
+        }
+
+        private void HandlePhoneMessage(string characterName, string message)
+        {
+            if (contentRoot == null || messageBubblePrefab == null)
+            {
+                Debug.LogWarning("[PhoneUIListener] Missing contentRoot or messageBubblePrefab.");
+                return;
+            }
+
+            if (phoneRoot != null)
+                phoneRoot.SetActive(true);
+
+            var bubble = Instantiate(messageBubblePrefab, contentRoot);
+            var text = bubble.GetComponentInChildren<TMP_Text>();
+            if (text != null)
+            {
+                if (!string.IsNullOrWhiteSpace(characterName))
+                    text.text = $"{characterName}: {message}";
+                else
+                    text.text = message;
+            }
+
+            // Force layout update before scrolling.
+            Canvas.ForceUpdateCanvases();
+            if (scrollRect != null)
+                scrollRect.verticalNormalizedPosition = 0f;
+        }
+    }
+}
+
+File PhoneUIListener.cs.meta
+fileFormatVersion: 2
+guid: 883bfaaea33353e43aae02592fda8162
+
+
+Folder Assets/Scripts/Player
+File PlayerController.cs
+using UnityEngine;
+using SeriousGame.Runtime;
+namespace SeriousGame.Runtime
+{
+    public class PlayerController : MonoBehaviour
+    {   
+    
+        public float interactDistance = 2f;
+        public LayerMask interactableLayer;
+
+        [Header("Movement")]
+        public float moveSpeed = 4f;
+
+        [Header("Mouse Look")]
+        public float mouseSensitivity = 2f;
+        public Transform cameraHolder;
+
+        private Rigidbody rb;
+        private float xRotation = 0f;
+        // Trong PlayerController.cs
+        public bool isLocked = false;
+
+        Animator animator;
+
+        void Awake()
+        {
+            rb = GetComponent<Rigidbody>();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            animator = GetComponentInChildren<Animator>();
+        }
+
+        void Update()
+        {   
+            if (isLocked) return;
+            HandleMouseLook();
+            HandleInteraction();
+        }
+
+        // Thêm hàm để điều khiển chuột
+        public void SetLockState(bool locked)
+        {   Debug.Log($"[PlayerController] SetLockState: {locked}");
+            isLocked = locked;
+            Cursor.lockState = locked ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = locked;
+            rb.linearVelocity = Vector3.zero; // Dừng lập tức
+
+            // Khi khoá điều khiển, đảm bảo Animator không còn trạng thái đi bộ
+            if (locked && animator != null)
+            {
+                animator.SetBool("isWalking", false);
+            }
+        }
+        void FixedUpdate()
+        {   
+            if (isLocked) return;
+            HandleMovement();
+        }
+
+        void HandleMovement()
+        {
+            float h = Input.GetAxisRaw("Horizontal");
+            float v = Input.GetAxisRaw("Vertical");
+
+            Vector3 moveDir =
+                transform.right * h +
+                transform.forward * v;
+
+            // Cập nhật trạng thái đi bộ cho Animator dựa trên input
+            if (animator != null)
+            {
+                bool isMoving = moveDir.sqrMagnitude > 0.01f;
+                animator.SetBool("isWalking", isMoving);
+            }
+
+            // Không có input thì không cần di chuyển
+            if (moveDir.sqrMagnitude <= 0.01f)
+                return;
+
+            Vector3 velocity = moveDir.normalized * moveSpeed;
+            Vector3 targetPos = rb.position + velocity * Time.fixedDeltaTime;
+
+            rb.MovePosition(targetPos);
+        }
+
+        void HandleMouseLook()
+        {
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * 100f * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * 100f * Time.deltaTime;
+
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+
+            cameraHolder.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+            transform.Rotate(Vector3.up * mouseX);
+        }
+
+        void HandleInteraction()
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+                if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactableLayer))
+                {
+                    var interactable = hit.collider.GetComponent<IInteractable>();
+                    interactable?.Interact();
+                }
+            }
+        }
+
+        // Teleport player tới một vị trí/rotation định trước (ví dụ: phòng office)
+        public void TeleportTo(Transform target)
+        {
+            if (target == null || rb == null) return;
+
+            // Đặt lại vị trí ngay lập tức
+            rb.position = target.position;
+
+            // Xoay player theo hướng của target (chỉ yaw)
+            Vector3 euler = target.rotation.eulerAngles;
+            transform.rotation = Quaternion.Euler(0f, euler.y, 0f);
+
+            // Dừng chuyển động
+            rb.linearVelocity = Vector3.zero;
+        }
+
+    }
+}
+
+File PlayerController.cs.meta
+fileFormatVersion: 2
+guid: 0c4d680b7526e1942bcff3bc6bf4b914
+
+
+Folder Assets/Scripts/Runtime
+File IInteractable.cs
+namespace SeriousGame.Runtime
+{
+    public interface IInteractable
+    {
+        void Interact();
+    }
+}
+
+File IInteractable.cs.meta
+fileFormatVersion: 2
+guid: e887f31dc34e1c9428b721b9d8b163a1
+
+File NodeInteractable.cs
+using UnityEngine;
+using SeriousGame.App;
+using System;
+using System.Collections.Generic;
+
+namespace SeriousGame.Runtime
+{   
+    [Serializable]
+    public class ObjectiveNodeMap
+    {
+        public string objectiveId; // Mã nhiệm vụ (ví dụ: OBJ_TALK_GUARD_1)
+        public string yarnNode;    // Node tương ứng (ví dụ: Guard_FirstTime)
+    }
+    public class NodeInteractable : MonoBehaviour, IInteractable
+    {
+        [Header("Yarn Node")]
+        // public string nodeName;
+        [Header("Danh sách ánh xạ Nhiệm vụ -> Hội thoại")]
+        public List<ObjectiveNodeMap> nodeMappings;
+        public string fallbackNode;  // Ví dụ: Friend_Busy_Dialogue
+
+        // [Header("Điều kiện Nhiệm vụ")]
+        // [Tooltip("Mã nhiệm vụ bắt buộc phải có để chạy Main Node")]
+        // public string requiredObjectiveId; // Ví dụ: OBJ_FIND_FRIEND
+
+        public void Interact()
+        {
+            // if (string.IsNullOrWhiteSpace(nodeName))
+            // {
+            //     Debug.LogWarning("[NodeInteractable] nodeName is empty.");
+            //     return;
+            // }
+
+            var ctx = GameBootstrap.Context;
+            if (ctx == null || ctx.Narrative == null)
+            {
+                Debug.LogWarning("[NodeInteractable] NarrativeService not available.");
+                return;
+            }
+            var currentObjectiveId = ctx.Quest != null ? ctx.Quest.CurrentObjectiveId : null;
+            
+            var match = nodeMappings.Find(m => m.objectiveId == currentObjectiveId);
+
+            if (match != null)
+            {
+                GameBootstrap.Context.Narrative.StartNode(match.yarnNode);
+            }
+            else
+            {
+                GameBootstrap.Context.Narrative.StartNode(fallbackNode);
+                // Debug.Log("Chua duoc tuong tac bay gio");
+            }
+        }
+    }
+}
+
+File NodeInteractable.cs.meta
+fileFormatVersion: 2
+guid: 81f443d42098ed740a2077302390b1c2
+
+
+Folder Assets/Scripts/Save
+File SaveData.cs
+using System;
+using System.Collections.Generic;
+using SeriousGame.State;
+
+namespace SeriousGame.Save
+{
+    [Serializable]
+    public class SaveFlagEntry
+    {
+        public string key;
+        public bool value;
+    }
+
+    [Serializable]
+    public class SaveData
+    {
+        public string sessionId;
+        public string participantId;
+        public string currentEpisodeId;
+        public string currentUnityScene;
+        public string currentYarnNode;
+        public string currentMilestoneId;
+        public PlayerStateSnapshot playerState;
+        public List<SaveFlagEntry> flags = new List<SaveFlagEntry>();
+    }
+}
+
+File SaveData.cs.meta
+fileFormatVersion: 2
+guid: e63d95a34d415b14c9fb28de5b7f4ac7
+
+File SaveService.cs
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using SeriousGame.App;
+using SeriousGame.Narrative;
+using SeriousGame.State;
+
+namespace SeriousGame.Save
+{
+    public class SaveService
+    {
+        private readonly SessionService _session;
+        private readonly PlayerStateService _state;
+        private readonly NarrativeService _narrative;
+        private readonly string _savePath;
+
+
+        //constructor with dependency injection for session and state services, and optional file name for save data.
+        public SaveService(SessionService session, PlayerStateService state, NarrativeService narrative = null, string fileName = "save.json")
+        {
+            _session = session;
+            _state = state;
+            _narrative = narrative;
+            _savePath = Path.Combine(Application.persistentDataPath, fileName);
+        }
+
+        public string SavePath => _savePath;
+
+        //!SAVE
+
+        // Builds a SaveData object representing the current game state, including session info, player state, and optional narrative context.
+        public SaveData BuildCurrent(string currentEpisodeId = "", string currentYarnNode = "", string currentMilestoneId = "")
+        {
+            var node = !string.IsNullOrWhiteSpace(currentYarnNode)
+                ? currentYarnNode
+                : (_narrative != null ? _narrative.CurrentNode : "");
+            var milestone = !string.IsNullOrWhiteSpace(currentMilestoneId)
+                ? currentMilestoneId
+                : (_narrative != null ? _narrative.CurrentMilestoneId : "");
+
+            var data = new SaveData
+            {
+                sessionId = _session != null ? _session.CurrentSessionId : "",
+                participantId = _session != null ? _session.ParticipantId : "",
+                currentEpisodeId = currentEpisodeId ?? "",
+                currentUnityScene = SceneManager.GetActiveScene().name,
+                currentYarnNode = node ?? "",
+                currentMilestoneId = milestone ?? "",
+                playerState = _state != null ? _state.GetSnapshot() : new PlayerStateSnapshot()
+            };
+
+            data.flags = BuildFlagsSnapshot();
+            return data;
+        }
+        // Saves the current game state to a file by building a SaveData object and serializing it to JSON. Returns true if the save was successful.
+        public bool SaveCurrent(string currentEpisodeId = "", string currentYarnNode = "", string currentMilestoneId = "")
+        {
+            return Save(BuildCurrent(currentEpisodeId, currentYarnNode, currentMilestoneId));
+        }
+        // Saves the provided SaveData to a file. Returns true if the save was successful.
+        public bool Save(SaveData data)
+        {
+            if (data == null) return false;
+            var json = JsonUtility.ToJson(data, true);
+            File.WriteAllText(_savePath, json);
+            Debug.Log($"[SaveService] Saved game state to {_savePath}");
+            return true;
+        }
+
+        // Loads the game state from a file and returns it as a SaveData object. Returns null if the file does not exist or if loading fails.
+
+
+        //! LOAD
+        public SaveData Load()
+        {
+            if (!File.Exists(_savePath)) return null;
+            var json = File.ReadAllText(_savePath);
+            return JsonUtility.FromJson<SaveData>(json);
+        }
+
+        public void ApplyLoaded(SaveData data)
+        {
+            if (data == null) return;
+
+            if (_session != null)
+                _session.Restore(data.sessionId, data.participantId);
+
+            if (_state != null && data.playerState != null)
+                _state.LoadSnapshot(data.playerState);
+
+            if (_narrative != null)
+            {
+                if (!string.IsNullOrWhiteSpace(data.currentYarnNode))
+                    _narrative.SetCurrentNode(data.currentYarnNode);
+                _narrative.SetCurrentMilestone(data.currentMilestoneId);
+            }
+
+            if (_state != null)
+            {
+                ApplyLegacyFlags(data.flags);
+            }
+        }
+
+        // Builds a list of SaveFlagEntry objects representing the current state of all flags in the PlayerStateService. This is used for saving legacy flag data.
+        private List<SaveFlagEntry> BuildFlagsSnapshot()
+        {
+            var list = new List<SaveFlagEntry>();
+            if (_state == null) return list;
+
+            var snapshot = _state.GetFlagsSnapshot();
+            if (snapshot == null) return list;
+
+            foreach (var kv in snapshot)
+            {
+                list.Add(new SaveFlagEntry
+                {
+                    key = kv.Key,
+                    value = kv.Value
+                });
+            }
+
+            return list;
+        }
+
+        // Applies legacy flag data to the PlayerStateService.
+        private void ApplyLegacyFlags(List<SaveFlagEntry> flags)
+        {
+            if (_state == null || flags == null) return;
+
+            for (int i = 0; i < flags.Count; i++)
+            {
+                var flag = flags[i];
+                if (flag == null || string.IsNullOrWhiteSpace(flag.key)) continue;
+                _state.SetFlag(flag.key, flag.value);
+            }
+        }
+    }
+}
+
+File SaveService.cs.meta
+fileFormatVersion: 2
+guid: 97781404ed1e7414fa4d5cefcc3c153f
+
+
+Folder Assets/Scripts/State
+File GameStateKeys.cs
+namespace SeriousGame.State
+{   
+    public static class GameStateKeys
+    {
+        public const string ScoreHelpSeeking = "SCORE_HELP_SEEKING";
+        public const string ScorePressureResistance = "SCORE_PRESSURE_RESISTANCE";
+        public const string ScoreInformationVerification = "SCORE_INFORMATION_VERIFICATION";
+        public const string ScoreRiskRecognition = "SCORE_RISK_RECOGNITION";
+        public const string ScoreCommunityWarning = "SCORE_COMMUNITY_WARNING";
+
+        public static readonly string[] AllKeys =
+        {
+            ScoreHelpSeeking,
+            ScorePressureResistance,
+            ScoreInformationVerification,
+            ScoreRiskRecognition,
+            ScoreCommunityWarning
+        };
+
+        public static readonly string[] DefaultKeys = AllKeys;
+
+        public static bool IsValid(string key)
+        {
+            if (string.IsNullOrWhiteSpace(key)) return false;
+            for (int i = 0; i < AllKeys.Length; i++)
+                if (AllKeys[i] == key) return true;
+            return false;
+        }
+    }
+}
+
+File GameStateKeys.cs.meta
+fileFormatVersion: 2
+guid: fdbe498f3a183a441a4c4a5cb24b103c
+
+File PlayerStateDebugger.cs
+using UnityEngine;
+using System.Collections.Generic;
+using SeriousGame.App;
+using SeriousGame.State;
+
+public class PlayerStateDebugger : MonoBehaviour
+{
+    [Header("Chỉ dùng để xem (View Only)")]
+    public List<PlayerStateEntry> currentStates = new List<PlayerStateEntry>();
+    public List<PlayerFlagEntry> currentFlags = new List<PlayerFlagEntry>();
+
+    // Cập nhật liên tục mỗi giây trên Inspector
+    void Update()
+    {
+        var ctx = GameBootstrap.Context;
+        if (ctx != null && ctx.PlayerState != null)
+        {
+            var snapshot = ctx.PlayerState.GetSnapshot();
+            currentStates = snapshot.entries;
+            currentFlags = snapshot.flags;
+        }
+    }
+}
+
+File PlayerStateDebugger.cs.meta
+fileFormatVersion: 2
+guid: 58258f880403c264eba32dbbc008e3e4
+
+File PlayerStateService.cs
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+namespace SeriousGame.State
+{
+    [System.Serializable]
+    public class PlayerStateService
+    {
+        [SerializeField]
+        //states includes all numeric states, such as scores and progress indicators. The value is typically clamped between 0 and 100 to represent different levels of achievement or status.
+
+        private readonly Dictionary<string, int> _states = new Dictionary<string, int>();
+        [SerializeField]
+        private readonly Dictionary<string, bool> _flags = new Dictionary<string, bool>();
+
+        public PlayerStateService()
+        {   // Initialize default keys with default values to ensure they exist in the state.
+            for (int i = 0; i < GameStateKeys.DefaultKeys.Length; i++)
+            {
+                var key = GameStateKeys.DefaultKeys[i];
+                if (!string.IsNullOrWhiteSpace(key))
+                    _states[key] = 0;
+            }
+        }
+
+        public int Get(string key)
+        {
+            if (string.IsNullOrWhiteSpace(key)) return 0;
+            return _states.TryGetValue(key, out var value) ? value : 0;
+        }
+
+        public void Set(string key, int value)
+        {
+            if (string.IsNullOrWhiteSpace(key)) return;
+            _states[key] = Clamp(value);
+            Debug.Log($"[PlayerStateService] Set state '{key}' to {value}");
+        }
+
+        public void Add(string key, int delta)
+        {
+            if (string.IsNullOrWhiteSpace(key)) return;
+            var current = Get(key);
+            Set(key, current + delta);
+        }
+
+        public bool CheckFlag(string key)
+        {
+            if (!IsKeyAllowed(key)) return false;
+            return _flags.TryGetValue(key, out var value) && value;
+        }
+
+        public void SetFlag(string key, bool value)
+        {
+            if (!IsKeyAllowed(key)) return;
+            _flags[key] = value;
+            Debug.Log($"[PlayerStateService] Set flag '{key}' to {value}");
+        }
+
+        public int CountTrue(params string[] keys)
+        {
+            int count = 0;
+            if (keys == null) return 0;
+            for (int i = 0; i < keys.Length; i++)
+            {
+                if (CheckFlag(keys[i])) count++;
+            }
+            return count;
+        }
+
+        public int CountTrueByPrefix(string prefix)
+        {
+            if (string.IsNullOrEmpty(prefix)) return 0;
+            int count = 0;
+            foreach (var kv in _flags)
+            {
+                if (kv.Key.StartsWith(prefix) && kv.Value && IsKeyAllowed(kv.Key))
+                    count++;
+            }
+            return count;
+        }
+
+        public IReadOnlyDictionary<string, bool> GetFlagsSnapshot()
+        {
+            return _flags;
+        }
+
+        // Returns a snapshot of the current player state, including both states and flags, which can be used for saving or other purposes.
+        public PlayerStateSnapshot GetSnapshot()
+        {
+            var snapshot = new PlayerStateSnapshot();
+            foreach (var kv in _states)
+            {
+                snapshot.entries.Add(new PlayerStateEntry
+                {
+                    key = kv.Key,
+                    value = kv.Value
+                });
+            }
+
+            foreach (var kv in _flags)
+            {
+                snapshot.flags.Add(new PlayerFlagEntry
+                {
+                    key = kv.Key,
+                    value = kv.Value
+                });
+            }
+
+            return snapshot;
+        }
+
+        public void LoadSnapshot(PlayerStateSnapshot snapshot)
+        {
+            _states.Clear();
+            _flags.Clear();
+            if (snapshot != null && snapshot.entries != null)
+            {
+                for (int i = 0; i < snapshot.entries.Count; i++)
+                {
+                    var entry = snapshot.entries[i];
+                    if (entry == null || string.IsNullOrWhiteSpace(entry.key)) continue;
+                    _states[entry.key] = Clamp(entry.value);
+                }
+            }
+
+            if (snapshot != null && snapshot.flags != null)
+            {
+                for (int i = 0; i < snapshot.flags.Count; i++)
+                {
+                    var entry = snapshot.flags[i];
+                    if (entry == null || string.IsNullOrWhiteSpace(entry.key)) continue;
+                    if (!IsKeyAllowed(entry.key)) continue;
+                    _flags[entry.key] = entry.value;
+                }
+            }
+
+            for (int i = 0; i < GameStateKeys.DefaultKeys.Length; i++)
+            {
+                var key = GameStateKeys.DefaultKeys[i];
+                if (!string.IsNullOrWhiteSpace(key) && !_states.ContainsKey(key))
+                    _states[key] = 0;
+            }
+        }
+
+        private static int Clamp(int value)
+        {
+            return Mathf.Clamp(value, 0, 100);
+        }
+
+        private static bool IsKeyAllowed(string key)
+        {
+            return GameStateKeys.IsValid(key);
+        }
+    }
+}
+
+File PlayerStateService.cs.meta
+fileFormatVersion: 2
+guid: 95f7d8625a4e1ed4186bb5ff9a3f041d
+
+File PlayerStateSnapshot.cs
+using System;
+using System.Collections.Generic;
+
+namespace SeriousGame.State
+{
+    [Serializable]
+    public class PlayerStateEntry
+    {
+        public string key;
+        public int value;
+    }
+
+    [Serializable]
+    public class PlayerFlagEntry
+    {
+        public string key;
+        public bool value;
+    }
+
+    [Serializable]
+    public class PlayerStateSnapshot
+    {
+        public List<PlayerStateEntry> entries = new List<PlayerStateEntry>();
+        public List<PlayerFlagEntry> flags = new List<PlayerFlagEntry>();
+
+        public int GetValue(string key, int defaultValue = 0)
+        {
+            if (string.IsNullOrWhiteSpace(key) || entries == null) return defaultValue;
+
+            for (int i = 0; i < entries.Count; i++)
+            {
+                if (entries[i] != null && entries[i].key == key)
+                    return entries[i].value;
+            }
+
+            return defaultValue;
+        }
+
+        public bool GetFlag(string key, bool defaultValue = false)
+        {
+            if (string.IsNullOrWhiteSpace(key) || flags == null) return defaultValue;
+
+            for (int i = 0; i < flags.Count; i++)
+            {
+                if (flags[i] != null && flags[i].key == key)
+                    return flags[i].value;
+            }
+
+            return defaultValue;
+        }
+    }
+    
+}
+
+File PlayerStateSnapshot.cs.meta
+fileFormatVersion: 2
+guid: 60b1019389a254441a49a41772c05978
+
+
+Folder Assets/Scripts/Trace
+File CloudTraceStore.cs
+using System;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.Networking;
+using Newtonsoft.Json;
+
+namespace SeriousGame.Trace
+{
+    public class CloudTraceStore
+    {
+        public async Task<bool> SendSessionData(ChapterSessionDTO dto, string projectId, string authToken)
+        {
+            if (dto == null)
+            {
+                Debug.LogWarning("[CloudTraceStore] DTO is null.");
+                return false;
+            }
+
+            var url = BuildUrl(projectId, dto.session_id, authToken);
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                Debug.LogWarning("[CloudTraceStore] Invalid Firebase URL.");
+                return false;
+            }
+
+            var json = JsonConvert.SerializeObject(dto);
+            var body = Encoding.UTF8.GetBytes(json);
+
+            using (var request = new UnityWebRequest(url, "PUT"))
+            {
+                request.uploadHandler = new UploadHandlerRaw(body);
+                request.downloadHandler = new DownloadHandlerBuffer();
+                request.SetRequestHeader("Content-Type", "application/json");
+
+                Debug.Log($"[CloudTraceStore] Sending {body.Length} bytes to {url}");
+                await SendWebRequestAsync(request);
+
+                if (request.result == UnityWebRequest.Result.Success)
+                {
+                    Debug.Log($"[CloudTraceStore] Upload success. HTTP {request.responseCode}. Response: {request.downloadHandler.text}");
+                    return true;
+                }
+
+                Debug.LogWarning($"[CloudTraceStore] Upload failed. HTTP {request.responseCode}. Error: {request.error}");
+                Debug.LogWarning($"[CloudTraceStore] Response: {request.downloadHandler.text}");
+                return false;
+            }
+        }
+
+        public bool SendSessionDataBlocking(ChapterSessionDTO dto, string projectId, string authToken, int timeoutMs = 4000)
+        {
+            if (dto == null)
+            {
+                Debug.LogWarning("[CloudTraceStore] DTO is null.");
+                return false;
+            }
+
+            var url = BuildUrl(projectId, dto.session_id, authToken);
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                Debug.LogWarning("[CloudTraceStore] Invalid Firebase URL.");
+                return false;
+            }
+
+            var json = JsonConvert.SerializeObject(dto);
+            var body = Encoding.UTF8.GetBytes(json);
+
+            using (var request = new UnityWebRequest(url, "PUT"))
+            {
+                request.uploadHandler = new UploadHandlerRaw(body);
+                request.downloadHandler = new DownloadHandlerBuffer();
+                request.SetRequestHeader("Content-Type", "application/json");
+
+                Debug.Log($"[CloudTraceStore] Sending {body.Length} bytes to {url} (blocking)");
+                var operation = request.SendWebRequest();
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+                while (!operation.isDone && watch.ElapsedMilliseconds < timeoutMs)
+                {
+                }
+
+                if (!operation.isDone)
+                {
+                    request.Abort();
+                    Debug.LogWarning("[CloudTraceStore] Upload timed out.");
+                    return false;
+                }
+
+                if (request.result == UnityWebRequest.Result.Success)
+                {
+                    Debug.Log($"[CloudTraceStore] Upload success. HTTP {request.responseCode}. Response: {request.downloadHandler.text}");
+                    return true;
+                }
+
+                Debug.LogWarning($"[CloudTraceStore] Upload failed. HTTP {request.responseCode}. Error: {request.error}");
+                Debug.LogWarning($"[CloudTraceStore] Response: {request.downloadHandler.text}");
+                return false;
+            }
+        }
+
+        private static string BuildUrl(string projectId, string sessionId, string authToken)
+        {
+            if (string.IsNullOrWhiteSpace(projectId) || string.IsNullOrWhiteSpace(sessionId) || string.IsNullOrWhiteSpace(authToken))
+                return null;
+
+            return $"https://{projectId}-default-rtdb.asia-southeast1.firebasedatabase.app/sessions/{sessionId}.json?auth={authToken}";
+        }
+
+        private static async Task SendWebRequestAsync(UnityWebRequest request)
+        {
+            var operation = request.SendWebRequest();
+            while (!operation.isDone)
+                await Task.Yield();
+        }
+    }
+}
+
+File CloudTraceStore.cs.meta
+fileFormatVersion: 2
+guid: 7acf34cf0db3a1c41babb08f244de5e5
+
+File Dto.meta
+fileFormatVersion: 2
+guid: a080878a70c13044db1dad2e28a3bc93
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+
+File FileTraceStore.cs
+using System;
+using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
+using UnityEngine;
+
+namespace SeriousGame.Trace
+{
+    public class FileTraceStore : ITraceStore
+    {
+        [Serializable]
+        private class TraceRecord
+        {
+            public string sessionId;
+            public GameTrace trace;
+        }
+
+        private readonly string _filePath;
+        private readonly object _lock = new object();
+
+        public FileTraceStore(string fileName = "trace.jsonl")
+        {
+            _filePath = Path.Combine(Application.persistentDataPath, fileName);
+        }
+
+        public string FilePath => _filePath;
+
+        public void Add(GameTrace trace)
+        {
+            if (trace == null) return;
+            var record = new TraceRecord
+            {
+                sessionId = trace.sessionId,
+                trace = trace
+            };
+            var json = JsonConvert.SerializeObject(record);
+
+            lock (_lock)
+            {
+                File.AppendAllText(_filePath, json + Environment.NewLine);
+            }
+            Debug.Log($"[FileTraceStore] Added trace to file: {json}");
+        }
+
+        public List<GameTrace> GetBySession(string sessionId)
+        {
+            var res = new List<GameTrace>();
+            if (string.IsNullOrWhiteSpace(sessionId)) return res;
+            if (!File.Exists(_filePath)) return res;
+
+            var lines = File.ReadAllLines(_filePath);
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var line = lines[i];
+                if (string.IsNullOrWhiteSpace(line)) continue;
+
+                TraceRecord record = null;
+                try
+                {
+                    record = JsonConvert.DeserializeObject<TraceRecord>(line);
+                }
+                catch
+                {
+                    continue;
+                }
+
+                if (record != null && record.sessionId == sessionId && record.trace != null)
+                    res.Add(record.trace);
+            }
+
+            return res;
+        }
+
+        public void ClearSession(string sessionId)
+        {
+            if (string.IsNullOrWhiteSpace(sessionId)) return;
+            if (!File.Exists(_filePath)) return;
+
+            var lines = File.ReadAllLines(_filePath);
+            var kept = new List<string>(lines.Length);
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var line = lines[i];
+                if (string.IsNullOrWhiteSpace(line)) continue;
+
+                TraceRecord record = null;
+                try
+                {
+                    record = JsonConvert.DeserializeObject<TraceRecord>(line);
+                }
+                catch
+                {
+                    kept.Add(line);
+                    continue;
+                }
+
+                if (record == null || record.sessionId != sessionId)
+                    kept.Add(line);
+            }
+
+            File.WriteAllLines(_filePath, kept.ToArray());
+        }
+    }
+}
+
+File FileTraceStore.cs.meta
+fileFormatVersion: 2
+guid: 3eb0552ffd4f95e4ba8ffe2b2fc9836c
+
+File InMemoryTraceStore.cs
+using System.Collections.Generic;
+
+namespace SeriousGame.Trace
+{
+    public class InMemoryTraceStore : ITraceStore
+    {
+        private readonly List<GameTrace> _events = new();
+
+        public void Add(GameTrace trace) => _events.Add(trace);
+
+        public List<GameTrace> GetBySession(string sessionId)
+        {
+            var res = new List<GameTrace>();
+            for (int i = 0; i < _events.Count; i++)
+                if (_events[i].sessionId == sessionId) res.Add(_events[i]);
+            return res;
+        }
+
+        public void ClearSession(string sessionId)
+        {
+            _events.RemoveAll(x => x.sessionId == sessionId);
+        }
+    }
+}
+
+File InMemoryTraceStore.cs.meta
+fileFormatVersion: 2
+guid: 8f94324cd58dca0438cb24ce8c58dcf9
+
+File ITraceStore.cs
+using System.Collections.Generic;
+
+namespace SeriousGame.Trace
+{
+    public interface ITraceStore
+    {
+        void Add(GameTrace trace);
+        List<GameTrace> GetBySession(string sessionId);
+        void ClearSession(string sessionId);
+    }
+}
+
+File ITraceStore.cs.meta
+fileFormatVersion: 2
+guid: 119aa1b9c4ad730438e12efa7c9e35a2
+
+File TraceService.cs
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using SeriousGame.App;
+using SeriousGame.Content;
+using SeriousGame.State;
+using UnityEngine.SceneManagement;
+using UnityEngine;
+
+namespace SeriousGame.Trace
+{
+    public class TraceService
+    {   
+        // 2 different stores: one for in-memory (for quick access during gameplay), and one for persistent storage (e.g. file, database)
+        private readonly ITraceStore _store;
+        private readonly ITraceStore _persistentStore;
+        private readonly SessionService _session;
+        private readonly PlayerStateService _state;
+        private readonly AppConfigSO _config;
+
+        public TraceService(
+            ITraceStore store,
+            ITraceStore persistentStore,
+            SessionService session,
+            PlayerStateService state,
+            AppConfigSO config)
+        {
+            _store = store;
+            _persistentStore = persistentStore;
+            _session = session;
+            _state = state;
+            _config = config;
+        }
+
+        public GameTrace BuildTrace(
+            string sessionId,
+            string milestoneId,
+            string routeid,
+            int choiceId,
+            string traceId,
+            // string objectId,
+            // string episodeId,
+            // string yarnNode,
+            PlayerStateSnapshot stateBefore)
+        {
+            return new GameTrace
+            {
+                sessionId = sessionId ?? "",
+                milestone_id = milestoneId ?? string.Empty,
+                route_id = routeid ?? string.Empty,
+                choice_id = choiceId.ToString(),
+                trace_id = traceId ?? string.Empty,
+                // object_id = objectId ?? string.Empty,
+                timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
+                score_state = BuildScoreState(stateBefore)
+            };
+        }
+
+        public void LogEvent(GameTrace trace)
+        {
+            if (trace == null) return;
+            RecordTraceInternal(trace);
+            Debug.Log($"[TraceService] Logged trace event: {trace.trace_id} {trace.route_id} choice {trace.choice_id}");
+        }
+
+        //store the trace in both the in-memory store and the persistent store (if available)
+        private void RecordTraceInternal(GameTrace trace)
+        {
+            _store.Add(trace);
+            if (_persistentStore != null)
+                _persistentStore.Add(trace);
+            Debug.Log($"[TraceService] Recorded trace: {trace.trace_id} {trace.route_id} choice {trace.choice_id}");
+        }
+
+        public System.Collections.Generic.List<GameTrace> GetSession(string sessionId)
+            => _store.GetBySession(sessionId);
+
+        // ham nay se duoc goi khi ket thuc chapter, de gui toan bo trace events trong session do len cloud. Ham su dung async/await de thuc hien viec gui du lieu mot cach non-blocking, giup tranh tinh trang treo game neu viec gui du lieu bi cham hoac gap loi. Tuy nhien, neu muon dam bao viec gui du lieu da hoan thanh truoc khi cho phep player tiep tuc, co the su dung ham SendSessionDataBlocking thay the. Hien tai chi co goi sendsessiondata async, sau nay co the them sendsessiondatablocking neu can.
+        public async Task<bool> SendSessionData(bool isCompleted, string chapterId = "")
+        {
+            if (_session == null)
+            {
+                Debug.LogWarning("[TraceService] Missing SessionService.");
+                return false;
+            }
+
+            if (_config == null || string.IsNullOrWhiteSpace(_config.firebaseProjectId))
+            {
+                Debug.LogWarning("[TraceService] Missing Firebase project ID.");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(_session.AuthToken))
+            {
+                Debug.LogWarning("[TraceService] Missing auth token.");
+                return false;
+            }
+
+            var dto = BuildSessionDto(isCompleted, chapterId);
+            if (dto == null) return false;
+
+            var cloud = new CloudTraceStore();
+            Debug.Log($"[TraceService] Sending session data for session '{dto.session_id}' with {dto.traces.Count} traces, total playtime {dto.total_playtime_seconds} seconds, is_completed={dto.is_completed}");
+            return await cloud.SendSessionData(dto, _config.firebaseProjectId, _session.AuthToken);
+        }
+
+        //ham nay tuong tu nhu SendSessionData, nhung thay vi su dung async/await thi ham se thuc hien gui du lieu mot cach blocking, co the phu hop hon trong mot so tinh huong (vd: khi ket thuc chapter, muon dam bao du lieu da duoc gui len cloud truoc khi cho phep player tiep tuc vao chapter tiep theo)
+        public bool SendSessionDataBlocking(bool isCompleted, string chapterId = "")
+        {
+            if (_session == null)
+            {
+                Debug.LogWarning("[TraceService] Missing SessionService.");
+                return false;
+            }
+
+            if (_config == null || string.IsNullOrWhiteSpace(_config.firebaseProjectId))
+            {
+                Debug.LogWarning("[TraceService] Missing Firebase project ID.");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(_session.AuthToken))
+            {
+                Debug.LogWarning("[TraceService] Missing auth token.");
+                return false;
+            }
+
+            var dto = BuildSessionDto(isCompleted, chapterId);
+            if (dto == null) return false;
+
+            var cloud = new CloudTraceStore();
+            return cloud.SendSessionDataBlocking(dto, _config.firebaseProjectId, _session.AuthToken);
+        }
+
+        //ham nay build ra 1 ChapterSessionDTO tuong ung voi session hien tai, gom thong tin ve session (player id, start time), thong tin ve chapter (chapter id), va list trace events trong session do. Sau do ham se duoc su dung de gui du lieu len cloud.
+        private ChapterSessionDTO BuildSessionDto(bool isCompleted, string chapterId)
+        {
+            if (_session == null) return null;
+            var sessionId = _session.CurrentSessionId;
+            if (string.IsNullOrWhiteSpace(sessionId))
+            {
+                Debug.LogWarning("[TraceService] SessionId is empty.");
+                return null;
+            }
+
+            var endTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+            var startTime = _session.StartTimeUnixMs > 0 ? _session.StartTimeUnixMs : endTime;
+            var totalSeconds = Mathf.Max(0f, (endTime - startTime) / 1000f);
+
+            return new ChapterSessionDTO
+            {
+                session_id = sessionId,
+                player_id = _session.PlayerId ?? string.Empty,
+                start_time = startTime,
+                end_time = endTime,
+                total_playtime_seconds = totalSeconds,
+                is_completed = isCompleted,
+                final_scores = BuildFinalScores(),
+                traces = GetSession(sessionId)
+            };
+        }
+
+        private FinalScores BuildFinalScores()
+        {
+            var scores = new FinalScores();
+            if (_state == null) return scores;
+
+            scores.SCORE_HELP_SEEKING = _state.Get(GameStateKeys.ScoreHelpSeeking);
+            scores.SCORE_PRESSURE_RESISTANCE = _state.Get(GameStateKeys.ScorePressureResistance);
+            scores.SCORE_INFORMATION_VERIFICATION = _state.Get(GameStateKeys.ScoreInformationVerification);
+            scores.SCORE_RISK_RECOGNITION = _state.Get(GameStateKeys.ScoreRiskRecognition);
+            scores.SCORE_COMMUNITY_WARNING = _state.Get(GameStateKeys.ScoreCommunityWarning);
+
+            return scores;
+        }
+
+        private Dictionary<string, int> BuildScoreState(PlayerStateSnapshot snapshot)
+        {
+            var scores = new Dictionary<string, int>();
+
+            scores[GameStateKeys.ScoreHelpSeeking] = GetScore(snapshot, GameStateKeys.ScoreHelpSeeking);
+            scores[GameStateKeys.ScorePressureResistance] = GetScore(snapshot, GameStateKeys.ScorePressureResistance);
+            scores[GameStateKeys.ScoreInformationVerification] = GetScore(snapshot, GameStateKeys.ScoreInformationVerification);
+            scores[GameStateKeys.ScoreRiskRecognition] = GetScore(snapshot, GameStateKeys.ScoreRiskRecognition);
+            scores[GameStateKeys.ScoreCommunityWarning] = GetScore(snapshot, GameStateKeys.ScoreCommunityWarning);
+
+            return scores;
+        }
+
+        private int GetScore(PlayerStateSnapshot snapshot, string key)
+        {
+            if (snapshot != null)
+                return snapshot.GetValue(key, _state != null ? _state.Get(key) : 0);
+
+            return _state != null ? _state.Get(key) : 0;
+        }
+    }
+}
+
+File TraceService.cs.meta
+fileFormatVersion: 2
+guid: eeb2420950e695247bf91f9d0a77ead4
+
+
+Folder Assets/Scripts/Trace/Dto
+File ChapterSessionDTO.cs
+using System;
+using System.Collections.Generic;
+
+namespace SeriousGame.Trace
+{
+    [Serializable]
+    public class ChapterSessionDTO
+    {
+        // [Serializable]
+        // public class FinalScoresData
+        // {
+        //     public int SCORE_HELP_SEEKING;
+        //     public int SCORE_PRESSURE_RESISTANCE;
+        //     public int SCORE_INFORMATION_VERIFICATION;
+        //     public int SCORE_RISK_RECOGNITION;
+        //     public int SCORE_COMMUNITY_WARNING;
+        // }
+
+        // [Serializable]
+        // public class TraceData
+        // {
+        //     public string milestone_id;
+        //     public string route_id;
+        //     public string choice_id;
+        //     public string trace_id;
+        //     public string action_id;
+        //     public string object_id;
+        //     public long timestamp;
+        //     public Dictionary<string, int> score_state = new Dictionary<string, int>();
+        // }
+
+        public string session_id;
+        public string player_id;
+        public long start_time;
+        public long end_time;
+        public float total_playtime_seconds;
+        public bool is_completed;
+        public FinalScores final_scores;
+        public List<GameTrace> traces = new List<GameTrace>();
+    }
+}
+
+File ChapterSessionDTO.cs.meta
+fileFormatVersion: 2
+guid: cd7f640a0e961fe459d6dd9a9a41fee8
+
+File FinalScores.cs
+using System;
+
+namespace SeriousGame.Trace
+{
+    [Serializable]
+    public class FinalScores
+    {
+        public int SCORE_HELP_SEEKING;
+        public int SCORE_PRESSURE_RESISTANCE;
+        public int SCORE_INFORMATION_VERIFICATION;
+        public int SCORE_RISK_RECOGNITION;
+        public int SCORE_COMMUNITY_WARNING;
+    }
+}
+
+File FinalScores.cs.meta
+fileFormatVersion: 2
+guid: c1b1e4df5ecac94498d6b746b4822446
+
+File GameTrace.cs
+using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+
+namespace SeriousGame.Trace
+{
+    [Serializable]
+    public class GameTrace
+    {
+        [JsonIgnore]
+        public string sessionId;
+
+        public string milestone_id;
+        public string route_id;
+        public string choice_id; // 1 2 3
+        public string trace_id; // cái này giống như verb /action trong xapi
+        // public string action_id;
+        // public string object_id; //node name
+        public long timestamp;
+        public Dictionary<string, int> score_state = new Dictionary<string, int>();
+    }
+}
+
+File GameTrace.cs.meta
+fileFormatVersion: 2
+guid: 8845ae8756702174a9ee25c68c3980b0
+
+
+Folder Assets/Scripts/UI
+File BillboardToCamera.cs
+using UnityEngine;
+
+namespace SeriousGame.Runtime
+{
+    // Gắn script này vào UI/world-text để nó luôn quay mặt về camera (player)
+    public class BillboardToCamera : MonoBehaviour
+    {
+        // Nếu để trống sẽ tự dùng Camera.main
+        public Transform target;
+
+        void LateUpdate()
+        {
+            Transform cam = target;
+            if (cam == null && Camera.main != null)
+            {
+                cam = Camera.main.transform;
+            }
+
+            if (cam == null) return;
+
+            // Hướng từ camera -> object
+            Vector3 dir = transform.position - cam.position;
+            if (dir.sqrMagnitude < 0.0001f) return;
+
+            // Cho UI quay mặt về camera
+            transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
+        }
+    }
+}
+
+File BillboardToCamera.cs.meta
+fileFormatVersion: 2
+guid: b9ee208fc48735d4cbb6ac3c85832d92
+
+File ChatDialoguePanel.cs
+using UnityEngine;
+using Yarn.Unity;
+
+namespace SeriousGame.UI
+{
+    public class ChatDialoguePanel : MonoBehaviour
+    {
+        [Header("Root")]
+        [SerializeField] private GameObject root;
+
+        [Header("Yarn")]
+        [SerializeField] private DialogueRunner runner;
+        [SerializeField] private ChatDialogueView view;
+
+        [Header("Behavior")]
+        [SerializeField] private bool hideOnComplete = true;
+        [SerializeField] private bool clearOnStart = true;
+
+        private void Awake()
+        {
+            if (root == null)
+                root = gameObject;
+
+            if (runner != null)
+                runner.onDialogueComplete.AddListener(HandleDialogueComplete);
+        }
+
+        private void OnDestroy()
+        {
+            if (runner != null)
+                runner.onDialogueComplete.RemoveListener(HandleDialogueComplete);
+        }
+
+        public void StartChat(string nodeName)
+        {
+            if (string.IsNullOrWhiteSpace(nodeName)) return;
+
+            if (root != null)
+                root.SetActive(true);
+
+            if (clearOnStart)
+                view?.ClearMessages();
+
+            if (runner == null)
+            {
+                Debug.LogWarning("[ChatDialoguePanel] Missing DialogueRunner.");
+                return;
+            }
+
+            if (runner.IsDialogueRunning)
+                runner.Stop().Forget();
+
+            runner.StartDialogue(nodeName).Forget();
+        }
+
+        public void AppendMessage(string speaker, string message)
+        {
+            if (root != null)
+                root.SetActive(true);
+
+            view?.AppendMessage(speaker, message);
+        }
+
+        public void ClearMessages()
+        {
+            view?.ClearMessages();
+        }
+
+        public void Hide()
+        {
+            if (root != null)
+                root.SetActive(false);
+        }
+
+        private void HandleDialogueComplete()
+        {
+            if (hideOnComplete)
+                Hide();
+        }
+    }
+}
+
+File ChatDialoguePanel.cs.meta
+fileFormatVersion: 2
+guid: a20c01233354c794ea73cc81bd5b20b1
+
+File ChatDialogueView.cs
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+using Yarn.Unity;
+
+namespace SeriousGame.UI
+{
+    public class ChatDialogueView : DialoguePresenterBase
+    {   
+
+        [Header("References")]
+        [SerializeField] private DialogueRunner dialogueRunner;
+        [Header("Messages")]
+        [SerializeField] private Transform contentRoot;
+        [SerializeField] private ScrollRect scrollRect;
+        [SerializeField] private GameObject leftBubblePrefab;
+        [SerializeField] private GameObject rightBubblePrefab;
+        [SerializeField] private bool includeCharacterName = true;
+        [SerializeField] private string playerName = "Bạn";
+
+        [Header("Options")]
+        [SerializeField] private Transform optionsRoot;
+        [SerializeField] private GameObject optionButtonPrefab;
+
+        [Header("Flow")]
+        [SerializeField] private bool autoAdvance = true;
+        [SerializeField] private float autoAdvanceDelay = 0.2f;
+
+        private readonly List<GameObject> optionButtons = new List<GameObject>();
+
+        public override YarnTask OnDialogueStartedAsync()
+        {
+            ClearOptions();
+            return YarnTask.CompletedTask;
+        }
+
+        public override YarnTask OnDialogueCompleteAsync()
+        {
+            ClearOptions();
+            return YarnTask.CompletedTask;
+        }
+
+        public override async YarnTask RunLineAsync(LocalizedLine line, LineCancellationToken token)
+        {
+            var speaker = line.CharacterName ?? string.Empty;
+            var text = line.TextWithoutCharacterName.Text;
+            AppendMessage(speaker, text);
+
+            if (autoAdvance)
+            {
+                await YarnTask.Delay((int)(autoAdvanceDelay * 1000f), token.NextContentToken).SuppressCancellationThrow();
+            }
+            else
+            {
+                await YarnTask.WaitUntilCanceled(token.NextContentToken).SuppressCancellationThrow();
+            }
+        }
+
+        public override async YarnTask<DialogueOption?> RunOptionsAsync(DialogueOption[] dialogueOptions, LineCancellationToken cancellationToken)
+        {
+            if (dialogueOptions == null || dialogueOptions.Length == 0)
+                return null; // <-- Changed here
+
+            if (optionsRoot == null || optionButtonPrefab == null)
+            {
+                Debug.LogWarning("[ChatDialogueView] Missing optionsRoot or optionButtonPrefab.");
+                return null; // <-- Changed here
+            }
+
+            ClearOptions();
+
+            var tcs = new YarnTaskCompletionSource<DialogueOption?>();
+            CancellationTokenRegistration registration = cancellationToken.NextContentToken.Register(() =>
+            {
+                tcs.TrySetResult(null);
+            });
+
+            foreach (var option in dialogueOptions)
+            {
+                var buttonObject = Instantiate(optionButtonPrefab, optionsRoot);
+                optionButtons.Add(buttonObject);
+
+                var button = buttonObject.GetComponent<Button>();
+                var label = buttonObject.GetComponentInChildren<TMP_Text>();
+                if (label != null)
+                    label.text = option.Line.TextWithoutCharacterName.Text;
+
+                if (button != null)
+                {
+                    button.interactable = option.IsAvailable;
+                    button.onClick.AddListener(() =>
+                    {
+                        if (!option.IsAvailable) return;
+                        tcs.TrySetResult(option);
+                    });
+                }
+            }
+
+            var selected = await tcs.Task;
+            registration.Dispose();
+            ClearOptions();
+            return selected;
+        }
+
+        public void AppendMessage(string speaker, string message)
+        {
+            if (string.IsNullOrWhiteSpace(message)) return;
+            if (contentRoot == null)
+            {
+                Debug.LogWarning("[ChatDialogueView] Missing contentRoot.");
+                return;
+            }
+
+            var prefab = ResolveBubblePrefab(speaker);
+            if (prefab == null)
+            {
+                Debug.LogWarning("[ChatDialogueView] Missing bubble prefab.");
+                return;
+            }
+
+            var bubble = Instantiate(prefab, contentRoot);
+            var text = bubble.GetComponentInChildren<TMP_Text>();
+            if (text != null)
+            {
+                if (includeCharacterName && !string.IsNullOrWhiteSpace(speaker))
+                    text.text = speaker + ": " + message;
+                else
+                    text.text = message;
+            }
+
+            ScrollToBottom();
+        }
+
+        public void ClearMessages()
+        {
+            if (contentRoot == null) return;
+            for (int i = contentRoot.childCount - 1; i >= 0; i--)
+            {
+                Destroy(contentRoot.GetChild(i).gameObject);
+            }
+        }
+
+        private GameObject ResolveBubblePrefab(string speaker)
+        {
+            if (!string.IsNullOrWhiteSpace(playerName)
+                && !string.IsNullOrWhiteSpace(speaker)
+                && rightBubblePrefab != null
+                && string.Equals(playerName, speaker, StringComparison.OrdinalIgnoreCase))
+            {
+                return rightBubblePrefab;
+            }
+
+            return leftBubblePrefab != null ? leftBubblePrefab : rightBubblePrefab;
+        }
+
+        private void ClearOptions()
+        {
+            for (int i = 0; i < optionButtons.Count; i++)
+            {
+                if (optionButtons[i] != null)
+                    Destroy(optionButtons[i]);
+            }
+            optionButtons.Clear();
+        }
+
+        private void ScrollToBottom()
+        {
+            Canvas.ForceUpdateCanvases();
+            if (scrollRect != null)
+                scrollRect.verticalNormalizedPosition = 0f;
+        }
+
+        public void AdvanceDialogue()
+      {
+        if (dialogueRunner != null)
+            {
+                // Lệnh này sẽ phát lệnh Cancel đến cái `token.NextContentToken` đang treo ở trên
+                dialogueRunner.RequestNextLine();
+            }
+            else
+            {
+                Debug.LogWarning("[ChatDialogueView] Ê, quên kéo DialogueRunner vào Inspector kìa!");
+            }
+        }
+    }
+}
+
+File ChatDialogueView.cs.meta
+fileFormatVersion: 2
+guid: 9f2be3b3ceac4864e9b37a575d778999
+
+File GameplayUIRoot.cs
+using TMPro;
+using UnityEngine;
+using SeriousGame.App;
+using SeriousGame.Runtime;
+
+namespace SeriousGame.UI
+{
+    public class GameplayUIRoot : MonoBehaviour
+    {
+        [Header("Chat Panels")]
+        [SerializeField] private ChatDialoguePanel phonePanel;
+        [SerializeField] private ChatDialoguePanel pcPanel;
+
+        [Header("Summary")]
+        [SerializeField] private SummaryUIListener summaryUI;
+
+        [Header("Toast")]
+        [SerializeField] private OutcomeToastUI toastUI;
+
+        [Header("Hint")]
+        [SerializeField] private GameObject hintRoot;
+        [SerializeField] private TMP_Text hintText;
+
+        [Header("Optional Player Lock")]
+        [SerializeField] private PlayerController player;
+        [SerializeField] private bool lockPlayerOnOverlay = true;
+
+        [Header("UI Presenters (Canvas Groups)")]
+        [SerializeField] private CanvasGroup normalDialogueUI;
+        [SerializeField] private CanvasGroup phoneChatUI;
+        [SerializeField] private CanvasGroup PCUI;
+        
+
+        public void HandleSwitchUIRequested(string uitype)
+        {
+            if (uitype == "phone")
+            {
+                // Bật Phone, Tắt Normal (Chỉ tắt hiển thị, script Yarn vẫn chạy ngầm)
+                ToggleCanvasGroup(phoneChatUI, true);
+                ToggleCanvasGroup(normalDialogueUI, false);
+                ToggleCanvasGroup(PCUI, false);
+            }
+            else if (uitype == "normal")
+            {
+                // Bật Normal, Tắt Phone
+                ToggleCanvasGroup(normalDialogueUI, true);
+                ToggleCanvasGroup(phoneChatUI, false);
+                ToggleCanvasGroup(PCUI, false);
+            }
+             else if (uitype == "pc")
+            {
+                // Bật PC, Tắt Normal
+                ToggleCanvasGroup(PCUI, true);
+                ToggleCanvasGroup(normalDialogueUI, false);
+                ToggleCanvasGroup(phoneChatUI, false);
+            }
+        }
+
+        private void ToggleCanvasGroup(CanvasGroup cg, bool isVisible)
+        {
+            if (cg == null) return;
+            cg.alpha = isVisible ? 1f : 0f;
+            cg.interactable = isVisible;
+            cg.blocksRaycasts = isVisible;
+        }
+
+        private void OnEnable()
+        {
+            GameEventBus.OnPhoneChatRequested += HandlePhoneChatRequested;
+            GameEventBus.OnPhoneMessageReceived += HandlePhoneMessage;
+            GameEventBus.OnPcChatRequested += HandlePcChatRequested;
+            GameEventBus.OnSummaryRequested += HandleSummaryRequested;
+            GameEventBus.OnToastRequested += HandleToastRequested;
+            GameEventBus.OnHintRequested += HandleHintRequested;
+            GameEventBus.OnSwitchUIRequested += HandleSwitchUIRequested;
+        }
+
+        private void OnDisable()
+        {
+            GameEventBus.OnPhoneChatRequested -= HandlePhoneChatRequested;
+            GameEventBus.OnPhoneMessageReceived -= HandlePhoneMessage;
+            GameEventBus.OnPcChatRequested -= HandlePcChatRequested;
+            GameEventBus.OnSummaryRequested -= HandleSummaryRequested;
+            GameEventBus.OnToastRequested -= HandleToastRequested;
+            GameEventBus.OnHintRequested -= HandleHintRequested;
+            GameEventBus.OnSwitchUIRequested -= HandleSwitchUIRequested;
+        }
+
+        private void Start()
+        {
+            ToggleCanvasGroup(normalDialogueUI, true);
+            ToggleCanvasGroup(phoneChatUI, false);
+            ToggleCanvasGroup(PCUI, false);
+        }
+
+        private void HandlePhoneChatRequested(string nodeName)
+        {
+            if (phonePanel == null) return;
+            phonePanel.StartChat(nodeName);
+            SetPlayerLock(true);
+        }
+
+        private void HandlePcChatRequested(string nodeName)
+        {
+            if (pcPanel == null) return;
+            pcPanel.StartChat(nodeName);
+            SetPlayerLock(true);
+        }
+
+        private void HandlePhoneMessage(string speaker, string message)
+        {
+            if (phonePanel == null) return;
+            phonePanel.AppendMessage(speaker, message);
+        }
+
+        private void HandleSummaryRequested()
+        {
+            if (summaryUI == null) return;
+            summaryUI.ShowFromContext();
+            SetPlayerLock(true);
+        }
+
+        private void HandleToastRequested(string message)
+        {
+            if (toastUI == null) return;
+            toastUI.Show(message);
+        }
+
+        private void HandleHintRequested(string message)
+        {
+            if (hintText != null)
+                hintText.text = message ?? string.Empty;
+
+            if (hintRoot != null)
+                hintRoot.SetActive(!string.IsNullOrWhiteSpace(message));
+        }
+
+        public void ClosePhone()
+        {
+            if (phonePanel != null)
+                phonePanel.Hide();
+            SetPlayerLock(false);
+        }
+
+        public void ClosePc()
+        {
+            if (pcPanel != null)
+                pcPanel.Hide();
+            SetPlayerLock(false);
+        }
+
+        public void CloseSummary()
+        {
+            if (summaryUI != null)
+                summaryUI.Hide();
+            SetPlayerLock(false);
+        }
+
+        private void SetPlayerLock(bool locked)
+        {
+            if (!lockPlayerOnOverlay || player == null) return;
+            player.SetLockState(locked);
+        }
+    }
+}
+
+File GameplayUIRoot.cs.meta
+fileFormatVersion: 2
+guid: caef34fad437f344eb1c8b056e4e0ba8
+
+File LoginUI.cs
+using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
+using SeriousGame.App;
+
+namespace SeriousGame.UI
+{
+    public class LoginUI : MonoBehaviour
+    {
+        [Header("Inputs")]
+        [SerializeField] private TMP_InputField emailInput;
+        [SerializeField] private TMP_InputField passwordInput;
+
+        [Header("Status")]
+        [SerializeField] private TMP_Text statusText;
+
+        public async void OnLoginClicked()
+        {
+            var ctx = GameBootstrap.Context;
+            if (ctx == null || ctx.Auth == null)
+            {
+                SetStatus("Auth service not ready.");
+                return;
+            }
+
+            var email = emailInput != null ? emailInput.text : string.Empty;
+            var password = passwordInput != null ? passwordInput.text : string.Empty;
+
+            SetStatus("Logging in...");
+            var ok = await ctx.Auth.LoginWithEmail(email, password);
+
+            if (!ok)
+            {
+                SetStatus("Login failed. Check credentials.");
+                return;
+            }
+
+            if (ctx.Session != null)
+                ctx.Session.SetAuth(ctx.Auth.LocalId, ctx.Auth.IdToken);
+
+            SetStatus("Login success.");
+            await LoadMainMenuAsync(ctx);
+        }
+
+        private async Task LoadMainMenuAsync(AppContext ctx)
+        {
+            string target = null;
+            if (ctx != null && ctx.Config != null)
+                target = ctx.Config.mainMenuSceneName;
+
+            if (string.IsNullOrWhiteSpace(target))
+            {
+                Debug.LogWarning("[LoginUI] Main menu scene not set.");
+                return;
+            }
+
+            await Task.Yield();
+            SceneManager.LoadScene(target);
+        }
+
+        private void SetStatus(string message)
+        {
+            if (statusText != null)
+                statusText.text = message;
+        }
+    }
+}
+
+File LoginUI.cs.meta
+fileFormatVersion: 2
+guid: 8df7c36f0f82dd14ab8fe08cd3dd4052
+
+File OutcomeToastUI.cs
+// Assets/Scripts/UI/OutcomeToastUI.cs
+using UnityEngine;
+
+namespace SeriousGame.UI
+{
+    public class OutcomeToastUI : MonoBehaviour
+    {
+        [SerializeField] private float showSeconds = 10f;
+
+        private ToastNotification _toastNotification;
+
+        private void Awake()
+        {
+            _toastNotification = FindObjectOfType<ToastNotification>(true);
+        }
+
+        public void Show(string message)
+        {
+            if (string.IsNullOrWhiteSpace(message)) return;
+
+            if (_toastNotification == null)
+                _toastNotification = FindObjectOfType<ToastNotification>(true);
+
+            if (_toastNotification == null || _toastNotification._messagePrefab == null)
+            {
+                Debug.LogWarning("[OutcomeToastUI] ToastNotification not found or missing prefab.");
+                return;
+            }
+
+            ToastNotification.Show(message, showSeconds);
+        }
+
+        public void Hide()
+        {
+            if (_toastNotification != null)
+                ToastNotification.Hide();
+        }
+    }
+}
+
+File OutcomeToastUI.cs.meta
+fileFormatVersion: 2
+guid: 73c08fba95e11244b90e189625a09bc7
+
+File PauseMenuController.cs
+using UnityEngine;
+using SeriousGame.Runtime;
+
+namespace SeriousGame.UI
+{
+    public class PauseMenuController : MonoBehaviour
+    {
+        [Header("UI")]
+        [SerializeField] private GameObject menuRoot;
+
+        [Header("Flow")]
+        [SerializeField] private UIFlowManager flowManager;
+
+        [Header("Optional Player")]
+        [SerializeField] private PlayerController player;
+        [SerializeField] private bool pauseTime = true;
+
+        private void Awake()
+        {
+            if (menuRoot != null)
+                menuRoot.SetActive(false);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                TogglePause();
+        }
+
+        private void OnDisable()
+        {
+            if (pauseTime)
+                Time.timeScale = 1f;
+        }
+
+        public void TogglePause()
+        {   
+            if (menuRoot == null) return;
+            if (menuRoot.activeSelf)
+                Resume();
+            else
+                Pause();
+        }
+
+        public void Pause()
+        {
+            if (menuRoot != null)
+                menuRoot.SetActive(true);
+            if (pauseTime)
+                Time.timeScale = 0f;
+            if (player != null)
+                player.SetLockState(true);
+        }
+
+        public void Resume()
+        {
+            if (menuRoot != null)
+                menuRoot.SetActive(false);
+            if (pauseTime)
+                Time.timeScale = 1f;
+            if (player != null)
+                player.SetLockState(false);
+        }
+
+        public void QuitToMenu()
+        {
+            if (pauseTime)
+                Time.timeScale = 1f;
+
+            if (flowManager != null)
+                flowManager.QuitToMenu();
+        }
+    }
+}
+
+File PauseMenuController.cs.meta
+fileFormatVersion: 2
+guid: c7fc541b477455a4ca9ad398fea1fdac
+
+File ScreenFader.cs
+using System;
+using System.Collections;
+using UnityEngine;
+
+// Đơn giản: fade màn hình sang đen rồi sáng lại, dùng CanvasGroup
+public class ScreenFader : MonoBehaviour
+{
+    public static ScreenFader Instance;
+
+    [Header("Canvas Group đen full màn hình")]
+    public CanvasGroup canvasGroup; // alpha 0 => trong suốt, 1 => đen
+
+    void Awake()
+    {
+        Instance = this;
+        if (canvasGroup == null)
+        {
+            canvasGroup = GetComponentInChildren<CanvasGroup>();
+        }
+
+        if (canvasGroup != null)
+        {
+            canvasGroup.alpha = 0f;
+            canvasGroup.blocksRaycasts = false;
+        }
+    }
+
+    public void FadeOutIn(float fadeDuration, Action onMiddle)
+    {
+        if (canvasGroup == null)
+        {
+            onMiddle?.Invoke();
+            return;
+        }
+
+        StartCoroutine(FadeOutInRoutine(fadeDuration, onMiddle));
+    }
+
+    IEnumerator FadeOutInRoutine(float fadeDuration, Action onMiddle)
+    {
+        // Fade to black
+        canvasGroup.blocksRaycasts = true;
+        float t = 0f;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Clamp01(t / fadeDuration);
+            yield return null;
+        }
+
+        canvasGroup.alpha = 1f;
+
+        // Thực hiện hành động ở giữa (teleport, đổi lighting...)
+        onMiddle?.Invoke();
+
+        // Fade back to clear
+        t = 0f;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            canvasGroup.alpha = 1f - Mathf.Clamp01(t / fadeDuration);
+            yield return null;
+        }
+
+        canvasGroup.alpha = 0f;
+        canvasGroup.blocksRaycasts = false;
+    }
+}
+
+File ScreenFader.cs.meta
+fileFormatVersion: 2
+guid: 544de859a82a9b241b520fbc8b017bd5
+
+File SummaryUIListener.cs
+using TMPro;
+using UnityEngine;
+using SeriousGame.App;
+using SeriousGame.State;
+
+namespace SeriousGame.UI
+{
+    public class SummaryUIListener : MonoBehaviour
+    {
+        [Header("UI")]
+        [SerializeField] private CanvasGroup canvasGroup;
+        [SerializeField] private TMP_Text helpSeekingText;
+        [SerializeField] private TMP_Text pressureResistanceText;
+        [SerializeField] private TMP_Text informationVerificationText;
+        [SerializeField] private TMP_Text riskRecognitionText;
+        [SerializeField] private TMP_Text communityWarningText;
+
+        [Header("Behavior")]
+        [SerializeField] private bool startHidden = true;
+
+        private void Awake()
+        {
+            if (startHidden)
+                Hide();
+        }
+
+        public void Hide()
+        {
+            SetVisible(false);
+        }
+
+        public void ShowFromContext()
+        {
+            var ctx = GameBootstrap.Context;
+            if (ctx == null || ctx.PlayerState == null) return;
+            Show(ctx.PlayerState);
+        }
+
+        public void Show(PlayerStateService state)
+        {
+            if (state == null) return;
+            UpdateScores(state);
+            SetVisible(true);
+        }
+
+        private void UpdateScores(PlayerStateService state)
+        {
+            SetText(helpSeekingText, state.Get(GameStateKeys.ScoreHelpSeeking));
+            SetText(pressureResistanceText, state.Get(GameStateKeys.ScorePressureResistance));
+            SetText(informationVerificationText, state.Get(GameStateKeys.ScoreInformationVerification));
+            SetText(riskRecognitionText, state.Get(GameStateKeys.ScoreRiskRecognition));
+            SetText(communityWarningText, state.Get(GameStateKeys.ScoreCommunityWarning));
+        }
+
+        private void SetText(TMP_Text text, int value)
+        {
+            if (text != null)
+                text.text = value.ToString();
+        }
+
+        private void SetVisible(bool visible)
+        {
+            if (canvasGroup != null)
+            {
+                canvasGroup.alpha = visible ? 1f : 0f;
+                canvasGroup.interactable = visible;
+                canvasGroup.blocksRaycasts = visible;
+                return;
+            }
+
+            gameObject.SetActive(visible);
+        }
+    }
+}
+
+File SummaryUIListener.cs.meta
+fileFormatVersion: 2
+guid: b6ba065618d3fc74f9a34f5afcf39357
+
+File UIFlowManager.cs
+using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using SeriousGame.App;
+
+namespace SeriousGame.UI
+{
+    public class UIFlowManager : MonoBehaviour
+    {
+        [Header("Scene Overrides (optional)")]
+        [SerializeField] private string episodeSceneNameOverride;
+        [SerializeField] private string mainMenuSceneNameOverride;
+
+        public void StartGame()
+        {
+            var ctx = GameBootstrap.Context;
+            if (ctx != null && ctx.Session != null)
+                ctx.Session.Begin(ctx.Session.PlayerId);
+
+            var target = ResolveEpisodeScene(ctx);
+            if (string.IsNullOrWhiteSpace(target))
+            {
+                Debug.LogWarning("[UIFlowManager] Episode scene not set.");
+                return;
+            }
+
+            SceneManager.LoadScene(target);
+        }
+
+        public async void QuitToMenu()
+        {
+            var ctx = GameBootstrap.Context;
+            if (ctx != null && ctx.Trace != null)
+                await ctx.Trace.SendSessionData(false);
+
+            var target = ResolveMainMenuScene(ctx);
+            if (string.IsNullOrWhiteSpace(target))
+            {
+                Debug.LogWarning("[UIFlowManager] Main menu scene not set.");
+                return;
+            }
+
+            SceneManager.LoadScene(target);
+        }
+
+        public void LoadScene(string sceneName)
+        {
+            if (string.IsNullOrWhiteSpace(sceneName)) return;
+            SceneManager.LoadScene(sceneName);
+        }
+
+        private string ResolveEpisodeScene(AppContext ctx)
+        {
+            if (!string.IsNullOrWhiteSpace(episodeSceneNameOverride))
+                return episodeSceneNameOverride;
+            return ctx != null && ctx.Config != null ? ctx.Config.demoEpisodeSceneName : null;
+        }
+
+        private string ResolveMainMenuScene(AppContext ctx)
+        {
+            if (!string.IsNullOrWhiteSpace(mainMenuSceneNameOverride))
+                return mainMenuSceneNameOverride;
+            return ctx != null && ctx.Config != null ? ctx.Config.mainMenuSceneName : null;
+        }
+    }
+}
+
+File UIFlowManager.cs.meta
+fileFormatVersion: 2
+guid: 51cbb891de597bd4e9ab67c68de96457
+
+File UITester.cs
+using UnityEngine;
+using SeriousGame.App; // Import namespace chứa GameEventBus
+
+public class UITester : MonoBehaviour
+{
+    void Update()
+    {
+        // Nhấn phím P để giả lập hành động người chơi mở tin nhắn của Guard_Main
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            // Lệnh này sẽ tự động bật UI Điện thoại và kích hoạt Node "Guard_Main"
+            GameEventBus.RaiseSwitchUIRequested("phone");
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            // Lệnh này sẽ tự động bật UI Normal và kích hoạt Node "Guard_Main"
+            GameEventBus.RaiseSwitchUIRequested("normal");
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            // Lệnh này sẽ tự động bật UI PC và kích hoạt Node "Guard_Main"
+            GameEventBus.RaiseSwitchUIRequested("pc");
+        }
+    }
+}
+
+File UITester.cs.meta
+fileFormatVersion: 2
+guid: b81cf56473ab70649a8438890d7a5e3a
+
+

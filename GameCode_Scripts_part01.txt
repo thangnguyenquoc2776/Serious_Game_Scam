@@ -7,229 +7,90 @@
         ├── App
         │   ├── AppContext.cs
         │   ├── GameBootstrap.cs
-        │   ├── GameStateManager.cs
+        │   ├── GameEventBus.cs
         │   ├── MainMenuStart.cs
         │   ├── SceneService.cs
         │   └── SessionService.cs
         ├── Content
         │   ├── AppConfigSO.cs
-        │   ├── BeatSO.cs
-        │   ├── ChoiceSO.cs
-        │   ├── EpisodeSO.cs
-        │   ├── InteractionSO.cs
-        │   ├── SceneSO.cs
         │   ├── TraceTaxonomySO.cs
         │   └── TraceTypeSO.cs
         ├── Feedback
         │   ├── FeedbackReport.cs
         │   └── FeedbackService.cs
         ├── Interactables
-        │   ├── ChairController.cs
         │   ├── StateFlagInteractable.cs
         │   └── TeleportInteractable.cs
-        ├── NPC
-        │   └── LeadController.cs
+        ├── Narrative
+        │   ├── GameStateVariableStorage.cs
+        │   ├── NarrativeService.cs
+        │   ├── YarnAutoStart.cs
+        │   └── YarnCommandBridge.cs
         ├── Phone
-        │   ├── ChatPanel.cs
-        │   └── PhoneUIRoot.cs
+        │   └── PhoneUIListener.cs
         ├── Player
-        │   ├── PlayerController.cs
-        │   ├── VRInteractorRaycast.cs
-        │   └── VRSimpleLocomotion.cs
+        │   └── PlayerController.cs
         ├── Runtime
-        │   ├── BeatRunner.cs
-        │   ├── EpisodeController.cs
-        │   └── InteractionRouter.cs
+        │   ├── IInteractable.cs
+        │   └── NodeInteractable.cs
+        ├── Save
+        │   ├── SaveData.cs
+        │   └── SaveService.cs
+        ├── State
+        │   ├── GameStateKeys.cs
+        │   ├── PlayerStateDebugger.cs
+        │   ├── PlayerStateService.cs
+        │   └── PlayerStateSnapshot.cs
         ├── Trace
+        │   ├── FileTraceStore.cs
         │   ├── InMemoryTraceStore.cs
         │   ├── ITraceStore.cs
         │   ├── TraceEvent.cs
         │   └── TraceService.cs
         └── UI
             ├── BillboardToCamera.cs
-            ├── ChoiceButton.cs
-            ├── DialogueUI.cs
-            ├── DossierUI.cs
-            ├── Dragable.cs
-            ├── DropSlot.cs
-            ├── EpisodeSummaryUI.cs
             ├── OutcomeToastUI.cs
-            ├── PCUI.cs
             ├── ScreenFader.cs
-            ├── SummaryUI.cs
-            └── WorldSpaceUIFollow.cs
+            └── ToastUIListener.cs
 
 ===== FILE MANIFEST =====
-- Assets/Scripts/BeatInteractable.cs — 1568 bytes — ok
-- Assets/Scripts/VRBeatInteractor.cs — 1990 bytes — ok
-- Assets/Scripts/App/AppContext.cs — 852 bytes — ok
-- Assets/Scripts/App/GameBootstrap.cs — 1845 bytes — ok
-- Assets/Scripts/App/GameStateManager.cs — 1413 bytes — ok
-- Assets/Scripts/App/MainMenuStart.cs — 949 bytes — ok
-- Assets/Scripts/App/SceneService.cs — 280 bytes — ok
-- Assets/Scripts/App/SessionService.cs — 274 bytes — ok
-- Assets/Scripts/Content/AppConfigSO.cs — 591 bytes — ok
-- Assets/Scripts/Content/BeatSO.cs — 1129 bytes — ok
-- Assets/Scripts/Content/ChoiceSO.cs — 705 bytes — ok
-- Assets/Scripts/Content/EpisodeSO.cs — 1273 bytes — ok
-- Assets/Scripts/Content/InteractionSO.cs — 694 bytes — ok
-- Assets/Scripts/Content/SceneSO.cs — 317 bytes — ok
+- Assets/Scripts/App/AppContext.cs — 1523 bytes — ok
+- Assets/Scripts/App/GameBootstrap.cs — 1098 bytes — ok
+- Assets/Scripts/App/GameEventBus.cs — 1386 bytes — ok
+- Assets/Scripts/App/MainMenuStart.cs — 753 bytes — ok
+- Assets/Scripts/App/SceneService.cs — 524 bytes — ok
+- Assets/Scripts/App/SessionService.cs — 719 bytes — ok
+- Assets/Scripts/Content/AppConfigSO.cs — 569 bytes — ok
 - Assets/Scripts/Content/TraceTaxonomySO.cs — 603 bytes — ok
 - Assets/Scripts/Content/TraceTypeSO.cs — 645 bytes — ok
 - Assets/Scripts/Feedback/FeedbackReport.cs — 387 bytes — ok
-- Assets/Scripts/Feedback/FeedbackService.cs — 2263 bytes — ok
-- Assets/Scripts/Interactables/ChairController.cs — 584 bytes — ok
-- Assets/Scripts/Interactables/StateFlagInteractable.cs — 1505 bytes — ok
-- Assets/Scripts/Interactables/TeleportInteractable.cs — 3142 bytes — ok
-- Assets/Scripts/NPC/LeadController.cs — 2222 bytes — ok
-- Assets/Scripts/Phone/ChatPanel.cs — 2442 bytes — ok
-- Assets/Scripts/Phone/PhoneUIRoot.cs — 668 bytes — ok
-- Assets/Scripts/Player/PlayerController.cs — 8058 bytes — ok
-- Assets/Scripts/Player/VRInteractorRaycast.cs — 3284 bytes — ok
-- Assets/Scripts/Player/VRSimpleLocomotion.cs — 2133 bytes — ok
-- Assets/Scripts/Runtime/BeatRunner.cs — 1553 bytes — ok
-- Assets/Scripts/Runtime/EpisodeController.cs — 6090 bytes — ok
-- Assets/Scripts/Runtime/InteractionRouter.cs — 1562 bytes — ok
+- Assets/Scripts/Feedback/FeedbackService.cs — 3006 bytes — ok
+- Assets/Scripts/Interactables/StateFlagInteractable.cs — 1529 bytes — ok
+- Assets/Scripts/Interactables/TeleportInteractable.cs — 3187 bytes — ok
+- Assets/Scripts/Narrative/GameStateVariableStorage.cs — 5729 bytes — ok
+- Assets/Scripts/Narrative/NarrativeService.cs — 2632 bytes — ok
+- Assets/Scripts/Narrative/YarnAutoStart.cs — 616 bytes — ok
+- Assets/Scripts/Narrative/YarnCommandBridge.cs — 7553 bytes — ok
+- Assets/Scripts/Phone/PhoneUIListener.cs — 1743 bytes — ok
+- Assets/Scripts/Player/PlayerController.cs — 4226 bytes — ok
+- Assets/Scripts/Runtime/IInteractable.cs — 113 bytes — ok
+- Assets/Scripts/Runtime/NodeInteractable.cs — 765 bytes — ok
+- Assets/Scripts/Save/SaveData.cs — 612 bytes — ok
+- Assets/Scripts/Save/SaveService.cs — 4469 bytes — ok
+- Assets/Scripts/State/GameStateKeys.cs — 996 bytes — ok
+- Assets/Scripts/State/PlayerStateDebugger.cs — 734 bytes — ok
+- Assets/Scripts/State/PlayerStateService.cs — 4993 bytes — ok
+- Assets/Scripts/State/PlayerStateSnapshot.cs — 1378 bytes — ok
+- Assets/Scripts/Trace/FileTraceStore.cs — 2672 bytes — ok
 - Assets/Scripts/Trace/InMemoryTraceStore.cs — 686 bytes — ok
 - Assets/Scripts/Trace/ITraceStore.cs — 257 bytes — ok
-- Assets/Scripts/Trace/TraceEvent.cs — 352 bytes — ok
-- Assets/Scripts/Trace/TraceService.cs — 1343 bytes — ok
+- Assets/Scripts/Trace/TraceEvent.cs — 828 bytes — ok
+- Assets/Scripts/Trace/TraceService.cs — 2894 bytes — ok
 - Assets/Scripts/UI/BillboardToCamera.cs — 857 bytes — ok
-- Assets/Scripts/UI/ChoiceButton.cs — 315 bytes — ok
-- Assets/Scripts/UI/DialogueUI.cs — 6699 bytes — ok
-- Assets/Scripts/UI/DossierUI.cs — 1580 bytes — ok
-- Assets/Scripts/UI/Dragable.cs — 2431 bytes — ok
-- Assets/Scripts/UI/DropSlot.cs — 459 bytes — ok
-- Assets/Scripts/UI/EpisodeSummaryUI.cs — 1900 bytes — ok
 - Assets/Scripts/UI/OutcomeToastUI.cs — 1014 bytes — ok
-- Assets/Scripts/UI/PCUI.cs — 4152 bytes — ok
 - Assets/Scripts/UI/ScreenFader.cs — 1786 bytes — ok
-- Assets/Scripts/UI/SummaryUI.cs — 485 bytes — ok
-- Assets/Scripts/UI/WorldSpaceUIFollow.cs — 3143 bytes — ok
+- Assets/Scripts/UI/ToastUIListener.cs — 807 bytes — ok
 
-
-
-Folder Assets/Scripts
-File BeatInteractable.cs
-using UnityEngine;
-using SeriousGame.Content;
-using System.Linq;
-
-namespace SeriousGame.Runtime
-{
-    public interface IInteractable
-    {
-        void Interact();
-    }
-    public class BeatInteractable : MonoBehaviour, IInteractable
-    {
-        [Header("Các Beat ID object này có thể kích")]
-        public string[] supportedBeatIds;// array
-
-        [Header("UI Prompt")]
-        public GameObject interactPrompt;
-
-        public void Interact()
-        {
-            var currentBeat = EpisodeController.Instance.GetCurrentBeat();
-            if (currentBeat == null) return;
-
-            // Object này có hỗ trợ beat hiện tại không?
-            if (supportedBeatIds.Contains(currentBeat.beatId))
-            {
-                EpisodeController.Instance.OnWorldInteract(currentBeat.beatId);
-            }
-            else
-            {
-                Debug.Log($"[BeatInteractable] Beat {currentBeat.beatId} không hợp với object {name}");
-            }
-        }
-
-        void Update()
-        {
-            UpdatePrompt();
-        }
-
-        void UpdatePrompt()
-        {
-            if (interactPrompt == null) return;
-
-            var currentBeat = EpisodeController.Instance.GetCurrentBeat();
-            if (currentBeat == null)
-            {
-                interactPrompt.SetActive(false);
-                return;
-            }
-
-            bool canInteract = supportedBeatIds.Contains(currentBeat.beatId);
-            interactPrompt.SetActive(canInteract);
-        }
-    }
-
-}
-
-File VRBeatInteractor.cs
-using SeriousGame.Runtime;
-using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.Interaction.Toolkit.Interactors;
-
-public class VRBeatInteractor : MonoBehaviour
-{
-    [Header("Ray source")]
-    [SerializeField] private XRRayInteractor rayInteractor;
-
-    [Header("Input (usually Trigger)")]
-    [SerializeField] private InputActionReference interactAction;
-
-    [Header("Optional filtering")]
-    [SerializeField] private LayerMask interactMask = ~0;
-    [SerializeField] private float fallbackMaxDistance = 10f;
-
-    private void OnEnable()
-    {
-        if (interactAction.action != null)
-        {
-            interactAction.action.Enable();
-            interactAction.action.performed += OnInteractPerformed;
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (interactAction.action != null)
-            interactAction.action.performed -= OnInteractPerformed;
-    }
-
-    private void OnInteractPerformed(InputAction.CallbackContext ctx)
-    {
-        // 1) Prefer XRRayInteractor hit (matches the visible ray)
-        if (rayInteractor != null && rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
-        {
-            TryCallInteract(hit);
-            return;
-        }
-
-        // 2) Fallback: manual physics raycast from this transform forward
-        Ray ray = new Ray(transform.position, transform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit2, fallbackMaxDistance, interactMask, QueryTriggerInteraction.Ignore))
-        {
-            TryCallInteract(hit2);
-        }
-    }
-
-    private void TryCallInteract(RaycastHit hit)
-    {
-        // Use GetComponentInParent because collider may be on a child
-        var interactable = hit.collider.GetComponentInParent<IInteractable>();
-        if (interactable != null)
-        {
-            interactable.Interact();
-        }
-        // else: nothing to interact with
-    }
-}
 
 
 Folder Assets/Scripts/App
@@ -238,6 +99,9 @@ using UnityEngine;
 using SeriousGame.Content;
 using SeriousGame.Trace;
 using SeriousGame.Feedback;
+using SeriousGame.State;
+using SeriousGame.Save;
+using SeriousGame.Narrative;
 
 namespace SeriousGame.App
 {
@@ -246,8 +110,11 @@ namespace SeriousGame.App
         public AppConfigSO Config { get; private set; }
         public SceneService Scenes { get; private set; }
         public SessionService Session { get; private set; }
+        public PlayerStateService PlayerState { get; private set; }
         public TraceService Trace { get; private set; }
         public FeedbackService Feedback { get; private set; }
+        public SaveService Save { get; private set; }
+        public NarrativeService Narrative { get; private set; }
 
         public void Init(AppConfigSO config)
         {
@@ -255,18 +122,27 @@ namespace SeriousGame.App
 
             Scenes = new SceneService();
             Session = new SessionService();
+            PlayerState = new PlayerStateService();
 
             var store = new InMemoryTraceStore();
-            Trace = new TraceService(store);
+            var fileStore = new FileTraceStore();
+            Trace = new TraceService(store, fileStore);
 
-            Feedback = new FeedbackService(Trace, config != null ? config.traceTaxonomy : null);
+            Feedback = new FeedbackService(Trace, config != null ? config.traceTaxonomy : null, PlayerState);
+            Save = new SaveService(Session, PlayerState);
+            Narrative = new NarrativeService(this);
+        }
+
+        private void OnDestroy()
+        {
+            if (Narrative != null)
+                Narrative.Dispose();
         }
     }
 }
 
 File GameBootstrap.cs
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using SeriousGame.Content;
 
 namespace SeriousGame.App
@@ -301,29 +177,57 @@ namespace SeriousGame.App
             ctx.Init(config);
 
             Context = ctx;
+
+            if (ctx.Session != null && string.IsNullOrWhiteSpace(ctx.Session.CurrentSessionId))
+                ctx.Session.Begin();
         }
 
-        public void StartDemo()
+    }
+}
+
+File GameEventBus.cs
+using System;
+
+namespace SeriousGame.App
+{
+    public static class GameEventBus
+    {
+        // UI requests
+        public static event Action<string> OnPhoneChatRequested;
+        public static event Action<string, string> OnPhoneMessageReceived;
+        public static event Action<string> OnDialogueRequested;
+        public static event Action<string> OnToastRequested;
+        public static event Action OnSummaryRequested;
+        public static event Action<string> OnHintRequested;
+
+        public static void RaisePhoneChatRequested(string interactionId)
         {
-            if (config == null) return;
+            OnPhoneChatRequested?.Invoke(interactionId);
+        }
 
-            // Boot scene -> next
-            string targetScene;
-            if (config.skipMainMenuAndAutoStartEpisode)
-            {
-                // Prefer Episode entry scene if available
-                var ep = config.defaultEpisode;
-                var epScene = ep != null ? ep.GetEntrySceneName() : "";
-                targetScene = string.IsNullOrWhiteSpace(epScene) ? config.demoEpisodeSceneName : epScene;
-            }
-            else
-            {
-                targetScene = config.mainMenuSceneName;
-            }
+        public static void RaisePhoneMessageReceived(string characterName, string message)
+        {
+            OnPhoneMessageReceived?.Invoke(characterName, message);
+        }
 
-            var active = SceneManager.GetActiveScene().name;
-            if (!string.IsNullOrWhiteSpace(targetScene) && active != targetScene)
-                SceneManager.LoadScene(targetScene);
+        public static void RaiseDialogueRequested(string nodeName)
+        {
+            OnDialogueRequested?.Invoke(nodeName);
+        }
+
+        public static void RaiseToastRequested(string message)
+        {
+            OnToastRequested?.Invoke(message);
+        }
+
+        public static void RaiseSummaryRequested()
+        {
+            OnSummaryRequested?.Invoke();
+        }
+
+        public static void RaiseHintRequested(string message)
+        {
+            OnHintRequested?.Invoke(message);
         }
     }
 }
@@ -391,11 +295,7 @@ namespace SeriousGame.App
             string target = null;
 
             if (cfg != null)
-            {
-                var ep = cfg.defaultEpisode;
-                var epScene = ep != null ? ep.GetEntrySceneName() : "";
-                target = string.IsNullOrWhiteSpace(epScene) ? cfg.demoEpisodeSceneName : epScene;
-            }
+                target = cfg.demoEpisodeSceneName;
 
             if (string.IsNullOrWhiteSpace(target))
             {
@@ -409,6 +309,7 @@ namespace SeriousGame.App
 }
 
 File SceneService.cs
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace SeriousGame.App
@@ -419,6 +320,12 @@ namespace SeriousGame.App
         {
             if (string.IsNullOrWhiteSpace(sceneName)) return;
             SceneManager.LoadScene(sceneName);
+        }
+
+        public AsyncOperation LoadAsync(string sceneName)
+        {
+            if (string.IsNullOrWhiteSpace(sceneName)) return null;
+            return SceneManager.LoadSceneAsync(sceneName);
         }
     }
 }
@@ -431,10 +338,20 @@ namespace SeriousGame.App
     public class SessionService
     {
         public string CurrentSessionId { get; private set; }
+        public string ParticipantId { get; private set; }
 
-        public void Begin()
+        public void Begin(string participantId = null)
         {
             CurrentSessionId = Guid.NewGuid().ToString("N");
+            if (!string.IsNullOrWhiteSpace(participantId))
+                ParticipantId = participantId;
+        }
+
+        public void Restore(string sessionId, string participantId = null)
+        {
+            CurrentSessionId = sessionId;
+            if (!string.IsNullOrWhiteSpace(participantId))
+                ParticipantId = participantId;
         }
     }
 }
@@ -458,157 +375,7 @@ namespace SeriousGame.Content
         public bool skipMainMenuAndAutoStartEpisode = true;
 
         [Header("Content")]
-        public EpisodeSO defaultEpisode;
         public TraceTaxonomySO traceTaxonomy;
-    }
-}
-
-File BeatSO.cs
-﻿using UnityEngine;
-
-namespace SeriousGame.Content
-{
-    [CreateAssetMenu(menuName = "SeriousGame/Content/Beat", fileName = "Beat")]
-    public class BeatSO : ScriptableObject
-    {
-        public string beatId = "B01";
-        [TextArea] public string objectiveText;
-
-        [Header("Core")]
-        public InteractionSO interaction; // MVP quick
-        public InteractionSO[] interactions; // future extension
-
-        [Header("Flow")]
-        // Nếu true: Xong beat trước là chạy beat này ngay (ví dụ Minh tự nói).
-        // Nếu false: Phải bấm E vào NPC hoặc đi vào Trigger mới chạy.
-        public bool autoStart = false;
-
-        [Header("Trigger Condition")]
-        public bool requireInteract;
-        public string interactTargetId; // ví dụ: "guard", "atm", "phone"
-
-        public bool endChapter;
-
-
-        public InteractionSO GetPrimaryInteraction()
-        {
-            if (interactions != null && interactions.Length > 0 && interactions[0] != null)
-                return interactions[0];
-            return interaction;
-        }
-    }
-}
-
-File ChoiceSO.cs
-﻿using UnityEngine;
-
-namespace SeriousGame.Content
-{
-    [CreateAssetMenu(menuName = "SeriousGame/Content/Choice", fileName = "Choice")]
-    public class ChoiceSO : ScriptableObject
-    {
-        public string choiceId = "C01";
-        public string text;
-        public string stateToTrigger;
-
-        [Header("Trace (empty => not meaningful => no log)")]
-        public string traceTypeId;
-
-        [Header("Outcome (immediate, optional)")]
-        [TextArea] public string outcomeText;
-
-        [Header("Flow")]
-        // public string nextBeatId; // optional; if empty => go next index
-        public BeatSO nextBeat;
-        public InteractionSO outcomeInteraction;
-    }
-}
-
-File EpisodeSO.cs
-﻿using UnityEngine;
-
-namespace SeriousGame.Content
-{
-    [CreateAssetMenu(menuName = "SeriousGame/Content/Episode", fileName = "Episode")]
-    public class EpisodeSO : ScriptableObject
-    {
-        public string episodeId = "E01";
-        public string title = "Chương 1 - Demo";
-        [TextArea] public string learningOutcome;
-
-        [Header("Option A: Scenes (recommended)")]
-        public SceneSO[] scenes;
-
-        [Header("Option B: Direct Beats (quick MVP)")]
-        public BeatSO[] beats;
-
-        public BeatSO[] GetAllBeats()
-        {
-            if (beats != null && beats.Length > 0) return beats;
-
-            if (scenes == null) return new BeatSO[0];
-            // flatten
-            var list = new System.Collections.Generic.List<BeatSO>();
-            foreach (var sc in scenes)
-            {
-                if (sc == null || sc.beats == null) continue;
-                list.AddRange(sc.beats);
-            }
-            return list.ToArray(); // add beats to array
-        }
-
-        public string GetEntrySceneName()
-        {
-            if (scenes != null && scenes.Length > 0 && scenes[0] != null)
-                return scenes[0].unitySceneName;
-            return string.Empty;
-        }
-    }
-}
-
-File InteractionSO.cs
-using UnityEngine;
-
-namespace SeriousGame.Content
-{
-    public enum InteractionType
-    {
-        Chat,
-        Browser,
-        BankTransfer,
-        PhoneCall,
-        Dialogue,
-        Task,
-        PC,
-
-    }
-
-    [CreateAssetMenu(menuName = "SeriousGame/Content/Interaction", fileName = "Interaction")]
-    public class InteractionSO : ScriptableObject
-    {
-        public string interactionId = "I01";
-        public InteractionType type;
-
-        // [TextArea] public string prompt;
-        [Header("Nội dung thoại (Nhập theo thứ tự)")]
-        [TextArea(3, 10)]
-        public string[] dialogueLines;
-        public ChoiceSO[] choices;
-
-    }
-}
-
-File SceneSO.cs
-using UnityEngine;
-
-namespace SeriousGame.Content
-{
-    [CreateAssetMenu(menuName = "SeriousGame/Content/Scene", fileName = "Scene")]
-    public class SceneSO : ScriptableObject
-    {
-        public string sceneId = "S01";
-        public string unitySceneName = "Episode_Demo";
-        public BeatSO[] beats;
     }
 }
 
@@ -682,34 +449,38 @@ namespace SeriousGame.Feedback
 
 File FeedbackService.cs
 ﻿using System.Collections.Generic;
-using SeriousGame.Content;
 using SeriousGame.Trace;
+using SeriousGame.State;
+using SeriousGame.Content;
 
 namespace SeriousGame.Feedback
 {
     public class FeedbackService
     {
         private readonly TraceService _trace;
-        private readonly TraceTaxonomySO _taxonomy;
+        private readonly SeriousGame.Content.TraceTaxonomySO _taxonomy;
+        private readonly PlayerStateService _state;
 
-        public FeedbackService(TraceService trace, TraceTaxonomySO taxonomy)
+        public FeedbackService(TraceService trace, SeriousGame.Content.TraceTaxonomySO taxonomy, PlayerStateService state = null)
         {
             _trace = trace;
             _taxonomy = taxonomy;
+            _state = state;
         }
 
-        public FeedbackReport GenerateEndChapterReport(string sessionId, EpisodeSO episode)
+        // Quick and simple feedback report generation based on trace events and player state.ss
+        public FeedbackReport GenerateEndChapterReport(string sessionId)
         {
             var report = new FeedbackReport();
             var events = _trace.GetSession(sessionId);
 
-            // Count by traceTypeId
+            // Count by verb
             var count = new Dictionary<string, int>();
             foreach (var e in events)
             {
-                if (string.IsNullOrWhiteSpace(e.traceTypeId)) continue;
-                if (!count.ContainsKey(e.traceTypeId)) count[e.traceTypeId] = 0;
-                count[e.traceTypeId]++;
+                if (string.IsNullOrWhiteSpace(e.verb)) continue;
+                if (!count.ContainsKey(e.verb)) count[e.verb] = 0;
+                count[e.verb]++;
             }
 
             int score = 0;
@@ -733,12 +504,26 @@ namespace SeriousGame.Feedback
             report.totalRiskScore = score;
 
             // Compose text quick MVP
-            var epTitle = episode != null ? episode.title : "Episode";
-            var text = $"TỔNG KẾT: {epTitle}\n";
+            var text = "TỔNG KẾT\n";
             text += $"RiskScore: {score} (âm là tốt, dương là rủi ro)\n\n";
             foreach (var it in report.items)
             {
                 text += $"- {it.title}: {it.scoreDelta}\n  {it.detail}\n";
+            }
+
+            if (_state != null)
+            {
+                var snapshot = _state.GetSnapshot();
+                if (snapshot != null && snapshot.entries != null && snapshot.entries.Count > 0)
+                {
+                    text += "\nState snapshot:\n";
+                    for (int i = 0; i < snapshot.entries.Count; i++)
+                    {
+                        var entry = snapshot.entries[i];
+                        if (entry == null) continue;
+                        text += $"- {entry.key}: {entry.value}\n";
+                    }
+                }
             }
 
             report.rawSummaryText = text;
@@ -749,39 +534,13 @@ namespace SeriousGame.Feedback
 
 
 Folder Assets/Scripts/Interactables
-File ChairController.cs
-using SeriousGame.Runtime;
-using UnityEngine;
-
-public class ChairController : MonoBehaviour
-{
-    public Transform sitPoint;
-
-    public void Sit(PlayerController player)
-    {
-        player.SetLockState(true);
-        player.isSitting = true;
-
-        player.TeleportTo(sitPoint);
-
-        player.cameraHolder.localPosition += new Vector3(0, 0, 2f);
-    }
-
-    public void Stand(PlayerController player)
-    {
-        player.isSitting = false;
-        player.cameraHolder.localPosition -= new Vector3(0, 0, 2f);
-        player.SetLockState(false);
-    }
-}
-
-
 File StateFlagInteractable.cs
 using UnityEngine;
+using SeriousGame.App;
 using SeriousGame.Runtime;
 
 // Interactable chỉ dùng để set GameState, không trigger Beat/Episode
-public class StateFlagInteractable : MonoBehaviour, IInteractable
+public class StateFlagInteractable : MonoBehaviour
 {
     [Header("Game State Key to set")]
     public string flagKey;
@@ -816,14 +575,14 @@ public class StateFlagInteractable : MonoBehaviour, IInteractable
             return;
         }
 
-        if (GameStateManager.Instance != null)
+        var ctx = GameBootstrap.Context;
+        if (ctx == null || ctx.PlayerState == null)
         {
-            GameStateManager.Instance.SetFlag(flagKey, valueToSet);
+            Debug.LogWarning("[StateFlagInteractable] PlayerState is not available.");
+            return;
         }
-        else
-        {
-            Debug.LogWarning("[StateFlagInteractable] GameStateManager.Instance is null.");
-        }
+
+        ctx.PlayerState.SetFlag(flagKey, valueToSet);
     }
 
     void UpdatePromptVisibility()
@@ -839,11 +598,12 @@ public class StateFlagInteractable : MonoBehaviour, IInteractable
 
 File TeleportInteractable.cs
 using UnityEngine;
+using SeriousGame.App;
 using SeriousGame.Runtime;
 
 // Interactable dùng để teleport player tới một vị trí (vd: qua cổng -> vào office)
 // Có thể kích hoạt bằng nhấn E (IInteractable) hoặc tự động khi player bước vào trigger.
-public class TeleportInteractable : MonoBehaviour, IInteractable
+public class TeleportInteractable : MonoBehaviour
 {
     [Header("Player & Destination")]
     public PlayerController player;      // kéo PlayerController vào đây
@@ -880,13 +640,14 @@ public class TeleportInteractable : MonoBehaviour, IInteractable
         // Nếu có điều kiện state thì kiểm tra trước
         if (!string.IsNullOrEmpty(requiredFlagKey))
         {
-            if (GameStateManager.Instance == null)
+            var ctx = GameBootstrap.Context;
+            if (ctx == null || ctx.PlayerState == null)
             {
-                Debug.LogWarning("[TeleportInteractable] GameStateManager.Instance is null.");
+                Debug.LogWarning("[TeleportInteractable] PlayerState is not available.");
                 return;
             }
 
-            bool current = GameStateManager.Instance.CheckFlag(requiredFlagKey);
+            bool current = ctx.PlayerState.CheckFlag(requiredFlagKey);
             if (current != requiredValue)
             {
                 Debug.Log("[TeleportInteractable] Condition not met: " + requiredFlagKey);
@@ -931,169 +692,564 @@ public class TeleportInteractable : MonoBehaviour, IInteractable
 }
 
 
-Folder Assets/Scripts/NPC
-File LeadController.cs
-﻿using System;
-using System.Collections;
+Folder Assets/Scripts/Narrative
+File GameStateVariableStorage.cs
+using System.Collections.Generic;
 using UnityEngine;
-using SeriousGame.Content;
+using Yarn.Unity;
+using SeriousGame.App;
+using SeriousGame.State;
 
-namespace SeriousGame.Runtime
+namespace SeriousGame.Narrative
 {
-    public class LeadController : MonoBehaviour
+    public class GameStateVariableStorage : VariableStorageBehaviour
     {
-        public Transform homeAnchor;   // vị trí bàn sếp
-        public Transform talkAnchor;   // vị trí đứng nói chuyện
-        public float moveSpeed = 1.5f;
-        Animator animator;
-
-
-        private void Start()
+        private PlayerStateService State
         {
-            animator = GetComponent<Animator>();
-        }
-        public void GoTalkThenReturn(InteractionSO dialogue, Action onDone)
-        {
-            StartCoroutine(Flow(dialogue, onDone));
-        }
-
-        IEnumerator Flow(InteractionSO dialogue, Action onDone)
-        {
-            // 1️⃣ Đi tới bàn player
-            yield return MoveTo(talkAnchor.position);
-
-            // 2️⃣ MỞ DIALOGUE
-            EpisodeController.Instance.beatRunner
-                .RunInteraction(dialogue, () =>
-                {
-                    // 3️⃣ NÓI XONG → QUAY VỀ
-                    StartCoroutine(ReturnHome(onDone));
-                });
-        }
-
-        IEnumerator ReturnHome(Action onDone)
-        {
-            yield return MoveTo(homeAnchor.position);
-            onDone?.Invoke();
-        }
-
-        IEnumerator MoveTo(Vector3 target)
-        {
-            animator.SetBool("isWalking", true);
-            while (Vector3.Distance(transform.position, target) > 0.05f)
+            get
             {
-                transform.position = Vector3.MoveTowards(
-                    transform.position,
-                    target,
-                    moveSpeed * Time.deltaTime
-                );
-
-                // xoay mặt theo hướng đi (cho tự nhiên)
-                Vector3 dir = (target - transform.position).normalized;
-                if (dir != Vector3.zero)
-                    transform.rotation = Quaternion.Slerp(
-                        transform.rotation,
-                        Quaternion.LookRotation(dir),
-                        10f * Time.deltaTime
-                    );
-
-                yield return null;
+                var ctx = GameBootstrap.Context;
+                return ctx != null ? ctx.PlayerState : null;
             }
-            animator.SetBool("isWalking", false);
+        }
+
+        public override void Clear()
+        {
+            // Intentionally no-op to avoid wiping shared state at runtime.
+        }
+
+        public override bool TryGetValue<T>(string variableName, out T result)
+        {
+            result = default;
+
+            var key = Normalize(variableName);
+            if (!GameStateKeys.IsValid(key)) Debug.LogWarning($"[GameStateVariableStorage] Invalid variable name '{variableName}' (normalized to '{key}'). Variable names must be non-empty and can only contain letters, numbers, and underscores.");
+
+            var state = State;
+            if (state == null) return false;
+
+            if (typeof(T) == typeof(bool))
+            {
+                object value = state.CheckFlag(key);
+                result = (T)value;
+                return true;
+            }
+
+            if (typeof(T) == typeof(float))
+            {
+                object value = (float)state.Get(key);
+                result = (T)value;
+                return true;
+            }
+
+            if (typeof(T) == typeof(string))
+            {
+                object value = state.CheckFlag(key) ? "true" : "false";
+                result = (T)value;
+                return true;
+            }
+
+            return false;
+        }
+
+        public override void SetValue(string variableName, string value)
+        {
+            // For string values, we only support "true"/"false" for convenience, and store them as boolean flags in the PlayerStateService.
+        }
+        //set States via Yarn should only accept numeric values
+        public override void SetValue(string variableName, float value)
+        {
+            var key = Normalize(variableName);
+            if (!GameStateKeys.IsValid(key)) Debug.LogWarning("Creating new game state keys via Yarn");
+            // allow creating new keys via Yarn, but only boolean flags are supported for GameState keys.
+
+            var state = State;
+            if (state == null) return;
+
+            state.SetFlag(key, value >= 1f);
+        }
+
+
+        //set Flags via Yarn should only accept boolean values, but we can also interpret "true"/"false" strings for convenience.
+        public override void SetValue(string variableName, bool value)
+        {
+            var key = Normalize(variableName);
+             if (!GameStateKeys.IsValid(key)) Debug.LogWarning("Creating new flag keys via Yarn");
+
+            var state = State;
+            if (state == null) return;
+
+            state.SetFlag(key, value);
+        }
+
+        public override bool Contains(string variableName)
+        {
+            var key = Normalize(variableName);
+            // if (!GameStateKeys.IsValid(key)) return false;
+            return State != null;
+        }
+
+        public override (Dictionary<string, float> FloatVariables,
+            Dictionary<string, string> StringVariables,
+            Dictionary<string, bool> BoolVariables) GetAllVariables()
+        {
+            var floats = new Dictionary<string, float>();
+            var strings = new Dictionary<string, string>();
+            var bools = new Dictionary<string, bool>();
+            var state = State;
+            if (state == null) return (floats, strings, bools);
+
+            var snapshot = state.GetFlagsSnapshot();
+            if (snapshot == null) return (floats, strings, bools);
+
+            foreach (var kv in snapshot)
+            {
+                // if (!GameStateKeys.IsValid(kv.Key)) continue;
+                bools[kv.Key] = kv.Value;
+            }
+
+            return (floats, strings, bools);
+        }
+
+        public override void SetAllVariables(
+            Dictionary<string, float> floatVariables,
+            Dictionary<string, string> stringVariables,
+            Dictionary<string, bool> boolVariables,
+            bool clearExistingVariables)
+        {
+            var state = State;
+            if (state == null) return;
+
+            if (clearExistingVariables)
+            {
+                // No-op: PlayerState persists globally and should not be wiped here.
+            }
+
+            if (boolVariables != null)
+            {
+                foreach (var kv in boolVariables)
+                {
+                    var key = Normalize(kv.Key);
+                    // if (!GameStateKeys.IsValid(key)) continue;
+                    state.SetFlag(key, kv.Value);
+                }
+            }
+
+            if (floatVariables != null)
+            {
+                foreach (var kv in floatVariables)
+                {
+                    var key = Normalize(kv.Key);
+                    // if (!GameStateKeys.IsValid(key)) continue;
+                    state.SetFlag(key, kv.Value >= 1f);
+                }
+            }
+        }
+
+        // Normalizes a variable name by removing a leading '$' if present. This allows Yarn scripts to reference variables with or without the '$' prefix for convenience.
+        private static string 
+        Normalize(string variableName)
+        {
+            if (string.IsNullOrWhiteSpace(variableName)) return string.Empty;
+            return variableName[0] == '$' ? variableName.Substring(1) : variableName;
+        }
+    }
+}
+
+File NarrativeService.cs
+using UnityEngine;
+using Yarn.Unity;
+using SeriousGame.App;
+using SeriousGame.Runtime;
+
+namespace SeriousGame.Narrative
+{
+    public class NarrativeService
+    {
+        private readonly AppContext _context;
+        private DialogueRunner _runner;
+        private PlayerController _player;
+
+        public NarrativeService(AppContext context)
+        {
+            _context = context;
+        }
+
+        private void OnDialogueStarted()
+        {   
+            if (_player != null)
+            {
+                // Khoá di chuyển, xoay chuột, hiện Cursor
+                _player.SetLockState(true);
+                Debug.Log("[NarrativeService] Dialogue started, locking player controls.");
+            }
+        }
+
+        private void OnDialogueEnded()
+        {
+            if (_player != null)
+            {
+                // Mở lại di chuyển, ẩn Cursor để tiếp tục chơi
+                _player.SetLockState(false);
+                Debug.Log("[NarrativeService] Dialogue ended, unlocking player controls.");
+            }
+        }
+
+        public string CurrentNode { get; private set; }
+
+        public void BindRunner(DialogueRunner runner)
+        {
+            if (_runner == runner) return;
+            UnbindRunner();
+
+            _runner = runner;
+            if (_runner != null)
+            {
+                _runner.onDialogueStart.AddListener(OnDialogueStarted);
+                _runner.onDialogueComplete.AddListener(OnDialogueEnded);
+            }
+        }
+
+        public void UnbindRunner()
+        {
+            if (_runner == null) return;
+            _runner.onDialogueStart.RemoveListener(OnDialogueStarted);
+            _runner.onDialogueComplete.RemoveListener(OnDialogueEnded);
+            _runner = null;
+        }
+
+        public void BindPlayer(PlayerController player)
+        {
+            _player = player;
+        }
+
+        public void SetCurrentNode(string nodeName)
+        {
+            CurrentNode = nodeName;
+        }
+
+        public void StartNode(string nodeName)
+        {
+            if (string.IsNullOrWhiteSpace(nodeName)) return;
+            if (_runner == null)
+            {
+                Debug.LogWarning("[NarrativeService] DialogueRunner not bound.");
+                return;
+            }
+
+            CurrentNode = nodeName;
+            _runner.StartDialogue(nodeName);
+        }
+
+        public AppContext GetContext()
+        {
+            return _context;
+        }
+        public void Dispose()
+        {
+            UnbindRunner();
+        }
+    }
+}
+
+File YarnAutoStart.cs
+// using UnityEngine;
+// using SeriousGame.App;
+
+// namespace SeriousGame.Narrative
+// {
+//     public class YarnAutoStart : MonoBehaviour
+//     {
+//         public string nodeName;
+//         public bool startOnEnable = true;
+
+//         private void Start()
+//         {
+//             if (startOnEnable)
+//                 StartNode();
+//         }
+
+//         public void StartNode()
+//         {
+//             var ctx = GameBootstrap.Context;
+//             if (ctx == null || ctx.Narrative == null) return;
+//             ctx.Narrative.StartNode(nodeName);
+//         }
+//     }
+// }
+
+File YarnCommandBridge.cs
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using Yarn.Unity;
+using SeriousGame.App;
+using SeriousGame.Trace;
+using SeriousGame.State;
+using SeriousGame.Runtime;
+
+namespace SeriousGame.Narrative
+{
+    public class YarnCommandBridge : MonoBehaviour
+    {
+        [Header("Context (optional override)")]
+        // [SerializeField] private AppContext contextOverride;
+
+        [Header("Yarn")]
+        [SerializeField] private DialogueRunner runner;
+
+        [Header("Optional Player")]
+        [SerializeField] private PlayerController player;
+
+        // private AppContext Context => contextOverride != null ? contextOverride : GameBootstrap.Context;
+        private static AppContext Context => GameBootstrap.Context;
+
+        private void Awake()
+        {
+            var ctx = Context;
+            if (ctx != null && ctx.Narrative != null)
+            {
+                if (runner != null)
+                    ctx.Narrative.BindRunner(runner);
+                if (player != null)
+                    ctx.Narrative.BindPlayer(player);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            var ctx = Context;
+            if (ctx != null && ctx.Narrative != null)
+                ctx.Narrative.UnbindRunner();
+        }
+
+        [YarnCommand("trace")]
+        public static void TraceCommand(string traceTypeId)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.Trace == null) return;
+
+            var sessionId = ctx.Session != null ? ctx.Session.CurrentSessionId : "";
+            var actor = ctx.Session != null && !string.IsNullOrWhiteSpace(ctx.Session.ParticipantId)
+                ? ctx.Session.ParticipantId
+                : sessionId;
+            var yarnNode = ctx.Narrative != null ? ctx.Narrative.CurrentNode : "";
+            var context = ctx.Trace.BuildContext(
+                SceneManager.GetActiveScene().name,
+                yarnNode,
+                SceneManager.GetActiveScene().name,
+                ctx.PlayerState != null ? ctx.PlayerState.GetSnapshot() : null);
+
+            ctx.Trace.LogEvent(
+                sessionId,
+                actor,
+                traceTypeId,
+                string.IsNullOrWhiteSpace(yarnNode) ? "Node_Unknown" : yarnNode,
+                null,
+                context);
+        }
+
+        [YarnCommand("set_node")]
+        public static void SetNode(string nodeName)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.Narrative == null) return;
+            ctx.Narrative.SetCurrentNode(nodeName);
+        }
+
+        [YarnCommand("trace_choice")]
+        public static void TraceChoice(string choiceId, string traceTypeId)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.Trace == null) return;
+            if (string.IsNullOrWhiteSpace(traceTypeId) || string.IsNullOrWhiteSpace(choiceId)) return;
+
+            var sessionId = ctx.Session != null ? ctx.Session.CurrentSessionId : "";
+            var actor = ctx.Session != null && !string.IsNullOrWhiteSpace(ctx.Session.ParticipantId)
+                ? ctx.Session.ParticipantId
+                : sessionId;
+            var yarnNode = ctx.Narrative != null ? ctx.Narrative.CurrentNode : "";
+            var context = ctx.Trace.BuildContext(
+                SceneManager.GetActiveScene().name,
+                yarnNode,
+                SceneManager.GetActiveScene().name,
+                ctx.PlayerState != null ? ctx.PlayerState.GetSnapshot() : null);
+
+            ctx.Trace.LogEvent(
+                sessionId,
+                actor,
+                traceTypeId,
+                choiceId,
+                null,
+                context);
+        }
+
+        [YarnCommand("add_state")]
+        public static void AddState(string key, int delta)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.PlayerState == null) return;
+            ctx.PlayerState.Add(key, delta);
+        }
+
+        [YarnCommand("load_scene")]
+        public static void LoadScene(string sceneName)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.Scenes == null) return;
+            ctx.Scenes.Load(sceneName);
+        }
+
+        [YarnCommand("show_summary")]
+        public static void ShowSummary()
+        {
+            SeriousGame.App.GameEventBus.RaiseSummaryRequested();
+        }
+
+        [YarnCommand("save_game")]
+        public static void SaveGame()
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.Save == null) return;
+
+            var episodeId = SceneManager.GetActiveScene().name;
+
+            var currentNode = ctx.Narrative != null ? ctx.Narrative.CurrentNode : "";
+            ctx.Save.SaveCurrent(episodeId, currentNode);
+        }
+
+        [YarnCommand("show_phone_chat")]
+        public static void ShowPhoneChat(string interactionId)
+        {
+            if (string.IsNullOrWhiteSpace(interactionId)) return;
+            SeriousGame.App.GameEventBus.RaisePhoneChatRequested(interactionId);
+        }
+
+        [YarnCommand("show_chat")]
+        public static void ShowChat(string characterName, string message)
+        {
+            if (string.IsNullOrWhiteSpace(message)) return;
+            SeriousGame.App.GameEventBus.RaisePhoneMessageReceived(characterName, message);
+        }
+
+        [YarnCommand("show_hint")]
+        public static void ShowHint(string message)
+        {
+            if (string.IsNullOrWhiteSpace(message)) return;
+            SeriousGame.App.GameEventBus.RaiseHintRequested(message);
+        }
+
+        [YarnCommand("set_state")]
+        public static void SetState(string key, int value)
+        {
+            var ctx = Context;
+            if (ctx == null || ctx.PlayerState == null) return;
+            ctx.PlayerState.Set(key, value);
+        }
+
+        [YarnCommand("set_flag")]
+        public static void SetFlag(string key, bool value = true)
+        {
+            if (string.IsNullOrWhiteSpace(key)) return;
+            var ctx = Context;
+            if (ctx == null || ctx.PlayerState == null) return;
+            ctx.PlayerState.SetFlag(key, value);
+        }
+     
+
+        [YarnCommand("clear_flag")]
+        public static void ClearFlag(string key)
+        {
+            SetFlag(key, false);
+        }
+
+        [YarnFunction("get_state")]
+        public static int GetState(string key)
+        {
+            var ctx = GameBootstrap.Context;
+            if (ctx == null || ctx.PlayerState == null) return 0;
+            return ctx.PlayerState.Get(key);
+        }
+
+        [YarnFunction("get_flag")]
+        public static bool GetFlag(string key)
+        {
+            if (string.IsNullOrWhiteSpace(key)) return false;
+            var ctx = GameBootstrap.Context;
+            if (ctx == null || ctx.PlayerState == null) return false;
+            return ctx.PlayerState.CheckFlag(key);
+        }
+
+        [YarnCommand("show_toast")]
+        public static void ShowToast(string message)
+        {
+            if (string.IsNullOrWhiteSpace(message)) return;
+            SeriousGame.App.GameEventBus.RaiseToastRequested(message);
+        }
+
+        [YarnCommand("test_func")]
+        public static void test_func(string message)
+        {
+            if (string.IsNullOrWhiteSpace(message)) return;
+            Debug.Log($"[YarnCommandBridge] test_func called with message: {message}");
         }
     }
 }
 
 
 Folder Assets/Scripts/Phone
-File ChatPanel.cs
-using System;
+File PhoneUIListener.cs
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
-using SeriousGame.Content;
-using SeriousGame.UI;
-using System.Text; // Thêm cái này để nối chuỗi cho đẹp
+using SeriousGame.App;
 
 namespace SeriousGame.Phone
 {
-    public class ChatPanel : MonoBehaviour
+    public class PhoneUIListener : MonoBehaviour
     {
-        public TMP_Text promptText;
-        public Transform choicesRoot;
-        public ChoiceButton choiceButtonPrefab;
+        [Header("UI Root")]
+        [SerializeField] private GameObject phoneRoot;
 
-        public void Bind(BeatSO beat, InteractionSO interaction, Action<BeatSO, ChoiceSO> onChoiceResolved)
+        [Header("Message List")]
+        [SerializeField] private ScrollRect scrollRect;
+        [SerializeField] private Transform contentRoot;
+        [SerializeField] private GameObject messageBubblePrefab;
+
+        private void OnEnable()
         {
-            // --- SỬA LỖI PROMPT Ở ĐÂY ---
-            if (promptText != null && interaction != null && interaction.dialogueLines != null)
-            {
-                // Vì đây là Chat, mình sẽ nối các câu thoại lại thành một đoạn tin nhắn
-                // Hoặc bạn có thể dùng vòng lặp để tạo ra nhiều tin nhắn riêng biệt sau này
-                StringBuilder sb = new StringBuilder();
-                foreach (var line in interaction.dialogueLines)
-                {
-                    sb.AppendLine(line);
-                    sb.AppendLine(); // Thêm khoảng cách giữa các tin nhắn
-                }
-                promptText.text = sb.ToString();
-            }
-            else
-            {
-                if (promptText != null) promptText.text = "";
-            }
-
-            // --- PHẦN CLEAR VÀ CHOICES GIỮ NGUYÊN ---
-            if (choicesRoot != null)
-            {
-                for (int i = choicesRoot.childCount - 1; i >= 0; i--)
-                    Destroy(choicesRoot.GetChild(i).gameObject);
-            }
-
-            if (interaction == null || interaction.choices == null || choiceButtonPrefab == null)
-            {
-                // Nếu không có lựa chọn nào, cho phép kết thúc beat
-                // Lưu ý: Có thể bạn muốn chờ người chơi bấm gì đó mới invoke null
-                return;
-            }
-
-            foreach (var c in interaction.choices)
-            {
-                if (c == null) continue;
-                var btn = Instantiate(choiceButtonPrefab, choicesRoot);
-                btn.SetText(c.text);
-
-                btn.button.onClick.RemoveAllListeners();
-                btn.button.onClick.AddListener(() =>
-                {
-                    onChoiceResolved?.Invoke(beat, c);
-                });
-            }
+            GameEventBus.OnPhoneMessageReceived += HandlePhoneMessage;
         }
-    }
-}
 
-File PhoneUIRoot.cs
-using System;
-using UnityEngine;
-using SeriousGame.Content;
-
-namespace SeriousGame.Phone
-{
-    public class PhoneUIRoot : MonoBehaviour
-    {
-        public ChatPanel chatPanel;
-
-        public void ShowChat(BeatSO beat, InteractionSO interaction, Action<BeatSO, ChoiceSO> onChoiceResolved)
+        private void OnDisable()
         {
-            if (chatPanel == null)
+            GameEventBus.OnPhoneMessageReceived -= HandlePhoneMessage;
+        }
+
+        private void HandlePhoneMessage(string characterName, string message)
+        {
+            if (contentRoot == null || messageBubblePrefab == null)
             {
-                Debug.LogError("[PhoneUIRoot] chatPanel missing.");
-                onChoiceResolved?.Invoke(beat, null);
+                Debug.LogWarning("[PhoneUIListener] Missing contentRoot or messageBubblePrefab.");
                 return;
             }
 
-            chatPanel.gameObject.SetActive(true);
-            chatPanel.Bind(beat, interaction, onChoiceResolved);
+            if (phoneRoot != null)
+                phoneRoot.SetActive(true);
+
+            var bubble = Instantiate(messageBubblePrefab, contentRoot);
+            var text = bubble.GetComponentInChildren<TMP_Text>();
+            if (text != null)
+            {
+                if (!string.IsNullOrWhiteSpace(characterName))
+                    text.text = $"{characterName}: {message}";
+                else
+                    text.text = message;
+            }
+
+            // Force layout update before scrolling.
+            Canvas.ForceUpdateCanvases();
+            if (scrollRect != null)
+                scrollRect.verticalNormalizedPosition = 0f;
         }
     }
 }
@@ -1102,7 +1258,7 @@ namespace SeriousGame.Phone
 Folder Assets/Scripts/Player
 File PlayerController.cs
 using UnityEngine;
-
+using SeriousGame.Runtime;
 namespace SeriousGame.Runtime
 {
     public class PlayerController : MonoBehaviour
@@ -1110,7 +1266,6 @@ namespace SeriousGame.Runtime
     
         public float interactDistance = 2f;
         public LayerMask interactableLayer;
-        public bool isSitting = false;
 
         [Header("Movement")]
         public float moveSpeed = 4f;
@@ -1136,23 +1291,16 @@ namespace SeriousGame.Runtime
 
         void Update()
         {   
-            // Khi bị khoá (đang trong UI / cutscene), vẫn cho phép vẽ ray debug
-            if (isLocked)
-            {
-                DrawLockedMouseDebugRay();
-                return;
-            }
-
+            if (isLocked) return;
             HandleMouseLook();
             HandleInteraction();
-            HandleSitting();
         }
 
         // Thêm hàm để điều khiển chuột
         public void SetLockState(bool locked)
-        {
+        {   Debug.Log($"[PlayerController] SetLockState: {locked}");
             isLocked = locked;
-            Cursor.lockState = locked ? CursorLockMode.None : CursorLockMode.Locked; 
+            Cursor.lockState = locked ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = locked;
             rb.linearVelocity = Vector3.zero; // Dừng lập tức
 
@@ -1169,31 +1317,29 @@ namespace SeriousGame.Runtime
         }
 
         void HandleMovement()
-        {   if (!isSitting)  // if is sitting then don't move
+        {
+            float h = Input.GetAxisRaw("Horizontal");
+            float v = Input.GetAxisRaw("Vertical");
+
+            Vector3 moveDir =
+                transform.right * h +
+                transform.forward * v;
+
+            // Cập nhật trạng thái đi bộ cho Animator dựa trên input
+            if (animator != null)
             {
-                float h = Input.GetAxisRaw("Horizontal");
-                float v = Input.GetAxisRaw("Vertical");
-
-                Vector3 moveDir =
-                    transform.right * h +
-                    transform.forward * v;
-
-                // Cập nhật trạng thái đi bộ cho Animator dựa trên input
-                if (animator != null)
-                {
-                    bool isMoving = moveDir.sqrMagnitude > 0.01f;
-                    animator.SetBool("isWalking", isMoving);
-                }
-
-                // Không có input thì không cần di chuyển
-                if (moveDir.sqrMagnitude <= 0.01f)
-                    return;
-
-                Vector3 velocity = moveDir.normalized * moveSpeed;
-                Vector3 targetPos = rb.position + velocity * Time.fixedDeltaTime;
-
-                rb.MovePosition(targetPos);
+                bool isMoving = moveDir.sqrMagnitude > 0.01f;
+                animator.SetBool("isWalking", isMoving);
             }
+
+            // Không có input thì không cần di chuyển
+            if (moveDir.sqrMagnitude <= 0.01f)
+                return;
+
+            Vector3 velocity = moveDir.normalized * moveSpeed;
+            Vector3 targetPos = rb.position + velocity * Time.fixedDeltaTime;
+
+            rb.MovePosition(targetPos);
         }
 
         void HandleMouseLook()
@@ -1210,37 +1356,15 @@ namespace SeriousGame.Runtime
 
         void HandleInteraction()
         {
-            // Ray ở giữa màn hình (dùng cho tương tác FPS)
-            Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
-            drawDebugRay(ray);
-
-            // Ray theo vị trí chuột (dùng để debug world space UI)
-            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Debug.DrawRay(mouseRay.origin, mouseRay.direction * interactDistance, Color.green, 0f);
-
-            // Chỉ khi nhấn E mới raycast và tương tác
             if (Input.GetKeyDown(KeyCode.E))
             {
+                Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
                 if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactableLayer))
                 {
                     var interactable = hit.collider.GetComponent<IInteractable>();
                     interactable?.Interact();
                 }
             }
-        }
-
-        // Vẽ ray theo chuột khi player bị khoá control (ví dụ đang mở PCUI)
-        void DrawLockedMouseDebugRay()
-        {
-            if (!Cursor.visible || Camera.main == null) return;
-
-            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Debug.DrawRay(mouseRay.origin, mouseRay.direction * interactDistance, Color.green, 0f);
-        }
-
-        void drawDebugRay(Ray ray)
-        {
-            Debug.DrawRay(ray.origin, ray.direction * interactDistance, Color.red, 0f);
         }
 
         // Teleport player tới một vị trí/rotation định trước (ví dụ: phòng office)
@@ -1259,561 +1383,571 @@ namespace SeriousGame.Runtime
             rb.linearVelocity = Vector3.zero;
         }
 
-        private void blockMovement()
-        {
-            rb.linearVelocity = Vector3.zero;
-        }
-
-        
-
-        // trong class PlayerController:
-        [HideInInspector] public bool isSittingByBeat = false;
-        private Vector3 originalCameraLocalPos;
-
-        // gọi khi muốn "ngồi" do beat điều khiển
-        public void SitAt(Transform sitAnchor)
-        {
-            if (sitAnchor == null) return;
-
-            // teleport player tới vị trí ghế
-            TeleportTo(sitAnchor);
-
-            // lưu vị trí camera ban đầu nếu chưa lưu
-            if (originalCameraLocalPos == Vector3.zero)
-                originalCameraLocalPos = cameraHolder.localPosition;
-
-            // chỉnh camera một chút để cảm giác ngồi (tweak giá trị theo scene)
-            cameraHolder.localPosition = originalCameraLocalPos + new Vector3(0f, -0.2f, 1.5f);
-
-            isSitting = true;
-            isSittingByBeat = true;
-
-            // khoá/đóng băng control nếu cần (nhưng vẫn cho phép look nếu bạn muốn)
-            SetLockState(false); // giữ mouse look; nếu muốn khoá cả mouse, SetLockState(true);
-        }
-
-        // gọi để đứng dậy (do F hoặc do beat muốn đứng)
-        public void StandUp()
-        {
-            isSitting = false;
-            isSittingByBeat = false;
-
-            // khôi phục camera
-            if (originalCameraLocalPos != Vector3.zero)
-                cameraHolder.localPosition = originalCameraLocalPos;
-
-            SetLockState(false);
-        }
-
-        public void HandleSitting()
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                // nếu đang ngồi do beat -> gọi StandUp cho consistent
-                if (isSitting && isSittingByBeat)
-                {
-                    StandUp();
-                    return;
-                }
-
-                isSitting = !isSitting;
-                if (isSitting)
-                {
-                    // local fallback: ngồi tại chỗ (không teleport)
-                    if (originalCameraLocalPos == Vector3.zero)
-                        originalCameraLocalPos = cameraHolder.localPosition;
-                    cameraHolder.localPosition += new Vector3(0, 0, 2f);
-                }
-                else
-                {
-                    cameraHolder.localPosition = originalCameraLocalPos;
-                }
-            }
-        }
-
-
-
-    }
-}
-
-File VRInteractorRaycast.cs
-using UnityEngine;
-using UnityEngine.InputSystem;
-
-namespace SeriousGame.Runtime
-{
-    /// <summary>
-    /// Raycast từ controller (hoặc một Transform bất kỳ) ra thế giới,
-    /// nếu trúng IInteractable thì gọi Interact().
-    /// Mục tiêu: giữ y nguyên toàn bộ Episode/Beat logic hiện tại.
-    /// </summary>
-    public class VRInteractorRaycast : MonoBehaviour
-    {
-        [Header("Raycast Settings")]
-        public float interactDistance = 3f;
-        public LayerMask interactableLayer;
-
-        [Header("Ray Origin (optional)")]
-        [Tooltip("Nếu để trống sẽ dùng chính transform của GameObject này.")]
-        public Transform rayOrigin;
-
-        [Header("Debug")]
-        [Tooltip("Chỉ để debug trong Editor, không bắt buộc.")]
-        public bool drawDebugRay = true;
-
-        [Header("Input System (tuỳ chọn)")]
-        [Tooltip("Gán action (ví dụ XRI RightHand Activate) để bóp trigger là Interact.")]
-        public InputActionReference interactAction;
-
-        void Awake()
-        {
-            if (rayOrigin == null)
-            {
-                rayOrigin = transform;
-            }
-        }
-
-        void OnEnable()
-        {
-            if (interactAction != null)
-            {
-                interactAction.action.performed += OnInteractAction;
-                interactAction.action.Enable();
-            }
-        }
-
-        void OnDisable()
-        {
-            if (interactAction != null)
-            {
-                interactAction.action.performed -= OnInteractAction;
-                interactAction.action.Disable();
-            }
-        }
-
-        void Update()
-        {
-            // Fallback cho lúc test trên PC chưa gắn input của XRI:
-            // Nhấn E để bắn ray từ controller.
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                TryInteract();
-            }
-        }
-
-        void OnInteractAction(InputAction.CallbackContext ctx)
-        {
-            // Được gọi khi action (trigger) được bóp
-            TryInteract();
-        }
-
-        /// <summary>
-        /// Hàm này bạn có thể gọi từ sự kiện input của XRI (trigger, grip...).
-        /// Ví dụ: map vào action "Activate" hoặc "Select".
-        /// </summary>
-        public void TryInteract()
-        {
-            if (rayOrigin == null)
-                return;
-
-            Ray ray = new Ray(rayOrigin.position, rayOrigin.forward);
-
-            if (drawDebugRay)
-            {
-                Debug.DrawRay(ray.origin, ray.direction * interactDistance, Color.cyan, 0f);
-            }
-
-            if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactableLayer))
-            {
-                var interactable = hit.collider.GetComponent<IInteractable>();
-                interactable?.Interact();
-            }
-        }
-
-        void OnDrawGizmosSelected()
-        {
-            if (rayOrigin == null)
-                rayOrigin = transform;
-
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawLine(rayOrigin.position, rayOrigin.position + rayOrigin.forward * interactDistance);
-        }
-    }
-}
-
-File VRSimpleLocomotion.cs
-using UnityEngine;
-
-namespace SeriousGame.Runtime
-{
-    /// <summary>
-    /// Di chuyển đơn giản cho XR Origin bằng WASD + quay Q/E.
-    /// Dùng hướng nhìn của camera làm "forward" để cảm giác giống đi bộ.
-    /// Không phụ thuộc XRI actions, phù hợp để test nhanh.
-    /// </summary>
-    public class VRSimpleLocomotion : MonoBehaviour
-    {
-        [Header("Movement")]
-        public float moveSpeed = 2f;
-
-        [Header("Turn (optional)")]
-        public float turnSpeed = 90f; // độ/giây cho quay Q/E
-
-        [Header("Head / Camera")]
-        [Tooltip("Thường gán Main Camera (HMD)")]
-        public Transform head;
-
-        void Update()
-        {
-            HandleMove();
-            HandleTurn();
-        }
-
-        void HandleMove()
-        {
-            float h = Input.GetAxisRaw("Horizontal");   // A/D hoặc mũi tên trái/phải
-            float v = Input.GetAxisRaw("Vertical");     // W/S hoặc mũi tên lên/xuống
-
-            if (Mathf.Approximately(h, 0f) && Mathf.Approximately(v, 0f))
-                return;
-
-            // Hướng forward lấy theo đầu (camera) nếu có, ngược lại lấy theo thân (transform)
-            Vector3 forward = head != null ? head.forward : transform.forward;
-            forward.y = 0f;
-            forward.Normalize();
-
-            Vector3 right = new Vector3(forward.z, 0f, -forward.x);
-
-            Vector3 moveDir = forward * v + right * h;
-            if (moveDir.sqrMagnitude > 1f)
-                moveDir.Normalize();
-
-            transform.position += moveDir * moveSpeed * Time.deltaTime;
-        }
-
-        void HandleTurn()
-        {
-            float turnInput = 0f;
-
-            if (Input.GetKey(KeyCode.Q))
-                turnInput -= 1f;
-            if (Input.GetKey(KeyCode.E))
-                turnInput += 1f;
-
-            if (Mathf.Approximately(turnInput, 0f))
-                return;
-
-            float yaw = turnInput * turnSpeed * Time.deltaTime;
-            transform.Rotate(0f, yaw, 0f, Space.World);
-        }
     }
 }
 
 
 Folder Assets/Scripts/Runtime
-File BeatRunner.cs
-using System;
+File IInteractable.cs
+namespace SeriousGame.Runtime
+{
+    public interface IInteractable
+    {
+        void Interact();
+    }
+}
+
+File NodeInteractable.cs
 using UnityEngine;
-using SeriousGame.Content;
+using SeriousGame.App;
 
 namespace SeriousGame.Runtime
 {
-    public class BeatRunner : MonoBehaviour
+    public class NodeInteractable : MonoBehaviour, IInteractable
     {
-        public InteractionRouter router;
+        [Header("Yarn Node")]
+        public string nodeName;
 
-        public void RunInteraction(InteractionSO interaction, Action onComplete)
-        { // chạy các thoại phụ (Outcome)
-            if (interaction == null || router == null)
-            {
-                onComplete?.Invoke();
-                return;
-            }
-
-            // Chúng ta gọi router nhưng truyền beat = null để router biết đây là thoại phụ (Outcome)
-            // Khi người chơi đọc xong hết thoại, onComplete sẽ được gọi để EpisodeController chạy tiếp.
-            router.Route(null, interaction, (b, c) => onComplete?.Invoke());
-        }
-        public void RunBeat(BeatSO beat, Action<BeatSO, ChoiceSO> onChoiceResolved)
+        public void Interact()
         {
-            if (beat == null)
+            if (string.IsNullOrWhiteSpace(nodeName))
             {
-                Debug.LogError("[BeatRunner] beat is null.");
+                Debug.LogWarning("[NodeInteractable] nodeName is empty.");
                 return;
             }
 
-            var interaction = beat.GetPrimaryInteraction();
-            if (interaction == null)
+            var ctx = GameBootstrap.Context;
+            if (ctx == null || ctx.Narrative == null)
             {
-                Debug.LogError($"[BeatRunner] Beat {beat.beatId} has no interaction.");
+                Debug.LogWarning("[NodeInteractable] NarrativeService not available.");
                 return;
             }
 
-            if (router == null)
-            {
-                Debug.LogError("[BeatRunner] router is null.");
-                return;
-            }
-
-            router.Route(beat, interaction, onChoiceResolved);
+            ctx.Narrative.StartNode(nodeName);
         }
     }
 }
 
-File EpisodeController.cs
-﻿using UnityEngine;
-using SeriousGame.Content;
 
-namespace SeriousGame.Runtime
+Folder Assets/Scripts/Save
+File SaveData.cs
+using System;
+using System.Collections.Generic;
+using SeriousGame.State;
+
+namespace SeriousGame.Save
 {
-    public class EpisodeController : MonoBehaviour
+    [Serializable]
+    public class SaveFlagEntry
     {
-        public static EpisodeController Instance;
+        public string key;
+        public bool value;
+    }
 
-        [Header("Content")]
-        public EpisodeSO episode;
+    [Serializable]
+    public class SaveData
+    {
+        public string sessionId;
+        public string participantId;
+        public string currentEpisodeId;
+        public string currentUnityScene;
+        public string currentYarnNode;
+        public PlayerStateSnapshot playerState;
+        public List<SaveFlagEntry> flags = new List<SaveFlagEntry>();
+    }
+}
 
-        [Header("Runtime")]
-        public BeatRunner beatRunner;
+File SaveService.cs
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using SeriousGame.App;
+using SeriousGame.State;
 
-        private BeatSO[] _beats;
-        private int _beatIndex = 0;
+namespace SeriousGame.Save
+{
+    public class SaveService
+    {
+        private readonly SessionService _session;
+        private readonly PlayerStateService _state;
+        private readonly string _savePath;
 
-        private bool waitingForInteract = false;
-        private bool isInteractionRunning = false;
-        public bool chapterEnded = false;
 
-
-        public Transform SitAnchor;
-        void Awake()
+        //constructor with dependency injection for session and state services, and optional file name for save data.
+        public SaveService(SessionService session, PlayerStateService state, string fileName = "save.json")
         {
-            Instance = this;
+            _session = session;
+            _state = state;
+            _savePath = Path.Combine(Application.persistentDataPath, fileName);
         }
 
-        void Start()
-        {
-            _beats = episode.GetAllBeats();
-            _beatIndex = 0;
+        public string SavePath => _savePath;
 
-            Debug.Log("[Episode] Start");
-            TryRunCurrentBeat();
+        //!SAVE
+
+        // Builds a SaveData object representing the current game state, including session info, player state, and optional narrative context.
+        public SaveData BuildCurrent(string currentEpisodeId = "", string currentYarnNode = "")
+        {
+            var data = new SaveData
+            {
+                sessionId = _session != null ? _session.CurrentSessionId : "",
+                participantId = _session != null ? _session.ParticipantId : "",
+                currentEpisodeId = currentEpisodeId ?? "",
+                currentUnityScene = SceneManager.GetActiveScene().name,
+                currentYarnNode = currentYarnNode ?? "",
+                playerState = _state != null ? _state.GetSnapshot() : new PlayerStateSnapshot()
+            };
+
+            data.flags = BuildFlagsSnapshot();
+            return data;
+        }
+        // Saves the current game state to a file by building a SaveData object and serializing it to JSON. Returns true if the save was successful.
+        public bool SaveCurrent(string currentEpisodeId = "", string currentYarnNode = "")
+        {
+            return Save(BuildCurrent(currentEpisodeId, currentYarnNode));
+        }
+        // Saves the provided SaveData to a file. Returns true if the save was successful.
+        public bool Save(SaveData data)
+        {
+            if (data == null) return false;
+            var json = JsonUtility.ToJson(data, true);
+            File.WriteAllText(_savePath, json);
+            Debug.Log($"[SaveService] Saved game state to {_savePath}");
+            return true;
         }
 
-        public BeatSO GetCurrentBeat() // lấy beat hiện tại
+        // Loads the game state from a file and returns it as a SaveData object. Returns null if the file does not exist or if loading fails.
+
+
+        //! LOAD
+        public SaveData Load()
         {
-            if (_beatIndex < 0 || _beatIndex >= _beats.Length)
-                return null;
-            return _beats[_beatIndex];
+            if (!File.Exists(_savePath)) return null;
+            var json = File.ReadAllText(_savePath);
+            return JsonUtility.FromJson<SaveData>(json);
         }
 
-        void TryRunCurrentBeat() // chạy beat hiện tại
+        public void ApplyLoaded(SaveData data)
         {
-            var beat = GetCurrentBeat();
-            if (beat == null)
-            {
-                Debug.Log("[Episode] No more beats. Episode finished.");
-                chapterEnded = true;
-                // Gọi UI tổng kết nếu có
-                if (EpisodeSummaryUI.Instance != null)
-                {
-                    EpisodeSummaryUI.Instance.ShowSummary();
-                }
-                return;
-            }
+            if (data == null) return;
 
-            Debug.Log($"[Episode] TryRun Beat {beat.beatId}");
+            if (_session != null)
+                _session.Restore(data.sessionId, data.participantId);
 
-            waitingForInteract = false;
-            isInteractionRunning = false;
+            if (_state != null && data.playerState != null)
+                _state.LoadSnapshot(data.playerState);
 
-            if (beat.autoStart) // nếu autoStart = true thì chạy luôn
+            if (_state != null)
             {
-                Debug.Log("[Episode] autoStart");
-                RunMainInteraction(beat);
-            }
-            else if (beat.requireInteract) // nếu requireInteract = true thì chờ tương tác
-            {
-                waitingForInteract = true;
-                Debug.Log("[Episode] waitingForInteract = TRUE");
+                ApplyLegacyFlags(data.flags);
             }
         }
 
-
-        public void OnWorldInteract(string interactId)
+        // Builds a list of SaveFlagEntry objects representing the current state of all flags in the PlayerStateService. This is used for saving legacy flag data.
+        private List<SaveFlagEntry> BuildFlagsSnapshot()
         {
-            if (!waitingForInteract)
+            var list = new List<SaveFlagEntry>();
+            if (_state == null) return list;
+
+            var snapshot = _state.GetFlagsSnapshot();
+            if (snapshot == null) return list;
+
+            foreach (var kv in snapshot)
             {
-                Debug.Log("[Episode] Ignore interact – not waiting");
-                return;
+                list.Add(new SaveFlagEntry
+                {
+                    key = kv.Key,
+                    value = kv.Value
+                });
             }
 
-            var beat = GetCurrentBeat();
-            if (beat == null) return;
-
-            if (beat.beatId != interactId)
-            {
-                Debug.Log("[Episode] Wrong interact target");
-                return;
-            }
-
-            waitingForInteract = false;
-            RunMainInteraction(beat);
+            return list;
         }
 
-        void RunMainInteraction(BeatSO beat)
+        // Applies legacy flag data to the PlayerStateService.
+        private void ApplyLegacyFlags(List<SaveFlagEntry> flags)
         {
-            if (isInteractionRunning)
+            if (_state == null || flags == null) return;
+
+            for (int i = 0; i < flags.Count; i++)
             {
-                Debug.Log("[Episode] Interaction already running");
-                return;
-            }
-
-            isInteractionRunning = true;
-            Debug.Log("[Episode] Run main interaction");
-
-            if (beat.beatId == "B01" || beat.beatId == "B07")
-            {
-                var player = FindAnyObjectByType<PlayerController>();
-
-                if (player != null && SitAnchor != null)
-                {
-                    player.SitAt(SitAnchor);
-                }
-            }
-            else if (beat.beatId == "B02")
-            {
-                var lead = FindAnyObjectByType<LeadController>();
-                if (lead != null)
-                {
-                    lead.GoTalkThenReturn(beat.interaction, () =>
-                    {
-                        isInteractionRunning = false;
-                        AdvanceBeat();
-                    });
-                    return;
-                }   
-            }
-            beatRunner.RunBeat(beat, OnChoiceResolved);
-        }
-
-            void OnChoiceResolved(BeatSO beat, ChoiceSO choice)
-            {
-                if (choice != null && choice.outcomeInteraction != null)
-                {
-                    Debug.Log("[Episode] Run outcome interaction");
-
-                    beatRunner.RunInteraction(choice.outcomeInteraction, () =>
-                    {
-                        ResolveChoice(choice);
-                    });
-                }
-                else
-                {
-                    ResolveChoice(choice);
-                }
-            }
-
-            void ResolveChoice(ChoiceSO choice)
-            {
-                isInteractionRunning = false;
-
-                // Nếu Choice có stateToTrigger, cập nhật GameState
-                if (choice != null && !string.IsNullOrEmpty(choice.stateToTrigger))
-                {
-                    if (GameStateManager.Instance != null)
-                    {
-                        GameStateManager.Instance.SetFlag(choice.stateToTrigger, true);
-                    }
-                    else
-                    {
-                        Debug.LogWarning("[Episode] GameStateManager.Instance is null while trying to set state from choice.");
-                    }
-                }
-
-                if (choice != null && choice.nextBeat != null)
-                {
-                    JumpToBeat(choice.nextBeat);
-                }
-                else
-                {
-                    AdvanceBeat();
-                }
-            }
-
-            void AdvanceBeat()
-            {
-                _beatIndex++;
-                TryRunCurrentBeat();
-            }
-
-            void JumpToBeat(BeatSO beat)
-            {
-                for (int i = 0; i < _beats.Length; i++)
-                {
-                    if (_beats[i] == beat)
-                    {
-                        _beatIndex = i;
-                        TryRunCurrentBeat();
-                        return;
-                    }
-                }
-
-                Debug.LogError("[Episode] Jump beat not found");
+                var flag = flags[i];
+                if (flag == null || string.IsNullOrWhiteSpace(flag.key)) continue;
+                _state.SetFlag(flag.key, flag.value);
             }
         }
     }
+}
 
-File InteractionRouter.cs
-﻿// Assets/Scripts/Runtime/InteractionRouter.cs
-using System;
-using UnityEngine;
-using SeriousGame.Content;
-using SeriousGame.Phone;
 
-namespace SeriousGame.Runtime
-{
-    public class InteractionRouter : MonoBehaviour
+Folder Assets/Scripts/State
+File GameStateKeys.cs
+namespace SeriousGame.State
+{   
+    //!use for definition
+    public static class GameStateKeys
     {
-        // public PhoneUIRoot phoneUI;
-        public DialogueUI dialogueUI;
-        public PCUI pcUI;
+        public const string Money = "STATE_MONEY";
+        public const string Suspicion = "STATE_SUSPICION";
+        public const string Confidence = "STATE_CONFIDENCE";
+        public const string Support = "STATE_SUPPORT";
+        public const string Trauma = "STATE_TRAUMA";
+        public const string Trust = "STATE_TRUST";
 
-        public void Route(BeatSO beat, InteractionSO interaction, Action<BeatSO, ChoiceSO> onChoiceResolved)
+        public static readonly string[] AllKeys =
         {
-            if (interaction == null)
+            Money,
+            Suspicion,
+            Confidence,
+            Support,
+            Trauma,
+            Trust
+        };
+
+        public static readonly string[] DefaultKeys = AllKeys;
+
+        public static bool IsValid(string key)
+        {
+            if (string.IsNullOrWhiteSpace(key)) return false;
+            for (int i = 0; i < AllKeys.Length; i++)
+                if (AllKeys[i] == key) return true;
+            return false;
+        }
+    }
+}
+
+File PlayerStateDebugger.cs
+using UnityEngine;
+using System.Collections.Generic;
+using SeriousGame.App;
+using SeriousGame.State;
+
+public class PlayerStateDebugger : MonoBehaviour
+{
+    [Header("Chỉ dùng để xem (View Only)")]
+    public List<PlayerStateEntry> currentStates = new List<PlayerStateEntry>();
+    public List<PlayerFlagEntry> currentFlags = new List<PlayerFlagEntry>();
+
+    // Cập nhật liên tục mỗi giây trên Inspector
+    void Update()
+    {
+        var ctx = GameBootstrap.Context;
+        if (ctx != null && ctx.PlayerState != null)
+        {
+            var snapshot = ctx.PlayerState.GetSnapshot();
+            currentStates = snapshot.entries;
+            currentFlags = snapshot.flags;
+        }
+    }
+}
+
+File PlayerStateService.cs
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+namespace SeriousGame.State
+{
+    [System.Serializable]
+    public class PlayerStateService
+    {
+        [SerializeField]
+        private readonly Dictionary<string, int> _states = new Dictionary<string, int>();
+        [SerializeField]
+        private readonly Dictionary<string, bool> _flags = new Dictionary<string, bool>();
+
+        public PlayerStateService()
+        {   // Initialize default keys with default values to ensure they exist in the state.
+            for (int i = 0; i < GameStateKeys.DefaultKeys.Length; i++)
             {
-                onChoiceResolved?.Invoke(beat, null);
-                return;
+                var key = GameStateKeys.DefaultKeys[i];
+                if (!string.IsNullOrWhiteSpace(key))
+                    _states[key] = 0;
             }
- 
-            switch (interaction.type)
+        }
+
+        public int Get(string key)
+        {
+            if (string.IsNullOrWhiteSpace(key)) return 0;
+            return _states.TryGetValue(key, out var value) ? value : 0;
+        }
+
+        public void Set(string key, int value)
+        {
+            if (string.IsNullOrWhiteSpace(key)) return;
+            _states[key] = Clamp(value);
+            Debug.Log($"[PlayerStateService] Set state '{key}' to {value}");
+        }
+
+        public void Add(string key, int delta)
+        {
+            if (string.IsNullOrWhiteSpace(key)) return;
+            var current = Get(key);
+            Set(key, current + delta);
+        }
+
+        public bool CheckFlag(string key)
+        {
+            if (!IsKeyAllowed(key)) return false;
+            return _flags.TryGetValue(key, out var value) && value;
+        }
+
+        public void SetFlag(string key, bool value)
+        {
+            if (!IsKeyAllowed(key)) return;
+            _flags[key] = value;
+            Debug.Log($"[PlayerStateService] Set flag '{key}' to {value}");
+        }
+
+        public int CountTrue(params string[] keys)
+        {
+            int count = 0;
+            if (keys == null) return 0;
+            for (int i = 0; i < keys.Length; i++)
             {
-                case InteractionType.Dialogue:
-                    Debug.Log("[InteractionRouter] Routing to DialogueUI.");
-                    dialogueUI.Show(beat, interaction, onChoiceResolved);
-                    break;
-
-
-                case InteractionType.PC:
-                    pcUI.Show(beat, interaction, () =>
-                    {
-                        onChoiceResolved?.Invoke(beat, null);
-                    });
-                    break;
-
-
-                // Các type khác: MVP vẫn render bằng ChatPanel, nhưng cảnh báo để khỏi “quên”
-                default:
-                    Debug.LogWarning($"[InteractionRouter] Type {interaction.type} chưa có panel riêng. Fallback -> ChatPanel.");
-                    // phoneUI.ShowChat(beat, interaction, onChoiceResolved);
-                    break;
+                if (CheckFlag(keys[i])) count++;
             }
+            return count;
+        }
+
+        public int CountTrueByPrefix(string prefix)
+        {
+            if (string.IsNullOrEmpty(prefix)) return 0;
+            int count = 0;
+            foreach (var kv in _flags)
+            {
+                if (kv.Key.StartsWith(prefix) && kv.Value && IsKeyAllowed(kv.Key))
+                    count++;
+            }
+            return count;
+        }
+
+        public IReadOnlyDictionary<string, bool> GetFlagsSnapshot()
+        {
+            return _flags;
+        }
+
+        // Returns a snapshot of the current player state, including both states and flags, which can be used for saving or other purposes.
+        public PlayerStateSnapshot GetSnapshot()
+        {
+            var snapshot = new PlayerStateSnapshot();
+            foreach (var kv in _states)
+            {
+                snapshot.entries.Add(new PlayerStateEntry
+                {
+                    key = kv.Key,
+                    value = kv.Value
+                });
+            }
+
+            foreach (var kv in _flags)
+            {
+                snapshot.flags.Add(new PlayerFlagEntry
+                {
+                    key = kv.Key,
+                    value = kv.Value
+                });
+            }
+
+            return snapshot;
+        }
+
+        public void LoadSnapshot(PlayerStateSnapshot snapshot)
+        {
+            _states.Clear();
+            _flags.Clear();
+            if (snapshot != null && snapshot.entries != null)
+            {
+                for (int i = 0; i < snapshot.entries.Count; i++)
+                {
+                    var entry = snapshot.entries[i];
+                    if (entry == null || string.IsNullOrWhiteSpace(entry.key)) continue;
+                    _states[entry.key] = Clamp(entry.value);
+                }
+            }
+
+            if (snapshot != null && snapshot.flags != null)
+            {
+                for (int i = 0; i < snapshot.flags.Count; i++)
+                {
+                    var entry = snapshot.flags[i];
+                    if (entry == null || string.IsNullOrWhiteSpace(entry.key)) continue;
+                    if (!IsKeyAllowed(entry.key)) continue;
+                    _flags[entry.key] = entry.value;
+                }
+            }
+
+            for (int i = 0; i < GameStateKeys.DefaultKeys.Length; i++)
+            {
+                var key = GameStateKeys.DefaultKeys[i];
+                if (!string.IsNullOrWhiteSpace(key) && !_states.ContainsKey(key))
+                    _states[key] = 0;
+            }
+        }
+
+        private static int Clamp(int value)
+        {
+            return Mathf.Clamp(value, 0, 3);
+        }
+
+        private static bool IsKeyAllowed(string key)
+        {
+            return GameStateKeys.IsValid(key);
+        }
+    }
+}
+
+File PlayerStateSnapshot.cs
+using System;
+using System.Collections.Generic;
+
+namespace SeriousGame.State
+{
+    [Serializable]
+    public class PlayerStateEntry
+    {
+        public string key;
+        public int value;
+    }
+
+    [Serializable]
+    public class PlayerFlagEntry
+    {
+        public string key;
+        public bool value;
+    }
+
+    [Serializable]
+    public class PlayerStateSnapshot
+    {
+        public List<PlayerStateEntry> entries = new List<PlayerStateEntry>();
+        public List<PlayerFlagEntry> flags = new List<PlayerFlagEntry>();
+
+        public int GetValue(string key, int defaultValue = 0)
+        {
+            if (string.IsNullOrWhiteSpace(key) || entries == null) return defaultValue;
+
+            for (int i = 0; i < entries.Count; i++)
+            {
+                if (entries[i] != null && entries[i].key == key)
+                    return entries[i].value;
+            }
+
+            return defaultValue;
+        }
+
+        public bool GetFlag(string key, bool defaultValue = false)
+        {
+            if (string.IsNullOrWhiteSpace(key) || flags == null) return defaultValue;
+
+            for (int i = 0; i < flags.Count; i++)
+            {
+                if (flags[i] != null && flags[i].key == key)
+                    return flags[i].value;
+            }
+
+            return defaultValue;
         }
     }
 }
 
 
 Folder Assets/Scripts/Trace
+File FileTraceStore.cs
+using System;
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+
+namespace SeriousGame.Trace
+{
+    public class FileTraceStore : ITraceStore
+    {
+        private readonly string _filePath;
+        private readonly object _lock = new object();
+
+        public FileTraceStore(string fileName = "trace.jsonl")
+        {
+            _filePath = Path.Combine(Application.persistentDataPath, fileName);
+        }
+
+        public string FilePath => _filePath;
+
+        public void Add(TraceEvent e)
+        {
+            if (e == null) return;
+            var json = JsonUtility.ToJson(e);
+
+            lock (_lock)
+            {
+                File.AppendAllText(_filePath, json + Environment.NewLine);
+            }
+            Debug.Log($"[FileTraceStore] Added event to file: {json}");
+        }
+
+        public List<TraceEvent> GetBySession(string sessionId)
+        {
+            var res = new List<TraceEvent>();
+            if (string.IsNullOrWhiteSpace(sessionId)) return res;
+            if (!File.Exists(_filePath)) return res;
+
+            var lines = File.ReadAllLines(_filePath);
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var line = lines[i];
+                if (string.IsNullOrWhiteSpace(line)) continue;
+
+                TraceEvent e = null;
+                try
+                {
+                    e = JsonUtility.FromJson<TraceEvent>(line);
+                }
+                catch
+                {
+                    continue;
+                }
+
+                if (e != null && e.sessionId == sessionId)
+                    res.Add(e);
+            }
+
+            return res;
+        }
+
+        public void ClearSession(string sessionId)
+        {
+            if (string.IsNullOrWhiteSpace(sessionId)) return;
+            if (!File.Exists(_filePath)) return;
+
+            var lines = File.ReadAllLines(_filePath);
+            var kept = new List<string>(lines.Length);
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var line = lines[i];
+                if (string.IsNullOrWhiteSpace(line)) continue;
+
+                TraceEvent e = null;
+                try
+                {
+                    e = JsonUtility.FromJson<TraceEvent>(line);
+                }
+                catch
+                {
+                    kept.Add(line);
+                    continue;
+                }
+
+                if (e == null || e.sessionId != sessionId)
+                    kept.Add(line);
+            }
+
+            File.WriteAllLines(_filePath, kept.ToArray());
+        }
+    }
+}
+
 File InMemoryTraceStore.cs
 using System.Collections.Generic;
 
@@ -1855,63 +1989,110 @@ namespace SeriousGame.Trace
 
 File TraceEvent.cs
 using System;
+using SeriousGame.State;
 
 namespace SeriousGame.Trace
 {
     [Serializable]
     public class TraceEvent
     {
-        public string sessionId;
-        public string episodeId;
-        public string beatId;
-        public string interactionId;
-        public string choiceId;
-        public string traceTypeId;
+        [Serializable]
+        public class ResultData
+        {
+            public float scoreDelta;
+            public bool isCorrect;
+        }
 
+        [Serializable]
+        public class ContextData
+        {
+            public string episodeId;
+            public string yarnNode;
+            public string unityScene;
+            public PlayerStateSnapshot stateBefore;
+        }
+
+        // Local session linkage for fast filtering.
+        public string sessionId;
+
+        public string actor;
+        public string verb;
+        public string objectId;
+        public ResultData result;
+        public ContextData context;
         public long unixMs;
     }
 }
 
 File TraceService.cs
 using System;
-using SeriousGame.Content;
+using SeriousGame.State;
+using UnityEngine.SceneManagement;
+using UnityEngine;
 
 namespace SeriousGame.Trace
 {
     public class TraceService
-    {
+    {   
+        // 2 different stores: one for in-memory (for quick access during gameplay), and one for persistent storage (e.g. file, database)
         private readonly ITraceStore _store;
+        private readonly ITraceStore _persistentStore;
 
-        public TraceService(ITraceStore store)
+        public TraceService(ITraceStore store, ITraceStore persistentStore = null)
         {
             _store = store;
+            _persistentStore = persistentStore;
         }
 
-        public void RecordChoice(
+        public void LogEvent(
             string sessionId,
-            EpisodeSO episode,
-            BeatSO beat,
-            InteractionSO interaction,
-            ChoiceSO choice)
+            string actor,
+            string verb,
+            string objectId,
+            TraceEvent.ResultData result,
+            TraceEvent.ContextData context)
         {
-            if (choice == null) return;
-
-            // Only meaningful actions should be logged
-            if (string.IsNullOrWhiteSpace(choice.traceTypeId))
+            if (string.IsNullOrWhiteSpace(verb) || string.IsNullOrWhiteSpace(objectId))
                 return;
 
             var e = new TraceEvent
             {
-                sessionId = sessionId,
-                episodeId = episode != null ? episode.episodeId : "",
-                beatId = beat != null ? beat.beatId : "",
-                interactionId = interaction != null ? interaction.interactionId : "",
-                choiceId = choice.choiceId,
-                traceTypeId = choice.traceTypeId,
+                sessionId = sessionId ?? "",
+                actor = actor ?? "",
+                verb = verb,
+                objectId = objectId,
+                result = result,
+                context = context,
                 unixMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()
             };
-
+            //store the event in both the in-memory store and the persistent store (if available)
+            RecordEventInternal(e);
+            Debug.Log($"[TraceService] Logged event: {verb} {objectId} (session: {sessionId}, actor: {actor})");
+        }
+        // Helper method to build context data for trace events, can be extended with more fields as needed.
+        public TraceEvent.ContextData BuildContext(
+            string episodeId,
+            string yarnNode,
+            string unityScene,
+            PlayerStateSnapshot stateBefore)
+        {
+            Debug.Log($"[TraceService] Built context: episodeId={episodeId}, yarnNode={yarnNode}, unityScene={unityScene}");
+            return new TraceEvent.ContextData
+            {
+                episodeId = episodeId ?? "",
+                yarnNode = yarnNode ?? "",
+                unityScene = string.IsNullOrWhiteSpace(unityScene) ? SceneManager.GetActiveScene().name : unityScene,
+                stateBefore = stateBefore
+            };
+            
+        }
+        //store the event in both the in-memory store and the persistent store (if available)
+        private void RecordEventInternal(TraceEvent e)
+        {
             _store.Add(e);
+            if (_persistentStore != null)
+                _persistentStore.Add(e);
+            Debug.Log($"[TraceService] Recorded event: {e.verb} {e.objectId}");
         }
 
         public System.Collections.Generic.List<TraceEvent> GetSession(string sessionId)
@@ -1949,456 +2130,6 @@ namespace SeriousGame.Runtime
             // Cho UI quay mặt về camera
             transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
         }
-    }
-}
-
-File ChoiceButton.cs
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-
-namespace SeriousGame.UI
-{
-    public class ChoiceButton : MonoBehaviour
-    {
-        public Button button;
-        public TMP_Text label;
-
-        public void SetText(string text)
-        {
-            if (label != null) label.text = text;
-        }
-    }
-}
-
-File DialogueUI.cs
-using UnityEngine;
-using UnityEngine.UI;
-using SeriousGame.Content;
-using System;
-using TMPro;
-using System.Linq;
-using UnityEngine.InputSystem;
-
-namespace SeriousGame.Runtime
-{
-    public class DialogueUI : MonoBehaviour
-    {
-        [Header("UI")]
-        public TextMeshProUGUI promptText;
-        public Transform choiceContainer;
-        public Button choiceButtonPrefab;
-
-        [Header("Lock while dialogue is open (VR/PC)")]
-        // Kéo vào đây: Dynamic Move Provider, Snap Turn Provider, Teleport Provider, VRBeatInteractor (world interact), v.v.
-        public Behaviour[] behavioursToDisableDuringDialogue;
-
-        [Header("Advance input (VR)")]
-        // Kéo action của tay phải vào đây (vd A button, hoặc XRI Right Interaction/Activate)
-        public InputActionReference advanceAction;
-        public bool allowAdvanceWhileChoicesVisible = false;
-
-        [Header("World Space placement (optional)")]
-        public Transform worldAnchor;        // nếu set, UI sẽ xuất hiện tại đây
-        public float spawnDistance = 1.2f;   // nếu không có anchor, spawn trước mặt camera
-        public Vector3 spawnOffset = new Vector3(0f, -0.15f, 0f);
-        public bool faceCamera = true;
-
-        private BeatSO _currentBeat;
-        private Action<BeatSO, ChoiceSO> _onChoose;
-        private InteractionSO _currentInteraction;
-        private int _currentLineIndex;
-
-        private void OnEnable()
-        {
-            if (advanceAction != null && advanceAction.action != null)
-                advanceAction.action.Enable();
-        }
-
-        private void OnDisable()
-        {
-            if (advanceAction != null && advanceAction.action != null)
-                advanceAction.action.Disable();
-        }
-
-        void Update()
-        {
-            if (!gameObject.activeSelf) return;
-
-            // Nếu đang hiện choices thì không auto-advance (giống bản PC)
-            if (!allowAdvanceWhileChoicesVisible &&
-                choiceContainer != null && choiceContainer.gameObject.activeSelf)
-                return;
-
-            // VR: bấm nút tay phải để next
-            if (advanceAction != null && advanceAction.action != null &&
-                advanceAction.action.WasPressedThisFrame())
-            {
-                AdvanceDialogue();
-            }
-        }
-
-        public void Show(BeatSO beat, InteractionSO interaction, Action<BeatSO, ChoiceSO> onChooseCallback)
-        {
-            gameObject.SetActive(true);
-
-            _currentBeat = beat;
-            _currentInteraction = interaction;
-            _onChoose = onChooseCallback;
-            _currentLineIndex = 0;
-
-            if (choiceContainer != null)
-                choiceContainer.gameObject.SetActive(false);
-
-            // VR: đặt UI ra world space (nếu cần)
-            PlaceDialogueInWorld();
-
-            // Khoá movement + xoay + world interact...
-            SetControlsEnabled(false);
-
-            DisplayCurrentLine();
-        }
-
-        private void PlaceDialogueInWorld()
-        {
-            // Nếu ông không muốn tự move UI thì có thể bỏ trống phần này,
-            // và đặt canvas sẵn trong scene.
-            var cam = Camera.main != null ? Camera.main.transform : null;
-            if (cam == null) return;
-
-            Transform t = transform; // hoặc transform.root nếu UI nằm sâu
-            if (worldAnchor != null)
-            {
-                t.position = worldAnchor.position;
-                t.rotation = worldAnchor.rotation;
-                return;
-            }
-
-            t.position = cam.position + cam.forward * spawnDistance + cam.TransformVector(spawnOffset);
-
-            if (faceCamera)
-            {
-                Vector3 toCam = (cam.position - t.position);
-                toCam.y = 0f; // xoay theo ngang cho đỡ chóng mặt
-                if (toCam.sqrMagnitude > 0.0001f)
-                    t.rotation = Quaternion.LookRotation(-toCam.normalized, Vector3.up);
-            }
-        }
-
-        void DisplayCurrentLine()
-        {
-            if (_currentInteraction.dialogueLines != null && _currentInteraction.dialogueLines.Length > 0)
-                promptText.text = _currentInteraction.dialogueLines[_currentLineIndex];
-        }
-
-        void AdvanceDialogue()
-        {
-            if (_currentInteraction == null || _currentInteraction.dialogueLines == null) return;
-
-            if (_currentLineIndex < _currentInteraction.dialogueLines.Length - 1)
-            {
-                _currentLineIndex++;
-                DisplayCurrentLine();
-            }
-            else
-            {
-                if (_currentInteraction.choices == null || _currentInteraction.choices.Length == 0)
-                    EndInteractionWithoutChoice();
-                else
-                    ShowChoices();
-            }
-        }
-
-        void ShowChoices()
-        {
-            if (choiceContainer.gameObject.activeSelf) return;
-
-            choiceContainer.gameObject.SetActive(true);
-            foreach (Transform c in choiceContainer) Destroy(c.gameObject);
-
-            if (_currentInteraction.choices == null || _currentInteraction.choices.Length == 0)
-            {
-                EndInteractionWithoutChoice();
-                return;
-            }
-
-            foreach (var choice in _currentInteraction.choices)
-            {
-                var btn = Instantiate(choiceButtonPrefab, choiceContainer);
-                var btnText = btn.GetComponentInChildren<TextMeshProUGUI>();
-                if (btnText != null) btnText.text = choice.text;
-
-                btn.onClick.AddListener(() => Choose(choice));
-            }
-        }
-
-        void Choose(ChoiceSO choice)
-        {
-            gameObject.SetActive(false);
-            SetControlsEnabled(true);
-            _onChoose?.Invoke(_currentBeat, choice);
-        }
-
-        void EndInteractionWithoutChoice()
-        {
-            gameObject.SetActive(false);
-            SetControlsEnabled(true);
-            _onChoose?.Invoke(_currentBeat, null);
-        }
-
-        void SetControlsEnabled(bool enabled)
-        {
-            if (behavioursToDisableDuringDialogue == null) return;
-
-            // enabled = true nghĩa là đóng dialogue -> bật lại controls
-            // enabled = false nghĩa là mở dialogue -> tắt controls
-            foreach (var b in behavioursToDisableDuringDialogue)
-            {
-                if (b != null) b.enabled = enabled;
-            }
-        }
-    }
-}
-
-File DossierUI.cs
-﻿//using UnityEngine;
-//using TMPro;
-//using UnityEngine.UI;
-//using System;
-
-//public class DossierUI : MonoBehaviour
-//{
-//    public TextMeshProUGUI titleText;
-//    public TextMeshProUGUI contentText;
-//    public Button prevButton;
-//    public Button nextButton;
-//    public Button doneButton;
-
-//    [TextArea(5, 10)]
-//    public string[] dossiers;
-
-//    private int index = 0;
-//    private Action onDone;
-
-//    public void Open(Action doneCallback)
-//    {
-//        onDone = doneCallback;
-//        index = 0;
-//        Refresh();
-
-//        gameObject.SetActive(true);
-
-//        var player = FindObjectOfType<SeriousGame.Runtime.PlayerController>();
-//        player?.SetLockState(true);
-//    }
-
-//    void Refresh()
-//    {
-//        titleText.text = $"Hồ sơ {index + 1}";
-//        contentText.text = dossiers[index];
-
-//        prevButton.interactable = index > 0;
-//        nextButton.interactable = index < dossiers.Length - 1;
-//    }
-
-//    void Start()
-//    {
-//        prevButton.onClick.AddListener(() =>
-//        {
-//            index--;
-//            Refresh();
-//        });
-
-//        nextButton.onClick.AddListener(() =>
-//        {
-//            index++;
-//            Refresh();
-//        });
-
-//        doneButton.onClick.AddListener(() =>
-//        {
-//            var player = FindObjectOfType<SeriousGame.Runtime.PlayerController>();
-//            player?.SetLockState(false);
-
-//            onDone?.Invoke();
-//            Destroy(gameObject);
-//        });
-//    }
-//}
-
-File Dragable.cs
-using UnityEngine;
-using UnityEngine.EventSystems;
-
-public class Dragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
-{
-    public Canvas canvas;  // gán Canvas world-space (monitor canvas)
-
-    private RectTransform rect;
-    private CanvasGroup canvasGroup;
-    private Transform originalParent;
-    private bool droppedOnSlot;
-
-    void Awake()
-    {
-        rect = GetComponent<RectTransform>();
-        canvasGroup = GetComponent<CanvasGroup>();
-    }
-
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        originalParent = transform.parent;
-        droppedOnSlot = false;
-
-        // kéo card lên top để không bị layout của parent đè
-        transform.SetParent(canvas.transform, worldPositionStays: true);
-        transform.SetAsLastSibling();
-
-        if (canvasGroup != null)
-            canvasGroup.blocksRaycasts = false;
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        if (canvas == null) return;
-
-        RectTransform canvasRect = canvas.transform as RectTransform;
-
-        // ✅ Ưu tiên worldPosition (chuẩn cho XR ray)
-        Vector3 worldPos = eventData.pointerCurrentRaycast.worldPosition;
-
-        if (worldPos != Vector3.zero)
-        {
-            Vector3 local = canvasRect.InverseTransformPoint(worldPos);
-            rect.localPosition = new Vector3(local.x, local.y, rect.localPosition.z);
-            return;
-        }
-
-        // Fallback cho PC/mouse (nếu cần)
-        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            canvasRect,
-            eventData.position,
-            eventData.pressEventCamera,
-            out Vector2 localPoint))
-        {
-            rect.localPosition = new Vector3(localPoint.x, localPoint.y, rect.localPosition.z);
-        }
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        if (!droppedOnSlot)
-        {
-            transform.SetParent(originalParent, worldPositionStays: true);
-        }
-
-        if (canvasGroup != null)
-            canvasGroup.blocksRaycasts = true;
-    }
-
-    public void SetParentToSlot(Transform slot)
-    {
-        transform.SetParent(slot, worldPositionStays: false);
-        rect.anchoredPosition = Vector2.zero;
-        droppedOnSlot = true;
-
-        if (canvasGroup != null)
-            canvasGroup.blocksRaycasts = true;
-    }
-}
-
-File DropSlot.cs
-using UnityEngine;
-using UnityEngine.EventSystems;
-
-public enum SlotType { Cause, Solution }
-
-public class DropSlot : MonoBehaviour, IDropHandler
-{
-    public SlotType slotType;
-    public int index; // dòng thứ mấy (0,1,2,...)
-
-    public void OnDrop(PointerEventData eventData)
-    {
-        var card = eventData.pointerDrag?.GetComponent<Dragable>();
-        if (card == null) return;
-
-        card.SetParentToSlot(transform);
-    }
-}
-
-File EpisodeSummaryUI.cs
-using System.Text;
-using UnityEngine;
-using TMPro;
-using SeriousGame.Runtime;
-
-// UI tổng kết episode, hiển thị các flag trong GameState
-public class EpisodeSummaryUI : MonoBehaviour
-{
-    public static EpisodeSummaryUI Instance;
-
-    [Header("UI Root")]
-    public GameObject root; // panel tổng kết, có thể chính gameObject này
-
-    [Header("Texts")]
-    public TextMeshProUGUI titleText;
-    public TextMeshProUGUI bodyText;
-
-    [Header("Optional: Player để khoá điều khiển")]
-    public PlayerController playerController;
-
-    void Awake()
-    {
-        Instance = this;
-        if (root == null) root = gameObject;
-        root.SetActive(false);
-    }
-
-    public void ShowSummary()
-    {
-        // Khoá điều khiển player nếu có
-        if (playerController != null)
-        {
-            playerController.SetLockState(true);
-        }
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
-        if (titleText != null)
-        {
-            titleText.text = "Tổng kết tập";
-        }
-
-        if (bodyText != null)
-        {
-            bodyText.text = BuildSummaryText();
-        }
-
-        root.SetActive(true);
-    }
-
-    string BuildSummaryText()
-    {
-        var gsm = GameStateManager.Instance;
-        if (gsm == null)
-            return "Không có dữ liệu trạng thái.";
-
-        var snapshot = gsm.GetSnapshot();
-        if (snapshot == null || snapshot.Count == 0)
-            return "Bạn chưa tạo ra trạng thái quan trọng nào trong tập này.";
-
-        var sb = new StringBuilder();
-        sb.AppendLine("Các trạng thái đã đạt:");
-
-        foreach (var kv in snapshot)
-        {
-            if (!kv.Value) continue;
-            sb.AppendLine("- " + kv.Key);
-        }
-
-        return sb.ToString();
     }
 }
 
@@ -2445,161 +2176,6 @@ namespace SeriousGame.UI
             yield return new WaitForSeconds(showSeconds);
             Hide();
         }
-    }
-}
-
-File PCUI.cs
-﻿using SeriousGame.Content;
-using SeriousGame.Runtime;
-using System;
-using UnityEngine;
-
-public class PCUI : MonoBehaviour
-{
-    public GameObject root;            // Canvas world-space (đã gắn sẵn trong scene)
-    public PlayerController player;
-
-    [Header("Camera focus")]
-    public Transform cameraFocusPoint; // Empty đặt trước màn hình
-    public float focusSpeed = 4f;
-
-    private Action onFinish;
-    private Transform cam;
-    private Vector3 camOriginalPos;
-    private Quaternion camOriginalRot;
-
-    [Header("Dossier Panels")]
-    public GameObject dossier1;
-    public GameObject dossier2;
-
-    [Header("Camera zoom config")]
-    public float focusDistance = 0.6f; // chỉnh ở Inspector
-
-    public GameObject dossierPanel;
-    public GameObject reportPanel;
-
-
-
-
-    void Awake()
-    {
-        cam = Camera.main.transform;
-        root.SetActive(false);
-        dossierPanel.SetActive(false);
-        reportPanel.SetActive(false);
-
-    }
-
-    public void ShowDossier(int index)
-    {
-        if (index == 1)
-        {
-            dossier1.SetActive(true);
-            dossier2.SetActive(false);
-        }
-        else if (index == 2)
-        {
-            dossier1.SetActive(false);
-            dossier2.SetActive(true);
-        }
-    }
-
-    public void Show(BeatSO beat, InteractionSO interaction, Action onDone)
-    {   
-        if (beat.beatId == "B04"|| beat.beatId =="B05")
-        {
-            dossierPanel.SetActive(true);
-            reportPanel.SetActive(false);
-        }
-        else if (beat.beatId == "B08")
-        {
-            dossierPanel.SetActive(false);
-            reportPanel.SetActive(true);
-        }
-        onFinish = onDone;
-
-        // Lưu camera ban đầu
-        camOriginalPos = cam.position;
-        camOriginalRot = cam.rotation;
-
-        root.SetActive(true);
-
-        if (isVR)
-        {
-            SetVRControls(false); // disable move/turn/world-interact
-        }
-        //else
-        //{
-        //    //player.SetLockState(true);
-        //    Cursor.lockState = CursorLockMode.None;
-        //    Cursor.visible = true;
-        //}
-
-    }
-
-    void Update()
-    {
-        if (!root.activeSelf) return;
-        if (isVR) return;
-
-        Vector3 targetPos =
-            cameraFocusPoint.position
-            - cameraFocusPoint.forward * focusDistance;
-
-        cam.position = Vector3.Lerp(
-            cam.position,
-            targetPos,
-            Time.deltaTime * focusSpeed
-        );
-
-        cam.rotation = Quaternion.Slerp(
-            cam.rotation,
-            cameraFocusPoint.rotation,
-            Time.deltaTime * focusSpeed
-        );
-    }
-
-
-    public void OnFinishClicked()
-    {   
-        Debug.Log("[PCUI] OnFinishClicked");
-        root.SetActive(false);
-        if (isVR)
-        {
-            SetVRControls(true);  // enable lại
-        }
-        //else
-        //{
-        //    Cursor.lockState = CursorLockMode.Locked;
-        //    Cursor.visible = false;
-        //    player.SetLockState(false);
-        //}
-
-        onFinish?.Invoke(); // báo beat xong
-    }
-
-    // Nút "Send" cho các màn PC đặc biệt (ví dụ gửi báo cáo)
-    // Gắn OnClick của button Send vào hàm này thay vì OnFinishClicked.
-    // Nếu chưa cần xử lý gì đặc biệt, có thể gọi lại OnFinishClicked().
-    public void OnSendClicked()
-    {
-        Debug.Log("[PCUI] OnSendClicked");
-
-        // TODO: xử lý nội dung report / drag-drop ở đây (nếu có)
-
-        // Sau khi xử lý xong, kết thúc interaction giống nút Done:
-        OnFinishClicked();
-    }
-
-    [Header("VR lock")]
-    public Behaviour[] behavioursToDisableDuringPCUI; // Move Provider, Turn Provider, world interact script...
-    public bool isVR = true; // hoặc tự detect
-
-    void SetVRControls(bool enabled)
-    {
-        if (behavioursToDisableDuringPCUI == null) return;
-        foreach (var b in behavioursToDisableDuringPCUI)
-            if (b != null) b.enabled = enabled;
     }
 }
 
@@ -2673,119 +2249,36 @@ public class ScreenFader : MonoBehaviour
     }
 }
 
-File SummaryUI.cs
-﻿using UnityEngine;
-using TMPro;
+File ToastUIListener.cs
+using UnityEngine;
+using SeriousGame.App;
 
 namespace SeriousGame.UI
 {
-    public class SummaryUI : MonoBehaviour
+    public class ToastUIListener : MonoBehaviour
     {
-        public GameObject root;
-        public TMP_Text summaryText;
+        [SerializeField] private OutcomeToastUI toastUI;
 
-        public void Show(string text)
+        private void OnEnable()
         {
-            if (root != null) root.SetActive(true);
-            if (summaryText != null) summaryText.text = text;
+            GameEventBus.OnToastRequested += HandleToastRequested;
         }
 
-        public void Hide()
+        private void OnDisable()
         {
-            if (root != null) root.SetActive(false);
-        }
-    }
-}
-
-File WorldSpaceUIFollow.cs
-﻿using UnityEngine;
-
-public class WorldSpaceUIFollow : MonoBehaviour
-{
-    [Header("Target")]
-    [Tooltip("Nếu để trống, script sẽ dùng Camera.main.")]
-    public Transform targetCamera;
-
-    [Header("Follow Settings")]
-    [Tooltip("Khoảng cách UI trước mặt camera (m).")]
-    public float distance = 1.2f;
-
-    [Tooltip("Offset theo local space của camera (m). Ví dụ hạ UI xuống một chút.")]
-    public Vector3 cameraLocalOffset = new Vector3(0f, -0.15f, 0f);
-
-    [Tooltip("Nếu bật, UI sẽ follow mượt thay vì teleport theo camera.")]
-    public bool smoothFollow = true;
-
-    [Tooltip("Tốc độ follow mượt (càng lớn càng bám chặt).")]
-    public float positionLerpSpeed = 12f;
-
-    [Header("Rotation Settings")]
-    [Tooltip("Nếu true: UI chỉ xoay theo yaw (trục Y). Khuyên dùng cho VR.")]
-    public bool yawOnly = true;
-
-    [Tooltip("Tốc độ xoay mượt.")]
-    public float rotationLerpSpeed = 12f;
-
-    [Header("Update Timing")]
-    [Tooltip("LateUpdate thường ổn hơn vì camera đã update xong trong frame.")]
-    public bool useLateUpdate = true;
-
-    private void OnEnable()
-    {
-        if (targetCamera == null && Camera.main != null)
-            targetCamera = Camera.main.transform;
-    }
-
-    private void LateUpdate()
-    {
-        if (!useLateUpdate) return;
-        Tick();
-    }
-
-    private void Update()
-    {
-        if (useLateUpdate) return;
-        Tick();
-    }
-
-    private void Tick()
-    {
-        if (targetCamera == null)
-        {
-            if (Camera.main == null) return;
-            targetCamera = Camera.main.transform;
+            GameEventBus.OnToastRequested -= HandleToastRequested;
         }
 
-        // 1) Tính vị trí mong muốn: trước mặt camera + offset
-        Vector3 desiredPos = targetCamera.position
-                             + targetCamera.forward * distance
-                             + targetCamera.TransformVector(cameraLocalOffset);
-
-        // 2) Follow vị trí
-        if (smoothFollow)
-            transform.position = Vector3.Lerp(transform.position, desiredPos, 1f - Mathf.Exp(-positionLerpSpeed * Time.deltaTime));
-        else
-            transform.position = desiredPos;
-
-        // 3) Quay mặt về camera
-        Vector3 lookDir = transform.position - targetCamera.position;
-
-        if (yawOnly)
+        private void HandleToastRequested(string message)
         {
-            // chỉ xoay theo Y (bỏ pitch/roll)
-            lookDir.y = 0f;
-            if (lookDir.sqrMagnitude < 0.0001f) return;
+            if (toastUI == null)
+            {
+                Debug.LogWarning("[ToastUIListener] OutcomeToastUI not assigned.");
+                return;
+            }
 
-            Quaternion desiredRot = Quaternion.LookRotation(lookDir.normalized, Vector3.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, desiredRot, 1f - Mathf.Exp(-rotationLerpSpeed * Time.deltaTime));
-        }
-        else
-        {
-            // xoay full theo hướng camera
-            if (lookDir.sqrMagnitude < 0.0001f) return;
-
-            Quaternion desiredRot = Quaternion.LookRotation(lookDir.normalized, Vector3.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, desiredRot, 1f - Mathf.Exp(-rotationLerpSpeed * Time.deltaTime));
+            if (string.IsNullOrWhiteSpace(message)) return;
+            toastUI.Show(message);
         }
     }
 }

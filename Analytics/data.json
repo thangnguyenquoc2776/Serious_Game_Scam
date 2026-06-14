@@ -1,0 +1,4704 @@
+{
+  "players": {
+    "1gJPPFrwADbPzDMNxwIhKHuCPWv1": {
+      "created_at": 1780229061876,
+      "email": "player12@gmail.com",
+      "userid": "1gJPPFrwADbPzDMNxwIhKHuCPWv1"
+    },
+    "40f1uksF5kYFvJ5WxoYBzlBCfBE2": {
+      "created_at": 1780224831276,
+      "email": "player10@gmail.com",
+      "userid": "40f1uksF5kYFvJ5WxoYBzlBCfBE2"
+    },
+    "9gxlLyQsuOgc9Afp8cKMpjt9ezs2": {
+      "created_at": 1780219915499,
+      "email": "test2@gmail.com",
+      "userid": "9gxlLyQsuOgc9Afp8cKMpjt9ezs2"
+    },
+    "EOOUznHcdYM3B5Eu7H7303gt3Nl1": {
+      "created_at": 1780201574930,
+      "email": "player5@gmail.com",
+      "userid": "EOOUznHcdYM3B5Eu7H7303gt3Nl1"
+    },
+    "Phcnngo3Fddhr78h6wLbEE8qeW22": {
+      "created_at": 1780200089650,
+      "email": "player3@gmail.com",
+      "userid": "Phcnngo3Fddhr78h6wLbEE8qeW22"
+    },
+    "VYZqyGu79USyXvpxpxWmk0lxnAE3": {
+      "created_at": 1780225302996,
+      "email": "player11@gmail.com",
+      "userid": "VYZqyGu79USyXvpxpxWmk0lxnAE3"
+    },
+    "aUwWXivyj0VBPP4fmL3STw6ydC83": {
+      "created_at": 1780225708965,
+      "email": "player7@gmail.com",
+      "userid": "aUwWXivyj0VBPP4fmL3STw6ydC83"
+    },
+    "cx0jXpRTPFb30Gsm6QOvt3Hh6KJ3": {
+      "created_at": 1780217156841,
+      "email": "player4@gmail.com",
+      "userid": "cx0jXpRTPFb30Gsm6QOvt3Hh6KJ3"
+    },
+    "dhiHXvJmYgaNYeeE3QVoo77dMwf1": {
+      "created_at": 1780222507403,
+      "email": "player6@gmail.com",
+      "userid": "dhiHXvJmYgaNYeeE3QVoo77dMwf1"
+    },
+    "fqk1jRuVW0WEQikj0NOoPB64xPY2": {
+      "created_at": 1780165681986,
+      "email": "test@gmail.com",
+      "userid": "fqk1jRuVW0WEQikj0NOoPB64xPY2"
+    },
+    "sjbR7vKNWOfZzrhOxDyyO257XKZ2": {
+      "created_at": 1780226820858,
+      "email": "player13@gmail.com",
+      "userid": "sjbR7vKNWOfZzrhOxDyyO257XKZ2"
+    },
+    "vYmu30ZTOHbjiC4mPuaw73q6pZf1": {
+      "created_at": 1780224345684,
+      "email": "player9@gmail.com",
+      "userid": "vYmu30ZTOHbjiC4mPuaw73q6pZf1"
+    },
+    "vroJdrAh69TH16ZpHxlCqeIplRw1": {
+      "created_at": 1780228359441,
+      "email": "player8@gmail.com",
+      "userid": "vroJdrAh69TH16ZpHxlCqeIplRw1"
+    }
+  },
+  "sessions": {
+    "1342ccc29f9b48f1931be987d3177f68": {
+      "end_time": 1779028715263,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 58,
+        "SCORE_HELP_SEEKING": 55,
+        "SCORE_INFORMATION_VERIFICATION": 39,
+        "SCORE_PRESSURE_RESISTANCE": 42,
+        "SCORE_RISK_RECOGNITION": 40
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "1342ccc29f9b48f1931be987d3177f68",
+      "start_time": 1779028400441,
+      "total_playtime_seconds": 314.822,
+      "traces": [
+        {
+          "choice_id": "2",
+          "milestone_id": "2",
+          "object_name": "shipper_call",
+          "route_id": "CH1_M2_R2_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1779028563535,
+          "trace_id": "TRACE_DELAY_ACTION"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "shipper_call",
+          "route_id": "CH1_M2_R2_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1779028568697,
+          "trace_id": "TRACE_IGNORE_RED_FLAG"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "nam_private_chat",
+          "route_id": "CH1_M2_R0_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 47,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 44
+          },
+          "timestamp": 1779028580955,
+          "trace_id": "TRACE_TRANSFER_MONEY"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "4",
+          "object_name": "scholarship_email",
+          "route_id": "CH1_M4_R2_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 32,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 37
+          },
+          "timestamp": 1779028617559,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "4",
+          "object_name": "scholarship_email",
+          "route_id": "CH1_M4_R2_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 34,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 37
+          },
+          "timestamp": 1779028624973,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "4",
+          "object_name": "scholarship_email",
+          "route_id": "CH1_M4_R2_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 39,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 40
+          },
+          "timestamp": 1779028629887,
+          "trace_id": "TRACE_WARN_OTHERS"
+        }
+      ]
+    },
+    "139701fb7cdf42f4abce803a273e744e": {
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 60,
+        "SCORE_HELP_SEEKING": 72,
+        "SCORE_INFORMATION_VERIFICATION": 82,
+        "SCORE_PRESSURE_RESISTANCE": 63,
+        "SCORE_RISK_RECOGNITION": 60
+      },
+      "is_completed": true,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "139701fb7cdf42f4abce803a273e744e",
+      "total_playtime_seconds": 932,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "route_id": "CH1_M0_R0_BB_14",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 70,
+            "SCORE_PRESSURE_RESISTANCE": 54,
+            "SCORE_RISK_RECOGNITION": 56
+          },
+          "timestamp": 1778403600753,
+          "trace_id": "T_VERIFY_OFFICIAL"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "0",
+          "route_id": "CH1_M0_R0_BB_15",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 0,
+            "SCORE_HELP_SEEKING": 0,
+            "SCORE_INFORMATION_VERIFICATION": 0,
+            "SCORE_PRESSURE_RESISTANCE": 0,
+            "SCORE_RISK_RECOGNITION": 0
+          },
+          "timestamp": 1778403607942,
+          "trace_id": "T_VERIFY_OFFICIAL"
+        }
+      ]
+    },
+    "1d326bc28e284f6f8fb09faf60f2548a": {
+      "end_time": 1780222325581,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 66,
+        "SCORE_HELP_SEEKING": 80,
+        "SCORE_INFORMATION_VERIFICATION": 68,
+        "SCORE_PRESSURE_RESISTANCE": 76,
+        "SCORE_RISK_RECOGNITION": 70
+      },
+      "is_completed": false,
+      "player_id": "dhiHXvJmYgaNYeeE3QVoo77dMwf1",
+      "session_id": "1d326bc28e284f6f8fb09faf60f2548a",
+      "start_time": 1780222320474,
+      "total_playtime_seconds": 5.107
+    },
+    "1fb026953dc846bc97dd4e7d57f23e00": {
+      "end_time": 1780225889933,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 66,
+        "SCORE_HELP_SEEKING": 80,
+        "SCORE_INFORMATION_VERIFICATION": 85,
+        "SCORE_PRESSURE_RESISTANCE": 74,
+        "SCORE_RISK_RECOGNITION": 76
+      },
+      "is_completed": true,
+      "player_id": "vYmu30ZTOHbjiC4mPuaw73q6pZf1",
+      "session_id": "1fb026953dc846bc97dd4e7d57f23e00",
+      "start_time": 1780224354262,
+      "total_playtime_seconds": 1535.671,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_email_checkin",
+          "route_id": "CH1_M0_R0_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780224402748,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_guard",
+          "route_id": "CH1_M0_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780224486665,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_linh_askgroup",
+          "route_id": "CH1_M0_R0_BB_4",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780224637397,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "0",
+          "object_name": "m1_roommate_askdoc",
+          "route_id": "CH1_M0_R0_BB_13",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 56,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780225166096,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "1",
+          "object_name": "m1_link_freedoc",
+          "route_id": "CH1_M1_R2_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 58,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780225241443,
+          "trace_id": "TRACE_OPEN_UNVERIFIED_LINK"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "1",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M1_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 48
+          },
+          "timestamp": 1780225437900,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "2",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M2_TC_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 56,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 48
+          },
+          "timestamp": 1780225466794,
+          "trace_id": "TRACE_DELAY_ACTION"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "2",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M2_R2_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 59,
+            "SCORE_PRESSURE_RESISTANCE": 56,
+            "SCORE_RISK_RECOGNITION": 48
+          },
+          "timestamp": 1780225489265,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_app_checkorder",
+          "route_id": "CH1_M2_R2_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 62,
+            "SCORE_PRESSURE_RESISTANCE": 62,
+            "SCORE_RISK_RECOGNITION": 53
+          },
+          "timestamp": 1780225494918,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "2",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M2_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 67,
+            "SCORE_PRESSURE_RESISTANCE": 62,
+            "SCORE_RISK_RECOGNITION": 56
+          },
+          "timestamp": 1780225560734,
+          "trace_id": "TRACE_DETECT_RED_FLAG"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M3_TC_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 70,
+            "SCORE_PRESSURE_RESISTANCE": 62,
+            "SCORE_RISK_RECOGNITION": 63
+          },
+          "timestamp": 1780225582593,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_Mai",
+          "route_id": "CH1_M3_TC_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 73,
+            "SCORE_PRESSURE_RESISTANCE": 68,
+            "SCORE_RISK_RECOGNITION": 68
+          },
+          "timestamp": 1780225590735,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_classgroup",
+          "route_id": "CH1_M3_R0_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 75,
+            "SCORE_INFORMATION_VERIFICATION": 75,
+            "SCORE_PRESSURE_RESISTANCE": 68,
+            "SCORE_RISK_RECOGNITION": 68
+          },
+          "timestamp": 1780225620335,
+          "trace_id": "TRACE_WARN_OTHERS"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "3",
+          "object_name": "m4_email_scholarship_askroomate",
+          "route_id": "CH1_M3_R0_BB_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 75,
+            "SCORE_INFORMATION_VERIFICATION": 75,
+            "SCORE_PRESSURE_RESISTANCE": 68,
+            "SCORE_RISK_RECOGNITION": 68
+          },
+          "timestamp": 1780225801404,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M4_R3_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 77,
+            "SCORE_PRESSURE_RESISTANCE": 68,
+            "SCORE_RISK_RECOGNITION": 68
+          },
+          "timestamp": 1780225816619,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "4",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M4_R3_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 82,
+            "SCORE_PRESSURE_RESISTANCE": 68,
+            "SCORE_RISK_RECOGNITION": 71
+          },
+          "timestamp": 1780225825163,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_classgroup",
+          "route_id": "CH1_M4_R0_BB_0",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 85,
+            "SCORE_PRESSURE_RESISTANCE": 74,
+            "SCORE_RISK_RECOGNITION": 76
+          },
+          "timestamp": 1780225837005,
+          "trace_id": "TRACE_WARN_OTHERS"
+        }
+      ]
+    },
+    "2086c742c872467ebaeca2b56a8f4dc0": {
+      "end_time": 1780161785198,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 50,
+        "SCORE_INFORMATION_VERIFICATION": 52,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "2086c742c872467ebaeca2b56a8f4dc0",
+      "start_time": 1780161653252,
+      "total_playtime_seconds": 131.946,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_email_checkin",
+          "route_id": "CH1_M0_R0_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780161664932,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        }
+      ]
+    },
+    "23f90deb25bd47a5abfa01d9c0f8f8bd": {
+      "end_time": 1779295474162,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 55,
+        "SCORE_INFORMATION_VERIFICATION": 52,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "23f90deb25bd47a5abfa01d9c0f8f8bd",
+      "start_time": 1779295373465,
+      "total_playtime_seconds": 100.697,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "Instructor",
+          "route_id": "CH1_M0_R0_BB_4",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1779295427612,
+          "trace_id": "TRACE_ASK_PERSON"
+        }
+      ]
+    },
+    "3bfa1ecce4ee452abe4c8cf1aecee3b6": {
+      "end_time": 1779173906047,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 60,
+        "SCORE_INFORMATION_VERIFICATION": 56,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "3bfa1ecce4ee452abe4c8cf1aecee3b6",
+      "start_time": 1779173588449,
+      "total_playtime_seconds": 317.598,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "Check_in_mail",
+          "route_id": "CH1_M0_R0_TC_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1779173607774,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "0",
+          "object_name": "Instructor",
+          "route_id": "CH1_M0_R0_TC_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1779173642140,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "friend",
+          "route_id": "CH1_M0_R0_BB_7",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1779173678259,
+          "trace_id": "TRACE_ASK_PERSON"
+        }
+      ]
+    },
+    "42771feccb894b9d965d602545ea8c64": {
+      "end_time": 1779295175625,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 50,
+        "SCORE_INFORMATION_VERIFICATION": 52,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "42771feccb894b9d965d602545ea8c64",
+      "start_time": 1779295103239,
+      "total_playtime_seconds": 72.386,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "Check_in_mail",
+          "route_id": "CH1_M0_R0_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1779295119587,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        }
+      ]
+    },
+    "44297b2b67ab4044bfc8f131e01894f8": {
+      "end_time": 1779087946132,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 50,
+        "SCORE_INFORMATION_VERIFICATION": 52,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "44297b2b67ab4044bfc8f131e01894f8",
+      "start_time": 1779087893550,
+      "total_playtime_seconds": 52.582,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "Check_in_mail",
+          "route_id": "CH1_M0_R0_TC_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1779087902486,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        }
+      ]
+    },
+    "47ffdddbd6de4eccb3f692bfff6d0026": {
+      "end_time": 1778784109737,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 0,
+        "SCORE_HELP_SEEKING": 0,
+        "SCORE_INFORMATION_VERIFICATION": 0,
+        "SCORE_PRESSURE_RESISTANCE": 0,
+        "SCORE_RISK_RECOGNITION": 0
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "47ffdddbd6de4eccb3f692bfff6d0026",
+      "start_time": 1778784096719,
+      "total_playtime_seconds": 13.018
+    },
+    "4943e96963484c518a7a89e411957f59": {
+      "end_time": 1780226926602,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 58,
+        "SCORE_HELP_SEEKING": 85,
+        "SCORE_INFORMATION_VERIFICATION": 87,
+        "SCORE_PRESSURE_RESISTANCE": 74,
+        "SCORE_RISK_RECOGNITION": 76
+      },
+      "is_completed": true,
+      "player_id": "VYZqyGu79USyXvpxpxWmk0lxnAE3",
+      "session_id": "4943e96963484c518a7a89e411957f59",
+      "start_time": 1780225321304,
+      "total_playtime_seconds": 1605.298,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_email_checkin",
+          "route_id": "CH1_M0_R0_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780225352486,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_guard",
+          "route_id": "CH1_M0_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780225530841,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_linh_askgroup",
+          "route_id": "CH1_M0_R0_BB_4",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780225650454,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "0",
+          "object_name": "m1_roommate_askdoc",
+          "route_id": "CH1_M0_R0_BB_13",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 56,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780226246822,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "1",
+          "object_name": "m1_link_freedoc",
+          "route_id": "CH1_M1_R2_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 58,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780226266535,
+          "trace_id": "TRACE_OPEN_UNVERIFIED_LINK"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "1",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M1_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 48
+          },
+          "timestamp": 1780226528679,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "2",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M2_TC_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 56,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 48
+          },
+          "timestamp": 1780226560529,
+          "trace_id": "TRACE_DELAY_ACTION"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "2",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M2_R2_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 59,
+            "SCORE_PRESSURE_RESISTANCE": 56,
+            "SCORE_RISK_RECOGNITION": 48
+          },
+          "timestamp": 1780226584385,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_app_checkorder",
+          "route_id": "CH1_M2_R2_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 62,
+            "SCORE_PRESSURE_RESISTANCE": 62,
+            "SCORE_RISK_RECOGNITION": 53
+          },
+          "timestamp": 1780226590932,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "2",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M2_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 67,
+            "SCORE_PRESSURE_RESISTANCE": 62,
+            "SCORE_RISK_RECOGNITION": 56
+          },
+          "timestamp": 1780226652464,
+          "trace_id": "TRACE_DETECT_RED_FLAG"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_roomate",
+          "route_id": "CH1_M3_TC_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 70,
+            "SCORE_PRESSURE_RESISTANCE": 62,
+            "SCORE_RISK_RECOGNITION": 63
+          },
+          "timestamp": 1780226672038,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_Mai",
+          "route_id": "CH1_M3_R2_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 75,
+            "SCORE_INFORMATION_VERIFICATION": 72,
+            "SCORE_PRESSURE_RESISTANCE": 62,
+            "SCORE_RISK_RECOGNITION": 63
+          },
+          "timestamp": 1780226690586,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M3_R2_BB_1_A",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 74,
+            "SCORE_PRESSURE_RESISTANCE": 62,
+            "SCORE_RISK_RECOGNITION": 63
+          },
+          "timestamp": 1780226702689,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_classgroup",
+          "route_id": "CH1_M3_R0_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 77,
+            "SCORE_PRESSURE_RESISTANCE": 68,
+            "SCORE_RISK_RECOGNITION": 68
+          },
+          "timestamp": 1780226737493,
+          "trace_id": "TRACE_WARN_OTHERS"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "3",
+          "object_name": "m4_email_scholarship_askroomate",
+          "route_id": "CH1_M3_R0_BB_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 77,
+            "SCORE_PRESSURE_RESISTANCE": 68,
+            "SCORE_RISK_RECOGNITION": 68
+          },
+          "timestamp": 1780226775159,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M4_R3_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 85,
+            "SCORE_INFORMATION_VERIFICATION": 79,
+            "SCORE_PRESSURE_RESISTANCE": 68,
+            "SCORE_RISK_RECOGNITION": 68
+          },
+          "timestamp": 1780226862137,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "4",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M4_R3_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 85,
+            "SCORE_INFORMATION_VERIFICATION": 84,
+            "SCORE_PRESSURE_RESISTANCE": 68,
+            "SCORE_RISK_RECOGNITION": 71
+          },
+          "timestamp": 1780226879349,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        }
+      ]
+    },
+    "49c815d91834424d88c57e1bd5ace9e0": {
+      "end_time": 1780226080951,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 66,
+        "SCORE_HELP_SEEKING": 75,
+        "SCORE_INFORMATION_VERIFICATION": 68,
+        "SCORE_PRESSURE_RESISTANCE": 54,
+        "SCORE_RISK_RECOGNITION": 62
+      },
+      "is_completed": true,
+      "player_id": "40f1uksF5kYFvJ5WxoYBzlBCfBE2",
+      "session_id": "49c815d91834424d88c57e1bd5ace9e0",
+      "start_time": 1780224832725,
+      "total_playtime_seconds": 1248.226,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_email_checkin",
+          "route_id": "CH1_M0_R0_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780224973370,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_guard",
+          "route_id": "CH1_M0_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780225544569,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_linh_askgroup",
+          "route_id": "CH1_M0_R0_BB_4",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780225614932,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "0",
+          "object_name": "m1_link_freedoc",
+          "route_id": "CH1_M0_R0_BB_13",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 56,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780225787414,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "1",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M1_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 61,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 53
+          },
+          "timestamp": 1780225872168,
+          "trace_id": "TRACE_TRANSFER_MONEY"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_app_checkorder",
+          "route_id": "CH1_M2_R1_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 46,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 46
+          },
+          "timestamp": 1780225962234,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "2",
+          "object_name": "m3_namchat_askroomate",
+          "route_id": "CH1_M2_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 51,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 49
+          },
+          "timestamp": 1780225991679,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_Mai",
+          "route_id": "CH1_M3_R2_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 53,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 49
+          },
+          "timestamp": 1780226001106,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M3_R2_BB_1_A",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 55,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 49
+          },
+          "timestamp": 1780226007841,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_classgroup",
+          "route_id": "CH1_M3_R0_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 58,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 54
+          },
+          "timestamp": 1780226025037,
+          "trace_id": "TRACE_WARN_OTHERS"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "3",
+          "object_name": "m4_email_scholarship_askroomate",
+          "route_id": "CH1_M3_R0_BB_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 58,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 54
+          },
+          "timestamp": 1780226052006,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M4_R3_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 75,
+            "SCORE_INFORMATION_VERIFICATION": 60,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 54
+          },
+          "timestamp": 1780226061220,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "4",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M4_R3_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 75,
+            "SCORE_INFORMATION_VERIFICATION": 65,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 57
+          },
+          "timestamp": 1780226067738,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_classgroup",
+          "route_id": "CH1_M4_R0_BB_0",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 75,
+            "SCORE_INFORMATION_VERIFICATION": 68,
+            "SCORE_PRESSURE_RESISTANCE": 54,
+            "SCORE_RISK_RECOGNITION": 62
+          },
+          "timestamp": 1780226072625,
+          "trace_id": "TRACE_WARN_OTHERS"
+        }
+      ]
+    },
+    "4adb614372c844e38e3efb869a5ae28c": {
+      "end_time": 1780194752876,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 55,
+        "SCORE_INFORMATION_VERIFICATION": 52,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "9gxlLyQsuOgc9Afp8cKMpjt9ezs2",
+      "session_id": "4adb614372c844e38e3efb869a5ae28c",
+      "start_time": 1780194380405,
+      "total_playtime_seconds": 372.471,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_guard",
+          "route_id": "CH1_M0_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780194635174,
+          "trace_id": "TRACE_ASK_PERSON"
+        }
+      ]
+    },
+    "542e99f6b4ef4c538c761f0aade44980": {
+      "end_time": 1779026418348,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 64,
+        "SCORE_INFORMATION_VERIFICATION": 73,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 70
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "542e99f6b4ef4c538c761f0aade44980",
+      "start_time": 1779026108182,
+      "total_playtime_seconds": 310.166,
+      "traces": [
+        {
+          "choice_id": "2",
+          "milestone_id": "0",
+          "object_name": "free_doc_link",
+          "route_id": "CH1_M1_R2_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1779026226638,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "0",
+          "object_name": "free_doc_link",
+          "route_id": "CH1_M1_R2_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1779026235415,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "2",
+          "object_name": "shipper_call",
+          "route_id": "CH1_M2_R2_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 57,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 53
+          },
+          "timestamp": 1779026283604,
+          "trace_id": "TRACE_DELAY_ACTION"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "shipper_call",
+          "route_id": "CH1_M2_R2_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 57,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 53
+          },
+          "timestamp": 1779026292377,
+          "trace_id": "TRACE_DETECT_RED_FLAG"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "2",
+          "object_name": "nam_private_chat",
+          "route_id": "CH1_M2_R0_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 60,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 60
+          },
+          "timestamp": 1779026332014,
+          "trace_id": "TRACE_DETECT_RED_FLAG"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "nam_private_chat",
+          "route_id": "CH1_M3_TC_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 63,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 67
+          },
+          "timestamp": 1779026341158,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "nam_private_chat",
+          "route_id": "CH1_M3_R2_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 65,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 67
+          },
+          "timestamp": 1779026348719,
+          "trace_id": "TRACE_CONTACT_VERIFY"
+        }
+      ]
+    },
+    "54989fc36d854835a4ab77a415a1e9f3": {
+      "end_time": 1778784221748,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 0,
+        "SCORE_HELP_SEEKING": 0,
+        "SCORE_INFORMATION_VERIFICATION": 0,
+        "SCORE_PRESSURE_RESISTANCE": 0,
+        "SCORE_RISK_RECOGNITION": 0
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "54989fc36d854835a4ab77a415a1e9f3",
+      "start_time": 1778784164476,
+      "total_playtime_seconds": 57.272
+    },
+    "5794e3ef6e494032b42ecad29854b949": {
+      "end_time": 1778998271738,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 55,
+        "SCORE_INFORMATION_VERIFICATION": 54,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "5794e3ef6e494032b42ecad29854b949",
+      "start_time": 1778998182844,
+      "total_playtime_seconds": 88.894,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "",
+          "route_id": "CH1_M0_R0_TC_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1778998230258,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "0",
+          "object_name": "",
+          "route_id": "CH1_M0_R0_TC_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1778998256922,
+          "trace_id": "TRACE_ASK_PERSON"
+        }
+      ]
+    },
+    "66c3226e840e461a902dffc6c8ac249c": {
+      "end_time": 1780229559638,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 66,
+        "SCORE_HELP_SEEKING": 65,
+        "SCORE_INFORMATION_VERIFICATION": 2,
+        "SCORE_PRESSURE_RESISTANCE": 30,
+        "SCORE_RISK_RECOGNITION": 26
+      },
+      "is_completed": true,
+      "player_id": "1gJPPFrwADbPzDMNxwIhKHuCPWv1",
+      "session_id": "66c3226e840e461a902dffc6c8ac249c",
+      "start_time": 1780229063183,
+      "total_playtime_seconds": 496.455,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_guard",
+          "route_id": "CH1_M0_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780229130960,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "0",
+          "object_name": "m1_link_freedoc",
+          "route_id": "CH1_M0_R0_BB_13",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780229322902,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "1",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M1_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 57,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 53
+          },
+          "timestamp": 1780229391201,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M2_TC_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 59,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 53
+          },
+          "timestamp": 1780229405474,
+          "trace_id": "TRACE_TRANSFER_MONEY"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_app_checkorder",
+          "route_id": "CH1_M2_R1_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 44,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 46
+          },
+          "timestamp": 1780229457862,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "2",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M2_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 49,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 49
+          },
+          "timestamp": 1780229476791,
+          "trace_id": "TRACE_DETECT_RED_FLAG"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M3_TC_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 56
+          },
+          "timestamp": 1780229480170,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_classgroup",
+          "route_id": "CH1_M3_R0_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 55,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 61
+          },
+          "timestamp": 1780229500313,
+          "trace_id": "TRACE_WARN_OTHERS"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "3",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M3_R0_BB_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 55,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 61
+          },
+          "timestamp": 1780229523887,
+          "trace_id": "TRACE_OPEN_UNVERIFIED_FORM"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_scholarship_form",
+          "route_id": "CH1_M4_R1_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 58
+          },
+          "timestamp": 1780229526209,
+          "trace_id": "TRACE_FILL_BASIC_INFO"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_form_bankaccount",
+          "route_id": "CH1_M4_R1_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 43,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 54
+          },
+          "timestamp": 1780229529974,
+          "trace_id": "TRACE_FILL_SENSITIVE_INFO"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_form_banklogin",
+          "route_id": "CH1_M4_R1_BB_4",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 31,
+            "SCORE_PRESSURE_RESISTANCE": 44,
+            "SCORE_RISK_RECOGNITION": 48
+          },
+          "timestamp": 1780229533950,
+          "trace_id": "TRACE_SUBMIT_CREDENTIAL"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_otp_bankauth",
+          "route_id": "CH1_M4_R1_BB_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 11,
+            "SCORE_PRESSURE_RESISTANCE": 38,
+            "SCORE_RISK_RECOGNITION": 38
+          },
+          "timestamp": 1780229536163,
+          "trace_id": "TRACE_SUBMIT_AUTH_CODE"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_roommate",
+          "route_id": "CH1_M4_R1_BB_6",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 0,
+            "SCORE_PRESSURE_RESISTANCE": 30,
+            "SCORE_RISK_RECOGNITION": 26
+          },
+          "timestamp": 1780229543271,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_classgroup",
+          "route_id": "CH1_M4_R0_BB_0",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 2,
+            "SCORE_PRESSURE_RESISTANCE": 30,
+            "SCORE_RISK_RECOGNITION": 26
+          },
+          "timestamp": 1780229553282,
+          "trace_id": "TRACE_WARN_OTHERS"
+        }
+      ]
+    },
+    "6d8d8ee5a4d64040866aab590a3ddfeb": {
+      "end_time": 1780228892704,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 50,
+        "SCORE_INFORMATION_VERIFICATION": 50,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "vroJdrAh69TH16ZpHxlCqeIplRw1",
+      "session_id": "6d8d8ee5a4d64040866aab590a3ddfeb",
+      "start_time": 1780228360159,
+      "total_playtime_seconds": 532.545
+    },
+    "70312f74100b48cc8e53fe4183521ae0": {
+      "end_time": 1778996223991,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 60,
+        "SCORE_INFORMATION_VERIFICATION": 0,
+        "SCORE_PRESSURE_RESISTANCE": 16,
+        "SCORE_RISK_RECOGNITION": 8
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "70312f74100b48cc8e53fe4183521ae0",
+      "start_time": 1778995863677,
+      "total_playtime_seconds": 360.314,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "",
+          "route_id": "CH1_M0_R0_TC_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1778995871613,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "0",
+          "object_name": "",
+          "route_id": "CH1_M0_R0_TC_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1778995896628,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "0",
+          "object_name": "",
+          "route_id": "CH1_M0_R0_TC_8",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1778995930667,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "1",
+          "object_name": "free_doc_login",
+          "route_id": "CH1_M1_R1_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 56,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1778996016233,
+          "trace_id": "TRACE_SUBMIT_CREDENTIAL"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "shipper_call",
+          "route_id": "CH1_M2_R1_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 36,
+            "SCORE_PRESSURE_RESISTANCE": 44,
+            "SCORE_RISK_RECOGNITION": 40
+          },
+          "timestamp": 1778996105151,
+          "trace_id": "TRACE_TRANSFER_MONEY"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "3",
+          "object_name": "nam_private_chat",
+          "route_id": "CH1_M3_R1_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 21,
+            "SCORE_PRESSURE_RESISTANCE": 36,
+            "SCORE_RISK_RECOGNITION": 33
+          },
+          "timestamp": 1778996160897,
+          "trace_id": "TRACE_TRANSFER_MONEY"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "scholarship_form",
+          "route_id": "CH1_M4_R1_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 6,
+            "SCORE_PRESSURE_RESISTANCE": 28,
+            "SCORE_RISK_RECOGNITION": 26
+          },
+          "timestamp": 1778996197431,
+          "trace_id": "TRACE_FILL_SENSITIVE_INFO"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "scholarship_otp",
+          "route_id": "CH1_M4_R1_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 0,
+            "SCORE_PRESSURE_RESISTANCE": 24,
+            "SCORE_RISK_RECOGNITION": 20
+          },
+          "timestamp": 1778996207448,
+          "trace_id": "TRACE_SUBMIT_AUTH_CODE"
+        }
+      ]
+    },
+    "728cd783b26f4657aaa92e368a55b688": {
+      "end_time": 1779286463661,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 50,
+        "SCORE_INFORMATION_VERIFICATION": 50,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": true,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "728cd783b26f4657aaa92e368a55b688",
+      "start_time": 1779286439825,
+      "total_playtime_seconds": 23.836
+    },
+    "75eeb26fc024487c8997793141fe4192": {
+      "end_time": 1780229220320,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 66,
+        "SCORE_HELP_SEEKING": 85,
+        "SCORE_INFORMATION_VERIFICATION": 73,
+        "SCORE_PRESSURE_RESISTANCE": 66,
+        "SCORE_RISK_RECOGNITION": 64
+      },
+      "is_completed": true,
+      "player_id": "aUwWXivyj0VBPP4fmL3STw6ydC83",
+      "session_id": "75eeb26fc024487c8997793141fe4192",
+      "start_time": 1780225710267,
+      "total_playtime_seconds": 3510.053,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_email_checkin",
+          "route_id": "CH1_M0_R0_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780226216377,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_guard",
+          "route_id": "CH1_M0_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780226376622,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_linh_askgroup",
+          "route_id": "CH1_M0_R0_BB_4",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780226615591,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "0",
+          "object_name": "m1_roommate_askdoc",
+          "route_id": "CH1_M0_R0_BB_13",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 56,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780227695384,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "1",
+          "object_name": "m1_link_freedoc",
+          "route_id": "CH1_M1_R2_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 58,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780227810407,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "1",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M1_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 61,
+            "SCORE_PRESSURE_RESISTANCE": 56,
+            "SCORE_RISK_RECOGNITION": 55
+          },
+          "timestamp": 1780228262081,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "2",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M2_TC_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 63,
+            "SCORE_PRESSURE_RESISTANCE": 56,
+            "SCORE_RISK_RECOGNITION": 55
+          },
+          "timestamp": 1780228307568,
+          "trace_id": "TRACE_DELAY_ACTION"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M2_R2_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 66,
+            "SCORE_PRESSURE_RESISTANCE": 62,
+            "SCORE_RISK_RECOGNITION": 55
+          },
+          "timestamp": 1780228331320,
+          "trace_id": "TRACE_TRANSFER_MONEY"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_app_checkorder",
+          "route_id": "CH1_M2_R1_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 51,
+            "SCORE_PRESSURE_RESISTANCE": 54,
+            "SCORE_RISK_RECOGNITION": 48
+          },
+          "timestamp": 1780228711020,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "2",
+          "object_name": "m3_namchat_askroomate",
+          "route_id": "CH1_M2_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 56,
+            "SCORE_PRESSURE_RESISTANCE": 54,
+            "SCORE_RISK_RECOGNITION": 51
+          },
+          "timestamp": 1780228806654,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_Mai",
+          "route_id": "CH1_M3_R2_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 75,
+            "SCORE_INFORMATION_VERIFICATION": 58,
+            "SCORE_PRESSURE_RESISTANCE": 54,
+            "SCORE_RISK_RECOGNITION": 51
+          },
+          "timestamp": 1780228900218,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M3_R2_BB_1_A",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 60,
+            "SCORE_PRESSURE_RESISTANCE": 54,
+            "SCORE_RISK_RECOGNITION": 51
+          },
+          "timestamp": 1780228921219,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_classgroup",
+          "route_id": "CH1_M3_R0_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 63,
+            "SCORE_PRESSURE_RESISTANCE": 60,
+            "SCORE_RISK_RECOGNITION": 56
+          },
+          "timestamp": 1780228969384,
+          "trace_id": "TRACE_WARN_OTHERS"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "3",
+          "object_name": "m4_email_scholarship_askroomate",
+          "route_id": "CH1_M3_R0_BB_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 63,
+            "SCORE_PRESSURE_RESISTANCE": 60,
+            "SCORE_RISK_RECOGNITION": 56
+          },
+          "timestamp": 1780229127728,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M4_R3_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 85,
+            "SCORE_INFORMATION_VERIFICATION": 65,
+            "SCORE_PRESSURE_RESISTANCE": 60,
+            "SCORE_RISK_RECOGNITION": 56
+          },
+          "timestamp": 1780229154020,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "4",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M4_R3_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 85,
+            "SCORE_INFORMATION_VERIFICATION": 70,
+            "SCORE_PRESSURE_RESISTANCE": 60,
+            "SCORE_RISK_RECOGNITION": 59
+          },
+          "timestamp": 1780229169323,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_classgroup",
+          "route_id": "CH1_M4_R0_BB_0",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 85,
+            "SCORE_INFORMATION_VERIFICATION": 73,
+            "SCORE_PRESSURE_RESISTANCE": 66,
+            "SCORE_RISK_RECOGNITION": 64
+          },
+          "timestamp": 1780229185549,
+          "trace_id": "TRACE_WARN_OTHERS"
+        }
+      ]
+    },
+    "7ba9fd458aca41e6b3a5f0925ea27c6e": {
+      "end_time": 1780201043857,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 66,
+        "SCORE_HELP_SEEKING": 70,
+        "SCORE_INFORMATION_VERIFICATION": 67,
+        "SCORE_PRESSURE_RESISTANCE": 60,
+        "SCORE_RISK_RECOGNITION": 71
+      },
+      "is_completed": true,
+      "player_id": "Phcnngo3Fddhr78h6wLbEE8qeW22",
+      "session_id": "7ba9fd458aca41e6b3a5f0925ea27c6e",
+      "start_time": 1780200093532,
+      "total_playtime_seconds": 950.325,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_email_checkin",
+          "route_id": "CH1_M0_R0_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780200116591,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_guard",
+          "route_id": "CH1_M0_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780200158510,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_linh_askgroup",
+          "route_id": "CH1_M0_R0_BB_4",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780200406527,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "0",
+          "object_name": "m1_roommate_askdoc",
+          "route_id": "CH1_M0_R0_BB_13",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 56,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780200649333,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "1",
+          "object_name": "m1_link_freedoc",
+          "route_id": "CH1_M1_R2_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 58,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780200669050,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "1",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M1_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 61,
+            "SCORE_PRESSURE_RESISTANCE": 56,
+            "SCORE_RISK_RECOGNITION": 55
+          },
+          "timestamp": 1780200858658,
+          "trace_id": "TRACE_TRANSFER_MONEY"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_app_checkorder",
+          "route_id": "CH1_M2_R1_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 46,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 48
+          },
+          "timestamp": 1780200918824,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "2",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M2_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 51,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 51
+          },
+          "timestamp": 1780200940031,
+          "trace_id": "TRACE_DETECT_RED_FLAG"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M3_TC_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 58
+          },
+          "timestamp": 1780200948590,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_classgroup",
+          "route_id": "CH1_M3_R0_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 57,
+            "SCORE_PRESSURE_RESISTANCE": 54,
+            "SCORE_RISK_RECOGNITION": 63
+          },
+          "timestamp": 1780200980140,
+          "trace_id": "TRACE_WARN_OTHERS"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "3",
+          "object_name": "m4_email_scholarship_askroomate",
+          "route_id": "CH1_M3_R0_BB_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 57,
+            "SCORE_PRESSURE_RESISTANCE": 54,
+            "SCORE_RISK_RECOGNITION": 63
+          },
+          "timestamp": 1780201013429,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M4_R3_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 59,
+            "SCORE_PRESSURE_RESISTANCE": 54,
+            "SCORE_RISK_RECOGNITION": 63
+          },
+          "timestamp": 1780201021759,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "4",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M4_R3_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 64,
+            "SCORE_PRESSURE_RESISTANCE": 54,
+            "SCORE_RISK_RECOGNITION": 66
+          },
+          "timestamp": 1780201030733,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_classgroup",
+          "route_id": "CH1_M4_R0_BB_0",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 67,
+            "SCORE_PRESSURE_RESISTANCE": 60,
+            "SCORE_RISK_RECOGNITION": 71
+          },
+          "timestamp": 1780201035471,
+          "trace_id": "TRACE_WARN_OTHERS"
+        }
+      ]
+    },
+    "7f905de6a9694a2895769ffc9330ed56": {
+      "end_time": 1779112413956,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 50,
+        "SCORE_INFORMATION_VERIFICATION": 14,
+        "SCORE_PRESSURE_RESISTANCE": 38,
+        "SCORE_RISK_RECOGNITION": 32
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "7f905de6a9694a2895769ffc9330ed56",
+      "start_time": 1779112321948,
+      "total_playtime_seconds": 92.008,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "scholarship_form",
+          "route_id": "CH1_M4_R1_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1779112376674,
+          "trace_id": "TRACE_FILL_SENSITIVE_INFO"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "scholarship_otp",
+          "route_id": "CH1_M4_R1_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 38,
+            "SCORE_PRESSURE_RESISTANCE": 46,
+            "SCORE_RISK_RECOGNITION": 44
+          },
+          "timestamp": 1779112389212,
+          "trace_id": "TRACE_SUBMIT_AUTH_CODE"
+        }
+      ]
+    },
+    "837af1aea0044ef19f635b3de6c419df": {
+      "end_time": 1779296070303,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 55,
+        "SCORE_INFORMATION_VERIFICATION": 52,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "837af1aea0044ef19f635b3de6c419df",
+      "start_time": 1779296002564,
+      "total_playtime_seconds": 67.739,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "Instructor",
+          "route_id": "CH1_M0_R0_BB_4",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1779296041180,
+          "trace_id": "TRACE_ASK_PERSON"
+        }
+      ]
+    },
+    "8cf2691faaab4aaaa66a4909d95cce3f": {
+      "end_time": 1778785245445,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 0,
+        "SCORE_HELP_SEEKING": 5,
+        "SCORE_INFORMATION_VERIFICATION": 2,
+        "SCORE_PRESSURE_RESISTANCE": 0,
+        "SCORE_RISK_RECOGNITION": 0
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "8cf2691faaab4aaaa66a4909d95cce3f",
+      "start_time": 1778785197052,
+      "total_playtime_seconds": 48.393,
+      "traces": [
+        {
+          "choice_id": "2",
+          "milestone_id": "0",
+          "route_id": "CH1_M0_ASK_QR",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 0,
+            "SCORE_HELP_SEEKING": 0,
+            "SCORE_INFORMATION_VERIFICATION": 0,
+            "SCORE_PRESSURE_RESISTANCE": 0,
+            "SCORE_RISK_RECOGNITION": 0
+          },
+          "timestamp": 1778785227115,
+          "trace_id": "TRACE_ASK_PERSON"
+        }
+      ]
+    },
+    "8e53c404a4284916a4b280a3b696791f": {
+      "end_time": 1780217355236,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 50,
+        "SCORE_INFORMATION_VERIFICATION": 52,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "cx0jXpRTPFb30Gsm6QOvt3Hh6KJ3",
+      "session_id": "8e53c404a4284916a4b280a3b696791f",
+      "start_time": 1780217157766,
+      "total_playtime_seconds": 197.47,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_email_checkin",
+          "route_id": "CH1_M0_R0_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780217188079,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        }
+      ]
+    },
+    "94f093c275fc4dbdb7674eb4fb7d9d99": {
+      "end_time": 1778918542329,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 0,
+        "SCORE_HELP_SEEKING": 10,
+        "SCORE_INFORMATION_VERIFICATION": 6,
+        "SCORE_PRESSURE_RESISTANCE": 0,
+        "SCORE_RISK_RECOGNITION": 0
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "94f093c275fc4dbdb7674eb4fb7d9d99",
+      "start_time": 1778918384598,
+      "total_playtime_seconds": 157.731,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "route_id": "CH1_M0_R0_TC_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 0,
+            "SCORE_HELP_SEEKING": 0,
+            "SCORE_INFORMATION_VERIFICATION": 0,
+            "SCORE_PRESSURE_RESISTANCE": 0,
+            "SCORE_RISK_RECOGNITION": 0
+          },
+          "timestamp": 1778918408964,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "0",
+          "route_id": "CH1_M0_R0_TC_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 0,
+            "SCORE_HELP_SEEKING": 0,
+            "SCORE_INFORMATION_VERIFICATION": 2,
+            "SCORE_PRESSURE_RESISTANCE": 0,
+            "SCORE_RISK_RECOGNITION": 0
+          },
+          "timestamp": 1778918435024,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "0",
+          "route_id": "CH1_M0_R0_TC_8",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 0,
+            "SCORE_HELP_SEEKING": 5,
+            "SCORE_INFORMATION_VERIFICATION": 4,
+            "SCORE_PRESSURE_RESISTANCE": 0,
+            "SCORE_RISK_RECOGNITION": 0
+          },
+          "timestamp": 1778918466493,
+          "trace_id": "TRACE_ASK_PERSON"
+        }
+      ]
+    },
+    "97521d9d19424fad88956fdd0910487d": {
+      "end_time": 1779294675313,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 50,
+        "SCORE_INFORMATION_VERIFICATION": 50,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "97521d9d19424fad88956fdd0910487d",
+      "start_time": 1779294620873,
+      "total_playtime_seconds": 54.44
+    },
+    "a38abb6afdad4b429171a280b3849522": {
+      "end_time": 1780200939906,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 66,
+        "SCORE_HELP_SEEKING": 80,
+        "SCORE_INFORMATION_VERIFICATION": 41,
+        "SCORE_PRESSURE_RESISTANCE": 48,
+        "SCORE_RISK_RECOGNITION": 47
+      },
+      "is_completed": true,
+      "player_id": "Phcnngo3Fddhr78h6wLbEE8qeW22",
+      "session_id": "a38abb6afdad4b429171a280b3849522",
+      "start_time": 1780199452202,
+      "total_playtime_seconds": 1487.704,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_email_checkin",
+          "route_id": "CH1_M0_R0_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780199528686,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_guard",
+          "route_id": "CH1_M0_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780199890195,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_linh_askgroup",
+          "route_id": "CH1_M0_R0_BB_4",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780200026252,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m1_link_freedoc",
+          "route_id": "CH1_M0_R0_BB_13",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 56,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780200478848,
+          "trace_id": "TRACE_OPEN_UNVERIFIED_LINK"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "1",
+          "object_name": "m1_freedoc_login",
+          "route_id": "CH1_M1_R1_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 48
+          },
+          "timestamp": 1780200506023,
+          "trace_id": "TRACE_SUBMIT_CREDENTIAL"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "1",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M1_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 32,
+            "SCORE_PRESSURE_RESISTANCE": 44,
+            "SCORE_RISK_RECOGNITION": 38
+          },
+          "timestamp": 1780200654767,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M2_TC_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 34,
+            "SCORE_PRESSURE_RESISTANCE": 44,
+            "SCORE_RISK_RECOGNITION": 38
+          },
+          "timestamp": 1780200675679,
+          "trace_id": "TRACE_TRANSFER_MONEY"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_app_checkorder",
+          "route_id": "CH1_M2_R1_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 19,
+            "SCORE_PRESSURE_RESISTANCE": 36,
+            "SCORE_RISK_RECOGNITION": 31
+          },
+          "timestamp": 1780200729339,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "2",
+          "object_name": "m3_namchat_askroomate",
+          "route_id": "CH1_M2_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 24,
+            "SCORE_PRESSURE_RESISTANCE": 36,
+            "SCORE_RISK_RECOGNITION": 34
+          },
+          "timestamp": 1780200784033,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_Mai",
+          "route_id": "CH1_M3_R2_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 26,
+            "SCORE_PRESSURE_RESISTANCE": 36,
+            "SCORE_RISK_RECOGNITION": 34
+          },
+          "timestamp": 1780200792530,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M3_R2_BB_1_A",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 75,
+            "SCORE_INFORMATION_VERIFICATION": 28,
+            "SCORE_PRESSURE_RESISTANCE": 36,
+            "SCORE_RISK_RECOGNITION": 34
+          },
+          "timestamp": 1780200807562,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_classgroup",
+          "route_id": "CH1_M3_R0_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 75,
+            "SCORE_INFORMATION_VERIFICATION": 31,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 39
+          },
+          "timestamp": 1780200844357,
+          "trace_id": "TRACE_WARN_OTHERS"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "3",
+          "object_name": "m4_email_scholarship_askroomate",
+          "route_id": "CH1_M3_R0_BB_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 75,
+            "SCORE_INFORMATION_VERIFICATION": 31,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 39
+          },
+          "timestamp": 1780200885611,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M4_R3_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 33,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 39
+          },
+          "timestamp": 1780200903754,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "4",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M4_R3_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 38,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 42
+          },
+          "timestamp": 1780200923124,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_classgroup",
+          "route_id": "CH1_M4_R0_BB_0",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 41,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 47
+          },
+          "timestamp": 1780200927646,
+          "trace_id": "TRACE_WARN_OTHERS"
+        }
+      ]
+    },
+    "a73cd362b1c445f7a7271970aa8e57b2": {
+      "end_time": 1780166728414,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 60,
+        "SCORE_INFORMATION_VERIFICATION": 3,
+        "SCORE_PRESSURE_RESISTANCE": 34,
+        "SCORE_RISK_RECOGNITION": 30
+      },
+      "is_completed": true,
+      "player_id": "9gxlLyQsuOgc9Afp8cKMpjt9ezs2",
+      "session_id": "a73cd362b1c445f7a7271970aa8e57b2",
+      "start_time": 1780166313385,
+      "total_playtime_seconds": 415.029,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_linh_askgroup",
+          "route_id": "CH1_M0_R0_BB_4",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780166348010,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m1_link_freedoc",
+          "route_id": "CH1_M0_R0_BB_13",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780166488844,
+          "trace_id": "TRACE_OPEN_UNVERIFIED_LINK"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "1",
+          "object_name": "m1_freedoc_login",
+          "route_id": "CH1_M1_R1_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 48,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 48
+          },
+          "timestamp": 1780166492183,
+          "trace_id": "TRACE_SUBMIT_CREDENTIAL"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "1",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M1_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 28,
+            "SCORE_PRESSURE_RESISTANCE": 44,
+            "SCORE_RISK_RECOGNITION": 38
+          },
+          "timestamp": 1780166566058,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M2_TC_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 30,
+            "SCORE_PRESSURE_RESISTANCE": 44,
+            "SCORE_RISK_RECOGNITION": 38
+          },
+          "timestamp": 1780166579173,
+          "trace_id": "TRACE_TRANSFER_MONEY"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_app_checkorder",
+          "route_id": "CH1_M2_R1_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 15,
+            "SCORE_PRESSURE_RESISTANCE": 36,
+            "SCORE_RISK_RECOGNITION": 31
+          },
+          "timestamp": 1780166639550,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "2",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M2_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 20,
+            "SCORE_PRESSURE_RESISTANCE": 36,
+            "SCORE_RISK_RECOGNITION": 34
+          },
+          "timestamp": 1780166656450,
+          "trace_id": "TRACE_DETECT_RED_FLAG"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M3_TC_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 23,
+            "SCORE_PRESSURE_RESISTANCE": 36,
+            "SCORE_RISK_RECOGNITION": 41
+          },
+          "timestamp": 1780166662972,
+          "trace_id": "TRACE_TRANSFER_MONEY"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "3",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M3_R0_BB_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 8,
+            "SCORE_PRESSURE_RESISTANCE": 28,
+            "SCORE_RISK_RECOGNITION": 34
+          },
+          "timestamp": 1780166712458,
+          "trace_id": "TRACE_OPEN_UNVERIFIED_FORM"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_scholarship_form",
+          "route_id": "CH1_M4_R1_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 3,
+            "SCORE_PRESSURE_RESISTANCE": 28,
+            "SCORE_RISK_RECOGNITION": 31
+          },
+          "timestamp": 1780166716058,
+          "trace_id": "TRACE_FILL_BASIC_INFO"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "4",
+          "object_name": "m4_form_bankaccount",
+          "route_id": "CH1_M4_R1_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 0,
+            "SCORE_PRESSURE_RESISTANCE": 28,
+            "SCORE_RISK_RECOGNITION": 27
+          },
+          "timestamp": 1780166718360,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        }
+      ]
+    },
+    "b33c2f3e64d341f58330e6b2e773e5f5": {
+      "end_time": 1780228898677,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 50,
+        "SCORE_INFORMATION_VERIFICATION": 50,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "vroJdrAh69TH16ZpHxlCqeIplRw1",
+      "session_id": "b33c2f3e64d341f58330e6b2e773e5f5",
+      "start_time": 1780228893761,
+      "total_playtime_seconds": 4.916
+    },
+    "b7a4ae8c18a543878bba873d8e880e2a": {
+      "end_time": 1780165735128,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 50,
+        "SCORE_INFORMATION_VERIFICATION": 50,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "b7a4ae8c18a543878bba873d8e880e2a",
+      "start_time": 1780165683146,
+      "total_playtime_seconds": 51.982
+    },
+    "be4e3899699b43aebd6ae46c4c620cbb": {
+      "end_time": 1779294804914,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 50,
+        "SCORE_INFORMATION_VERIFICATION": 50,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "be4e3899699b43aebd6ae46c4c620cbb",
+      "start_time": 1779294732205,
+      "total_playtime_seconds": 72.709
+    },
+    "c744bcf748414ed7bd32c5842db8ca65": {
+      "end_time": 1780218168867,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 65,
+        "SCORE_INFORMATION_VERIFICATION": 0,
+        "SCORE_PRESSURE_RESISTANCE": 16,
+        "SCORE_RISK_RECOGNITION": 0
+      },
+      "is_completed": true,
+      "player_id": "cx0jXpRTPFb30Gsm6QOvt3Hh6KJ3",
+      "session_id": "c744bcf748414ed7bd32c5842db8ca65",
+      "start_time": 1780217355899,
+      "total_playtime_seconds": 812.968,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_guard",
+          "route_id": "CH1_M0_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780217380718,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_linh_askgroup",
+          "route_id": "CH1_M0_R0_BB_4",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780217450813,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "0",
+          "object_name": "m1_roommate_askdoc",
+          "route_id": "CH1_M0_R0_BB_13",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 56,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780217804594,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "1",
+          "object_name": "m1_link_freedoc",
+          "route_id": "CH1_M1_R2_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 58,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780217814644,
+          "trace_id": "TRACE_OPEN_UNVERIFIED_LINK"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "1",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M1_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 48
+          },
+          "timestamp": 1780217940230,
+          "trace_id": "TRACE_TRANSFER_MONEY"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "2",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M2_R1_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 39,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 41
+          },
+          "timestamp": 1780218011570,
+          "trace_id": "TRACE_IGNORE_RED_FLAG"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M2_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 36,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 35
+          },
+          "timestamp": 1780218032052,
+          "trace_id": "TRACE_TRANSFER_MONEY"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "3",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M3_R0_BB_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 21,
+            "SCORE_PRESSURE_RESISTANCE": 34,
+            "SCORE_RISK_RECOGNITION": 28
+          },
+          "timestamp": 1780218122526,
+          "trace_id": "TRACE_OPEN_UNVERIFIED_FORM"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_scholarship_form",
+          "route_id": "CH1_M4_R1_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 16,
+            "SCORE_PRESSURE_RESISTANCE": 34,
+            "SCORE_RISK_RECOGNITION": 25
+          },
+          "timestamp": 1780218128267,
+          "trace_id": "TRACE_FILL_BASIC_INFO"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_form_bankaccount",
+          "route_id": "CH1_M4_R1_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 9,
+            "SCORE_PRESSURE_RESISTANCE": 34,
+            "SCORE_RISK_RECOGNITION": 21
+          },
+          "timestamp": 1780218131989,
+          "trace_id": "TRACE_FILL_SENSITIVE_INFO"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_form_banklogin",
+          "route_id": "CH1_M4_R1_BB_4",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 0,
+            "SCORE_PRESSURE_RESISTANCE": 30,
+            "SCORE_RISK_RECOGNITION": 15
+          },
+          "timestamp": 1780218136496,
+          "trace_id": "TRACE_SUBMIT_CREDENTIAL"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_otp_bankauth",
+          "route_id": "CH1_M4_R1_BB_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 0,
+            "SCORE_PRESSURE_RESISTANCE": 24,
+            "SCORE_RISK_RECOGNITION": 5
+          },
+          "timestamp": 1780218140845,
+          "trace_id": "TRACE_SUBMIT_AUTH_CODE"
+        }
+      ]
+    },
+    "ccaf1b595b9f4c1ba00a9330c339e805": {
+      "end_time": 1780227813987,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 85,
+        "SCORE_INFORMATION_VERIFICATION": 66,
+        "SCORE_PRESSURE_RESISTANCE": 54,
+        "SCORE_RISK_RECOGNITION": 64
+      },
+      "is_completed": true,
+      "player_id": "sjbR7vKNWOfZzrhOxDyyO257XKZ2",
+      "session_id": "ccaf1b595b9f4c1ba00a9330c339e805",
+      "start_time": 1780226822331,
+      "total_playtime_seconds": 991.656,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_email_checkin",
+          "route_id": "CH1_M0_R0_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780226865331,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_guard",
+          "route_id": "CH1_M0_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780226948443,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_linh_askgroup",
+          "route_id": "CH1_M0_R0_BB_4",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780227018635,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "0",
+          "object_name": "m1_roommate_askdoc",
+          "route_id": "CH1_M0_R0_BB_13",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 56,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780227351885,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "1",
+          "object_name": "m1_link_freedoc",
+          "route_id": "CH1_M1_R2_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 58,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780227366383,
+          "trace_id": "TRACE_OPEN_UNVERIFIED_LINK"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "1",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M1_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 48
+          },
+          "timestamp": 1780227514843,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M2_TC_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 56,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 48
+          },
+          "timestamp": 1780227541241,
+          "trace_id": "TRACE_TRANSFER_MONEY"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_app_checkorder",
+          "route_id": "CH1_M2_R1_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 41,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 41
+          },
+          "timestamp": 1780227620420,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "2",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M2_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 46,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 44
+          },
+          "timestamp": 1780227664926,
+          "trace_id": "TRACE_DETECT_RED_FLAG"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_roomate",
+          "route_id": "CH1_M3_TC_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 49,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 51
+          },
+          "timestamp": 1780227680189,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_Mai",
+          "route_id": "CH1_M3_R2_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 75,
+            "SCORE_INFORMATION_VERIFICATION": 51,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 51
+          },
+          "timestamp": 1780227694656,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M3_R2_BB_1_A",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 53,
+            "SCORE_PRESSURE_RESISTANCE": 42,
+            "SCORE_RISK_RECOGNITION": 51
+          },
+          "timestamp": 1780227704975,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "3",
+          "object_name": "m4_email_scholarship_askroomate",
+          "route_id": "CH1_M3_R0_BB_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 56,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 56
+          },
+          "timestamp": 1780227770880,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M4_R3_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 85,
+            "SCORE_INFORMATION_VERIFICATION": 58,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 56
+          },
+          "timestamp": 1780227784701,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "4",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M4_R3_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 85,
+            "SCORE_INFORMATION_VERIFICATION": 63,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 59
+          },
+          "timestamp": 1780227791719,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        }
+      ]
+    },
+    "d198df74e08c43aba3fb906b67475724": {
+      "end_time": 1780225516652,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 66,
+        "SCORE_HELP_SEEKING": 80,
+        "SCORE_INFORMATION_VERIFICATION": 58,
+        "SCORE_PRESSURE_RESISTANCE": 60,
+        "SCORE_RISK_RECOGNITION": 58
+      },
+      "is_completed": true,
+      "player_id": "vroJdrAh69TH16ZpHxlCqeIplRw1",
+      "session_id": "d198df74e08c43aba3fb906b67475724",
+      "start_time": 1780223614229,
+      "total_playtime_seconds": 1902.423,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_email_checkin",
+          "route_id": "CH1_M0_R0_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780223648158,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_guard",
+          "route_id": "CH1_M0_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780223906322,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_linh_askgroup",
+          "route_id": "CH1_M0_R0_BB_4",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780223974777,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "0",
+          "object_name": "m1_roommate_askdoc",
+          "route_id": "CH1_M0_R0_BB_13",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 56,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780224644230,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "1",
+          "object_name": "m1_link_freedoc",
+          "route_id": "CH1_M1_R2_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 58,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780224656250,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "1",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M1_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 61,
+            "SCORE_PRESSURE_RESISTANCE": 56,
+            "SCORE_RISK_RECOGNITION": 55
+          },
+          "timestamp": 1780224864469,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M2_TC_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 63,
+            "SCORE_PRESSURE_RESISTANCE": 56,
+            "SCORE_RISK_RECOGNITION": 55
+          },
+          "timestamp": 1780224886751,
+          "trace_id": "TRACE_TRANSFER_MONEY"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_app_checkorder",
+          "route_id": "CH1_M2_R1_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 48,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 48
+          },
+          "timestamp": 1780225267300,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "2",
+          "object_name": "m3_namchat_askroomate",
+          "route_id": "CH1_M2_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 53,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 51
+          },
+          "timestamp": 1780225301163,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_Mai",
+          "route_id": "CH1_M3_R2_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 75,
+            "SCORE_INFORMATION_VERIFICATION": 55,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 51
+          },
+          "timestamp": 1780225351525,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M3_R2_BB_1_A",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 57,
+            "SCORE_PRESSURE_RESISTANCE": 48,
+            "SCORE_RISK_RECOGNITION": 51
+          },
+          "timestamp": 1780225358794,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_classgroup",
+          "route_id": "CH1_M3_R0_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 60,
+            "SCORE_PRESSURE_RESISTANCE": 54,
+            "SCORE_RISK_RECOGNITION": 56
+          },
+          "timestamp": 1780225377095,
+          "trace_id": "TRACE_WARN_OTHERS"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "3",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M3_R0_BB_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 60,
+            "SCORE_PRESSURE_RESISTANCE": 54,
+            "SCORE_RISK_RECOGNITION": 56
+          },
+          "timestamp": 1780225484577,
+          "trace_id": "TRACE_OPEN_UNVERIFIED_FORM"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "4",
+          "object_name": "m4_scholarship_form",
+          "route_id": "CH1_M4_R1_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 55,
+            "SCORE_PRESSURE_RESISTANCE": 54,
+            "SCORE_RISK_RECOGNITION": 53
+          },
+          "timestamp": 1780225490007,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_classgroup",
+          "route_id": "CH1_M4_R0_BB_0",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 58,
+            "SCORE_PRESSURE_RESISTANCE": 60,
+            "SCORE_RISK_RECOGNITION": 58
+          },
+          "timestamp": 1780225500354,
+          "trace_id": "TRACE_WARN_OTHERS"
+        }
+      ]
+    },
+    "d1db3311bc6a4cc1b05815553b23654e": {
+      "end_time": 1778991231503,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 50,
+        "SCORE_INFORMATION_VERIFICATION": 50,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "d1db3311bc6a4cc1b05815553b23654e",
+      "start_time": 1778991221078,
+      "total_playtime_seconds": 10.425
+    },
+    "dd906ffef7ad4fcf8c79ee1f28cd76a3": {
+      "end_time": 1780202262017,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 66,
+        "SCORE_HELP_SEEKING": 70,
+        "SCORE_INFORMATION_VERIFICATION": 58,
+        "SCORE_PRESSURE_RESISTANCE": 68,
+        "SCORE_RISK_RECOGNITION": 60
+      },
+      "is_completed": true,
+      "player_id": "EOOUznHcdYM3B5Eu7H7303gt3Nl1",
+      "session_id": "dd906ffef7ad4fcf8c79ee1f28cd76a3",
+      "start_time": 1780201576259,
+      "total_playtime_seconds": 685.758,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_email_checkin",
+          "route_id": "CH1_M0_R0_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780201602147,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_guard",
+          "route_id": "CH1_M0_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780201662546,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_linh_askgroup",
+          "route_id": "CH1_M0_R0_BB_4",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780201713456,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m1_link_freedoc",
+          "route_id": "CH1_M0_R0_BB_13",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 56,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780201974668,
+          "trace_id": "TRACE_OPEN_UNVERIFIED_LINK"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "1",
+          "object_name": "m1_freedoc_login",
+          "route_id": "CH1_M1_R1_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 48
+          },
+          "timestamp": 1780201988646,
+          "trace_id": "TRACE_SUBMIT_CREDENTIAL"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "1",
+          "object_name": "m1_account_warning",
+          "route_id": "CH1_M1_R1_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 32,
+            "SCORE_PRESSURE_RESISTANCE": 44,
+            "SCORE_RISK_RECOGNITION": 38
+          },
+          "timestamp": 1780201997601,
+          "trace_id": "TRACE_IGNORE_RED_FLAG"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "1",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M1_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 29,
+            "SCORE_PRESSURE_RESISTANCE": 44,
+            "SCORE_RISK_RECOGNITION": 32
+          },
+          "timestamp": 1780202102092,
+          "trace_id": "TRACE_DELAY_ACTION"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "2",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M2_R2_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 32,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 32
+          },
+          "timestamp": 1780202110776,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_app_checkorder",
+          "route_id": "CH1_M2_R2_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 35,
+            "SCORE_PRESSURE_RESISTANCE": 56,
+            "SCORE_RISK_RECOGNITION": 37
+          },
+          "timestamp": 1780202115394,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "2",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M2_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 40,
+            "SCORE_PRESSURE_RESISTANCE": 56,
+            "SCORE_RISK_RECOGNITION": 40
+          },
+          "timestamp": 1780202153773,
+          "trace_id": "TRACE_DETECT_RED_FLAG"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M3_TC_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 43,
+            "SCORE_PRESSURE_RESISTANCE": 56,
+            "SCORE_RISK_RECOGNITION": 47
+          },
+          "timestamp": 1780202163631,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_Mai",
+          "route_id": "CH1_M3_TC_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 46,
+            "SCORE_PRESSURE_RESISTANCE": 62,
+            "SCORE_RISK_RECOGNITION": 52
+          },
+          "timestamp": 1780202166740,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_classgroup",
+          "route_id": "CH1_M3_R0_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 48,
+            "SCORE_PRESSURE_RESISTANCE": 62,
+            "SCORE_RISK_RECOGNITION": 52
+          },
+          "timestamp": 1780202186717,
+          "trace_id": "TRACE_WARN_OTHERS"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "3",
+          "object_name": "m4_email_scholarship_askroomate",
+          "route_id": "CH1_M3_R0_BB_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 48,
+            "SCORE_PRESSURE_RESISTANCE": 62,
+            "SCORE_RISK_RECOGNITION": 52
+          },
+          "timestamp": 1780202216357,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M4_R3_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 62,
+            "SCORE_RISK_RECOGNITION": 52
+          },
+          "timestamp": 1780202231511,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "4",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M4_R3_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 55,
+            "SCORE_PRESSURE_RESISTANCE": 62,
+            "SCORE_RISK_RECOGNITION": 55
+          },
+          "timestamp": 1780202240433,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_classgroup",
+          "route_id": "CH1_M4_R0_BB_0",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 58,
+            "SCORE_PRESSURE_RESISTANCE": 68,
+            "SCORE_RISK_RECOGNITION": 60
+          },
+          "timestamp": 1780202245149,
+          "trace_id": "TRACE_WARN_OTHERS"
+        }
+      ]
+    },
+    "de45d21d484c40a7becf2cf6cb29cd0a": {
+      "end_time": 1778921590161,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 0,
+        "SCORE_HELP_SEEKING": 0,
+        "SCORE_INFORMATION_VERIFICATION": 0,
+        "SCORE_PRESSURE_RESISTANCE": 0,
+        "SCORE_RISK_RECOGNITION": 0
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "de45d21d484c40a7becf2cf6cb29cd0a",
+      "start_time": 1778921352260,
+      "total_playtime_seconds": 237.901
+    },
+    "df77bd6badf24a9d9fddaa7ad5758a71": {
+      "end_time": 1778992385192,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 60,
+        "SCORE_INFORMATION_VERIFICATION": 56,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "df77bd6badf24a9d9fddaa7ad5758a71",
+      "start_time": 1778992170829,
+      "total_playtime_seconds": 214.363,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "",
+          "route_id": "CH1_M0_R0_TC_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1778992194318,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "0",
+          "object_name": "",
+          "route_id": "CH1_M0_R0_TC_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1778992240006,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "0",
+          "object_name": "",
+          "route_id": "CH1_M0_R0_TC_8",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1778992270347,
+          "trace_id": "TRACE_ASK_PERSON"
+        }
+      ]
+    },
+    "e0dc15ac1edb435c8f38529d14d3ff08": {
+      "end_time": 1780160460701,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 66,
+        "SCORE_HELP_SEEKING": 55,
+        "SCORE_INFORMATION_VERIFICATION": 35,
+        "SCORE_PRESSURE_RESISTANCE": 66,
+        "SCORE_RISK_RECOGNITION": 43
+      },
+      "is_completed": true,
+      "player_id": "9gxlLyQsuOgc9Afp8cKMpjt9ezs2",
+      "session_id": "e0dc15ac1edb435c8f38529d14d3ff08",
+      "start_time": 1780159519766,
+      "total_playtime_seconds": 940.935,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_email_checkin",
+          "route_id": "CH1_M0_R0_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780159547430,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m1_link_freedoc",
+          "route_id": "CH1_M0_R0_BB_13",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780159722225,
+          "trace_id": "TRACE_OPEN_UNVERIFIED_LINK"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "1",
+          "object_name": "m1_freedoc_login",
+          "route_id": "CH1_M1_R1_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 48,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 48
+          },
+          "timestamp": 1780159728911,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "1",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M1_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 51,
+            "SCORE_PRESSURE_RESISTANCE": 56,
+            "SCORE_RISK_RECOGNITION": 51
+          },
+          "timestamp": 1780159995905,
+          "trace_id": "TRACE_DELAY_ACTION"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M2_R2_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 62,
+            "SCORE_RISK_RECOGNITION": 51
+          },
+          "timestamp": 1780160209139,
+          "trace_id": "TRACE_TRANSFER_MONEY"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "2",
+          "object_name": "m3_namchat_askroomate",
+          "route_id": "CH1_M2_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 39,
+            "SCORE_PRESSURE_RESISTANCE": 54,
+            "SCORE_RISK_RECOGNITION": 44
+          },
+          "timestamp": 1780160366379,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M3_R2_BB_1_B",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 41,
+            "SCORE_PRESSURE_RESISTANCE": 54,
+            "SCORE_RISK_RECOGNITION": 44
+          },
+          "timestamp": 1780160375267,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_classgroup",
+          "route_id": "CH1_M3_R0_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 44,
+            "SCORE_PRESSURE_RESISTANCE": 60,
+            "SCORE_RISK_RECOGNITION": 47
+          },
+          "timestamp": 1780160401883,
+          "trace_id": "TRACE_WARN_OTHERS"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "3",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M3_R0_BB_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 44,
+            "SCORE_PRESSURE_RESISTANCE": 60,
+            "SCORE_RISK_RECOGNITION": 47
+          },
+          "timestamp": 1780160436824,
+          "trace_id": "TRACE_OPEN_UNVERIFIED_FORM"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_scholarship_form",
+          "route_id": "CH1_M4_R1_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 39,
+            "SCORE_PRESSURE_RESISTANCE": 60,
+            "SCORE_RISK_RECOGNITION": 44
+          },
+          "timestamp": 1780160445050,
+          "trace_id": "TRACE_FILL_BASIC_INFO"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "4",
+          "object_name": "m4_form_bankaccount",
+          "route_id": "CH1_M4_R1_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 32,
+            "SCORE_PRESSURE_RESISTANCE": 60,
+            "SCORE_RISK_RECOGNITION": 40
+          },
+          "timestamp": 1780160448120,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_classgroup",
+          "route_id": "CH1_M4_R0_BB_0",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 35,
+            "SCORE_PRESSURE_RESISTANCE": 66,
+            "SCORE_RISK_RECOGNITION": 43
+          },
+          "timestamp": 1780160453186,
+          "trace_id": "TRACE_WARN_OTHERS"
+        }
+      ]
+    },
+    "e2eb0f5c312a4f98ae0cba4eb4c00267": {
+      "end_time": 1780222514544,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 50,
+        "SCORE_INFORMATION_VERIFICATION": 50,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "dhiHXvJmYgaNYeeE3QVoo77dMwf1",
+      "session_id": "e2eb0f5c312a4f98ae0cba4eb4c00267",
+      "start_time": 1780222508307,
+      "total_playtime_seconds": 6.237
+    },
+    "f2bd27b7500e46ff9fb4579fa1a1acaf": {
+      "end_time": 1779296273412,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 50,
+        "SCORE_INFORMATION_VERIFICATION": 50,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "f2bd27b7500e46ff9fb4579fa1a1acaf",
+      "start_time": 1779296252642,
+      "total_playtime_seconds": 20.77
+    },
+    "f3b299f7911b433baa9065050dfb6fb2": {
+      "end_time": 1779294696166,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 50,
+        "SCORE_INFORMATION_VERIFICATION": 52,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "f3b299f7911b433baa9065050dfb6fb2",
+      "start_time": 1779294677714,
+      "total_playtime_seconds": 18.452,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "Check_in_mail",
+          "route_id": "CH1_M0_R0_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1779294688260,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        }
+      ]
+    },
+    "f46d68b88dee44a68cd9781569156c90": {
+      "end_time": 1780222311509,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 66,
+        "SCORE_HELP_SEEKING": 80,
+        "SCORE_INFORMATION_VERIFICATION": 68,
+        "SCORE_PRESSURE_RESISTANCE": 76,
+        "SCORE_RISK_RECOGNITION": 70
+      },
+      "is_completed": true,
+      "player_id": "dhiHXvJmYgaNYeeE3QVoo77dMwf1",
+      "session_id": "f46d68b88dee44a68cd9781569156c90",
+      "start_time": 1780220940451,
+      "total_playtime_seconds": 1371.058,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_email_checkin",
+          "route_id": "CH1_M0_R0_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780221000533,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_guard",
+          "route_id": "CH1_M0_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 52,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780221032247,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_linh_askgroup",
+          "route_id": "CH1_M0_R0_BB_4",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 55,
+            "SCORE_INFORMATION_VERIFICATION": 54,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780221070480,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "0",
+          "object_name": "m1_roommate_askdoc",
+          "route_id": "CH1_M0_R0_BB_13",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 60,
+            "SCORE_INFORMATION_VERIFICATION": 56,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780221383840,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "1",
+          "object_name": "m1_link_freedoc",
+          "route_id": "CH1_M1_R2_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 58,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780221408651,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "1",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M1_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 61,
+            "SCORE_PRESSURE_RESISTANCE": 56,
+            "SCORE_RISK_RECOGNITION": 55
+          },
+          "timestamp": 1780221540732,
+          "trace_id": "TRACE_DELAY_ACTION"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "2",
+          "object_name": "m2_shipper_call",
+          "route_id": "CH1_M2_R2_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 64,
+            "SCORE_PRESSURE_RESISTANCE": 62,
+            "SCORE_RISK_RECOGNITION": 55
+          },
+          "timestamp": 1780221558485,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "2",
+          "object_name": "m2_app_checkorder",
+          "route_id": "CH1_M2_R2_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 67,
+            "SCORE_PRESSURE_RESISTANCE": 68,
+            "SCORE_RISK_RECOGNITION": 60
+          },
+          "timestamp": 1780221563792,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "2",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M2_R0_BB_3",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 72,
+            "SCORE_PRESSURE_RESISTANCE": 68,
+            "SCORE_RISK_RECOGNITION": 63
+          },
+          "timestamp": 1780221632666,
+          "trace_id": "TRACE_DETECT_RED_FLAG"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_roomate",
+          "route_id": "CH1_M3_TC_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 65,
+            "SCORE_INFORMATION_VERIFICATION": 75,
+            "SCORE_PRESSURE_RESISTANCE": 68,
+            "SCORE_RISK_RECOGNITION": 70
+          },
+          "timestamp": 1780221641388,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_Mai",
+          "route_id": "CH1_M3_R2_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 70,
+            "SCORE_INFORMATION_VERIFICATION": 77,
+            "SCORE_PRESSURE_RESISTANCE": 68,
+            "SCORE_RISK_RECOGNITION": 70
+          },
+          "timestamp": 1780221651195,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_namchat_borrowmoney",
+          "route_id": "CH1_M3_R2_BB_1_A",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 75,
+            "SCORE_INFORMATION_VERIFICATION": 79,
+            "SCORE_PRESSURE_RESISTANCE": 68,
+            "SCORE_RISK_RECOGNITION": 70
+          },
+          "timestamp": 1780222169669,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "3",
+          "object_name": "m3_classgroup",
+          "route_id": "CH1_M3_R0_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 75,
+            "SCORE_INFORMATION_VERIFICATION": 82,
+            "SCORE_PRESSURE_RESISTANCE": 74,
+            "SCORE_RISK_RECOGNITION": 75
+          },
+          "timestamp": 1780222184211,
+          "trace_id": "TRACE_WARN_OTHERS"
+        },
+        {
+          "choice_id": "3",
+          "milestone_id": "3",
+          "object_name": "m4_email_scholarship_askroomate",
+          "route_id": "CH1_M3_R0_BB_5",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 75,
+            "SCORE_INFORMATION_VERIFICATION": 82,
+            "SCORE_PRESSURE_RESISTANCE": 74,
+            "SCORE_RISK_RECOGNITION": 75
+          },
+          "timestamp": 1780222205757,
+          "trace_id": "TRACE_ASK_PERSON"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M4_R3_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 84,
+            "SCORE_PRESSURE_RESISTANCE": 74,
+            "SCORE_RISK_RECOGNITION": 75
+          },
+          "timestamp": 1780222214795,
+          "trace_id": "TRACE_INSPECT_SOURCE"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_email_scholarship",
+          "route_id": "CH1_M4_R3_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 89,
+            "SCORE_PRESSURE_RESISTANCE": 74,
+            "SCORE_RISK_RECOGNITION": 78
+          },
+          "timestamp": 1780222228268,
+          "trace_id": "TRACE_OPEN_UNVERIFIED_FORM"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_scholarship_form",
+          "route_id": "CH1_M4_R1_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 84,
+            "SCORE_PRESSURE_RESISTANCE": 74,
+            "SCORE_RISK_RECOGNITION": 75
+          },
+          "timestamp": 1780222251811,
+          "trace_id": "TRACE_FILL_BASIC_INFO"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_form_bankaccount",
+          "route_id": "CH1_M4_R1_BB_2",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 77,
+            "SCORE_PRESSURE_RESISTANCE": 74,
+            "SCORE_RISK_RECOGNITION": 71
+          },
+          "timestamp": 1780222260307,
+          "trace_id": "TRACE_FILL_SENSITIVE_INFO"
+        },
+        {
+          "choice_id": "2",
+          "milestone_id": "4",
+          "object_name": "m4_form_banklogin",
+          "route_id": "CH1_M4_R1_BB_4",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 65,
+            "SCORE_PRESSURE_RESISTANCE": 70,
+            "SCORE_RISK_RECOGNITION": 65
+          },
+          "timestamp": 1780222280409,
+          "trace_id": "TRACE_REFUSE_RISKY_REQUEST"
+        },
+        {
+          "choice_id": "1",
+          "milestone_id": "4",
+          "object_name": "m4_classgroup",
+          "route_id": "CH1_M4_R0_BB_0",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 58,
+            "SCORE_HELP_SEEKING": 80,
+            "SCORE_INFORMATION_VERIFICATION": 68,
+            "SCORE_PRESSURE_RESISTANCE": 76,
+            "SCORE_RISK_RECOGNITION": 70
+          },
+          "timestamp": 1780222285311,
+          "trace_id": "TRACE_WARN_OTHERS"
+        }
+      ]
+    },
+    "f5ff7978c3e74cadb0bb4a187b9c08e7": {
+      "end_time": 1780164156879,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 50,
+        "SCORE_HELP_SEEKING": 50,
+        "SCORE_INFORMATION_VERIFICATION": 52,
+        "SCORE_PRESSURE_RESISTANCE": 50,
+        "SCORE_RISK_RECOGNITION": 50
+      },
+      "is_completed": false,
+      "player_id": "9gxlLyQsuOgc9Afp8cKMpjt9ezs2",
+      "session_id": "f5ff7978c3e74cadb0bb4a187b9c08e7",
+      "start_time": 1780164053606,
+      "total_playtime_seconds": 103.273,
+      "traces": [
+        {
+          "choice_id": "1",
+          "milestone_id": "0",
+          "object_name": "m0_email_checkin",
+          "route_id": "CH1_M0_R0_BB_1",
+          "score_state": {
+            "SCORE_COMMUNITY_WARNING": 50,
+            "SCORE_HELP_SEEKING": 50,
+            "SCORE_INFORMATION_VERIFICATION": 50,
+            "SCORE_PRESSURE_RESISTANCE": 50,
+            "SCORE_RISK_RECOGNITION": 50
+          },
+          "timestamp": 1780164100770,
+          "trace_id": "TRACE_READ_RELEVANT_INFO"
+        }
+      ]
+    },
+    "f81a80f389424a0884953b24dd0661fc": {
+      "end_time": 1778921770608,
+      "final_scores": {
+        "SCORE_COMMUNITY_WARNING": 0,
+        "SCORE_HELP_SEEKING": 0,
+        "SCORE_INFORMATION_VERIFICATION": 0,
+        "SCORE_PRESSURE_RESISTANCE": 0,
+        "SCORE_RISK_RECOGNITION": 0
+      },
+      "is_completed": false,
+      "player_id": "fqk1jRuVW0WEQikj0NOoPB64xPY2",
+      "session_id": "f81a80f389424a0884953b24dd0661fc",
+      "start_time": 1778921716398,
+      "total_playtime_seconds": 54.21
+    }
+  }
+}

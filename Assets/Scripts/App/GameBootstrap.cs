@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using SeriousGame.Content;
@@ -11,6 +12,16 @@ namespace SeriousGame.App
         [SerializeField] private AppConfigSO config;
 
         private static GameBootstrap _instance;
+
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += HandleSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= HandleSceneLoaded;
+        }
 
         private void Awake()
         {
@@ -34,29 +45,41 @@ namespace SeriousGame.App
             ctx.Init(config);
 
             Context = ctx;
+
         }
 
-        public void StartDemo()
+        private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             if (config == null) return;
+            if (string.IsNullOrWhiteSpace(config.demoEpisodeSceneName)) return;
+            if (!string.Equals(scene.name, config.demoEpisodeSceneName, StringComparison.OrdinalIgnoreCase)) return;
 
-            // Boot scene -> next
-            string targetScene;
-            if (config.skipMainMenuAndAutoStartEpisode)
+            var ctx = Context;
+            if (ctx != null && ctx.Session != null)
             {
-                // Prefer Episode entry scene if available
-                var ep = config.defaultEpisode;
-                var epScene = ep != null ? ep.GetEntrySceneName() : "";
-                targetScene = string.IsNullOrWhiteSpace(epScene) ? config.demoEpisodeSceneName : epScene;
+                if (string.IsNullOrWhiteSpace(ctx.Session.CurrentSessionId))
+                    ctx.Session.Begin(ctx.Session.PlayerId);
+                else
+                    ctx.Session.MarkStartTime();
             }
-            else
-            {
-                targetScene = config.mainMenuSceneName;
-            }
+        }
+
+        private void OnApplicationQuit()
+        {
+            var ctx = Context;
+            if (ctx != null && ctx.Trace != null && IsEpisodeScene())
+                ctx.Trace.SendSessionDataOnQuitBlocking();
+        }
+
+        private bool IsEpisodeScene()
+        {
+            if (config == null || string.IsNullOrWhiteSpace(config.demoEpisodeSceneName)) return false;
 
             var active = SceneManager.GetActiveScene().name;
-            if (!string.IsNullOrWhiteSpace(targetScene) && active != targetScene)
-                SceneManager.LoadScene(targetScene);
+            if (string.IsNullOrWhiteSpace(active)) return false;
+
+            return string.Equals(active, config.demoEpisodeSceneName, StringComparison.OrdinalIgnoreCase);
         }
+
     }
 }

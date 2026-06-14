@@ -1,0 +1,191 @@
+﻿title: M3_old
+---
+// position: 140,42
+// ---
+// <<set_milestone 3>>
+// <<switch_ui "phone_chat">>
+
+// Minh: Ông đang ở đâu vậy?
+// Nam: Ngoài đường
+// Minh: Ngoài đường chỗ nào? Có gọi được không?
+// Nam: Không tiện gọi. Chuyển lẹ giúp tui đi
+// Minh: Sáng nay ông bảo phần ví dụ sẽ gửi lúc mấy giờ ấy nhỉ?
+// Nam: Tí gửi. Giờ chuyển trước giúp tui
+// Minh: Sao không chuyển vào tài khoản của ông?
+// Nam: Tài khoản tui lỗi. Tài khoản bạn tui. Nhanh nha
+
+
+// -> Vẫn chuyển tiền
+//     <<trace TRACE_TRANSFER_MONEY 1 "nam_private_chat">>
+//     <<jump CH1_M3_R1_BB_1>>
+// -> Hỏi anh em trong phòng
+//     <<trace TRACE_ASK_PERSON 2 "nam_private_chat">>
+//     <<set_objective "OBJ_CH1_M3_ASK_QUAN">>
+// -> Từ chối chuyển tiền và nhắn vào nhóm BTL
+//     <<jump CH1_M3_R0_BB_1>>
+// ===
+
+// title: CH1_M3_R1_BB_1
+// position: 312,244
+// ---
+// <<set_milestone 3>>
+// <<switch_ui "normal">>
+
+// Minh: Chắc ông ấy đang kẹt thật
+// Minh: Mình chuyển trước rồi tối hỏi lại sau vậy
+
+// <<wait 2>>
+// <<switch_ui "phone_chat_keep">>
+// Minh: Ok, tui chuyển rồi nha Nam
+
+// <<jump CH1_M3_R1_BB_2>>
+// ===
+
+// title: CH1_M3_R1_BB_2
+// position: 292,687
+// ---
+
+// <<switch_ui "normal">>
+// Hình như có thông báo tin nhắn nhóm BTL
+// -> Vào nhóm BTL xem tin nhắn
+// // <<wait 1>>
+
+// <<switch_ui "phone_chat">>
+
+// Mai: Nam ơi, hồi nãy cậu nhắn riêng mình hả?
+// Nam: Không? Tui đang làm ví dụ mà.
+// Nam: Khoan, có ai nhận được tin nhắn mượn tiền từ tài khoản tui không?
+// Nam: Hình như tài khoản tui bị đăng nhập lạ.
+
+// <<wait 2>>
+// <<switch_ui "normal">>
+// Minh: …
+// Minh: Khoan, vậy người nãy giờ nhắn mình là ai?
+// Quan: Sao mặt ông căng vậy?
+// Minh: Tui vừa chuyển 250k…
+// Quan: Cho Nam?
+// Minh: Tui tưởng vậy.
+// Huy: Em chụp lại giao dịch, lưu số tài khoản, rồi nhắn Nam khóa tài khoản ngay.
+
+// <<switch_ui "normal">>
+// <<jump CH1_M3_R0_BB_1>>
+// ===
+
+// title: CH1_M3_R2_BB_1
+// position: -85,236
+// ---
+// <<set_milestone 3>>
+// <<switch_ui "normal">>
+
+// Minh: Ông coi giúp tui cái này được không?
+// Quan: Nam trong nhóm ông hả?
+// Minh: Ừ. Mới nhắn mượn tiền.
+// Quan: Tài khoản bạn tui… nghe hơi lạ nha
+// Huy: Gọi trực tiếp hoặc hỏi trong nhóm. Đừng chuyển qua tài khoản lạ.
+// Minh: Nếu Nam cần thật thì sao anh?
+// Huy: Cần thật thì gọi được, hoặc ít nhất xác nhận qua kênh khác được
+
+
+// <<jump CH1_M3_R2_BB_2>>
+// ===
+
+// title: CH1_M3_R2_BB_2
+// position: 12,462
+// ---
+
+// -> Nhắn vào nhóm BTL
+// <<switch_ui "phone_chat">>
+
+// Minh: Nam ơi, ông vừa nhắn riêng tui hả?
+// Mai: Có chuyện gì vậy?
+// Nam: Không? Tui đang làm ví dụ.
+// Minh: Tài khoản ông nhắn tui mượn 250k, bảo chuyển qua tài khoản bạn.
+// Nam: Không phải tui.
+// Nam: Chết rồi, hình như tài khoản tui bị đăng nhập lạ.
+// Mai: Nam đổi mật khẩu trước đi. Minh đừng chuyển.
+// Minh: Ừ, mình chưa chuyển.
+
+// <<trace TRACE_CONTACT_VERIFY 2 "nam_private_chat">>
+
+// -> Nhắn cảnh báo mọi người  
+//     <<trace TRACE_WARN_OTHERS 2 "nam_private_chat">>
+//     <<jump CH1_M3_R2_BB_3>>
+// -> Thôi được rồi, mình sẽ rút kinh nghiệm cho bản thân
+//     <<jump CH1_M3_R0_BB_1>>
+// ===
+
+// title: CH1_M3_R2_BB_3
+// position: 12,687
+// ---
+
+// <<switch_ui "phone_chat">>
+
+// Minh: Mọi người cẩn thận nha. Tài khoản Nam đang nhắn riêng mượn tiền.
+// Minh: Đừng chuyển nếu chưa gọi xác nhận.
+// Mai: Mình nhắn thêm vào nhóm lớp luôn. Có thể không chỉ nhóm mình bị.
+// Nam: Cảm ơn mọi người. Tui đang đổi mật khẩu.
+
+// <<switch_ui "normal">>
+// <<jump CH1_M3_R0_BB_1>>
+// ===
+
+// title: CH1_M3_R0_BB_1
+// position: 292,912
+// ---
+
+// <<fade_in 2>>
+// <<wait 2>>
+// Vụ tài khoản Nam làm cả nhóm hơi chững lại
+// Dù theo hướng nào, mình cũng hiểu thêm một chuyện 
+// Lừa đảo đôi khi đến từ việc đánh thẳng vào niềm tin của bản thân vào một người quen, người thân
+
+// <<jump CH1_M3_R0_BB_2>>
+// ===
+
+// title: CH1_M3_R0_BB_2
+// position: 292,1137
+// ---
+// <<teleport_to "bed">>
+// <<fade_out 2>>
+// <<wait 2>>
+// Minh: Tiền trong ví xuống nhanh hơn mình nghĩ, phải làm sao đây
+// // Minh: Có hôm mở app ngân hàng chỉ để nhìn số dư rồi tắt đi
+// Minh: Hình như có mail, để xem cái gì thế nhỉ
+// <<set_objective "OBJ_CH1_M3_CHECKMAIL">>
+
+// // <<jump CH1_M3_R0_BB_3>>
+// ===
+
+
+
+// title: CH1_M3_R0_BB_3
+// position: 267,1384
+// ---
+
+// ->Ngồi
+// <<sit "OBJ_CH1_M3_CHECKMAIL">>
+// // <<set_objective "OBJ_M4_CHECK_EMAIL">>
+// Để xem mail gì đây
+// <<switch_ui "show:pc:Mailhocbong_1">>
+// <<wait 1>>
+// // <<switch_ui "hide:phone">>
+// // <<switch_ui "normal">>
+// -> Xem nội dung mail
+// <<switch_ui "show:pc:Mailhocbong_2">>
+
+// Minh: Học bổng?
+// Minh: 5 triệu…
+// Minh: Đúng lúc thật.
+
+// <<wait 2>>
+
+// -> Xác thực hồ sơ
+//     <<jump CH1_M4_R1_BB_1>>
+// -> Đi hỏi nhóm BTL
+//     <<jump CH1_M4_R2_BB_1>>
+// -> Đi hỏi anh em trong phòng
+//     <<unsit>>
+//     <<switch_ui "normal">>
+//     <<set_objective "OBJ_CH1_M3_ASK_QUAN">>
+//     // <<jump CH1_M4_R3_BB_1>>
+===
